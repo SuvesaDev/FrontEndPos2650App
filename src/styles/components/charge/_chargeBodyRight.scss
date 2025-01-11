@@ -1,0 +1,216 @@
+.chargeBody-right-main {
+    display: grid;
+    padding-right: 5px;
+    grid-template-areas: 
+        'title'
+        'formaPago'
+        'total';
+    grid-template-rows: 20px 260px 90px;
+}
+
+.chargeBody-right-title {
+    grid-area: title;
+    border-bottom: 1px solid gray;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+}
+
+#lblFormasPagoTitleChargeBody {
+    text-align: start;
+    padding-left: 2px;
+    font-size: 15px;
+}
+
+.chargeBody-right-formaPago {
+    grid-area: formaPago;
+    margin-bottom: 5px;
+    border-top: 1px solid gray;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    margin-left: 1px;
+    margin-right: 2px;
+    margin-top: 5px;
+}
+
+.chargeBody-body-tableFormaPago-main {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    scrollbar-color: rebeccapurple green;
+    scrollbar-width: thin;
+    border-bottom: 1px solid gray;
+    grid-area: table;
+}
+
+.chargeBody-body-tableFormaPago-header {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 10%;
+}
+
+.chargeBody-body-tableFormaPago-header-tipoPago {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 100px;
+}
+
+.chargeBody-body-tableFormaPago-header-importe {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 150px;
+}
+
+.chargeBody-body-tableFormaPago-body {
+    text-align: start;
+    font-style: normal;
+}
+
+.chargeBody-body-tableFormaPago-row {
+    &:hover {
+        cursor: pointer;
+        background-color: #ACA9A9;
+    }
+}
+
+.chargeBody-body-tableFormaPago-tipoPago {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+    height: 25.5px;
+    background-color: $secundary;
+    color: white;
+}
+
+.chargeBody-body-tableFormaPago-importe {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+    height: 25.5px;
+    width: 20px;
+}
+
+#txtImporteTableFormaPagoChargeBody {
+    width: 125px;
+    text-align: start;
+    padding-left: 5px;
+}
+
+.chargeBody-right-total {
+    grid-area: total;
+    margin-bottom: 5px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    margin-left: 1px;
+    margin-right: 2px;
+    margin-top: 5px;
+    display: grid;
+    grid-template-areas: 
+        'cobrar'
+        'entregado'
+        'cambio';
+    grid-template-rows: 33% 33% 34%;
+}
+
+.chargeBody-right-total-cobrar {
+    grid-area: cobrar;
+    display: grid;
+    grid-template-areas: 
+        'titleCobrar totalCobrar';
+    grid-template-columns: 40% 60%;
+}
+
+.chargeBody-right-total-cobrar-title {
+    grid-area: titleCobrar;
+}
+
+#lblTitleCobrarChargeBodyRight {
+    text-align: start;
+    padding-left: 5px;
+    padding-top: 3px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.chargeBody-right-total-cobrar-total {
+    grid-area: totalCobrar;
+}
+
+#lblTotalCobrarChargeBodyRight {
+    text-align: end;
+    padding-right: 15px;
+    padding-top: 3px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.chargeBody-right-total-entregado {
+    grid-area: entregado;
+    display: grid;
+    grid-template-areas: 
+        'titleEntregado totalEntregado';
+    grid-template-columns: 40% 60%;
+}
+
+.chargeBody-right-total-entregado-title {
+    grid-area: titleEntregado;
+}
+
+#lblTitleEntregadoChargeBodyRight {
+    text-align: start;
+    padding-left: 5px;
+    padding-top: 3px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.chargeBody-right-total-entregado-total {
+    grid-area: totalEntregado;
+}
+
+#lblTotalEntregadoChargeBodyRight {
+    text-align: end;
+    padding-right: 15px;
+    padding-top: 3px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.chargeBody-right-total-cambio {
+    grid-area: cambio;
+    display: grid;
+    grid-template-areas: 
+        'titleCambio totalCambio';
+    grid-template-columns: 40% 60%;
+}
+
+.chargeBody-right-total-cambio-title {
+    grid-area: titleCambio;
+}
+
+#lblTitleCambioChargeBodyRight {
+    text-align: start;
+    padding-left: 5px;
+    padding-top: 3px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.chargeBody-right-total-cambio-total {
+    grid-area: totalCambio;
+}
+
+#lblTotalCambioChargeBodyRight {
+    text-align: end;
+    padding-right: 15px;
+    padding-top: 3px;
+    font-size: 15px;
+    font-weight: 600;
+}

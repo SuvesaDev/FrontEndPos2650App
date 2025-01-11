@@ -1,0 +1,169 @@
+.buys_articulos-footer-main {
+    height: 100%;
+    display: grid;
+    grid-template-areas: 
+        'title'
+        'body';
+    grid-template-rows: 30% 70%;
+}
+
+.buys_articulos-footer-title {
+    grid-area: title;
+    background-color: #3D62DB;
+    margin-left: 40%;
+    display: grid;
+    grid-template-areas: 
+        'text check';
+    grid-template-columns: 70% 30%;
+}
+
+#lblTitleArticulosHeader {
+    color: white;
+    font-size: 15px;
+    grid-area: text;
+    padding-right: 25%;
+    text-align: right;
+    padding-top: 2px;
+}
+
+.buys_articulos-footer-title-check {
+    grid-area: check;
+    display: grid;
+    grid-template-areas: 
+        'inputCambiarImp lblCambiarImp';
+    grid-template-columns: 10% 90%;
+    padding-top: 2px;
+}
+
+.buys_articulos-footer-title-check-input {
+    grid-area: inputCambiarImp;
+}
+
+#lblCambiarImp {
+    color: white;
+    font-size: 15px;
+    grid-area: lblCambiarImp;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.buys_articulos-footer-body {
+    grid-area: body;
+    height: 100%;
+    display: grid;
+    grid-template-areas: 
+        'titles'
+        'inputs';
+    grid-template-rows: 40% 60%;
+}
+
+.buys_articulos-footer-body-title {
+    grid-area: titles;
+    margin-left: 40%;
+    height: 100%;
+    display: grid;
+    grid-template-areas: 
+        'titlesubtotalExc titlesubtotalGra titledescuento titleimpuesto titlemontoFactura';
+    grid-template-columns: 20% 20% 20% 20% 20%;
+}
+
+#lblSubtotalExcP {
+    color: #5965E0;
+    font-size: 15px;
+    grid-area: titlesubtotalExc;
+}
+
+#lblSubTotalGraP {
+    color: #5965E0;
+    font-size: 15px;
+    grid-area: titlesubtotalGra;
+}
+
+#lblDescuentoP {
+    color: #5965E0;
+    font-size: 15px;
+    grid-area: titledescuento;
+}
+
+#lblImpuestoP {
+    color: #5965E0;
+    font-size: 15px;
+    grid-area: titleimpuesto;
+}
+
+#lblMontoFacturaP {
+    color: #5965E0;
+    font-size: 15px;
+    grid-area: titlemontoFactura;
+}
+
+.buys_articulos-footer-body-input {
+    grid-area: inputs;
+    margin-left: 40%;
+    height: 100%;
+    display: grid;
+    grid-template-areas: 
+        'inputsubtotalExc inputsubtotalGra inputdescuento inputimpuesto inputmontoFactura';
+    grid-template-columns: 20% 20% 20% 20% 20%;
+}
+
+#txtSubtotalExcP {
+    border: none;
+    color: #1F0AA6;
+    font-size: 15px;
+    grid-area: inputsubtotalExc;
+    height: 80%;
+    margin-left: 15px;
+    margin-top: 2px;
+    text-align: center;
+    width: 80%;
+}
+
+#txtSubtotalGraP {
+    border: none;
+    color: #1F0AA6;
+    font-size: 15px;
+    grid-area: inputsubtotalGra;
+    height: 80%;
+    margin-left: 15px;
+    margin-top: 2px;
+    text-align: center;
+    width: 80%;
+}
+
+#txtDescuentoP {
+    border: none;
+    color: #1F0AA6;
+    font-size: 15px;
+    grid-area: inputdescuento;
+    height: 80%;
+    margin-left: 15px;
+    margin-top: 2px;
+    text-align: center;
+    width: 80%;
+}
+
+#txtImpuestoP {
+    border: none;
+    color: #1F0AA6;
+    font-size: 15px;
+    grid-area: inputimpuesto;
+    height: 80%;
+    margin-left: 15px;
+    margin-top: 2px;
+    text-align: center;
+    width: 80%;
+}
+
+#txtMontoFacturaP {
+    border: none;
+    color: #1F0AA6;
+    font-size: 15px;
+    grid-area: inputmontoFactura;
+    height: 80%;
+    margin-left: 15px;
+    margin-top: 2px;
+    text-align: center;
+    width: 80%;
+}
+

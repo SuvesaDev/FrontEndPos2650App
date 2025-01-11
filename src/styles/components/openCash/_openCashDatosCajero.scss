@@ -1,0 +1,95 @@
+.openCash_datosCajero-main {
+    border: 1px solid black;
+    display: grid;
+    height: 85%;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 5px;
+    grid-template-areas: 
+        'title'
+        'inputs';
+    grid-template-rows: 40% 60%;
+}
+
+.openCash_datosCajero-title {
+    background-color: #3D62DB;
+    grid-area: title;
+}
+
+#lblOpenCash_datosCajeroTitle {
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    padding-top: 2px;
+    text-align: center;
+}
+
+.openCash_datosCajero-inputs {
+    display: grid;
+    grid-area: inputs;
+    height: 100%;
+    grid-template-areas: 
+        'cajero nCaja';
+    grid-template-columns: 70% 30%;
+}
+
+.openCash_datosCajero-inputs-cajero {
+    display: grid;
+    grid-area: cajero;
+    height: 100%;
+    grid-template-areas: 
+        'lblcajero inputcajero1 inputcajero2';
+    grid-template-columns: 20% 20% 60%;
+}
+
+#lblCajeroOpenCash {
+    color: #316DDD;
+    font-size: 15px;
+    grid-area: lblcajero;
+    padding-top: 5px;
+    text-align: center;
+}
+
+#txtOpenCash_datosCajeroCajero1 {
+    font-size: 15px;
+    grid-area: inputcajero1;
+    height: 70%;
+    margin-top: 5px;
+    text-align: center;
+    width: 95%;
+}
+
+#txtOpenCash_datosCajeroCajero2 {
+    font-size: 15px;
+    grid-area: inputcajero2;
+    height: 70%;
+    margin-top: 5px;
+    text-align: center;
+    width: 95%;
+}
+
+.openCash_datosCajero-inputs-nCaja {
+    display: grid;
+    grid-area: nCaja;
+    height: 100%;
+    grid-template-areas: 
+        'lblNCaja cboNCaja';
+    grid-template-columns: 40% 50% ;
+}
+
+#lblNCajaOpenCash {
+    color: #316DDD;
+    font-size: 15px;
+    grid-area: lblNCaja;
+    padding-top: 5px;
+    text-align: center;
+}
+
+#cboNCajaOpenCash {
+    font-size: 15px;
+    grid-area: cboNCaja;
+    height: 70%;
+    margin-top: 5px;
+    text-align: center;
+    width: 95%;
+}

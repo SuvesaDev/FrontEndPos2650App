@@ -1,0 +1,403 @@
+.collect_footer-main {
+    border: 1px solid black;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'icons saldoCuenta';
+    grid-template-columns: 70% 30%;
+}
+
+.collect_footer-icons {
+    display: grid;
+    grid-area: icons;
+    height: 100%;
+    grid-template-areas: 
+        'icon'
+        'footer';
+    grid-template-rows: 70% 30%;
+}
+
+.collect_footer-icons-icon {
+    display: grid;
+    grid-area: icon;
+    height: 100%;
+    grid-template-areas: 
+        'btnRegistrar btnBuscar btnAnular btnCerrar user nameUser';
+    grid-template-columns: 10% 10% 10% 10% 20% 30%;
+}
+
+.collect_footer-icons-registrar {
+    display: grid;
+    grid-area: btnRegistrar;
+    height: 100%;
+    grid-template-areas: 
+        'iconReg'
+        'lblReg';
+    grid-template-rows: 60% 40%;
+}
+
+.collect_footer-icons-registrar-icon {
+    color: #F68A1D;
+    grid-area: iconReg;
+    padding-top: 4px;
+}
+
+.collect_footer-icons-registrar-icon-disable {
+    color: gray;
+    grid-area: iconReg;
+    padding-top: 4px;
+}
+
+.iconRegistrarColl {
+    cursor: pointer;
+    height: 100%;
+    width: 35%;
+}
+
+.iconRegistrarColl-disable {
+    cursor: not-allowed;
+    height: 100%;
+    width: 35%;
+}
+
+#lblRegistrarColl {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblReg;
+    text-align: center;
+}
+
+.collect_footer-icons-Buscar {
+    display: grid;
+    grid-area: btnBuscar;
+    height: 100%;
+    grid-template-areas: 
+        'iconBus'
+        'lblBus';
+    grid-template-rows: 60% 40%;
+}
+
+.collect_footer-icons-Buscar-icon {
+    color: #F68A1D;
+    grid-area: iconBus;
+    padding-top: 4px;
+}
+
+.collect_footer-icons-Buscar-icon-disable {
+    color: gray;
+    grid-area: iconBus;
+    padding-top: 4px;
+}
+
+.iconBusColl {
+    cursor: pointer;
+    height: 100%;
+    width: 30%;
+}
+
+.iconBusColl-disable {
+    cursor: not-allowed;
+    height: 100%;
+    width: 30%;
+}
+
+#lblBuscarColl {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblBus;
+    text-align: center;
+}
+
+.collect_footer-icons-anular {
+    display: grid;
+    grid-area: btnAnular;
+    height: 100%;
+    grid-template-areas: 
+        'iconAnu'
+        'lblAnu';
+    grid-template-rows: 60% 40%;
+}
+
+.collect_footer-icons-anular-icon {
+    color: #F68A1D;
+    grid-area: iconAnu;
+    padding-top: 4px;
+}
+
+.collect_footer-icons-anular-icon-disable {
+    color: gray;
+    grid-area: iconAnu;
+    padding-top: 4px;
+}
+
+.iconAnularColl {
+    cursor: pointer;
+    height: 100%;
+    width: 35%;
+}
+
+.iconAnularColl-disable {
+    cursor: not-allowed;
+    height: 100%;
+    width: 35%;
+}
+
+#lblAnularColl {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblAnu;
+    text-align: center;
+}
+
+.collect_footer-icons-cerrar {
+    display: grid;
+    grid-area: btnCerrar;
+    height: 100%;
+    grid-template-areas: 
+        'iconCer'
+        'lblCer';
+    grid-template-rows: 60% 40%;
+}
+
+.collect_footer-icons-cerrar-icon {
+    color: #F68A1D;
+    grid-area: iconCer;
+    padding-top: 4px;
+}
+
+#iconCerrarColl {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblCerrarColl {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblCer;
+    text-align: center;
+}
+
+.collect_footer-icons-user {
+    grid-area: user;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'labelUser'
+        'inputsUser';
+    grid-template-rows: 50% 50%;
+}
+
+.collect_footer-icons-user-label {
+    grid-area: labelUser;
+    padding-top: 8px;
+    padding-left: 10px;
+}
+
+#lblClaveInternaCollectFooter {
+    text-align: start;
+    font-size: 15px;
+}
+
+.collect_footer-icons-user-inputs {
+    grid-area: inputsUser;
+    display: grid;
+    grid-template-areas: 
+        'txt icon';
+    grid-template-columns: 90% 10%;
+}
+
+.collect_footer-icons-user-inputs-txt {
+    grid-area: txt;
+}
+
+#txtClaveInternaCollectFooter {
+    width: 95%;
+    text-align: start;
+    font-size: 15px;
+    padding-left: 5px;
+}
+
+.collect_footer-icons-user-inputs-icon {
+    grid-area: icon;
+}
+
+.iconEyeClaveInternaCollectFooter {
+    width: 100%;
+    height: 70%;
+    color: #F68A1D;
+
+    &:hover {
+        cursor: pointer;
+        color: $primary;
+    }
+}
+
+.iconEyeClaveInternaCollectFooter-disable {
+    width: 100%;
+    height: 70%;
+    color: gray;
+
+    &:hover {
+        cursor: not-allowed;
+    }
+}
+
+.collect_footer-icons-nameUser {
+    grid-area: nameUser;
+    padding-top: 32px;
+}
+
+#lblNameUserCollectFooter {
+    text-align: start;
+    padding-left: 10px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.collect_footer-icons-footer {
+    border-top: 1px solid black;
+    display: grid;
+    grid-area: footer;
+    height: 100%;
+    grid-template-areas: 
+        'anulada user';
+    grid-template-columns: 15% 30%;
+}
+
+.collect_footer-icons-footer-anulada {
+    border-right: 1px solid black;
+    display: grid;
+    grid-area: anulada;
+    height: 100%;
+    padding-top: 3px;
+    grid-template-areas: 
+        'checkanulada lblanulada';
+    grid-template-columns: 20% 50%;
+}
+
+.collect_footer-icons-footer-anulada-input {
+    grid-area: checkanulada;
+}
+
+#lblAnuladaCollect {
+    font-size: 15px;
+    grid-area: lblanulada;
+}
+
+.collect_footer-icons-footer-user {
+    grid-area: user;
+}
+
+#lblUserCollect {
+    background-color: #3D62DB;
+    color: white;
+    font-size: 15px;
+    height: 100%;
+    padding-left: 5px;
+    padding-top: 2px;
+    text-align: start;  
+    width: 30%;
+}
+
+.collect_footer-saldosCuenta {
+    border-left: 1px solid black;
+    display: grid;
+    grid-area: saldoCuenta;
+    height: 100%;
+    grid-template-areas: 
+        'title'
+        'inputs';
+    grid-template-rows: 25% 75%;
+}
+
+#lblsaldosCuentaTitle {
+    background-color: #3D62DB;
+    color: white;
+    font-size: 15px;
+    grid-area: title;
+    padding-top: 1px;
+}
+
+.collect_footer-saldosCuenta-inputs {
+    display: grid;
+    grid-area: inputs;
+    height: 100%;
+    grid-template-areas: 
+        'saldoAnt'
+        'montoRecido'
+        'saldoAct';
+    grid-template-rows: 33% 33% 33%;
+}
+
+.collect_footer-saldosCuenta-inputs-saldoAnt {
+    display: grid;
+    grid-area: saldoAnt;
+    height: 100%;
+    grid-template-areas: 
+        'lblsaldoAnt inputsaldoAnt';
+    grid-template-columns: 50% 50%;
+}
+
+#lblSaldoAntIconsCollect {
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblsaldoAnt;
+    text-align: center;
+}
+
+#txtSaldoAntIconsCollect {
+    font-size: 12px;
+    grid-area: inputsaldoAnt;
+    height: 80%;
+    margin-right: 25px;
+}
+
+.collect_footer-saldosCuenta-inputs-montoRecidos {
+    display: grid;
+    grid-area: montoRecido;
+    height: 100%;
+    grid-template-areas: 
+        'lblmontoRec inputmontoRec';
+    grid-template-columns: 50% 50%;
+}
+
+#lblMontoRecIconsCollect {
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblmontoRec;
+    text-align: center;
+}
+
+#txtMontoRecIconsCollect {
+    font-size: 12px;
+    grid-area: inputmontoRec;
+    height: 80%;
+    margin-right: 25px;
+}
+
+.collect_footer-saldosCuenta-inputs-saldoAct {
+    display: grid;
+    grid-area: saldoAct;
+    height: 100%;
+    grid-template-areas: 
+        'lblsaldoAct inputsaldoAct';
+    grid-template-columns: 50% 50%;
+}
+
+#lblSaldoActIconsCollect {
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblsaldoAct;
+    text-align: center;
+}
+
+#txtSaldoActIconsCollect {
+    font-size: 12px;
+    grid-area: inputsaldoAct;
+    height: 80%;
+    margin-right: 25px;
+}

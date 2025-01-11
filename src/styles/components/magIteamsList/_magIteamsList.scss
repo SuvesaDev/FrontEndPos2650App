@@ -1,0 +1,223 @@
+.magIteamsList-main {
+    display: grid;
+    text-align: center;
+    grid-template-areas: 
+        'header'
+        'body'
+        'footer';
+    grid-template-rows: 40px 448px 60px;
+}
+
+.magIteamsList-header {
+    background-color: #3D59A9;
+    grid-area: header;
+}
+
+#lblTitleMAGIteamsList {
+    color: white;
+    font-size: 25px;
+    padding-top: 5px;
+    text-align: center;
+}
+
+.magIteamsList-body {
+    grid-area: body;
+    margin-left: 3%;
+    margin-right: 3%;
+    display: grid;
+    grid-template-areas: 
+        'inputs'
+        'table';
+    grid-template-rows: 10% 90%;
+}
+
+.magIteamsList-body-inputs {
+    grid-area: inputs;
+    display: grid;
+    border: 1px solid black;
+    grid-template-areas: 
+        'buscar cambiar quitar';
+    grid-template-columns: 70% 15% 15%;
+}
+
+.magIteamsList-body-inputs-buscar {
+    grid-area: buscar;
+    display: grid;
+    grid-template-areas: 
+        'lblbuscar txtbuscar';
+    grid-template-columns: 15% 85%;
+}
+
+#lblBuscarMAGIteamsList {
+    font-size: 15px;
+    grid-area: lblbuscar;
+    padding-top: 15px;
+    text-align: center;
+}
+
+#txtBuscarMAGIteamsList {
+    font-size: 15px;
+    grid-area: txtbuscar;
+    height: 55%;
+    margin-top: 13px;
+    text-align: start;
+    width: 98%;
+}
+
+.magIteamsList-body-inputs-cambiar {
+    grid-area: cambiar;
+}
+
+#btnCambiarMAGIteamsList {
+    font-size: 15px;
+    height: 70%;
+    margin-top: 10px;
+    text-align: center;
+    width: 90%;
+
+    &:hover {
+        background-color: #3D59A9;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+.magIteamsList-body-inputs-quitar {
+    grid-area: quitar;
+}
+
+#btnQuitarMAGIteamsList {
+    font-size: 15px;
+    height: 70%;
+    margin-top: 10px;
+    text-align: center;
+    width: 90%;
+
+    &:hover {
+        background-color: #3D59A9;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+.magIteamsList-body-table {
+    grid-area: table;
+    border: 1px solid #c4c4c4;
+}
+
+.lockUnlockWarehouse-body-table-main {
+    width: 100%;
+}
+
+.magIteamsList-body-table-header-codArticulo {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 5%;
+}
+
+.magIteamsList-body-table-header-descripcion {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 15%;
+}
+
+.magIteamsList-body-table-header-IVenta {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 3%;
+}
+
+.magIteamsList-body-table-codArticulo {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.magIteamsList-body-table-descripcion {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.magIteamsList-body-table-IVenta {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: center;
+}
+
+
+
+
+.magIteamsList-icons {
+    border: 1px solid black;
+    display: grid;
+    grid-area: footer;
+    height: 100%;
+    grid-template-areas: 
+        'btnRegistrar btnCerrar';
+    grid-template-columns: 8% 8% 8% 8% 8%;
+}
+
+.magIteamsList-icons-registrar {
+    grid-area: btnRegistrar;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'iconReg'
+        'lblReg';
+    grid-template-rows: 60% 40%;
+}
+
+.magIteamsList-icons-registrar-icon {
+    color: #F68A1D;
+    grid-area: iconReg;
+    padding-top: 4px;
+}
+
+#iconRegistrarMAGIteamsList {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblRegistrarMAGIteamsList {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblReg;
+    text-align: center;
+}
+
+.magIteamsList-icons-cerrar {
+    grid-area: btnCerrar;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'iconCer'
+        'lblCer';
+    grid-template-rows: 60% 40%;
+}
+
+.magIteamsList-icons-cerrar-icon {
+    color: #F68A1D;
+    grid-area: iconCer;
+    padding-top: 4px;
+}
+
+#iconCerrarMAGIteamsList {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblCerrarMAGIteamsList {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblCer;
+    text-align: center;
+}

@@ -1,0 +1,304 @@
+.company_body-DatosTributarios-main {
+    display: grid;
+    height: 100%;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-top: 15px;
+    padding-left: 5%;
+    padding-right: 5%;
+    grid-template-areas: 
+        'firstLine'
+        'secondLine'
+        'thirdLine'
+        'fourthLine';
+    grid-template-rows: 15% 15% 15% 16%;
+}
+
+.company_body-DatosTributarios-firstLine {
+    grid-area: firstLine;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblUsuarioAPIHacienda'
+        'txtUsuarioAPIHacienda';
+    grid-template-rows: 50% 50%;
+    border-right: 1px solid rgb(192, 190, 190);
+    border-left: 1px solid rgb(192, 190, 190);
+    border-top: 1px solid rgb(192, 190, 190);
+}
+
+.company_body-DatosTributarios-firstLine-label {
+    grid-area: lblUsuarioAPIHacienda;
+    padding-top: 5px;
+}
+
+#lblUsuarioAPIHaciendaCompany {
+    text-align: start;
+    padding-left: 10px;
+    font-size: 15px;
+}
+
+.company_body-DatosTributarios-firstLine-input {
+    grid-area: txtUsuarioAPIHacienda;
+    padding-top: 1px;
+}
+
+#txtUsuarioAPIHaciendaCompany {
+    width: 98%;
+    text-align: start;
+    font-size: 15px;
+}
+
+.company_body-DatosTributarios-secondLine {
+    grid-area: secondLine;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblClaveAPIHacienda'
+        'txtClaveAPIHacienda';
+    grid-template-rows: 50% 50%;
+    border-right: 1px solid rgb(192, 190, 190);
+    border-left: 1px solid rgb(192, 190, 190);
+}
+
+.company_body-DatosTributarios-secondLine-label {
+    grid-area: lblClaveAPIHacienda;
+    padding-top: 5px;
+}
+
+#lblClaveAPIHaciendaCompany {
+    text-align: start;
+    padding-left: 10px;
+    font-size: 15px;
+}
+
+.company_body-DatosTributarios-secondLine-input {
+    grid-area: txtClaveAPIHacienda;
+    padding-top: 1px;
+}
+
+#txtClaveAPIHaciendaCompany {
+    width: 98%;
+    text-align: start;
+    font-size: 15px;
+}
+
+.company_body-DatosTributarios-thirdLine {
+    grid-area: thirdLine;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblCertificado'
+        'txtCertificado';
+    grid-template-rows: 50% 50%;
+    border-right: 1px solid rgb(192, 190, 190);
+    border-left: 1px solid rgb(192, 190, 190);
+}
+
+.company_body-DatosTributarios-thirdLine-label {
+    grid-area: lblCertificado;
+    padding-top: 5px;
+}
+
+#lblCertificadoCompany {
+    text-align: start;
+    padding-left: 10px;
+    font-size: 15px;
+}
+
+.company_body-DatosTributarios-thirdLine-input {
+    grid-area: txtCertificado;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'btn label';
+    grid-template-columns: 15% 35%;
+    padding-top: 1px;
+}
+
+#txtCertificadoCompany {
+    display: none;
+}
+
+.company_body-DatosTributarios-thirdLine-input-btn {
+    grid-area: btn;
+}
+
+.btnChooseFileCompany {
+    width: 80%;
+    height: 100%;
+    text-align: center;
+    background-color: $secundary;
+    color: white;
+    border: none;
+
+    &:hover {
+        background-color: $primary;
+        cursor: pointer;
+    }
+}
+
+.btnChooseFileCompany-disable {
+    width: 80%;
+    height: 100%;
+    text-align: center;
+    background-color: gray;
+    color: white;
+    border: none;
+
+    &:hover {
+        cursor: not-allowed;
+    }
+}
+
+.company_body-DatosTributarios-thirdLine-input-label {
+    grid-area: label;
+    margin-right: 10px;
+}
+
+#txtResultoFileChoose {
+    width: 100%;
+    text-align: start;
+    font-size: 15px;
+}
+
+.company_body-DatosTributarios-fourthLine {
+    grid-area: fourthLine;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'numeroResolucion fechaResolucion password';
+    grid-template-columns: 33% 33% 34%;
+    border-right: 1px solid rgb(192, 190, 190);
+    border-left: 1px solid rgb(192, 190, 190);
+    border-bottom: 1px solid rgb(192, 190, 190);
+}
+
+.company_body-DatosTributarios-fourthLine-numeroResolucion {
+    grid-area: numeroResolucion;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblNumeroResolucionHacienda'
+        'txtNumeroResolucionHacienda';
+    grid-template-rows: 50% 50%;
+}
+
+.company_body-DatosTributarios-fourthLine-numeroResolucion-label {
+    grid-area: lblNumeroResolucionHacienda;
+    padding-top: 5px;
+}
+
+#lblNumeroResolucionHaciendaCompany {
+    text-align: start;
+    padding-left: 10px;
+    font-size: 15px;
+}
+
+.company_body-DatosTributarios-fourthLine-numeroResolucion-input {
+    grid-area: txtNumeroResolucionHacienda;
+    padding-top: 1px;
+}
+
+#txtNumeroResolucionHaciendaCompany {
+    width: 95%;
+    text-align: start;
+    font-size: 15px;
+}
+
+.company_body-DatosTributarios-fourthLine-fechaResolucion {
+    grid-area: fechaResolucion;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblFechaResolucionHacienda'
+        'txtFechaResolucionHacienda';
+    grid-template-rows: 50% 50%;
+}
+
+.company_body-DatosTributarios-fourthLine-fechaResolucion-label {
+    grid-area: lblFechaResolucionHacienda;
+    padding-top: 5px;
+}
+
+#lblFechaResolucionHaciendaCompany {
+    text-align: start;
+    padding-left: 10px;
+    font-size: 15px;
+}
+
+.company_body-DatosTributarios-fourthLine-fechaResolucion-input {
+    grid-area: txtFechaResolucionHacienda;
+}
+
+#txtFechaResolucionHaciendaCompany {
+    width: 95%;
+    text-align: start;
+    font-size: 15px;
+}
+
+.company_body-DatosTributarios-fourthLine-password {
+    grid-area: password;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblPasswordCertificadoHacienda'
+        'inputsPassword';
+    grid-template-rows: 50% 50%;
+}
+
+.company_body-DatosTributarios-fourthLine-password-label {
+    grid-area: lblPasswordCertificadoHacienda;
+    padding-top: 5px;
+}
+
+#lblPasswordHaciendaCompany {
+    text-align: start;
+    padding-left: 10px;
+    font-size: 15px;
+}
+
+.company_body-DatosTributarios-fourthLine-password-inputs {
+    grid-area: inputsPassword;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'input icon';
+    grid-template-columns: 85% 15%;
+}
+
+.company_body-DatosTributarios-fourthLine-password-inputs-input {
+    grid-area: input;
+}
+
+#txtPasswordHaciendaCompany {
+    width: 90%;
+    text-align: start;
+    font-size: 15px;
+}
+
+.company_body-DatosTributarios-fourthLine-password-inputs-icon {
+    grid-area: icon;
+    padding-right: 20px;
+}
+
+.iconEyePasswordHacienda {
+    width: 100%;
+    height: 75%;
+    color: #F68A1D;
+
+    &:hover {
+        cursor: pointer;
+        color: $primary;
+    }
+}
+
+.iconEyePasswordHacienda-disable {
+    width: 100%;
+    height: 75%;
+    color: gray;
+
+    &:hover {
+        cursor: not-allowed;
+    }
+}

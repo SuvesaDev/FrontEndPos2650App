@@ -1,0 +1,60 @@
+.consultDeposits_body-main {
+    display: grid;
+    height: 100%;
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    grid-template-areas: 
+        'tabs'
+        'content';
+    grid-template-rows: 10% 90%;
+}
+
+.consultDeposits_body-tabs {
+    grid-area: tabs;
+    padding-top: 7px;
+    border: 1px solid black;
+}
+
+.consultDeposits-tabs {
+    display: inline-block;
+}
+
+.consultDeposits-tab {
+    background: transparent;
+    border: 1px solid black;
+    color: black;
+    cursor: pointer;
+    font-size: 15px;
+    margin-right: 5px;
+    padding: 5px 15px;
+}
+
+.consultDeposits-tab-disable {
+    background: gray;
+    border: 1px solid black;
+    color: white;
+    cursor: not-allowed;
+    font-size: 15px;
+    margin-right: 5px;
+    padding: 5px 15px;
+}
+
+.consultDeposits-tab-active {
+    background: $primary;
+    border-top-right-radius: 15%;
+    border: 1px solid #ddd;
+    color: #F2F4F4;
+    cursor: pointer;
+    font-size: 15px;
+    margin-right: 5px;
+    padding: 5px 15px;
+}
+
+.consultDeposits_body-content {
+    grid-area: content;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}

@@ -1,0 +1,330 @@
+.areas_body-main {
+    border: 1px solid #c4c4c4;
+    display: grid;
+    height: 100%;
+    margin-left: 3%;
+    margin-right: 3%;
+    text-align: center;
+    grid-template-areas: 
+        'areas'
+        'body';
+    grid-template-rows: 40% 60%;
+}
+
+.areas_body-areas {
+    grid-area: areas;
+    display: grid;
+    grid-template-areas: 
+        'title'
+        'inputs';
+    grid-template-rows: 10% 90%;
+}
+
+.areas_body-areas-title {
+    grid-area: title;
+}
+
+#lblTitleAreaBody {
+    font-size: 15px;
+    text-align: start;
+    padding-left: 5px;
+    color: #c4c4c4;
+    border-bottom: 1px solid #c4c4c4;
+}
+
+.areas_body-areas-inputs {
+    grid-area: inputs;
+    display: grid;
+    grid-template-areas: 
+        'left right';
+    grid-template-columns: 50% 50%;
+}
+
+.areas_body-areas-inputs-left {
+    grid-area: left;
+    display: grid;
+    grid-template-areas: 
+        'descripcion'
+        'observaciones';
+    grid-template-rows: 30% 70%;
+}
+
+.areas_body-areas-inputs-left-descripcion {
+    grid-area: descripcion;
+    display: grid;
+    grid-template-areas: 
+        'lbldescripcion'
+        'txtdescripcion';
+    grid-template-rows: 50% 50%;
+}
+
+#lblDescripcionAreaBody {
+    font-size: 15px;
+    grid-area: lbldescripcion;
+    padding-left: 5px;
+    padding-top: 5px;
+    text-align: start;
+}
+
+#txtDescripcionAreaBody {
+    grid-area: txtdescripcion;
+    height: 90%;
+    margin-left: 5px;
+    width: 95%;
+}
+
+.areas_body-areas-inputs-left-observaciones {
+    grid-area: observaciones;
+    display: grid;
+    grid-template-areas: 
+        'lblobservaciones'
+        'txtobservaciones';
+    grid-template-rows: 20% 80%;
+}
+
+#lblObservacionesAreaBody {
+    font-size: 15px;
+    grid-area: lblobservaciones;
+    padding-left: 5px;
+    padding-top: 3px;
+    text-align: start;
+}
+
+#txtObservacionesAreaBody {
+    grid-area: txtobservaciones;
+    height: 90%;
+    margin-left: 5px;
+    width: 95%;
+}
+
+.areas_body-areas-inputs-right {
+    grid-area: right;
+    display: grid;
+    grid-template-areas: 
+        'encargado'
+        'table';
+    grid-template-rows: 30% 70%;
+}
+
+.areas_body-areas-inputs-right-encargado {
+    grid-area: encargado;
+    display: grid;
+    grid-template-areas: 
+        'lblencargado'
+        'inputsE';
+    grid-template-rows: 50% 50%;
+}
+
+#lblEncargadoAreaBody {
+    font-size: 15px;
+    grid-area: lblencargado;
+    padding-left: 5px;
+    padding-top: 5px;
+    text-align: start;
+}
+
+.areas_body-areas-inputs-right-encargado-input {
+    grid-area: inputsE;
+    display: grid;
+    grid-template-areas: 
+        'txtencargado icon';
+    grid-template-columns: 90% 10%;
+}
+
+#cboEncargadoAreaBody {
+    grid-area: txtencargado;
+    height: 90%;
+    margin-left: 5px;
+}
+
+.areas_body-areas-inputs-right-encargado-input-icon {
+    grid-area: icon;
+}
+
+#btnAddArea {
+    color: $secundary;
+    height: 90%;
+    width: 30%;
+    
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.areas_body-areas-inputs-right-table {
+    grid-area: table;
+    margin-bottom: 10px;
+    margin-right: 5px;
+    margin-left: 5px;
+    border: 1px solid #c4c4c4;
+}
+
+.areas_body-areas-inputs-right-table-main {
+    width: 100%;
+}
+
+.areas_body-areas-inputs-right-table-header-encargado {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 2%;
+}
+
+.areas_body-areas-inputs-right-table-encargado {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.areas_body-body {
+    grid-area: body;
+    display: grid;
+    grid-template-areas: 
+        'inputsB'
+        'tableB';
+    grid-template-rows: 20% 80%;
+}
+
+.areas_body-body-inputs {
+    grid-area: inputsB;
+    display: grid;
+    grid-template-areas: 
+        'codigoP descripP';
+    grid-template-columns: 50% 50%;
+}
+
+.areas_body-body-inputs-codigoP {
+    grid-area: codigoP;
+    display: grid;
+    grid-template-areas: 
+        'lblCodigoP'
+        'inputsP';
+    grid-template-rows: 50% 50%;
+}
+
+#lblCodigoPArea {
+    font-size: 15px;
+    grid-area: lblCodigoP;
+    padding-left: 5px;
+    padding-top: 5px;
+    text-align: start;
+}
+
+.areas_body-body-inputs-codigoP-input {
+    grid-area: inputsP;
+    display: grid;
+    grid-template-areas: 
+        'txtCodigoP icon';
+    grid-template-columns: 90% 10%;
+}
+
+#txtCodigoPArea {
+    grid-area: txtCodigoP;
+    height: 90%;
+    margin-left: 5px;
+}
+
+.areas_body-body-inputs-codigoP-input-icon {
+    grid-area: icon;
+}
+
+#btnAddProducto {
+    color: $secundary;
+    height: 90%;
+    width: 30%;
+    
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.areas_body-body-inputs-descripP {
+    grid-area: descripP;
+    display: grid;
+    grid-template-areas: 
+        'lbldescripcion2'
+        'txtdescripcion2';
+    grid-template-rows: 50% 50%;
+}
+
+#lblDescripcionPAreaBody {
+    font-size: 15px;
+    grid-area: lbldescripcion2;
+    padding-left: 5px;
+    padding-top: 5px;
+    text-align: start;
+}
+
+#txtDescripcionPAreaBody {
+    grid-area: txtdescripcion2;
+    height: 90%;
+    margin-left: 5px;
+    width: 95%;
+}
+
+.areas_body-body-table {
+    grid-area: tableB;
+    border: 1px solid #c4c4c4;
+}
+
+.areas_body-body-table-main {
+    width: 100%;
+}
+
+.areas_body-body-table-header-codArticulo {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 2%;
+}
+
+.areas_body-body-table-header-barras {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 2%;
+}
+
+.areas_body-body-table-header-descripcion {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 10%;
+}
+
+.areas_body-body-table-header-existencia {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 2%;
+}
+
+.areas_body-body-table-codArticulo {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.areas_body-body-table-barras {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.areas_body-body-table-descripcion {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.areas_body-body-table-existencia {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+

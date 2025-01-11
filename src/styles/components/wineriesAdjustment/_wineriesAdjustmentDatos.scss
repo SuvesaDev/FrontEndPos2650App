@@ -1,0 +1,150 @@
+.wineries_adjustment-datos-main {
+    border: 1px solid black;
+    display: grid;
+    height: 95%;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 5px;
+    grid-template-areas: 
+        'firstLine'
+        'secondLine'
+        'thirdLine';
+    grid-template-rows: 30% 40% 30%;
+}
+
+.wineries_adjustment-datos-firstLine {
+    display: grid;
+    grid-area: firstLine;
+    height: 100%;
+    grid-template-areas: 
+        'lblFecha inputFecha';
+    grid-template-columns: 85% 15%;
+}
+
+#lblFechaDatosWineriesA {
+    color: #3111F3;
+    grid-area: lblFecha;
+    padding-right: 10px;
+    padding-top: 7px;
+    text-align: end;
+}
+
+#txtFechaDatosWineriesA {
+    grid-area: inputFecha;
+    height: 60%;
+    margin-right: 5px;
+    margin-top: 7px;
+}
+
+.wineries_adjustment-datos-secondLine {
+    display: grid;
+    grid-area: secondLine;
+    height: 100%;
+    grid-template-areas: 
+        'nombreW anuladaW';
+    grid-template-columns: 80% 20%;
+}
+
+.wineries_adjustment-datos-secondLine-nombre {
+    display: grid;
+    grid-area: nombreW;
+    height: 95%;
+    grid-template-areas: 
+        'lblNombreW'
+        'cboNombreW';
+    grid-template-rows: 50% 50%;
+}
+
+#lblNombreWineriesA {
+    color: black;
+    font-size: 15px;
+    grid-area: lblNombreW;
+    padding-left: 15px;
+    text-align: start;
+}
+
+#cboNombreWineriesA {
+    color: #516B75;
+    font-size: 15px;
+    grid-area: cboNombreW;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.wineries_adjustment-datos-secondLine-anulado {
+    display: grid;
+    grid-area: anuladaW;
+    height: 100%;
+    padding-top: 20px;
+    grid-template-areas: 
+        'checkAnuladaW lblAnuladaW';
+    grid-template-columns: 10% 20%;
+}
+
+.wineries_adjustment-datos-thirdLine-input {
+    grid-area: checkAnuladaW;
+}
+
+#lblAnuladoWineriesA {
+    color:#516B75;
+    font-size: 15px;
+    grid-area: lblAnuladaW;
+}
+
+.wineries_adjustment-datos-thirdLine {
+    display: grid;
+    grid-area: thirdLine;
+    height: 100%;
+    grid-template-areas: 
+        'clienteW referenciaW';
+    grid-template-columns: 50% 50%;
+}
+
+.wineries_adjustment-datos-thirdLine-cliente {
+    display: grid;
+    grid-area: clienteW;
+    height: 100%;
+    grid-template-areas: 
+        'lblclienteW inputclienteW';
+    grid-template-columns: 20% 80%;
+}
+
+#lblClienteWineriesA {
+    font-size: 15px;
+    grid-area: lblclienteW;
+    padding-top: 7px;
+    text-align: center;
+}
+
+#txtClienteWineriesA {
+    font-size: 15px;
+    grid-area: inputclienteW;
+    height: 70%;
+    margin-right: 10px;
+    margin-top: 4px;
+}
+
+.wineries_adjustment-datos-thirdLine-referencia {
+    display: grid;
+    grid-area: referenciaW;
+    height: 100%;
+    grid-template-areas: 
+        'lblreferenciaW inputreferenciaW';
+    grid-template-columns: 20% 80%;
+}
+
+#lblReferenciaWineriesA {
+    font-size: 15px;
+    grid-area: lblreferenciaW;
+    padding-top: 7px;
+    text-align: center;
+}
+
+#txtReferenciaWineriesA {
+    font-size: 15px;
+    grid-area: inputreferenciaW;
+    height: 70%;
+    margin-right: 10px;
+    margin-top: 4px;
+}
+

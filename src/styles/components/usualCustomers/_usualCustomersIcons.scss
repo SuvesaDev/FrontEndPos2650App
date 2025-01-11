@@ -1,0 +1,203 @@
+.usual_customers_icons-main {
+    height: 100%;
+    display: grid;
+    grid-template-areas: 
+        'icons user';
+    grid-template-columns: 60% 40%;
+}
+
+.usual_customers_icons-icon {
+    grid-area: icons;
+    height: 100%;
+    display: grid;
+    grid-template-areas: 
+        'btnNuevo btnBuscar btnRegistrar btnEliminar btnCerrar';
+    grid-template-columns: 13% 13% 13% 13% 13%;
+}
+
+.usual_customers_icons-nuevo {
+    grid-area: btnNuevo;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'iconNue'
+        'lblNue';
+    grid-template-rows: 60% 40%;
+}
+
+.usual_customers_icons-nuevo-icon {
+    color: #F68A1D;
+    grid-area: iconNue;
+    padding-top: 4px;
+}
+
+#iconNuevoC {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblNuevoC {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblNue;
+    text-align: center;
+}
+
+.usual_customers_icons-Buscar {
+    grid-area: btnBuscar;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'iconBuscar'
+        'lblBuscar';
+    grid-template-rows: 60% 40%;
+}
+
+.usual_customers_icons-Buscar-icon {
+    color: #F68A1D;
+    grid-area: iconBuscar;
+    padding-top: 4px;
+}
+
+#iconBusC {
+    cursor: pointer;
+    height: 100%;
+    width: 20%;
+}
+
+#lblBuscarC {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblBuscar;
+    text-align: center;
+}
+
+.usual_customers_icons-registrar {
+    grid-area: btnRegistrar;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'iconReg'
+        'lblReg';
+    grid-template-rows: 60% 40%;
+}
+
+.usual_customers_icons-registrar-icon {
+    color: #F68A1D;
+    grid-area: iconReg;
+    padding-top: 4px;
+}
+
+#iconRegistrarC {
+    cursor: pointer;
+    height: 100%;
+    width: 20%;
+}
+
+#lblRegistrarC {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblReg;
+    text-align: center;
+}
+
+.usual_customers_icons-eliminar {
+    grid-area: btnEliminar;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'iconEli'
+        'lblEli';
+    grid-template-rows: 60% 40%;
+}
+
+.usual_customers_icons-eliminar-icon {
+    color: #F68A1D;
+    grid-area: iconEli;
+    padding-top: 4px;
+}
+
+#iconEliminarC {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblEliminarC {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblEli;
+    text-align: center;
+}
+
+.usual_customers_icons-cerrar {
+    grid-area: btnCerrar;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'iconCerrar'
+        'lblCerrar';
+    grid-template-rows: 60% 40%;
+}
+
+.usual_customers_icons-cerrar-icon {
+    color: #F68A1D;
+    grid-area: iconCerrar;
+    padding-top: 4px;
+}
+
+#iconCerrarC {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblCerrarC {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblCerrar;
+    text-align: center;
+}
+
+.usual_customers_icons-user {
+    display: grid;
+    grid-area: user;
+    grid-template-areas: 
+        'lblUser inputUser lblSistema';
+    grid-template-columns: 25% 20% 30%;
+}
+
+#lblUserCustomers {
+    background-color: #3D62DB;
+    color: white;
+    font-size: 15px;
+    grid-area: lblUser;
+    height: 40%;
+    margin-left: 10px;
+    margin-top: 20px;
+    width: 80%;
+}
+
+#txtUserCustomers {
+    font-size: 15px;
+    grid-area: inputUser;
+    height: 40%;
+    margin-top: 20px;
+    text-align: start;
+    width: 80%;
+}
+
+#lblSistemaCustomers {
+    background-color: #A0A0A0;
+    color: white;
+    font-size: 15px;
+    grid-area: lblSistema;
+    height: 40%;
+    margin-left: 10px;
+    margin-top: 20px;
+    padding-left: 5px;
+    padding-top: 2px;
+    text-align: start;
+    width: 100%;
+}

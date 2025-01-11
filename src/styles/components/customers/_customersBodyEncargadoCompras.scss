@@ -1,0 +1,109 @@
+.customers_body-encargadoCompras-main {
+    display: grid;
+    height: 93%;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 10px;
+    grid-template-areas: 
+        'cbo'
+        'table';
+    grid-template-rows: 15% 85%;
+}
+
+.customers_body-encargadoCompras-cbo {
+    display: grid;
+    grid-area: cbo;
+    height: 100%;
+    grid-template-areas: 
+        'lblIden cboIden btnAdd';
+    grid-template-columns: 15% 15% 15%;
+}
+
+#lblIdentificacionEncargadoCompras {
+    background-color: #E3E3E3;
+    color: #4A58DC;
+    font-size: 15px;
+    grid-area: lblIden;
+    height: 50%;
+    margin-left: 50px;
+    margin-right: 5px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+#cbodentificacionEncargadoCompras {
+    grid-area: cboIden;
+    height: 50%;
+    margin-left: 10px;
+    margin-right: 20px;
+    margin-top: 10px;
+}
+
+#btnAgregarEncargadoCompras {
+    grid-area: btnAdd;
+    height: 50%;
+    margin-left: 10px;
+    margin-right: 25px;
+    margin-top: 10px;
+
+    &:hover {
+        background-color: #4A58DC;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+.customers_body-encargadoCompras-table {
+    border: 1px solid black;
+    grid-area: table;
+    height: 93%;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 10px;
+}
+
+.customers_body-encargadoCompras-table-main {
+    width: 100%;
+}
+
+.customers_body-encargadoCompras-table-header-iden {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 5%;
+}
+
+.customers_body-encargadoCompras-table-header-nombre {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 5%;
+}
+
+.customers_body-encargadoCompras-table-header-telefono {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 5%;
+}
+
+.customers_body-encargadoCompras-table-iden {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.customers_body-encargadoCompras-table-nombre {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.customers_body-encargadoCompras-table-telefono {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}

@@ -1,0 +1,98 @@
+.repayment_table-main {
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 98.5%;
+    height: 95%;
+    overflow-y: scroll;
+    scrollbar-color: rebeccapurple green;
+    scrollbar-width: thin;
+    border: 1px solid rgb(176, 173, 173);
+}
+
+.repayment_table-table {
+    width: 100%;
+}
+
+.repayment_table-header-codigo {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 5%;
+}
+
+.repayment_table-header-descrip {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 12%;
+}
+
+.repayment_table-header-cantDev {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 8%;
+}
+
+.repayment_table-header-precioFlete {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 8%;
+}
+
+.repayment_table-header-precioOtros {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 8%;
+}
+
+.repayment_table-header-precioUnit {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 8%;
+}
+
+.repayment_table-codigo {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.repayment_table-descrip {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.repayment_table-cantDev {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.repayment_table-precioFlete {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.repayment_table-precioOtros {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.repayment_table-precioUnit {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}

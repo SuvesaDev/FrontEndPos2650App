@@ -1,0 +1,191 @@
+.chargeHeader-main {
+    display: grid;
+    padding-left: 2%;
+    grid-template-areas: 
+        'ficha cedula nombre btn';
+    grid-template-columns: 15% 15% 25% 10%;
+    border-radius: 5px;
+    border: 1px solid gray;
+    height: 85%;
+    margin-bottom: 5px;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 5px;
+}
+
+.chargeHeader-ficha {
+    grid-area: ficha;
+    display: grid;    
+    grid-template-areas: 
+        'labelFicha'
+        'inputsFicha';
+    grid-template-rows: 40% 60%;
+    border-right: 1px solid #dbd9d9;
+}
+
+.chargeHeader-ficha-label {
+    grid-area: labelFicha;
+    display: grid;
+    padding-left: 15px;
+    grid-template-areas: 
+        'checkFicha txtFicha';
+    grid-template-columns: 15% 85%;
+}
+
+.chargeHeader-ficha-label-check {
+    grid-area: checkFicha;
+    padding-top: 5px;
+    padding-right: 20%;
+}
+
+.chargeHeader-ficha-label-text {
+    grid-area: txtFicha;
+}
+
+#lblTitleFichaChargeHeader {
+    font-size: 15px;
+    padding-top: 5px;
+    text-align: start;
+}
+
+.chargeHeader-ficha-input {
+    grid-area: inputsFicha;
+    text-align: start;
+    padding-top: 5px;
+}
+
+#txtFichaChargeHeader {
+    font-size: 15px;
+    width: 80%;
+    margin-left: 15px;
+    text-align: center;
+}
+
+.chargeHeader-cedula {
+    grid-area: cedula;
+    display: grid;
+    grid-template-areas: 
+        'labelCedula'
+        'inputsCedula';
+    grid-template-rows: 40% 60%;
+    border-right: 1px solid #dbd9d9;
+}
+
+.chargeHeader-cedula-label {
+    grid-area: labelCedula;
+    display: grid;
+    padding-left: 15px;
+    grid-template-areas: 
+        'checkCedula txtCedula';
+    grid-template-columns: 15% 85%;
+}
+
+.chargeHeader-cedula-label-check {
+    grid-area: checkCedula;
+    padding-top: 5px;
+    padding-right: 20%;
+}
+
+.chargeHeader-cedula-label-text {
+    grid-area: txtCedula;
+}
+
+#lblTitleCedulaChargeHeader {
+    font-size: 15px;
+    padding-top: 5px;
+    text-align: start;
+}
+
+.chargeHeader-cedula-input {
+    grid-area: inputsCedula;
+    text-align: start;
+    padding-top: 5px;
+}
+
+#txtCedulaChargeHeader {
+    font-size: 15px;
+    width: 90%;
+    margin-left: 15px;
+    text-align: center;
+}
+
+.chargeHeader-nombre {
+    grid-area: nombre;
+    display: grid;
+    grid-template-areas: 
+        'labelNombre'
+        'inputsNombre';
+    grid-template-rows: 40% 60%;
+    border-right: 1px solid #dbd9d9;
+}
+
+.chargeHeader-nombre-label {
+    grid-area: labelNombre;
+    display: grid;
+    padding-left: 15px;
+    grid-template-areas: 
+        'checkNombre txtNombre';
+    grid-template-columns: 10% 90%;
+}
+
+.chargeHeader-nombre-label-check {
+    grid-area: checkNombre;
+    padding-top: 5px;
+    padding-right: 20%;
+}
+
+.chargeHeader-nombre-label-text {
+    grid-area: txtNombre;
+}
+
+#lblTitleNombreChargeHeader {
+    font-size: 15px;
+    padding-top: 5px;
+    text-align: start;
+}
+
+.chargeHeader-nombre-input {
+    grid-area: inputsNombre;
+    text-align: start;
+    padding-top: 5px;
+}
+
+#txtNombreChargeHeader {
+    font-size: 15px;
+    width: 90%;
+    margin-left: 15px;
+    text-align: center;
+}
+
+.chargeHeader-btn {
+    grid-area: btn;
+    border-right: 1px solid #dbd9d9;
+}
+
+.btnBuscarChargeHeader {
+    width: 85%;
+    height: 50%;
+    font-size: 15px;
+    margin-top: 15%;
+    background-color: $secundary;
+    color: white;
+
+    &:hover {
+        background-color: $primary;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+.btnBuscarChargeHeader-disable {
+    width: 85%;
+    height: 50%;
+    font-size: 15px;
+    margin-top: 15%;
+    background-color: gray;
+    color: white;
+
+    &:hover {
+        cursor: not-allowed;
+    }
+}

@@ -1,0 +1,298 @@
+.taxClaim_body-main {
+    border: 1px solid #c4c4c4;
+    display: grid;
+    height: 100%;
+    margin-left: 3%;
+    margin-right: 3%;
+    text-align: center;
+    grid-template-areas: 
+        'inputs'
+        'table';
+    grid-template-rows: 20% 80%;
+}
+
+.taxClaim_body-inputs {
+    grid-area: inputs;
+    display: grid;
+    grid-template-areas: 
+        'firstLine'
+        'secondLine';
+    grid-template-rows: 50% 50%;
+}
+
+.taxClaim_body-inputs-firstLine {
+    display: grid;
+    grid-area: firstLine;
+    margin-right: 8%;
+    grid-template-areas: 
+        'titles'
+        'txtDescripcion';
+    grid-template-rows: 50% 50%;
+}
+
+.taxClaim_body-inputs-firstLine-titles {
+    grid-area: titles;
+    display: grid;
+    grid-template-areas: 
+        'lblDescripcion txtTitle';
+    grid-template-columns: 40% 60%;
+}
+
+#lblDescripcionTaxClaimBody {
+    font-size: 15px;
+    grid-area: lblDescripcion;
+    padding-left: 5px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+#txtTitleTaxClaimBody {
+    color: #4169e6;
+    grid-area: txtTitle;
+    height: 80%;
+    margin-top: 2px;
+    text-align: center;
+}
+
+#txtDescripcionTaxClaimBody {
+    color: black;
+    grid-area: txtDescripcion;
+    height: 80%;
+    margin-top: 2px;
+    margin-left: 5px;
+    text-align: start;
+}
+
+.taxClaim_body-inputs-secondLine {
+    grid-area: secondLine;
+    display: grid;
+    grid-template-areas: 
+        'codigo cantidadContada cantidadSistema diferencia btn';
+    grid-template-columns: 47% 15% 15% 15% 8%;
+}
+
+.taxClaim_body-inputs-secondLine-codigo {
+    display: grid;
+    grid-area: codigo;
+    width: 98%;
+    grid-template-areas: 
+        'lblCodigo'
+        'inputs2';
+    grid-template-rows: 50% 50%;
+}
+
+#lblCodigoTaxClaimBody {
+    font-size: 15px;
+    grid-area: lblCodigo;
+    padding-left: 5px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+.taxClaim_body-inputs-secondLine-codigo-inputs {
+    display: grid;
+    grid-area: inputs2;
+    grid-template-areas: 
+        'inputCodigo iconBuscar';
+    grid-template-columns: 90% 10%;
+}
+
+#txtCodigoTaxClaimBody {
+    color: black;
+    grid-area: inputCodigo;
+    height: 80%;
+    margin-top: 2px;
+    margin-left: 5px;
+    text-align: start;
+}
+
+.taxClaim_body-inputs-secondLine-codigo-inputs-icon {
+    grid-area: iconBuscar;
+}
+
+#btnSearchTaxClaim {
+    color: $secundary;
+    
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.taxClaim_body-inputs-secondLine-cantidadContada {
+    display: grid;
+    grid-area: cantidadContada;
+    width: 95%;
+    grid-template-areas: 
+        'lblCantidadContada'
+        'txtCantidadContada';
+    grid-template-rows: 50% 50%;
+}
+
+#lblCantidadContadaTaxClaimBody {
+    font-size: 15px;
+    grid-area: lblCantidadContada;
+    padding-left: 5px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+#txtCantidadContadaTaxClaimBody {
+    color: black;
+    grid-area: txtCantidadContada;
+    height: 80%;
+    margin-top: 2px;
+    margin-left: 5px;
+    text-align: center;
+}
+
+.taxClaim_body-inputs-secondLine-cantidadSistema {
+    display: grid;
+    grid-area: cantidadSistema;
+    width: 95%;
+    grid-template-areas: 
+        'lblCantidadSistema'
+        'txtCantidadSistema';
+    grid-template-rows: 50% 50%;
+}
+
+#lblcantidadSistemaTaxClaimBody {
+    font-size: 15px;
+    grid-area: lblCantidadSistema;
+    padding-left: 5px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+#txtCantidadSistemaTaxClaimBody {
+    color: black;
+    grid-area: txtCantidadSistema;
+    height: 80%;
+    margin-top: 2px;
+    margin-left: 5px;
+    text-align: center;
+}
+
+.taxClaim_body-inputs-secondLine-diferencia {
+    display: grid;
+    grid-area: diferencia;
+    width: 95%;
+    grid-template-areas: 
+        'lblDiferencia'
+        'txtDiferencia';
+    grid-template-rows: 50% 50%;
+}
+
+#lbldiferenciaTaxClaimBody {
+    font-size: 15px;
+    grid-area: lblDiferencia;
+    padding-left: 5px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+#txtDiferenciaTaxClaimBody {
+    color: black;
+    grid-area: txtDiferencia;
+    height: 80%;
+    margin-top: 2px;
+    margin-left: 5px;
+    text-align: center;
+}
+
+.taxClaim_body-inputs-secondLine-btn {
+    grid-area: btn;
+}
+
+#btnContarTaxClaimBody {
+    color: black;
+    font-size: 15px;
+    height: 80%;
+    margin-top: 5px;
+    width: 80%;
+
+    &:hover {
+        background-color: #4169e6;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+.taxClaim_body-table {
+    grid-area: table;
+    border: 1px solid #c4c4c4;
+}
+
+.taxClaim_body-table-main {
+    width: 100%;
+}
+
+.taxClaim_body-table-header-codigo {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 2%;   
+}
+
+.taxClaim_body-table-header-descrip {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 10%;   
+}
+
+.taxClaim_body-table-header-existencia {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 2%;   
+}
+
+.taxClaim_body-table-header-diferencia {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 2%;   
+}
+
+.taxClaim_body-table-header-toma {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 2%;   
+}
+
+.taxClaim_body-table-codigo {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.taxClaim_body-table-descrip {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.taxClaim_body-table-existencia {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.taxClaim_body-table-toma {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.taxClaim_body-table-diferencia {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+

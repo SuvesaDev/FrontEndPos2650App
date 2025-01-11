@@ -1,0 +1,222 @@
+.modal-searchCustomerCollect-main {
+    display: grid;
+    text-align: center;
+    grid-template-areas:
+        'title' 
+        'inputs'
+        'table';
+    grid-template-rows: 40px 60px 220px;
+}
+
+.modal-searchCustomerCollect-title {
+    display: grid;
+    gap: 5px;
+    grid-area: title;
+    grid-template-areas: 
+        'text btnClose';
+    grid-template-columns: 90% 5%;
+}
+
+#lblTitleSearchCustomers {
+    background-color: $primary;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    grid-area: text;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    text-align: center;
+}
+
+#lblCloseSearchCustomers {
+    background-color: red;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    grid-area: btnClose;
+    margin-bottom: 5px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    text-align: center;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.modal-searchCustomerCollect-inputs {
+    display: grid;
+    grid-area: inputs;
+    // background-color: red;
+    grid-template-areas: 
+        'cedula nombre btn';
+    grid-template-columns: 25% 60% 15%;
+}
+
+.modal-searchCustomerCollect-inputs-cedula {
+    display: grid;
+    grid-area: cedula;
+    text-align: center;
+    grid-template-areas: 
+        'lblCdeula'
+        'inputCdeula';
+    grid-template-rows: 40% 60%;
+}
+
+#lblcedulaModalSearchCustomer {
+    color: black;
+    font-size: 15px;
+    grid-area: lblCdeula;
+    padding-left: 8px;
+    padding-top: 3px;
+    text-align: start;
+}
+
+#txtcedulaModalSearchCustomer {
+    border: 1px solid black;
+    font-size: 15px;
+    padding-left: 5px;
+    grid-area: inputCdeula;
+    height: 60%;
+    margin-left: 10px;
+    text-align: start;
+    width: 90%;
+}
+
+.modal-searchCustomerCollect-inputs-nombre {
+    display: grid;
+    grid-area: nombre;
+    text-align: center;
+    grid-template-areas: 
+        'lblNombre'
+        'inputNombre';
+    grid-template-rows: 40% 60%;
+}
+
+#lblNombreModalSearchCustomer {
+    color: black;
+    font-size: 15px;
+    grid-area: lblNombre;
+    padding-left: 8px;
+    padding-top: 3px;
+    text-align: start;
+}
+
+#txtNombreModalSearchCustomer {
+    border: 1px solid black;
+    font-size: 15px;
+    grid-area: inputNombre;
+    padding-left: 5px;
+    height: 60%;
+    margin-left: 10px;
+    text-align: start;
+    width: 90%;
+}
+
+.modal-searchCustomerCollect-inputs-btn {
+    grid-area: btn;
+}
+
+#btnSearchCustomer {
+    background-color: $secundary;
+    border: none;
+    color: white;
+    margin-top: 15px;
+    height: 50%;
+    margin-right: 25px;
+    width: 70%;
+
+    &:hover {
+        cursor: pointer;
+    }	
+}
+
+.modal-searchCustomerCollect-table {
+    grid-area: table;
+    // background-color: blue;
+}
+
+.modal-searchCustomerCollect-table-table {
+    // background-color: red;
+    width: 95%;
+    height: 100%;
+    margin-left: 10px;
+    overflow-y: scroll;
+    scrollbar-color: rebeccapurple green;
+    scrollbar-width: thin;
+    border: 1px solid black;
+}
+
+.modal-searchCustomerCollect-table-header {
+    // background-color: #ACA9A9;
+    // display: grid;
+    // grid-area: nombre;
+    // text-align: center;
+    // grid-template-areas: 
+    //     'cedula nombre telefono';
+    // grid-template-columns: 33% 33% 33%;
+    width: 500%;
+    background-color: blue;
+}
+
+.modal-searchCustomerCollect-table-header-cedula {
+    background-color: #ACA9A9;
+    text-align: start;
+    padding-left: 5px;
+    width: 150px;
+}
+
+.modal-searchCustomerCollect-table-header-nombre {
+    background-color: #ACA9A9;
+    text-align: start;
+    padding-left: 5px;
+    width: 450px;
+}
+
+.modal-searchCustomerCollect-table-header-telefono {
+    background-color: #ACA9A9;
+    text-align: start;
+    padding-left: 5px;
+    width: 140px;
+}
+
+.modal-searchCustomerCollect-table-body {
+    text-align: start;
+    font-style: normal;
+}
+
+.modal-searchCustomerCollect-table-body-row {
+    &:hover {
+        cursor: pointer;
+        background-color: #ACA9A9;
+    }
+}
+
+.modal-searchCustomerCollect-table-body-cell {
+    padding-left: 5px;
+    border-bottom: 1px solid #ACA9A9;
+    // cursor: pointer;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+::-webkit-scrollbar-track {
+background: #f1f1f1; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+background: #555; 
+}
+

@@ -1,0 +1,321 @@
+.proforma_totals-main {
+    border: 1px solid black;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'obser'
+        'total'
+        'check';
+    grid-template-rows: 25% 55% 20%;
+}
+
+.proforma_totals-obser {
+    display: grid;
+    grid-area: obser;
+    grid-template-areas: 
+        'lblobser txtobser';
+    grid-template-columns: 12% 88%;
+}
+
+#lblObserProformaTotals {
+    color: #4562cf;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblobser;
+    margin-left: 40px;
+    text-align: start;
+}
+
+#txtObserProformaTotals {
+    color: black;
+    font-size: 15px;
+    grid-area: txtobser;
+    height: 70%;
+    margin-right: 35px;
+    margin-top: 2px;
+    text-align: start;
+}
+
+.proforma_totals-total {
+    display: grid;
+    grid-area: total;
+    margin-left: 40px;
+    margin-right: 35px;
+    grid-template-areas: 
+        'titleTotal'
+        'inputs';
+    grid-template-rows: 30% 70%;
+}
+
+#lblTitleTotalesProforma {
+    background-color: #4562cf;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    grid-area: titleTotal;
+    text-align: center;
+}
+
+.proforma_totals-total-inputs {
+    background-color: #a0a0a0;
+    display: grid;
+    grid-area: inputs;
+    grid-template-areas: 
+        'subgravado subexento subtotal porcentaje descuento impVenta transporte total';
+    grid-template-columns: 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5%;
+}
+
+.proforma_totals-total-inputs-subGravado {
+    display: grid;
+    grid-area: subgravado;
+    margin-right: 5px;
+    grid-template-areas: 
+        'lblSubGravado'
+        'txtSubGravado';
+    grid-template-rows: 45% 55%;
+}
+
+#lblSubGravadoProformaTotals {
+    background-color: #e3e4db;
+    color: #4562cf;
+    font-size: 13px;
+    grid-area: lblSubGravado;
+    text-align: center;
+}
+
+#txtSubGravadoProformaTotals {
+    color: black;
+    font-size: 13px;
+    grid-area: txtSubGravado;
+    height: 85%;
+    margin-top: 1px;
+    text-align: start;
+}
+
+.proforma_totals-total-inputs-subExento {
+    display: grid;
+    grid-area: subexento;
+    margin-right: 5px;
+    grid-template-areas: 
+        'lblSubExento'
+        'txtSubExento';
+    grid-template-rows: 45% 55%;
+}
+
+#lblSubExentoProformaTotals {
+    background-color: #e3e4db;
+    color: #4562cf;
+    font-size: 13px;
+    grid-area: lblSubExento;
+    text-align: center;
+}
+
+#txtSubExentoProformaTotals {
+    color: black;
+    font-size: 13px;
+    grid-area: txtSubExento;
+    height: 85%;
+    margin-top: 1px;
+    text-align: start;
+}
+
+.proforma_totals-total-inputs-subTotal {
+    display: grid;
+    grid-area: subtotal;
+    margin-right: 5px;
+    grid-template-areas: 
+        'lblSubTotal'
+        'txtSubTotal';
+    grid-template-rows: 45% 55%;
+}
+
+#lblSubTotalProformaTotals {
+    background-color: #e3e4db;
+    color: #4562cf;
+    font-size: 13px;
+    grid-area: lblSubTotal;
+    text-align: center;
+}
+
+#txtSubTotalProformaTotals {
+    color: black;
+    font-size: 13px;
+    grid-area: txtSubTotal;
+    height: 85%;
+    margin-top: 1px;
+    text-align: start;
+}
+
+.proforma_totals-total-inputs-porcentaje {
+    grid-area: porcentaje;
+    padding-top: 10px;
+}
+
+#lblporcentajeProformaTotals {
+    color: #4562cf;
+    font-size: 15px;
+    text-align: center;
+}
+
+.proforma_totals-total-inputs-descuento {
+    display: grid;
+    grid-area: descuento;
+    margin-right: 5px;
+    grid-template-areas: 
+        'lblDescuento'
+        'txtDescuento';
+    grid-template-rows: 45% 55%;
+}
+
+#lbldescuentoProformaTotals {
+    background-color: #e3e4db;
+    color: #4562cf;
+    font-size: 13px;
+    grid-area: lblDescuento;
+    text-align: center;
+}
+
+#txtdescuentoProformaTotals {
+    color: black;
+    font-size: 13px;
+    grid-area: txtDescuento;
+    height: 85%;
+    margin-top: 1px;
+    text-align: start;
+}
+
+.proforma_totals-total-inputs-impVenta {
+    display: grid;
+    grid-area: impVenta;
+    margin-right: 5px;
+    grid-template-areas: 
+        'lblimpVenta'
+        'txtimpVenta';
+    grid-template-rows: 45% 55%;
+}
+
+#lblimpVentaProformaTotals {
+    background-color: #e3e4db;
+    color: #4562cf;
+    font-size: 13px;
+    grid-area: lblimpVenta;
+    text-align: center;
+}
+
+#txtimpVentaProformaTotals {
+    color: black;
+    font-size: 13px;
+    grid-area: txtimpVenta;
+    height: 85%;
+    margin-top: 1px;
+    text-align: start;
+}
+
+.proforma_totals-total-inputs-transporte {
+    display: grid;
+    grid-area: transporte;
+    margin-right: 5px;
+    grid-template-areas: 
+        'lbltransporte'
+        'txttransporte';
+    grid-template-rows: 45% 55%;
+}
+
+#lbltransporteProformaTotals {
+    background-color: #e3e4db;
+    color: #4562cf;
+    font-size: 13px;
+    grid-area: lbltransporte;
+    text-align: center;
+}
+
+#txttransporteProformaTotals {
+    color: black;
+    font-size: 13px;
+    grid-area: txttransporte;
+    height: 85%;
+    margin-top: 1px;
+    text-align: start;
+}
+
+.proforma_totals-total-inputs-total {
+    display: grid;
+    grid-area: total;
+    margin-right: 5px;
+    grid-template-areas: 
+        'lbltotal'
+        'txttotal';
+    grid-template-rows: 45% 55%;
+}
+
+#lbltotalProformaTotals {
+    background-color: #e3e4db;
+    color: #4562cf;
+    font-size: 13px;
+    grid-area: lbltotal;
+    text-align: center;
+}
+
+#txttotalProformaTotals {
+    color: black;
+    font-size: 13px;
+    grid-area: txttotal;
+    height: 85%;
+    margin-top: 1px;
+    text-align: start;
+}
+
+.proforma_totals-check {
+    display: grid;
+    grid-area: check;
+    margin-left: 40px;
+    grid-template-areas: 
+        'confirmo nombre';
+    grid-template-columns: 20% 40%;
+}
+
+.proforma_totals-check-confirmo {
+    display: grid;
+    grid-area: confirmo;
+    grid-template-areas: 
+        'inputconfirmo lblconfirmo';
+    grid-template-columns: 10% 40%;
+}
+
+.proforma_totals-check-confirmo-input {
+    grid-area: inputconfirmo;
+}
+
+#lblConfirmoProforma {
+    background-color: red;
+    color: white;
+    font-size: 13px;
+    grid-area: lblconfirmo;
+    padding-top: 1px;
+    text-align: start;
+    width: 75%;
+}
+
+.proforma_totals-check-nombre {
+    display: grid;
+    grid-area: nombre;
+    grid-template-areas: 
+        'lblNombreTotals inputNombreTotals';
+    grid-template-columns: 20% 40%;
+}
+
+#lblNombreProformaTotals {
+    color: #f47700;
+    font-size: 15px;
+    grid-area: lblNombreTotals;
+    text-align: center;
+}
+
+#txtNombreProformaTotals {
+    color: black;
+    font-size: 13px;
+    grid-area: inputNombreTotals;
+    height: 80%;
+    margin-top: 1px;
+    text-align: start;
+}

@@ -1,0 +1,72 @@
+.arqueoCash_body_desgloce {
+    display: grid;
+    height: 75%;
+    grid-template-areas: 
+        'title'
+        'table';
+    grid-template-rows: 10% 90%;
+    border: 1px solid gray;
+}
+
+.arqueoCash_body_desgloce-title {
+    grid-area: title;
+    border-bottom: 1px solid gray;
+}
+
+#lblDesgloceEfectivoTitle {
+    text-align: start;
+    font-size: 15px;
+    padding-left: 10px;
+    padding-top: 1px;
+}
+
+.arqueoCash_body_desgloce-table {
+    grid-area: table;
+    // display: grid;
+    height: 100%;
+    // grid-template-areas:  
+    //     'tabla';
+    // grid-template-rows: 100%;
+}
+
+.arqueoCash_body_desgloce-table-tabla-main {
+    width: 97%;
+    height: 100%;
+    margin-left: 10px;
+    overflow-y: scroll;
+    scrollbar-color: rebeccapurple green;
+    scrollbar-width: thin;
+    border: 1px solid black;
+}
+
+.arqueoCash_body_desgloce-table-tabla-header {
+    background-color: #ACA9A9;
+    text-align: start;
+    padding-left: 5px;
+    width: 250px;
+}
+
+.arqueoCash_body_desgloce-table-tabla-body {
+    text-align: start;
+    font-style: normal;
+}
+
+.arqueoCash_body_desgloce-table-tabla-body-row {
+    &:hover {
+        cursor: pointer;
+        background-color: #ACA9A9;
+    }
+}
+
+.arqueoCash_body_desgloce-table-tabla-body-cell {
+    padding-left: 5px;
+    border-bottom: 1px solid #ACA9A9;
+    // cursor: pointer;
+}
+
+#txtCantidadArqueoCashDetalleDenominacion {
+    text-align: start;
+    padding-left: 2px;
+    font-size: 12px;
+    width: 90%;
+}

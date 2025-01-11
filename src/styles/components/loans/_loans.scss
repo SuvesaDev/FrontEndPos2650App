@@ -1,0 +1,35 @@
+.loans_main {
+    display: grid;
+    height: 100%;
+    text-align: center;
+    grid-template-areas: 
+        'header'
+        'datosTraslado'
+        'datosProductos'
+        'icons';
+    grid-template-rows: 30px 150px 308px 60px;
+}
+
+.loans_header {
+    grid-area: header;
+    background-color: #6284BF;
+}
+
+#lblLoansTitle {
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.loans_datosTraslado {
+    grid-area: datosTraslado;
+}
+
+.loans_datosProductos {
+    grid-area: datosProductos;
+}
+
+.loans_icons {
+    grid-area: icons;
+    border: 1px solid black;
+}

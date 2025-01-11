@@ -1,0 +1,356 @@
+.proforma_table-main {
+    border: 1px solid black;
+    display: grid;
+    height: 93%;
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-top: 10px;
+    grid-template-areas: 
+        'headers'
+        'body';
+    grid-template-rows: 25% 75%;
+}
+
+.proforma_table-headers {
+    display: grid;
+    grid-area: headers;
+    grid-template-areas: 
+        'title'
+        'inputs';
+    grid-template-rows: 30% 70%;
+}
+
+#lblTitleTableArticulo {
+    background-color: #4169E1;
+    color: white;
+    font-size: 15px;
+    grid-area: title;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.proforma_table-headers-inputs {
+    display: grid;
+    grid-area: inputs;
+    grid-template-areas: 
+        'exonerar codigo precioUnit desc exist cantidad iv subtotal';
+    grid-template-columns: 10% 23% 10% 10% 10% 12% 10% 15%;
+}
+
+.proforma_table-headers-inputs-exonerar {
+    display: grid;
+    grid-area: exonerar;
+    grid-template-areas: 
+        'inputexonerar lblexonerar';
+    grid-template-columns: 30% 70%;
+}
+
+.proforma_table-headers-inputs-exonerar-input {
+    grid-area: inputexonerar;
+    padding-top: 20px;
+}
+
+#lblExonerarProforma {
+    grid-area: lblexonerar;
+    height: 50%;
+    margin-top: 20px;
+    padding-left: 2px;
+    text-align: start;
+    width: 80%;
+}
+
+.proforma_table-headers-inputs-codigo {
+    display: grid;
+    grid-area: codigo;
+    grid-template-areas: 
+        'lblCodigo'
+        'inputCodigo';
+    grid-template-rows: 45% 55%;
+}
+
+#lblTablecodigoProforma {
+    color: black;
+    font-size: 15px;
+    grid-area: lblCodigo;
+    padding-left: 5px;
+    padding-top: 1px;
+    text-align: start;
+}
+
+#txtTablecodigoProforma {
+    font-size: 15px;
+    grid-area: inputCodigo;
+    height: 80%;
+    margin-top: 2px;
+    text-align: start;
+    width: 95%;
+}
+
+.proforma_table-headers-inputs-precioUnit {
+    display: grid;
+    grid-area: precioUnit;
+    grid-template-areas: 
+        'lblPrecioUnit'
+        'inputPrecioUnit';
+    grid-template-rows: 45% 55%;
+}
+
+#lblTablePrecioUnitProforma {
+    color: black;
+    font-size: 15px;
+    grid-area: lblPrecioUnit;
+    padding-left: 5px;
+    padding-top: 1px;
+    text-align: start;
+}
+
+#txtTablePrecioUnitProforma {
+    font-size: 15px;
+    grid-area: inputPrecioUnit;
+    height: 80%;
+    margin-top: 2px;
+    text-align: start;
+    width: 95%;
+}
+
+.proforma_table-headers-inputs-desc {
+    display: grid;
+    grid-area: desc;
+    grid-template-areas: 
+        'lblDesc'
+        'inputDesc';
+    grid-template-rows: 45% 55%;
+}
+
+#lblTableDescProforma {
+    color: black;
+    font-size: 15px;
+    grid-area: lblDesc;
+    padding-left: 5px;
+    padding-top: 1px;
+    text-align: start;
+}
+
+#txtTableDescProforma {
+    font-size: 15px;
+    grid-area: inputDesc;
+    height: 80%;
+    margin-top: 2px;
+    text-align: start;
+    width: 95%;
+}
+
+.proforma_table-headers-inputs-exist {
+    display: grid;
+    grid-area: exist;
+    grid-template-areas: 
+        'lblExist'
+        'inputExist';
+    grid-template-rows: 45% 55%;
+}
+
+#lblTableExistProforma {
+    color: black;
+    font-size: 15px;
+    grid-area: lblExist;
+    padding-left: 5px;
+    padding-top: 1px;
+    text-align: start;
+}
+
+#txtTableExistProforma {
+    font-size: 15px;
+    grid-area: inputExist;
+    height: 80%;
+    margin-top: 2px;
+    text-align: start;
+    width: 95%;
+}
+
+.proforma_table-headers-inputs-cantidad {
+    display: grid;
+    grid-area: cantidad;
+    grid-template-areas: 
+        'lblCantidad'
+        'inputCantidad';
+    grid-template-rows: 45% 55%;
+}
+
+#lblTableCantidadProforma {
+    color: black;
+    font-size: 15px;
+    grid-area: lblCantidad;
+    padding-left: 5px;
+    padding-top: 1px;
+    text-align: start;
+}
+
+#txtTableCantidadProforma {
+    font-size: 15px;
+    grid-area: inputCantidad;
+    height: 80%;
+    margin-top: 2px;
+    text-align: start;
+    width: 95%;
+}
+
+.proforma_table-headers-inputs-iv {
+    display: grid;
+    grid-area: iv;
+    grid-template-areas: 
+        'lblIV'
+        'inputIV';
+    grid-template-rows: 45% 55%;
+}
+
+#lblTableIVProforma {
+    color: black;
+    font-size: 15px;
+    grid-area: lblIV;
+    padding-left: 5px;
+    padding-top: 1px;
+    text-align: start;
+}
+
+#txtTableIVProforma {
+    font-size: 15px;
+    grid-area: inputIV;
+    height: 80%;
+    margin-top: 2px;
+    text-align: start;
+    width: 95%;
+}
+
+.proforma_table-headers-inputs-subtotal {
+    display: grid;
+    grid-area: subtotal;
+    grid-template-areas: 
+        'lblSubtotalProforma'
+        'inputSubtotalProforma';
+    grid-template-rows: 45% 55%;
+}
+
+#lblTableSubTotalProforma {
+    color: black;
+    font-size: 15px;
+    grid-area: lblSubtotalProforma;
+    padding-left: 5px;
+    padding-top: 1px;
+    text-align: start;
+}
+
+#txtTableSubTotalProforma {
+    font-size: 15px;
+    grid-area: inputSubtotalProforma;
+    height: 80%;
+    margin-top: 2px;
+    text-align: start;
+    width: 95%;
+}
+
+.proforma_table-body {
+    border-top: 1px solid black;
+    grid-area: body;
+}
+
+.proforma_table-body-main {
+    width: 100%;
+}
+
+.proforma_table-body-header-codigo {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.proforma_table-body-header-descripcion {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.proforma_table-body-header-cant {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.proforma_table-body-header-Punit {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.proforma_table-body-header-desc {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.proforma_table-body-header-Mimp {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.proforma_table-body-header-subtotal {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.proforma_table-body-codigo {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.proforma_table-body-descripcion {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.proforma_table-body-cant {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.proforma_table-body-Punit {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.proforma_table-body-desc {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.proforma_table-body-Mimp {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.proforma_table-body-subtotal {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}

@@ -1,0 +1,272 @@
+.billing_conditions-main{
+    display: grid;
+    grid-template-areas: 
+        'title'
+        'coin'
+        'secondLine'
+        'squares';
+    grid-template-rows: 20px 50px 20px 40px;
+}
+
+.billing_conditions-title{
+    grid-area: title;
+}
+
+#lblTitleConditions {
+    font-size: 15px;
+    padding-left: 15px;
+    text-align: start;
+}
+
+.billing_conditions-coin-change{
+    grid-area: coin;
+    display: grid;
+    grid-template-areas: 
+        'moneda cambio';
+    grid-template-columns: 50% 50%;
+}
+
+.billing_conditions-coin {
+    grid-area: moneda;
+    display: grid;
+    grid-template-areas: 
+        'labelMoneda'
+        'inputMoneda';
+    grid-template-rows: 50% 50%;
+}
+
+#lblMonedaCondition {
+    font-size: 15px;
+    grid-area: labelMoneda;
+}
+
+#cboMoneda {
+    grid-area: inputMoneda;
+    margin-left: 25px;
+    text-align: center;
+    width: 80%;
+}
+
+.billing_conditions-change {
+    grid-area: cambio;
+    display: grid;
+    grid-template-areas: 
+        'labelCambio'
+        'inputCambio';
+    grid-template-rows: 50% 50%;
+}
+
+#lblTipoCambioTitle {
+    font-size: 15px;
+    grid-area: labelCambio;
+}
+
+#lblTipoCambioResul {
+    font-size: 15px;
+    grid-area: inputCambio;
+}
+
+.billing_conditions-secondLine{
+    grid-area: secondLine;
+    display: grid;
+    grid-template-areas: 
+        'orden pd';
+    grid-template-columns: 70% 30%;
+}
+
+.billing_conditions-secondLine-orders {
+    grid-area: orden;
+    display: grid;
+    grid-template-areas: 
+        'labelOrden inputOrden';
+    grid-template-columns: 70% 30%;
+}
+
+#lblCompraTitle {
+    font-size: 15px;
+    grid-area: labelOrden;
+}
+
+#txtOrdenBillingConditions {
+    font-size: 15px;
+    margin-right: 50%;
+    border: none;
+    grid-area: inputOrden;
+}
+
+.billing_conditions-secondLine-PD {
+    display: grid;
+    grid-area: pd;
+    grid-template-areas: 
+        'inputPD labelPD';
+    grid-template-columns: 50% 50%;
+    width: 50%;
+}
+
+.billing_conditions-squares-PD-input {
+    grid-area: inputPD;
+    padding-left: 20%;
+}
+
+#lblPD {
+    font-size: 15px;
+    grid-area: labelPD;
+    height: 50%;
+    text-align: start;
+    width: 30%;
+}
+
+.billing_conditions-squares{
+    display: grid;
+    grid-area: squares;
+    grid-template-areas: 
+        'check cbo';
+    grid-template-columns: 25% 75%;
+}
+
+.billing_conditions-squares-check {
+    grid-area: check;
+    display: grid;
+    grid-template-areas: 
+        'inputAgente labelAgente';
+    grid-template-columns: 20% 80%;
+    padding-top: 8px;
+}
+
+.billing_conditions-squares-check-input {
+    grid-area: inputAgente;
+    padding-left: 20%;
+}
+
+#lblAgenteBilling {
+    font-size: 15px;
+    grid-area: labelAgente;
+    height: 100%;
+    text-align: start;
+}
+
+.billing_conditions-squares-agente {
+    display: grid;
+    grid-area: cbo;
+    grid-template-areas: 
+        'labelAgente inputAgente';
+    grid-template-columns: 20% 80%;
+}
+
+#lblAgenteCondition {
+    font-size: 15px;
+    grid-area: labelAgente;
+    padding-top: 8px;
+}
+
+#cboAgente {
+    font-size: 15px;
+    grid-area: inputAgente;
+    height: 60%;
+    margin-top: 5px;
+    text-align: center;
+    text-align: center;
+    width: 100%;
+}
+
+// .billing_conditions-squares{
+//     grid-area: squares;
+//     display: grid;
+//     grid-template-areas: 
+//         'checkOne checkTwo';
+//     grid-template-columns: 50% 50%;
+// }
+
+// .billing_conditions-check-buttons-one{
+//     grid-area: checkOne;
+//     display: grid;
+//     grid-template-areas: 
+//         'taller'
+//         'mascota';
+//     grid-template-rows: 50% 50%;
+// }
+
+// .billing_conditions-check-buttons-one-taller{
+//     grid-area: taller;
+//     display: grid;
+//     grid-template-areas: 
+//         'inputTaller labelTaller';
+//     grid-template-columns: 50% 50%;
+// }
+
+// .billing_conditions-check-buttons-one-taller-input{    
+//     grid-area: inputTaller;
+//     padding-left: 70%;
+// }
+
+// #lblTaller {
+//     font-size: 15px;
+//     grid-area: labelTaller;
+//     text-align: start;
+// }
+
+// .billing_conditions-check-buttons-one-mascota {
+//     grid-area: mascota;
+//     display: grid;
+//     grid-template-areas: 
+//         'inputMascota labelMascota';
+//     grid-template-columns: 50% 50%;
+// }
+
+// .billing_conditions-check-buttons-one-mascota-input {
+//     grid-area: inputMascota;
+//     padding-left: 70%;
+// }
+
+// #lblMascota {
+//     font-size: 15px;
+//     grid-area: labelMascota;
+//     text-align: start;
+// }
+
+// .billing_conditions-check-buttons-two{
+//     grid-area: checkTwo;
+//     display: grid;
+//     grid-template-areas: 
+//         'agente'
+//         'pd';
+//     grid-template-rows: 50% 50%;
+// }
+
+// .billing_conditions-check-buttons-two-agente{
+//     grid-area: agente;
+//     display: grid;
+//     grid-template-areas: 
+//         'inputAgente labelAgente';
+//     grid-template-columns: 50% 50%;
+// }
+
+// .billing_conditions-check-buttons-two-agente-input {
+//     grid-area: inputAgente;
+//     padding-left: 70%;
+// }
+
+// #lblAgente {
+//     font-size: 15px;
+//     grid-area: labelAgente;
+//     text-align: start;
+// }
+
+// .billing_conditions-check-buttons-two-pd {
+//     grid-area: pd;
+//     display: grid;
+//     grid-template-areas: 
+//         'inputPD labelPD';
+//     grid-template-columns: 50% 50%;
+// }
+
+// .billing_conditions-check-buttons-two-PD-input {
+//     grid-area: inputPD;
+//     padding-left: 70%;
+// }
+
+// #lblPD {
+//     font-size: 15px;
+//     grid-area: labelPD;
+//     text-align: start;
+// }

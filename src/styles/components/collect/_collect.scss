@@ -1,0 +1,72 @@
+.collect_main {
+    display: grid;
+    height: 100%;
+    text-align: center;
+    grid-template-areas: 
+        'header'
+        'body'
+        'table'
+        'footer';
+    grid-template-rows: 35px 233px 200px 80px;
+}
+
+.collect_main-header {
+    background-color: #3D59A9;
+    display: grid;
+    grid-area: header;
+    height: 100%;
+    grid-template-areas: 
+        'recibo title';
+    grid-template-columns: 20% 80%;
+}
+
+.collect_main-header-input {
+    display: grid;
+    grid-area: recibo;
+    height: 100%;
+    grid-template-areas: 
+        'lblrecibo txtrecibo';
+    grid-template-columns: 50% 50%;
+}
+
+#lblCollectRecibo {
+    background-color: white;
+    color: #595FDC;
+    font-size: 15px;
+    grid-area: lblrecibo;
+    height: 50%;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 10px;
+}
+
+#txtCollectRecibo {
+    font-size: 15px;
+    grid-area: txtrecibo;
+    height: 50%;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+#lblCollectTitle {
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    grid-area: title;
+    padding-right: 25%;
+    padding-top: 4px;
+}
+
+.collect_main-body {
+    grid-area: body; 
+}
+
+.collect_main-table {
+    grid-area: table;
+}
+
+.collect_main-footer {
+    grid-area: footer;
+}

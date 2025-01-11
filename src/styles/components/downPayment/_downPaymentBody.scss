@@ -1,0 +1,324 @@
+.downPayment_body-main {
+    display: grid;
+    height: 100%;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-top: 15px;
+    padding-left: 5%;
+    padding-right: 5%;
+    grid-template-areas: 
+        'firstLine'
+        'secondLine'
+        'ThirdLine';
+    grid-template-rows: 15% 15% 15% 25%;
+}
+
+.downPayment_body-fisrtLine {
+    grid-area: firstLine;
+    display: grid;
+    height: 100%;
+    margin-right: 5%;
+    grid-template-areas: 
+        'idUsuario nombre';
+    grid-template-columns: 25% 65%;
+    border-left: 1px solid black;
+}
+
+.downPayment_body-fisrtLine-idUsuario {
+    grid-area: idUsuario;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblidUsuario'
+        'inputs';
+    grid-template-rows: 50% 50%;
+    border-top: 1px solid black;
+}
+
+.downPayment_body-fisrtLine-idUsuario-label {
+    grid-area: lblidUsuario;
+    padding-top: 8px;
+    padding-left: 10px;
+}
+
+#lblIdUsuarioDownPaymentBody {
+    text-align: start;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.downPayment_body-fisrtLine-idUsuario-inputs {
+    grid-area: inputs;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'inputIdentificacion iconIdentificacion';
+    grid-template-columns: 95% 5%;
+    padding-left: 10px;
+    padding-right: 15px;
+}
+
+.downPayment_body-fisrtLine-idUsuario-inputs-txt {
+    grid-area: inputIdentificacion;
+    padding-right: 5px;
+}
+
+#txtIdUsuarioDownPaymentBody {
+    width: 100%;
+    text-align: start;
+    font-size: 15px;
+}
+
+.downPayment_body-fisrtLine-idUsuario-inputs-icon {
+    grid-area: iconIdentificacion;
+    margin-bottom: 5px;
+    padding-top: 3px;
+}
+
+.btnSearchClientDownPaymentBody {
+    color: $secundary;
+    
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.btnSearchClientDownPaymentBody-disable {
+    color: gray;
+    
+    &:hover {
+        cursor: not-allowed;
+    }
+}
+
+.downPayment_body-fisrtLine-nombre {
+    grid-area: nombre;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblNombre'
+        'txtNombre';
+    grid-template-rows: 50% 50%;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+}
+
+.downPayment_body-fisrtLine-nombre-label {
+    grid-area: lblNombre;
+    padding-top: 8px;
+    padding-left: 10px;
+}
+
+#lblNombreDownPaymentBody {
+    text-align: start;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.downPayment_body-fisrtLine-nombre-input {
+    grid-area: txtNombre;
+    padding-left: 10px;
+    padding-right: 5px;
+}
+
+#txtNombreDownPaymentBody {
+    width: 100%;
+    text-align: start;
+    font-size: 15px;
+}
+
+.downPayment_body-secondLine {
+    grid-area: secondLine;
+    display: grid;
+    height: 100%;
+    margin-right: 5%;
+    grid-template-areas: 
+        'tipoMoneda formaPago monto';
+    grid-template-columns: 25% 33% 32%;
+    border-left: 1px solid black;
+}
+
+.downPayment_body-secondLine-tipoMoneda {
+    grid-area: tipoMoneda;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblTipoMoneda'
+        'txtTipoMoneda';
+    grid-template-rows: 50% 50%;
+}
+
+.downPayment_body-secondLine-tipoMoneda-label {
+    grid-area: lblTipoMoneda;
+    padding-top: 8px;
+    padding-left: 10px;
+}
+
+#lblTipoMonedaDownPaymentBody {
+    text-align: start;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.downPayment_body-secondLine-tipoMoneda-input {
+    grid-area: txtTipoMoneda;
+    padding-left: 10px;
+    padding-right: 5px;
+}
+
+#selectTipoMonedaDownPaymentBody {
+    width: 100%;
+    text-align: start;
+    font-size: 15px;
+}
+
+.downPayment_body-secondLine-formaPago {
+    grid-area: formaPago;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblFormaPago'
+        'txtFormaPago';
+    grid-template-rows: 50% 50%;
+}
+
+.downPayment_body-secondLine-formaPago-label {
+    grid-area: lblFormaPago;
+    padding-top: 8px;
+    padding-left: 10px;
+}
+
+#lblFormaPagoDownPaymentBody {
+    text-align: start;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.downPayment_body-secondLine-formaPago-input {
+    grid-area: txtFormaPago;
+    padding-left: 10px;
+    padding-right: 5px;
+}
+
+#selectFormaPagoDownPaymentBody {
+    width: 100%;
+    text-align: start;
+    font-size: 15px;
+}
+
+.downPayment_body-secondLine-monto {
+    grid-area: monto;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblMonto'
+        'txtMonto';
+    grid-template-rows: 50% 50%;
+    border-right: 1px solid black;
+}
+
+.downPayment_body-secondLine-monto-label {
+    grid-area: lblMonto;
+    padding-top: 8px;
+    padding-left: 10px;
+}
+
+.lblMontoDownPaymentBody {
+    text-align: start;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.downPayment_body-secondLine-monto-input {
+    grid-area: txtMonto;
+    padding-left: 10px;
+    padding-right: 5px;
+}
+
+.txtMontoDownPaymentBody {
+    width: 100%;
+    text-align: start;
+    font-size: 15px;
+}
+
+.downPayment_body-ThirdLine {
+    grid-area: ThirdLine;
+    display: grid;
+    height: 100%;
+    margin-right: 5%;
+    grid-template-areas: 
+        'responsable fecha';
+    grid-template-columns: 58% 32%;
+    border-left: 1px solid black
+}
+
+.downPayment_body-ThirdLine-responsable {
+    grid-area: responsable;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblResponsable'
+        'txtResponsable';
+    grid-template-rows: 50% 50%;
+    border-bottom: 1px solid black;
+}
+
+.downPayment_body-ThirdLine-responsable-label {
+    grid-area: lblResponsable;
+    padding-top: 8px;
+    padding-left: 10px;
+}
+
+#lblResponsableDownPaymentBody {
+    text-align: start;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.downPayment_body-ThirdLine-responsable-input {
+    grid-area: txtResponsable;
+    padding-left: 10px;
+    padding-right: 5px;
+}
+
+#txtResponsableDownPaymentBody {
+    width: 100%;
+    text-align: start;
+    font-size: 15px;
+}
+
+.downPayment_body-ThirdLine-fecha {
+    grid-area: fecha;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblFecha'
+        'txtFecha';
+    grid-template-rows: 50% 50%;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+}
+
+.downPayment_body-ThirdLine-fecha-label {
+    grid-area: lblFecha;
+    padding-top: 8px;
+    padding-left: 10px;
+}
+
+#lblFechaDownPaymentBody {
+    text-align: start;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.downPayment_body-ThirdLine-fecha-input {
+    grid-area: txtFecha;
+    padding-left: 10px;
+    padding-right: 5px;
+}
+
+#txtFechaDownPaymentBody {
+    width: 100%;
+    text-align: start;
+    font-size: 15px;
+}

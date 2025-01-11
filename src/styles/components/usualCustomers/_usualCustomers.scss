@@ -1,0 +1,23 @@
+.usual_customers-main {
+    text-align: center;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'header header header'
+        'body body body'
+        'footer footer footer';
+    grid-template-rows: 150px 338px 60px;
+}
+
+.usual_customers-header {
+    grid-area: header;
+}
+
+.usual_customers-body {
+    grid-area: body;
+}
+
+.usual_customers-footer {
+    grid-area: footer;
+    border: 1px solid black;
+}

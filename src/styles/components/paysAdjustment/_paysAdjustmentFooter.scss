@@ -1,0 +1,115 @@
+.pays_adjustment-footer-main {
+    display: grid;
+    height: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+    grid-template-areas: 
+        'left right';
+    grid-template-columns: 50% 50%;
+}
+
+.pays_adjustment-footer-left {
+    display: grid;
+    grid-area: left;
+    height: 100%;
+    grid-template-areas: 
+        'tipoCambio tipoNota';
+    grid-template-columns: 50% 50%;
+}
+
+.pays_adjustment-footer-left-tipoCambio {
+    display: grid;
+    grid-area: tipoCambio;
+    height: 100%;
+    grid-template-areas: 
+        'lbltipoCambio inputtipoCambio';
+    grid-template-columns: 40% 60%;
+}
+
+#lblTipoCambioPaysAdj {
+    background-color: white;
+    font-size: 15px;
+    grid-area: lbltipoCambio;
+    height: 50%;
+    margin-left: 10px;
+    margin-top: 8px;
+    width: 80%;
+}
+
+#txtTipoCambioPaysAdj {
+    font-size: 15px;
+    grid-area: inputtipoCambio;
+    height: 50%;
+    margin-top: 8px;
+    text-align: center;
+    width: 80%;
+}
+
+.pays_adjustment-footer-left-tipoNota {
+    display: grid;
+    grid-area: tipoNota;
+    height: 100%;
+    grid-template-areas: 
+        'lbltipoNota inputtipoNota';
+    grid-template-columns: 40% 60%;
+}
+
+#lblTipoNotaPaysAdj {
+    background-color: white;
+    font-size: 15px;
+    grid-area: lbltipoNota;
+    height: 50%;
+    margin-left: 10px;
+    margin-top: 8px;
+    width: 80%;
+}
+
+#txtTipoNotaPaysAdj {
+    font-size: 15px;
+    grid-area: inputtipoNota;
+    height: 50%;
+    margin-top: 8px;
+    text-align: center;
+    width: 80%;
+}
+
+.pays_adjustment-footer-right {
+    display: grid;
+    grid-area: right;
+    height: 100%;
+    grid-template-areas: 
+        'lblUser inputUser lblSistema';
+    grid-template-columns: 20% 15% 55%;
+}
+
+#lblUserPaysAdjustment {
+    background-color: #3D62DB;
+    font-size: 15px;
+    grid-area: lblUser;
+    height: 50%;
+    margin-left: 10px;
+    margin-top: 8px;
+    width: 80%;
+}
+
+#txtUserPaysAdjustment {
+    font-size: 15px;
+    grid-area: inputUser;
+    height: 50%;
+    margin-top: 8px;
+    text-align: start;
+    width: 80%;
+}
+
+#lblSistemaPaysAdjustment {
+    background-color: white;
+    color: #6D6D6D;
+    font-size: 15px;
+    grid-area: lblSistema;
+    height: 50%;
+    margin-left: 10px;
+    margin-top: 8px;
+    text-align: start;
+    width: 100%;
+}
+

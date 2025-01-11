@@ -1,0 +1,180 @@
+.settings_body-tarifas-main {
+    display: grid;
+    height: 95%;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-top: 20px;
+    grid-template-areas:
+        'title' 
+        'inputs'
+        'table';
+    grid-template-rows: 10% 25% 65%;
+}
+
+#lblTitleTarifas {
+    grid-area: title;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.settings_body-tarifas-inputs {
+    display: grid;
+    grid-area: inputs;
+    height: 95%;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-top: 10px;
+    grid-template-areas: 
+        'tarifa descrip moneda btn';
+    grid-template-columns: 25% 45% 15% 15%;
+}
+
+.settings_body-tarifas-inputs-tarifa {
+    display: grid;
+    grid-area: tarifa;
+    height: 95%;
+    grid-template-areas: 
+        'lblTarifa'
+        'txtTarifa';
+    grid-template-rows: 50% 50%;
+}
+
+#lblTarifaSettingB {
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblTarifa;
+    padding-top: 10px;
+    text-align: start;
+}
+
+#txtTarifaSettingB {
+    font-size: 15px;
+    grid-area: txtTarifa;
+    height: 60%;
+    text-align: start;
+    width: 95%;
+}
+
+.settings_body-tarifas-inputs-descrip {
+    display: grid;
+    grid-area: descrip;
+    height: 95%;
+    grid-template-areas: 
+        'lblDescrip'
+        'txtDescrip';
+    grid-template-rows: 50% 50%;
+}
+
+#lblDescripSettingB {
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblDescrip;
+    padding-top: 10px;
+    text-align: start;
+}
+
+#txtDescripSettingB {
+    font-size: 15px;
+    grid-area: txtDescrip;
+    height: 60%;
+    text-align: start;
+    width: 98%;
+}
+
+.settings_body-tarifas-inputs-moneda {
+    display: grid;
+    grid-area: moneda;
+    height: 95%;
+    grid-template-areas: 
+        'lblMoneda'
+        'txtMoneda';
+    grid-template-rows: 50% 50%;
+}
+
+#lblMonedaSettingB {
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblMoneda;
+    padding-top: 10px;
+    text-align: start;
+}
+
+#cboMonedaSettingB {
+    font-size: 15px;
+    grid-area: txtMoneda;
+    height: 60%;
+    text-align: start;
+    width: 95%;
+}
+
+.settings_body-tarifas-inputs-btn {
+    grid-area: btn;
+    padding-top: 35px;
+}
+
+#btnAddTarifaSettingB {
+    font-size: 15px;
+    height: 60%;
+    width: 85%;
+
+    &:hover {
+        background-color: $secundary;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+.settings_body-tarifas-table {
+    border: 1px solid black;
+    grid-area: table;
+    height: 95%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.settings_body-tarifas-table-main {
+    width: 100%;
+}
+
+.settings_body-tarifas-table-header-tarifa {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 5%;
+}
+
+.settings_body-tarifas-table-header-descrip {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 5%;
+}
+
+.settings_body-tarifas-table-header-moneda {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 5%;
+}
+
+.settings_body-tarifas-table-tarifa {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.settings_body-tarifas-table-descrip {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.settings_body-tarifas-table-moneda {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}

@@ -1,0 +1,265 @@
+.openCash_icons-main {
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'btnRegistrar btnBuscar btnAnular btnCerrar user';
+    grid-template-columns: 8% 8% 8% 8% 20%;
+}
+
+.openCash_icons-nuevo {
+    display: grid;
+    grid-area: btnNuevo;
+    height: 100%;
+    grid-template-areas: 
+        'iconNue'
+        'lblNue';
+    grid-template-rows: 60% 40%;
+}
+
+.openCash_icons-nuevo-icon {
+    color: #F68A1D;
+    grid-area: iconNue;
+    padding-top: 4px;
+}
+
+.openCash_icons-nuevo-icon-Disable {
+    color: gray;
+    grid-area: iconNue;
+    padding-top: 4px;
+}
+
+.iconNuevoOC {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+.iconNuevoOC-Disable {
+    cursor: not-allowed;
+    height: 100%;
+    width: 25%;
+}
+
+#lblNuevoOC {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblNue;
+    text-align: center;
+}
+
+.openCash_icons-Buscar {
+    display: grid;
+    grid-area: btnBuscar;
+    height: 100%;
+    grid-template-areas: 
+        'iconBus'
+        'lblBus';
+    grid-template-rows: 60% 40%;
+}
+
+.openCash_icons-Buscar-icon {
+    color: #F68A1D;
+    grid-area: iconBus;
+    padding-top: 4px;
+}
+
+.openCash_icons-Buscar-icon-Disable {
+    color: gray;
+    grid-area: iconBus;
+    padding-top: 4px;
+}
+
+.iconBusOC {
+    cursor: pointer;
+    height: 100%;
+    width: 20%;
+}
+
+.iconBusOC-Disable {
+    cursor: not-allowed;
+    height: 100%;
+    width: 20%;
+}
+
+#lblBuscarOC {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblBus;
+    text-align: center;
+}
+
+.openCash_icons-registrar {
+    display: grid;
+    grid-area: btnRegistrar;
+    height: 100%;
+    grid-template-areas: 
+        'iconReg'
+        'lblReg';
+    grid-template-rows: 60% 40%;
+}
+
+.openCash_icons-registrar-icon {
+    color: #F68A1D;
+    grid-area: iconReg;
+    padding-top: 4px;
+}
+
+.openCash_icons-registrar-icon-Disable {
+    color: gray;
+    grid-area: iconReg;
+    padding-top: 4px;
+}
+
+.iconRegistrarOC {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+.iconRegistrarOC-Disable {
+    cursor: not-allowed;
+    height: 100%;
+    width: 25%;
+}
+
+#lblRegistrarOC {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblReg;
+    text-align: center;
+}
+
+.openCash_icons-anular {
+    display: grid;
+    grid-area: btnAnular;
+    height: 100%;
+    grid-template-areas: 
+        'iconAnu'
+        'lblAnu';
+    grid-template-rows: 60% 40%;
+}
+
+.openCash_icons-anular-icon {
+    color: #F68A1D;
+    grid-area: iconAnu;
+    padding-top: 4px;
+}
+
+.openCash_icons-anular-icon-Disable {
+    color: gray;
+    grid-area: iconAnu;
+    padding-top: 4px;
+}
+
+.iconAnularOC {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+.iconAnularOC-Disable {
+    cursor: not-allowed;
+    height: 100%;
+    width: 25%;
+}
+
+#lblAnularOC {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblAnu;
+    text-align: center;
+}
+
+.openCash_icons-cerrar {
+    display: grid;
+    grid-area: btnCerrar;
+    height: 100%;
+    grid-template-areas: 
+        'iconCer'
+        'lblCer';
+    grid-template-rows: 60% 40%;
+}
+
+.openCash_icons-cerrar-icon {
+    color: #F68A1D;
+    grid-area: iconCer;
+    padding-top: 4px;
+}
+
+#iconCerrarOC {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblCerrarOC {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblCer;
+    text-align: center;
+}
+
+.openCash_icons-user {
+    grid-area: user;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'labelUser'
+        'inputsUser';
+    grid-template-rows: 50% 50%;
+}
+
+.openCash_icons-user-label {
+    grid-area: labelUser;
+    padding-top: 8px;
+    padding-left: 10px;
+}
+
+#lblClaveInternaOpenCashIcons {
+    text-align: start;
+    font-size: 15px;
+}
+
+.openCash_icons-user-inputs {
+    grid-area: inputsUser;
+    display: grid;
+    grid-template-areas: 
+        'txt icon';
+    grid-template-columns: 90% 10%;
+}
+
+.openCash_icons-user-inputs-txt {
+    grid-area: txt;
+}
+
+#txtClaveInternaOpenCashIcons {
+    width: 95%;
+    text-align: start;
+    font-size: 15px;
+    padding-left: 5px;
+}
+
+.openCash_icons-user-inputs-icon {
+    grid-area: icon;
+}
+
+.iconEyeClaveInternaOpenCashIcons {
+    width: 100%;
+    height: 70%;
+    color: #F68A1D;
+
+    &:hover {
+        cursor: pointer;
+        color: $primary;
+    }
+}
+
+.iconEyeClaveInternaOpenCashIcons-disable {
+    width: 100%;
+    height: 70%;
+    color: gray;
+
+    &:hover {
+        cursor: not-allowed;
+    }
+}

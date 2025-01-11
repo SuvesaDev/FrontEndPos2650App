@@ -1,0 +1,466 @@
+.coins-main {
+    display: grid;
+    text-align: center;
+    grid-template-areas: 
+        'header'
+        'body'
+        'table'
+        'footer';
+    grid-template-rows: 40px 180px 268px 60px;
+}
+
+.coins-header {
+    background-color: #3D59A9;
+    grid-area: header;
+}
+
+#lblTitleCoins {
+    color: white;
+    font-size: 25px;
+    padding-top: 5px;
+    text-align: center;
+}
+
+.coins-body {
+    display: grid;
+    grid-area: body;
+    margin-left: 25%;
+    margin-right: 25%;
+    grid-template-areas: 
+        'firstLine'
+        'secondLine';
+    grid-template-rows: 50% 50%;
+}
+
+.coins-body-firstLine {
+    display: grid;
+    grid-area: firstLine;
+    padding-top: 25px;
+    grid-template-areas: 
+        'codigo nombreMoneda';
+    grid-template-columns: 30% 70%;
+}
+
+.coins-body-firstLine-codigo {
+    display: grid;
+    grid-area: codigo;
+    margin-right: 20px;
+    grid-template-areas: 
+        'lblCodigoM'
+        'inputCodigoM';
+    grid-template-rows: 50% 50%;
+}
+
+#lblMonedaCodigo {
+    background-color: #EEF2E6;
+    border: 1px solid black;
+    font-size: 15px;
+    grid-area: lblCodigoM;
+    height: 70%;
+    margin-top: 5px;
+}
+
+#txtCodigoM {
+    font-size: 15px;
+    grid-area: inputCodigoM;
+    height: 70%;
+    text-align: start;
+}
+
+.coins-body-firstLine-NombreMoneda {
+    display: grid;
+    grid-area: nombreMoneda;
+    margin-right: 20px;
+    grid-template-areas: 
+        'lblNombreM'
+        'inputNombreM';
+    grid-template-rows: 50% 50%;
+}
+
+#lblNombreMoneda {
+    background-color: #EEF2E6;
+    border: 1px solid black;
+    font-size: 15px;
+    grid-area: lblNombreM;
+    height: 70%;
+    margin-top: 5px;
+}
+
+#txtNombreM {
+    font-size: 15px;
+    grid-area: inputNombreM;
+    height: 70%;
+    text-align: start;
+}
+
+.coins-body-secondLine {
+    display: grid;
+    gap: 5px;
+    grid-area: secondLine;
+    padding-bottom: 25px;
+    grid-template-areas: 
+        'valorCompra valorVenta simbolo cuentaC btn';
+    grid-template-columns: 25% 25% 15% 20% 10%;
+}
+
+.coins-body-secondLine-ValorCompra {
+    display: grid;
+    grid-area: valorCompra;
+    margin-right: 5px;
+    grid-template-areas: 
+        'lblValorCompraM'
+        'inputValorCompraM';
+    grid-template-rows: 50% 50%;
+}
+
+#lblMonedaValorCompra {
+    background-color: #EEF2E6;
+    border: 1px solid black;
+    font-size: 15px;
+    grid-area: lblValorCompraM;
+    height: 70%;
+    margin-top: 5px;
+}
+
+#txtValorCompraM {
+    font-size: 15px;
+    grid-area: inputValorCompraM;
+    height: 70%;
+    text-align: start;
+}
+
+.coins-body-secondLine-ValorVenta {
+    display: grid;
+    grid-area: valorVenta;
+    margin-right: 5px;
+    grid-template-areas: 
+        'lblValorVentaM'
+        'inputValorVentaM';
+    grid-template-rows: 50% 50%;
+}
+
+#lblValorVenta {
+    background-color: #EEF2E6;
+    border: 1px solid black;
+    font-size: 15px;
+    grid-area: lblValorVentaM;
+    height: 70%;
+    margin-top: 5px;
+}
+
+#txtValorVentaM {
+    font-size: 15px;
+    grid-area: inputValorVentaM;
+    height: 70%;
+    text-align: start;
+}
+
+.coins-body-secondLine-Simbolo {
+    display: grid;
+    grid-area: simbolo;
+    // margin-right: 5px;
+    padding-left: 10px;
+    grid-template-areas: 
+        'lblSimboloM'
+        'inputSimboloM';
+    grid-template-rows: 50% 50%;
+}
+
+#lblMonedaSimbolo {
+    background-color: #EEF2E6;
+    border: 1px solid black;
+    font-size: 15px;
+    grid-area: lblSimboloM;
+    height: 70%;
+    margin-top: 5px;
+    width: 80%;
+}
+
+#txtSimboloM {
+    font-size: 15px;
+    grid-area: inputSimboloM;
+    height: 70%;
+    text-align: start;
+    width: 80%;
+}
+
+.coins-body-secondLine-CuentaContable {
+    display: grid;
+    grid-area: cuentaC;
+    grid-template-areas: 
+        'lblCuentaCM'
+        'inputCuentaCM';
+    grid-template-rows: 50% 50%;
+}
+
+#lblCuentaContableM {
+    background-color: #EEF2E6;
+    border: 1px solid black;
+    font-size: 15px;
+    grid-area: lblCuentaCM;
+    height: 70%;
+    margin-top: 5px;
+    width: 100%;
+}
+
+#txtCuentaContableM {
+    font-size: 15px;
+    grid-area: inputCuentaCM;
+    height: 70%;
+    text-align: start;
+    width: 100%;
+}
+
+.coins-body-secondLine-btn {
+    grid-area: btn;
+    padding-top: 33px;
+}
+
+#btnAddM {
+    font-size: 15px;
+    width: 100%;
+
+    &:hover {
+        cursor: pointer;
+        background-color: #3D59A9;
+        color: white;
+    }
+}
+
+.coins-table {
+    grid-area: table;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-bottom: 25px;
+    border: 1px solid black;
+}
+
+.coins-table-main {
+    width: 100%;
+}
+
+.coins-table-header-nombre {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.coins-table-header-valorCompra {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.coins-table-header-valorVenta {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.coins-table-header-simbolo {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.coins-table-header-cuentaCon {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.coins-table-nombre {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.coins-table-valorCompra {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.coins-table-valorVenta {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.coins-table-simbolo {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.coins-table-cuentaCon {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+
+.coins-icons {
+    border: 1px solid black;
+    display: grid;
+    grid-area: footer;
+    height: 100%;
+    grid-template-areas: 
+        'btnNuevo btnEditar btnRegistrar btnEliminar btnCerrar';
+    grid-template-columns: 8% 8% 8% 8% 8%;
+}
+
+.coins-icons-nuevo {
+    display: grid;
+    grid-area: btnNuevo;
+    height: 100%;
+    grid-template-areas: 
+        'iconNue'
+        'lblNue';
+    grid-template-rows: 60% 40%;
+}
+
+.coins-icons-nuevo-icon {
+    color: #F68A1D;
+    grid-area: iconNue;
+    padding-top: 4px;
+}
+
+#iconNuevoP {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblNuevoP {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblNue;
+    text-align: center;
+}
+
+.coins-icons-Editar {
+    display: grid;
+    grid-area: btnEditar;
+    height: 100%;
+    grid-template-areas: 
+        'iconEdit'
+        'lblEdit';
+    grid-template-rows: 60% 40%;
+}
+
+.coins-icons-Editar-icon {
+    color: #F68A1D;
+    grid-area: iconEdit;
+    padding-top: 4px;
+}
+
+#iconEditCoins {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblEditCoins {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblEdit;
+    text-align: center;
+}
+
+.coins-icons-registrar {
+    display: grid;
+    grid-area: btnRegistrar;
+    height: 100%;
+    grid-template-areas: 
+        'iconReg'
+        'lblReg';
+    grid-template-rows: 60% 40%;
+}
+
+.coins-icons-registrar-icon {
+    color: #F68A1D;
+    grid-area: iconReg;
+    padding-top: 4px;
+}
+
+#iconRegistrarP {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblRegistrarP {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblReg;
+    text-align: center;
+}
+
+.coins-icons-eliminar {
+    display: grid;
+    grid-area: btnEliminar;
+    height: 100%;
+    grid-template-areas: 
+        'iconEli'
+        'lblEli';
+    grid-template-rows: 60% 40%;
+}
+
+.coins-icons-eliminar-icon {
+    color: #F68A1D;
+    grid-area: iconEli;
+    padding-top: 4px;
+}
+
+#iconEliminarP {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblEliminarP {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblEli;
+    text-align: center;
+}
+
+.coins-icons-cerrar {
+    display: grid;
+    grid-area: btnCerrar;
+    height: 100%;
+    grid-template-areas: 
+        'iconCer'
+        'lblCer';
+    grid-template-rows: 60% 40%;
+}
+
+.coins-icons-cerrar-icon {
+    color: #F68A1D;
+    grid-area: iconCer;
+    padding-top: 4px;
+}
+
+#iconCerrarP {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblCerrarP {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblCer;
+    text-align: center;
+}

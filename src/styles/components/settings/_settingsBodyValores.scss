@@ -1,0 +1,622 @@
+.settings_body-valores-main {
+    display: grid;
+    height: 100%;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    grid-template-areas: 
+        'inputs'
+        'check';
+    grid-template-rows: 70% 10%;
+}
+
+.settings_body-valores-inputs {
+    display: grid;
+    grid-area: inputs;
+    height: 100%;
+    grid-template-areas: 
+        'leftSide rightSide';
+    grid-template-columns: 50% 50%;
+}
+
+.settings_body-valores-inputs-leftSide {
+    display: grid;
+    gap: 1px;
+    grid-area: leftSide;
+    height: 100%;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    grid-template-areas: 
+        'impuesto'
+        'intereses'
+        'nCajeros'
+        'lastLine';
+    grid-template-rows: 24% 24% 24% 30%;
+}
+
+.settings_body-valores-inputs-leftSide-impuesto {
+    display: grid;
+    grid-area: impuesto;
+    height: 100%;
+    margin-left: 50%;
+    margin-right: 15%;
+    grid-template-areas: 
+        'lblimpuesto'
+        'inputimpuesto';
+    grid-template-rows: 50% 50%;
+}
+
+#lblImpuestoVentaSettingsB {
+    background-color: #E3E3E3;
+    color: #0300FF;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblimpuesto;
+    padding-top: 5px;
+    text-align: center;
+}
+
+#txtImpuestoVentaSettingsB {
+    color: #0300FF;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: inputimpuesto;
+    height: 80%;
+    text-align: end;
+}
+
+.settings_body-valores-inputs-leftSide-intereses {
+    display: grid;
+    grid-area: intereses;
+    height: 100%;
+    margin-left: 50%;
+    margin-right: 15%;
+    grid-template-areas: 
+        'lblintereses'
+        'inputintereses';
+    grid-template-rows: 50% 50%;
+}
+
+#lblInteresesSettingsB {
+    background-color: #E3E3E3;
+    color: #0300FF;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblintereses;
+    padding-top: 5px;
+    text-align: center;
+}
+
+#txtInteresesSettingsB {
+    color: #0300FF;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: inputintereses;
+    height: 80%;
+    text-align: end;
+}
+
+.settings_body-valores-inputs-leftSide-numeroCajeros {
+    display: grid;
+    grid-area: nCajeros;
+    height: 100%;
+    margin-left: 50%;
+    margin-right: 15%;
+    grid-template-areas: 
+        'lblnumeroCajeros'
+        'inputnumeroCajeros';
+    grid-template-rows: 50% 50%;
+}
+
+#lblnumeroCajerosSettingsB {
+    background-color: #E3E3E3;
+    color: #0300FF;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblnumeroCajeros;
+    padding-top: 5px;
+    text-align: center;
+}
+
+#txtnumeroCajerosSettingsB {
+    color: #0300FF;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: inputnumeroCajeros;
+    height: 80%;
+    text-align: end;
+}
+
+.settings_body-valores-inputs-leftSide-lastLine {
+    display: grid;
+    grid-area: lastLine;
+    height: 100%;
+    margin-left: 50%;
+    margin-right: 15%;
+    grid-template-areas: 
+        'activar'
+        'extranjero';
+    grid-template-rows: 35% 65%;
+}
+
+.settings_body-valores-inputs-leftSide-lastLine-activar {
+    display: grid;
+    grid-area: activar;
+    grid-template-areas: 
+        'checkactivarR lblactivarR';
+    grid-template-columns: 10% 60%;
+}
+
+.settings_body-valores-inputs-leftSide-activar-input {
+    grid-area: checkactivarR;
+    padding-top: 5px;
+}
+
+#lblActivarSettingsB {
+    color: #0300FF;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblactivarR;
+    height: 50%;
+    padding-left: 2px;
+    padding-top: 5px;
+    text-align: start;
+}
+
+.settings_body-valores-inputs-leftSide-lastLine-extranjero {
+    display: grid;
+    grid-area: extranjero;
+    height: 100%;
+    grid-template-areas: 
+        'lblporcentajeExtranjeros'
+        'inputporcentajeExtranjeros';
+    grid-template-rows: 50% 50%;
+}
+
+#lblporcentajeExtranjerosSettingsB {
+    background-color: #E3E3E3;
+    color: #0300FF;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblporcentajeExtranjeros;
+    padding-top: 5px;
+    text-align: center;
+}
+
+#txtporcentajeExtranjerosSettingsB {
+    color: #0300FF;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: inputporcentajeExtranjeros;
+    height: 80%;
+    text-align: end;
+}
+
+.settings_body-valores-inputs-rightSide {
+    display: grid;
+    grid-area: rightSide;
+    height: 100%;
+    margin-right: 30%;
+    grid-template-areas: 
+        'unico'
+        'credito'
+        'contado'
+        'pve'
+        'tallerCredito'
+        'tallerContado'
+        'mascotasCredito'
+        'mascotasContado'
+        'cambiaPrecio'
+        'utilizarFactura';
+    grid-template-rows: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+}
+
+.settings_body-valores-inputs-rightSide-unico {
+    display: grid;
+    grid-area: unico;
+    height: 100%;
+    margin-right: 5%;
+    grid-template-areas: 
+        'checkUnico inputUnico';
+    grid-template-columns: 60% 40%;
+}
+
+.settings_body-valores-inputs-rightSide-unico-check {
+    background-color: #E3E3E3;
+    display: grid;
+    grid-area: checkUnico;
+    height: 100%;
+    grid-template-areas: 
+        'checkUnico lblUnico';
+    grid-template-columns: 10% 80%;
+}
+
+.settings_body-valores-inputs-rightSide-unico-check-input {
+    grid-area: checkUnico;
+    padding-top: 2px;
+}
+
+#lblunicoSettingsB {
+    color: #0300FF;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblUnico;
+    padding-left: 5px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+#txtUnicoSettingsB {
+    color: #0300FF;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: inputUnico;
+    height: 70%;
+    margin-top: 3px;
+    text-align: end;
+}
+
+.settings_body-valores-inputs-rightSide-credito {
+    display: grid;
+    grid-area: credito;
+    height: 100%;
+    margin-right: 5%;
+    grid-template-areas: 
+        'checkCredito inputCredito';
+    grid-template-columns: 60% 40%;
+}
+
+.settings_body-valores-inputs-rightSide-credito-check {
+    background-color: #E3E3E3;
+    display: grid;
+    grid-area: checkCredito;
+    height: 100%;
+    grid-template-areas: 
+        'checkCredito lblCredito';
+    grid-template-columns: 10% 90%;
+}
+
+.settings_body-valores-inputs-rightSide-credito-check-input {
+    grid-area: checkCredito;
+    padding-top: 2px;
+}
+
+#lblcreditoSettingsB {
+    color: #0300FF;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblCredito;
+    padding-left: 5px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+#txtcreditoSettingsB {
+    color: #0300FF;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: inputCredito;
+    height: 70%;
+    margin-top: 3px;
+    text-align: end;
+}
+
+.settings_body-valores-inputs-rightSide-contado {
+    display: grid;
+    grid-area: contado;
+    height: 100%;
+    margin-right: 5%;
+    grid-template-areas: 
+        'checkContado inputContado';
+    grid-template-columns: 60% 40%;
+}
+
+.settings_body-valores-inputs-rightSide-contado-check {
+    background-color: #E3E3E3;
+    display: grid;
+    grid-area: checkContado;
+    height: 100%;
+    grid-template-areas: 
+        'checkContado lblContado';
+    grid-template-columns: 10% 90%;
+}
+
+.settings_body-valores-inputs-rightSide-contado-check-input {
+    grid-area: checkContado;
+    padding-top: 2px;
+}
+
+#lblcontadoSettingsB {
+    color: #0300FF;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblContado;
+    padding-left: 5px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+#txtcontadoSettingsB {
+    color: #0300FF;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: inputContado;
+    height: 70%;
+    margin-top: 3px;
+    text-align: end;
+}
+
+.settings_body-valores-inputs-rightSide-pve {
+    display: grid;
+    grid-area: pve;
+    height: 100%;
+    margin-right: 5%;
+    grid-template-areas: 
+        'checkPVE inputPVE';
+    grid-template-columns: 60% 40%;
+}
+
+.settings_body-valores-inputs-rightSide-pve-check {
+    background-color: #E3E3E3;
+    display: grid;
+    grid-area: checkPVE;
+    height: 100%;
+    grid-template-areas: 
+        'checkPVE lblPVE';
+    grid-template-columns: 10% 90%;
+}
+
+.settings_body-valores-inputs-rightSide-pve-check-input {
+    grid-area: checkPVE;
+    padding-top: 2px;
+}
+
+#lblpveSettingsB {
+    color: #0300FF;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblPVE;
+    padding-left: 5px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+#txtpveSettingsB {
+    color: #0300FF;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: inputPVE;
+    height: 70%;
+    margin-top: 3px;
+    text-align: end;
+}
+
+.settings_body-valores-inputs-rightSide-tallerCredito {
+    display: grid;
+    grid-area: tallerCredito;
+    height: 100%;
+    margin-right: 5%;
+    grid-template-areas: 
+        'checkTallerCredito inputTallerCredito';
+    grid-template-columns: 60% 40%;
+}
+
+.settings_body-valores-inputs-rightSide-tallerCredito-check {
+    background-color: #E3E3E3;
+    display: grid;
+    grid-area: checkTallerCredito;
+    height: 100%;
+    grid-template-areas: 
+        'checkTallerCredito lblTallerCredito';
+    grid-template-columns: 10% 90%;
+}
+
+.settings_body-valores-inputs-rightSide-tallerCredito-check-input {
+    grid-area: checkTallerCredito;
+    padding-top: 2px;
+}
+
+#lbltallerCreditoSettingsB {
+    color: #0300FF;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblTallerCredito;
+    padding-left: 5px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+#txttallerCreditoSettingsB {
+    color: #0300FF;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: inputTallerCredito;
+    height: 70%;
+    margin-top: 3px;
+    text-align: end;
+}
+
+.settings_body-valores-inputs-rightSide-tallerContado {
+    display: grid;
+    grid-area: tallerContado;
+    height: 100%;
+    margin-right: 5%;
+    grid-template-areas: 
+        'lblTallerContado inputTallerContado';
+    grid-template-columns: 60% 40%;
+}
+
+#lbltallerContadoSettingsB {
+    background-color: #E3E3E3;
+    color: #0300FF;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblTallerContado;
+    margin-left: 70px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+#txttallerContadoSettingsB {
+    color: #0300FF;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: inputTallerContado;
+    height: 65%;
+    margin-top: 3px;
+    text-align: end;
+}
+
+.settings_body-valores-inputs-rightSide-mascotasCredito {
+    display: grid;
+    grid-area: mascotasCredito;
+    height: 100%;
+    margin-right: 5%;
+    grid-template-areas: 
+        'checkMascotaCredito inputMascotaCredito';
+    grid-template-columns: 60% 40%;
+}
+
+.settings_body-valores-inputs-rightSide-mascotasCredito-check {
+    background-color: #E3E3E3;
+    display: grid;
+    grid-area: checkMascotaCredito;
+    height: 100%;
+    grid-template-areas: 
+        'checkMascotaCredito lblMascotaCredito';
+    grid-template-columns: 10% 90%;
+}
+
+.settings_body-valores-inputs-rightSide-mascotasCredito-check-input {
+    grid-area: checkMascotaCredito;
+    padding-top: 2px;
+}
+
+#lblmascotasCreditoSettingsB {
+    color: #0300FF;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblMascotaCredito;
+    padding-left: 5px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+#txtmascotasCreditoSettingsB {
+    color: #0300FF;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: inputMascotaCredito;
+    height: 70%;
+    margin-top: 3px;
+    text-align: end;
+}
+
+.settings_body-valores-inputs-rightSide-mascotasContado {
+    display: grid;
+    grid-area: mascotasContado;
+    height: 100%;
+    margin-right: 5%;
+    grid-template-areas: 
+        'lblMascotasContado inputMascotasContado';
+    grid-template-columns: 60% 40%;
+}
+
+#lblmascotasContadoSettingsB {
+    background-color: #E3E3E3;
+    color: #0300FF;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblMascotasContado;
+    margin-left: 100px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+#txtmascotasContadoSettingsB {
+    color: #0300FF;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: inputMascotasContado;
+    height: 65%;
+    margin-top: 3px;
+    text-align: end;
+}
+
+.settings_body-valores-inputs-rightSide-cambiaPrecio {
+    display: grid;
+    grid-area: cambiaPrecio;
+    height: 80%;
+    grid-template-areas: 
+        'checkCambiaPrecio lblCambiaPrecio';
+    grid-template-columns: 5% 90%;
+}
+
+.settings_body-valores-inputs-rightSide-cambiaPrecio-check-input {
+    background-color: #E3E3E3;
+    grid-area: checkCambiaPrecio;
+    padding-top: 2px;
+}
+
+#lblcambiaPrecioSettingsB {
+    background-color: #E3E3E3;
+    color: #0300FF;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblCambiaPrecio;
+    padding-top: 2px;
+    text-align: start;
+}
+
+.settings_body-valores-inputs-rightSide-utilizarFactura {
+    display: grid;
+    grid-area: utilizarFactura;
+    height: 80%;
+    grid-template-areas: 
+        'checkUtilizarFactura lblUtilizarFactura';
+    grid-template-columns: 5% 90%;
+}
+
+.settings_body-valores-inputs-rightSide-utilizarFactura-check-input {
+    background-color: #E3E3E3;
+    grid-area: checkUtilizarFactura;
+    padding-top: 2px;
+}
+
+#lblutilizarFacturaSettingsB {
+    background-color: #E3E3E3;
+    color: #0300FF;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblUtilizarFactura;
+    padding-top: 2px;
+    text-align: start;
+}
+
+.settings_body-valores-check {
+    background-color: #E3E3E3;
+    display: grid;
+    grid-area: check;
+    height: 80%;
+    margin-left: 25%;
+    margin-right: 17%;
+    grid-template-areas: 
+        'checkEditar lblEditar';
+    grid-template-columns: 5% 90%;
+}
+
+.settings_body-valores-check-input {
+    grid-area: checkEditar;
+    padding-top: 5px;
+}
+
+#lbleditarSettingsB {
+    color: red;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblEditar;
+    padding-top: 5px;
+    text-align: start;
+    width: 50%;
+}

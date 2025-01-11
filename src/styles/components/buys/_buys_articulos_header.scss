@@ -1,0 +1,760 @@
+.buys_articulos-header-main {
+    height: 100%;
+    display: grid;
+    grid-template-areas: 
+        'firstLine'
+        'secondLine'
+        'thirdLine';
+    grid-template-rows: 25% 50% 25%;
+}
+
+.buys_articulos-header-firstLine {
+    grid-area: firstLine;
+    display: grid;
+    grid-template-areas: 
+        'codigo descripcion';
+    grid-template-columns: 25% 75%;
+}
+
+.buys_articulos-header-firstLine-codigo {
+    grid-area: codigo;
+    display: grid;
+    grid-template-areas: 
+        'lblcodigo txtcodigo';
+    grid-template-columns: 40% 60%;
+}
+
+.buys_articulos-header-firstLine-codigo-label {
+    grid-area: lblcodigo;
+    padding-top: 5px;
+}
+
+#lblCodigoArticuloBuys {
+    text-align: center;
+    font-size: 15px;
+    color: #4C58DC;
+}
+
+.buys_articulos-header-firstLine-codigo-inputs {
+    grid-area: txtcodigo;
+    display: grid;
+    grid-template-areas: 
+        'inputCodigo iconCodigo';
+    grid-template-columns: 85% 15%;
+}
+
+.buys_articulos-header-firstLine-codigo-inputs-txt {
+    grid-area: inputCodigo;
+    padding-top: 5px;
+}
+
+#txtCodigoArticuloBuys {
+    font-size: 15px;
+    right: 0px;
+    text-align: start;
+    width: 95%;
+    padding-left: 5px;
+}
+
+.buys_articulos-header-firstLine-codigo-inputs-icon {
+    grid-area: iconCodigo;
+    padding-top: 8px;
+}
+
+.btnSearchClienteBuys {
+    color: #F68A1D;
+    cursor: pointer;
+}
+
+.btnSearchClienteBuys-disable {
+    color: gray;
+    cursor: not-allowed;
+}
+
+.buys_articulos-header-firstLine-descripcion {
+    grid-area: descripcion;
+    display: grid;
+    grid-template-areas: 
+        'lbldescripcion txtdescripcion';
+    grid-template-columns: 20% 80%;
+}
+
+.buys_articulos-header-firstLine-descripcion-label {
+    grid-area: lbldescripcion;
+    padding-top: 5px;
+}
+
+#lblDescArticuloBuys {
+    text-align: center;
+    font-size: 15px;
+    color: #4C58DC;
+}
+
+.buys_articulos-header-firstLine-descripcion-txt {
+    grid-area: txtdescripcion;
+    padding-top: 5px;
+}
+
+#txtDescArticuloBuys {
+    font-size: 15px;
+    right: 0px;
+    text-align: start;
+    width: 95%;
+    padding-left: 5px;
+}
+
+.buys_articulos-header-secondLine {
+    grid-area: secondLine;
+    display: grid;
+    grid-template-areas: 
+        'cantidad base fletes otros costo descuento cabys impuesto totalCompra';
+    grid-template-columns: 15% 8% 8% 8% 8% 10% 20% 11% 12%;
+    border-top: 1px solid rgb(182, 177, 177);
+}
+
+.buys_articulos-header-secondLine-cantidad {
+    grid-area: cantidad;
+    display: grid;
+    grid-template-areas: 
+        'labelCantidad'
+        'inputsCantidad';
+    grid-template-rows: 50% 50%;
+    border-right: 1px solid rgb(209, 207, 207);
+}
+
+.buys_articulos-header-secondLine-cantidad-label {
+    grid-area: labelCantidad;
+    padding-top: 5px;
+}
+
+#lblCantidadArticuloBuys {
+    text-align: start;
+    padding-left: 5px;
+    font-size: 15px;
+    color: #4C58DC;
+}
+
+.buys_articulos-header-secondLine-cantidad-inputs {
+    grid-area: inputsCantidad;
+    display: grid;
+    grid-template-areas: 
+        'inputLeft btn inputRight';
+    grid-template-columns: 40% 20% 40%;
+}
+
+.buys_articulos-header-secondLine-cantidad-inputs-inputLeft {
+    grid-area: inputLeft;
+    padding-top: 5px;
+}
+
+#txtCantidadArticuloBuys {
+    font-size: 15px;
+    right: 0px;
+    text-align: end;
+    width: 95%;
+}
+
+.buys_articulos-header-secondLine-cantidad-inputs-btn {
+    grid-area: btn;
+    padding-top: 7px;
+}
+
+.iconMoreCantidadBuys {
+    color: #F68A1D;
+    cursor: pointer;
+}
+
+.iconMoreCantidadBuys-disable {
+    color: gray;
+    cursor: not-allowed;
+}
+
+.buys_articulos-header-secondLine-cantidad-inputs-inputRight {
+    grid-area: inputRight;
+    padding-top: 5px;
+}
+
+#txtRegaliasArticuloBuys {
+    font-size: 15px;
+    right: 0px;
+    text-align: end;
+    width: 95%;
+}
+
+.buys_articulos-header-secondLine-base {
+    grid-area: base;
+    display: grid;
+    grid-template-areas: 
+        'labelBase'
+        'inputBase';
+    grid-template-rows: 50% 50%;
+    border-right: 1px solid rgb(209, 207, 207);
+}
+
+.buys_articulos-header-secondLine-base-label {
+    grid-area: labelBase;
+    padding-top: 5px;
+}
+
+#lblBaseArticuloBuys {
+    text-align: start;
+    padding-left: 5px;
+    font-size: 15px;
+    color: #4C58DC;
+}
+
+.buys_articulos-header-secondLine-base-input {
+    grid-area: inputBase;
+    padding-top: 5px;
+}
+
+#txtbaseArticuloBuys {
+    font-size: 15px;
+    right: 0px;
+    text-align: end;
+    width: 95%;
+}
+
+.buys_articulos-header-secondLine-fletes {
+    grid-area: fletes;
+    display: grid;
+    grid-template-areas: 
+        'labelFletes'
+        'inputFletes';
+    grid-template-rows: 50% 50%;
+    border-right: 1px solid rgb(209, 207, 207);
+}
+
+.buys_articulos-header-secondLine-fletes-label {
+    grid-area: labelFletes;
+    padding-top: 5px;
+}
+
+#lblFletesArticuloBuys {
+    text-align: start;
+    padding-left: 5px;
+    font-size: 15px;
+    color: #4C58DC;
+}
+
+.buys_articulos-header-secondLine-fletes-input {
+    grid-area: inputFletes;
+    padding-top: 5px;
+}
+
+#txtfletesArticuloBuys {
+    font-size: 15px;
+    right: 0px;
+    text-align: end;
+    width: 95%;
+}
+
+.buys_articulos-header-secondLine-otros {
+    grid-area: otros;
+    display: grid;
+    grid-template-areas: 
+        'labelOtros'
+        'inputOtros';
+    grid-template-rows: 50% 50%;
+    border-right: 1px solid rgb(209, 207, 207);
+}
+
+.buys_articulos-header-secondLine-otros-label {
+    grid-area: labelOtros;
+    padding-top: 5px;
+}
+
+#lblOtrosArticuloBuys {
+    text-align: start;
+    padding-left: 5px;
+    font-size: 15px;
+    color: #4C58DC;
+}
+
+.buys_articulos-header-secondLine-otros-input {
+    grid-area: inputOtros;
+    padding-top: 5px;
+}
+
+#txtotrosArticuloBuys {
+    font-size: 15px;
+    right: 0px;
+    text-align: end;
+    width: 95%;
+}
+
+.buys_articulos-header-secondLine-costo {
+    grid-area: costo;
+    display: grid;
+    grid-template-areas: 
+        'labelCosto'
+        'inputCosto';
+    grid-template-rows: 50% 50%;
+    border-right: 1px solid rgb(209, 207, 207);
+}
+
+.buys_articulos-header-secondLine-costo-label {
+    grid-area: labelCosto;
+    padding-top: 5px;
+}
+
+#lblCostoArticuloBuys {
+    text-align: start;
+    padding-left: 5px;
+    font-size: 15px;
+    color: #4C58DC;
+}
+
+.buys_articulos-header-secondLine-costo-input {
+    grid-area: inputCosto;
+    padding-top: 5px;
+}
+
+#txtcostoArticuloBuys {
+    font-size: 15px;
+    right: 0px;
+    text-align: end;
+    width: 95%;
+}
+
+.buys_articulos-header-secondLine-descuento {
+    grid-area: descuento;
+    display: grid;
+    grid-template-areas: 
+        'titlesDescuento'
+        'inputDescuento';
+    grid-template-rows: 50% 50%;
+    border-right: 1px solid rgb(209, 207, 207);
+}
+
+.buys_articulos-header-secondLine-descuento-titles {
+    grid-area: titlesDescuento;
+    display: grid;
+    grid-template-areas: 
+        'labelDesc txtDescuento';
+    grid-template-columns: 50% 50%;
+}
+
+.buys_articulos-header-secondLine-descuento-titles-label {
+    grid-area: labelDesc;
+    padding-top: 5px;
+}
+
+#lblDescuentoArticuloBuys {
+    text-align: start;
+    padding-left: 5px;
+    font-size: 15px;
+    color: #4C58DC;
+}
+
+.buys_articulos-header-secondLine-descuento-titles-input {
+    grid-area: txtDescuento;
+    padding-top: 5px;
+}
+
+#inputTipoDescuentoArticuloBuys {
+    font-size: 15px;
+    right: 0px;
+    text-align: end;
+    width: 90%;
+}
+
+.buys_articulos-header-secondLine-descuento-input {
+    grid-area: inputDescuento;
+    padding-top: 5px;
+}
+
+#txtdescArticuloBuys {
+    font-size: 15px;
+    right: 0px;
+    text-align: end;
+    width: 95%;
+}
+
+.buys_articulos-header-secondLine-cabys {
+    grid-area: cabys;
+    display: grid;
+    grid-template-areas: 
+        'labelCabys'
+        'inputCabys';
+    grid-template-rows: 50% 50%;
+    border-right: 1px solid rgb(209, 207, 207);
+}
+
+.buys_articulos-header-secondLine-cabys-label {
+    grid-area: labelCabys;
+    padding-top: 5px;
+}
+
+#lblCabysArticuloBuys {
+    text-align: start;
+    padding-left: 5px;
+    font-size: 15px;
+    color: #4C58DC;
+}
+
+.buys_articulos-header-secondLine-cabys-input {
+    grid-area: inputCabys;
+    display: grid;
+    grid-template-areas: 
+        'txtCabys iconCabys';
+    grid-template-columns: 90% 10%;
+    padding-top: 5px;
+}
+
+.buys_articulos-header-secondLine-cabys-input-txt {
+    grid-area: txtCabys;
+}
+
+#txtcabysArticuloBuys {
+    font-size: 15px;
+    right: 0px;
+    text-align: end;
+    width: 95%;
+}
+
+.buys_articulos-header-secondLine-cabys-input-icon {
+    grid-area: iconCabys;
+    padding-top: 3px;
+}
+
+.btnSearchCabysBuys {
+    color: #F68A1D;
+    cursor: pointer;
+}
+
+.btnSearchCabysBuys-disable {
+    color: gray;
+    cursor: not-allowed;
+}
+
+.buys_articulos-header-secondLine-impuesto {
+    grid-area: impuesto;
+    display: grid;
+    grid-template-areas: 
+        'titlesImpuesto'
+        'inputImpuesto';
+    grid-template-rows: 50% 50%;
+    border-right: 1px solid rgb(209, 207, 207);
+}
+
+.buys_articulos-header-secondLine-impuesto-titles {
+    grid-area: titlesImpuesto;
+    display: grid;
+    grid-template-areas: 
+        'labelImpuesto txtImpuesto';
+    grid-template-columns: 50% 50%;
+}
+
+.buys_articulos-header-secondLine-impuesto-titles-label {
+    grid-area: labelImpuesto;
+    padding-top: 5px;
+}
+
+#lblImpuestoArticuloBuys {
+    text-align: start;
+    padding-left: 5px;
+    font-size: 15px;
+    color: #4C58DC;
+}
+
+.buys_articulos-header-secondLine-impuesto-titles-input {
+    grid-area: txtImpuesto;
+    padding-top: 5px;
+}
+
+#inputTipoImpArticuloBuys {
+    font-size: 15px;
+    right: 0px;
+    text-align: end;
+    width: 90%;
+}
+
+.buys_articulos-header-secondLine-impuesto-input {
+    grid-area: inputImpuesto;
+    padding-top: 5px;
+}
+
+#txtdescArticuloBuys {
+    font-size: 15px;
+    right: 0px;
+    text-align: end;
+    width: 95%;
+}
+
+.buys_articulos-header-secondLine-totalCompra {
+    grid-area: totalCompra;
+    display: grid;
+    grid-template-areas: 
+        'labelTotalCompra'
+        'inputTotalCompra';
+    grid-template-rows: 50% 50%;
+}
+
+.buys_articulos-header-secondLine-totalCompra-label {
+    grid-area: labelTotalCompra;
+    padding-top: 5px;
+}
+
+#lblTotalCompraArticuloBuys {
+    text-align: start;
+    padding-left: 5px;
+    font-size: 15px;
+    color: #4C58DC;
+}
+
+.buys_articulos-header-secondLine-totalCompra-input {
+    grid-area: inputTotalCompra;
+    padding-top: 5px;
+}
+
+#txttotalCompraArticuloBuys {
+    font-size: 15px;
+    right: 0px;
+    text-align: end;
+    width: 95%;
+}
+
+.buys_articulos-header-thirdLine {
+    grid-area: thirdLine;
+    display: grid;
+    grid-template-areas: 
+        'codigo cantidad costo subTotal bonificado btn';
+    grid-template-columns: 15% 16% 16% 16% 15% 22%;
+    border-top: 1px solid rgb(209, 207, 207);
+}
+
+.buys_articulos-header-thirdLine-codigo {
+    grid-area: codigo;
+    display: grid;
+    grid-template-areas: 
+        'lblCodigo inputCodigo';
+    grid-template-columns: 45% 55%;
+}
+
+.buys_articulos-header-thirdLine-codigo-label {
+    grid-area: lblCodigo;
+    padding-top: 5px;
+}
+
+#lblCodigo2PBuys {
+    text-align: center;
+    padding-left: 5px;
+    font-size: 15px;
+    color: #4C58DC;
+}
+
+.buys_articulos-header-thirdLine-codigo-input {
+    grid-area: inputCodigo;
+    padding-top: 5px;
+}
+
+#txtCodigo2PBuys {
+    font-size: 15px;
+    right: 0px;
+    text-align: end;
+    width: 95%;
+}
+
+.buys_articulos-header-thirdLine-cantidad {
+    grid-area: cantidad;
+    display: grid;
+    grid-template-areas: 
+        'lblCantidad inputCantidad';
+    grid-template-columns: 45% 55%;
+}
+
+.buys_articulos-header-thirdLine-cantidad-label {
+    grid-area: lblCantidad;
+    padding-top: 5px
+}
+
+#lblCantidadPBuys {
+    text-align: center;
+    padding-left: 5px;
+    font-size: 15px;
+    color: #4C58DC;
+}
+
+.buys_articulos-header-thirdLine-cantidad-input {
+    grid-area: inputCantidad;
+    padding-top: 5px
+}
+
+#txtCantidadPBuys {
+    font-size: 15px;
+    right: 0px;
+    text-align: end;
+    width: 95%;
+}
+
+.buys_articulos-header-thirdLine-costo {
+    grid-area: costo;
+    display: grid;
+    grid-template-areas: 
+        'lblCosto inputCosto';
+    grid-template-columns: 45% 55%;
+}
+
+.buys_articulos-header-thirdLine-costo-label {
+    grid-area: lblCosto;
+    padding-top: 5px;
+}
+
+#lblCostoPBuys {
+    text-align: center;
+    padding-left: 5px;
+    font-size: 15px;
+    color: #4C58DC;
+}
+
+.buys_articulos-header-thirdLine-costo-input {
+    grid-area: inputCosto;
+    padding-top: 5px;
+    padding-left: 13px;
+}
+
+#txtCostoPBuys {
+    font-size: 15px;
+    right: 0px;
+    text-align: end;
+    width: 95%;
+}
+
+.buys_articulos-header-thirdLine-subTotal {
+    grid-area: subTotal;
+    display: grid;
+    grid-template-areas: 
+        'lblSubTotal inputSubTotal';
+    grid-template-columns: 45% 55%;
+}
+
+.buys_articulos-header-thirdLine-subTotal-label {
+    grid-area: lblSubTotal;
+    padding-top: 5px;
+}
+
+#lblSubTotalPBuys {
+    text-align: center;
+    padding-left: 5px;
+    font-size: 15px;
+    color: #4C58DC;
+}
+
+.buys_articulos-header-thirdLine-subTotal-input {
+    grid-area: inputSubTotal;
+    padding-top: 5px;
+}
+
+#txtSubTotalPBuys {
+    font-size: 15px;
+    right: 0px;
+    text-align: end;
+    width: 95%;
+}
+
+.buys_articulos-header-thirdLine-bonificado {
+    grid-area: bonificado;
+    display: grid;
+    grid-template-areas: 
+        'checkBonificado lblBonificado';
+    grid-template-columns: 15% 55%;
+}
+
+.buys_articulos-header-thirdLine-bonificado-check {
+    grid-area: checkBonificado;
+    padding-top: 8px;
+}
+
+.buys_articulos-header-thirdLine-bonificado-label {
+    grid-area: lblBonificado;
+    padding-right: 30%;
+    padding-top: 7px;
+}
+
+#lblBonificadoBuys {
+    text-align: start;
+    font-size: 15px;
+    color: #4C58DC;
+}
+
+.buys_articulos-header-thirdLine-btns {
+    grid-area: btn;
+    padding-left: 60%;
+    display: grid;
+    grid-template-areas: 
+        'infoBtn btnAdd';
+    grid-template-columns: 40% 60%;
+}
+
+.buys_articulos-header-thirdLine-btns-info {
+    grid-area: infoBtn;
+    padding-top: 8px;
+}
+
+.iconInfoBuysHeaderArticulo {
+    width: 30%;
+    height: 80%;
+    color: $secundary;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.iconInfoBuysHeaderArticulo-disable {
+    width: 30%;
+    height: 80%;
+    color: gray;
+
+    &:hover {
+        cursor: not-allowed;
+    }
+}
+
+.lblMensajeInfoBuysHeaderArticulo {
+    visibility: visible;
+    width: 250px;
+    background-color: rgb(183, 181, 181);
+    color: #767373;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+  
+    /* Position the tooltip */
+    position: absolute;
+    top: 280px;
+    left: 1075px;
+    z-index: 1;
+}
+
+.buys_articulos-header-thirdLine-btns-add {
+    grid-area: btnAdd;
+    padding-top: 5px;
+}
+
+#btnAddBuysHeaderArticulo {
+    width: 90%;
+    height: 90%;
+    font-size: 15px;
+    background-color: $primary;
+    color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+
+    &:hover {
+        background-color: $secundary;
+    }
+}
+
+#btnAddBuysHeaderArticulo-disable {
+    width: 90%;
+    height: 90%;
+    font-size: 15px;
+    background-color: gray;
+    color: white;
+    cursor: not-allowed;
+    border: none;
+    border-radius: 3px;
+}

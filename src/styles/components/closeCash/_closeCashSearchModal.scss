@@ -1,0 +1,294 @@
+.modal_searchCloseCash-main {
+    display: grid;
+    text-align: center;
+    grid-template-areas:
+        'title' 
+        'inputs'
+        'table';
+    grid-template-rows: 40px 60px 270px;
+}
+
+.modal_searchCloseCash-title {
+    display: grid;
+    gap: 5px;
+    grid-area: title;
+    grid-template-areas: 
+        'text btnClose';
+    grid-template-columns: 95% 5%;
+}
+
+#lblTitleSearchCloseCashModal {
+    background-color: $primary;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    grid-area: text;
+    margin-bottom: 5px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    text-align: center;
+}
+
+#lblCloseSearchCloseCashModal {
+    background-color: red;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    grid-area: btnClose;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    text-align: center;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.modal_searchCloseCash-inputs {
+    display: grid;
+    grid-area: inputs;
+    grid-template-areas: 
+        'top'
+        'bottom';
+    grid-template-rows: 40% 60%;
+}
+
+.modal_searchCloseCash-inputs-top {
+    grid-area: top;
+    display: grid;
+    grid-template-areas: 
+        'input btn';
+    grid-template-columns: 85% 15%;
+}
+
+.modal_searchCloseCash-inputs-top-input {
+    grid-area: input;
+}
+
+#txtDescripcionModalSearchCloseCash {
+    border: 1px solid black;
+    font-size: 15px;
+    height: 80%;
+    padding-left: 5px;
+    margin-left: 5px;
+    margin-top: 2px;
+    text-align: start;
+    width: 98%;
+}
+
+.modal_searchCloseCash-inputs-top-btn {
+    grid-area: btn;
+}
+
+#btnSearchCloseCashModalSearch {
+    background-color: $secundary;
+    border: none;
+    color: white;
+    margin-top: 2px;
+    height: 80%;
+    margin-right: 5px;
+    margin-left: 5px;
+    width: 95%;
+    border-radius: 5%;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $primary;
+    }
+}
+
+.modal_searchCloseCash-inputs-bottom {
+    grid-area: bottom;
+    display: grid;
+    grid-template-areas: 
+        'title cierre nombre fechas';
+    grid-template-columns: 25% 12% 12% 51%;
+}
+
+.modal_searchCloseCash-inputs-bottom-title {
+    grid-area: title;
+    padding-top: 7px;
+}
+
+#lblCriteriosBusquedaSearchCloseCashModal {
+    text-align: center;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.modal_searchCloseCash-inputs-bottom-cierre {
+    grid-area: cierre;
+    display: grid;
+    grid-template-areas: 
+        'checkCierre lblCierre';
+    grid-template-columns: 20% 80%;
+    padding-top: 7px;
+}
+
+.modal_searchCloseCash-inputs-bottom-cierre-check {
+    grid-area: checkCierre;
+}
+
+.modal_searchCloseCash-inputs-bottom-cierre-label {
+    grid-area: lblCierre;
+    text-align: start;
+}
+
+.modal_searchCloseCash-inputs-bottom-nombre {
+    grid-area: nombre;
+    display: grid;
+    grid-template-areas: 
+        'checkNombre lblNombre';
+    grid-template-columns: 20% 80%;
+    padding-top: 7px;
+}
+
+.modal_searchCloseCash-inputs-bottom-nombre-check {
+    grid-area: checkNombre;
+}
+
+.modal_searchCloseCash-inputs-bottom-nombre-label {
+    grid-area: lblNombre;
+    text-align: start;
+}
+
+.modal_searchCloseCash-inputs-bottom-fechas {
+    grid-area: fechas;
+    display: grid;
+    grid-template-areas: 
+        'checkFechas desde hasta';
+    grid-template-columns: 20% 40% 40%;
+}
+
+.modal_searchCloseCash-inputs-bottom-fechas-checks {
+    grid-area: checkFechas;
+    display: grid;
+    grid-template-areas: 
+        'checkFechas lblFechas';
+    grid-template-columns: 20% 80%;
+    padding-top: 7px;
+}
+
+.modal_searchCloseCash-inputs-bottom-fechas-checks-check {
+    grid-area: checkFechas;
+}
+
+.modal_searchCloseCash-inputs-bottom-fechas-checks-label {
+    grid-area: lblFechas;
+    text-align: start;
+}
+
+.modal_searchCloseCash-inputs-bottom-fechas-desde {
+    grid-area: desde;
+    display: grid;
+    grid-template-areas: 
+        'lblDesdeFecha'
+        'txtDesdeFecha';
+    grid-template-rows: 45% 55%;
+}
+
+.modal_searchCloseCash-inputs-bottom-fechas-desde-label {
+    grid-area: lblDesdeFecha;
+    padding-left: 5px;
+    text-align: start;
+}
+
+#lblFechaDesdeSearchCloseCashModal {
+    text-align: start;
+    font-size: 15px;
+}
+
+.modal_searchCloseCash-inputs-bottom-fechas-desde-txt {
+    grid-area: txtDesdeFecha;
+}
+
+#txtFechaDesdeSearchCloseCashModal {
+    width: 90%;
+    height: 90%;
+    text-align: center;
+}
+
+.modal_searchCloseCash-inputs-bottom-fechas-hasta {
+    grid-area: hasta;
+    display: grid;
+    grid-template-areas: 
+        'lblHastaFecha'
+        'txtHastaFecha';
+    grid-template-rows: 45% 55%;
+}
+
+.modal_searchCloseCash-inputs-bottom-fechas-hasta-label {
+    grid-area: lblHastaFecha;
+    padding-left: 5px;
+    text-align: start;
+}
+
+#lblFechaHastaSearchCloseCashModal {
+    text-align: start;
+    font-size: 15px;
+}
+
+.modal_searchCloseCash-inputs-bottom-fechas-hasta-txt {
+    grid-area: txtHastaFecha;
+}
+
+#txtFechaHastaSearchCloseCashModal {
+    width: 90%;
+    height: 90%;
+    text-align: center;
+}
+
+.modal_searchCloseCash-table {
+    grid-area: table;
+    margin-top: 5px;
+}
+
+.modal_searchCloseCash-table-table {
+    width: 99%;
+    height: 100%;
+    margin-left: 2px;
+    overflow-y: scroll;
+    scrollbar-color: rebeccapurple green;
+    scrollbar-width: thin;
+    border: 1px solid black;
+}
+
+.modal_searchCloseCash-table-header-apertura {
+    background-color: #ACA9A9;
+    text-align: start;
+    padding-left: 5px;
+    width: 150px;
+}
+
+.modal_searchCloseCash-table-header-nombre {
+    background-color: #ACA9A9;
+    text-align: start;
+    padding-left: 5px;
+    width: 550px;
+}
+
+.modal_searchCloseCash-table-header-fecha {
+    background-color: #ACA9A9;
+    text-align: start;
+    padding-left: 5px;
+    width: 300px;
+}
+
+.modal_searchCloseCash-table-body {
+    text-align: start;
+    font-style: normal;
+}
+
+.modal_searchCloseCash-table-body-row {
+    &:hover {
+        cursor: pointer;
+        background-color: #ACA9A9;
+    }
+}
+
+.modal_searchCloseCash-table-body-cell {
+    padding-left: 5px;
+    border-bottom: 1px solid #ACA9A9;
+}

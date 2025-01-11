@@ -1,0 +1,125 @@
+.unifyCode_icons-main {
+    border: 1px solid black;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'btnNuevo btnBuscar btnAnular btnCerrar';
+    grid-template-columns: 8% 8% 8% 8%;
+}
+
+.unifyCode_icons-icon-nuevo {
+    display: grid;
+    grid-area: btnNuevo;
+    height: 100%;
+    grid-template-areas: 
+        'iconNue'
+        'lblNue';
+    grid-template-rows: 60% 40%;
+}
+
+.unifyCode_icons-icon-nuevo-icon {
+    color: #F68A1D;
+    grid-area: iconNue;
+    padding-top: 4px;
+}
+
+#iconNuevoUnifyCode {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblNuevoUnifyCode {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblNue;
+    text-align: center;
+}
+
+.unifyCode_icons-icon-Buscar {
+    display: grid;
+    grid-area: btnBuscar;
+    height: 100%;
+    grid-template-areas: 
+        'iconBus'
+        'lblBus';
+    grid-template-rows: 60% 40%;
+}
+
+.unifyCode_icons-icon-Buscar-icon {
+    color: #F68A1D;
+    grid-area: iconBus;
+    padding-top: 4px;
+}
+
+#iconBusUnifyCode {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblBuscarUnifyCode {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblBus;
+    text-align: center;
+}
+
+.unifyCode_icons-icon-anular {
+    display: grid;
+    grid-area: btnAnular;
+    height: 100%;
+    grid-template-areas: 
+        'iconAnu'
+        'lblAnu';
+    grid-template-rows: 60% 40%;
+}
+
+.unifyCode_icons-icon-anular-icon {
+    color: #F68A1D;
+    grid-area: iconAnu;
+    padding-top: 4px;
+}
+
+#iconAnularUnifyCode {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblAnularUnifyCode {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblAnu;
+    text-align: center;
+}
+
+.unifyCode_icons-icon-cerrar {
+    display: grid;
+    grid-area: btnCerrar;
+    height: 100%;
+    grid-template-areas: 
+        'iconCer'
+        'lblCer';
+    grid-template-rows: 60% 40%;
+}
+
+.unifyCode_icons-icon-cerrar-icon {
+    color: #F68A1D;
+    grid-area: iconCer;
+    padding-top: 4px;
+}
+
+#iconCerrarUnifyCode {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblCerrarUnifyCode {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblCer;
+    text-align: center;
+}
+

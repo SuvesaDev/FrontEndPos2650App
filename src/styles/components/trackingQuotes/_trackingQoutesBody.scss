@@ -1,0 +1,276 @@
+.trackingQoutes_body-main {
+    border: 1px solid black;
+    display: grid;
+    height: 100%;
+    margin-left: 5%;
+    margin-right: 5%;
+    grid-template-areas: 
+        'header'
+        'table'
+        'totals';
+    grid-template-rows: 15% 75% 10%;
+}
+
+.trackingQoutes_body-header {
+    display: grid;
+    grid-area: header;
+    height: 100%;
+    grid-template-areas: 
+        'cambiarEstado buscar abrirCotizacion';
+    grid-template-columns: 12% 25% 15%;
+}
+
+.trackingQoutes_body-header-cambiarEstado {
+    display: grid;
+    grid-area: cambiarEstado;
+    height: 100%;
+    margin-left: 5px;
+    grid-template-areas: 
+        'iconCE btnCE';
+    grid-template-columns: 15% 85%;
+}
+
+.trackingQoutes_body-header-cambiarEstado-icon {
+    grid-area: iconCE;
+    padding-top: 20px;
+}
+
+#iconSync {
+    color: $secundary;
+}
+
+.trackingQoutes_body-header-cambiarEstado-btn {
+    grid-area: btnCE;
+    padding-top: 15px;
+}
+
+#btnCambiarEstadoTQ {
+    height: 70%;
+    width: 95%;
+
+    &:hover {
+        background-color: #f5f5f5;
+        cursor: pointer;
+    }
+}
+
+.trackingQoutes_body-header-buscar {
+    display: grid;
+    grid-area: buscar;
+    height: 100%;
+    grid-template-areas: 
+        'lblbuscar txtbuscar';
+    grid-template-columns: 20% 80%;
+}
+
+#lblBuscarTQ {
+    font-size: 15px;
+    grid-area: lblbuscar;
+    padding-top: 20px;
+    text-align: center;
+}
+
+#txtBuscarTQ {
+    font-size: 15px;
+    grid-area: txtbuscar;
+    height: 50%;
+    margin-top: 15px;
+    text-align: start;
+    width: 95%;
+}
+
+.trackingQoutes_body-header-abrirCotizacion {
+    display: grid;
+    grid-area: abrirCotizacion;
+    height: 100%;
+    grid-template-areas: 
+        'iconAC btnAB';
+    grid-template-columns: 15% 85%;
+}
+
+.trackingQoutes_body-header-abrirCotizacion-icon {
+    grid-area: iconAC;
+    padding-top: 20px;
+}
+
+#iconBinoculars {
+    color: $secundary;
+}
+
+.trackingQoutes_body-header-abrirCotizacion-btn {
+    grid-area: btnAB;
+    padding-top: 15px;
+}
+
+#btnAbrirCotizacionTQ {
+    width: 95%;
+    height: 70%;
+
+    &:hover {
+        background-color: #f5f5f5;
+        cursor: pointer;
+    }
+}
+
+.trackingQoutes_body-table {
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    grid-area: table;
+}
+
+.trackingQoutes_body-table-main {
+    width: 100%;
+}
+
+.trackingQoutes_body-header-cotizacion {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 2%;
+}
+
+.trackingQoutes_body-header-fecha {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 5%;
+}
+
+.trackingQoutes_body-header-nombreCliente {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.trackingQoutes_body-header-total {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 3%;
+}
+
+.trackingQoutes_body-header-estadoActual {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 5%;
+}
+
+.trackingQoutes_body-header-contacto {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 5%;
+}
+
+.trackingQoutes_body-header-telefono {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 5%;
+}
+
+.trackingQoutes_body-header-numeroFactura {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 5%;
+}
+
+.trackingQoutes_body-header-montoFactura {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 5%;
+}
+
+.trackingQoutes_body-cotizacion {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.trackingQoutes_body-fecha {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.trackingQoutes_body-nombreCliente {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.trackingQoutes_body-total {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.trackingQoutes_body-estadoActual {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.trackingQoutes_body-contacto {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.trackingQoutes_body-telefono {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.trackingQoutes_body-numeroFactura {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.trackingQoutes_body-montoFactura {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.trackingQoutes_body-totals {
+    display: grid;
+    grid-area: totals;
+    height: 100%;
+    margin-left: 80%;
+    grid-template-areas: 
+        'lbltotals txttotals';
+    grid-template-columns: 40% 60%;
+}
+
+#lblTotalsTQ {
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lbltotals;
+    padding-top: 10px;
+}
+
+#txtTotalsTQ {
+    font-size: 15px;
+    grid-area: txttotals;
+    height: 60%;
+    margin-left: 2px;
+    margin-top: 8px;
+    text-align: start;
+    width: 90%;
+}

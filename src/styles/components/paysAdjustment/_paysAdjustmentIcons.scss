@@ -1,0 +1,283 @@
+.pays_adjustment-icons-main {
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'icon saldoCuenta';
+    grid-template-columns: 65% 35%;
+}
+
+.pays_adjustment-icons-icon {
+    border: 1px solid black;
+    display: grid;
+    grid-area: icon;
+    height: 100%;
+    grid-template-areas: 
+        'btnNuevo btnBuscar btnRegistrar btnAnular btnCerrar';
+    grid-template-columns: 10% 10% 10% 10% 10%;
+}
+
+.pays_adjustment-icons-icon-nuevo {
+    display: grid;
+    grid-area: btnNuevo;
+    height: 100%;
+    grid-template-areas: 
+        'iconNue'
+        'lblNue';
+    grid-template-rows: 60% 40%;
+}
+
+.pays_adjustment-icons-icon-nuevo-icon {
+    color: #F68A1D;
+    grid-area: iconNue;
+    padding-top: 4px;
+}
+
+#iconNuevoPaysAdj {
+    cursor: pointer;
+    height: 100%;
+    width: 35%;
+}
+
+#lblNuevoPaysAdj {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblNue;
+    text-align: center;
+}
+
+.pays_adjustment-icons-icon-Buscar {
+    display: grid;
+    grid-area: btnBuscar;
+    height: 100%;
+    grid-template-areas: 
+        'iconBus'
+        'lblBus';
+    grid-template-rows: 60% 40%;
+}
+
+.pays_adjustment-icons-icon-Buscar-icon {
+    color: #F68A1D;
+    grid-area: iconBus;
+    padding-top: 4px;
+}
+
+#iconBusPaysAdj {
+    cursor: pointer;
+    height: 100%;
+    width: 30%;
+}
+
+#lblBuscarPaysAdj {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblBus;
+    text-align: center;
+}
+
+.pays_adjustment-icons-icon-registrar {
+    display: grid;
+    grid-area: btnRegistrar;
+    height: 100%;
+    grid-template-areas: 
+        'iconReg'
+        'lblReg';
+    grid-template-rows: 60% 40%;
+}
+
+.pays_adjustment-icons-icon-registrar-icon {
+    color: #F68A1D;
+    grid-area: iconReg;
+    padding-top: 4px;
+}
+
+#iconRegistrarPaysAdj {
+    cursor: pointer;
+    height: 100%;
+    width: 35%;
+}
+
+#lblRegistrarPaysAdj {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblReg;
+    text-align: center;
+}
+
+.pays_adjustment-icons-icon-anular {
+    display: grid;
+    grid-area: btnAnular;
+    height: 100%;
+    grid-template-areas: 
+        'iconAnu'
+        'lblAnu';
+    grid-template-rows: 60% 40%;
+}
+
+.pays_adjustment-icons-icon-anular-icon {
+    color: #F68A1D;
+    grid-area: iconAnu;
+    padding-top: 4px;
+}   
+
+#iconAnularPaysAdj {
+    cursor: pointer;
+    height: 100%;
+    width: 35%;
+}
+
+#lblAnularPaysAdj {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblAnu;
+    text-align: center;
+}
+
+.pays_adjustment-icons-icon-cerrar {
+    display: grid;
+    grid-area: btnCerrar;
+    height: 100%;
+    grid-template-areas: 
+        'iconCer'
+        'lblCer';
+    grid-template-rows: 60% 40%;
+}
+
+.pays_adjustment-icons-icon-cerrar-icon {
+    color: #F68A1D;
+    grid-area: iconCer;
+    padding-top: 4px;
+}
+
+#iconCerrarPaysAdj {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblCerrarPaysAdj {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblCer;
+    text-align: center;
+}
+
+.pays_adjustment-icons-saldosCuenta {
+    border-bottom: 1px solid black;
+    display: grid;
+    grid-area: saldoCuenta;
+    height: 100%;
+    grid-template-areas: 
+        'title'
+        'inputs';
+    grid-template-rows: 30% 70%;
+}
+
+#lblsaldosCuentaTitlePaysAdj {
+    background-color: #3D62DB;
+    color: white;
+    font-size: 15px;
+    grid-area: title;
+    padding-top: 1px;
+}
+
+.pays_adjustment-icons-saldosCuenta-inputs {
+    display: grid;
+    grid-area: inputs;
+    height: 100%;
+    grid-template-areas: 
+        'saldoAnt montoRecido saldoAct';
+    grid-template-columns: 33% 33% 33%;
+}
+
+.pays_adjustment-icons-saldosCuenta-inputs-saldoAnt {
+    display: grid;
+    grid-area: saldoAnt;
+    height: 100%;
+    grid-template-areas: 
+        'lblsaldoAnt'
+        'inputsaldoAnt';
+    grid-template-rows: 40% 60%;
+}
+
+#lblSaldoAntIconsPaysAdjustment {
+    background-color: #EEF2E6;
+    color: #5578C9;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblsaldoAnt;
+    margin-left: 5px;
+    text-align: center;
+    width: 90%;
+}
+
+#txtSaldoAntIconsPaysAdjustment {
+    font-size: 12px;
+    grid-area: inputsaldoAnt;
+    height: 80%;
+    margin-left: 5px;
+    margin-top: 2px;
+    text-align: start;
+    width: 90%;
+}
+
+.pays_adjustment-icons-saldosCuenta-inputs-montoRecidos {
+    display: grid;
+    grid-area: montoRecido;
+    height: 100%;
+    grid-template-areas: 
+        'lblmontoRec'
+        'inputmontoRec';
+    grid-template-rows: 40% 60%;
+}
+
+#lblMontoRecIconsPaysAdjustment {
+    background-color: #EEF2E6;
+    color: #5578C9;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblmontoRec;
+    margin-left: 5px;
+    text-align: center;
+    width: 90%;
+}
+
+#txtMontoRecIconsPaysAdjustment {
+    font-size: 12px;
+    grid-area: inputmontoRec;
+    height: 80%;
+    margin-left: 5px;
+    margin-top: 2px;
+    text-align: start;
+    width: 90%;
+}
+
+.pays_adjustment-icons-saldosCuenta-inputs-saldoAct {
+    display: grid;
+    grid-area: saldoAct;
+    height: 100%;
+    grid-template-areas: 
+        'lblsaldoAct'
+        'inputsaldoAct';
+    grid-template-rows: 40% 60%;
+}
+
+#lblSaldoActIconsPaysAdjustment {
+    background-color: #EEF2E6;
+    color: #5578C9;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblsaldoAct;
+    margin-left: 5px;
+    text-align: center;
+    width: 90%;
+}
+
+#txtSaldoActIconsPaysAdjustment {
+    font-size: 12px;
+    grid-area: inputsaldoAct;
+    height: 80%;
+    margin-left: 5px;
+    margin-top: 2px;
+    text-align: start;
+    width: 90%;
+}

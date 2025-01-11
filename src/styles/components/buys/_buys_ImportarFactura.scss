@@ -1,0 +1,590 @@
+.modal_importarFactura-main {
+    display: grid;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+    grid-template-areas:
+        'title' 
+        'inputs'
+        'table'
+        'buttons';
+    grid-template-rows: 40px 130px 220px 40px;
+}
+
+.modal_importarFactura-title {
+    display: grid;
+    gap: 5px;
+    grid-area: title;
+    grid-template-areas: 
+        'text btnClose';
+    grid-template-columns: 95% 5%;
+}
+
+#lblTitleImportarFModal {
+    background-color: $primary;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    grid-area: text;
+    margin-bottom: 5px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    text-align: center;
+}
+
+#lblCloseImportarFModal {
+    background-color: red;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    grid-area: btnClose;
+    margin-bottom: 5px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    text-align: center;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.modal_importarFactura-inputs {
+    display: grid;
+    grid-area: inputs;
+    grid-template-areas:
+        'first' 
+        'second'
+        'third';
+    grid-template-rows: 20% 40% 40%;
+}
+
+.modal_importarFactura-inputs-first {
+    grid-area: first;
+    display: grid;
+    grid-template-areas:
+        'btn label';
+    grid-template-columns: 20% 40%;
+}
+
+.modal_importarFactura-inputs-first-btn {
+    grid-area: btn;
+}
+
+.btnChooseFileBuys {
+    width: 80%;
+    height: 90%;
+    text-align: center;
+    background-color: $secundary;
+    color: white;
+    border: none;
+
+    &:hover {
+        background-color: $primary;
+        cursor: pointer;
+    }
+}
+
+.modal_importarFactura-inputs-first-label {
+    grid-area: label;
+    margin-right: 10px;
+}
+
+#txtCertificadoBuys {
+    display: none;
+}
+
+#txtResultoFileChooseBuys {
+    width: 100%;
+    text-align: start;
+    font-size: 15px;
+}
+
+.modal_importarFactura-inputs-second {
+    grid-area: second;
+    display: grid;
+    grid-template-areas:
+        'consecutivo clave';
+    grid-template-columns: 40% 60%;
+}
+
+.modal_importarFactura-inputs-second-consecutivo {
+    display: grid;
+    grid-area: consecutivo;
+    grid-template-areas:
+        'labelConsecutivo' 
+        'inputConsecutivo';
+    grid-template-rows: 50% 50%;
+    padding-left: 10px;
+}
+
+.modal_importarFactura-inputs-second-consecutivo-label {
+    grid-area: labelConsecutivo;
+    padding-top: 5px;
+}
+
+#lblConsecutivoImportarFModal {
+    color: #4C58DC;
+    font-size: 15px;
+    text-align: start;
+    padding-left: 10px;
+}
+
+.modal_importarFactura-inputs-second-consecutivo-input {
+    grid-area: inputConsecutivo;
+}
+
+#txtConsecutivoImportarFModal {
+    color: #4C58DC;
+    font-size: 15px;
+    right: 0px;
+    text-align: start;
+    width: 95%;
+}
+
+.modal_importarFactura-inputs-second-clave {
+    grid-area: clave;
+    display: grid;
+    grid-template-areas:
+        'labelClave' 
+        'inputClave';
+    grid-template-rows: 50% 50%;
+    padding-left: 10px;
+}
+
+.modal_importarFactura-inputs-second-clave-label {
+    grid-area: labelClave;
+    padding-top: 5px;
+}
+
+#lblClaveImportarFModal {
+    color: #4C58DC;
+    font-size: 15px;
+    text-align: start;
+}
+
+.modal_importarFactura-inputs-second-clave-input {
+    grid-area: inputClave;
+    padding-right: 15px;
+}
+
+#txtClaveImportarFModal {
+    color: #4C58DC;
+    font-size: 15px;
+    right: 0px;
+    text-align: start;
+    width: 100%;
+}
+
+.modal_importarFactura-inputs-third {
+    grid-area: third;
+    display: grid;
+    grid-template-areas:
+        'cedula proveedor fecha estado';
+    grid-template-columns: 20% 50% 15% 15%;
+}
+
+.modal_importarFactura-inputs-third-cedula {
+    grid-area: cedula;
+    display: grid;
+    grid-template-areas:
+        'labelCedula' 
+        'inputCedula';
+    grid-template-rows: 50% 50%;
+    padding-left: 18px;
+}
+
+.modal_importarFactura-inputs-third-cedula-label {
+    grid-area: labelCedula;
+    padding-top: 5px;
+}
+
+#lblCedulaImportarFModal {
+    color: #4C58DC;
+    font-size: 15px;
+    text-align: start;
+}
+
+.modal_importarFactura-inputs-third-cedula-input {
+    grid-area: inputCedula;
+    padding-right: 15px;
+}
+
+#txtCedulaImportarFModal {
+    color: #4C58DC;
+    font-size: 15px;
+    right: 0px;
+    text-align: start;
+    width: 100%;
+}
+
+.modal_importarFactura-inputs-third-proveedor {
+    grid-area: proveedor;
+    display: grid;
+    grid-template-areas:
+        'labelProveedor' 
+        'inputProveedor';
+    grid-template-rows: 50% 50%;
+    padding-left: 10px;
+}
+
+.modal_importarFactura-inputs-third-proveedor-label {
+    grid-area: labelProveedor;
+    padding-top: 5px;
+}
+
+#lblProveedorImportarFModal {
+    color: #4C58DC;
+    font-size: 15px;
+    text-align: start; 
+}
+
+.modal_importarFactura-inputs-third-proveedor-input {
+    grid-area: inputProveedor;
+    padding-right: 15px;
+}
+
+#txtProveedorImportarFModal {
+    color: #4C58DC;
+    font-size: 15px;
+    right: 0px;
+    text-align: start;
+    width: 100%;
+}
+
+.modal_importarFactura-inputs-third-fecha {
+    grid-area: fecha;
+    display: grid;
+    grid-template-areas:
+        'labelFechas' 
+        'inputFechas';
+    grid-template-rows: 50% 50%;
+    padding-left: 10px;
+}
+
+.modal_importarFactura-inputs-third-fecha-label {
+    grid-area: labelFechas;
+    padding-top: 5px;
+}
+
+#lblFechaImportarFModal {
+    color: #4C58DC;
+    font-size: 15px;
+    text-align: start; 
+}
+
+.modal_importarFactura-inputs-third-fecha-input {
+    grid-area: inputFechas;
+    padding-right: 15px;
+}
+
+#txtFechaImportarFModal {
+    color: #4C58DC;
+    font-size: 15px;
+    right: 0px;
+    text-align: start;
+    width: 100%;
+}
+
+.modal_importarFactura-inputs-third-estado {
+    grid-area: estado;
+    display: grid;
+    grid-template-areas:
+        'labelEstado' 
+        'inputEstado';
+    grid-template-rows: 50% 50%;
+    padding-left: 10px;
+}
+
+.modal_importarFactura-inputs-third-estado-label {
+    grid-area: labelEstado;
+    padding-top: 5px;
+}
+
+#lblEstadoImportarFModal {
+    color: #4C58DC;
+    font-size: 15px;
+    text-align: start;
+}
+
+.modal_importarFactura-inputs-third-estado-input {
+    grid-area: inputEstado;
+    padding-right: 15px;
+}
+
+#txtEstadoImportarFModal {
+    color: #4C58DC;
+    font-size: 15px;
+    right: 0px;
+    text-align: start;
+    width: 100%;
+}
+
+.modal_importarFactura-table {
+    border: 1px solid rgb(190, 188, 188);
+    grid-area: table;
+    height: 98%;
+    margin-left: 18px;
+    margin-right: 15px;
+    border-radius: 5px;
+}
+
+.modal_importarFactura-table-main {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    scrollbar-color: rebeccapurple green;
+    scrollbar-width: thin;
+    border-bottom: 1px solid gray;
+}
+
+.modal_importarFactura-table-codigoPro {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 120px;
+}
+
+.modal_importarFactura-table-descripcionPro {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 300px;
+}
+
+.modal_importarFactura-table-codigoInt {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 150px;
+}
+
+.modal_importarFactura-table-descripcionInt {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 250px;
+}
+
+.modal_importarFactura-table-presentacion {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 75px;
+}
+
+.modal_importarFactura-table-cantidad {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 80px;
+}
+
+.modal_importarFactura-table-acciones {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 100px;
+}
+
+.modal_importarFactura-table-cell {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.modal_importarFactura-buttons {
+    display: grid;
+    grid-area: buttons;
+    margin-left: 8px;
+    margin-right: 8px;
+    grid-template-areas: 
+        'catalogo aceptar cancelar';
+    grid-template-columns: 50% 35% 15%;
+}
+
+.modal_importarFactura-buttons-catalogo {
+    grid-area: catalogo;
+    padding-right: 60%;
+    margin-left: 10px;
+    border-radius: 5px;
+}
+
+.btnCatalogoImportarFModal {
+    color: black;
+    font-size: 15px;
+    height: 70%;
+    width: 100%;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $primary;
+        color: white;
+        border: none;
+    }	
+}
+
+.btnCatalogoImportarFModal-disable {
+    color: black;
+    font-size: 15px;
+    height: 70%;
+    width: 100%;
+
+    &:hover {
+        cursor: not-allowed;
+        background-color: gray;
+        color: white;
+        border: none;
+    }	
+}
+
+.modal_importarFactura-buttons-aceptar {
+    grid-area: aceptar;
+    padding-left: 50%;
+}
+
+.btnAceptarImportarFModal {
+    background-color: $secundary;
+    border: none;
+    color: white;
+    font-size: 15px;
+    height: 70%;
+    margin-left: 25px;
+    width: 70%;
+
+    &:hover {
+        cursor: pointer;
+    }	
+}
+
+.btnAceptarImportarFModal-disable {
+    background-color: gray;
+    border: none;
+    color: white;
+    font-size: 15px;
+    height: 70%;
+    margin-left: 25px;
+    width: 70%;
+
+    &:hover {
+        cursor: not-allowed;
+    }	
+}
+
+.modal_importarFactura-buttons-cancelar {
+    grid-area: cancelar;
+    margin-right: 8px;
+}
+
+#btnCancelarImportarFModal {
+    background-color: #F54B5A;
+    border: none;
+    color: white;
+    font-size: 15px;
+    height: 70%;
+    padding-top: 5px;
+    width: 100%;
+
+    &:hover {
+        cursor: pointer;
+    }	
+}
+
+.codigoIntImportarFacturaModalBuys {
+    display: grid;
+    grid-template-areas: 
+        'input icon';
+    grid-template-columns: 80% 20%;
+}
+
+#txtCodigoIntImportarFacturaModalBuys {
+    grid-area: input;
+    text-align: start;
+    padding-left: 2px;
+    font-size: 12px;
+    width: 90%;
+}
+
+#iconSearchImportarFacturaModalBuys {
+    grid-area: icon;
+    color: $secundary;
+    height: 80%;
+    width: 80%;
+    border: none;
+    background: none;
+
+    &:hover {
+        cursor: pointer;
+    }	
+}
+
+#txtDescripIntImportarFacturaModalBuys {
+    text-align: start;
+    padding-left: 2px;
+    font-size: 12px;
+    width: 95%;
+}
+
+#txtCantidadIntImportarFacturaModalBuys {
+    text-align: start;
+    padding-left: 2px;
+    font-size: 12px;
+    width: 50%;
+}
+
+#txtRegaliaImportarFacturaModalBuys {
+    text-align: start;
+    padding-left: 2px;
+    font-size: 12px;
+    width: 50%;
+}
+
+.ImportarFacturaModalBuysActions {
+    padding-left: 5px;
+}
+
+.btnUnirImportarFacturaModalBuys {
+    color: $primary;
+    height: 30%;
+    width: 35%;
+
+    &:hover {
+        cursor: pointer;
+        color: $secundary;
+    }	
+}
+
+.btnUnirImportarFacturaModalBuys-disable {
+    color: gray;
+    height: 30%;
+    width: 35%;	
+
+    &:hover {
+        cursor: not-allowed;
+    }	
+}
+
+.btnPrecioImportarFacturaModalBuys {
+    color: $primary;
+    height: 50%;
+    width: 50%;
+    border: none;
+    background: none;
+
+    &:hover {
+        cursor: pointer;
+        color: $secundary;
+    }	
+}
+
+.btnPrecioImportarFacturaModalBuys-disable {
+    color: gray;
+    height: 30%;
+    width: 50%;
+    border: none;
+    background: none;
+
+    &:hover {
+        cursor: not-allowed;
+    }	
+}

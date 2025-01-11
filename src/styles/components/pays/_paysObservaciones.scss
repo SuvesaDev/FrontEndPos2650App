@@ -1,0 +1,154 @@
+.pays_observaciones-main {
+    border: 1px solid black;
+    display: grid;
+    height: 100%;
+    margin-left: 25px;
+    margin-right: 25px;
+    grid-template-areas: 
+        'observaciones saldos';
+    grid-template-columns: 60% 40%;
+}
+
+.pays_observaciones-obser {
+    display: grid;
+    grid-area: observaciones;
+    height: 100%;
+    grid-template-areas: 
+        'lblobservaciones'
+        'inputobservaciones';
+    grid-template-rows: 20% 80%;
+}
+
+#lblObservacionesPays {
+    color: #6183B9;
+    font-size: 14px;
+    grid-area: lblobservaciones;
+    padding-left: 4px;
+    text-align: start;
+}
+
+#txtObservacionesPays {
+    grid-area: inputobservaciones;
+    height: 65%;
+    margin-right: 5px;
+}
+
+.pays_observaciones-saldos {
+    display: grid;
+    grid-area: saldos;
+    height: 100%;
+    grid-template-areas: 
+        'titleSaldos'
+        'bodySaldos';
+    grid-template-rows: 20% 80%;
+}
+
+#lblTotalSaldosPays {
+    background-color: #3D62DB;
+    color: white;
+    font-size: 14px;
+    grid-area: titleSaldos;
+    text-align: center;
+}
+
+.pays_observaciones-saldos-body {
+    display: grid;
+    grid-area: bodySaldos;
+    height: 65%;
+    grid-template-areas: 
+        'saldoAnt saldoAct montoRecibido';
+    grid-template-columns: 33.3% 33.3% 33.3%;
+}
+
+.pays_observaciones-saldos-body-saldoAnt {
+    display: grid;
+    grid-area: saldoAnt;
+    height: 100%;
+    grid-template-areas: 
+        'titleSaldoAnt'
+        'inputSaldoAnt';
+    grid-template-rows: 50% 50%;
+}
+
+#lblSaldoAntPays {
+    border: 1px solid black;
+    color: #3C60DC;
+    font-size: 14px;
+    grid-area: titleSaldoAnt;
+    margin-bottom: 1px;
+    margin-left: 1px;
+    margin-right: 5px;
+    margin-top: 1px;
+    text-align: center;
+}
+
+#txtSaldoAntPays {
+    font-size: 14px;
+    grid-area: inputSaldoAnt;
+    height: 85%;
+    margin-right: 5px;
+    margin-top: 1px;
+    text-align: start;
+}
+
+.pays_observaciones-saldos-body-saldoAct {
+    display: grid;
+    grid-area: saldoAct;
+    height: 100%;
+    grid-template-areas: 
+        'titleSaldoAct'
+        'inputSaldoAct';
+    grid-template-rows: 50% 50%;
+}
+
+#lblSaldoActPays {
+    border: 1px solid black;
+    color: #3C60DC;
+    font-size: 14px;
+    grid-area: titleSaldoAct;
+    margin-bottom: 1px;
+    margin-left: 1px;
+    margin-right: 5px;
+    margin-top: 1px;
+    text-align: center;
+}
+
+#txtSaldoActPays {
+    font-size: 14px;
+    grid-area: inputSaldoAct;
+    height: 85%;
+    margin-right: 5px;
+    margin-top: 1px;
+    text-align: start;
+}
+
+.pays_observaciones-saldos-body-montoRecibidos {
+    display: grid;
+    grid-area: montoRecibido;
+    height: 100%;
+    grid-template-areas: 
+        'titleMontoRecibido'
+        'inputMontoRecibido';
+    grid-template-rows: 50% 50%;
+}
+
+#lblMontoRecibidosPays {
+    border: 1px solid black;
+    color: #3C60DC;
+    font-size: 14px;
+    grid-area: titleMontoRecibido;
+    margin-bottom: 1px;
+    margin-left: 1px;
+    margin-right: 5px;
+    margin-top: 1px;
+    text-align: center;
+}
+
+#txtMontoRecibidosPays {
+    font-size: 14px;
+    grid-area: inputMontoRecibido;
+    height: 85%;
+    margin-right: 5px;
+    margin-top: 1px;
+    text-align: start;
+}

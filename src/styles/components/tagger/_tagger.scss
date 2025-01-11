@@ -1,0 +1,32 @@
+.tagger-main {
+    background-color: #F4F8FB;
+    display: grid;
+    height: 100%;
+    text-align: center;
+    grid-template-areas: 
+        'title'
+        'body'
+        'icons';
+    grid-template-rows: 40px 448px 60px;
+}
+
+.tagger-title {
+    grid-area: title;
+    padding-top: 2px;
+    background-color: #3D59A9;
+}
+
+#lblTitleTagger {
+    font-size: 30px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+
+.tagger-body {
+    grid-area: body;
+}
+
+.tagger-icons {
+    grid-area: icons;
+}

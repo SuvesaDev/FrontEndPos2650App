@@ -1,0 +1,254 @@
+.pays_body-detalle-main {
+    display: grid;
+    height: 100%;
+    margin-left: 5px;
+    margin-right: 5px;
+    grid-template-areas: 
+        'leftSide rightSide';
+    grid-template-columns: 50% 50%;
+}
+
+.pays_body-detalle-leftSide {
+    display: grid;
+    grid-area: leftSide;
+    height: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+    grid-template-areas: 
+        'facturaNo'
+        'montFac'
+        'saldoAnt'
+        'TCF';
+    grid-template-rows: 25% 25% 25% 25%;
+}
+
+.pays_body-detalle-leftSide-factura {
+    display: grid;
+    grid-area: facturaNo;
+    height: 100%;
+    margin-left: 5px;
+    margin-right: 5px;
+    grid-template-areas: 
+        'lblFacturaNo inputFacturaNo';
+    grid-template-columns: 50% 50%;
+}
+
+#lblFacturaNoPaysB {
+    background-color: #C0C0C0;
+    color: #4264D8;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblFacturaNo;
+    height: 50%;
+    margin-left: 20px;
+    margin-top: 8px;
+    width: 80%;
+}
+
+#txtFacturaNoPaysB {
+    font-size: 15px;
+    grid-area: inputFacturaNo;
+    height: 50%;
+    margin-top: 8px;
+    text-align: start;
+}
+
+.pays_body-detalle-leftSide-montFact {
+    display: grid;
+    grid-area: montFac;
+    height: 100%;
+    margin-left: 5px;
+    margin-right: 5px;
+    grid-template-areas: 
+        'lblMontFact inputMontFact';
+    grid-template-columns: 50% 50%;
+}
+
+#lblMontFactPaysB {
+    background-color: #C0C0C0;
+    color: #4264D8;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblMontFact;
+    height: 50%;
+    margin-left: 20px;
+    margin-top: 8px;
+    width: 80%;
+}
+
+#txtMontFactPaysB {
+    font-size: 15px;
+    grid-area: inputMontFact;
+    height: 50%;
+    margin-top: 8px;
+    text-align: start;
+}
+
+.pays_body-detalle-leftSide-saldoAnt {
+    display: grid;
+    grid-area: saldoAnt;
+    height: 100%;
+    margin-left: 5px;
+    margin-right: 5px;
+    grid-template-areas: 
+        'lblSaldoAnt inputSaldoAnt';
+    grid-template-columns: 50% 50%;
+}
+
+#lblSaldoAntPaysB {
+    background-color: #C0C0C0;
+    color: #4264D8;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblSaldoAnt;
+    height: 50%;
+    margin-left: 20px;
+    margin-top: 8px;
+    width: 80%;
+}
+
+#txtSaldoAntPaysB {
+    font-size: 15px;
+    grid-area: inputSaldoAnt;
+    height: 50%;
+    margin-top: 8px;
+    text-align: start;
+}
+
+.pays_body-detalle-leftSide-TCF {
+    display: grid;
+    grid-area: TCF;
+    height: 100%;
+    margin-left: 5px;
+    margin-right: 5px;
+    grid-template-areas: 
+        'lblTCF inputTCF';
+    grid-template-columns: 50% 50%;
+}
+
+#lblTCFPaysB {
+    background-color: #C0C0C0;
+    color: #4264D8;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblTCF;
+    height: 50%;
+    margin-left: 20px;
+    margin-top: 8px;
+    width: 80%;
+}
+
+#txtTCFPaysB {
+    font-size: 15px;
+    grid-area: inputTCF;
+    height: 50%;
+    margin-top: 8px;
+    text-align: start;
+}
+
+.pays_body-detalle-rightSide {
+    display: grid;
+    grid-area: rightSide;
+    height: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+    grid-template-areas: 
+        'abono'
+        'saldoAct'
+        'monedaFact'
+        'n';
+    grid-template-rows: 25% 25% 25% 25%;
+}
+
+.pays_body-detalle-rightSide-abono {
+    display: grid;
+    grid-area: abono;
+    height: 100%;
+    margin-left: 5px;
+    margin-right: 5px;
+    grid-template-areas: 
+        'lblAbono inputAbono';
+    grid-template-columns: 50% 50%;
+}
+
+#lblAbonoPaysB {
+    background-color: #C0C0C0;
+    color: #4264D8;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblAbono;
+    height: 50%;
+    margin-left: 20px;
+    margin-top: 8px;
+    width: 80%;
+}
+
+#txtAbonoPaysB {
+    font-size: 15px;
+    grid-area: inputAbono;
+    height: 50%;
+    margin-top: 8px;
+    text-align: start;
+}
+
+.pays_body-detalle-rightSide-saldoAct {
+    display: grid;
+    grid-area: saldoAct;
+    height: 100%;
+    margin-left: 5px;
+    margin-right: 5px;
+    grid-template-areas: 
+        'lblSaldoAct inputSaldoAct';
+    grid-template-columns: 50% 50%;
+}
+
+#lblSaldoActPaysB {
+    background-color: #C0C0C0;
+    color: #4264D8;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblSaldoAct;
+    height: 50%;
+    margin-left: 20px;
+    margin-top: 8px;
+    width: 80%;
+}
+
+#txtSaldoActPaysB {
+    font-size: 15px;
+    grid-area: inputSaldoAct;
+    height: 50%;
+    margin-top: 8px;
+    text-align: start;
+}
+
+.pays_body-detalle-rightSide-monedaFact {
+    display: grid;
+    grid-area: monedaFact;
+    height: 100%;
+    margin-left: 5px;
+    margin-right: 5px;
+    grid-template-areas: 
+        'lblMonedaFact inputMonedaFact';
+    grid-template-columns: 50% 50%;
+}
+
+#lblMonedaFactPaysB {
+    background-color: #C0C0C0;
+    color: #4264D8;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblMonedaFact;
+    height: 50%;
+    margin-left: 20px;
+    margin-top: 8px;
+    width: 80%;
+}
+
+#txtMonedaFactPaysB {
+    font-size: 15px;
+    grid-area: inputMonedaFact;
+    height: 50%;
+    margin-top: 8px;
+    text-align: start;
+}

@@ -1,0 +1,301 @@
+.providers_form-accounting-inputs {
+    grid-area: inputs-accounting;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'inputs-accounting-firstLine'
+        'inputs-accounting-secondLine';
+    grid-template-rows: 50% 50%;
+}
+
+.providers_form-accounting-inputs-firstLine {
+    grid-row: inputs-accounting-firstLine;
+    display: grid;
+    height: 100%;
+    padding-top: 5px;
+    grid-template-areas: 
+        'inputs-accounting-firstLine-plazo inputs-accounting-firstLine-limite';
+    grid-template-columns: 60% 40%;
+}
+
+.providers_form-accounting-inputs-firstLine-plazo {
+    grid-area: inputs-accounting-firstLine-plazo;
+    display: grid;
+    padding-top: 3%;
+    grid-template-areas: 
+        'inputs-accounting-firstLine-plazo-label inputs-accounting-firstLine-plazo-input inputs-accounting-firstLine-plazo-labeldias';
+    grid-template-columns: 42% 30% 20%;
+}
+
+.providers_form-accounting-inputs-firstLine-label-plazo {
+    background-color: #EEF2E6;
+    grid-area: inputs-accounting-firstLine-plazo-label;
+    height: 60%;
+    margin: 2px;
+}
+
+#lblPlazoProviders {
+    color: #5457D5;
+    font-size: 15px;
+    padding-left: 20%;
+    padding-top: 1px;
+    text-align: start;
+}
+
+.providers_form-accounting-inputs-firstLine-input-plazo {
+    grid-area: inputs-accounting-firstLine-plazo-input;
+}
+
+#txtPlazoProviders {
+    color: #5457D5;
+    font-size: 12px;
+    margin-right: 8%;
+    margin-top: 2px;
+    text-align: start;
+    width: 90%;
+}
+
+.providers_form-accounting-inputs-firstLine-label-plazo-dias {
+    grid-area: inputs-accounting-firstLine-plazo-labeldias;
+}
+
+#lblPlazoDiasProviders {
+    color: #5457D5;
+    font-size: 15px;
+    padding-top: 1px;
+    text-align: start;
+}
+
+.providers_form-accounting-inputs-firstLine-limite {
+    grid-area: inputs-accounting-firstLine-limite;
+    display: grid;
+    padding-top: 3%;
+    grid-template-areas: 
+        'inputs-accounting-firstLine-limite-label inputs-accounting-firstLine-limite-input';
+    grid-template-columns: 50% 50%;
+}
+
+.providers_form-accounting-inputs-firstLine-label-limite {
+    background-color: #EEF2E6;
+    grid-area: inputs-accounting-firstLine-limite-label;
+    height: 60%;
+    margin: 2px;
+}
+
+#lblLimiteProviders {
+    color: #5457D5;
+    font-size: 15px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+.providers_form-accounting-inputs-firstLine-input-limite {
+    grid-area: inputs-accounting-firstLine-limite-input;
+}
+
+#txtLimiteProviders {
+    color: #5457D5;
+    font-size: 12px;
+    height: 50%;
+    margin-right: 8%;
+    margin-top: 5px;
+    text-align: start;
+    width: 90%;
+}
+
+.providers_form-accounting-inputs-SecondLine {
+    grid-row: inputs-accounting-secondLine;
+    display: grid;
+    grid-template-areas: 
+        'inputs-accounting-SecondLine-cuenta-label'
+        'inputs-accounting-SecondLine-cuenta-inputs';
+    grid-template-rows: 50% 50%;
+}
+
+.providers_form-accounting-inputs-SecondLine-label-cuenta {
+    background-color: #EEF2E6;
+    grid-area: inputs-accounting-SecondLine-cuenta-label;
+    height: 80%;
+    margin: 2px;
+    width: 98%;
+}
+
+#lblCuentaProviders {
+    color: #162EE4;
+    font-size: 15px;
+    padding-top: 2px;
+    text-align: center;
+}
+
+.providers_form-accounting-inputs-SecondLine-inputs-cuenta {
+    grid-area: inputs-accounting-SecondLine-cuenta-inputs;
+    display: grid;
+    grid-template-areas: 
+        'inputs-accounting-SecondLine-cuenta-inputs-1 inputs-accounting-SecondLine-cuenta-inputs-2';
+    grid-template-columns: 60% 40%;
+    gap: 5px;
+}
+
+#txtCuenta1Providers {
+    grid-area: inputs-accounting-SecondLine-cuenta-inputs-1;
+    height: 70%;
+    margin-top: 2px;
+}
+
+#txtCuenta2Providers {
+    grid-area: inputs-accounting-SecondLine-cuenta-inputs-2;
+    height: 70%;
+    margin-right: 6%;
+    margin-top: 2px;
+}
+
+.providers_form-accounting-check {
+    grid-area: checks-accounting;
+    display: grid;
+    grid-template-areas: 
+        'checkFirstLine'
+        'checkSecondLine'
+        'checkThirdLine';
+    grid-template-rows: 33% 33% 34%;
+}
+
+.providers_form-accounting-check-firstLine {
+    grid-area: checkFirstLine;
+    display: grid;
+    grid-template-areas: 
+        'checkUtilidad lblUtilidad';
+    grid-template-columns: 25% 10%;
+}
+
+.providers_form-accounting-check-firstLine-check-utilidad {
+    grid-area: checkUtilidad;
+    display: grid;
+    grid-template-areas: 
+        'inputUtilidad lblCheckUtilidad';
+    grid-template-columns: 20% 80%;
+}
+
+.providers_form-accounting-check-firstLine-check-utilidad-input {
+    grid-area: inputUtilidad;
+    padding-top: 8px;
+}
+
+#lblUtilidadProviders {
+    color: #5457D5;
+    font-size: 15px;
+    grid-area: lblCheckUtilidad;
+    padding-left: 5px;
+    padding-top: 8px;
+    text-align: start;
+}
+
+.providers_form-accounting-check-firstLine-label-utilidad {
+    grid-area: lblUtilidad;
+    padding-left: 5px;
+    padding-top: 8px;
+    text-align: start;
+}
+
+.providers_form-accounting-check-secondLine {
+    grid-area: checkSecondLine;
+    display: grid;
+    grid-template-areas: 
+        'checkCosto checkImp';
+    grid-template-columns: 25% 25%;
+}
+
+.providers_form-accounting-check-secondLine-check-costo {
+    grid-area: checkCosto;
+    display: grid;
+    grid-template-areas: 
+        'inputCosto lblCheckCosto';
+    grid-template-columns: 20% 80%;
+}
+
+.providers_form-accounting-check-secondLine-check-costo-input {
+    grid-area: inputCosto;
+    padding-top: 8px;
+}
+
+#lblCostoProviders {
+    color: #5457D5;
+    font-size: 15px;
+    grid-area: lblCheckCosto;
+    padding-left: 5px;
+    padding-top: 8px;
+    text-align: start;
+}
+
+.providers_form-accounting-check-secondLine-check-imp {
+    grid-area: checkImp;
+    display: grid;
+    grid-template-areas: 
+        'inputImp lblCheckImp';
+    grid-template-columns: 20% 80%;
+}
+
+.providers_form-accounting-check-secondLine-check-imp-input {
+    grid-area: inputImp;
+    padding-top: 8px;
+}
+
+#lblImpProviders {
+    color: #5457D5;
+    font-size: 15px;
+    grid-area: lblCheckImp;
+    padding-left: 5px;
+    padding-top: 8px;
+    text-align: start;
+}
+
+.providers_form-accounting-check-thirdLine {
+    grid-area: checkThirdLine;
+    display: grid;
+    grid-template-areas: 
+        'checkActualizado checkInhabilitar';
+    grid-template-columns: 25% 25%;
+}
+
+.providers_form-accounting-check-thirdLine-check-actualizado {
+    grid-area: checkActualizado;
+    display: grid;
+    grid-template-areas: 
+        'inputActualizado lblCheckActualizado';
+    grid-template-columns: 20% 80%;
+}
+
+.providers_form-accounting-check-thirdLine-check-actualizado-input {
+    grid-area: inputActualizado;
+    padding-top: 8px;
+}
+
+#lblActualizadoProviders {
+    color: #5457D5;
+    font-size: 15px;
+    grid-area: lblCheckActualizado;
+    padding-left: 5px;
+    padding-top: 8px;
+    text-align: start;
+}
+
+.providers_form-accounting-check-thirdLine-check-inhabilitar {
+    grid-area: checkInhabilitar;
+    display: grid;
+    grid-template-areas: 
+        'inputInhabilitar lblCheckInhabilitar';
+    grid-template-columns: 20% 80%;
+}
+
+.providers_form-accounting-check-thirdLine-check-inhabilitar-input {
+    grid-area: inputInhabilitar;
+    padding-top: 8px;
+}
+
+#lblInhabilitarProviders {
+    color: #5457D5;
+    font-size: 15px;
+    grid-area: lblCheckInhabilitar;
+    padding-left: 5px;
+    padding-top: 8px;
+    text-align: start;
+}

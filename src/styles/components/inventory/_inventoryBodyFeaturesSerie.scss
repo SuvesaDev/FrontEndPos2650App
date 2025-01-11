@@ -1,0 +1,73 @@
+.inventory_body-featuresSerie {
+    background-color: #F0F0F0;
+    display: grid;
+    height: 100%;
+    padding-top: 5px;
+    grid-template-areas: 
+        'check'
+        'table';
+    grid-template-rows: 15% 85%;
+}
+
+.inventory_body-featuresSerie-check {
+    display: grid;
+    grid-area: check;
+    height: 100%;
+    padding-top: 5px;
+    grid-template-areas: 
+        'inputcheck lblcheck';
+    grid-template-columns: 10% 20%;
+}
+
+.inventory_body-featuresSerie-check-input {
+    grid-area: inputcheck;
+    padding-left: 80%;
+}
+
+#lblNSerieInventory {
+    color: #4169E1;
+    font-size: 15px;
+    grid-area: lblcheck;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.inventory_body-featuresSerie-table {
+    border: 1px solid black;
+    grid-area: table;
+    height: 95%;
+    margin-left: 20px;
+    margin-right: 10px;
+}
+
+.inventory_body-featuresSerie-table-main {
+    width: 100%;
+}
+
+.inventory_body-featuresSerie-table-header-serie {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 5%;
+}
+
+.inventory_body-featuresSerie-table-header-year {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 5%;
+}
+
+.inventory_body-featuresSerie-table-serie {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.inventory_body-featuresSerie-table-year {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}

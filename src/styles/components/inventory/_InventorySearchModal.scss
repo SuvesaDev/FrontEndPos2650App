@@ -1,0 +1,421 @@
+.modal_searchInventory-main {
+    display: grid;
+    text-align: center;
+    grid-template-areas:
+        'title' 
+        'inputs'
+        'table';
+    grid-template-rows: 40px 80px 300px;
+}
+
+.modal_searchInventory-title {
+    display: grid;
+    gap: 5px;
+    grid-area: title;
+    grid-template-areas: 
+        'text btnClose';
+    grid-template-columns: 95% 5%;
+}
+
+#lblTitleSearchInventory {
+    background-color: $primary;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    grid-area: text;
+    margin-bottom: 5px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    text-align: center;
+}
+
+#lblCloseSearchInventory {
+    background-color: red;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    grid-area: btnClose;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    text-align: center;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.modal_searchInventory-inputs {
+    display: grid;
+    grid-area: inputs;
+    grid-template-areas: 
+        'firstLine'
+        'secondLine';
+    grid-template-rows: 35% 65%;
+}
+
+.modal_searchInventory-inputs-firstLine {
+    grid-area: firstLine;
+    display: grid;
+    grid-template-areas: 
+        'input btn';
+    grid-template-columns: 85% 15%;
+}
+
+.modal_searchInventory-inputs-firstLine-input {
+    grid-area: input;
+}
+
+#txtDescripcionModalSearchInventory {
+    border: 1px solid black;
+    font-size: 15px;
+    height: 80%;
+    padding-left: 5px;
+    margin-top: 2px;
+    text-align: start;
+    width: 100%;
+}
+
+.modal_searchInventory-inputs-firstLine-input-btn {
+    grid-area: btn;
+}
+
+#btnSearchInventory {
+    background-color: $secundary;
+    border: none;
+    color: white;
+    margin-top: 2px;
+    height: 80%;
+    margin-right: 25px;
+    width: 70%;
+    border-radius: 5%;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $primary;
+    }	
+}
+
+.modal_searchInventory-inputs-secondLine {
+    grid-area: secondLine;
+    display: grid;
+    grid-template-areas: 
+        'filtros checks';
+    grid-template-columns: 75% 25%;
+}
+
+.modal_searchInventory-inputs-secondLine-filtros {
+    grid-area: filtros;
+    display: grid;
+    grid-template-areas: 
+        'busqueda'
+        'coincidir';
+    grid-template-rows: 50% 50%;
+}
+
+.modal_searchInventory-inputs-secondLine-filtros-busqueda {
+    grid-area: busqueda;
+    display: grid;
+    grid-template-areas: 
+        'titulo descripcion ubicacion barras codigo';
+    grid-template-columns: 15% 22% 22% 20% 20%;
+}
+
+.modal_searchInventory-inputs-secondLine-filtros-busqueda-titulo {
+    grid-area: titulo;
+    padding-top: 5px;
+    background-color:#363CF4;
+}
+
+#lblTituloBusquedaSearchInventory {
+    font-size: 15px;
+    color: white;
+}
+
+.modal_searchInventory-inputs-secondLine-filtros-busqueda-descripcion {
+    grid-area: descripcion;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'inputDCheck labelDCheck';
+    grid-template-columns: 20% 42%;
+}
+
+.modal_searchInventory-inputs-secondLine-filtros-busqueda-descripcion-input {
+    grid-area: inputDCheck;
+    padding-top: 5px;
+}
+
+#lbldescripcionSearchInventory {
+    font-size: 15px;
+    grid-area: labelDCheck;
+    padding-top: 4px;
+    text-align: start;
+}
+
+.modal_searchInventory-inputs-secondLine-filtros-busqueda-ubicacion {
+    grid-area: ubicacion;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'inputUCheck labelUCheck';
+    grid-template-columns: 20% 35%;
+}
+
+.modal_searchInventory-inputs-secondLine-filtros-busqueda-ubicacion-input {
+    grid-area: inputUCheck;
+    padding-top: 5px;
+}
+
+#lblUbicacionSearchInventory {
+    font-size: 15px;
+    grid-area: labelUCheck;
+    padding-top: 4px;
+    text-align: start;
+}
+
+.modal_searchInventory-inputs-secondLine-filtros-busqueda-barras {
+    grid-area: barras;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'inputBCheck labelBCheck';
+    grid-template-columns: 20% 27%;
+}
+
+.modal_searchInventory-inputs-secondLine-filtros-busqueda-barras-input {
+    grid-area: inputBCheck;
+    padding-top: 5px;
+}
+
+#lblBarrasSearchInventory {
+    font-size: 15px;
+    grid-area: labelBCheck;
+    padding-top: 4px;
+    text-align: start;
+}
+
+.modal_searchInventory-inputs-secondLine-filtros-busqueda-codigo {
+    grid-area: codigo;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'inputCCheck labelCCheck';
+    grid-template-columns: 20% 27%;
+}
+
+.modal_searchInventory-inputs-secondLine-filtros-busqueda-codigo-input {
+    grid-area: inputCCheck;
+    padding-top: 5px;
+}
+
+#lblcodigoSearchInventory {
+    font-size: 15px;
+    grid-area: labelCCheck;
+    padding-top: 4px;
+    text-align: start;
+}
+
+.modal_searchInventory-inputs-secondLine-filtros-coincidir {
+    grid-area: coincidir;
+    display: grid;
+    grid-template-areas: 
+        'titulo inicio cualquier';
+    grid-template-columns: 15% 22% 22%;
+}
+
+.modal_searchInventory-inputs-secondLine-filtros-coincidir-titulo {
+    grid-area: titulo;
+    margin-top: 3px;
+    padding-top: 2px;
+    background-color:#363CF4;
+}
+
+#lblTituloCoincidirSearchInventory {
+    font-size: 15px;
+    color: white;
+}
+
+.modal_searchInventory-inputs-secondLine-filtros-coincidir-inicio {
+    grid-area: inicio;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'inputICheck labelICheck';
+    grid-template-columns: 20% 60%;
+}
+
+.modal_searchInventory-inputs-secondLine-filtros-coincidir-inicio-input {
+    grid-area: inputICheck;
+    padding-top: 5px;
+}
+
+#lblInicioSearchInventory {
+    font-size: 15px;
+    grid-area: labelICheck;
+    padding-top: 4px;
+    text-align: start;
+}
+
+.modal_searchInventory-inputs-secondLine-filtros-coincidir-cualquier {
+    grid-area: cualquier;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'inputCualquierCheck labelCualquierCheck';
+    grid-template-columns: 20% 57%;
+}
+
+.modal_searchInventory-inputs-secondLine-filtros-busqueda-cualquier-input {
+    grid-area: inputCualquierCheck;
+    padding-top: 5px;
+}
+
+#lblcualquierSearchInventory {
+    font-size: 15px;
+    grid-area: labelCualquierCheck;
+    padding-top: 4px;
+    text-align: start;
+}
+
+.modal_searchInventory-inputs-secondLine-checks {
+    grid-area: checks;
+    display: grid;
+    grid-template-areas: 
+        'checkFirst'
+        'checkSecond';
+    grid-template-rows: 50% 50%;
+}
+
+.modal_searchInventory-inputs-secondLine-checks-first {
+    grid-area: checkFirst;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'inputFirstCheck labelFirstCheck';
+    grid-template-columns: 10% 90%;
+}
+
+.modal_searchInventory-inputs-secondLine-checks-first-input {
+    grid-area: inputFirstCheck;
+    padding-top: 5px;
+}
+
+#lblmostrarPrecioSearchInventory {
+    font-size: 15px;
+    grid-area: labelFirstCheck;
+    padding-top: 4px;
+    text-align: start;
+}
+
+.modal_searchInventory-inputs-secondLine-checks-second {
+    grid-area: checkSecond;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'inputSecondCheck labelSecondCheck';
+    grid-template-columns: 10% 50%;
+}
+
+.modal_searchInventory-inputs-secondLine-checks-second-input {
+    grid-area: inputSecondCheck;
+    padding-top: 5px;
+}
+
+#lblmostrarInhabilitadosSearchInventory {
+    font-size: 15px;
+    grid-area: labelSecondCheck;
+    padding-top: 4px;
+    text-align: start;
+}
+
+.modal_searchInventory-table {
+    grid-area: table;
+    margin-top: 5px;
+}
+
+.modal_searchInventory-table-table {
+    width: 99%;
+    height: 100%;
+    margin-left: 2px;
+    overflow-y: scroll;
+    scrollbar-color: rebeccapurple green;
+    scrollbar-width: thin;
+    border: 1px solid black;
+}
+
+.modal_searchInventory-table-header-codigo {
+     background-color: #ACA9A9;
+    text-align: start;
+    padding-left: 5px;
+    width: 150px;
+}
+
+.modal_searchInventory-table-header-descripcion {
+     background-color: #ACA9A9;
+    text-align: start;
+    padding-left: 5px;
+    width: 300px;
+}
+
+.modal_searchInventory-table-header-barras {
+     background-color: #ACA9A9;
+    text-align: start;
+    padding-left: 5px;
+    width: 140px;
+}
+
+.modal_searchInventory-table-header-existencia {
+     background-color: #ACA9A9;
+    text-align: start;
+    padding-left: 5px;
+    width: 100px;
+}
+
+.modal_searchInventory-table-header-existenciaConsignacion {
+     background-color: #ACA9A9;
+    text-align: start;
+    padding-left: 5px;
+    width: 160px;
+}
+
+.modal_searchInventory-table-header-precioFinal {
+     background-color: #ACA9A9;
+    text-align: start;
+    padding-left: 5px;
+    width: 150px;
+}
+
+.modal_searchInventory-table-header-receta {
+     background-color: #ACA9A9;
+    text-align: start;
+    padding-left: 5px;
+    width: 100px;
+}
+
+
+.modal_searchCustomer-table-body-row-red {
+    background-color: #DD0A2A;
+    color: white;
+}
+
+.modal_searchCustomer-table-body-row-green {
+    background-color: #0CAB37;
+    color: white;
+}
+
+.modal_searchCustomer-table-body-row-orange {
+    background-color: #FA7B22;
+    color: white;
+}
+
+.modal_searchCustomer-table-body-row-oliveDrab {
+    background-color: #6B8E23;
+    color: white;
+}
+
+.modal_searchCustomer-table-body-row-purple {
+    background-color: #C138F9;
+    color: white;
+}

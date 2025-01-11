@@ -1,0 +1,356 @@
+.trackingQoutes_header-main {
+    display: grid;
+    height: 100%;
+    margin-left: 5%;
+    margin-right: 5%;
+    grid-template-areas: 
+        'filtrarFecha filtrarEstado buttons';
+    grid-template-columns: 30% 30% 20%;
+}
+
+.trackingQoutes_header-filtarFecha {
+    border: 1px solid #ccc;
+    display: grid;
+    grid-area: filtrarFecha;
+    height: 90%;
+    margin: 5px;
+    grid-template-areas: 
+        'check'
+        'desde'
+        'hasta';
+    grid-template-rows: 25% 30% 30%;
+}
+
+.trackingQoutes_header-filtarFecha-check {
+    display: grid;
+    grid-area: check;
+    grid-template-areas: 
+        'inputcheck lblcheck';
+    grid-template-columns: 10% 35%;
+}
+
+.trackingQoutes_header-filtarFecha-check-input {
+    grid-area: inputcheck;
+    padding-top: 5px;
+}
+
+#lblFiltrarFecha {
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblcheck;
+    padding-top: 5px;
+    text-align: start;
+}
+
+.trackingQoutes_header-filtarFecha-desde {
+    display: grid;
+    grid-area: desde;
+    grid-template-areas: 
+        'lblDesde txtDesde';
+    grid-template-columns: 40% 50%;
+}
+
+#lblDesdeFiltrarFechaTQ {
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblDesde;
+    padding-top: 10px;
+    text-align: center;
+}
+
+#txtDesdeFiltrarFechaTQ {
+    font-size: 15px;
+    grid-area: txtDesde;
+    height: 70%;
+    margin-top: 6px;
+}
+
+.trackingQoutes_header-filtarFecha-hasta {
+    display: grid;
+    grid-area: hasta;
+    grid-template-areas: 
+        'lblHasta txtHasta';
+    grid-template-columns: 40% 50%;
+}
+
+#lblHastaFiltrarFechaTQ {
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblHasta;
+    padding-top: 10px;
+    text-align: center;
+}
+
+#txtHastaFiltrarFechaTQ {
+    font-size: 15px;
+    grid-area: txtHasta;
+    height: 70%;
+    margin-top: 6px;
+}
+
+.trackingQoutes_header-filtarEstado {
+    border: 1px solid #ccc;
+    display: grid;
+    grid-area: filtrarEstado;
+    height: 90%;
+    margin: 5px;
+    grid-template-areas: 
+        'check'
+        'inputs';
+    grid-template-rows: 25% 75%;
+}
+
+.trackingQoutes_header-filtarEstado-check {
+    display: grid;
+    grid-area: check;
+    grid-template-areas: 
+        'inputcheck lblcheck';
+    grid-template-columns: 10% 40%;
+}
+
+.trackingQoutes_header-filtarEstado-check-input {
+    grid-area: inputcheck;
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+#lblFiltrarFecha {
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblcheck;
+    padding-top: 5px;
+    text-align: start;
+}
+
+.trackingQoutes_header-filtarEstado-inputs {
+    display: grid;
+    grid-area: inputs;
+    grid-template-areas: 
+        'leftSide rightSide';
+    grid-template-columns: 60% 40%;
+}
+
+.trackingQoutes_header-filtarEstado-inputs-leftSide {
+    display: grid;
+    grid-area: leftSide;
+    margin-left: 10px;
+    grid-template-areas: 
+        'pendiente'
+        'enviada'
+        'confirmada';
+    grid-template-rows: 33% 33% 33%;
+}
+
+.trackingQoutes_header-filtarEstado-inputs-leftSide-pendiente {
+    display: grid;
+    grid-area: pendiente;
+    grid-template-areas: 
+        'inputcheckP lblcheckP';
+    grid-template-columns: 10% 75%;
+}
+
+.trackingQoutes_header-filtarEstado-inputs-leftSide-pendiente-input {
+    grid-area: inputcheckP;
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+#lblPendienteTQ {
+    background-color: #fe0100;
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblcheckP;
+    height: 60%;
+    margin-top: 5px;
+    text-align: start;
+}
+
+.trackingQoutes_header-filtarEstado-inputs-leftSide-enviada {
+    display: grid;
+    grid-area: enviada;
+    grid-template-areas: 
+        'inputcheckE lblcheckE';
+    grid-template-columns: 10% 80%;
+}
+
+.trackingQoutes_header-filtarEstado-inputs-leftSide-enviada-input {
+    grid-area: inputcheckE;
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+#lblEnviadaTQ {
+    background-color: #ffa500;
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblcheckE;
+    height: 60%;
+    margin-top: 5px;
+    text-align: start;
+}
+
+.trackingQoutes_header-filtarEstado-inputs-leftSide-confirmada {
+    display: grid;
+    grid-area: confirmada;
+    grid-template-areas: 
+        'inputcheckC lblcheckC';
+    grid-template-columns: 10% 50%;
+}
+
+.trackingQoutes_header-filtarEstado-inputs-leftSide-confirmada-input {
+    grid-area: inputcheckC;
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+#lblConfirmadaTQ {
+    background-color: #ffff00;
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblcheckC;
+    height: 60%;
+    margin-top: 5px;
+    text-align: start;
+}
+
+.trackingQoutes_header-filtarEstado-inputs-rightSide {
+    display: grid;
+    grid-area: rightSide;
+    margin-left: 10px;
+    grid-template-areas: 
+        'revision'
+        'ganada'
+        'perdida';
+    grid-template-rows: 33% 33% 33%;
+}
+
+.trackingQoutes_header-filtarEstado-inputs-leftSide-revision {
+    display: grid;
+    grid-area: revision;
+    grid-template-areas: 
+        'inputcheckR lblcheckR';
+    grid-template-columns: 20% 50%;
+}
+
+.trackingQoutes_header-filtarEstado-inputs-leftSide-revision-input {
+    grid-area: inputcheckR;
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+#lblRevisionTQ {
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblcheckR;
+    height: 60%;
+    margin-top: 5px;
+    text-align: start;
+}
+
+.trackingQoutes_header-filtarEstado-inputs-leftSide-ganada {
+    display: grid;
+    grid-area: ganada;
+    grid-template-areas: 
+        'inputcheckG lblcheckG';
+    grid-template-columns: 20% 50%;
+}
+
+.trackingQoutes_header-filtarEstado-inputs-leftSide-ganada-input {
+    grid-area: inputcheckG;
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+#lblGanadaTQ {
+    background-color: #00ff00;
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblcheckG;
+    height: 60%;
+    margin-top: 5px;
+    text-align: start;
+}
+
+.trackingQoutes_header-filtarEstado-inputs-leftSide-perdida {
+    display: grid;
+    grid-area: perdida;
+    grid-template-areas: 
+        'inputcheckP lblcheckP';
+    grid-template-columns: 20% 50%;
+}
+
+.trackingQoutes_header-filtarEstado-inputs-leftSide-perdida-input {
+    grid-area: inputcheckP;
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+#lblPerdidaTQ {
+    background-color: lighten(#800080, 20%);
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblcheckP;
+    height: 60%;
+    margin-top: 5px;
+    text-align: start;
+}
+
+.trackingQoutes_header-buttons {
+    border: 1px solid #ccc;
+    display: grid;
+    grid-area: buttons;
+    height: 90%;
+    margin: 5px;
+    grid-template-areas: 
+        'check'
+        'btns';
+    grid-template-rows: 25% 75%;
+}
+
+.trackingQoutes_header-buttons-check {
+    display: grid;
+    grid-area: check;
+    grid-template-areas: 
+        'inputcheck lblcheck';
+    grid-template-columns: 10% 40%;
+}
+
+.trackingQoutes_header-buttons-check-inputs {
+    grid-area: inputcheck;
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+#lblInfoFact {
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblcheck;
+    height: 60%;
+    margin-top: 5px;
+    text-align: start;
+}
+
+.trackingQoutes_header-buttons-btn {
+    grid-area: btns;
+    padding-top: 10px;
+}
+
+#btnFiltrarTQ {
+    font-size: 15px;
+    font-weight: bold;
+    height: 50%;
+    text-align: center;
+    width: 90%;
+
+    &:hover {
+        background-color: #ccc;
+        cursor: pointer;
+    }
+}

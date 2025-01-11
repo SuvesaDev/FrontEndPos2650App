@@ -1,0 +1,339 @@
+.loans_datosProducto-main {
+    border: 1px solid black;
+    display: grid;
+    height: 95%;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 5px;
+    grid-template-areas: 
+        'header'
+        'inputs'
+        'table'
+        'checks';
+    grid-template-rows: 7% 28% 50% 15%;
+}
+
+.loans_datosProducto-header {
+    border-bottom: 1px solid black;
+    grid-area: header;
+}
+
+#lblDatosProductosTitle {
+    color: #AAA6AC;
+    font-size: 15px;
+    padding-left: 5px;
+    padding-top: 1px;
+    text-align: start;
+}
+
+.loans_datosProducto-inputs {
+    display: grid;
+    grid-area: inputs;
+    grid-template-areas: 
+        'firstLine'
+        'secondLine';
+    grid-template-rows: 50% 50%;
+}
+
+.loans_datosProducto-inputs-firstLine {
+    display: grid;
+    grid-area: firstLine;
+    grid-template-areas: 
+        'codigo descrip existencia prestamos precio';
+    grid-template-columns: 15% 40% 15% 15% 15%;
+}
+
+.loans_datosProducto-inputs-firstLine-codigo {
+    display: grid;
+    grid-area: codigo;
+    grid-template-areas: 
+        'lblCodigo'
+        'inputCodigo';
+    grid-template-rows: 45% 55%;
+}
+
+#lblCodigoDPLoans {
+    color: #807D7F;
+    font-size: 15px;
+    grid-area: lblCodigo;
+    padding-left: 15px;
+    text-align: start;
+}
+
+#txtCodigoDPLoans {
+    font-size: 15px;
+    grid-area: inputCodigo;
+    height: 80%;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.loans_datosProducto-inputs-firstLine-descri {
+    display: grid;
+    grid-area: descrip;
+    grid-template-areas: 
+        'lblDescrip'
+        'inputDescrip';
+    grid-template-rows: 45% 55%;
+}
+
+#lblDescripDPLoans {
+    color: #807D7F;
+    font-size: 15px;
+    grid-area: lblDescrip;
+    padding-left: 15px;
+    text-align: start;
+}
+
+#txtDescripDPLoans {
+    font-size: 15px;
+    grid-area: inputDescrip;
+    height: 80%;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.loans_datosProducto-inputs-firstLine-existencia {
+    display: grid;
+    grid-area: existencia;
+    grid-template-areas: 
+        'lblExistencia'
+        'inputExistencia';
+    grid-template-rows: 45% 55%;
+}
+
+#lblExistenciaDPLoans {
+    color: #807D7F;
+    font-size: 15px;
+    grid-area: lblExistencia;
+    padding-left: 15px;
+    text-align: start;
+}
+
+#txtExistenciaDPLoans {
+    font-size: 15px;
+    grid-area: inputExistencia;
+    height: 80%;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.loans_datosProducto-inputs-firstLine-prestamos {
+    display: grid;
+    grid-area: prestamos;
+    grid-template-areas: 
+        'lblPrestamos'
+        'inputPrestamos';
+    grid-template-rows: 45% 55%;
+}
+
+#lblPrestamosDPLoans {
+    color: #807D7F;
+    font-size: 15px;
+    grid-area: lblPrestamos;
+    padding-left: 15px;
+    text-align: start;
+}
+
+#txtPrestamosDPLoans {
+    font-size: 15px;
+    grid-area: inputPrestamos;
+    height: 80%;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.loans_datosProducto-inputs-firstLine-precio {
+    display: grid;
+    grid-area: precio;
+    grid-template-areas: 
+        'lblPrecio'
+        'inputPrecio';
+    grid-template-rows: 45% 55%;
+}
+
+#lblPrecioDPLoans {
+    color: #807D7F;
+    font-size: 15px;
+    grid-area: lblPrecio;
+    padding-left: 15px;
+    text-align: start;
+}
+
+#txtPrecioDPLoans {
+    font-size: 15px;
+    grid-area: inputPrecio;
+    height: 80%;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.loans_datosProducto-inputs-secondLine {
+    display: grid;
+    grid-area: secondLine;
+    grid-template-areas: 
+        'cantidad button';
+    grid-template-columns: 15% 15%;
+}
+
+.loans_datosProducto-inputs-secondLine-cantidad {
+    display: grid;
+    grid-area: cantidad;
+    grid-template-areas: 
+        'lblCantidad'
+        'inputCantidad';
+    grid-template-rows: 45% 55%;
+}
+
+#lblCantidadDPLoans {
+    color: #807D7F;
+    font-size: 15px;
+    grid-area: lblCantidad;
+    padding-left: 15px;
+    text-align: start;
+}
+
+#txtCantidadDPLoans {
+    font-size: 15px;
+    grid-area: inputCantidad;
+    height: 80%;
+    margin-left: 15px;
+    margin-right: 15px;
+    text-align: center;
+}
+
+.loans_datosProducto-inputs-secondLine-button {
+    grid-area: button;
+}
+
+#btnAgregarDPLoans {
+    background-color: #03CD00;
+    font-size: 15px;
+    height: 70%;
+    margin-right: 8px;
+    margin-top: 8px;
+    padding-bottom: 1px;
+    width: 80%;
+
+    &:hover {
+        background-color: #88F976;
+        cursor: pointer;
+    }
+}
+
+.loans_datosProducto-table {
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    grid-area: table;
+    margin-top: 5px;
+}
+
+.loans_datosProducto-table-table {
+    width: 100%;
+}
+
+.loans_datosProducto-table-header-descrip {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 20%;
+}
+
+.loans_datosProducto-table-header-cantidad {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.loans_datosProducto-table-header-precio {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.loans_datosProducto-table-descrip {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.loans_datosProducto-table-cantidad {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.loans_datosProducto-table-precio {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.loans_datosProducto-checks {
+    display: grid;
+    grid-area: checks;
+    grid-template-areas: 
+        'inputC entregadoC anuladoC';
+    grid-template-columns: 70% 15% 15%;
+}
+
+.loans_datosProducto-checks-input {
+    grid-area: inputC;
+}
+
+#txtTableLoans {
+    font-size: 15px;
+    height: 80%;
+    margin-top: 5px;
+    text-align: start;
+    width: 95%;
+}
+
+.loans_datosProducto-checks-entregado {
+    display: grid;
+    grid-area: entregadoC;
+    grid-template-areas: 
+        'checkEntragado lblEntregado';
+    grid-template-columns: 40% 60%;
+}
+
+.loans_datosProducto-checks-entregado-input {
+    grid-area: checkEntragado;
+    padding-left: 50px;
+    padding-top: 15px;
+}
+
+#lblEntregaLoans {
+    color: #B2AFBB;
+    font-size: 15px;
+    grid-area: lblEntregado;
+    padding-top: 14px;
+    text-align: start;
+}
+
+.loans_datosProducto-checks-anulado {
+    display: grid;
+    grid-area: anuladoC;
+    grid-template-areas: 
+        'checkAnulado lblAnulado';
+    grid-template-columns: 40% 60%;
+}
+
+.loans_datosProducto-checks-anulado-input {
+    grid-area: checkAnulado;
+    padding-left: 50px;
+    padding-top: 15px;
+}
+
+#lblanuladoLoans {
+    color: #B2AFBB;
+    font-size: 15px;
+    grid-area: lblAnulado;
+    padding-top: 14px;
+    text-align: start;
+}

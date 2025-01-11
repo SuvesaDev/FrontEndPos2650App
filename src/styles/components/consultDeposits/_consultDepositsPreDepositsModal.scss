@@ -1,0 +1,340 @@
+.modal_PreDeposits-main {
+    display: grid;
+    text-align: center;
+    grid-template-areas:
+        'title' 
+        'body'
+        'footer';
+    grid-template-rows: 40px 250px 40px;
+}
+
+.modal_PreDeposits-title {
+    display: grid;
+    gap: 5px;
+    grid-area: title;
+    grid-template-areas: 
+        'text btnClose';
+    grid-template-columns: 90% 10%;
+}
+
+#lblTitlePreDepositsModal {
+    background-color: $primary;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    grid-area: text;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    text-align: center;
+}
+
+#lblClosePreDepositsModal {
+    background-color: red;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    grid-area: btnClose;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    text-align: center;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.modal_PreDeposits-body {
+    grid-area: body;
+    margin-left: 10px;
+    display: grid;
+    grid-template-areas:
+        'firstLine' 
+        'secondLine'
+        'thirdLine';
+    grid-template-rows: 25% 25% 50%;
+}
+
+.modal_PreDeposits-fisrtLine {
+    grid-area: firstLine;
+    display: grid;
+    grid-template-areas:
+        'cajero cedula nombre';
+    grid-template-columns: 33% 33% 34%;
+}
+
+.modal_PreDeposits-fisrtLine-cajero {
+    grid-area: cajero;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblCajero'
+        'inputCajero';
+    grid-template-rows: 50% 50%;
+}
+
+.modal_PreDeposits-fisrtLine-cajero-label {
+    grid-area: lblCajero;
+    padding-top: 8px;
+    padding-left: 10px;
+}
+
+#lblCajeroModalPreDeposits {
+    text-align: start;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.modal_PreDeposits-fisrtLine-cajero-input {
+    grid-area: inputCajero;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+#selectCajeroModalPreDeposits {
+    width: 100%;
+    text-align: start;
+    font-size: 15px;
+}
+
+.modal_PreDeposits-fisrtLine-cedula {
+    grid-area: cedula;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblCedula'
+        'inputCedula';
+    grid-template-rows: 50% 50%;
+}
+
+.modal_PreDeposits-fisrtLine-cedula-label {
+    grid-area: lblCedula;
+    padding-top: 8px;
+    padding-left: 10px;
+}
+
+#lblCedulaModalPreDeposits {
+    text-align: start;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.modal_PreDeposits-fisrtLine-cedula-input {
+    grid-area: inputCedula;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+#txtCedulaModalPreDeposits {
+    width: 100%;
+    padding-left: 5px;
+    text-align: start;
+    font-size: 15px;
+}
+
+.modal_PreDeposits-fisrtLine-nombre {
+    grid-area: nombre;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblNombre'
+        'inputNombre';
+    grid-template-rows: 50% 50%;
+}
+
+.modal_PreDeposits-fisrtLine-nombre-label {
+    grid-area: lblNombre;
+    padding-top: 8px;
+    padding-left: 10px;
+}
+
+#lblNombreModalPreDeposits {
+    text-align: start;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.modal_PreDeposits-fisrtLine-nombre-input {
+    grid-area: inputNombre;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+#txtNombreModalPreDeposits {
+    width: 100%;
+    padding-left: 5px;
+    text-align: start;
+    font-size: 15px;
+}
+
+.modal_PreDeposits-secondLine {
+    grid-area: secondLine;
+    display: grid;
+    grid-template-areas:
+        'monto depositante fecha';
+    grid-template-columns: 33% 33% 34%;
+}
+
+.modal_PreDeposits-secondLine-monto {
+    grid-area: monto;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblMonto'
+        'inputMonto';
+    grid-template-rows: 50% 50%;
+}
+
+.modal_PreDeposits-secondLine-monto-label {
+    grid-area: lblMonto;
+    padding-top: 8px;
+    padding-left: 10px;
+}
+
+#lblMontoModalPreDeposits {
+    text-align: start;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.modal_PreDeposits-secondLine-monto-input {
+    grid-area: inputMonto;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+#txtMontoModalPreDeposits {
+    width: 100%;
+    padding-left: 5px;
+    text-align: start;
+    font-size: 15px;
+}
+
+.modal_PreDeposits-secondLine-depositante {
+    grid-area: depositante;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblDepositante'
+        'inputDepositante';
+    grid-template-rows: 50% 50%;
+}
+
+.modal_PreDeposits-secondLine-depositante-label {
+    grid-area: lblDepositante;
+    padding-top: 8px;
+    padding-left: 10px;
+}
+
+#lblDepositanteModalPreDeposits {
+    text-align: start;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.modal_PreDeposits-secondLine-depositante-input {
+    grid-area: inputDepositante;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+#txtDepositanteModalPreDeposits {
+    width: 100%;
+    padding-left: 5px;
+    text-align: start;
+    font-size: 15px;
+}
+
+.modal_PreDeposits-secondLine-fecha {
+    grid-area: fecha;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblFecha'
+        'inputFecha';
+    grid-template-rows: 50% 50%;
+}
+
+.modal_PreDeposits-secondLine-fecha-label {
+    grid-area: lblFecha;
+    padding-top: 8px;
+    padding-left: 10px;
+}
+
+#lblFechaMontoPreDeposits {
+    text-align: start;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.modal_PreDeposits-secondLine-fecha-input {
+    grid-area: inputFecha;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+#txtFechaMontoPreDeposits {
+    width: 100%;
+    padding-left: 5px;
+    text-align: start;
+    font-size: 15px;
+}
+
+.modal_PreDeposits-ThirdLine {
+    grid-area: thirdLine;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblObservaciones'
+        'inputObservaciones';
+    grid-template-rows: 20% 80%;
+}
+
+.modal_PreDeposits-ThirdLine-observaciones-label {
+    grid-area: lblObservaciones;
+    padding-top: 4px;
+    padding-left: 10px;
+}
+
+#lblObservacionesModalPreDeposits {
+    text-align: start;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.modal_PreDeposits-ThirdLine-observaciones-input {
+    grid-area: inputObservaciones;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+#txtObservacionesModalPreDeposits {
+    width: 100%;
+    height: 90%;
+    padding-left: 5px;
+    text-align: start;
+    font-size: 15px;
+    resize: none;
+}
+
+.modal_PreDeposits-footer {
+    grid-area: footer;
+    margin-left: 80%;
+    margin-right: 5px;
+}
+
+#btnAceptarModalPreDeposits {
+    width: 100%;
+    height: 80%;
+    font-size: 15px;
+    background-color: $primary;
+    color: white;
+    border: none;
+
+    &:hover {
+        cursor: pointer;
+    }
+}

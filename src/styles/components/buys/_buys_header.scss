@@ -1,0 +1,15 @@
+.buys_header-main{
+    height: 100%;
+    display: grid;
+    grid-template-areas: 
+        'headerProveedor headerFactura';
+    grid-template-columns: 40% 60%;
+}
+
+.buys_header-proveedor {
+    grid-area: headerProveedor;
+}
+
+.buys_header-factura {
+    grid-area: headerFactura;
+}

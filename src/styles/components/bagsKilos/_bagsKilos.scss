@@ -1,0 +1,32 @@
+.bagsKilos-main {
+    text-align: center;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'header header header'
+        'body body body'
+        'footer footer footer';
+    grid-template-rows: 40px 448px 60px;
+}
+
+.bagsKilos-header {
+    grid-area: header;
+    padding-top: 2px;
+    background-color: #3D59A9;
+}
+
+#lblTitleBagsKilos {
+    font-size: 30px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+
+.bagsKilos-body {
+    grid-area: body;
+}
+
+.bagsKilos-footer {
+    grid-area: footer;
+    border: 1px solid black;
+}

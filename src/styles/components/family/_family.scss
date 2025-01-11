@@ -1,0 +1,53 @@
+.family_main {
+    background-color: #F4F8FB;
+    display: grid;
+    height: 100%;
+    text-align: center;
+    grid-template-areas: 
+        'title'
+        'familias'
+        'subfamilias'
+        'icons';
+    grid-template-rows: 40px 190px 258px 60px; 
+}
+
+.family_header {
+    grid-area: title;
+    display: grid;
+    grid-template-areas: 
+        'inputId text';
+    grid-template-columns: 20% 80%; 
+    background-color: #3D59A9;
+}
+
+.family_header-input {
+    grid-area: inputId;
+    padding-top: 10px;
+}
+
+#txtFamilyID {
+    text-align: start;
+    font-size: 15px;
+    color: #4264D8;
+}
+
+#lblTitleFamily {
+    grid-area: text;
+    text-align: center;
+    font-size: 25px;
+    padding-top: 5px;
+    padding-right: 100px;
+    color: #FFFFFF;
+}
+
+.family_familia {
+    grid-area: familias;
+}
+
+.family_subFamilia {
+    grid-area: subfamilias;
+}
+
+.family_icons {
+    grid-area: icons;
+}

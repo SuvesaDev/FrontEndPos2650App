@@ -1,0 +1,36 @@
+.buys_main {
+    text-align: center;
+    display: grid;
+    grid-template-areas: 
+        'title'
+        'header'
+        'body'
+        'icons';
+    grid-template-rows: 30px 100px 450px 60px;
+}
+
+.buys_title {
+    grid-area: title;
+    background-color: #3D59A9;
+}
+
+#lblTitleBuys {
+    color: #fff;
+    font-size: 20px;
+    padding-top: 5px;
+    text-align: center;
+}
+
+.buys_header {
+    grid-area: header;
+}
+
+.buys_ArticulosDetalleTable {
+    grid-area: body;
+    border: 1px solid black;
+}
+
+.buys_icons {
+    grid-area: icons;
+    border-bottom: 1px solid black;
+}

@@ -1,0 +1,263 @@
+.billing_header-main {
+    display: grid;
+    height: 100%;
+    grid-template-areas:
+        'numeroFicha tipoFactura searchPreventa';
+    grid-template-columns: 20% 16% 34%;
+}
+
+.billing_header-number {
+    grid-area: numeroFicha;
+}
+
+#lblNumeroFichaHeaderBilling {
+    font-size: 20px;
+    font-weight: 500;
+    height: 100%;
+    padding-top: 5px;
+    text-align: center;
+    width: 100%;
+}
+
+.billing_header-tipoFactura {
+    grid-area: tipoFactura;
+    display: grid;
+    height: 100%;
+    padding-top: 5px;
+    grid-template-areas:
+        'lblTipoFactura cboTipoFactura';
+    grid-template-columns: 50% 50%;
+}
+
+.billing_header-tipoFactura-label {
+    grid-area: lblTipoFactura;
+}
+
+#lblTipoFacturaBillingHeader {
+    font-size: 15px;
+    text-align: center;
+    padding-top: 2px;
+}
+
+.billing_header-tipoFactura-cbo {
+    grid-area: cboTipoFactura;
+}
+
+#cboTipoFacturaBillingHeader {
+    font-size: 15px;
+}
+
+.billing_header-searchPreventa {
+    grid-area: searchPreventa;
+    display: grid;
+    height: 100%;
+    padding-top: 5px;
+    grid-template-areas:
+        'title input btn';
+    grid-template-columns: 30% 20% 25%;
+}
+
+.billing_header-searchPreventa-title {
+    grid-area: title;
+}
+
+#lblSearchPreventaBillingHeader {
+    text-align: center;
+    font-size: 15px;
+    padding-top: 2px;
+}
+
+.billing_header-searchPreventa-input {
+    grid-area: input;
+}
+
+#txtSearchPreventaBillingHeader {
+    text-align: center;
+    font-size: 15px;
+    width: 100%;
+}
+
+.billing_header-searchPreventa-btn {
+    grid-area: btn;
+}
+
+.btnSearchPreventaBillingHeader {
+    width: 90%;
+    height: 80%;
+    text-align: center;
+    font-size: 15px;
+    background-color: $secundary;
+    color: white;
+    border: none;
+
+    &:hover {
+        background-color: $primary;
+        cursor: pointer;
+    }
+}
+
+.btnSearchPreventaBillingHeader-disable {
+    width: 90%;
+    height: 80%;
+    text-align: center;
+    font-size: 15px;
+    background-color: gray;
+    color: white;
+    border: none;
+
+    &:hover {
+        cursor: not-allowed;
+    }
+}
+
+// OLD LAYOUT
+// Token and buttons
+// .billing_header-token {
+//     grid-area: Ficha;
+//     display: grid;
+//     grid-template-areas:
+//         'ficha buttons';
+//     grid-template-rows: 30px 30px;
+//     grid-template-columns: 50% 50%;
+//     // background-color: brown;
+// }
+
+// .billing_header-ficha {
+//     grid-area: ficha;
+//     display: grid;
+//     grid-template-areas:
+//         'label input';
+//     grid-template-rows: 60px 60px;
+//     grid-template-columns: 50% 45%;
+// }
+
+// #Ficha {
+//     grid-area: label;
+//     font-size: 20px;
+//     font-weight: 500;
+//     height: 100%;
+//     padding-top: 5px;
+//     text-align: center;
+// }
+
+// #txtFicha {
+//     grid-area: input;
+//     font-size: 20px;
+//     height: 35%;
+//     margin-top: 5px;
+// }
+
+// .billing_header-buttons {
+//     margin-left: 20px;
+//     grid-area: buttons;
+//     display: grid;
+//     grid-template-areas:
+//         'binoculars nomoney refresh';
+//     grid-template-rows: 30px 30px 30px;
+//     grid-template-columns: 20% 20% 20%;
+//     column-gap: 10px;
+//     color: #F68A1D;
+// }
+
+// .billing_image-binoculars {
+//     grid-area: binoculars;
+//     cursor: pointer;
+
+//     :hover {
+//         background-color: #C7C7CD;
+//     }
+// }
+
+// #imageBinoculars {
+//     width: 60%;
+//     height: 100%;
+// }
+
+// .billing_image-icon {
+//     padding-top: 5px;
+// }
+
+// .billing_image-nomoney {
+//     grid-area: nomoney;
+//     cursor: pointer;
+
+//     :hover {
+//         background-color: #C7C7CD;
+//     }
+// }
+
+// #imageNoMoney {
+//     width: 60%;
+//     height: 100%;
+// }
+
+// .billing_image-refresh {
+//     grid-area: refresh;
+//     cursor: pointer;
+
+//     :hover {
+//         background-color: #C7C7CD;
+//     }
+// }
+
+// #imageFileAsync {
+//     width: 60%;
+//     height: 100%;
+// }
+
+// // Radios buttons
+// .billing_header-type {
+//     grid-area: Tipos;
+//     display: grid;
+//     grid-template-areas: 
+//         'label cbo';
+//     grid-template-columns: 30% 20%;
+// }
+
+// .billing_header-type-label {
+//     grid-area: label;
+// }
+
+// #lblTipoFacturaBillingHeader {
+//     font-size: 15px;
+//     text-align: center;
+//     padding-top: 7px;
+// }
+
+// .billing_header-type-cbo {
+//     grid-area: cbo;
+// }
+
+// .billing_header-radio-apartado {
+//     grid-area: Apartado;
+//     padding-top: 10px;
+// }
+
+// .billing_header-radio-contado {
+//     grid-area: Contado;
+//     padding-top: 10px;
+// }
+
+// .billing_header-radio-credito {
+//     grid-area: Credito;
+//     display: grid;
+//     grid-template-areas: 
+//         'Radio Label';
+//     grid-template-rows: 60px 60px;
+//     grid-template-columns: 50% 50%;
+// }
+
+// .billing_header-radio-credito-radio {
+//     grid-area: Radio;
+//     padding-top: 10px;
+// }
+
+// .billing_header-radio-credito-label {
+//     grid-area: Label;
+//     text-align: start;
+//     padding-top: 10px;
+// }
+
+// #Apartado, #Contado, #Credito {
+//     margin-right: 5px;
+// }

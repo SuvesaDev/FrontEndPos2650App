@@ -1,0 +1,101 @@
+.category-main {
+    background-color: #EEF5FA;
+    display: grid;
+    height: 95%;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 2%;
+    padding-top: 20px;
+    grid-template-areas:
+        'title' 
+        'inputs'
+        'table';
+    grid-template-rows: 30px 50px 250px;
+}
+
+#lblTitleCategory {
+    font-size: 25px;
+    font-weight: bold;
+    grid-area: title;
+    text-align: center;
+}
+
+.category-inputs {
+    display: grid;
+    grid-area: inputs;
+    height: 95%;
+    margin-left: 3%;
+    margin-right: 3%;
+    grid-template-areas: 
+        'descrip btn';
+    grid-template-columns: 85% 15%;
+}
+
+.category-inputs-descrip {
+    display: grid;
+    grid-area: descrip;
+    height: 95%;
+    grid-template-areas: 
+        'lblDescrip'
+        'txtDescrip';
+    grid-template-rows: 50% 50%;
+}
+
+#lblDescripCategoryM {
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblDescrip;
+    padding-top: 2px;
+    text-align: start;
+}
+
+#txtDescripCategoryM {
+    font-size: 15px;
+    grid-area: txtDescrip;
+    height: 80%;
+    text-align: start;
+    width: 98%;
+}
+
+.category-inputs-btn {
+    grid-area: btn;
+    padding-top: 20px;
+}
+
+#btnAddCategoryM {
+    font-size: 15px;
+    height: 80%;
+    width: 85%;
+
+    &:hover {
+        background-color: $secundary;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+.category-table {
+    border: 1px solid black;
+    grid-area: table;
+    height: 95%;
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
+.category-table-main {
+    width: 100%;
+}
+
+.category-table-header-descrip {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 5%;
+}
+
+.category-table-descrip {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}

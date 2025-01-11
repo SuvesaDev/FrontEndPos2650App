@@ -1,0 +1,282 @@
+.salesAgent_body-main {
+    display: grid;
+    height: 100%;
+    margin-left: 5%;
+    margin-right: 5%;
+    grid-template-areas: 
+        'inputs table';
+    grid-template-columns: 70% 30%;
+}
+
+.salesAgent_body-inputs {
+    display: grid;
+    grid-area: inputs;
+    height: 100%;
+    padding: 5%;
+    grid-template-areas: 
+        'nombre'
+        'cedula'
+        'telefono'
+        'email'
+        'direccion'
+        'btns';
+    grid-template-rows: 10% 10% 10% 10% 10% 10%;
+}
+
+.salesAgent_body-inputs-nombre {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+    display: grid;
+    grid-area: nombre;
+    height: 100%;
+    grid-template-areas: 
+        'lblnombre txtnombre';
+    grid-template-columns: 20% 80%;
+}
+
+#lblNombreSalesAgent {
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblnombre;
+    padding-top: 10px;
+    text-align: center;
+}
+
+#txtNombreSalesAgent {
+    color: black;
+    font-size: 15px;
+    grid-area: txtnombre;
+    height: 50%;
+    margin-top: 10px;
+    text-align: start;
+    width: 95%;
+}
+
+.salesAgent_body-inputs-cedula {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    display: grid;
+    grid-area: cedula;
+    height: 100%;
+    grid-template-areas: 
+        'lblcedula txtcedula';
+    grid-template-columns: 20% 80%;
+}
+
+#lblcedulaSalesAgent {
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblcedula;
+    padding-top: 10px;
+    text-align: center;
+}
+
+#txtcedulaSalesAgent {
+    color: black;
+    font-size: 15px;
+    grid-area: txtcedula;
+    height: 50%;
+    margin-top: 10px;
+    text-align: start;
+    width: 30%;
+}
+
+.salesAgent_body-inputs-telefono {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    display: grid;
+    grid-area: telefono;
+    height: 100%;
+    grid-template-areas: 
+        'lbltelefono txttelefono';
+    grid-template-columns: 20% 80%;
+}
+
+#lblTelefonoSalesAgent {
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lbltelefono;
+    padding-top: 10px;
+    text-align: center;
+}
+
+#txtTelefonoSalesAgent {
+    color: black;
+    font-size: 15px;
+    grid-area: txttelefono;
+    height: 50%;
+    margin-top: 10px;
+    text-align: start;
+    width: 30%;
+}
+
+.salesAgent_body-inputs-email {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    display: grid;
+    grid-area: email;
+    height: 100%;
+    grid-template-areas: 
+        'lblemail txtemail';
+    grid-template-columns: 20% 80%;
+}
+
+#lblemailSalesAgent {
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblemail;
+    padding-top: 10px;
+    text-align: center;
+}
+
+#txtemailSalesAgent {
+    color: black;
+    font-size: 15px;
+    grid-area: txtemail;
+    height: 50%;
+    margin-top: 10px;
+    text-align: start;
+    width: 95%;
+}
+
+.salesAgent_body-inputs-direccion {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    display: grid;
+    grid-area: direccion;
+    height: 100%;
+    grid-template-areas: 
+        'lbldireccion txtdireccion';
+    grid-template-columns: 20% 80%;
+}
+
+#lblDireccionSalesAgent {
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lbldireccion;
+    padding-top: 10px;
+    text-align: center;
+}
+
+#txtDireccionSalesAgent {
+    color: black;
+    font-size: 15px;
+    grid-area: txtdireccion;
+    height: 50%;
+    margin-top: 10px;
+    text-align: start;
+    width: 95%;
+}
+
+.salesAgent_body-inputs-btns {
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    display: grid;
+    grid-area: btns;
+    height: 100%;
+    padding-left: 20%;
+    grid-template-areas: 
+        'check btn';
+    grid-template-columns: 20% 80%;
+}
+
+.salesAgent_body-inputs-btns-check {
+    display: grid;
+    grid-area: check;
+    height: 100%;
+    grid-template-areas: 
+        'inputcheck lblcheck';
+    grid-template-columns: 20% 80%;
+}
+
+.salesAgent_body-inputs-btns-check-input {
+    grid-area: inputcheck;
+    padding-top: 10px;
+}
+
+#lblActivoSales {
+    grid-area: lblcheck;
+    height: 50%;
+    margin-top: 10px;
+    text-align: start;
+    width: 50%;
+}
+
+.salesAgent_body-inputs-btns-pd {
+    grid-area: btn;
+    margin-left: 70%;
+    margin-top: 8px;
+}
+
+#btnPDSalesAgent {
+    font-size: 15px;
+    width: 55%;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.salesAgent_body-table {
+    display: grid;
+    grid-area: table;
+    height: 100%;
+    padding: 5%;
+    grid-template-areas: 
+        'title'
+        'table';
+    grid-template-rows: 7% 93%;
+}
+
+#lblListadoSalesAgent {
+    font-size: 20px;
+    font-weight: bold;
+    grid-area: title;
+    padding-right: 5px;
+    padding-top: 1px;
+    text-align: end;
+}
+
+.salesAgent_body-table-main {
+    border: 1px solid black;
+    grid-area: table;
+}
+
+.salesAgent_body-table-table {
+    width: 100%;
+}
+
+.repayment_table-header-id {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 1%;
+}
+
+.repayment_table-header-nombre {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 5%;
+}
+
+.repayment_table-id {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.repayment_table-nombre {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}

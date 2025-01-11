@@ -1,0 +1,345 @@
+.modal_unifyCode-main {
+    display: grid;
+    text-align: center;
+    grid-template-areas:
+        'title' 
+        'body';
+    grid-template-rows: 30px 130px;
+}
+
+.modal_unifyCode-title {
+    display: grid;
+    gap: 5px;
+    grid-area: title;
+    grid-template-areas: 
+        'text btnClose';
+    grid-template-columns: 94.3% 5%;
+}
+
+#lblTitleUnifyCodeModal {
+    background-color: $primary;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    grid-area: text;
+    margin-bottom: 5px;
+    padding-bottom: 2px;
+    padding-top: 5px;
+    text-align: center;
+}
+
+#lblCloseUnifyCodeModal {
+    background-color: red;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    grid-area: btnClose;
+    margin-bottom: 5px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    text-align: center;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.modal_unifyCode-body {
+    display: grid;
+    grid-area: body;
+    grid-template-areas: 
+        'inputs'
+        'btn';
+    grid-template-rows: 75% 25%;
+}
+
+.modal_unifyCode-body-inputs {
+    display: grid;
+    grid-area: inputs;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    grid-template-areas: 
+        'left right';
+    grid-template-columns: 50% 50%;
+}
+
+.modal_unifyCode-body-inputs-left {
+    grid-area: left;
+    display: grid;
+    grid-template-areas: 
+        'firstLineL'
+        'secondLineL';
+    grid-template-rows: 50% 50%;
+}
+
+.modal_unifyCode-body-inputs-left-firstLine {
+    display: grid;
+    grid-area: firstLineL;
+    grid-template-areas: 
+        'puntoVenta1 codigo1';
+    grid-template-columns: 50% 50%;
+}
+
+.modal_unifyCode-body-inputs-left-firstLine-puntoVenta {
+    grid-area: puntoVenta1;
+    display: grid;
+    grid-template-areas: 
+        'lblPuntoVenta1'
+        'cboPuntoVenta1';
+    grid-template-rows: 50% 50%;
+}
+
+#lblPuntoVenta1UnifyCode {
+    font-size: 15px;
+    grid-area: lblPuntoVenta1;
+    padding-left: 5px;
+    padding-top: 5px;
+    text-align: start;
+}
+
+#selectPuntoVenta1UnifyCode {
+    border: 1px solid black;
+    font-size: 15px;
+    grid-area: cboPuntoVenta1;
+    height: 80%;
+    margin-left: 5px;
+    text-align: start;
+    width: 90%;
+}
+
+.modal_unifyCode-body-inputs-left-firstLine-codigo {
+    grid-area: codigo1;
+    display: grid;
+    grid-template-areas: 
+        'lblCodigo1'
+        'inputsCodigo1';
+    grid-template-rows: 50% 50%;
+}
+
+#lblCodigo1UnifyCode {
+    font-size: 15px;
+    grid-area: lblCodigo1;
+    padding-left: 5px;
+    padding-top: 5px;
+    text-align: start;
+}
+
+.modal_unifyCode-body-inputs-left-firstLine-codigo-inputs {
+    display: grid;
+    grid-area: inputsCodigo1;
+    grid-template-areas: 
+        'btnBuscarCodigo1 txtcodigo1';
+    grid-template-columns: 20% 80%;
+}
+
+#btnBuscarCodigo1UnifyCode {
+    font-size: 15px;
+    grid-area: btnBuscarCodigo1;
+    height: 80%;
+    margin-left: 5px;
+    text-align: center;
+    width: 90%;
+
+    &:hover {
+        background-color: #3D59A9;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+#inputCodigo1UnifyCode {
+    border: 1px solid black;
+    font-size: 15px;
+    grid-area: txtcodigo1;
+    height: 80%;
+    margin-left: 5px;
+    text-align: start;
+    width: 90%;
+}
+
+.modal_unifyCode-body-inputs-left-secondLine {
+    grid-area: secondLineL;
+    display: grid;
+    grid-template-areas: 
+        'lblDescripcion1'
+        'inputsDescripcion1';
+    grid-template-rows: 50% 50%;
+}
+
+#lblDescripcion1UnifyCode {
+    font-size: 15px;
+    grid-area: lblDescripcion1;
+    padding-left: 5px;
+    padding-top: 5px;
+    text-align: start;
+}
+
+#inputDescripcion1UnifyCode {
+    border: 1px solid black;
+    font-size: 15px;
+    grid-area: inputsDescripcion1;
+    height: 80%;
+    margin-left: 5px;
+    text-align: start;
+    width: 96%;
+}
+
+.modal_unifyCode-body-inputs-right {
+    grid-area: right;
+    display: grid;
+    grid-template-areas: 
+        'firstLineR'
+        'secondLineR';
+    grid-template-rows: 50% 50%;
+}
+
+.modal_unifyCode-body-inputs-right-firstLine {
+    display: grid;
+    grid-area: firstLineR;
+    grid-template-areas: 
+        'puntoVenta2 codigo2';
+    grid-template-columns: 50% 50%;
+}
+
+.modal_unifyCode-body-inputs-right-firstLine-puntoVenta {
+    grid-area: puntoVenta2;
+    display: grid;
+    grid-template-areas: 
+        'lblPuntoVenta2'
+        'cboPuntoVenta2';
+    grid-template-rows: 50% 50%;
+}
+
+#lblPuntoVenta2UnifyCode {
+    font-size: 15px;
+    grid-area: lblPuntoVenta2;
+    padding-left: 5px;
+    padding-top: 5px;
+    text-align: start;
+}
+
+#selectPuntoVenta2UnifyCode {
+    border: 1px solid black;
+    font-size: 15px;
+    grid-area: cboPuntoVenta2;
+    height: 80%;
+    margin-left: 5px;
+    text-align: start;
+    width: 90%;
+}
+
+.modal_unifyCode-body-inputs-right-firstLine-codigo {
+    grid-area: codigo2;
+    display: grid;
+    grid-template-areas: 
+        'lblCodigo2'
+        'inputsCodigo2';
+    grid-template-rows: 50% 50%;
+}
+
+#lblCodigo2UnifyCode {
+    font-size: 15px;
+    grid-area: lblCodigo2;
+    padding-left: 5px;
+    padding-top: 5px;
+    text-align: start;
+}
+
+.modal_unifyCode-body-inputs-right-firstLine-codigo-inputs {
+    display: grid;
+    grid-area: inputsCodigo2;
+    grid-template-areas: 
+        'btnBuscarCodigo2 txtcodigo2';
+    grid-template-columns: 20% 80%;
+}
+
+#btnBuscarCodigo2UnifyCode {
+    font-size: 15px;
+    grid-area: btnBuscarCodigo2;
+    height: 80%;
+    margin-left: 5px;
+    text-align: center;
+    width: 90%;
+
+    &:hover {
+        background-color: #3D59A9;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+#inputCodigo2UnifyCode {
+    border: 1px solid black;
+    font-size: 15px;
+    grid-area: txtcodigo2;
+    height: 80%;
+    margin-left: 5px;
+    text-align: start;
+    width: 90%;
+}
+
+.modal_unifyCode-body-inputs-right-secondLine {
+    grid-area: secondLineR;
+    display: grid;
+    grid-template-areas: 
+        'lblDescripcion2'
+        'inputsDescripcion2';
+    grid-template-rows: 50% 50%;
+}
+
+#lblDescripcion2UnifyCode {
+    font-size: 15px;
+    grid-area: lblDescripcion2;
+    padding-left: 5px;
+    padding-top: 5px;
+    text-align: start;
+}
+
+#inputDescripcion2UnifyCode {
+    border: 1px solid black;
+    font-size: 15px;
+    grid-area: inputsDescripcion2;
+    height: 80%;
+    margin-left: 5px;
+    text-align: start;
+    width: 96%;
+}
+
+.modal_unifyCode-body-buttons {
+    display: grid;
+    grid-area: btn;
+    margin-left: 65%;
+    gap: 5px;
+    grid-template-areas: 
+        'cancelar aceptar';
+    grid-template-columns: 50% 50%;
+}
+
+#btnCancelarUnifyCode {
+    font-size: 15px;
+    grid-area: cancelar;
+    margin-top: 5px;
+    text-align: center;
+    width: 90%;
+
+    &:hover {
+        background-color: #D5300C;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+#btnAceptarUnifyCode {
+    font-size: 15px;
+    grid-area: aceptar;
+    margin-top: 5px;
+    text-align: center;
+    width: 90%;
+
+    &:hover {
+        background-color: #3D59A9;
+        color: white;
+        cursor: pointer;
+    }
+}

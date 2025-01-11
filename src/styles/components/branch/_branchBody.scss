@@ -1,0 +1,278 @@
+.branch_body-main {
+    display: grid;
+    height: 100%;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-bottom: 50%;
+    padding-top: 15px;
+    padding-left: 5%;
+    padding-right: 5%;
+    grid-template-areas: 
+        'firstLine'
+        'secondLine'
+        'thirdLine';
+    grid-template-rows: 15% 15% 15%;
+}
+
+.branch_body-firstLine {
+    grid-area: firstLine;
+    display: grid;
+    grid-template-areas: 
+        'nombreComercial nombreFiscal';
+    grid-template-columns: 50% 50%;
+    border-right: 1px solid rgb(192, 190, 190);
+    border-left: 1px solid rgb(192, 190, 190);
+    border-top: 1px solid rgb(192, 190, 190);
+}
+
+.branch_body-firstLine-NombreComercial {
+    grid-area: nombreComercial;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblNombreComercial'
+        'txtNombreComercial';
+    grid-template-rows: 50% 50%;
+}
+
+.branch_body-firstLine-NombreComercial-label {
+    grid-area: lblNombreComercial;
+    padding-top: 5px;
+}
+
+#lblNombreComercialBranch {
+    text-align: start;
+    font-size: 15px;
+    padding-left: 8px;
+    font-weight: 600;
+}
+
+.branch_body-firstLine-NombreComercial-input {
+    grid-area: txtNombreComercial;
+}
+
+#txtNombreComercialBranch {
+    width: 95%;
+    text-align: start;
+    padding-left: 3px;
+    font-size: 15px;
+}
+
+.branch_body-firstLine-NombreFiscal {
+    grid-area: nombreFiscal;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblNombreFiscal'
+        'txtNombreFiscal';
+    grid-template-rows: 50% 50%;
+}
+
+.branch_body-firstLine-NombreFiscal-label {
+    grid-area: lblNombreFiscal;
+    padding-top: 5px;
+}
+
+#lblNombreFiscalBranch {
+    text-align: start;
+    font-size: 15px;
+    padding-left: 8px;
+    font-weight: 600;
+}
+
+.branch_body-firstLine-NombreFiscal-input {
+    grid-area: txtNombreFiscal;
+}
+
+#txtNombreFiscalBranch {
+    width: 95%;
+    text-align: start;
+    padding-left: 3px;
+    font-size: 15px;
+}
+
+.branch_body-secondLine {
+    grid-area: secondLine;
+    display: grid;
+    grid-template-areas: 
+        'tipoDocumento numeroDocumento alias';
+    grid-template-columns: 25% 25% 50%;
+    border-right: 1px solid rgb(192, 190, 190);
+    border-left: 1px solid rgb(192, 190, 190);
+}
+
+.branch_body-secondLine-tipoDocumento {
+    grid-area: tipoDocumento;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblTipoDocumento'
+        'txtTipoDocumento';
+    grid-template-rows: 50% 50%;
+}
+
+.branch_body-secondLine-tipoDocumento-label {
+    grid-area: lblTipoDocumento;
+    padding-top: 5px;
+}
+
+#lblTipoDocumentoBranch {
+    text-align: start;
+    font-size: 15px;
+    padding-left: 8px;
+    font-weight: 600;
+}
+
+.branch_body-secondLine-tipoDocumento-input {
+    grid-area: txtTipoDocumento;
+}
+
+#txtTipoDocumentoBranch {
+    width: 90%;
+    text-align: start;
+    padding-left: 3px;
+    font-size: 15px;
+}
+
+.branch_body-secondLine-numeroDocumento {
+    grid-area: numeroDocumento;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblNumeroDocumento'
+        'txtNumeroDocumento';
+    grid-template-rows: 50% 50%;
+}
+
+.branch_body-secondLine-numeroDocumento-label {
+    grid-area: lblNumeroDocumento;
+    padding-top: 5px;
+}
+
+#lblNumeroDocumentoBranch {
+    text-align: start;
+    font-size: 15px;
+    padding-left: 8px;
+    font-weight: 600;
+}
+
+.branch_body-secondLine-numeroDocumento-input {
+    grid-area: txtNumeroDocumento;
+}
+
+#txtNumeroDocumentoBranch {
+    width: 90%;
+    text-align: start;
+    padding-left: 3px;
+    font-size: 15px;
+}
+
+.branch_body-secondLine-alias {
+    grid-area: alias;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblAlias'
+        'txtAlias';
+    grid-template-rows: 50% 50%;
+}
+
+.branch_body-secondLine-alias-label {
+    grid-area: lblAlias;
+    padding-top: 5px;
+}
+
+#lblAliasBranch {
+    text-align: start;
+    font-size: 15px;
+    padding-left: 8px;
+    font-weight: 600;
+}
+
+.branch_body-secondLine-alias-input {
+    grid-area: txtAlias;   
+}
+
+#txtAliasBranch {
+    width: 95%;
+    text-align: start;
+    padding-left: 3px;
+    font-size: 15px;
+}
+
+.branch_body-thirdLine {
+    grid-area: thirdLine;
+    display: grid;
+    grid-template-areas: 
+        'telefono email';
+    grid-template-columns: 25% 75%;
+    border-right: 1px solid rgb(192, 190, 190);
+    border-left: 1px solid rgb(192, 190, 190);
+    border-bottom: 1px solid rgb(192, 190, 190);
+}
+
+.branch_body-thirdLine-telefono {
+    grid-area: telefono;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblTelefono'
+        'txtTelefono';
+    grid-template-rows: 50% 50%;
+}
+
+.branch_body-thirdLine-telefono-label {
+    grid-area: lblTelefono;
+    padding-top: 5px;
+}
+
+#lblTelefonoBranch {
+    text-align: start;
+    font-size: 15px;
+    padding-left: 8px;
+    font-weight: 600;
+}
+
+.branch_body-thirdLine-telefono-input {
+    grid-area: txtTelefono;
+}
+
+#txtTelefonoBranch {
+    width: 90%;
+    text-align: start;
+    padding-left: 3px;
+    font-size: 15px; 
+}
+
+.branch_body-thirdLine-email {
+    grid-area: email;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblEmail'
+        'txtEmail';
+    grid-template-rows: 50% 50%;
+}
+
+.branch_body-thirdLine-email-label {
+    grid-area: lblEmail;
+    padding-top: 5px;
+}
+
+#lblEmailBranch {
+    text-align: start;
+    font-size: 15px;
+    padding-left: 8px;
+    font-weight: 600;
+}
+
+.branch_body-thirdLine-email-input {
+    grid-area: txtEmail;
+}
+
+#txtEmailBranch {
+    width: 97%;
+    text-align: start;
+    padding-left: 3px;
+    font-size: 15px; 
+}

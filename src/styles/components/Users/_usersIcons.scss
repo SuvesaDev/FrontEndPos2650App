@@ -1,0 +1,200 @@
+.users_icons-main {
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'btnNuevo btnBuscar btnRegistrar btnAnular btnCerrar';
+    grid-template-columns: 8% 8% 8% 8% 8%;
+}
+
+.users_icons-nuevo {
+    display: grid;
+    grid-area: btnNuevo;
+    height: 100%;
+    grid-template-areas: 
+        'iconNue'
+        'lblNue';
+    grid-template-rows: 60% 40%;
+}
+
+.users_icons-nuevo-icon {
+    color: #F68A1D;
+    grid-area: iconNue;
+    padding-top: 4px;
+}
+
+.users_icons-nuevo-icon-disable {
+    color: gray;
+    grid-area: iconNue;
+    padding-top: 4px;
+}
+
+.iconNuevoUsers {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+.iconNuevoUsers-disable {
+    cursor: not-allowed;
+    height: 100%;
+    width: 25%;
+}
+
+#lblNuevoAC {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblNue;
+    text-align: center;
+}
+
+.users_icons-Buscar {
+    display: grid;
+    grid-area: btnBuscar;
+    height: 100%;
+    grid-template-areas: 
+        'iconBus'
+        'lblBus';
+    grid-template-rows: 60% 40%;
+}
+
+.users_icons-Buscar-icon {
+    color: #F68A1D;
+    grid-area: iconBus;
+    padding-top: 4px;
+}
+
+.users_icons-Buscar-icon-disable {
+    color: gray;
+    grid-area: iconBus;
+    padding-top: 4px;
+}
+
+.iconBusUsers {
+    cursor: pointer;
+    height: 100%;
+    width: 20%;
+}
+
+.iconBusUsers-disable {
+    cursor: not-allowed;
+    height: 100%;
+    width: 20%;
+}
+
+#lblBuscarAC {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblBus;
+    text-align: center;
+}
+
+.users_icons-registrar {
+    display: grid;
+    grid-area: btnRegistrar;
+    height: 100%;
+    grid-template-areas: 
+        'iconReg'
+        'lblReg';
+    grid-template-rows: 60% 40%;
+}
+
+.users_icons-registrar-icon {
+    color: #F68A1D;
+    grid-area: iconReg;
+    padding-top: 4px;
+}
+
+.users_icons-registrar-icon-disable {
+    color: gray;
+    grid-area: iconReg;
+    padding-top: 4px;
+}
+
+.iconRegistrarUsers {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+.iconRegistrarUsers-disable {
+    cursor: not-allowed;
+    height: 100%;
+    width: 25%;
+}
+
+#lblRegistrarAC {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblReg;
+    text-align: center;
+}
+
+.users_icons-anular {
+    display: grid;
+    grid-area: btnAnular;
+    height: 100%;
+    grid-template-areas: 
+        'iconAnu'
+        'lblAnu';
+    grid-template-rows: 60% 40%;
+}
+
+.users_icons-anular-icon {
+    color: #F68A1D;
+    grid-area: iconAnu;
+    padding-top: 4px;
+}
+
+.users_icons-anular-icon-disable {
+    color: gray;
+    grid-area: iconAnu;
+    padding-top: 4px;
+}
+
+.iconAnularUsers {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+.iconAnularUsers-disable {
+    cursor: not-allowed;
+    height: 100%;
+    width: 25%;
+}
+
+#lblAnularAC {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblAnu;
+    text-align: center;
+}
+
+.users_icons-cerrar {
+    display: grid;
+    grid-area: btnCerrar;
+    height: 100%;
+    grid-template-areas: 
+        'iconCer'
+        'lblCer';
+    grid-template-rows: 60% 40%;
+}
+
+.users_icons-cerrar-icon {
+    color: #F68A1D;
+    grid-area: iconCer;
+    padding-top: 4px;
+}
+
+#iconCerrarAC {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblCerrarAC {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblCer;
+    text-align: center;
+}

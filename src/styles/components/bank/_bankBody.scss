@@ -1,0 +1,290 @@
+.bank_body-main {
+    display: grid;
+    height: 100%;
+    margin-left: 25%;
+    margin-right: 25%;
+    padding-top: 15px;
+    padding-left: 5%;
+    padding-right: 5%;
+    grid-template-areas: 
+        'inputs'
+        'table';
+    grid-template-rows: 15% 50%;
+}
+
+.bank_body-inputs {
+    grid-area: inputs;
+    display: grid;
+    grid-template-areas: 
+        'input btn';
+    grid-template-columns: 70% 30%;
+    border-top: 1px solid rgb(176, 173, 173);
+    border-right: 1px solid rgb(176, 173, 173);
+    border-left: 1px solid rgb(176, 173, 173);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.bank_body-inputs-input {
+    grid-area: input;
+    display: grid;
+    grid-template-areas: 
+        'label'
+        'txt';
+    grid-template-rows: 50% 50%;
+}
+
+.bank_body-inputs-input-label {
+    grid-area: label;
+    padding-top: 10px;
+}
+
+#lblDescripcionBankBody {
+    text-align: start;
+    padding-left: 10px;
+    font-size: 15px;
+}
+
+.bank_body-inputs-input-txt {
+    grid-area: txt;
+}
+
+#txtDescripcionBankBody {
+    width: 95%;
+    text-align: start;
+    padding-left: 5px;
+    font-size: 15px;
+}
+
+.bank_body-inputs-btn {
+    grid-area: btn;
+    padding-top: 30px;
+}
+
+.bank_body-inputs-btn-add {
+    grid-area: btn;
+    padding-top: 30px;
+}
+
+.btnAddBankBody {
+    width: 90%;
+    height: 70%;
+    font-size: 15px;
+    background-color: $primary;
+    color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+
+    &:hover {
+        background-color: $secundary;
+    }
+}
+
+.btnAddBankBody-disable {
+    width: 90%;
+    height: 70%;
+    font-size: 15px;
+    background-color: gray;
+    color: white;
+    cursor: not-allowed;
+    border: none;
+    border-radius: 3px;
+}
+
+.bank_body-inputs-btn-edit {
+    grid-area: btn;
+    display: grid;
+    grid-template-areas: 
+        'btnEdit'
+        'btnCancel';
+    grid-template-rows: 50% 50%;
+    padding-top: 10px;
+}
+
+.bank_body-inputs-btn-edit-btnEdit {
+    grid-area: btnEdit;
+}
+
+.btnEditBankBody {
+    width: 90%;
+    height: 90%;
+    font-size: 15px;
+    background-color: $primary;
+    color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+
+    &:hover {
+        background-color: $secundary;
+    }
+}
+
+.btnEditBankBody-disable {
+    width: 90%;
+    height: 90%;
+    font-size: 15px;
+    background-color: gray;
+    color: white;
+    cursor: not-allowed;
+    border: none;
+    border-radius: 3px;
+}
+
+.bank_body-inputs-btn-edit-btnCancel {
+    grid-area: btnCancel;
+}
+
+.btnCancelBankBody {
+    width: 90%;
+    height: 90%;
+    font-size: 15px;
+    background-color: rgb(240, 32, 32);
+    color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+}
+
+.btnCancelBankBody-disable {
+    width: 90%;
+    height: 90%;
+    font-size: 15px;
+    background-color: gray;
+    color: white;
+    cursor: not-allowed;
+    border: none;
+    border-radius: 3px;
+}
+
+
+.bank_body-table {
+    grid-area: table;
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgb(176, 173, 173);
+    border-right: 1px solid rgb(176, 173, 173);
+    border-left: 1px solid rgb(176, 173, 173);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.bank_body-table-main {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    scrollbar-color: rebeccapurple green;
+    scrollbar-width: thin;
+    border: 1px solid rgb(176, 173, 173);
+}
+
+.bank_body-table-header-id {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 100px;
+}
+
+.bank_body-table-header-descripcion {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 500px;
+}
+
+.bank_body-table-header-activo {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 50px;
+}
+
+.bank_body-table-body {
+    text-align: start;
+    font-style: normal;
+}
+
+.bank_body-table-body-row {
+    &:hover {
+        cursor: pointer;
+        background-color: #ACA9A9;
+    }
+}
+
+.bank_body-table-body-row-selected {
+
+    background-color: $primary;
+    color: white;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.bank_body-table-body-row-disable {
+
+    background-color: rgb(234, 148, 148);
+    color: white;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.bank_body-table-body-cell {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+    height: 25.5px;
+    width: 50px;
+}
+
+.bank_body-table-body-cell-icon-disable {
+    padding-top: 3px;
+    width: 85%;
+    text-align: center;
+    color: $secundary;
+
+    &:hover {
+        color: red
+    }
+}
+
+.bank_body-table-body-cell-icon-active {
+    padding-top: 3px;
+    width: 85%;
+    text-align: center;
+    color: white;
+
+    &:hover {
+        color: $primary
+    }
+
+}
+
+.bank_body-table-body-cell-icon-disable-selected {
+    padding-top: 3px;
+    width: 85%;
+    text-align: center;
+    color: white;
+
+    &:hover {
+        color: red
+    }
+}
+
+.bank_body-table-body-cell-icon-active-selected {
+    padding-top: 3px;
+    width: 85%;
+    text-align: center;
+    color: white;
+
+    &:hover {
+        color: $secundary
+    }
+
+}

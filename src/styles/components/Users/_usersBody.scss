@@ -1,0 +1,721 @@
+.users_body-main {
+    display: grid;
+    height: 100%;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-top: 15px;
+    padding-left: 5%;
+    padding-right: 5%;
+    grid-template-areas: 
+        'firstLine'
+        'secondLine'
+        'ThirdLine'
+        'fourthLine';
+    grid-template-rows: 15% 15% 15% 25%;
+    // gap: 5px;
+}
+
+.users_body-fisrtLine {
+    grid-area: firstLine;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'idUsuario nombre iniciales';
+    grid-template-columns: 25% 65% 10%;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+
+.users_body-fisrtLine-idUsuario {
+    grid-area: idUsuario;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblidUsuario'
+        'txtidUsuario';
+    grid-template-rows: 50% 50%;
+}
+
+.users_body-fisrtLine-idUsuario-label {
+    grid-area: lblidUsuario;
+    padding-top: 8px;
+    padding-left: 10px;
+}
+
+#lblIdUsuarioUserBody {
+    text-align: start;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.users_body-fisrtLine-idUsuario-input {
+    grid-area: txtidUsuario;
+    padding-left: 10px;
+    padding-right: 5px;
+}
+
+#txtIdUsuarioUserBody {
+    width: 100%;
+    text-align: start;
+    font-size: 15px;
+}
+
+.users_body-fisrtLine-nombre {
+    grid-area: nombre;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblNombre'
+        'txtNombre';
+    grid-template-rows: 50% 50%;
+}
+
+.users_body-fisrtLine-nombre-label {
+    grid-area: lblNombre;
+    padding-top: 8px;
+    padding-left: 10px;
+}
+
+#lblNombreUserBody {
+    text-align: start;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.users_body-fisrtLine-nombre-input {
+    grid-area: txtNombre;
+    padding-left: 10px;
+    padding-right: 5px;
+}
+
+#txtNombreUserBody {
+    width: 100%;
+    text-align: start;
+    font-size: 15px;
+}
+
+.users_body-fisrtLine-iniciales {
+    grid-area: iniciales;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblIniciales'
+        'txtIniciales';
+    grid-template-rows: 50% 50%;
+}
+
+.users_body-fisrtLine-iniciales-label {
+    grid-area: lblIniciales;
+    padding-top: 8px;
+    padding-left: 10px;
+}
+
+#lblInicialesUserBody {
+    text-align: start;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.users_body-fisrtLine-iniciales-input {
+    grid-area: txtIniciales;
+    padding-left: 10px;
+    padding-right: 5px;
+}
+
+#txtInicialesUserBody {
+    width: 100%;
+    text-align: start;
+    font-size: 15px;
+}
+
+.users_body-secondLine {
+    grid-area: secondLine;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'usuario claveEntrada claveInterna';
+    grid-template-columns: 25% 33% 33%;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+
+.users_body-secondLine-usuario {
+    grid-area: usuario;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblUsuario'
+        'txtUsuario';
+    grid-template-rows: 50% 50%;
+}
+
+.users_body-secondLine-usuario-label {
+    grid-area: lblUsuario;
+    padding-top: 8px;
+    padding-left: 10px;
+}
+
+#lblUsuarioUserBody {
+    text-align: start;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.users_body-secondLine-usuario-input {
+    grid-area: txtUsuario;
+    padding-left: 10px;
+    padding-right: 5px;
+}
+
+#txtUsuarioUserBody {
+    width: 100%;
+    text-align: start;
+    font-size: 15px;
+}
+
+.users_body-secondLine-claveEntrada {
+    grid-area: claveEntrada;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblClaveEntrada'
+        'txtClaveEntrada';
+    grid-template-rows: 50% 50%;
+}
+
+.users_body-secondLine-claveEntrada-label {
+    grid-area: lblClaveEntrada;
+    display: grid;
+    grid-template-areas: 
+        'text icon';
+    grid-template-columns: 35% 10%;
+    padding-top: 8px;
+    padding-left: 10px;
+}
+
+.users_body-secondLine-claveEntrada-label-text {
+    grid-area: text;
+}
+
+.lblClaveEntradaUserBody {
+    text-align: start;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.lblClaveEntradaUserBody-disable {
+    text-align: start;
+    font-size: 17px;
+    font-weight: 600;
+    color: red;
+}
+
+.users_body-secondLine-claveEntrada-label-icon {
+    grid-area: icon;
+}
+
+#iconInfoUserBody {
+    width: 50%;
+    height: 80%;
+    color: $secundary;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.lblMensajeInfoUserBody {
+    visibility: visible;
+    width: 250px;
+    background-color: rgb(183, 181, 181);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+  
+    /* Position the tooltip */
+    position: absolute;
+    top: 170px;
+    left: 600px;
+    z-index: 1;
+  }
+
+.users_body-secondLine-claveEntrada-input {
+    grid-area: txtClaveEntrada;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'inputClaveEntrada iconClaveEntrada';
+    grid-template-columns: 90% 10%;
+    padding-left: 10px;
+    padding-right: 5px;
+}
+
+.users_body-secondLine-claveEntrada-input-txt {
+    grid-area: inputClaveEntrada;
+}
+
+.txtClaveEntradaUserBody {
+    width: 100%;
+    text-align: start;
+    font-size: 15px;
+}
+
+.txtClaveEntradaUserBody-disable {
+    width: 100%;
+    text-align: start;
+    font-size: 15px;
+    border: 1px solid red;
+}
+
+.users_body-secondLine-claveEntrada-input-icon {
+    grid-area: iconClaveEntrada;
+}
+
+#iconEyeClaveEntradaUserBody {
+    width: 100%;
+    height: 50%;
+    color: #F68A1D;
+
+    &:hover {
+        cursor: pointer;
+        color: $primary;
+    }
+}
+
+#iconEyeClaveEntradaUserBody-disable {
+    width: 100%;
+    height: 50%;
+    color: gray;
+
+    &:hover {
+        cursor: not-allowed;
+    }
+}
+
+.users_body-secondLine-claveInterna {
+    grid-area: claveInterna;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblClaveInterna'
+        'txtClaveInterna';
+    grid-template-rows: 50% 50%;
+}
+
+.users_body-secondLine-claveInterna-label {
+    grid-area: lblClaveInterna;
+    padding-top: 8px;
+    padding-left: 10px;
+}
+
+.lblClaveInternaUserBody {
+    text-align: start;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.lblClaveInternaUserBody-disable {
+    text-align: start;
+    font-size: 17px;
+    font-weight: 600;
+    color: red;
+}
+
+.users_body-secondLine-claveInterna-input {
+    grid-area: txtClaveInterna;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'inputClaveInterna iconClaveInterna';
+    grid-template-columns: 90% 10%;
+    padding-left: 10px;
+    padding-right: 15px;
+}
+
+.users_body-secondLine-claveInterna-input-txt {
+    grid-area: inputClaveInterna;
+}
+
+.txtClaveInternaUserBody {
+    width: 100%;
+    text-align: start;
+    font-size: 15px;
+}
+
+.txtClaveInternaUserBody-disable {
+    width: 100%;
+    text-align: start;
+    font-size: 15px;
+    border: 1px solid red;
+}
+
+.users_body-secondLine-claveInterna-input-icon {
+    grid-area: iconClaveInterna;
+}
+
+#iconEyeClaveInternaUserBody {
+    width: 100%;
+    height: 50%;
+    color: #F68A1D;
+
+    &:hover {
+        cursor: pointer;
+        color: $primary;
+    }
+}
+
+#iconEyeClaveInternaUserBody-disable {
+    width: 100%;
+    height: 50%;
+    color: gray;
+
+    &:hover {
+        cursor: not-allowed;
+    }
+}
+
+.users_body-ThirdLine {
+    grid-area: ThirdLine;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'perfil email cantidadPreventa';
+    grid-template-columns: 25% 33% 29%;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+
+.users_body-ThirdLine-perfil {
+    grid-area: perfil;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblPerfil'
+        'txtPerfil';
+    grid-template-rows: 50% 50%;
+}
+
+.users_body-ThirdLine-perfil-label {
+    grid-area: lblPerfil;
+    padding-top: 8px;
+    padding-left: 10px;
+}
+
+#lblPerfilUserBody {
+    text-align: start;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.users_body-ThirdLine-perfil-input {
+    grid-area: txtPerfil;
+    padding-left: 10px;
+    padding-right: 5px;
+}
+
+#txtPerfilUserBody {
+    width: 100%;
+    text-align: start;
+    font-size: 15px;
+}
+
+.users_body-ThirdLine-email {
+    grid-area: email;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblEmail'
+        'txtEmail';
+    grid-template-rows: 50% 50%;
+}
+
+.users_body-ThirdLine-email-label {
+    grid-area: lblEmail;
+    padding-top: 8px;
+    padding-left: 10px;
+}
+
+#lblEmailUserBody {
+    text-align: start;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.users_body-ThirdLine-email-input {
+    grid-area: txtEmail;
+    padding-left: 10px;
+    padding-right: 5px;
+}
+
+#txtEmailUserBody {
+    width: 100%;
+    text-align: start;
+    font-size: 15px;
+}
+
+.users_body-ThirdLine-cantidadPreventas {
+    grid-area: cantidadPreventa;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblCantidadPreventa'
+        'txtCantidadPreventa';
+    grid-template-rows: 50% 50%;
+}
+
+.users_body-ThirdLine-cantidadPreventas-label {
+    grid-area: lblCantidadPreventa;
+    padding-top: 8px;
+    padding-left: 10px;
+}
+
+#lblCantidadPreventasUserBody {
+    text-align: start;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.users_body-ThirdLine-cantidadPreventas-input {
+    grid-area: txtCantidadPreventa;
+    padding-left: 10px;
+    padding-right: 5px;
+}
+
+#txtCantidadPreventasUserBody {
+    width: 100%;
+    text-align: start;
+    font-size: 15px;
+}
+
+
+.users_body-fourthLine {
+    grid-area: fourthLine;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'check porcentajes observaciones';
+    grid-template-columns: 25% 33% 33%;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.users_body-fourthLine-check {
+    grid-area: check;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblCheck'
+        'txtCheck';
+    grid-template-rows: 30% 70%;
+}
+
+.users_body-fourthLine-check-label {
+    grid-area: lblCheck;
+    padding-top: 8px;
+    padding-left: 10px;
+}
+
+#lblCheckUserBody {
+    text-align: start;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.users_body-fourthLine-check-inputs {
+    grid-area: txtCheck;
+    padding-left: 10px;
+    padding-right: 5px;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'existencia'
+        'precios'
+        'descuento';
+    grid-template-rows: 33% 33% 33%;
+}
+
+.users_body-fourthLine-check-inputs-existencia {
+    grid-area: existencia;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'checkExistencia lblExistencia';
+    grid-template-columns: 5% 95%;
+}
+
+.users_body-fourthLine-check-inputs-existencia-input {
+    grid-area: checkExistencia;
+    padding-top: 5px;
+}
+
+.users_body-fourthLine-check-inputs-existencia-label {
+    grid-area: lblExistencia;
+    padding-top: 5px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+#lblExistenciaUserBody {
+    font-size: 15px;
+}
+
+.users_body-fourthLine-check-inputs-precios {
+    grid-area: precios;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'checkPrecios lblPrecios';
+    grid-template-columns: 5% 95%;
+}
+
+.users_body-fourthLine-check-inputs-precios-input {
+    grid-area: checkPrecios;
+    padding-top: 5px;
+}
+
+.users_body-fourthLine-check-inputs-precios-label {
+    grid-area: lblPrecios;
+    padding-top: 5px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+#lblPreciosUserBody {
+    font-size: 15px;
+}
+
+.users_body-fourthLine-check-inputs-descuento {
+    grid-area: descuento;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'checkDescuento lblDescuento';
+    grid-template-columns: 5% 95%;
+}
+
+.users_body-fourthLine-check-inputs-descuento-input {
+    grid-area: checkDescuento;
+    padding-top: 5px;
+}
+
+.users_body-fourthLine-check-inputs-descuento-label {
+    grid-area: lblDescuento;
+    padding-top: 5px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+#lblDescuentoUserBody {
+    font-size: 15px;
+}
+
+.users_body-fourthLine-porcentajes {
+    grid-area: porcentajes;
+    padding-top: 58px;
+    padding-left: 10px;
+    padding-right: 5px;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'preciosP'
+        'descuentoP';
+    grid-template-rows: 50% 50%;
+}
+
+.users_body-fourthLine-porcentajes-precios {
+    grid-area: preciosP;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'inputPorcentajePrecio lblPorcentajePrecio';
+    grid-template-columns: 30% 15%;
+}
+
+.users_body-fourthLine-porcentajes-precios-input {
+    grid-area: inputPorcentajePrecio;
+}
+
+#txtPorcentajePreciosUserBody {
+    width: 100%;
+    text-align: start;
+    font-size: 15px;
+    padding-left: 5px;
+}
+
+.users_body-fourthLine-porcentajes-precios-label {
+    grid-area: lblPorcentajePrecio;
+}
+
+#lblPorcentajePreciosUserBody {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.users_body-fourthLine-porcentajes-descuento {
+    grid-area: descuentoP;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'inputPorcentajeDescuento lblPorcentajeDescuento';
+    grid-template-columns: 30% 15%;
+}
+
+.users_body-fourthLine-porcentajes-descuento-input {
+    grid-area: inputPorcentajeDescuento;
+}
+
+#txtPorcentajeDescuentoUserBody {
+    width: 100%;
+    text-align: start;
+    font-size: 15px;
+    padding-left: 5px;
+}
+
+.users_body-fourthLine-porcentajes-descuento-label {
+    grid-area: lblPorcentajeDescuento;
+}
+
+#lblPorcentajeDescuentoUserBody {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.users_body-fourthLine-observaciones {
+    grid-area: observaciones;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblObservaciones'
+        'txtObservaciones';
+    grid-template-rows: 30% 70%;
+}
+
+.users_body-fourthLine-observaciones-label {
+    grid-area: lblObservaciones;
+    padding-top: 8px;
+    padding-left: 10px;
+}
+
+#lblObservacionesUserBody {
+    text-align: start;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.users_body-fourthLine-observaciones-input {
+    grid-area: txtObservaciones;
+    padding-left: 10px;
+    padding-right: 5px;
+}
+
+#txtObservacionesUserBody {
+    width: 100%;
+    text-align: start;
+    font-size: 15px;
+    resize: none;
+}

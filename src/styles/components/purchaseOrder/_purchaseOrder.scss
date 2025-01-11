@@ -1,0 +1,93 @@
+.purchaseOrder-main {
+    display: grid;
+    height: 100%;
+    text-align: center;
+    grid-template-areas: 
+        'header header header'
+        'body body body'
+        'footer footer footer';
+    grid-template-rows: 40px 448px 60px;
+}
+
+.purchaseOrder-header {
+    background-color: #3D59A9;
+    display: grid;
+    grid-area: header;
+    height: 100%;
+    grid-template-areas: 
+        'orden title anulada';
+    grid-template-columns: 20% 60% 20%;
+}
+
+.purchaseOrder-header-orden {
+    display: grid;
+    grid-area: orden;
+    grid-template-areas: 
+        'lblorden txtorden';
+    grid-template-columns: 50% 50%;
+}
+
+#lblOrdenPurchaseOrder {
+    color: white;
+    font-size: 20px;
+    grid-area: lblorden;
+    padding-top: 8px;
+    text-align: center;
+}
+
+#txtOrdenPurchaseOrder {
+    font-size: 15px;
+    grid-area: txtorden;
+    height: 60%;
+    margin-top: 10px;
+    text-align: start;
+    width: 85%;
+}
+
+.purchaseOrder-header-title {
+    grid-area: title;
+}
+
+#lblTitlePurchaseOrder {
+    color: white;
+    font-size: 30px;
+    padding-top: 2px;
+    text-align: center;
+}
+
+.purchaseOrder-header-anulada {
+    display: grid;
+    grid-area: anulada;
+    grid-template-areas: 
+        'lblanulada txtanulada';
+    grid-template-columns: 40% 50%;
+}
+
+.purchaseOrder-header-anulada-input {
+    color: white;
+    font-size: 20px;
+    grid-area: lblanulada;
+    margin-left: 80%;
+    padding-top: 8px;
+    text-align: center;
+}
+
+#lblAnuladaPurOrder {
+    background-color: white;
+    color: black;
+    font-size: 15px;
+    grid-area: txtanulada;
+    height: 45%;
+    margin-top: 12px;
+    text-align: start;
+    width: 60%;
+}
+
+.purchaseOrder-body {
+    grid-area: body;
+}
+
+.purchaseOrder-icons {
+    grid-area: footer;
+    border: 1px solid black;
+}

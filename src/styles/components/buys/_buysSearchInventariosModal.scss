@@ -1,0 +1,164 @@
+.modal-searchInventarioBuys-main {
+    display: grid;
+    text-align: center;
+    grid-template-areas:
+        'title' 
+        'inputs'
+        'table';
+    grid-template-rows: 40px 50px 280px;
+}
+
+.modal-searchInventarioBuys-title {
+    display: grid;
+    gap: 5px;
+    grid-area: title;
+    grid-template-areas: 
+        'text btnClose';
+    grid-template-columns: 95% 5%;
+}
+
+#lblTitleSearchPresentacion {
+    background-color: $primary;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    grid-area: text;
+    margin-bottom: 5px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    text-align: center;
+}
+
+#lblCloseSearchPresentacion {
+    background-color: red;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    grid-area: btnClose;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    text-align: center;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.modal-searchInventarioBuys-inputs {
+    display: grid;
+    grid-area: inputs;
+    grid-template-areas: 
+        'title'
+        'inputs';
+    grid-template-rows: 45% 55%;
+}
+
+.modal-searchInventarioBuys-inputs-title {
+    grid-area: title;
+}
+
+#lblDescripcionPresentacionModal {
+    border-bottom: 1px solid black;
+    font-size: 15px;
+    padding-left: 5px;
+    padding-top: 1px;
+    text-align: start;
+}
+
+.modal-searchInventarioBuys-inputs-input {
+    grid-area: inputs;
+    display: grid;
+    grid-template-areas: 
+        'input btn';
+    grid-template-columns: 85% 15%;
+}
+
+.modal-searchInventarioBuys-inputs-input-input {
+    grid-area: input;
+}
+
+#txtDescripcionModalSearchPresentacionInventory {
+    border: 1px solid black;
+    font-size: 15px;
+    height: 80%;
+    padding-left: 5px;
+    margin-left: 5px;
+    margin-top: 2px;
+    text-align: start;
+    width: 100%;
+}
+
+.modal-searchInventarioBuys-inputs-input-btn {
+    grid-area: btn;
+}
+
+#btnSearchPresentacionInventory {
+    background-color: $secundary;
+    border: none;
+    color: white;
+    margin-top: 2px;
+    height: 80%;
+    margin-right: 5px;
+    width: 80%;
+    border-radius: 5%;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $primary;
+    }
+}
+
+.modal-searchInventarioBuys-table {
+    grid-area: table;
+    margin-top: 5px;
+}
+
+.modal-searchInventarioBuys-table-table {
+    width: 99%;
+    height: 100%;
+    margin-left: 2px;
+    overflow-y: scroll;
+    scrollbar-color: rebeccapurple green;
+    scrollbar-width: thin;
+    border: 1px solid black;
+}
+
+.modal-searchInventarioBuys-table-header-codigo {
+    background-color: #ACA9A9;
+    text-align: start;
+    padding-left: 5px;
+    width: 150px;
+}
+
+.modal-searchInventarioBuys-table-header-descripcion {
+    background-color: #ACA9A9;
+    text-align: start;
+    padding-left: 5px;
+    width: 350px;
+}
+
+.modal-searchInventarioBuys-table-header-codigoCabys {
+    background-color: #ACA9A9;
+    text-align: start;
+    padding-left: 5px;
+    width: 200px;
+}
+
+.modal-searchInventarioBuys-table-body {
+    text-align: start;
+    font-style: normal;
+}
+
+.modal-searchInventarioBuys-table-body-row {
+    &:hover {
+        cursor: pointer;
+        background-color: #ACA9A9;
+    }
+}
+
+.modal-searchInventarioBuys-table-body-cell {
+    padding-left: 5px;
+    border-bottom: 1px solid #ACA9A9;
+}

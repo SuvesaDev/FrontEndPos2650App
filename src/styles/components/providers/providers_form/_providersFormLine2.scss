@@ -1,0 +1,107 @@
+.providers_form-personal-2-nombre{
+    grid-area: nombrePro;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'inputNombreP labelNombreP';
+    grid-template-columns: 25% 75%;
+}
+
+.providers_form-personal-2-label-nombre {
+    background-color: #EEF2E6;
+    grid-area: inputNombreP;
+    height: 80%;
+    margin: 2px;
+}
+
+#lblNombreProviders {
+    color: #5457D5;
+    font-size: 15px;
+    padding-left: 20%;
+    padding-top: 1px;
+    text-align: start;
+}
+
+.providers_form-personal-2-input-nombre {
+    grid-area: labelNombreP;
+}
+
+#txtNombreProviders {
+    color: #5457D5;
+    font-size: 12px;
+    height: 80%;
+    margin-right: 8%;
+    margin-left: 5px;
+    margin-top: 2px;
+    text-align: start;
+    width: 97%;
+    padding-left: 5px;
+}
+
+.providers_form-personal-2-cedula{
+    grid-area: cedulaPro;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'inputCedulaP labelCedulaP iconCedulaP';
+    grid-template-columns: 25% 65% 10%;
+}
+
+.providers_form-personal-2-label-cedula {
+    background-color: #EEF2E6;
+    grid-area: inputCedulaP;
+    height: 80%;
+    margin: 2px;
+}
+
+#lblCedulaProviders {
+    color: #5457D5;
+    font-size: 15px;
+    padding-left: 20%;
+    padding-top: 1px;
+    text-align: start;
+}
+
+.providers_form-personal-2-input-cedula {
+    grid-area: labelCedulaP;
+}
+
+#txtCedulaProviders {
+    color: #5457D5;
+    font-size: 12px;
+    height: 80%;
+    margin-right: 8%;
+    margin-top: 2px;
+    text-align: start;
+    width: 100%;
+    padding-left: 5px;
+}
+
+.providers_form-personal-2-icon-cedula {
+    grid-area: iconCedulaP;
+    margin-right: 50%;
+}
+
+.btnSearchClienteHaciendaProveedor {
+    font-size: 15px;
+    margin-top: 5px;
+    text-align: start;
+    width: 100%;
+    color: $secundary;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.btnSearchClienteHaciendaProveedor-disable {    
+    font-size: 15px;
+    margin-top: 5px;
+    text-align: start;
+    width: 100%;
+    color: gray;
+
+    &:hover {
+        cursor: not-allowed;
+    }
+}

@@ -1,0 +1,28 @@
+.providers_form-personal-6-label-observacion {
+    background-color: #EEF2E6;
+    grid-area: lblObservacion;
+    margin: 2px;
+}
+
+#lblobservacionProviders {
+    color: #5457D5;
+    font-size: 15px;
+    padding-left: 20%;
+    padding-top: 1px;
+    text-align: start;
+}
+
+.providers_form-personal-6-input-observacion {
+    grid-area: inputObservacion;
+}
+
+#txtobservacionProviders {
+    color: #5457D5;
+    font-size: 12px;
+    height: 80%;
+    margin-right: 5px;
+    margin-top: 2px;
+    text-align: start;
+    width: 97%;
+    padding-left: 5px;
+}

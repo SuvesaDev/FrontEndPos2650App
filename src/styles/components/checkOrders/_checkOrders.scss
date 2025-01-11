@@ -1,0 +1,23 @@
+.checkOrders-main {
+    text-align: center;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'header header header'
+        'body body body'
+        'footer footer footer';
+    grid-template-rows: 130px 358px 60px;
+}
+
+.checkOrders-header {
+    grid-area: header;
+}
+
+.checkOrders-body {
+    grid-area: body;
+}
+
+.checkOrders-footer {
+    grid-area: footer;
+    border: 1px solid black;
+}

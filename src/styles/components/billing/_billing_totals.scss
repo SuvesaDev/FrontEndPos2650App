@@ -1,0 +1,300 @@
+.billing_totals-main {
+    display: grid;
+    grid-template-areas: 
+        'Titulo'
+        'Sub-gravado'
+        'Sub-exento'
+        'Sub-total'
+        'Descuento'
+        'Imp-venta'
+        'Monto-cupon'
+        'Totales';
+    grid-template-rows: 20px 55px 55px 55px 55px 55px 55px 105px;
+}
+
+.billing_totals-title {
+    grid-area: Titulo;
+}
+
+#lblTotales {
+    font-size: 15px;
+    padding-left: 15px;
+    text-align: start;
+}
+
+.billing_totals-sub-gravado {
+    grid-area: Sub-gravado;
+    display: grid;
+    grid-template-areas: 
+        'labelSub-gravado'
+        'inputSub-gravado';
+    grid-template-rows: 50% 50%;
+}
+
+#lblSub-gravado {
+    font-size: 15px;
+    grid-area: labelSub-gravado;
+    padding-left: 10%;
+    padding-top: 2%;
+    text-align: start;
+}
+
+#txtSub-gravado {
+    font-size: 12px;
+    font-weight: 600;
+    grid-area: inputSub-gravado;
+    height: 90%;
+    margin-left: 10%;
+    text-align: right;
+    width: 80%;
+}
+
+.billing_totals-sub-Exento {
+    grid-area: Sub-exento;
+    display: grid;
+    grid-template-areas: 
+        'labelSub-exento'
+        'inputSub-exento';
+    grid-template-rows: 50% 50%;
+}
+
+#lblSub-exento {
+    font-size: 15px;
+    grid-area: labelSub-exento;
+    padding-left: 10%;
+    padding-top: 2%;
+    text-align: start;
+}
+
+#txtSub-exento {
+    font-size: 12px;
+    font-weight: 600;
+    grid-area: inputSub-exento;
+    height: 90%;
+    margin-left: 10%;
+    text-align: right;
+    width: 80%;
+}
+
+.billing_totals-sub-Total {
+    grid-area: Sub-total;
+    display: grid;
+    grid-template-areas: 
+        'labelSubTotal'
+        'inputSubTotal';
+    grid-template-rows: 50% 50%;
+}
+
+#lblSubtotal {
+    font-size: 15px;
+    grid-area: labelSubTotal;
+    padding-left: 10%;
+    padding-top: 2%;
+    text-align: start;
+}
+
+#txtSubtotal {
+    font-size: 12px;
+    font-weight: 600;
+    grid-area: inputSubTotal;
+    height: 90%;
+    margin-left: 10%;
+    text-align: right;
+    width: 80%;
+}
+
+.billing_totals-Descuento {
+    grid-area: Descuento;
+    display: grid;
+    grid-template-areas: 
+        'labelDescuento'
+        'inputDescuento';
+    grid-template-rows: 50% 50%;
+}
+
+#lblDescuento {
+    font-size: 15px;
+    grid-area: labelDescuento;
+    padding-left: 10%;
+    padding-top: 2%;
+    text-align: start;
+    width: 100%;
+}
+
+#txtDescuentoGeneral {
+    grid-area: labelDescuento;
+    margin-left: 10px;
+    text-align: end;
+    width: 15%;
+}
+
+#txtDescuento {
+    font-size: 12px;
+    font-weight: 600;
+    grid-area: inputDescuento;
+    height: 90%;
+    margin-left: 10%;
+    text-align: right;
+    width: 80%;
+}
+
+.billing_totals-impVenta {
+    grid-area: Imp-venta;
+    display: grid;
+    grid-template-areas: 
+        'labelImpVentas'
+        'inputImpVentas';
+    grid-template-rows: 50% 50%;
+}
+
+#lblImpVenta {
+    font-size: 15px;
+    grid-area: labelImpVentas;
+    padding-left: 10%;
+    padding-top: 2%;
+    text-align: start;
+}
+
+#txtImpVenta {
+    font-size: 12px;
+    font-weight: 600;
+    grid-area: inputImpVentas;
+    height: 90%;
+    margin-left: 10%;
+    text-align: right;
+    width: 80%;
+}
+
+.billing_totals-MontoCupon {
+    grid-area: Monto-cupon;
+    display: grid;
+    grid-template-areas: 
+        'labelMontoCupon'
+        'inputMontoCupon';
+    grid-template-rows: 50% 50%;
+}
+
+#lblMontoCupon {
+    font-size: 15px;
+    grid-area: labelMontoCupon;
+    padding-left: 10%;
+    padding-top: 2%;
+    text-align: start;
+}
+
+#txtMontoCupon {
+    font-size: 12px;
+    font-weight: 600;
+    grid-area: inputMontoCupon;
+    height: 90%;
+    margin-left: 10%;
+    text-align: right;
+    width: 80%;
+}
+
+.billing_totals-Totales {
+    grid-area: Totales;
+    display: grid;
+    grid-template-areas: 
+        'Exonerar'
+        'Titulo-Precio';
+    grid-template-rows: 25% 75%;
+}
+
+.billing_totals-Totales-Exonerar-Exonerar {
+    grid-area: Exonerar;
+    display: grid;
+    grid-template-areas: 
+        'exo extrajero';
+    grid-template-columns: 50% 50%;
+}
+
+.billing_totals-Totales-Exonerar {
+    grid-area: exo;
+    display: grid;
+    grid-template-areas: 
+        'inputExonerar labelExonerar';
+    grid-template-columns: 20% 80%;
+}
+
+.billing_totals-Totales-Exonerar-check-input {
+    grid-area: inputExonerar;
+    margin-left: 30px;
+    margin-top: 5px;
+    width: 70%;
+}
+
+#lblExonerar {
+    color: red;
+    font-size: 15px;
+    grid-area: labelExonerar;
+    margin-left: 20px;
+    margin-top: 5px;
+    text-align: start;
+    width: 50%;
+}
+
+.billing_totals-Totales-Exonerar-Extrajero {
+    grid-area: extrajero;
+    display: grid;
+    grid-template-areas: 
+        'inputExtrajero labelExtrajero';
+    grid-template-columns: 20% 80%;
+}
+
+.billing_totals-Totales-Extrajero-check-input {
+    grid-area: inputExtrajero;
+    margin-left: 30px;
+    margin-top: 5px;
+    width: 70%;
+}
+
+#lblExtrajero {
+    color: red;
+    font-size: 15px;
+    grid-area: labelExtrajero;
+    margin-left: 20px;
+    margin-top: 5px;
+    text-align: start;
+    width: 50%;
+}
+
+.billing_totals-Totales-Titulo-Precio {
+    grid-area: Titulo-Precio;
+    display: grid;
+    grid-template-areas: 
+        'total'
+        'precio';
+    grid-template-rows: 40% 58%;
+    gap: 2px;
+}
+
+.billing_totals-Totales-Titulo {
+    background-color: #F68A1D;
+    grid-area: total;
+    margin-left: 10%;
+    margin-right: 10%;
+    text-align: center;
+}
+
+#lblTotal {
+    color: white;
+    font-size: 15px;
+    padding-top: 8px;
+}
+
+.billing_totals-Totales-Precio {
+    background-color: #292928;
+    grid-area: precio;
+    margin-left: 10%;
+    margin-right: 10%;
+    text-align: right;
+}
+
+#lblPrecio {
+    color: #8CF42A;
+    font-size: 30px;
+    padding-top: 8px;
+}
+
+

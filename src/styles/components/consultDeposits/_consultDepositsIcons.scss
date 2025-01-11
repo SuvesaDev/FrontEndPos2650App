@@ -1,0 +1,142 @@
+.consultDeposits_icons-main {
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'btnBuscar btnCerrar user';
+    grid-template-columns: 8% 8% 20%;
+}
+
+.consultDeposits_icons-Buscar {
+    display: grid;
+    grid-area: btnBuscar;
+    height: 100%;
+    grid-template-areas: 
+        'iconBus'
+        'lblBus';
+    grid-template-rows: 60% 40%;
+}
+
+.consultDeposits_icons-Buscar-icon {
+    color: #F68A1D;
+    grid-area: iconBus;
+    padding-top: 4px;
+}
+
+.consultDeposits_icons-Buscar-icon-disable {
+    color: gray;
+    grid-area: iconBus;
+    padding-top: 4px;
+}
+
+.iconBusConsultDeposits {
+    cursor: pointer;
+    height: 100%;
+    width: 20%;
+}
+
+.iconBusConsultDeposits-disable {
+    cursor: not-allowed;
+    height: 100%;
+    width: 20%;
+}
+
+#lblBuscarConsultDeposits {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblBus;
+    text-align: center;
+}
+
+.consultDeposits_icons-cerrar {
+    display: grid;
+    grid-area: btnCerrar;
+    height: 100%;
+    grid-template-areas: 
+        'iconCer'
+        'lblCer';
+    grid-template-rows: 60% 40%;
+}
+
+.consultDeposits_icons-cerrar-icon {
+    color: #F68A1D;
+    grid-area: iconCer;
+    padding-top: 4px;
+}
+
+#iconCerrarConsultDeposits {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblCerrarConsultDeposits {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblCer;
+    text-align: center;
+}
+
+.consultDeposits_icons-user {
+    grid-area: user;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'labelUser'
+        'inputsUser';
+    grid-template-rows: 50% 50%;
+}
+
+.consultDeposits_icons-user-label {
+    grid-area: labelUser;
+    padding-top: 8px;
+    padding-left: 10px;
+}
+
+#lblClaveInternaConsultDepositsIcons {
+    text-align: start;
+    font-size: 15px;
+}
+
+.consultDeposits_icons-user-inputs {
+    grid-area: inputsUser;
+    display: grid;
+    grid-template-areas: 
+        'txt icon';
+    grid-template-columns: 90% 10%;
+}
+
+.consultDeposits_icons-user-inputs-txt {
+    grid-area: txt;
+}
+
+#txtClaveInternaConsultDepositsIcons {
+    width: 95%;
+    text-align: start;
+    font-size: 15px;
+    padding-left: 5px;
+}
+
+.consultDeposits_icons-user-inputs-icon {
+    grid-area: icon;
+}
+
+.iconEyeClaveInternaConsultDepositsIcons {
+    width: 100%;
+    height: 70%;
+    color: #F68A1D;
+
+    &:hover {
+        cursor: pointer;
+        color: $primary;
+    }
+}
+
+.iconEyeClaveInternaConsultDepositsIcons-disable {
+    width: 100%;
+    height: 70%;
+    color: gray;
+
+    &:hover {
+        cursor: not-allowed;
+    }
+}

@@ -1,0 +1,119 @@
+.modal_addImpuesto-main {
+    display: grid;
+    text-align: center;
+    grid-template-areas:
+        'title' 
+        'body';
+    grid-template-rows: 30px 90px;
+}
+
+.modal_addImpuesto-title {
+    display: grid;
+    gap: 5px;
+    grid-area: title;
+    grid-template-areas: 
+        'text btnClose';
+    grid-template-columns: 90% 5%;
+}
+
+#lblTitleAddImpuesto {
+    background-color: $primary;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    grid-area: text;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    padding-bottom: 2px;
+    padding-top: 5px;
+    text-align: center;
+}
+
+#lblCloseAddImpuesto {
+    background-color: red;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    grid-area: btnClose;
+    margin-bottom: 5px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    text-align: center;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.modal_addImpuesto-body {
+    display: grid;
+    grid-area: body;
+    margin-left: 10px;
+    margin-right: 30px;
+    grid-template-areas: 
+        'cbo'
+        'btns';
+    grid-template-rows: 60% 40%;
+}
+
+.modal_addImpuesto-body-cbo {
+    display: grid;
+    grid-area: cbo;
+    grid-template-areas: 
+        'lblCboAddImpuesto'
+        'CboAddImpuesto';
+    grid-template-rows: 50% 50%;
+}
+
+#lblTitleCboAddImpuesto {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    font-size: 15px;
+    grid-area: lblCboAddImpuesto;
+    padding-left: 5px;
+    padding-top: 5px;
+    text-align: start;
+}
+
+#cboAddImpuesto {
+    font-size: 15px;
+    grid-area: CboAddImpuesto;
+    height: 90%;
+    text-align: start;
+}
+
+.modal_addImpuesto-body-btns {
+    display: grid;
+    grid-area: btns;
+    margin-left: 40%;
+    grid-template-areas: 
+        'cancel addImpuesto';
+    grid-template-columns: 50% 50%;
+}
+
+#btnCancelAddImpuesto {
+    grid-area: cancel;
+    height: 80%;
+    margin-top: 5px;
+    width: 90%;
+
+    &:hover {
+        background-color: #F33F17;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+#btnCambiarAddImpuesto {
+    grid-area: addImpuesto;
+    height: 80%;
+    margin-top: 5px;
+    width: 100%;
+
+    &:hover {
+        background-color: #3D59A9;
+        color: white;
+        cursor: pointer;
+    }
+}
+

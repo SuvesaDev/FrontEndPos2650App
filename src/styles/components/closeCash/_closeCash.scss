@@ -1,0 +1,84 @@
+.closeCash_main {
+    background-color: #F0F0F0;
+    display: grid;
+    height: 100%;
+    text-align: center;
+    grid-template-areas: 
+        'title'
+        'content'
+        'icons';
+    grid-template-rows: 30px 580px 60px;
+}
+
+.closeCash_title {
+    grid-area: title;
+    background-color: #385BA5;
+}
+
+#lblCloseCashTitle {
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.closeCash_content {
+    grid-area: content;
+    display: grid;
+    height: 100%;
+    text-align: center;
+    grid-template-areas: 
+        'left-side right-side';
+    grid-template-columns: 45% 55%;
+    grid-template-rows: 548px;
+}
+
+.closeCash_left-box {
+    display: grid;
+    grid-area: left-side;
+    height: 100%;
+    grid-template-areas: 
+        'periodo'
+        'apertura'
+        'general';
+    grid-template-rows: 17% 12% 78%;
+}
+
+.closeCash_left-box-periodo {
+    grid-area: periodo;
+}
+
+.closeCash_left-box-apertura {
+    grid-area: apertura;
+}
+
+.closeCash_left-box-general {
+    grid-area: general;
+}
+
+.closeCash_right-box {
+    display: grid;
+    grid-area: right-side;
+    height: 100%;
+    grid-template-areas: 
+        'cierre'
+        'detalle-tarjetas'
+        'detalle-operaciones';
+    grid-template-rows: 53% 20% 33%;
+}
+
+.closeCash_right-box-cierre {
+    grid-area: cierre;
+}
+
+.closeCash_right-box-detalle-tarjetas {
+    grid-area: detalle-tarjetas;
+}
+
+.closeCash_right-box-detalle-operaciones {
+    grid-area: detalle-operaciones;
+}
+
+.closeCash_icons {
+    grid-area: icons;
+}

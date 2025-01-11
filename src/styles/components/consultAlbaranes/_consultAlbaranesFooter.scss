@@ -1,0 +1,136 @@
+.consultAlbaranes-footer-main {
+    height: 100%;
+    display: grid;
+    grid-template-areas: 
+        'password user btn';
+    grid-template-columns: 20% 60% 20%;
+}
+
+.consultAlbaranes-footer-password {
+    grid-area: password;
+    padding: 5px;
+    display: grid;
+    grid-template-areas: 
+        'lblpassword'
+        'inputs';
+    grid-template-rows: 45% 55%;
+}
+
+.consultAlbaranes-footer-password-label {
+    grid-area: lblpassword;
+    padding-top: 2px;
+    background-color: #3D59A9;
+}
+
+#lblPasswordConsultAlbaranes {
+    text-align: center;
+    font-size: 15px;
+    color: white;
+}
+
+.consultAlbaranes-footer-password-inputs {
+    grid-area: inputs;
+    padding-top: 2px;
+    display: grid;
+    grid-template-areas: 
+        'txt icon';
+    grid-template-columns: 90% 10%;
+}
+
+.consultAlbaranes-footer-password-input-txt {
+    grid-area: txt;
+}
+
+#txtPasswordConsultAlbaranes {
+    text-align: start;
+    padding-left: 2px;
+    font-size: 15px;
+    width: 100%;
+}
+
+.consultAlbaranes-footer-password-input-icon {
+    grid-area: icon;
+}
+
+.iconEyeClaveInternaConsultAlbaranesFooter {
+    width: 100%;
+    height: 75%;
+    color: #F68A1D;
+
+    &:hover {
+        cursor: pointer;
+        color: $primary;
+    }
+}
+
+.iconEyeClaveInternaConsultAlbaranesFooter-disable {
+    width: 100%;
+    height: 75%;
+    color: gray;
+
+    &:hover {
+        cursor: not-allowed;
+    }
+}
+
+.consultAlbaranes-footer-user {
+    grid-area: user;
+    padding: 5px;
+    display: grid;
+    grid-template-areas: 
+        'lbluser'
+        'txtuser';
+    grid-template-rows: 45% 55%;
+}
+
+.consultAlbaranes-footer-user-label {
+    grid-area: lbluser;
+    padding-top: 2px;
+    background-color: #3D59A9;
+}
+
+#lblUserConsultAlbaranes {
+    text-align: center;
+    font-size: 15px;
+    color: white;
+}
+
+.consultAlbaranes-footer-user-input {
+    grid-area: txtuser;
+    padding-top: 2px;
+}
+
+#txtUserConsultAlbaranes {
+    text-align: start;
+    padding-left: 2px;
+    font-size: 15px;
+    width: 100%;
+}
+
+.consultAlbaranes-footer-btn {
+    grid-area: btn;
+    padding: 5px;
+}
+
+.btnGenerarFacturas {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: 20px;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $secundary;
+    }
+}
+
+.btnGenerarFacturas-disable {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: 20px;
+
+    &:hover {
+        cursor: not-allowed;
+    }
+}

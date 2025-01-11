@@ -1,0 +1,367 @@
+.preDeposits_body-main {
+    display: grid;
+    height: 100%;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-top: 15px;
+    padding-left: 5%;
+    padding-right: 5%;
+    grid-template-areas: 
+        'firstLine'
+        'secondLine'
+        'ThirdLine';
+    grid-template-rows: 15% 15% 25%;
+}
+
+.preDeposits_body-fisrtLine {
+    grid-area: firstLine;
+    display: grid;
+    height: 100%;
+    margin-right: 5%;
+    grid-template-areas: 
+        'cajero cedula numApertura nombre';
+    grid-template-columns: 25% 16% 17%  32%;
+    border-left: 1px solid black;
+}
+
+.preDeposits_body-fisrtLine-cajero {
+    grid-area: cajero;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblcajero'
+        'inputs';
+    grid-template-rows: 50% 50%;
+    border-top: 1px solid black;
+}
+
+.preDeposits_body-fisrtLine-cajero-label {
+    grid-area: lblcajero;
+    padding-top: 8px;
+    padding-left: 10px;
+}
+
+#lblCajeroPreDepositsBody {
+    text-align: start;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.preDeposits_body-fisrtLine-cajero-inputs {
+    grid-area: inputs;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'inputCajero';
+    grid-template-columns: 100%;
+    padding-left: 10px;
+    padding-right: 15px;
+}
+
+.preDeposits_body-fisrtLine-cajero-inputs-txt {
+    grid-area: inputCajero;
+    padding-right: 5px;
+}
+
+#selectCajeroPreDeposits {
+    width: 100%;
+    text-align: start;
+    font-size: 15px;
+}
+
+.preDeposits_body-fisrtLine-cajero-inputs-icon {
+    grid-area: iconCajero;
+    margin-bottom: 5px;
+    padding-top: 3px;
+}
+
+.btnSearchCajeroPreDeposits {
+    color: $secundary;
+    
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.btnSearchCajeroPreDeposits-disable {
+    color: gray;
+    
+    &:hover {
+        cursor: not-allowed;
+    }
+}
+
+.preDeposits_body-fisrtLine-numApertura {
+    grid-area: numApertura;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblNumApertura'
+        'txtNumApertura';
+    grid-template-rows: 50% 50%;
+    border-top: 1px solid black;
+}
+
+.preDeposits_body-fisrtLine-numApertura-label {
+    grid-area: lblNumApertura;
+    padding-top: 8px;
+    padding-left: 10px;
+}
+
+#lblNumAperturaPreDepositsBody {
+    text-align: start;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.preDeposits_body-fisrtLine-numApertura-input {
+    grid-area: txtNumApertura;
+    padding-left: 10px;
+    padding-right: 5px;
+}
+
+#txtNumAperturaPreDepositsBody {
+    width: 100%;
+    padding-left: 5px;
+    text-align: start;
+    font-size: 15px;
+}
+
+.preDeposits_body-fisrtLine-cedula {
+    grid-area: cedula;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblCedula'
+        'txtCedula';
+    grid-template-rows: 50% 50%;
+    border-top: 1px solid black;
+}
+
+.preDeposits_body-fisrtLine-cedula-label {
+    grid-area: lblCedula;
+    padding-top: 8px;
+    padding-left: 10px;
+}
+
+#lblCedulaPreDepositsBody {
+    text-align: start;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.preDeposits_body-fisrtLine-cedula-input {
+    grid-area: txtCedula;
+    padding-left: 10px;
+    padding-right: 5px;
+}
+
+#txtCedulaPreDepositsBody {
+    width: 100%;
+    padding-left: 5px;
+    text-align: start;
+    font-size: 15px;
+}
+
+.preDeposits_body-fisrtLine-nombre {
+    grid-area: nombre;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblNombre'
+        'txtNombre';
+    grid-template-rows: 50% 50%;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+}
+
+.preDeposits_body-fisrtLine-nombre-label {
+    grid-area: lblNombre;
+    padding-top: 8px;
+    padding-left: 10px;
+}
+
+#lblNombrePreDepositsBody {
+    text-align: start;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.preDeposits_body-fisrtLine-nombre-input {
+    grid-area: txtNombre;
+    padding-left: 10px;
+    padding-right: 5px;
+}
+
+#txtNombrePreDepositsBody {
+    width: 100%;
+    padding-left: 5px;
+    text-align: start;
+    font-size: 15px;
+}
+
+.preDeposits_body-secondLine {
+    grid-area: secondLine;
+    display: grid;
+    height: 100%;
+    margin-right: 5%;
+    grid-template-areas: 
+        'monto depositante fecha';
+    grid-template-columns: 25% 33% 32%;
+    border-left: 1px solid black;
+}
+
+.preDeposits_body-secondLine-monto {
+    grid-area: monto;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblMonto'
+        'txtMonto';
+    grid-template-rows: 50% 50%;
+}
+
+.preDeposits_body-secondLine-monto-label {
+    grid-area: lblMonto;
+    padding-top: 8px;
+    padding-left: 10px;
+}
+
+.lblMontoPreDepositsBody {
+    text-align: start;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.preDeposits_body-secondLine-monto-input {
+    grid-area: txtMonto;
+    padding-left: 10px;
+    padding-right: 5px;
+}
+
+.txtMontoPreDepositsBody {
+    width: 100%;
+    padding-left: 5px;
+    text-align: start;
+    font-size: 15px;
+}
+
+.preDeposits_body-secondLine-depositante {
+    grid-area: depositante;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblDepositante'
+        'txtDepositante';
+    grid-template-rows: 50% 50%;
+}
+
+.preDeposits_body-secondLine-depositante-label {
+    grid-area: lblDepositante;
+    padding-top: 8px;
+    padding-left: 10px;
+}
+
+#lblDepositantePreDepositsBody {
+    text-align: start;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.preDeposits_body-secondLine-depositante-input {
+    grid-area: txtDepositante;
+    padding-left: 10px;
+    padding-right: 5px;
+}
+
+#txtDepositantePreDepositsBody {
+    width: 100%;
+    padding-left: 5px;
+    text-align: start;
+    font-size: 15px;
+}
+
+.preDeposits_body-secondLine-fecha {
+    grid-area: fecha;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblFecha'
+        'txtFecha';
+    grid-template-rows: 50% 50%;
+    border-right: 1px solid black;
+}
+
+.preDeposits_body-secondLine-fecha-label {
+    grid-area: lblFecha;
+    padding-top: 8px;
+    padding-left: 10px;
+}
+
+#lblFechaPreDepositsBody {
+    text-align: start;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.preDeposits_body-secondLine-fecha-input {
+    grid-area: txtFecha;
+    padding-left: 10px;
+    padding-right: 5px;
+}
+
+#txtFechaPreDepositsBody {
+    width: 100%;
+    text-align: start;
+    font-size: 15px;
+}
+
+.preDeposits_body-ThirdLine {
+    grid-area: ThirdLine;
+    display: grid;
+    height: 100%;
+    margin-right: 14.5%;
+    grid-template-areas: 
+        'observacione';
+    grid-template-columns: 100%;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    // background-color: red;
+}
+
+.preDeposits_body-ThirdLine-observaciones {
+    grid-area: observacione;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblObservaciones'
+        'txtObservaciones';
+    grid-template-rows: 30% 70%;
+}
+
+.preDeposits_body-ThirdLine-observaciones-label {
+    grid-area: lblObservaciones;
+    padding-top: 8px;
+    padding-left: 10px;
+}
+
+#lblObservacionesPreDepositsBody {
+    text-align: start;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.preDeposits_body-ThirdLine-observaciones-input {
+    grid-area: txtObservaciones;
+    padding-left: 10px;
+    padding-right: 5px;
+}
+
+#txtObservacionesPreDepositsBody {
+    width: 100%;
+    padding-left: 5px;
+    text-align: start;
+    font-size: 15px;
+    resize: none;
+}

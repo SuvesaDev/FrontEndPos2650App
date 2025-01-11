@@ -1,0 +1,32 @@
+.transferPointsSale-main {
+    text-align: center;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'header header header'
+        'body body body'
+        'footer footer footer';
+    grid-template-rows: 40px 448px 60px;
+}
+
+.transferPointsSale-header {
+    grid-area: header;
+    padding-top: 2px;
+    background-color: #3D59A9;
+}
+
+#lblTitleTransferPointsSale {
+    font-size: 30px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+
+.transferPointsSale-body {
+    grid-area: body;
+}
+
+.transferPointsSale-footer {
+    grid-area: footer;
+    border: 1px solid black;
+}

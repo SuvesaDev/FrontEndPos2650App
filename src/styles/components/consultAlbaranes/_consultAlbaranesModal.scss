@@ -1,0 +1,615 @@
+.modal_consultAlbaranes-main {
+    display: grid;
+    text-align: center;
+    grid-template-areas:
+        'title' 
+        'inputs'
+        'table'
+        'footer';
+    grid-template-rows: 35px 80px 200px 60px;
+}
+
+.modal_consultAlbaranes-title {
+    display: grid;
+    gap: 5px;
+    grid-area: title;
+    grid-template-areas: 
+        'text btnClose';
+    grid-template-columns: 95% 5%;
+}
+
+#lblTitleConsultAlbaranesModal {
+    background-color: $primary;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    grid-area: text;
+    margin-bottom: 5px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    text-align: center;
+}
+
+#lblCloseConsultAlbaranesModal {
+    background-color: red;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    grid-area: btnClose;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    text-align: center;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.modal_consultAlbaranes-inputs {
+    display: grid;
+    grid-area: inputs;
+    grid-template-areas: 
+        'firstLine'
+        'secondLine';
+    grid-template-rows: 50% 50%;
+}
+
+.modal_consultAlbaranes-inputs-firstLine {
+    grid-area: firstLine;
+    display: grid;
+    grid-template-areas: 
+        'cliente mascota fecha';
+    grid-template-columns: 45% 35% 20%;
+}
+
+.modal_consultAlbaranes-inputs-firstLine-cliente {
+    grid-area: cliente;
+    display: grid;
+    grid-template-areas: 
+        'clienteLabel'
+        'clienteInput';
+    grid-template-rows: 45% 55%;
+}
+
+.modal_consultAlbaranes-inputs-firstLine-cliente-title {
+    grid-area: clienteLabel;
+    padding-top: 1px;
+    margin-left: 2px;
+    margin-right: 2px;
+    background-color: $primary;
+}
+
+#lblClienteConsultaAlbaranesModal {
+    text-align: center;
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+}
+
+.modal_consultAlbaranes-inputs-firstLine-cliente-input {
+    grid-area: clienteInput;
+    margin-top: 1px;
+}
+
+#txtClienteConsultaAlbaranesModal {
+    text-align: start;
+    padding-left: 5px;
+    width: 98.5%;
+    margin-left: 2px;
+    margin-right: 2px;
+    font-size: 12px;
+}
+
+.modal_consultAlbaranes-inputs-firstLine-mascota {
+    grid-area: mascota;
+    display: grid;
+    grid-template-areas: 
+        'mascotaLabel'
+        'mascotaInput';
+    grid-template-rows: 45% 55%;
+}
+
+.modal_consultAlbaranes-inputs-firstLine-mascota-title {
+    grid-area: mascotaLabel;
+    padding-top: 1px;
+    margin-left: 2px;
+    margin-right: 2px;
+    background-color: $primary;
+}
+
+#lblMascotaConsultaAlbaranesModal {
+    text-align: center;
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+}
+
+.modal_consultAlbaranes-inputs-firstLine-mascota-input {
+    grid-area: mascotaInput;
+    margin-top: 1px;
+}
+
+#txtMascotaConsultaAlbaranesModal {
+    text-align: start;
+    padding-left: 5px;
+    width: 98.5%;
+    margin-left: 2px;
+    margin-right: 2px;
+    font-size: 12px;
+}
+
+.modal_consultAlbaranes-inputs-firstLine-fecha {
+    grid-area: fecha;
+    display: grid;
+    grid-template-areas: 
+        'fechaLabel'
+        'fechaInput';
+    grid-template-rows: 45% 55%;
+}
+
+.modal_consultAlbaranes-inputs-firstLine-fecha-title {
+    grid-area: fechaLabel;
+    padding-top: 1px;
+    margin-left: 2px;
+    margin-right: 2px;
+    background-color: $primary;
+}
+
+#lblFechaConsultaAlbaranesModal {
+    text-align: center;
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+}
+
+.modal_consultAlbaranes-inputs-firstLine-fecha-input {
+    grid-area: fechaInput;
+    margin-top: 1px;
+}
+
+#txtFechaConsultaAlbaranesModal {
+    text-align: start;
+    padding-left: 5px;
+    width: 98.5%;
+    margin-left: 2px;
+    margin-right: 2px;
+    font-size: 12px;
+}
+
+.modal_consultAlbaranes-inputs-secondLine {
+    grid-area: secondLine;
+    display: grid;
+    grid-template-areas: 
+        'codigo cantidad precio descuento IVA btn';
+    grid-template-columns: 20% 16% 16% 16% 12% 20%;
+}
+
+.modal_consultAlbaranes-inputs-secondLine-codigo {
+    grid-area: codigo;
+    display: grid;
+    grid-template-areas: 
+        'textbox icon';
+    grid-template-columns: 85% 15%;
+}
+
+.modal_consultAlbaranes-inputs-secondLine-codigo-textbox {
+    grid-area: textbox;
+    display: grid;
+    grid-template-areas: 
+        'codigoLabel'
+        'codigoInput';
+    grid-template-rows: 45% 55%;
+}   
+
+.modal_consultAlbaranes-inputs-secondLine-codigo-title {
+    grid-area: codigoLabel;
+    padding-top: 1px;
+    margin-left: 2px;
+    margin-right: 2px;
+    background-color: $primary;
+}
+
+#lblCodigoConsultaAlbaranesModal {
+    text-align: center;
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+}
+
+.modal_consultAlbaranes-inputs-secondLine-codigo-input {
+    grid-area: codigoInput;
+    margin-top: 1px;
+}
+
+#txtCodigoConsultaAlbaranesModal {
+    text-align: start;
+    padding-left: 5px;
+    width: 97%;
+    margin-left: 2px;
+    margin-right: 2px;
+    font-size: 12px;
+}
+
+.modal_consultAlbaranes-inputs-secondLine-codigo-icon {
+    grid-area: icon;
+    padding-top: 18px;
+}
+
+#btnSearchProductConsultAlbaranes {
+    color: $secundary;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.modal_consultAlbaranes-inputs-secondLine-cantidad {
+    grid-area: cantidad;
+    display: grid;
+    grid-template-areas: 
+        'cantidadLabel'
+        'cantidadInput';
+    grid-template-rows: 45% 55%;
+}
+
+.modal_consultAlbaranes-inputs-secondLine-cantidad-title {
+    grid-area: cantidadLabel;
+    padding-top: 1px;
+    margin-left: 2px;
+    margin-right: 2px;
+    background-color: $primary;
+}
+
+#lblCantidadConsultaAlbaranesModal {
+    text-align: center;
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+}
+
+.modal_consultAlbaranes-inputs-secondLine-cantidad-input {
+    grid-area: cantidadInput;
+    margin-top: 1px;
+}
+
+#txtCantidadConsultaAlbaranesModal {
+    text-align: start;
+    padding-left: 5px;
+    width: 97%;
+    margin-left: 2px;
+    margin-right: 2px;
+    font-size: 12px;
+}
+
+.modal_consultAlbaranes-inputs-secondLine-precio {
+    grid-area: precio;
+    display: grid;
+    grid-template-areas: 
+        'precioLabel'
+        'precioInput';
+    grid-template-rows: 45% 55%;
+}
+
+.modal_consultAlbaranes-inputs-secondLine-precio-title {
+    grid-area: precioLabel;
+    padding-top: 1px;
+    margin-left: 2px;
+    margin-right: 2px;
+    background-color: $primary;
+}
+
+#lblPrecioConsultaAlbaranesModal {
+    text-align: center;
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+}
+
+.modal_consultAlbaranes-inputs-secondLine-precio-input {
+    grid-area: precioInput;
+    margin-top: 1px;
+}
+
+#txtPrecioConsultaAlbaranesModal {
+    text-align: start;
+    padding-left: 5px;
+    width: 97%;
+    margin-left: 2px;
+    margin-right: 2px;
+    font-size: 12px;
+}
+
+.modal_consultAlbaranes-inputs-secondLine-descuento {
+    grid-area: descuento;
+    display: grid;
+    grid-template-areas: 
+        'descuentoLabel'
+        'descuentoInput';
+    grid-template-rows: 45% 55%;
+}
+
+.modal_consultAlbaranes-inputs-secondLine-descuento-title {
+    grid-area: descuentoLabel;
+    padding-top: 1px;
+    margin-left: 2px;
+    margin-right: 2px;
+    background-color: $primary;
+}
+
+#lblDescuentoConsultaAlbaranesModal {
+    text-align: center;
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+}
+
+.modal_consultAlbaranes-inputs-secondLine-descuento-input {
+    grid-area: descuentoInput;
+    margin-top: 1px;
+}
+
+#txtDescuentoConsultaAlbaranesModal {
+    text-align: start;
+    padding-left: 5px;
+    width: 97%;
+    margin-left: 2px;
+    margin-right: 2px;
+    font-size: 12px;
+}
+
+.modal_consultAlbaranes-inputs-secondLine-IVA {
+    grid-area: IVA;
+    display: grid;
+    grid-template-areas: 
+        'IVALabel'
+        'IVAInput';
+    grid-template-rows: 45% 55%;
+}
+
+.modal_consultAlbaranes-inputs-secondLine-IVA-title {
+    grid-area: IVALabel;
+    padding-top: 1px;
+    margin-left: 2px;
+    margin-right: 2px;
+    background-color: $primary;
+}
+
+#lblIVAConsultaAlbaranesModal {
+    text-align: center;
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+}
+
+.modal_consultAlbaranes-inputs-secondLine-IVA-input {
+    grid-area: IVAInput;
+    margin-top: 1px;
+}
+
+#txtIVAConsultaAlbaranesModal {
+    text-align: start;
+    padding-left: 5px;
+    width: 97%;
+    margin-left: 2px;
+    margin-right: 2px;
+    font-size: 12px;
+}
+
+.modal_consultAlbaranes-inputs-secondLine-btn {
+    grid-area: btn;
+}
+
+#btnAgregarLineaConsultAlbaranesModal {
+    width: 100%;
+    height: 100%;
+    font-size: 15px;
+    text-align: center;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $secundary;
+        color: white;
+    }
+}
+
+.modal_consultAlbaranes-table {
+    grid-area: table;
+    border-top: 1px solid black;
+    border-left:  1px solid black;
+    border-right: 1px solid black;
+    margin-top: 5px;
+}
+
+.consultAlbaranes-modal-table-main {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    scrollbar-color: rebeccapurple green;
+    scrollbar-width: thin;
+    border-bottom: 1px solid gray;
+    grid-area: table;
+}
+
+.consultAlbaranes-modal-table-header {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 12%;
+}
+
+.consultAlbaranes-modal-table-body {
+    text-align: start;
+    font-style: normal;
+}
+
+.consultAlbaranes-modal-table-body-row {
+    // &:hover {
+    //     cursor: pointer;
+    //     background-color: #ACA9A9;
+    // }
+}
+
+// .consultAlbaranes-modal-table-body-cell {
+//     border: 1px solid #BFBCC1;
+//     font-size: 15px;
+//     padding-left: 5px;
+//     text-align: start;
+//     height: 25.5px;
+//     width: 5%;
+// }
+
+.consultAlbaranes-modal-table-body-cell-descripcion {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+    height: 25.5px;
+    width: 40%;
+}
+
+.consultAlbaranes-modal-table-body-cell-cantidad {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+    height: 25.5px;
+    width: 5%;
+}
+
+.consultAlbaranes-modal-table-body-cell-precioVenta {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+    height: 25.5px;
+    width: 5%;
+}
+
+.consultAlbaranes-modal-table-body-cell-iva {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+    height: 25.5px;
+    width: 5%;
+}
+
+.consultAlbaranes-modal-table-body-cell-descuento {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+    height: 25.5px;
+    width: 5%;
+}
+
+.consultAlbaranes-modal-table-body-cell-total {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+    height: 25.5px;
+    width: 5%;
+}
+
+.consultAlbaranes-modal-table-body-cell-icon {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    padding-right: 5px;
+    text-align: start;
+    height: 25.5px;
+    width: 5%;
+    color: rgb(234, 62, 62);
+
+    &:hover {
+        cursor: pointer;
+        background-color: #ACA9A9;
+    }
+}
+
+.modal_consultAlbaranes-footer {
+    grid-area: footer;
+    margin-top: 5px;
+    display: grid;
+    grid-template-areas: 
+        'inputFooter'
+        'btnFooter';
+    grid-template-rows: 45% 55%;
+}
+
+.modal_consultAlbaranes-footer-input {
+    grid-area: inputFooter;
+    margin-left: 70%;
+    display: grid;
+    grid-template-areas: 
+        'labelTotalAlbaran inputTotalAlbaran';
+    grid-template-columns: 45% 55%;
+}
+
+.modal_consultAlbaranes-footer-input-label {
+    grid-area: labelTotalAlbaran;
+}
+
+#lblTotalAlbaranConsultaAlbaranesModal {
+    text-align: center;
+    font-size: 15px;
+    padding-top: 2px;
+}
+
+.modal_consultAlbaranes-footer-input-campo {
+    grid-area: inputTotalAlbaran;
+}
+
+#txtTotalAlbaranConsultaAlbaranesModal {
+    text-align: center;
+    font-size: 15px;
+    width: 90%;
+}
+
+.modal_consultAlbaranes-footer-btn {
+    grid-area: btnFooter;
+    margin-left: 80%;
+    gap: 5px;
+    display: grid;
+    grid-template-areas: 
+        'btnAceptar';
+    grid-template-columns: 100%;
+    background-color: red;
+}
+
+.modal_consultAlbaranes-footer-btn-aceptar {
+    grid-area: btnAceptar;
+}
+
+#btnAceptarModal {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: 15px;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $secundary;
+        color: white;
+    }
+}
+
+.modal_consultAlbaranes-footer-btn-cancelar {
+    grid-area: btnCancelar;
+}
+
+#btnCancelarModal {
+    width: 90%;
+    height: 100%;
+    text-align: center;
+    font-size: 15px;
+
+    &:hover {
+        cursor: pointer;
+        background-color: rgb(219, 81, 81);
+        color: white;
+    }
+}

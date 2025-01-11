@@ -1,0 +1,174 @@
+.wineries_adjustment-icons-main {
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'btnNuevo btnBuscar btnRegistrar btnAnular btnCerrar user fecha';
+    grid-template-columns: 8% 8% 8% 8% 8% 40% 20%;
+}
+
+.wineries_adjustment-icons-nuevo {
+    display: grid;
+    grid-area: btnNuevo;
+    height: 100%;
+    grid-template-areas: 
+        'iconNue'
+        'lblNue';
+    grid-template-rows: 60% 40%;
+}
+
+.wineries_adjustment-icons-nuevo-icon {
+    color: #F68A1D;
+    grid-area: iconNue;
+    padding-top: 4px;
+}
+
+#iconNuevoWA {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblNuevoWA {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblNue;
+    text-align: center;
+}
+
+.wineries_adjustment-icons-Buscar {
+    display: grid;
+    grid-area: btnBuscar;
+    height: 100%;
+    grid-template-areas: 
+        'iconBus'
+        'lblBus';
+    grid-template-rows: 60% 40%;
+}
+
+.wineries_adjustment-icons-Buscar-icon {
+    color: #F68A1D;
+    grid-area: iconBus;
+    padding-top: 4px;
+}   
+
+#iconBusWA {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblBuscarWA {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblBus;
+    text-align: center;
+}
+
+.wineries_adjustment-icons-registrar {
+    display: grid;
+    grid-area: btnRegistrar;
+    height: 100%;
+    grid-template-areas: 
+        'iconReg'
+        'lblReg';
+    grid-template-rows: 60% 40%;
+}
+
+.wineries_adjustment-icons-registrar-icon {
+    color: #F68A1D;
+    grid-area: iconReg;
+    padding-top: 4px;
+}
+
+#iconRegistrarWA {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblRegistrarWA {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblReg;
+    text-align: center;
+}
+
+.wineries_adjustment-icons-anular {
+    display: grid;
+    grid-area: btnAnular;
+    height: 100%;
+    grid-template-areas: 
+        'iconAnu'
+        'lblAnu';
+    grid-template-rows: 60% 40%;
+}
+
+.wineries_adjustment-icons-anular-icon {
+    color: #F68A1D;
+    grid-area: iconAnu;
+    padding-top: 4px;
+}
+
+#iconAnularWA {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblAnularWA {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblAnu;
+    text-align: center;
+}
+
+.wineries_adjustment-icons-cerrar {
+    display: grid;
+    grid-area: btnCerrar;
+    height: 100%;
+    grid-template-areas: 
+        'iconCer'
+        'lblCer';
+    grid-template-rows: 60% 40%;
+}
+
+.wineries_adjustment-icons-cerrar-icon {
+    color: #F68A1D;
+    grid-area: iconCer;
+    padding-top: 4px;
+}
+
+#iconCerrarWA {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblCerrarWA {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblCer;
+    text-align: center;
+}
+
+.wineries_adjustment-user {
+    grid-area: user;
+}
+
+.wineries_adjustment-icons-user-label {
+    background-color: #3D62DB;
+    color: white;
+    font-size: 15px;
+    margin-left: 200px;
+    margin-top: 40px;
+    width: 20%;
+}
+
+.wineries_adjustment-fecha {
+    grid-area: fecha;
+}
+
+.wineries_adjustment-fecha-input {
+    padding-left: 50%;
+    padding-top: 20px;
+}

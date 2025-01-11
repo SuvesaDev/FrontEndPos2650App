@@ -1,0 +1,259 @@
+.usual_customers_body-datos-main {
+    border: 1px solid black;
+    display: grid;
+    height: 100%;
+    margin-left: 5%;
+    margin-right: 5%;
+    grid-template-areas: 
+        'firstBox secondBox';
+    grid-template-columns: 70% 30%;
+}
+
+.usual_customers_body-datos-firstBox {
+    grid-area: firstBox;
+    display: grid;
+    height: 100%;
+    margin-left: 3%;
+    margin-right: 3%;
+    grid-template-areas: 
+        'title'
+        'Line1'
+        'Line2'
+        'Line3';
+    grid-template-rows: 10% 20% 20% 20%;
+}
+
+#lblDatosGeneralesUsualCustomers {
+    grid-area: title;
+    padding-top: 8px;
+    text-align: start;
+    font-size: 15px;
+    font-weight: bold;
+    // background-color: red;
+}
+
+.usual_customers_body-datos-firstBox-1 {
+    grid-area: Line1;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'telefono fax';
+    grid-template-columns: 50% 50%;
+}
+
+.usual_customers_body-datos-firstBox-1-telefono {
+    grid-area: telefono;
+    padding-top: 10px;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblTelefono'
+        'inputTelefono';
+    grid-template-rows: 50% 50%;
+}
+
+.usual_customers_body-datos-firstBox-1-telefono-label {
+    background-color: #EEF2E6;
+    grid-area: lblTelefono;
+    margin-bottom: 5px;
+    margin-right: 10px;
+}
+
+#lblTelefonoUsualCDatos {
+   font-size: 15px;
+   padding-left: 5px;
+   padding-top: 1px;
+   text-align: start; 
+}
+
+.usual_customers_body-datos-firstBox-1-telefono-input {
+    grid-area: inputTelefono;
+    margin-right: 10px;
+}
+
+#txtTelefonoUsualCDatos {
+    font-size: 15px;
+    text-align: start;
+    width: 100%;
+}
+
+.usual_customers_body-datos-firstBox-1-fax {
+    grid-area: fax;
+    padding-top: 10px;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblFax'
+        'inputFax';
+    grid-template-rows: 50% 50%;
+}
+
+.usual_customers_body-datos-firstBox-1-fax-label {
+    background-color: #EEF2E6;
+    grid-area: lblFax;
+    margin-bottom: 5px;
+    margin-right: 10px;
+}
+
+#lblFaxUsualCDatos {
+    font-size: 15px;
+    padding-left: 5px;
+    padding-top: 1px;
+    text-align: start; 
+}
+
+.usual_customers_body-datos-firstBox-1-fax-input {
+    grid-area: inputFax;
+    margin-right: 10px;
+}
+
+#txtfaxUsualCDatos {
+    font-size: 15px;
+    text-align: start;
+    width: 100%;
+}
+
+.usual_customers_body-datos-firstBox-2 {
+    grid-area: Line2;
+    padding-top: 10px;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblDireccion'
+        'inputDireccion';
+    grid-template-rows: 50% 50%;
+}
+
+.usual_customers_body-datos-firstBox-2-direccion-label {
+    background-color: #EEF2E6;
+    grid-area: lblDireccion;
+    margin-bottom: 5px;
+    margin-right: 10px;
+}
+
+#lblDireccionUsualCDatos {
+    font-size: 15px;
+    padding-left: 5px;
+    padding-top: 1px;
+    text-align: start; 
+}
+
+.usual_customers_body-datos-firstBox-2-direccion-input {
+    grid-area: inputDireccion;
+    margin-right: 10px;
+}
+
+#txtDireccionUsualCDatos {
+    font-size: 15px;
+    text-align: start;
+    width: 100%;
+}
+
+.usual_customers_body-datos-firstBox-3 {
+    grid-area: Line3;
+    padding-top: 10px;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblEmail'
+        'inputEmail';
+    grid-template-rows: 50% 50%;
+}
+
+.usual_customers_body-datos-firstBox-3-email-label {
+    background-color: #EEF2E6;
+    grid-area: lblEmail;
+    margin-bottom: 5px;
+    margin-right: 10px;
+}
+
+#lblEmailUsualCDatos {
+    font-size: 15px;
+    padding-left: 5px;
+    padding-top: 1px;
+    text-align: start; 
+}
+
+.usual_customers_body-datos-firstBox-3-email-input {
+    grid-area: inputEmail;
+    margin-right: 10px;
+}
+
+#txtEmailUsualCDatos {
+    font-size: 15px;
+    text-align: start;
+    width: 100%;
+}
+
+.usual_customers_body-datos-secondBox {
+    grid-area: secondBox;
+    height: 100%;
+    padding-top: 40px;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'tipoPrecio'
+        'empresa';
+    grid-template-rows: 20% 20%;
+}
+
+.usual_customers_body-datos-secondBox-tipoPrecio {
+    grid-area: tipoPrecio;
+    display: grid;
+    height: 100%;
+    padding-left: 15%;
+    padding-right: 20%;
+    grid-template-areas: 
+        'lblTipoPrecio'
+        'cboTipoPrecio';
+    grid-template-rows: 50% 50%;
+}
+
+.usual_customers_body-datos-secondBox-tipoPrecio-label {
+    background-color: #EEF2E6;
+    font-size: 15px;
+    grid-area: lblTipoPrecio;
+    height: 70%;
+    margin-right: 25px;
+    margin-top: 5px;
+    padding-left: 5px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+.usual_customers_body-datos-secondBox-tipoPrecio-input {
+    grid-area: cboTipoPrecio;
+    margin-right: 25px;
+    margin-top: 2px;
+}
+
+#cboTipoPrecioUsualCDatos {
+    font-size: 15px;
+    width: 100%;
+}
+
+.usual_customers_body-datos-secondBox-empresa {
+    grid-area: empresa;
+    display: grid;
+    height: 100%;
+    padding-left: 45px;
+    grid-template-areas: 
+        'inputEmpresa labelEmpresa';
+    grid-template-columns: 10% 90%;
+}
+
+.usual_customers_body-datos-secondBox-check-input {
+    grid-area: inputEmpresa;
+    margin-top: 10px;
+}
+
+.usual_customers_body-datos-secondBox-check-label {
+    background-color: #EEF2E6;
+    font-size: 15px;
+    grid-area: labelEmpresa;
+    height: 30%;
+    margin-top: 9px;
+    padding-left: 5px;
+    text-align: start;
+    width: 25%;
+}

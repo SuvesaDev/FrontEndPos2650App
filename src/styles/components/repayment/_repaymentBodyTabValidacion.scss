@@ -1,0 +1,446 @@
+.repayment_body-tab-validacion-main {
+    text-align: center;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'user'
+        'tipo';
+    grid-template-rows: 45% 55%;
+}
+
+.repayment_body-tab-validacion-user {
+    grid-area: user;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 25%;
+    margin-right: 25%;
+    border-radius: 5px;
+    border: 1px solid rgb(176, 175, 175);
+    display: grid;
+    grid-template-areas: 
+        'title'
+        'usuario'
+        'observaciones';
+    grid-template-rows: 10% 30% 60%;
+}
+
+.repayment_body-tab-validacion-user-title {
+    grid-area: title;
+    border-bottom: 1px solid rgb(176, 175, 175);
+}
+
+#lblTitleUserRepaymentBodyTabValidation {
+    text-align: start;
+    padding-left: 5px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.repayment_body-tab-validacion-user-usuario {
+    grid-area: usuario;
+    display: grid;
+    grid-template-areas: 
+        'title'
+        'input';
+    grid-template-rows: 40% 60%;
+}
+
+.repayment_body-tab-validacion-user-usuario-title {
+    grid-area: title;
+}
+
+#lblTitleUsuarioRepaymentBodyTabValidation {
+    text-align: start;
+    padding-left: 5px;
+    font-weight: 600;
+    padding-top: 2px;
+    font-size: 15px;
+}
+
+.repayment_body-tab-validacion-user-usuario-input {
+    grid-area: input;
+    margin-right: 5px;
+    padding-top: 5px;
+}
+
+#cboUsuarioRepaymentBodyTabValidation {
+    width: 98%;
+    text-align: start;
+    font-size: 15px;
+}
+
+.repayment_body-tab-validacion-user-observaciones {
+    grid-area: observaciones;
+    display: grid;
+    grid-template-areas: 
+        'title'
+        'opciones'
+        'input';
+    grid-template-rows: 15% 30% 55%;
+}
+
+.repayment_body-tab-validacion-user-observaciones-title {
+    grid-area: title;
+}
+
+#lblTitleObservacionesRepaymentBodyTabValidation {
+    text-align: start;
+    padding-left: 5px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.repayment_body-tab-validacion-user-observaciones-opciones {
+    grid-area: opciones;
+    display: grid;
+    grid-template-areas: 
+        'opcion1 opcion2 opcion3';
+    grid-template-columns: 33% 33% 34%;
+}
+
+.repayment_body-tab-validacion-user-observaciones-opciones-opcion1 {
+    grid-area: opcion1;
+    padding-top: 5px;
+}
+
+#btnOpcion1RepaymentBodyTabValidacion {
+    border-radius: 5px;
+    width: 70%;
+    height: 80%;
+    border: none;
+    background-color: $primary;
+    color: white;
+
+    &:hover {
+        background-color: $secundary;
+        cursor: pointer;
+    }
+}
+
+.repayment_body-tab-validacion-user-observaciones-opciones-opcion2 {
+    grid-area: opcion2;
+    padding-top: 5px;
+}
+
+#btnOpcion2RepaymentBodyTabValidacion {
+    border-radius: 5px;
+    width: 70%;
+    height: 80%;
+    border: none;
+    background-color: $primary;
+    color: white;
+
+    &:hover {
+        background-color: $secundary;
+        cursor: pointer;
+    }
+}
+
+.repayment_body-tab-validacion-user-observaciones-opciones-opcion3 {
+    grid-area: opcion3;
+    padding-top: 5px;
+}
+
+#btnOpcion3RepaymentBodyTabValidacion {
+    border-radius: 5px;
+    width: 70%;
+    height: 80%;
+    border: none;
+    background-color: $primary;
+    color: white;
+
+    &:hover {
+        background-color: $secundary;
+        cursor: pointer;
+    }
+}
+
+.repayment_body-tab-validacion-user-observaciones-input {
+    grid-area: input;
+    padding-top: 5px;
+}
+
+#txtObservacionesRepaymentBodyTabValidacion {
+    resize: none;
+    height: 95%;
+    width: 95%;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.repayment_body-tab-validacion-tipo {
+    grid-area: tipo;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 25%;
+    margin-right: 25%;
+    border-radius: 5px;
+    border: 1px solid rgb(176, 175, 175);
+    display: grid;
+    grid-template-areas: 
+        'title'
+        'tabs'
+        'contenido';
+    grid-template-rows: 10% 15% 75%;
+}
+
+.repayment_body-tab-validacion-tipo-title {
+    grid-area: title;
+    padding-top: 3px;
+    border-bottom: 1px solid rgb(176, 175, 175);
+}
+
+#lblTitleTipoDevolucionesRepaymentBodyTabValidacion {
+    text-align: start;
+    padding-left: 5px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.repayment_body-tab-validacion-tipo-tabs {
+    grid-area: tabs;
+    display: grid;
+    grid-template-areas: 
+        'efectivo deposito anticipio';
+    grid-template-columns: 33% 33% 34%;
+    border-bottom: 1px solid rgb(176, 175, 175);
+}
+
+.repayment_body-tab-validacion-tipo-tabs-efectivo {
+    grid-area: efectivo;
+    padding-top: 5px;
+}
+
+.btnEfectivoRepaymentBodyTabValidacion {
+    border-radius: 5px;
+    width: 70%;
+    height: 80%;
+    border: none;
+    background-color: $primary;
+    color: white;
+
+    &:hover {
+        background-color: $secundary;
+        cursor: pointer;
+    }
+}
+
+.repayment_body-tab-validacion-tipo-tabs-deposito {
+    grid-area: deposito;
+    padding-top: 5px;
+}
+
+.btnDepositoRepaymentBodyTabValidacion {
+    border-radius: 5px;
+    width: 70%;
+    height: 80%;
+    border: none;
+    background-color: $primary;
+    color: white;
+
+    &:hover {
+        background-color: $secundary;
+        cursor: pointer;
+    }
+}
+
+.repayment_body-tab-validacion-tipo-tabs-anticipio {
+    grid-area: anticipio;
+    padding-top: 5px;
+}
+
+.btnAnticipioRepaymentBodyTabValidacion {
+    border-radius: 5px;
+    width: 70%;
+    height: 80%;
+    border: none;
+    background-color: $primary;
+    color: white;
+
+    &:hover {
+        background-color: $secundary;
+        cursor: pointer;
+    }
+}
+
+.repayment_body-tab-validacion-tipo-contenido {
+    grid-area: contenido;
+}
+
+.repayment_body-tab-validacion-efectivo-main{
+
+}
+
+.repayment_body-tab-validacion-deposito-main {
+    display: grid;
+    height: 90%;
+    margin-left: 25px;
+    margin-right: 25px;
+    grid-template-areas: 
+        'firstLine'
+        'secondLine';
+    grid-template-rows: 30% 30%;
+}
+
+.repayment_body-tab-validacion-deposito-firstLine {
+    grid-area: firstLine;
+    display: grid;
+    grid-template-areas: 
+        'cedula nombre';
+    grid-template-columns: 35% 65%;
+}
+
+.repayment_body-tab-validacion-deposito-firstLine-cedula {
+    grid-area: cedula;
+    display: grid;
+    grid-template-areas: 
+        'lblCedula'
+        'txtCedula';
+    grid-template-rows: 50% 50%;
+}
+
+.repayment_body-tab-validacion-deposito-firstLine-cedula-label {
+    grid-area: lblCedula;
+    padding-top: 5px;
+}
+
+#lblCedulaRepaymentBodyTabValidacionDeposito {
+    text-align: start;
+    padding-left: 15px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.repayment_body-tab-validacion-deposito-firstLine-cedula-input {
+    grid-area: txtCedula;
+}
+
+#txtCedulaRepaymentBodyTabValidacionDeposito {
+    width: 90%;
+    text-align: start;
+    padding-left: 5px;
+}
+
+.repayment_body-tab-validacion-deposito-firstLine-nombre {
+    grid-area: nombre;
+    display: grid;
+    grid-template-areas: 
+        'lblNombre'
+        'txtNombre';
+    grid-template-rows: 50% 50%;
+}
+
+.repayment_body-tab-validacion-deposito-firstLine-nombre-label {
+    grid-area: lblNombre;
+    padding-top: 5px;
+}
+
+#lblNombreRepaymentBodyTabValidacionDeposito {
+    text-align: start;
+    padding-left: 15px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.repayment_body-tab-validacion-deposito-firstLine-nombre-input {
+    grid-area: txtNombre;
+}
+
+#txtNombreRepaymentBodyTabValidacionDeposito {
+    width: 95%;
+    text-align: start;
+    padding-left: 5px;
+}
+
+.repayment_body-tab-validacion-deposito-secondLine {
+    grid-area: secondLine;
+    display: grid;
+    grid-template-areas: 
+        'lblCuenta'
+        'txtCuenta';
+    grid-template-rows: 50% 50%;
+}
+
+.repayment_body-tab-validacion-deposito-secondLine-cuenta-label {
+    grid-area: lblCuenta;
+    padding-top: 5px;
+}
+
+#lblCuentaRepaymentBodyTabValidacionDeposito {
+    text-align: start;
+    padding-left: 15px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.repayment_body-tab-validacion-deposito-secondLine-cuenta-input {
+    grid-area: txtCuenta;
+}
+
+#txtCuentaRepaymentBodyTabValidacionDeposito {
+    width: 96.5%;
+    text-align: start;
+    padding-left: 5px;
+}
+
+.repayment_body-tab-validacion-anticipio-main {
+    display: grid;
+    height: 90%;
+    margin-left: 25px;
+    margin-right: 25px;
+    padding-top: 15px;
+    grid-template-areas: 
+        'btn input';
+    grid-template-columns: 30% 70%;
+}
+
+.repayment_body-tab-validacion-anticipio-btn {
+    grid-area: btn;
+    padding-top: 10px;
+}
+
+#btnBuscarClienteRepaymentBodyTabValidacion {
+    border-radius: 5px;
+    width: 70%;
+    height: 20%;
+    border: none;
+    background-color: $secundary;
+    color: white;
+
+    &:hover {
+        background-color: $primary;
+        cursor: pointer;
+    }
+}
+
+.repayment_body-tab-validacion-anticipio-input {
+    grid-area: input;
+    height: 35%;
+    display: grid;
+    grid-template-areas: 
+        'lblNombreCliente'
+        'txtNombreCliente';
+    grid-template-rows: 50% 50%;
+}
+
+.repayment_body-tab-validacion-anticipio-input-nombre-label {
+    grid-area: lblNombreCliente;
+    padding-top: 5px;
+}
+
+#lblNombreRepaymentBodyTabValidacionDeposito {
+    text-align: start;
+    padding-left: 15px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.repayment_body-tab-validacion-anticipio-input-nombre-input {
+    grid-area: txtNombreCliente;
+}
+
+#txtNombreRepaymentBodyTabValidacionDeposito {
+    width: 95%;
+    text-align: start;
+    padding-left: 5px;
+}

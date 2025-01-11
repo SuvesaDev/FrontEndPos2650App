@@ -1,0 +1,265 @@
+.modal_assingCabysCode-main {
+    display: grid;
+    text-align: center;
+    grid-template-areas:
+        'title' 
+        'body';
+    grid-template-rows: 30px 450px;
+}
+
+.modal_assingCabysCode-title {
+    display: grid;
+    gap: 5px;
+    grid-area: title;
+    grid-template-areas: 
+        'text btnClose';
+    grid-template-columns: 94.3% 5%;
+}
+
+#lblTitleAssingCabysCodeModal {
+    background-color: $primary;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    grid-area: text;
+    margin-bottom: 5px;
+    padding-bottom: 2px;
+    padding-top: 5px;
+    text-align: center;
+}
+
+#lblCloseAssingCabysCodeModal {
+    background-color: red;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    grid-area: btnClose;
+    margin-bottom: 5px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    text-align: center;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.modal_assingCabysCode-body {
+    grid-area: body;
+    display: grid;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    grid-template-areas:
+        'firstLine' 
+        'secondLine'
+        'thirdLine';
+    grid-template-rows: 10% 70% 20%;
+}
+
+.modal_assingCabysCode-body-firstLine {
+    grid-area: firstLine;
+    display: grid;
+    // grid-template-areas:
+    //     'btnBuscar txtBuscar btnLimpiar';
+    // grid-template-columns: 10% 80% 10%;
+    grid-template-areas:
+        'txtBuscar btnLimpiar';
+    grid-template-columns: 90% 10%;
+}
+
+// #btnBuscarACCModal {
+//     font-size: 15px;
+//     grid-area: btnBuscar;
+//     height: 70%;
+//     margin-left: 8px;
+//     margin-top: 10px;
+//     text-align: center;
+//     width: 80%;
+
+//     &:hover {
+//         background-color: #3D59A9;
+//         color: white;
+//         cursor: pointer;
+//     }
+// }
+
+.txtBuscarACCModal {
+    font-size: 15px;
+    grid-area: txtBuscar;
+    height: 50%;
+    margin-top: 10px;
+    text-align: start;
+    margin-left: 10px;
+    // overflow-x: scroll;
+    
+    // &::-webkit-scrollbar {
+    //     width: 100px;
+    // }
+    // &::-webkit-scrollbar-thumb {
+    //     background-clip: content-box;
+    //     border: 4px solid transparent;
+    //     border-radius: 7px;
+    //     box-shadow: inset 0 0 0 10px;
+    // }
+    // background-color: red;
+}
+
+#btnLimpiarACCModal {
+    font-size: 15px;
+    grid-area: btnLimpiar;
+    height: 10%;
+    margin-left: 8px;
+    margin-top: 10px;
+    text-align: center;
+    width: 80%;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.modal_assingCabysCode-body-secondLine {
+    grid-area: secondLine;
+    // background-color: brown;
+}
+
+.modal_assingCabysCode-body-thirdLine {
+    grid-area: thirdLine;
+    display: grid;
+    grid-template-areas:
+        'inputs' 
+        'btns';
+    grid-template-rows: 50% 50%;
+}
+
+.modal_assingCabysCode-body-thirdLine-inputs {
+    grid-area: inputs;
+    border-top: 1px solid black;
+    display: grid;
+    grid-template-areas:
+        'codigo bien impuesto';
+    grid-template-columns: 20% 60% 20%;
+}
+
+.modal_assingCabysCode-body-thirdLine-inputs-codigo {
+    grid-area: codigo;
+    display: grid;
+    grid-template-areas:
+        'lblCodigo' 
+        'txtCodigo';
+    grid-template-rows: 45% 55%;
+}
+
+#lblCodigoACCModal {
+    font-size: 15px;
+    grid-area: lblCodigo;
+    padding-left: 10px;
+    padding-top: 3px;
+    text-align: start;
+}
+
+#txtCodigoACCModal {
+    font-size: 15px;
+    grid-area: txtCodigo;
+    height: 80%;
+    margin-left: 10px;
+    margin-top: 2px;
+    text-align: start;
+    width: 90%;
+}
+
+.modal_assingCabysCode-body-thirdLine-inputs-bien {
+    grid-area: bien;
+    display: grid;
+    grid-template-areas:
+        'lblBien' 
+        'txtBien';
+    grid-template-rows: 45% 55%;
+}
+
+#lblBienACCModal {
+    font-size: 15px;
+    grid-area: lblBien;
+    padding-left: 10px;
+    padding-top: 3px;
+    text-align: start;
+}
+
+#txtBienACCModal {
+    font-size: 15px;
+    grid-area: txtBien;
+    height: 80%;
+    margin-left: 10px;
+    margin-top: 2px;
+    text-align: start;
+    width: 95%;
+}
+
+.modal_assingCabysCode-body-thirdLine-inputs-impuesto {
+    grid-area: impuesto;
+    display: grid;
+    grid-template-areas:
+        'lblImpuesto' 
+        'txtImpuesto';
+    grid-template-rows: 45% 55%;
+}
+
+#lblImpuestoACCModal {
+    font-size: 15px;
+    grid-area: lblImpuesto;
+    padding-left: 10px;
+    padding-top: 3px;
+    text-align: start;
+}
+
+#txtImpuestoACCModal {
+    font-size: 15px;
+    grid-area: txtImpuesto;
+    height: 80%;
+    margin-left: 10px;
+    margin-top: 2px;
+    text-align: start;
+    width: 90%;
+}
+
+.modal_assingCabysCode-body-thirdLine-btns {
+    display: grid;
+    grid-area: btns;
+    margin-left: 70%;
+    grid-template-areas: 
+        'btnCancelar btnAceptar';
+    grid-template-columns: 50% 50%; 
+}
+
+#btnCancelarACCModal {
+    font-size: 15px;
+    grid-area: btnCancelar;
+    height: 80%;
+    margin-left: 5px;
+    margin-top: 5px;
+    text-align: center;
+    width: 90%;
+
+    &:hover {
+        background-color: #D5300C;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+#btnAceptarACCModal {
+    font-size: 15px;
+    grid-area: btnAceptar;
+    height: 80%;
+    margin-left: 5px;
+    margin-top: 5px;
+    text-align: center;
+    width: 90%;
+
+    &:hover {
+        background-color: #3D59A9;
+        color: white;
+        cursor: pointer;
+    }
+}

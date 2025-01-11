@@ -1,0 +1,123 @@
+.tranferPointsSale-icons {
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'btnNuevo btnRegistrar btnBuscar btnCerrar';
+    grid-template-columns: 8% 8% 8% 8%;
+}
+
+.tranferPointsSale-icons-nuevo {
+    display: grid;
+    grid-area: btnNuevo;
+    height: 100%;
+    grid-template-areas: 
+        'iconNue'
+        'lblNue';
+    grid-template-rows: 60% 40%;
+}
+
+.tranferPointsSale-icons-nuevo-icon {
+    color: #F68A1D;
+    grid-area: iconNue;
+    padding-top: 4px;
+}
+
+#iconNuevoTranferPS {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblNuevoTranferPS {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblNue;
+    text-align: center;
+}
+
+.tranferPointsSale-icons-registrar {
+    display: grid;
+    grid-area: btnRegistrar;
+    height: 100%;
+    grid-template-areas: 
+        'iconReg'
+        'lblReg';
+    grid-template-rows: 60% 40%;
+}
+
+.tranferPointsSale-icons-registrar-icon {
+    color: #F68A1D;
+    grid-area: iconReg;
+    padding-top: 4px;
+}
+
+#iconRegistrarTranferPS {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblRegistrarTranferPS {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblReg;
+    text-align: center;
+}
+
+.tranferPointsSale-icons-buscar {
+    display: grid;
+    grid-area: btnBuscar;
+    height: 100%;
+    grid-template-areas: 
+        'iconBus'
+        'lblBus';
+    grid-template-rows: 60% 40%;
+}
+
+.tranferPointsSale-icons-buscar-icon {
+    color: #F68A1D;
+    grid-area: iconBus;
+    padding-top: 4px;
+}
+
+#iconBuscarTranferPS {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblBuscarTranferPS {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblBus;
+    text-align: center;
+}
+
+.tranferPointsSale-icons-cerrar {
+    display: grid;
+    grid-area: btnCerrar;
+    height: 100%;
+    grid-template-areas: 
+        'iconCer'
+        'lblCer';
+    grid-template-rows: 60% 40%;
+}
+
+.tranferPointsSale-icons-cerrar-icon {
+    color: #F68A1D;
+    grid-area: iconCer;
+    padding-top: 4px;
+}
+
+#iconCerrarTranferPS {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblCerrarTranferPS {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblCer;
+    text-align: center;
+}

@@ -1,0 +1,255 @@
+.buys_headerFactura-main {
+    height: 100%;
+    display: grid;
+    grid-template-areas: 
+        'firstLine'
+        'secondLine';
+    grid-template-rows: 55% 45%;
+}
+
+.buys_headerFactura-firstLine {
+    grid-area: firstLine;
+    display: grid;
+    grid-template-areas: 
+        'NumeroFactura Tipo Fecha Dias Vencimiento';
+    grid-template-columns: 25% 15% 25% 10% 25%;
+}
+
+.buys_headerFactura-firstLine-NumeroFactura {
+    grid-area: NumeroFactura;
+    display: grid;
+    grid-template-areas: 
+        'labelNumeroFactura'
+        'txtNumeroFactura';
+    grid-template-rows: 55% 45%;
+}
+
+.buys_headerFactura-firstLine-NumeroFactura-label {
+    grid-area: labelNumeroFactura;
+    padding-top: 5px;
+}
+
+#lblNumeroFacturaBuys {
+    text-align: start;
+    padding-left: 5px;
+    font-size: 15px;
+    color: #4C58DC;
+}
+
+.buys_headerFactura-firstLine-NumeroFactura-input {
+    grid-area: txtNumeroFactura;
+}
+
+#txtNumeroFacturaBuys {
+    font-size: 15px;
+    right: 0px;
+    text-align: start;
+    width: 95%;
+    padding-left: 5px;
+}
+
+.buys_headerFactura-firstLine-Tipo {
+    grid-area: Tipo;
+    display: grid;
+    grid-template-areas: 
+        'labelTipo'
+        'txtTipo';
+    grid-template-rows: 55% 45%;
+}
+
+.buys_headerFactura-firstLine-Tipo-label {
+    grid-area: labelTipo;
+    padding-top: 5px;
+}
+
+#lblTipoProveedorBuys {
+    text-align: start;
+    padding-left: 5px;
+    font-size: 15px;
+    color: #4C58DC;
+}
+
+.buys_headerFactura-firstLine-Tipo-input {
+    grid-area: txtTipo;
+}
+
+#cboTipoProveedorBuys {
+    font-size: 15px;
+    right: 0px;
+    text-align: start;
+    width: 95%;
+    padding-left: 5px;
+}
+
+.buys_headerFactura-firstLine-Fecha {
+    grid-area: Fecha;
+    display: grid;
+    grid-template-areas: 
+        'labelFecha'
+        'txtFecha';
+    grid-template-rows: 55% 45%;
+}
+
+.buys_headerFactura-firstLine-Fecha-label {
+    grid-area: labelFecha;
+    padding-top: 5px;
+}
+
+#lblFechaProveedorBuys {
+    text-align: start;
+    padding-left: 5px;
+    font-size: 15px;
+    color: #4C58DC; 
+}
+
+.buys_headerFactura-firstLine-Fecha-input {
+    grid-area: txtFecha;
+}
+
+#txtFechaProveedorBuys {
+    font-size: 15px;
+    right: 0px;
+    text-align: start;
+    width: 95%;
+    padding-left: 5px;
+}
+
+.buys_headerFactura-firstLine-Dias {
+    grid-area: Dias;
+    display: grid;
+    grid-template-areas: 
+        'labelDias'
+        'txtDias';
+    grid-template-rows: 55% 45%;
+}
+
+.buys_headerFactura-firstLine-Dias-label {
+    grid-area: labelDias;
+    padding-top: 5px;
+}
+
+#lblDiasBuys {
+    text-align: start;
+    padding-left: 5px;
+    font-size: 15px;
+    color: #4C58DC;
+}
+
+.buys_headerFactura-firstLine-Dias-input {
+    grid-area: txtDias;
+}
+
+#txtDiasBuys {
+    font-size: 15px;
+    right: 0px;
+    text-align: start;
+    width: 95%;
+    padding-left: 5px;
+}
+
+.buys_headerFactura-firstLine-Vencimiento {
+    grid-area: Vencimiento;
+    display: grid;
+    grid-template-areas: 
+        'labelVencimiento'
+        'txtVencimiento';
+    grid-template-rows: 55% 45%;
+}
+
+.buys_headerFactura-firstLine-Vencimiento-label {
+    grid-area: labelVencimiento;
+    padding-top: 5px;
+}
+
+#lblVencimientoBuys {
+    text-align: start;
+    padding-left: 5px;
+    font-size: 15px;
+    color: #4C58DC;
+}
+
+.buys_headerFactura-firstLine-Vencimiento-input {
+    grid-area: txtVencimiento;
+}
+
+#txtVencimientoBuys {
+    font-size: 15px;
+    right: 0px;
+    text-align: start;
+    width: 95%;
+    padding-left: 5px;
+}
+
+.buys_headerFactura-secondLine {
+    grid-area: secondLine;
+    display: grid;
+    grid-template-areas: 
+        'orden moneda';
+    grid-template-columns: 25% 15%;
+}
+
+.buys_headerFactura-secondLine-orden {
+    grid-area: orden;
+    display: grid;
+    grid-template-areas: 
+        'labelOrden'
+        'txtOrden';
+    grid-template-rows: 50% 50%;
+}
+
+.buys_headerFactura-secondLine-orden-label {
+    grid-area: labelOrden;
+    padding-top: 3px;
+}
+
+#lblOrdenBuys {
+    text-align: start;
+    padding-left: 5px;
+    font-size: 15px;
+    color: #4C58DC;
+}
+
+.buys_headerFactura-secondLine-orden-input {
+    grid-area: txtOrden;
+}
+
+#txtOrdenBuys {
+    font-size: 15px;
+    right: 0px;
+    text-align: start;
+    width: 95%;
+    padding-left: 5px; 
+}
+
+.buys_headerFactura-secondLine-moneda {
+    grid-area: moneda;
+    display: grid;
+    grid-template-areas: 
+        'labelMoneda'
+        'txtMoneda';
+    grid-template-rows: 50% 50%;
+}
+
+.buys_headerFactura-secondLine-moneda-label {
+    grid-area: labelMoneda;
+    padding-top: 3px;
+}
+
+#lblTipoMonedaBuys {
+    text-align: start;
+    padding-left: 5px;
+    font-size: 15px;
+    color: #4C58DC;
+}
+
+.buys_headerFactura-secondLine-moneda-input {
+    grid-area: txtMoneda;
+}
+
+#cboTipoMonedaBuys {
+    font-size: 15px;
+    right: 0px;
+    text-align: start;
+    width: 95%;
+    padding-left: 5px; 
+}

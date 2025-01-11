@@ -1,0 +1,123 @@
+.inventory_body-featuresInformacionPost {
+    background-color: #F0F0F0;
+    display: grid;
+    height: 100%;
+    padding-top: 5px;
+    margin-left: 50px;
+    margin-right: 50px;
+    padding: 15px;
+    grid-template-areas: 
+        'firstLine'
+        'secondLine';
+    grid-template-rows: 40% 40%;
+}
+
+.inventory_body-featuresInformacionPost-firstLine {
+    grid-area: firstLine;
+    border-top: 1px solid rgb(124, 122, 122);
+    border-left: 1px solid rgb(124, 122, 122);
+    border-right: 1px solid rgb(124, 122, 122);
+    display: grid;
+    grid-template-areas: 
+        'codigoIntQVET codigoPro';
+    grid-template-columns: 50% 50%;
+}
+
+.inventory_body-featuresInformacionPost-firstLine-codigoIntQVET {
+    grid-area: codigoIntQVET;
+    display: grid;
+    grid-template-areas: 
+        'lblCodigoIntQVET'
+        'txtCodigoIntQVET';
+    grid-template-rows: 50% 50%;
+}
+
+.inventory_body-featuresInformacionPost-firstLine-codigoIntQVET-label {
+    grid-area: lblCodigoIntQVET;
+    padding-top: 5px;
+    padding-left: 15px;
+}
+
+#lblCodigoIntQVETInformacionPostInv {
+    text-align: start;
+    font-size: 15px;
+}
+
+.inventory_body-featuresInformacionPost-firstLine-codigoIntQVET-input {
+    grid-area: txtCodigoIntQVET;
+    padding-left: 3px;
+}
+
+#txtCodigoIntQVETInformacionPostInv {
+    width: 95%;
+    text-align: start;
+    padding-left: 5px;
+    font-size: 15px;
+}
+
+.inventory_body-featuresInformacionPost-firstLine-codigoPro {
+    grid-area: codigoPro;
+    display: grid;
+    grid-template-areas: 
+        'lblCodigoProv'
+        'txtCodigoProv';
+    grid-template-rows: 50% 50%;
+}
+
+.inventory_body-featuresInformacionPost-firstLine-codigoPro-label {
+    grid-area: lblCodigoProv;
+    padding-top: 5px;
+    padding-left: 15px;
+}
+
+#lblCodigoProInformacionPostInv {
+    text-align: start;
+    font-size: 15px;
+}
+
+.inventory_body-featuresInformacionPost-firstLine-codigoPro-input {
+    grid-area: txtCodigoProv;
+    padding-left: 3px;
+}
+
+#txtCodigoProInformacionPostInv {
+    width: 95%;
+    text-align: start;
+    padding-left: 5px;
+    font-size: 15px;
+}
+
+.inventory_body-featuresInformacionPost-secondLine {
+    grid-area: secondLine;
+    border-bottom: 1px solid rgb(124, 122, 122);
+    border-left: 1px solid rgb(124, 122, 122);
+    border-right: 1px solid rgb(124, 122, 122);
+    display: grid;
+    grid-template-areas: 
+        'lblDescripcionProv'
+        'txtDescripcionProv';
+    grid-template-rows: 50% 50%;
+}
+
+.inventory_body-featuresInformacionPost-secondLine-label {
+    grid-area: lblDescripcionProv;
+    padding-top: 5px;
+    padding-left: 15px;
+}
+
+#lblDescripcionProInformacionPostInv {
+    text-align: start;
+    font-size: 15px;
+}
+
+.inventory_body-featuresInformacionPost-secondLine-input {
+    grid-area: txtDescripcionProv;
+    padding-left: 3px;
+}
+
+#txtDescripcionProInformacionPostInv {
+    width: 97%;
+    text-align: start;
+    padding-left: 5px;
+    font-size: 15px;
+}

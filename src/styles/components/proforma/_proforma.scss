@@ -1,0 +1,78 @@
+.proforma-main {
+    display: grid;
+    height: 100%;
+    text-align: center;
+    grid-template-areas: 
+        'header'
+        'datos'
+        'table'
+        'totales'
+        'icons';
+    grid-template-rows: 40px 120px 238px 90px 60px;
+}
+
+.proforma-header {
+    background-color: #3D59A9;
+    display: grid;
+    grid-area: header;
+    height: 100%;
+    grid-template-areas: 
+        'cotizaciones title';
+    grid-template-columns: 20% 80%;
+}
+
+.proforma-header-input {
+    display: grid;
+    grid-area: cotizaciones;
+    height: 100%;
+    grid-template-areas: 
+        'lblcotizaciones txtcotizaciones';
+    grid-template-columns: 50% 50%;
+}
+
+#lblProformaCotizacion {
+    background-color: white;
+    color: #595FDC;
+    font-size: 15px;
+    grid-area: lblcotizaciones;
+    height: 50%;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 10px;
+}
+
+#txtProformaCotizacion {
+    font-size: 15px;
+    grid-area: txtcotizaciones;
+    height: 50%;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 10px;
+    text-align: start;
+}
+
+#lblProformaTitle {
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    grid-area: title;
+    padding-right: 25%;
+    padding-top: 4px;
+}
+
+.proforma-datos {
+    grid-area: datos;
+}
+
+.proforma-table {
+    grid-area: table;
+}
+
+.proforma-totales {
+    grid-area: totales;
+}
+
+.proforma-icons {
+    grid-area: icons;
+    border: 1px solid black;
+}

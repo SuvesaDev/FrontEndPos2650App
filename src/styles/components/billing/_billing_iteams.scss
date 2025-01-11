@@ -1,0 +1,658 @@
+.billing_iteams-main {
+    display: grid;
+    grid-template-areas: 
+        'Titulo'
+        'Header'
+        'Tabla';
+    grid-template-rows: 20px 90px 215px;
+    // grid-template-columns: 100%;
+    // width: 50%;
+    // background-color: red;
+}
+
+.billing_iteams-title {
+    background-color: green;
+    grid-area: Titulo;
+    padding-top: 1px;
+    display: grid;
+    grid-template-areas: 
+        'lblTitulo lblArticulo';
+    grid-template-columns: 20% 80%;
+}
+
+#lblTitleIteams {
+    color: white;
+    grid-area: lblTitulo;
+    font-size: 15px;
+}
+
+#lblArticuloDescripcion {
+    grid-area: lblArticulo;
+    color: white;
+    font-size: 15px;
+    text-align: start;
+    padding-left: 5px;
+}
+
+.billing_iteams-header {
+    grid-area: Header;
+    display: grid;
+    grid-template-areas: 
+        'Codigo PrecioUnit IV bodega Desc Exist Cantidad Subtotal';
+    grid-template-columns: 16% 14% 5% 19% 10% 8% 14% 14%;
+    border: 1px black solid;
+}
+
+.billing_iteams-Codigo {
+    grid-area: Codigo;
+    height: 100%;
+    display: grid;
+    grid-template-areas: 
+        'title-check'
+        'inputCodigo';
+    grid-template-rows: 40% 60%;
+}
+
+.billing_iteams-codigo-title-check {
+    grid-area: title-check;
+    display: grid;
+    grid-template-areas: 
+        'title check';
+    grid-template-columns: 50% 50%;
+}
+
+.billing_iteams-codigo-title {
+    grid-area: title;
+}
+
+#lblCodigo {
+    font-size: 15px;
+    padding-top: 10px;
+}
+
+.billing_iteams-codigo-check {
+    grid-area: check;
+    display: grid;
+    grid-template-areas: 
+        'inputPedido labelPedido';
+    grid-template-columns: 20% 80%;
+    padding-top: 10px;
+}
+
+.billing_iteams-codigo-check-input {
+    grid-area: inputPedido;
+}
+
+#lblPedido {
+    color: #3B46F5;
+    font-size: 15px;
+    grid-area: labelPedido;
+    width: 50%;
+    height: 80%;
+}
+
+.billing_iteams-codigo-input {
+    grid-area: inputCodigo;
+    display: grid;
+    grid-template-areas: 
+        'txtCodigo iconSearch';
+    grid-template-columns: 80% 20%;
+}
+
+.billing_iteams-codigo-input-input {
+    grid-area: txtCodigo;
+    margin-left: 10px;
+}
+
+.billing_iteams-codigo-input-icon {
+    grid-area: iconSearch;
+    margin-bottom: 30px;
+    padding-top: 3px;
+}
+
+#txtCodigoBillingItems {
+    font-size: 15px;
+    height: 50%;
+    width: 70%;
+    padding-left: 2px;
+}
+
+.billing_iteams-precioUnit {
+    grid-area: PrecioUnit;
+    height: 100%;
+    display: grid;
+    grid-template-areas: 
+        'labelTitlePrecio'
+        'inputResultPrecio';
+    grid-template-rows: 40% 60%;
+}
+
+#lblTilePrecio {
+    grid-area: labelTitlePrecio;
+    padding-top: 10px;
+    text-align: end;
+    padding-right: 5px;
+    font-size: 15px;
+}
+
+.txtResulPrecio {
+    grid-area: inputResultPrecio;
+    height: 50%;
+    margin-left: 10%;
+    text-align: end;
+    margin-right: 5px;
+}
+
+.txtResulPrecioInvalid {
+    grid-area: inputResultPrecio;
+    height: 50%;
+    margin-left: 10%;
+    text-align: end;
+    margin-right: 5px;
+    border: 2px solid red;
+}
+
+// #txtResulPrecioActive {
+//     grid-area: inputResultPrecio;
+//     height: 50%;
+//     margin-left: 50%;
+//     text-align: end;
+//     margin-right: 5px;
+//     border: 1px solid blue;
+// }
+
+.billing_iteams-IV {
+    grid-area: IV;
+    height: 100%;
+    display: grid;
+    grid-template-areas: 
+        'title-inputIV'
+        'labelResultIV';
+    grid-template-rows: 40% 60%;
+    // text-align: end;
+    // padding-right: 5px;
+    font-size: 15px;
+}
+
+.billing_iteams-IV-label-input {
+    grid-area: title-inputIV;
+    // display: grid;
+    // grid-template-areas: 
+    //     'labelIV inputIV';
+    // grid-template-columns: 75% 25%;
+}
+
+#lblTitleIV {
+    font-size: 15px;
+    grid-area: labelIV;
+    // padding-right: 5px;
+    padding-top: 10px;
+    text-align: end;
+}
+
+#txtIV {
+    font-size: 12px;
+    grid-area: inputIV;
+    height: 100%;
+    margin-top: 10px;
+    width: 100%;
+}
+
+#txtResulIV {
+    border: none;
+    grid-area: labelResultIV;
+    height: 50%;
+    width: 90%;
+    margin-left: 5px;
+    // margin-right: 5px;
+    text-align: end;
+}
+
+.billing_iteams-bodega {
+    grid-area: bodega;
+    height: 100%;
+    display: grid;
+    grid-template-areas: 
+        'labelTitleBodega'
+        'labelResultBodega';
+    grid-template-rows: 40% 60%;
+}
+
+#lblTitleBodega {
+    grid-area: labelTitleBodega;
+    padding-top: 10px;
+    text-align: center;
+    text-align: start;
+    padding-left: 5px;
+    font-size: 15px;
+}
+
+#txtResulBodega {
+    grid-area: labelResultBodega;
+    height: 50%;
+    width: 90%;
+    margin-left: 5px;
+    margin-right: 5px;
+    text-align: start;
+}
+
+.billing_iteams-Desc {
+    grid-area: Desc;
+    height: 100%;
+    display: grid;
+    grid-template-areas: 
+        'labelTitleDesc'
+        'labelResultDesc';
+    grid-template-rows: 40% 60%;
+}
+
+#lblTitleDesc {
+    grid-area: labelTitleDesc;
+    padding-top: 10px;
+    text-align: center;
+    // padding-right: 5px;
+    font-size: 15px;
+}
+
+.txtResulDesc {
+    grid-area: labelResultDesc;
+    height: 50%;
+    width: 90%;
+    margin-left: 10%;
+    margin-right: 5px;
+    text-align: end;
+}
+
+.txtResulDescInvalid {
+    grid-area: labelResultDesc;
+    height: 50%;
+    width: 90%;
+    margin-left: 10%;
+    margin-right: 5px;
+    text-align: end;
+    border: 2px solid red;
+}
+
+.billing_iteams-Exist {
+    grid-area: Exist;
+    height: 100%;
+    display: grid;
+    grid-template-areas: 
+        'labelTitleExist'
+        'labelResultExist'
+        'labelRegalias';
+    grid-template-rows: 33% 33% 33%;
+}
+
+#lblTitleExist {
+    grid-area: labelTitleExist;
+    padding-top: 10px;
+    text-align: end;
+    padding-right: 5px;
+    font-size: 15px;
+}
+
+#txtResulExist {
+    grid-area: labelResultExist;
+    padding-top: 5px;
+    border: none;
+    height: 90%;
+    width: 50%;
+    margin-left: 50%;
+    margin-right: 5px;
+    text-align: end;
+}
+
+#lblTtleRegalias {
+    grid-area: labelRegalias;
+    padding-top: 5px;
+    text-align: end;
+    padding-right: 5px;
+    font-size: 15px;
+}
+
+.billing_iteams-Cantidad {
+    grid-area: Cantidad;
+    height: 100%;
+    display: grid;
+    grid-template-areas: 
+        'labelTitleCantidad'
+        'labelResultCantidad'
+        'labelExistenciasBod';
+    grid-template-rows: 33% 33% 33%;
+}
+
+#lblTitleCantidad {
+    grid-area: labelTitleCantidad;
+    padding-top: 10px;
+    text-align: end;
+    padding-right: 5px;
+    font-size: 15px;
+}
+
+.txtResulCantidad {
+    grid-area: labelResultCantidad;
+    padding-top: 5px;
+    height: 90%;
+    margin-left: 50%;
+    margin-right: 5px;
+    text-align: end;
+}
+
+.txtResulCantidadInvalid {
+    grid-area: labelResultCantidad;
+    padding-top: 5px;
+    height: 90%;
+    margin-left: 10%;
+    margin-right: 5px;
+    text-align: end;
+    border: 2px solid red;
+}
+
+// #lblResulRegalias {
+//     grid-area: labelResultRegalias;
+//     padding-top: 5px;
+//     text-align: start;
+//     padding-left: 5px;
+//     font-size: 15px;
+// }
+
+.billing_iteams-SubTotal-Exist-Bod {
+    grid-area: labelExistenciasBod;
+    display: grid;
+    grid-template-areas: 
+        'labelExist resulExist';
+    grid-template-columns: 75% 25%;
+    background-color: #A930EA;
+}
+
+#lblTitleExist-Bod {
+    color: white;
+    font-size: 15px;
+    grid-area: labelExist;
+    margin-left: 5px;
+    margin-top: 4px;
+    text-align: start;
+}
+
+#lblResulExist-Bod {
+    color: white;
+    font-size: 15px;
+    grid-area: resulExist;
+    width: 40px;
+    text-align: end;
+}
+
+.billing_iteams-SubTotal {
+    grid-area: Subtotal;
+    display: grid;
+    grid-template-areas: 
+        'labelTitleSubTotal'
+        'labelResultSubTotal'
+        'botonAdd';
+    grid-template-rows: 33% 35% 32%;
+}
+
+#lblTitleSubTotal {
+    font-size: 15px;
+    grid-area: labelTitleSubTotal;
+    padding-right: 5px;
+    padding-top: 10px;
+    text-align: end;
+}
+
+#txtResulSubTotal {
+    grid-area: labelResultSubTotal;
+    border: none;
+    height: 80%;
+    margin-left: 10%;
+    margin-right: 5px;
+    text-align: end;
+}
+
+.billing_iteams-SubTotal-button {
+    grid-area: botonAdd;
+    display: grid;
+    grid-template-areas: 
+        'info btn';
+    grid-template-columns: 30% 70%;
+}
+
+.billing_iteams-SubTotal-button-info {
+    grid-area: info;
+    padding-top: 4px;
+}
+
+.iconInfoBillingItemsAdd {
+    width: 30%;
+    height: 80%;
+    color: $secundary;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.iconInfoBillingItemsAdd-disable {
+    width: 30%;
+    height: 80%;
+    color: gray;
+
+    &:hover {
+        cursor: not-allowed;
+    }
+}
+
+.lblMensajeInfoBillingItems {
+    visibility: visible;
+    width: 250px;
+    background-color: rgb(183, 181, 181);
+    color: #767373;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+  
+    /* Position the tooltip */
+    position: absolute;
+    top: 260px;
+    left: 750px;
+    z-index: 1;
+}
+
+.billing_iteams-SubTotal-button-btn {
+    grid-area: btn;
+    padding-top: 2px;
+}
+
+#btnAddBillintItems {
+    width: 90%;
+    height: 90%;
+    font-size: 15px;
+    background-color: $primary;
+    color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+
+    &:hover {
+        background-color: $secundary;
+    }
+}
+
+#btnAddBillintItems-disable {
+    width: 90%;
+    height: 90%;
+    font-size: 15px;
+    background-color: gray;
+    color: white;
+    cursor: not-allowed;
+    border: none;
+    border-radius: 3px;
+}
+
+.billing_iteams-table {
+    grid-area: Tabla;
+}
+
+.billing_iteams-main-table {
+    width: 100%;
+    height: 97%;
+    margin-left: 2px;
+    overflow-y: scroll;
+    scrollbar-color: rebeccapurple green;
+    scrollbar-width: thin;
+    border: 1px solid black;
+}
+
+.billing_iteams-table-header-codigo {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 8%;
+}
+
+.billing_iteams-table-header-descrip {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 30%;
+}
+
+.billing_iteams-table-header-cantidad {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.billing_iteams-table-header-precioU {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.billing_iteams-table-header-desc {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+#btnPorcentaje {
+    margin-right: 5px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.billing_iteams-table-header-imp {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.billing_iteams-table-header-subtotal {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.billing_iteams-table-header-iconDelete {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 2%;
+}
+
+.billing_iteams-table-body {
+    text-align: start;
+    font-style: normal;
+}
+
+.billing_iteams-table-body-row {
+    &:hover {
+        cursor: pointer;
+        background-color: #ACA9A9;
+    }
+}
+
+.billing_iteams-table-codigo {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.billing_iteams-table-descrip {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.billing_iteams-table-cantidad {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-right: 5px;
+    text-align: end;
+}
+
+.billing_iteams-table-precioU {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-right: 5px;
+    text-align: end;
+}
+
+.billing_iteams-table-desc {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-right: 5px;
+    text-align: end;
+}
+
+.billing_iteams-table-imp {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-right: 5px;
+    text-align: end;
+}
+
+.billing_iteams-table-subtotal {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-right: 5px;
+    text-align: end;
+}
+
+.billing_iteams-table-iconDelete {
+    border: 1px solid #BFBCC1;
+    padding-top: 1px;
+    height: 100%;
+    text-align: center;
+    color: $secundary;
+
+    &:hover {
+        color: red
+    }
+}
+
+.btnSearchInventoryBilling {
+    color: $secundary;
+    
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.btnSearchInventoryBilling-disable {
+    color: gray;
+    
+    &:hover {
+        cursor: not-allowed;
+    }
+}

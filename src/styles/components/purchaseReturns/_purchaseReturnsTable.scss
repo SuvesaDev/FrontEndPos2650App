@@ -1,0 +1,310 @@
+.purchaseReturns_table-main {
+    border: 1px solid #c4c4c4;
+    display: grid;
+    height: 100%;
+    margin-left: 3%;
+    margin-right: 3%;
+    text-align: center;
+    grid-template-areas: 
+        'table'
+        'totals';
+    grid-template-rows: 85% 15%;
+}
+
+.purchaseReturns_table-table {
+    grid-area: table;
+    border-bottom: 1px solid #c4c4c4;
+    height: 235px;
+    overflow: auto;
+}
+
+.purchaseReturns_table-table-main {
+    width: 100%;
+}
+
+.purchaseReturns_table-table-header-codigo {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 2%;
+}
+
+.purchaseReturns_table-table-header-descrip {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.purchaseReturns_table-table-header-cantidad {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 2%;
+}
+
+.purchaseReturns_table-table-header-costo {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 3%;
+}
+
+.purchaseReturns_table-table-header-descuento {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 3%;
+}
+
+.purchaseReturns_table-table-header-impuesto {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 3%;
+}
+
+.purchaseReturns_table-table-header-gravado {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 3%;
+}
+
+.purchaseReturns_table-table-header-excento {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 3%;
+}
+
+.purchaseReturns_table-table-header-subtotal {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 3%;
+}
+
+.purchaseReturns_table-table-codigo {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.purchaseReturns_table-table-descrip {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.purchaseReturns_table-table-cantidad {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.purchaseReturns_table-table-costo {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.purchaseReturns_table-table-descuento {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.purchaseReturns_table-table-impuesto {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.purchaseReturns_table-table-gravado {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.purchaseReturns_table-table-excento {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.purchaseReturns_table-table-subtotal {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.purchaseReturns_table-totals {
+    grid-area: totals;
+    display: grid;
+    grid-template-areas: 
+        'title gravado excento descuento impVenta total';
+    grid-template-columns: 16.66% 16.66% 16.66% 16.66% 16.66% 16.66%;
+}
+
+.purchaseReturns_table-totals-title {
+    grid-area: title;
+}
+
+#lblTitleTotalsPR {
+    background-color: #4169e6;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.purchaseReturns_table-totals-gravado {
+    display: grid;
+    grid-area: gravado;
+    grid-template-areas: 
+        'lblgravado'
+        'txtgravado';
+    grid-template-rows: 30% 70%;
+}
+
+#lblGravadoTotalsPR {
+    color: #4169e6;
+    font-size: 15px;
+    grid-area: lblgravado;
+    padding-left: 10px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+#txtGravadoTotalsPR {
+    color: black;
+    grid-area: txtgravado;
+    height: 60%;
+    margin-left: 10px;
+    margin-top: 6px;
+    text-align: start;
+    width: 90%;
+}
+
+.purchaseReturns_table-totals-excento {
+    display: grid;
+    grid-area: excento;
+    grid-template-areas: 
+        'lblexcento'
+        'txtexcento';
+    grid-template-rows: 30% 70%;
+}
+
+#lblExcentoTotalsPR {
+    color: #4169e6;
+    font-size: 15px;
+    grid-area: lblexcento;
+    padding-left: 10px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+#txtExcentoTotalsPR {
+    color: black;
+    grid-area: txtexcento;
+    height: 60%;
+    margin-left: 10px;
+    margin-top: 6px;
+    text-align: start;
+    width: 90%;
+}
+
+.purchaseReturns_table-totals-descuento {
+    grid-area: descuento;
+    display: grid;
+    grid-template-areas: 
+        'lbldescuento'
+        'txtdescuento';
+    grid-template-rows: 30% 70%;
+}
+
+#lblDescuentoTotalsPR {
+    color: #4169e6;
+    font-size: 15px;
+    grid-area: lbldescuento;
+    padding-left: 10px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+#txtDescuentoTotalsPR {
+    grid-area: txtdescuento;
+    color: black;
+    height: 60%;
+    margin-top: 6px;
+    margin-left: 10px;
+    text-align: start;
+    width: 90%;
+}
+
+.purchaseReturns_table-totals-impVenta {
+    display: grid;
+    grid-area: impVenta;
+    grid-template-areas: 
+        'lblimpVenta'
+        'txtimpVenta';
+    grid-template-rows: 30% 70%;
+}
+
+#lblImpVentaTotalsPR {
+    grid-area: lblimpVenta;
+    color: #4169e6;
+    font-size: 15px;
+    padding-left: 10px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+#txtImpVentaTotalsPR {
+    color: black;
+    grid-area: txtimpVenta;
+    height: 60%;
+    margin-left: 10px;
+    margin-top: 6px;
+    text-align: start;
+    width: 90%;
+}
+
+.purchaseReturns_table-totals-total {
+    display: grid;
+    grid-area: total;
+    grid-template-areas: 
+        'lbltotal'
+        'txttotal';
+    grid-template-rows: 30% 70%;
+}
+
+#lblTotalTotalsPR {
+    color: #4169e6;
+    font-size: 15px;
+    grid-area: lbltotal;
+    padding-left: 10px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+#txtTotalTotalsPR {
+    color: black;
+    grid-area: txttotal;
+    height: 60%;
+    margin-left: 10px;
+    margin-top: 6px;
+    text-align: start;
+    width: 90%;
+}
+

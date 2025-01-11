@@ -1,0 +1,82 @@
+.purchaseReturns-main {
+    display: grid;
+    height: 100%;
+    text-align: center;
+    grid-template-areas: 
+        'header'
+        'datosFactura'
+        'table'
+        'footer';
+    grid-template-rows: 40px 170px 278px 60px;
+}
+
+.purchaseReturns-header {
+    background-color: #3D59A9;
+    display: grid;
+    grid-area: header;
+    height: 100%;
+    grid-template-areas: 
+        'devol title fecha';
+    grid-template-columns: 20% 60% 20%;
+}
+
+.purchaseReturns-header-devol {
+    display: grid;
+    grid-area: devol;
+    grid-template-areas: 
+        'lbldevol txtdevol';
+    grid-template-columns: 50% 50%;
+}
+
+#lblDevolPurchaseReturns {
+    color: white;
+    font-size: 20px;
+    grid-area: lbldevol;
+    padding-top: 8px;
+    text-align: center;
+}
+
+#txtDevolPurchaseReturns {
+    font-size: 15px;
+    grid-area: txtdevol;
+    height: 60%;
+    margin-top: 10px;
+    text-align: start;
+    width: 85%;
+}
+
+.purchaseReturns-header-title {
+    grid-area: title;
+}
+
+#lblTitlePurchaseReturns {
+    color: white;
+    font-size: 30px;
+    padding-top: 2px;
+    text-align: center;
+}
+
+.purchaseReturns-header-fecha {
+    grid-area: fecha;
+}
+
+#txtFechaPurReturns {
+    font-size: 15px;
+    height: 60%;
+    margin-top: 10px;
+    text-align: start;
+    width: 85%;
+}
+
+.purchaseReturns-datosFactura {
+    grid-area: datosFactura;
+}
+
+.purchaseReturns-table {
+    grid-area: table;
+}
+
+.purchaseReturns-footer {
+    grid-area: footer;
+    border: 1px solid black;
+}

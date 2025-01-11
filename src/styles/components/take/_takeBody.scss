@@ -1,0 +1,294 @@
+.take_body-main {
+    border: 1px solid #c4c4c4;
+    display: grid;
+    height: 100%;
+    margin-left: 3%;
+    margin-right: 3%;
+    text-align: center;
+    grid-template-areas: 
+        'inputs'
+        'datos';
+    grid-template-rows: 10% 90%;
+}
+
+.take_body-header {
+    grid-area: inputs;
+    display: grid;
+    grid-template-areas: 
+        'proveedor fecha';
+    grid-template-columns: 80% 20%;
+}
+
+.take_body-header-proveedor {
+    display: grid;
+    grid-area: proveedor;
+    margin-top: 5px;
+    grid-template-areas: 
+        'lblproveedor iconBuscar inputBuscar inputproveedor';
+    grid-template-columns: 25% 5% 10% 60%;
+}
+
+#lblProveedortake {
+    background-color: #4169e6;
+    border: 1px solid #c4c4c4;
+    color: white;
+    grid-area: lblproveedor;
+    height: 50%;
+    margin-left: 20px;
+    margin-top: 10px;
+    text-align: center;
+    width: 80%;
+}
+
+#lblBusTake {
+    border: 1px solid #c4c4c4;
+    color: #4169e6;
+    grid-area: iconBuscar;
+    height: 50%;
+    margin-left: 20px;
+    margin-top: 10px;
+    text-align: center;
+    width: 80%;
+
+    &:hover {
+        cursor: pointer;
+        background-color: #4169e6;
+        color: white;
+    }
+}
+
+#txtBuscadorProveedorTake {
+    border: 1px solid #c4c4c4;
+    color: #4169e6;
+    grid-area: inputBuscar;
+    height: 50%;
+    margin-left: 20px;
+    margin-top: 10px;
+    text-align: center;
+    width: 80%;
+}
+
+#txtProveedorTake {
+    color: black;
+    grid-area: inputproveedor;
+    height: 50%;
+    margin-left: 20px;
+    margin-top: 10px;
+    text-align: start;
+    width: 95%;
+}
+
+.take_body-header-fecha {
+    display: grid;
+    grid-area: fecha;
+    margin-top: 5px;
+    grid-template-areas: 
+        'lblfecha inputfecha';
+    grid-template-columns: 25% 75%;
+}
+
+#lblFechaTake {
+    background-color: #4169e6;
+    border: 1px solid #c4c4c4;
+    color: white;
+    grid-area: lblfecha;
+    height: 50%;
+    margin-left: 20px;
+    margin-top: 10px;
+    text-align: center;
+    width: 80%;
+}
+
+#txtFechaTake {
+    color: black;
+    grid-area: inputfecha;
+    height: 50%;
+    margin-left: 20px;
+    margin-top: 10px;
+    text-align: start;
+    width: 80%;
+}
+
+.take_body-datosProductos {
+    display: grid;
+    grid-area: datos;
+    grid-template-areas: 
+        'btns'
+        'title'
+        'table';
+    grid-template-rows: 15% 5% 80%;
+}
+
+.take_body-datosProductos-btns {
+    display: grid;
+    grid-area: btns;
+    margin-top: 5px;
+    grid-template-areas: 
+        'generarToma existenciaActual cargarPretoma aplicarAjustes';
+    grid-template-columns: 10% 10% 10% 10%;
+}
+
+.take_body-datosProductos-btns-generarToma {
+    grid-area: generarToma;
+}
+
+#btngenerarTomaTake {
+    color: black;
+    font-size: 15px;
+    height: 50%;
+    margin-top: 15px;
+    width: 90%;
+
+    &:hover {
+        background-color: #4169e6;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+.take_body-datosProductos-btns-existenciaActual {
+    grid-area: existenciaActual;
+}
+
+#btnExistenciaActualTake {
+    color: black;
+    font-size: 15px;
+    height: 50%;
+    margin-top: 15px;
+    width: 90%;
+
+    &:hover {
+        background-color: #4169e6;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+.take_body-datosProductos-btns-cargarPretoma {
+    grid-area: cargarPretoma;
+}
+
+#btnCargarPretomaTake {
+    color: black;
+    font-size: 15px;
+    height: 50%;
+    margin-top: 15px;
+    width: 90%;
+
+    &:hover {
+        background-color: #4169e6;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+.take_body-datosProductos-btns-aplicarAjustes {
+    grid-area: aplicarAjustes;
+}
+
+#btnAplicarAjustesTake {
+    color: black;
+    font-size: 15px;
+    height: 50%;
+    margin-top: 15px;
+    width: 90%;
+
+    &:hover {
+        background-color: #4169e6;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+.take_body-datosProductos-title {
+    border-bottom: 1px solid #c4c4c4;
+    border-top: 1px solid #c4c4c4;
+    grid-area: title;
+}
+
+#lblTitleDatosProductosTake {
+    color: #c4c4c4;
+    font-size: 15px;
+    padding-left: 5px;
+    padding-top: 1px;
+    text-align: start;
+}
+
+.take_body-datosProductos-table {
+    grid-area: table;
+    border: 1px solid #c4c4c4;
+}
+
+.take_body-datosProductos-table-main {
+    width: 100%;
+}
+
+.take_body-datosProductos-table-header-codigo {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 2%;
+}
+
+.take_body-datosProductos-table-header-descrip {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 10%;
+}
+
+.take_body-datosProductos-table-header-existencia {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 2%;
+}
+
+.take_body-datosProductos-table-header-toma {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 2%;
+}
+
+.take_body-datosProductos-table-header-diferencia {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 2%;
+}
+
+.take_body-datosProductos-table-codigo {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.take_body-datosProductos-table-descrip {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.take_body-datosProductos-table-existencia {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.take_body-datosProductos-table-toma {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.take_body-datosProductos-table-diferencia {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}

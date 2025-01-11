@@ -1,0 +1,119 @@
+.settings_body-permiso-main {
+    display: grid;
+    height: 80%;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 3%;
+    grid-template-areas: 
+        'title'
+        'user'
+        'clave'
+        'repeatClave'
+        'btn';
+    grid-template-rows: 20% 10% 10% 10% 15%;
+}
+
+.settings_body-permiso-main-title {
+    grid-area: title;
+    padding-top: 5px;
+}
+
+#lblTitleSettingsBody {
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    padding-left: 50px;
+    text-align: center;
+}
+
+.settings_body-permiso-main-user {
+    display: grid;
+    grid-area: user;
+    grid-template-areas: 
+        'lblUser cboUser';
+    grid-template-columns: 40% 60%;
+}
+
+#lblUserSettingsBody {
+    font-size: 15px;
+    grid-area: lblUser;
+    padding-right: 5px;
+    padding-top: 6px;
+    text-align: end;
+}
+
+#cboUserSettingsBody {
+    font-size: 14px;
+    grid-area: cboUser;
+    height: 60%;
+    margin-top: 5px;
+    text-align: start;
+    width: 70%;
+}
+
+.settings_body-permiso-main-clave {
+    display: grid;
+    grid-area: clave;
+    grid-template-areas: 
+        'lblClave inputClave';
+    grid-template-columns: 40% 60%;
+}
+
+#lblClaveSettingsBody {
+    font-size: 15px;
+    grid-area: lblClave;
+    padding-right: 5px;
+    padding-top: 6px;
+    text-align: end;
+}
+
+#txtClaveSettingsBody {
+    font-size: 14px;
+    grid-area: inputClave;
+    height: 60%;
+    margin-top: 5px;
+    text-align: start;
+    width: 70%;
+}
+
+.settings_body-permiso-main-repetirClave {
+    display: grid;
+    grid-area: repeatClave;
+    grid-template-areas: 
+        'lblRClave inputRClave';
+    grid-template-columns: 40% 60%;
+}
+
+#lblRepetirClaveSettingsBody {
+    font-size: 15px;
+    grid-area: lblRClave;
+    padding-right: 5px;
+    padding-top: 6px;
+    text-align: end;
+}
+
+#txtRepetirClaveSettingsBody {
+    font-size: 14px;
+    grid-area: inputRClave;
+    height: 60%;
+    margin-top: 5px;
+    text-align: start;
+    width: 70%;
+}
+
+.settings_body-permiso-main-btn {
+    grid-area: btn;
+}
+
+#btnGuardarSettingsBody {
+    font-size: 15px;
+    height: 25px;
+    margin-left: 105px;
+    width: 210px;
+
+    &:hover {
+        background-color: $secundary;
+        color: white;
+        cursor: pointer;
+    }
+}

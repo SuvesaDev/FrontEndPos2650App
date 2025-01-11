@@ -1,0 +1,754 @@
+.modal_editCustomer-main {
+    display: grid;
+    text-align: center;
+    grid-template-areas:
+        'title' 
+        'body'
+        'btn';
+    grid-template-rows: 40px 340px 40px;
+}
+
+.modal_editCustomer-title {
+    display: grid;
+    gap: 5px;
+    grid-area: title;
+    grid-template-areas: 
+        'text btnClose';
+    grid-template-columns: 95% 5%;
+}
+
+#lblTitleEditCustomers {
+    background-color: $primary;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    grid-area: text;
+    margin-bottom: 5px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    text-align: center;
+}
+
+#lblCloseEditCustomers {
+    background-color: red;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    grid-area: btnClose;
+    margin-bottom: 5px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    text-align: center;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.modal_editCustomer-body {
+    grid-area: body;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'firstBox secondBox';
+    grid-template-columns: 75% 25%;
+}
+
+.modal_editCustomer-body-firstBox {
+    grid-area: firstBox;
+    display: grid;
+    height: 100%;
+    margin-left: 5px;
+    grid-template-areas: 
+        'Line1'
+        'Line2'
+        'Line3'
+        'Line4'
+        'Line5';
+    grid-template-rows: 20% 20% 20% 20% 20%;
+}
+
+.modal_editCustomer-body-firstBox-1 {
+    grid-area: Line1;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'telefono fax';
+    grid-template-columns: 50% 50%;
+}
+
+.modal_editCustomer-body-firstBox-1-telefono {
+    grid-area: telefono;
+    padding-top: 10px;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblTelefono'
+        'inputTelefono';
+    grid-template-rows: 50% 50%;
+}
+
+.modal_editCustomer-body-firstBox-1-telefono-label {
+    background-color: #EEF2E6;
+    grid-area: lblTelefono;
+    margin-bottom: 5px;
+    margin-right: 10px;
+}
+
+#lblTelefonoDatos {
+   font-size: 15px;
+   padding-left: 5px;
+   padding-top: 1px;
+   text-align: start; 
+}
+
+.modal_editCustomer-body-firstBox-1-telefono-input {
+    grid-area: inputTelefono;
+    margin-right: 10px;
+}
+
+#txtTelefonoDatos {
+    font-size: 15px;
+    text-align: start;
+    width: 100%;
+}
+
+.modal_editCustomer-body-firstBox-1-fax {
+    grid-area: fax;
+    padding-top: 10px;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblFax'
+        'inputFax';
+    grid-template-rows: 50% 50%;
+}
+
+.modal_editCustomer-body-firstBox-1-fax-label {
+    background-color: #EEF2E6;
+    grid-area: lblFax;
+    margin-bottom: 5px;
+    margin-right: 10px;
+}
+
+#lblFaxDatos {
+    font-size: 15px;
+    padding-left: 5px;
+    padding-top: 1px;
+    text-align: start; 
+}
+
+.modal_editCustomer-body-firstBox-1-fax-input {
+    grid-area: inputFax;
+    margin-right: 10px;
+}
+
+#txtfaxDatos {
+    font-size: 15px;
+    text-align: start;
+    width: 100%;
+}
+
+.modal_editCustomer-body-firstBox-2 {
+    grid-area: Line2;
+    padding-top: 10px;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblDireccion'
+        'inputDireccion';
+    grid-template-rows: 50% 50%;
+}
+
+.modal_editCustomer-body-firstBox-2-direccion-label {
+    background-color: #EEF2E6;
+    grid-area: lblDireccion;
+    margin-bottom: 5px;
+    margin-right: 10px;
+}
+
+#lblDireccionDatos {
+    //width: 1000px;
+    font-size: 15px;
+    padding-left: 5px;
+    padding-top: 1px;
+    text-align: start; 
+}
+
+.modal_editCustomer-body-firstBox-2-direccion-input {
+    grid-area: inputDireccion;
+    margin-right: 10px;
+}
+
+#txtDireccionDatos {
+    font-size: 15px;
+    text-align: start;
+    width: 100%;
+}
+
+.modal_editCustomer-body-firstBox-3 {
+    grid-area: Line3;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'correoCuenta tipoCliente';
+    grid-template-columns: 70% 30%;
+}
+
+.modal_editCustomer-body-firstBox-3-correoCuentas {
+    grid-area: correoCuenta;
+    padding-top: 10px;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblCorreoCuenta'
+        'inputCorreoCuenta';
+    grid-template-rows: 50% 50%;
+}
+
+.modal_editCustomer-body-firstBox-3-correoCuentas-label {
+    background-color: #EEF2E6;
+    grid-area: lblCorreoCuenta;
+    margin-bottom: 5px;
+    margin-right: 10px;
+}
+
+#lblCorreoCuentasDatos {
+    font-size: 15px;
+    padding-left: 5px;
+    padding-top: 1px;
+    text-align: start; 
+}
+
+.modal_editCustomer-body-firstBox-3-correoCuentas-input {
+    grid-area: inputCorreoCuenta;
+    margin-right: 10px;
+}
+
+#txtCorreoCuentasDatos {
+    font-size: 15px;
+    text-align: start;
+    width: 100%;
+}
+
+.modal_editCustomer-body-firstBox-3-tipoCliente {
+    grid-area: tipoCliente;
+    padding-top: 10px;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblTipoCliente'
+        'inputTipoCliente';
+    grid-template-rows: 50% 50%;
+}
+
+.modal_editCustomer-body-firstBox-3-tipoCliente-label {
+    background-color: #EEF2E6;
+    grid-area: lblTipoCliente;
+    margin-bottom: 5px;
+    margin-right: 10px;
+}
+
+#lblTipoClienteDatos {
+    font-size: 15px;
+    padding-left: 5px;
+    padding-top: 1px;
+    text-align: start; 
+}
+
+.modal_editCustomer-body-firstBox-3-tipoCliente-input {
+    grid-area: inputTipoCliente;
+    margin-right: 10px;
+}
+
+#cboTipoClienteDatos {
+    font-size: 15px;
+    text-align: start;
+    width: 100%;
+}
+
+.modal_editCustomer-body-firstBox-4 {
+    grid-area: Line4;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'correoFactura agente';
+    grid-template-columns: 70% 30%;
+}
+
+.modal_editCustomer-body-firstBox-4-correoFacturacion {
+    grid-area: correoFactura;
+    padding-top: 10px;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblCorreoFactura'
+        'inputCorreoFactura';
+    grid-template-rows: 50% 50%;
+}
+
+.modal_editCustomer-body-firstBox-4-correoFacturacion-label {
+    background-color: #EEF2E6;
+    grid-area: lblCorreoFactura;
+    margin-bottom: 5px;
+    margin-right: 10px;
+}
+
+#lblCorreoFacturacionDatos {
+    font-size: 15px;
+    padding-left: 5px;
+    padding-top: 1px;
+    text-align: start; 
+}
+
+.modal_editCustomer-body-firstBox-4-correoFacturacion-input {
+    grid-area: inputCorreoFactura;
+    margin-right: 10px;
+}
+
+#txtCorreoFacturacionDatos {
+    font-size: 15px;
+    text-align: start;
+    width: 100%;
+}
+
+.modal_editCustomer-body-firstBox-4-agente {
+    grid-area: agente;
+    padding-top: 10px;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'headerAgente'
+        'inputCorreoFactura';
+    grid-template-rows: 50% 50%;
+}
+
+.modal_editCustomer-body-firstBox-4-agente-header {
+    grid-area: headerAgente;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblAgente checkAgente';
+    grid-template-columns: 55% 45%;
+}
+
+#lblAgenteDatos {
+    background-color: #EEF2E6;
+    font-size: 15px;
+    grid-area: lblAgente;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    padding-left: 5px;
+    padding-top: 1px;
+    text-align: start; 
+}
+
+.modal_editCustomer-body-firstBox-4-agente-header-check {
+    grid-area: checkAgente;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'inputCheckAgente labelcheckAgente';
+    grid-template-columns: 10% 90%;
+}
+
+.modal_editCustomer-body-firstBox-4-agente-header-check-input {
+    grid-area: inputCheckAgente;
+    margin-top: 3px;
+}
+
+#lblSinAgente {
+    font-size: 15px;
+    grid-area: labelcheckAgente;
+    padding-left: 5px;
+    padding-top: 2px;
+    text-align: start; 
+}
+
+.modal_editCustomer-body-firstBox-4-agente-input {
+    grid-area: inputCorreoFactura;
+    margin-right: 10px;
+}
+
+#cboAgenteDatos {
+    font-size: 15px;
+    text-align: start;
+    width: 100%;
+}
+
+.modal_editCustomer-body-firstBox-5 {
+    grid-area: Line5;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'checkActualizado checkFallecido';
+    grid-template-columns: 33% 33%;
+    margin-top: 10px;
+}
+
+// .modal_editCustomer-body-firstBox-5-notificar-check {
+//     grid-area: checkNotificar;
+//     display: grid;
+//     height: 100%;
+//     grid-template-areas: 
+//         'inputCheckNotificar labelcheckNotificar';
+//     grid-template-columns: 30% 70%;
+// }
+
+// .modal_editCustomer-body-firstBox-5-notificar-check-input {
+//     grid-area: inputCheckNotificar;
+//     margin-left: 70%;
+//     padding-top: 5px;
+// }
+
+// .modal_editCustomer-body-firstBox-5-notificar-check-label {
+//     background-color: #EEF2E6;
+//     grid-area: labelcheckNotificar;
+//     height: 35%;
+//     padding-top: 4px;
+//     width: 80%;
+// }
+
+// #lblNotificarDatos {
+//     font-size: 15px;
+// }
+
+.modal_editCustomer-body-firstBox-5-actualizado-check {
+    grid-area: checkActualizado;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'inputCheckActualizado labelcheckActualizado';
+    grid-template-columns: 30% 70%;
+}
+
+.modal_editCustomer-body-firstBox-5-actualizado-check-input {
+    grid-area: inputCheckActualizado;
+    margin-left: 70%;
+    padding-top: 5px;
+}
+
+.modal_editCustomer-body-firstBox-5-actualizado-check-label {
+    grid-area: labelcheckActualizado;
+    height: 35%;
+    padding-left: 5px;
+    padding-top: 4px;
+    text-align: start;
+    width: 80%;
+}
+
+#lblActualizadoDatos {
+    font-size: 15px;
+}
+
+.modal_editCustomer-body-firstBox-5-fallecido-check {
+    grid-area: checkFallecido;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'inputCheckFallecido labelcheckFallecido';
+    grid-template-columns: 30% 70%;
+}
+
+.modal_editCustomer-body-firstBox-5-fallecido-check-input {
+    grid-area: inputCheckFallecido;
+    margin-left: 70%;
+    padding-top: 5px;
+}
+
+.modal_editCustomer-body-firstBox-5-fallecido-check-label {
+    grid-area: labelcheckFallecido;
+    height: 35%;
+    padding-left: 5px;
+    padding-top: 4px;
+    text-align: start;
+    width: 80%;
+}
+
+#lblFallecidoDatos {
+    font-size: 15px;
+}
+
+.modal_editCustomer-body-secondBox {
+    grid-area: secondBox;
+    height: 100%;
+    padding-top: 10px;
+    display: grid;
+    grid-template-areas: 
+        'enviaCorreo'
+        'checks'
+        'tipoPrecio'
+        'descuentos';
+    grid-template-rows: 20% 20% 20% 35%;
+}
+
+.modal_editCustomer-body-secondBox-enviaCorreo {
+    grid-area: enviaCorreo;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'checkEnviaCorreo'
+        'inputEnviaCorreo';
+    grid-template-rows: 50% 50%;
+    padding-top: 10px;
+}
+
+.modal_editCustomer-body-secondBox-enviaCorreo-check {
+    grid-area: checkEnviaCorreo;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'inputCheckEnviaCorreo labelcheckEnviaCorreo';
+    grid-template-columns: 10% 80%;
+}
+
+.modal_editCustomer-body-secondBox-check-input {
+    grid-area: inputCheckEnviaCorreo;
+    height: 50%;
+    margin-left: 20%;
+}
+
+.modal_editCustomer-body-secondBox-check-label {
+    grid-area: labelcheckEnviaCorreo;
+    height: 50%;
+    padding-left: 5px;
+    text-align: start;
+    width: 90%;
+}
+
+.modal_editCustomer-body-secondBox-enviaCorreo-input {
+    grid-area: inputEnviaCorreo;
+}
+
+#txtEnviaCorreoReciboBillingModal {
+    font-size: 15px;
+    margin-right: 5px;
+    padding-left: 5px;
+    text-align: start;
+    width: 90%;
+}
+
+.modal_editCustomer-body-secondBox-tipoPrecio {
+    grid-area: tipoPrecio;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblTipoPrecio'
+        'cboTipoPrecio';
+    grid-template-rows: 50% 50%;
+    padding-left: 5%;
+}
+
+.modal_editCustomer-body-secondBox-tipoPrecio-label {
+    background-color: #EEF2E6;
+    font-size: 15px;
+    grid-area: lblTipoPrecio;
+    height: 70%;
+    margin-right: 25px;
+    margin-top: 5px;
+    padding-left: 5px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+.modal_editCustomer-body-secondBox-tipoPrecio-input {
+    grid-area: cboTipoPrecio;
+    margin-right: 25px;
+    margin-top: 2px;
+}
+
+#cboTipoPrecioDatos {
+    font-size: 15px;
+    width: 100%;
+}
+
+.modal_editCustomer-body-secondBox-descuento {
+    grid-area: descuentos;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblDescuentoEspecial'
+        'inputsDescuentoEspecial';
+    grid-template-rows: 30% 70%;
+}
+
+.modal_editCustomer-body-secondBox-descuento-labels {
+    grid-area: lblDescuentoEspecial;
+    margin-left: 5%;
+    margin-right: 7%;
+}
+
+#lblDescuentosEspecialesDatosB{
+    border: 1px solid #C0C0C0;
+    color: #999495;
+    font-size: 15px;
+    text-align: start;
+    padding-left: 5px;
+}
+
+.modal_editCustomer-body-secondBox-descuento-inputs {
+    grid-area: inputsDescuentoEspecial;
+    display: grid;
+    height: 100%;
+    margin-left: 5%;
+    margin-right: 7%;
+    padding-top: 10px;
+    grid-template-areas: 
+        'lblDescuentoE inputDescuentoE';
+    grid-template-columns: 50% 50%;
+    border: 1px solid #C0C0C0;
+}
+
+.modal_editCustomer-body-secondBox-descuento-inputs-label {
+    font-size: 15px;
+    grid-area: lblDescuentoE;
+}
+
+.modal_editCustomer-body-secondBox-descuento-inputs-input {
+    grid-area: inputDescuentoE;
+}
+
+#txtDescuentoEspecialDatos {
+    font-size: 15px;
+    // margin-right: 80px;
+    text-align: end;
+    width: 80%;
+}
+
+.modal_editCustomer-body-secondBox-checks {
+    grid-area: checks;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'inactivo'
+        'registradoMAG';
+    grid-template-rows: 33% 33%;
+}
+
+.modal_editCustomer-body-secondBox-checks-inactivado {
+    grid-area: inactivo;
+    display: grid;
+    height: 100%;
+    margin-left: 7%;
+    // margin-right: 7%;
+    grid-template-areas: 
+        'checkInactivo buttonCambiar';
+    grid-template-columns: 50% 50%;
+}
+
+.modal_editCustomer-body-secondBox-checks-inactivado-check {
+    grid-area: checkInactivo;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'inputCheckInactivo labelCheckInactivo';
+    grid-template-columns: 10% 90%;
+}
+
+.modal_editCustomer-body-secondBox-checks-inactivado-check-input {
+    grid-area: inputCheckInactivo;
+    margin-top: 10px;
+}
+
+.modal_editCustomer-body-secondBox-checks-inactivado-check-label {
+    // background-color: #EEF2E6;
+    font-size: 15px;
+    grid-area: labelCheckInactivo;
+    height: 50%;
+    margin-top: 9px;
+    padding-left: 5px;
+    text-align: start;
+    width: 65%;
+}
+
+.modal_editCustomer-body-secondBox-checks-inactivado-button {
+    grid-area: buttonCambiar;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+#btnCambiarDatos {
+    background-color: #EEF2E6;
+    border: 1px solid #C0C0C0;
+    font-size: 15px;
+    height: 100%;
+    text-align: center;
+    width: 100%;
+
+    &:hover {
+        background-color: #C0C0C0;
+        color: #EEF2E6;
+        cursor: pointer;
+    }
+}
+
+.modal_editCustomer-body-secondBox-checks-registradoMAG {
+    grid-area: registradoMAG;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'inputCheckRegistradoMAG labelcheckRegistradoMAG';
+    grid-template-columns: 10% 90%;
+    padding-top: 10px;
+    margin-left: 5%;
+}
+
+.modal_editCustomer-body-secondBox-check-registradoMAG-input {
+    grid-area: inputCheckRegistradoMAG;
+    height: 50%;
+    padding-right: 1%;
+}
+
+.modal_editCustomer-body-secondBox-check-registradoMAG-label {
+    font-size: 15px;
+    grid-area: labelcheckRegistradoMAG;
+    height: 80%;
+    padding-left: 5px;
+    text-align: start;
+    width: 90%;
+}
+
+.modal_editCustomer-body-secondBox-checks-imprimirPrecio {
+    grid-area: imprimirPrecio;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'inputCheckimprimirPrecio labelcheckimprimirPrecio';
+    grid-template-columns: 20% 70%;
+    padding-top: 10px;
+}
+
+.modal_editCustomer-body-secondBox-check-imprimirPrecio-input {
+    grid-area: inputCheckimprimirPrecio;
+    height: 50%;
+    margin-left: 70%;
+}
+
+.modal_editCustomer-body-secondBox-check-imprimirPrecio-label {
+    background-color: #EEF2E6;
+    font-size: 15px;
+    grid-area: labelcheckimprimirPrecio;
+    height: 80%;
+    padding-left: 5px;
+    text-align: start;
+    width: 75%;
+}
+
+.modal_editCustomer-btn {
+    grid-area: btn;
+    margin-left: 80%;
+    margin-right: 20px;
+}
+
+#btneditCustomer {
+    background-color: $secundary;
+    border: none;
+    color: white;
+    height: 70%;
+    margin-left: 25px;
+    width: 70%;
+
+    &:hover {
+        cursor: pointer;
+    }	
+}

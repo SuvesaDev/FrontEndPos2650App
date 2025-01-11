@@ -1,0 +1,35 @@
+.providers_main {
+    text-align: center;
+    display: grid;
+    width: 100%;
+    grid-template-areas: 
+        'header header header'
+        'form form form'
+        'table table table'
+        'icons icons icons';
+    grid-template-rows: 30px 250px 208px 60px;
+}
+
+.providers_header {
+    grid-area: header;
+    background-color: #3C58A8;
+}
+
+#lblTituloProviders {
+    font-size: 25px;
+    color: white;
+    text-align: center;
+}
+
+.providers_form {
+    grid-area: form;
+}
+
+.providers_table {
+    grid-area: table;
+}
+
+.providers_icons {
+    grid-area: icons;
+    border: 1px solid #3C58A8;
+}

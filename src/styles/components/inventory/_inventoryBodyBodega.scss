@@ -1,0 +1,119 @@
+.inventory_body-bodega-main {
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'titulo'
+        'firstLine'
+        'secondLine';
+    grid-template-rows: 25% 30% 45%;
+}
+
+.inventory_body-bodega-titulo {
+    grid-area: titulo;
+}
+
+#lblDatosBodega {
+    font-size: 15px;
+    padding-left: 5%;
+    padding-top: 2px;
+    text-align: start;
+}
+
+.inventory_body-bodega-firstLine {
+    grid-area: firstLine;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'check label';
+    grid-template-columns: 55% 20%;
+}
+
+.inventory_body-bodega-firstLine-check {
+    grid-area: check;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'inputCheck labelCheck';
+    grid-template-columns: 20% 25%;
+}
+
+.inventory_body-bodega-firstLine-check-input {
+    grid-area: inputCheck;
+    padding-left: 30px;
+    padding-top: 5px;
+    
+}
+
+#lblConsignacion {
+    font-size: 15px;
+    grid-area: labelCheck;
+    padding-top: 4px;
+    text-align: start;
+}
+
+.inventory_body-bodega-firstLine-label {
+    font-size: 15px;
+    grid-area: label;
+    padding-left: 10px;
+    padding-top: 4px;
+    text-align: start;
+}
+
+.inventory_body-bodega-secondLine {
+    grid-area: secondLine;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'cboBodega inputExistencia';
+    grid-template-columns: 55% 25%;
+}
+
+.inventory_body-bodega-secondLine-cbo {
+    display: grid;
+    grid-area: cboBodega;
+    height: 100%;
+    grid-template-areas: 
+        'cbo icon';
+    grid-template-columns: 90% 10%;
+}
+
+#cboBodega {
+    grid-area: cbo;
+    margin-left: 50px;
+    width: 85%;
+    height: 70%;
+}
+
+.inventory_body-bodega-secondLine-cbo-icon {
+    grid-area: icon;
+    padding-top: 5px;
+}
+
+.iconSearchBodega {
+    color: $secundary;
+    
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.iconSearchBodegaDisable {
+    color: gray;
+
+    &:hover {
+        cursor: not-allowed;
+    }
+}
+
+.inventory_body-bodega-secondLine-input {
+    grid-area: inputExistencia;
+    padding-right: 40%;
+    padding-top: 4px;
+}
+
+#txtExistencia {
+    font-size: 15px;
+    height: 75%;
+    text-align: right;
+    width: 80%;
+}

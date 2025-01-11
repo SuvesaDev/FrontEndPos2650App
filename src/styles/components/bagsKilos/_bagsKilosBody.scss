@@ -1,0 +1,420 @@
+.bagsKilos_body-main {
+    display: grid;
+    height: 100%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 3%;
+    grid-template-areas: 
+        'disminuir'
+        'aumentar'
+        'btns';
+    grid-template-rows: 30% 30% 10%;
+}
+
+.bagsKilos_body-disminuir {
+    display: grid;
+    grid-area: disminuir;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    grid-template-areas: 
+        'titleD'
+        'firstLineD'
+        'secondLineD';
+    grid-template-rows: 20% 40% 40%;
+}
+
+.bagsKilos_body-disminuir-title {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+    grid-area: titleD;
+}
+
+#lblTitleDisminuirBagsKilos {
+    border-bottom: 1px solid black;
+    color: #9e0101;
+    font-size: 15px;
+    font-weight: bold;
+    padding-left: 5px;
+    padding-top: 1px;
+    text-align: start;
+}
+
+.bagsKilos_body-disminuir-firstLine {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    display: grid;
+    grid-area: firstLineD;
+    grid-template-areas: 
+        'codigoD descripD existenciaD';
+    grid-template-columns: 20% 60% 20%;
+}
+
+.bagsKilos_body-disminuir-firstLine-codigo {
+    display: grid;
+    grid-area: codigoD;
+    grid-template-areas: 
+        'lblCodigo'
+        'inputCodigo';
+    grid-template-rows: 45% 55%;
+}
+
+#lblCodigoDisminuirBagsKilos {
+    font-size: 15px;
+    grid-area: lblCodigo;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.bagsKilos_body-disminuir-firstLine-codigo-inputs {
+    display: grid;
+    grid-area: inputCodigo;
+    grid-template-areas: 
+        'iconcodigo txtcodigo';
+    grid-template-columns: 10% 90%;
+}
+
+#iconCodigoDBK {
+    color: $secundary;
+    grid-area: iconcodigo;
+    margin-left: 5px;
+    margin-top: 5px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+#txtCodigoDBK {
+    font-size: 15px;
+    grid-area: txtcodigo;
+    height: 80%;
+    margin-left: 5px;
+    margin-top: 2px;
+    text-align: start;
+    width: 95%;
+}
+
+.bagsKilos_body-disminuir-firstLine-descripcion {
+    display: grid;
+    grid-area: descripD;
+    grid-template-areas: 
+        'lblDescrip'
+        'inputDescrip';
+    grid-template-rows: 45% 55%;
+}
+
+#lblDescripcionDBK {
+    font-size: 15px;
+    grid-area: lblDescrip;
+    padding-left: 5px;
+    text-align: start;
+}
+
+#txtDescripcionDBK {
+    font-size: 15px;
+    grid-area: inputDescrip;
+    height: 80%;
+    margin-left: 5px;
+    margin-top: 2px;
+    text-align: start;
+    width: 95%;
+}
+
+.bagsKilos_body-disminuir-firstLine-existencia {
+    display: grid;
+    grid-area: existenciaD;
+    grid-template-areas: 
+        'lblExistencia'
+        'inputExistencia';
+    grid-template-rows: 45% 55%;
+}
+
+#lblExistenciaDBK {
+    font-size: 15px;
+    grid-area: lblExistencia;
+    padding-left: 5px;
+    text-align: start;
+}
+
+#txtExistenciaDBK {
+    font-size: 15px;
+    grid-area: inputExistencia;
+    height: 80%;
+    margin-left: 5px;
+    margin-top: 2px;
+    text-align: start;
+    width: 95%;
+}
+
+.bagsKilos_body-disminuir-secondLine {
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    display: grid;
+    grid-area: secondLineD;
+    padding-right: 80%;
+    grid-template-areas: 
+        'lblExistencia'
+        'inputExistencia';
+    grid-template-rows: 45% 55%;
+}
+
+#lblCantidadDescargarDBK {
+    font-size: 15px;
+    grid-area: lblExistencia;
+    padding-left: 5px;
+    text-align: start;
+}
+
+#txtCantidadDescargarDBK {
+    font-size: 15px;
+    grid-area: inputExistencia;
+    height: 80%;
+    margin-left: 5px;
+    margin-top: 2px;
+    text-align: start;
+    width: 95%;
+}
+
+.bagsKilos_body-aumentar {
+    display: grid;
+    grid-area: aumentar;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    grid-template-areas: 
+        'titleA'
+        'firstLineA'
+        'secondLineA';
+    grid-template-rows: 20% 40% 40%;
+}
+
+.bagsKilos_body-aumentar-title {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+    grid-area: titleA;
+}
+
+#lblTitleAumentarBagsKilos {
+    border-bottom: 1px solid black;
+    color: #006400;
+    font-size: 15px;
+    font-weight: bold;
+    padding-left: 5px;
+    padding-top: 1px;
+    text-align: start;
+}
+
+.bagsKilos_body-aumentar-firstLine {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    display: grid;
+    grid-area: firstLineA;
+    grid-template-areas: 
+        'codigoA descripA existenciaA';
+    grid-template-columns: 20% 60% 20%;
+}
+
+.bagsKilos_body-aumentar-firstLine-codigo {
+    display: grid;
+    grid-area: codigoA;
+    grid-template-areas: 
+        'lblCodigo'
+        'inputCodigo';
+    grid-template-rows: 45% 55%;
+}
+
+#lblCodigoAumentarBagsKilos {
+    font-size: 15px;
+    grid-area: lblCodigo;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.bagsKilos_body-aumentar-firstLine-codigo-inputs {
+    display: grid;
+    grid-area: inputCodigo;
+    grid-template-areas: 
+        'iconcodigo txtcodigo';
+    grid-template-columns: 10% 90%;
+}
+
+#iconCodigoABK {
+    color: $secundary;
+    grid-area: iconcodigo;
+    margin-left: 5px;
+    margin-top: 5px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+#txtCodigoABK {
+    font-size: 15px;
+    grid-area: txtcodigo;
+    height: 80%;
+    margin-left: 5px;
+    margin-top: 2px;
+    text-align: start;
+    width: 95%;
+}
+
+.bagsKilos_body-aumentar-firstLine-descripcion {
+    display: grid;
+    grid-area: descripA;
+    grid-template-areas: 
+        'lblDescrip'
+        'inputDescrip';
+    grid-template-rows: 45% 55%;
+}
+
+#lblDescripcionABK {
+    font-size: 15px;
+    grid-area: lblDescrip;
+    padding-left: 5px;
+    text-align: start;
+}
+
+#txtDescripcionABK {
+    font-size: 15px;
+    grid-area: inputDescrip;
+    height: 80%;
+    margin-left: 5px;
+    margin-top: 2px;
+    text-align: start;
+    width: 95%;
+}
+
+.bagsKilos_body-aumentar-firstLine-existencia {
+    display: grid;
+    grid-area: existenciaA;
+    grid-template-areas: 
+        'lblExistencia'
+        'inputExistencia';
+    grid-template-rows: 45% 55%;
+}
+
+#lblExistenciaABK {
+    font-size: 15px;
+    grid-area: lblExistencia;
+    padding-left: 5px;
+    text-align: start;
+}
+
+#txtExistenciaABK {
+    font-size: 15px;
+    grid-area: inputExistencia;
+    height: 80%;
+    margin-left: 5px;
+    margin-top: 2px;
+    text-align: start;
+    width: 95%;
+}
+
+.bagsKilos_body-aumentar-secondLine {
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    display: grid;
+    grid-area: secondLineA;
+    padding-right: 60%;
+    grid-template-areas: 
+        'aumentarSaco cantidad';
+    grid-template-columns: 50% 50%;
+}
+
+.bagsKilos_body-aumentar-secondLine-aumentarSaco {
+    display: grid;
+    grid-area: aumentarSaco;
+    grid-template-areas: 
+        'lblAumentarSaco'
+        'inputAumentarSaco';
+    grid-template-rows: 45% 55%;
+}
+
+#lblAumentarSacoABK {
+    font-size: 15px;
+    grid-area: lblAumentarSaco;
+    padding-left: 5px;
+    text-align: start;
+}
+
+#txtAumentarSacoABK {
+    font-size: 15px;
+    grid-area: inputAumentarSaco;
+    height: 80%;
+    margin-left: 5px;
+    margin-top: 2px;
+    text-align: start;
+    width: 95%;
+}
+
+.bagsKilos_body-aumentar-secondLine-cantidad {
+    display: grid;
+    grid-area: cantidad;
+    grid-template-areas: 
+        'lblCantidad'
+        'inputCantidad';
+    grid-template-rows: 45% 55%;
+}
+
+#lblCantidadAumentarABK {
+    font-size: 15px;
+    grid-area: lblCantidad;
+    padding-left: 5px;
+    text-align: start;
+}
+
+#txtCantidadAumentarABK {
+    font-size: 15px;
+    grid-area: inputCantidad;
+    height: 80%;
+    margin-left: 5px;
+    margin-top: 2px;
+    text-align: start;
+    width: 95%;
+}
+
+.bagsKilos_body-btns {
+    display: grid;
+    grid-area: btns;
+    padding-left: 60%;
+    padding-right: 20px;
+    grid-template-areas: 
+        'aceptar cancelar';
+    grid-template-columns: 50% 50%;
+}
+
+#btnAceptarBagsKilos {
+    font-size: 15px;
+    grid-area: aceptar;
+    height: 60%;
+    margin-left: 5px;
+    margin-top: 5px;
+    
+    &:hover {
+        background-color: $secundary;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+#btnCancelarBagsKilos {
+    font-size: 15px;
+    grid-area: cancelar;
+    height: 60%;
+    margin-left: 5px;
+    margin-top: 5px;
+
+    &:hover {
+        background-color: #D5300C;
+        color: white;
+        cursor: pointer;
+    }
+}

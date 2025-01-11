@@ -1,0 +1,225 @@
+.pays_icons-main {
+    border: 1px solid black;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'icons saldoCuenta';
+    grid-template-columns: 50% 50%;
+}
+
+.pays_icons-icons {
+    display: grid;
+    gap: 30px;
+    grid-area: icons;
+    height: 100%;
+    grid-template-areas: 
+        'btnNuevo btnBuscar btnRegistrar btnAnular btnCerrar';
+    grid-template-columns: 8% 8% 8% 8% 8%;
+}
+
+.pays_icons-icons-nuevo {
+    display: grid;
+    grid-area: btnNuevo;
+    height: 100%;
+    margin-left: 25px;
+    grid-template-areas: 
+        'iconNue'
+        'lblNue';
+    grid-template-rows: 60% 40%;
+}
+
+.pays_icons-icons-nuevo-icon {
+    color: #F68A1D;
+    grid-area: iconNue;
+    padding-top: 4px;
+}
+
+#iconNuevoPays {
+    cursor: pointer;
+    height: 100%;
+    width: 65%;
+}
+
+#lblNuevoPays {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblNue;
+    text-align: center;
+}
+
+.pays_icons-icons-Buscar {
+    display: grid;
+    grid-area: btnBuscar;
+    height: 100%;
+    margin-left: 25px;
+    grid-template-areas: 
+        'iconBus'
+        'lblBus';
+    grid-template-rows: 60% 40%;
+}
+
+.pays_icons-icons-Buscar-icon {
+    color: #F68A1D;
+    grid-area: iconBus;
+    padding-top: 4px;
+}
+
+#iconBusPays {
+    cursor: pointer;
+    height: 100%;
+    width: 55%;
+}
+
+#lblBuscarPays {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblBus;
+    text-align: center;
+}
+
+.pays_icons-icons-registrar {
+    display: grid;
+    grid-area: btnRegistrar;
+    height: 100%;
+    margin-left: 25px;
+    grid-template-areas: 
+        'iconReg'
+        'lblReg';
+    grid-template-rows: 60% 40%;
+}
+
+.pays_icons-icons-registrar-icon {
+    color: #F68A1D;
+    grid-area: iconReg;
+    padding-top: 4px;
+}
+
+#iconRegistrarPays {
+    cursor: pointer;
+    height: 100%;
+    width: 45%;
+}
+
+#lblRegistrarPays {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblReg;
+    text-align: center;
+}
+
+.pays_icons-icons-anular {
+    display: grid;
+    grid-area: btnAnular;
+    height: 100%;
+    margin-left: 25px;
+    grid-template-areas: 
+        'iconAnu'
+        'lblAnu';
+    grid-template-rows: 60% 40%;
+}
+
+.pays_icons-icons-anular-icon {
+    color: #F68A1D;
+    grid-area: iconAnu;
+    padding-top: 4px;
+}
+
+#iconAnularPays {
+    cursor: pointer;
+    height: 100%;
+    width: 60%;
+}
+
+#lblAnularPays {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblAnu;
+    text-align: center;
+}
+
+.pays_icons-icons-cerrar {
+    display: grid;
+    grid-area: btnCerrar;
+    height: 100%;
+    margin-left: 25px;
+    grid-template-areas: 
+        'iconCer'
+        'lblCer';
+    grid-template-rows: 60% 40%;
+}
+
+.pays_icons-icons-cerrar-icon {
+    color: #F68A1D;
+    grid-area: iconCer;
+    padding-top: 4px;
+}
+
+#iconCerrarPays {
+    cursor: pointer;
+    height: 100%;
+    width: 60%;
+}
+
+#lblCerrarPays {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblCer;
+    text-align: center;
+}
+
+.pays_icons-footer {
+    display: grid;
+    grid-area: saldoCuenta;
+    height: 95%;
+    grid-template-areas: 
+        'anulado usuario result';
+    grid-template-columns: 25% 25% 50%;
+}
+
+.pays_icons-footer-anulado {
+    display: grid;
+    grid-area: anulado;
+    height: 95%;
+    grid-template-areas: 
+        'checkAnulado lblAnulado';
+    grid-template-columns: 25% 50%;
+}
+
+#checkAnuladoPays {
+    grid-area: checkAnulado;
+    margin-top: 30px;
+}
+
+#lblAnuladoPays {
+    color: #A5ABAA;
+    font-size: 15px;
+    grid-area: lblAnulado;
+    padding-top: 28px;
+    text-align: start;
+}
+
+.pays_icons-footer-user {
+    grid-area: usuario;
+    padding-top: 28px;
+}
+
+#lblUserPays {
+    background-color: #3D62DB;
+    color: white;
+    font-size: 15px;
+    text-align: center;
+}
+
+.pays_icons-footer-result {
+    grid-area: result;
+    padding-top: 28px;
+}
+
+#txtResultPays {
+    background-color: #AAAEA2;
+    color: black;
+    font-size: 15px;
+    height: 70%;
+    margin-right: 15px;
+    width: 90%;
+}

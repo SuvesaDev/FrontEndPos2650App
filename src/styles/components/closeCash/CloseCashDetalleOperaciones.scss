@@ -1,0 +1,174 @@
+.closeCash_detalleOperaciones-main {
+    border: 1px solid #C1C4B9;
+    display: grid;
+    height: 99%;
+    margin-left: 6px;
+    margin-right: 25px;
+    grid-template-areas: 
+        'title'
+        'table';
+    grid-template-rows: 12% 88%;
+}
+
+.closeCash_detalleOperaciones-title {
+    border-bottom: 1px solid #C1C4B9;
+    color: #5691FE;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: title;
+    padding-left: 15px;
+    text-align: start;
+}
+
+.closeCash_detalleOperaciones-table {
+    grid-area: table;
+    margin-left: 5px;
+    margin-right: 5px;
+    border: 1px solid #C1C4B9;
+}
+
+.closeCash_detalleOperaciones-table-main {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    scrollbar-color: rebeccapurple green;
+    scrollbar-width: thin;
+}
+
+.closeCash_detalleOperaciones-table-header {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 8%;
+}
+
+.closeCash_detalleOperaciones-table-body {
+    text-align: start;
+    font-style: normal;
+}
+
+.closeCash_detalleOperaciones-table-body-row {
+    &:hover {
+        background-color: #ACA9A9;
+    }
+}
+
+.closeCash_detalleOperaciones-table-header-tipo {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 8%;
+}
+
+.closeCash_detalleOperaciones-table-header-moneda {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 8%;
+}
+
+.closeCash_detalleOperaciones-table-header-formaPago {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 8%;
+}
+
+.closeCash_detalleOperaciones-table-header-pago {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 8%;
+}
+
+.closeCash_detalleOperaciones-table-header-equivalencia {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 8%;
+}
+
+.closeCash_detalleOperaciones-table-cell {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.closeCash_detalleOperaciones-table-tipo {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.closeCash_detalleOperaciones-table-moneda {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.closeCash_detalleOperaciones-table-formaPago {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.closeCash_detalleOperaciones-table-pago {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.closeCash_detalleOperaciones-table-equivalencia {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.closeCash_detalleOperaciones-user {
+    grid-area: user;
+    display: grid;
+    grid-template-areas: 
+        'lblUser inputUser lblSistema';
+    grid-template-columns: 25% 20% 30%;
+    // background-color: gold;
+}
+
+#lblUserCloseCash {
+    grid-area: lblUser;
+    background-color: #3D62DB;
+    font-size: 15px;
+    height: 60%;
+    color: white;
+    margin-left: 10px;
+    margin-top: 8px;
+    width: 80%;
+}
+
+#txtUserCloseCash {
+    font-size: 15px;
+    grid-area: inputUser;
+    height: 60%;
+    margin-top: 8px;
+    text-align: start;
+    width: 80%;
+}
+
+#lblSistemaCloseCash {
+    background-color: #A0A0A0;
+    color: white;
+    font-size: 15px;
+    grid-area: lblSistema;
+    height: 60%;
+    margin-left: 10px;
+    margin-top: 8px;
+    text-align: start;
+    width: 100%;
+}
+
+

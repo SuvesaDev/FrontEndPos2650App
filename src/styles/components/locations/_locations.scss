@@ -1,0 +1,37 @@
+.locations_main {
+    background-color: #F4F8FB;
+    display: grid;
+    height: 100%;
+    text-align: center;
+    grid-template-areas: 
+        'title'
+        'header'
+        'ubicacionesE'
+        'icons';
+    grid-template-rows: 40px 120px 328px 60px;
+}
+
+.locations_titles {
+    grid-area: title;
+    padding-top: 2px;
+    background-color: #3D59A9;
+}
+
+#lblTitleLocations {
+    font-size: 30px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+
+.locations_header {
+    grid-area: header;
+}
+
+.locations_ubicacionesE {
+    grid-area: ubicacionesE;
+}
+
+.locations_icons {
+    grid-area: icons;
+}

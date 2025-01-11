@@ -1,0 +1,208 @@
+.category_actions-main {
+    display: grid;
+    text-align: center;
+    grid-template-areas: 
+        'header'
+        'body'
+        'footer';
+    grid-template-rows: 40px 448px 60px;
+}
+
+.category_actions-header {
+    background-color: #3D59A9;
+    grid-area: header;
+}
+
+#lblTitlePresentation {
+    color: white;
+    font-size: 25px;
+    padding-top: 5px;
+    text-align: center;
+}
+
+.category_actions-body {
+    display: grid;
+    grid-area: body;
+    margin-bottom: 20%;
+    margin-left: 25%;
+    margin-right: 25%;
+    padding-top: 2%;
+    grid-template-areas: 
+        'labelPresentation'
+        'inputPresentation';
+    grid-template-rows: 20% 20%;
+}
+
+.category_actions-body-tipo-label {
+    border: 1px solid black;
+    color: #3D59A9;
+    font-size: 15px;
+    grid-area: labelPresentation;
+    padding-top: 5px;
+}
+
+.category_actions-body-tipo-input {
+    grid-area: inputPresentation;
+    padding-top: 5px;
+}
+
+#txtTipoPresentation {
+    font-size: 15px;
+    text-align: start;
+    width: 100%;
+}
+
+.category_actions-icons {
+    border: 1px solid black;
+    display: grid;
+    grid-area: footer;
+    height: 100%;
+    grid-template-areas: 
+        'btnNuevo btnRegistrar btnEditar btnBuscar btnEliminar';
+    grid-template-columns: 8% 8% 8% 8% 8%;
+}
+
+.category_actions-icons-nuevo {
+    display: grid;
+    grid-area: btnNuevo;
+    height: 100%;
+    grid-template-areas: 
+        'iconNue'
+        'lblNue';
+    grid-template-rows: 60% 40%;
+}
+
+.category_actions-icons-nuevo-icon {
+    color: #F68A1D;
+    grid-area: iconNue;
+    padding-top: 4px;
+}
+
+#iconNuevoCategoryAction {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblNuevoCategoryAction {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblNue;
+    text-align: center;
+}
+
+.category_actions-icons-registrar {
+    grid-area: btnRegistrar;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'iconReg'
+        'lblReg';
+    grid-template-rows: 60% 40%;
+}
+
+.category_actions-icons-registrar-icon {
+    color: #F68A1D;
+    grid-area: iconReg;
+    padding-top: 4px;
+}
+
+#iconRegistrarCategoryAction {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblRegistrarCategoryAction {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblReg;
+    text-align: center;
+}
+
+.denominationCoins-icons-Editar {
+    grid-area: btnEditar;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'iconEdit'
+        'lblEdit';
+    grid-template-rows: 60% 40%;
+}
+
+.denominationCoins-icons-Editar-icon {
+    color: #F68A1D;
+    grid-area: iconEdit;
+    padding-top: 4px;
+}
+
+#iconEditarCategoryAction {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblEditarCategoryAction {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblEdit;
+    text-align: center;
+}
+
+.category_actions-icons-Buscar {
+    grid-area: btnBuscar;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'iconBus'
+        'lblBus';
+    grid-template-rows: 60% 40%;
+}
+
+.category_actions-icons-Buscar-icon {
+    color: #F68A1D;
+    grid-area: iconBus;
+    padding-top: 4px;
+}
+
+#iconBuscarCategoryAction {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblBuscarCategoryAction {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblBus;
+    text-align: center;
+}
+
+.category_actions-icons-eliminar {
+    grid-area: btnEliminar;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'iconEli'
+        'lblEli';
+    grid-template-rows: 60% 40%;
+}
+
+.category_actions-icons-eliminar-icon {
+    color: #F68A1D;
+    grid-area: iconEli;
+    padding-top: 4px;
+}
+
+#iconEliminarCategoryAction {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblEliminarCategoryAction {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblEli;
+    text-align: center;
+}

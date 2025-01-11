@@ -1,0 +1,45 @@
+.pays_main {
+    background-color: #F0F0F0;
+    text-align: center;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'header'
+        'datosProveedor'
+        'body'
+        'table'
+        'observaciones'
+        'icons';
+    grid-template-rows: 25px 65px 195px 150px 60px 53px;
+}
+
+.pays_main-header {
+    grid-area: header;
+    background-color: #6183B9;
+}
+
+#lblAbonosPTitle {
+    color: white;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.pays_main-datosProveedor {
+    grid-area: datosProveedor;
+}
+
+.pays_main-body {
+    grid-area: body;
+}
+
+.pays_main-table {
+    grid-area: table;
+}
+
+.pays_main-observaciones {
+    grid-area: observaciones;
+}
+
+.pays_main-icons {
+    grid-area: icons;
+}

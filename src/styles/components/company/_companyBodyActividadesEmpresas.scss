@@ -1,0 +1,178 @@
+.company_body-ActividadesEmpresa-main {
+    display: grid;
+    height: 100%;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-top: 15px;
+    padding-left: 5%;
+    padding-right: 5%;
+    grid-template-areas: 
+        'inputs'
+        'table';
+    grid-template-rows: 15% 60%;
+}
+
+.company_body-ActividadesEmpresa-inputs {
+    grid-area: inputs;
+    border: 1px solid rgb(192, 190, 190);
+    display: grid;
+    grid-template-areas: 
+        'input btn';
+    grid-template-columns: 25% 20%;
+}
+
+.company_body-ActividadesEmpresa-inputs-input {
+    grid-area: input;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblIdentificacion'
+        'txtIdentificacion';
+    grid-template-rows: 50% 50%;
+}
+
+.company_body-ActividadesEmpresa-inputs-input-label {
+    grid-area: lblIdentificacion;
+    padding-top: 5px;
+}
+
+#lblIdentificacionActividadesEmpresa {
+    text-align: start;
+    padding-left: 10px;
+    font-size: 15px;
+}
+
+.company_body-ActividadesEmpresa-inputs-input-txt {
+    grid-area: txtIdentificacion;
+    // padding-top: 1px;
+}
+
+#txtIdentificacionActividadesEmpresa {
+    width: 95%;
+    text-align: start;
+    font-size: 15px;
+}
+
+.company_body-ActividadesEmpresa-inputs-btn {
+    grid-area: btn;
+    padding-top: 20px;
+}
+
+.btnSearchActividadesCompany {
+    width: 80%;
+    height: 80%;
+    text-align: center;
+    font-size: 15px;
+    background-color: $secundary;
+    color: white;
+    border: none;
+
+    &:hover {
+        background-color: $primary;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+.btnSearchActividadesCompany-disable {
+    width: 80%;
+    height: 80%;
+    text-align: center;
+    font-size: 15px;
+    background-color: gray;
+    color: white;
+    border: none;
+
+    &:hover {
+        cursor: not-allowed;
+    }
+}
+
+.company_body-ActividadesEmpresa-table {
+    grid-area: table;
+    border-right: 1px solid rgb(192, 190, 190);
+    border-left: 1px solid rgb(192, 190, 190);
+    border-bottom: 1px solid rgb(192, 190, 190);
+    // background-color: blue;
+}
+
+.company_body-ActividesEmpresa-table {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    scrollbar-color: rebeccapurple green;
+    scrollbar-width: thin;
+}
+
+.company_body-ActividesEmpresa-table-header-identificacion {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 200px;
+}
+
+.company_body-ActividesEmpresa-table-header-codigo {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 200px;
+}
+
+.company_body-ActividesEmpresa-table-header-descripcion {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 500px;
+}
+
+.company_body-ActividesEmpresa-table-header-estado {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 200px;
+}
+
+.company_body-ActividesEmpresa-modal-table-body {
+    text-align: start;
+    font-style: normal;
+}
+
+.company_body-ActividesEmpresa-modal-table-body-row {
+    &:hover {
+        cursor: pointer;
+        background-color: #ACA9A9;
+    }
+}
+
+.company_body-ActividesEmpresa-modal-table-body-cell {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+    height: 25.5px;
+    width: 50px;
+}
+
+.company_body-ActividesEmpresa-rightSide {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    display: grid;
+    grid-area: rightSide;
+    height: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+    grid-template-areas: 
+        'titleRight'
+        'inputRight';
+    grid-template-rows: 15% 85%;
+}
+
+.company_body-ActividesEmpresa-rightSide-title {
+    background-color: #3D62DB;
+    grid-area: titleRight;
+}
+
+.company_body-ActividesEmpresa-rightSide-input {
+    grid-area: inputRight;
+    margin-top: 5px;
+}

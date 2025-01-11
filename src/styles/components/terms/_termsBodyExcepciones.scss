@@ -1,0 +1,186 @@
+.terms_body-excepciones-main {
+    display: grid;
+    margin-left: 25%;
+    margin-right: 25%;
+    grid-template-areas: 
+        'title'
+        'body'
+        'table'
+        'btn';
+    grid-template-rows: 45px 80px 200px 60px;
+}
+
+.terms_body-condiccionesUso-title {
+    grid-area: title;
+}
+
+#lblTitleTermsCondicciones {
+    color: black;
+    font-size: 25px;
+    padding-top: 8px;
+    text-align: center;
+}
+
+.terms_body-excepciones-body {
+    display: grid;
+    grid-area: body;
+    grid-template-areas: 
+        'inputs'
+        'btns';
+    grid-template-rows: 60% 40%;
+}
+
+.terms_body-excepciones-body-inputs {
+    display: grid;
+    grid-area: inputs;
+    grid-template-areas: 
+        'cedula nombre';
+    grid-template-columns: 35% 65%;
+}
+
+.terms_body-excepciones-body-inputs-cedula {
+    display: grid;
+    grid-area: cedula;
+    grid-template-areas: 
+        'lblcedula'
+        'inputcedula';
+    grid-template-rows: 45% 55%;
+}
+
+#lblCedulaExcepcionesTerms {
+    font-size: 15px;
+    grid-area: lblcedula;
+    padding-left: 5px;
+    padding-top: 3px;
+    text-align: start;
+}
+
+#txtCedulaExcepcionesTerms {
+    color: black;
+    font-size: 15px;
+    grid-area: inputcedula;
+    height: 80%;
+    margin-left: 5px;
+    margin-right: 10px;
+    text-align: start;
+}
+
+.terms_body-excepciones-body-inputs-nombre {
+    display: grid;
+    grid-area: nombre;
+    grid-template-areas: 
+        'lblNombre'
+        'inputNombre';
+    grid-template-rows: 45% 55%;
+}
+
+#lblNombreExcepcionesTerms {
+    font-size: 15px;
+    grid-area: lblNombre;
+    padding-left: 5px;
+    padding-top: 3px;
+    text-align: start;
+}
+
+#txtNombreExcepcionesTerms {
+    color: black;
+    font-size: 15px;
+    grid-area: inputNombre;
+    height: 80%;
+    margin-left: 5px;
+    text-align: start;
+}
+
+.terms_body-excepciones-body-btns {
+    display: grid;
+    grid-area: btns;
+    margin-left: 60%;
+    grid-template-areas: 
+        'add delete';
+    grid-template-columns: 50% 50%;
+}
+
+#btnAgregarExcepcionesTerms {
+    font-size: 15px;
+    grid-area: add;
+    height: 80%;
+    text-align: center;
+    width: 90%;
+
+    &:hover {
+        background-color: #3D59A9;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+#btnEliminarExcepcionesTerms {
+    font-size: 15px;
+    grid-area: delete;
+    height: 80%;
+    text-align: center;
+    width: 100%;
+
+    &:hover {
+        background-color: #F54B5A;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+.terms_body-excepciones-table {
+    border: 1px solid black;
+    grid-area: table;
+    margin-bottom: 5px;
+}
+
+.terms_body-excepciones-table-main {
+    width: 100%;
+}
+
+.terms_body-excepciones-table-header-cedula {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.terms_body-excepciones-table-header-nombre {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.terms_body-excepciones-table-cedula {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.terms_body-excepciones-table-nombre {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.terms_body-excepciones-btn {
+    grid-area: btn;
+    height: 50%;
+    margin-left: 85%;
+}
+
+#btnAceptarTermsExcepciones {
+    font-size: 15px;
+    height: 100%;
+    text-align: center;
+    width: 100%;
+
+    &:hover {
+        background-color: #3D59A9;
+        color: white;
+        cursor: pointer;
+    }
+}

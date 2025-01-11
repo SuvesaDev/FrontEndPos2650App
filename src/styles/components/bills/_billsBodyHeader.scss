@@ -1,0 +1,210 @@
+.billsBody_header-main {
+    border: 1px solid #c4c4c4;
+    display: grid;
+    height: 100%;
+    margin-left: 3%;
+    margin-right: 3%;
+    text-align: center;
+    grid-template-areas: 
+        'title'
+        'inputs';
+    grid-template-rows: 20% 80%;
+}
+
+.billsBody_header-title {
+    grid-area: title;
+}
+
+#lblTitleBodyHeaderBills {
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.billsBody_header-inputs {
+    display: grid;
+    grid-area: inputs;
+    grid-template-areas: 
+        'firstLine'
+        'secondLine';
+    grid-template-rows: 50% 50%;
+}
+
+.billsBody_header-inputs-firstLine {
+    display: grid;
+    grid-area: firstLine;
+    grid-template-areas: 
+        'proveedor tipo';
+    grid-template-columns: 70% 30%;
+}
+
+.billsBody_header-inputs-firstLine-proveedor {
+    display: grid;
+    grid-area: proveedor;
+    margin-top: 5px;
+    grid-template-areas: 
+        'lblproveedor inputproveedor';
+    grid-template-columns: 25% 75%;
+}
+
+#lblProveedorBodyHeaderBills {
+    border: 1px solid #c4c4c4;
+    color: #4169e6;
+    grid-area: lblproveedor;
+    height: 60%;
+    margin-left: 20px;
+    margin-top: 5px;
+    padding-top: 1px;
+    text-align: center;
+    width: 80%;
+}
+
+#txtProveedorBodyHeaderBills {
+    color: black;
+    grid-area: inputproveedor;
+    height: 60%;
+    margin-left: 20px;
+    margin-top: 5px;
+    padding-top: 1px;
+    text-align: start;
+    width: 95%;
+}
+
+.billsBody_header-inputs-firstLine-tipo {
+    display: grid;
+    grid-area: tipo;
+    margin-top: 5px;
+    grid-template-areas: 
+        'lbltipo inputtipo';
+    grid-template-columns: 25% 75%;
+}
+
+#lblTipoBodyHeaderBills {
+    border: 1px solid #c4c4c4;
+    color: #4169e6;
+    grid-area: lbltipo;
+    height: 60%;
+    margin-left: 20px;
+    margin-top: 5px;
+    padding-top: 1px;
+    text-align: center;
+    width: 80%;
+}
+
+#cboTipoBodyHeaderBills {
+    color: black;
+    grid-area: inputtipo;
+    height: 60%;
+    margin-left: 20px;
+    margin-top: 5px;
+    padding-top: 1px;
+    text-align: start;
+    width: 50%;
+}
+
+.billsBody_header-inputs-secondLine {
+    grid-area: secondLine;
+    display: grid;
+    grid-template-areas: 
+        'numero fecha moneda';
+    grid-template-columns: 33% 33% 33%;
+}
+
+.billsBody_header-inputs-secondLine-numero {
+    grid-area: numero;
+    margin-top: 5px;
+    display: grid;
+    grid-template-areas: 
+        'lblnumero inputnumero';
+    grid-template-columns: 25% 75%;
+}
+
+#lblNumeroBodyHeaderBills {
+    border: 1px solid #c4c4c4;
+    color: #4169e6;
+    grid-area: lblnumero;
+    height: 60%;
+    margin-left: 20px;
+    margin-top: 5px;
+    padding-top: 1px;
+    text-align: center;
+    width: 80%;
+}
+
+#txtNumeroBodyHeaderBills {
+    color: black;
+    grid-area: inputnumero;
+    height: 60%;
+    margin-left: 20px;
+    margin-top: 5px;
+    padding-top: 1px;
+    text-align: start;
+    width: 80%;
+}
+
+.billsBody_header-inputs-secondLine-fecha {
+    grid-area: fecha;
+    margin-top: 5px;
+    display: grid;
+    grid-template-areas: 
+        'lblfecha inputfecha';
+    grid-template-columns: 25% 75%;
+}
+
+#lblFechaBodyHeaderBills {
+    border: 1px solid #c4c4c4;
+    color: #4169e6;
+    grid-area: lblfecha;
+    height: 60%;
+    margin-left: 20px;
+    margin-top: 5px;
+    padding-top: 1px;
+    text-align: center;
+    width: 80%;
+}
+
+#txtFechaBodyHeaderBills {
+    color: black;
+    grid-area: inputfecha;
+    height: 60%;
+    margin-left: 20px;
+    margin-top: 5px;
+    padding-top: 1px;
+    text-align: start;
+    width: 80%;
+}
+
+.billsBody_header-inputs-secondLine-moneda {
+    grid-area: moneda;
+    margin-top: 5px;
+    display: grid;
+    grid-template-areas: 
+        'lblmoneda inputmoneda';
+    grid-template-columns: 25% 75%;
+}
+
+#lblMonedaBodyHeaderBills {
+    border: 1px solid #c4c4c4;
+    color: #4169e6;
+    grid-area: lblmoneda;
+    height: 60%;
+    margin-left: 70px;
+    margin-top: 5px;
+    padding-top: 1px;
+    text-align: center;
+    width: 80%;
+}
+
+#cboMonedaBodyHeaderBills {
+    color: black;
+    grid-area: inputmoneda;
+    height: 60%;
+    margin-left: 60px;
+    margin-top: 5px;
+    padding-top: 1px;
+    text-align: start;
+    width: 45%;
+}
+

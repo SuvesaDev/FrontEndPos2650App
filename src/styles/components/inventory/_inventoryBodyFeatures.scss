@@ -1,0 +1,57 @@
+.inventory_body-features-main {
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'tabs'
+        'content';
+    grid-template-rows: 16% 84%;
+}
+
+.inventory_body-features-tabs {
+    background-color: #D8D8D8;
+    border-bottom: 1px solid #D8D8D8;
+    grid-area: tabs;
+    padding-right: 25px;
+    padding-top: 3px;
+    overflow-y: hidden;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+::-webkit-scrollbar{
+    height: 4px;
+    width: 4px;
+    background: gray;
+}
+::-webkit-scrollbar-thumb:horizontal{
+    background: #000;
+    border-radius: 10px;
+}
+
+.inventory-tabs {
+    display: inline-block;
+}
+
+.inventory-tab {
+    background: transparent;
+    border: 1px solid black;
+    color: black;
+    cursor: pointer;
+    font-size: 15px;
+    margin-right: 5px;
+    padding: 5px 15px;
+}
+
+.inventory-tab.active {
+    background: $primary;
+    border-top-right-radius: 15%;
+    border: 1px solid #ddd;
+    color: #F2F4F4;
+}
+
+.inventory_body-features-content {
+    grid-area: content;
+}
+
+
+

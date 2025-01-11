@@ -1,0 +1,130 @@
+.collectAdjustment_table-main {
+    border: 1px solid black;
+    display: grid;
+    height: 95%;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 5px;
+    grid-template-areas: 
+        'table'
+        'observaciones';
+    grid-template-rows: 85% 15%;
+}
+
+.collectAdjustment_table-table {
+    grid-area: table;
+}
+
+.collectAdjustment_table-table-main {
+    width: 100%;
+}
+
+.collectAdjustment_table-header-factura {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.collectAdjustment_table-header-montoFactura {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.collectAdjustment_table-header-saldoAnt {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.collectAdjustment_table-header-abono {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.collectAdjustment_table-header-saldoAct {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.collectAdjustment_table-header-cuentaCont {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.collectAdjustment_table-factura {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.collectAdjustment_table-montoFactura {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.collectAdjustment_table-saldoAnt {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.collectAdjustment_table-abono {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.collectAdjustment_table-saldoAct {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.collectAdjustment_table-cuentaCont {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.collectAdjustment_table-observaciones {
+    border-top: 1px solid black;
+    display: grid;
+    grid-area: observaciones;
+    grid-template-areas: 
+        'lblobservaciones txtobservaciones';
+    grid-template-columns: 15% 85%;
+}
+
+#lblObservacionesTableAdjustment {
+    color: #5962E1;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblobservaciones;
+    padding-top: 5px;
+}
+
+#txtObservacionesTableAdjustment {
+    font-size: 15px;
+    grid-area: txtobservaciones;
+    height: 70%;
+    margin-right: 25px;
+    margin-top: 4px;
+    text-align: start;
+}

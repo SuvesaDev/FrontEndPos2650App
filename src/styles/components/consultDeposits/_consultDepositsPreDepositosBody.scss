@@ -1,0 +1,624 @@
+.consultDepositsPreDepositos-body-main {
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'header'
+        'table';
+    grid-template-rows: 25% 75%;
+}
+
+.consultDepositsPreDepositos-body-header {
+    grid-area: header;
+    display: grid;
+    padding-left: 2%;
+    grid-template-areas: 
+        'numero numApertura cajero depositante dates btn';
+    grid-template-columns: 10% 13% 20% 20% 20% 10%;
+    border-radius: 5px;
+    border: 1px solid gray;
+    margin-bottom: 5px;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 5px;
+}
+
+.consultDepositsPreDepositos-body-header-numero {
+    grid-area: numero;
+    display: grid;
+    grid-template-areas: 
+        'labelNumero'
+        'inputsNumero';
+    grid-template-rows: 30% 60%;
+    border-right: 1px solid #dbd9d9;
+}
+
+.consultDepositsPreDepositos-body-header-numero-label {
+    grid-area: labelNumero;
+    display: grid;
+    grid-template-areas: 
+        'radioButtonNumero lblNumero';
+    grid-template-columns: 20% 60%;
+}
+
+.consultDepositsPreDepositos-body-header-numero-label-radioButton {
+    grid-area: radioButtonNumero;
+    padding-top: 7px;
+}
+
+.consultDepositsPreDepositos-body-header-numero-label-text {
+    grid-area: lblNumero;
+    font-size: 15px;
+    padding-top: 3px;
+    text-align: start;
+}
+
+.lblTitleNumeroConsultDeposits {
+    font-size: 15px;
+    padding-top: 5px;
+    text-align: start;
+}
+
+.lblTitleNumeroConsultDeposits-Disabled {
+    font-size: 15px;
+    padding-top: 5px;
+    text-align: start;
+    text-decoration: line-through;
+}
+
+.consultDepositsPreDepositos-body-header-numero-input {
+    grid-area: inputsNumero;
+    text-align: start;
+    padding-top: 5px;
+}
+
+#txtNumeroConsultDeposits {
+    font-size: 15px;
+    width: 80%;
+    padding-left: 5px;
+}
+
+.consultDepositsPreDepositos-body-header-numApertura {
+    grid-area: numApertura;
+    display: grid;
+    grid-template-areas: 
+        'labelNumApertura'
+        'inputsNumApertura';
+    grid-template-rows: 30% 60%;
+    border-right: 1px solid #dbd9d9;
+}
+
+.consultDepositsPreDepositos-body-header-numApertura-label {
+    grid-area: labelNumApertura;
+    display: grid;
+    grid-template-areas: 
+        'radioButtonNumApertura lblNumApertura';
+    grid-template-columns: 20% 80%;
+}
+
+.consultDepositsPreDepositos-body-header-numApertura-label-radioButton {
+    grid-area: radioButtonNumApertura;
+    padding-top: 7px;
+}
+
+.consultDepositsPreDepositos-body-header-numApertura-label-text {
+    grid-area: lblNumApertura;
+    font-size: 15px;
+    padding-top: 3px;
+    text-align: start;
+}
+
+.lblTitleNumAperturaConsultDeposits {
+    font-size: 15px;
+    padding-top: 5px;
+    text-align: start;
+}
+
+.lblTitleNumAperturaConsultDeposits-Disable {
+    font-size: 15px;
+    padding-top: 5px;
+    text-align: start;
+    text-decoration: line-through;
+}
+
+.consultDepositsPreDepositos-body-header-numApertura-input {
+    grid-area: inputsNumApertura;
+    text-align: start;
+    padding-top: 5px;
+}
+
+#txtNumAperturaConsultDeposits {
+    font-size: 15px;
+    width: 80%;
+    margin-left: 15px;
+    padding-left: 5px;
+}
+
+.consultDepositsPreDepositos-body-header-cajero {
+    grid-area: cajero;
+    display: grid;
+    grid-template-areas: 
+        'labelCajero'
+        'inputsCajero';
+    grid-template-rows: 30% 60%;
+    border-right: 1px solid #dbd9d9;
+}
+
+.consultDepositsPreDepositos-body-header-cajero-label {
+    grid-area: labelCajero;
+    display: grid;
+    grid-template-areas: 
+        'radioButtonCajero lblCajero';
+    grid-template-columns: 15% 60%;
+}
+
+.consultDepositsPreDepositos-body-header-cajero-label-radioButton {
+    grid-area: radioButtonCajero;
+    padding-top: 7px;
+}
+
+.consultDepositsPreDepositos-body-header-cajero-label-text {
+    grid-area: lblCajero;
+    padding-top: 3px;
+    text-align: start;
+}
+
+#lblTitleCajeroConsultDeposits {
+    font-size: 15px;
+    padding-top: 5px;
+    text-align: start;
+}
+
+.consultDepositsPreDepositos-body-header-cajero-input {
+    grid-area: inputsCajero;
+    text-align: start;
+    padding-top: 5px;
+}
+
+#txtCajeroConsultDeposits {
+    font-size: 15px;
+    width: 90%;
+    margin-left: 15px;
+    padding-left: 5px;
+}
+
+.consultDepositsPreDepositos-body-header-depositante {
+    grid-area: depositante;
+    display: grid;
+    width: 100%;
+    grid-template-areas: 
+        'labelDepositante'
+        'inputsDepositante';
+    grid-template-rows: 30% 60%;
+    border-right: 1px solid #dbd9d9;
+}
+
+.consultDepositsPreDepositos-body-header-depositante-label {
+    grid-area: labelDepositante;
+    display: grid;
+    grid-template-areas: 
+        'radioButtonDepositante lblDepositante';
+    grid-template-columns: 20% 80%;
+}
+
+.consultDepositsPreDepositos-body-header-depositante-label-radioButton {
+    grid-area: radioButtonDepositante;
+    padding-top: 7px;
+}
+
+.consultDepositsPreDepositos-body-header-depositante-label-text {
+    grid-area: lblDepositante;
+    font-size: 15px;
+    padding-top: 3px;
+    text-align: start;
+}
+
+.lblTitleDepositanteConsultDeposits {
+    font-size: 15px;
+    padding-top: 5px;
+    text-align: start;
+}
+
+.lblTitleDepositanteConsultDeposits-Disable {
+    font-size: 15px;
+    padding-top: 5px;
+    text-align: start;
+    text-decoration: line-through;
+}
+
+.consultDepositsPreDepositos-body-header-depositante-input {
+    grid-area: inputsDepositante;
+    text-align: start;
+    padding-top: 5px;
+}
+
+#txtDepositanteConsultDeposits {
+    font-size: 15px;
+    width: 90%;
+    margin-left: 15px;
+    padding-left: 5px;
+}
+
+.consultDepositsPreDepositos-body-header-dates {
+    grid-area: dates;
+    display: grid;
+    grid-template-areas: 
+        'labelDates'
+        'inputsDates';
+    grid-template-rows: 30% 60%;
+    border-left: 1px solid #dbd9d9;
+    border-right: 1px solid #dbd9d9;
+}
+
+.consultDepositsPreDepositos-body-header-dates-label {
+    grid-area: labelDates;
+    display: grid;
+    grid-template-areas: 
+        'radioButtonDates lblDates';
+    grid-template-columns: 10% 60%;
+}   
+
+.consultDepositsPreDepositos-body-header-dates-label-radioButton {
+    grid-area: radioButtonDates;
+    padding-top: 7px;
+}
+
+.consultDepositsPreDepositos-body-header-dates-label-text {
+    grid-area: lblDates;
+    padding-top: 3px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+#lblTitleDatesConsultDeposits {
+    font-size: 15px;
+    padding-top: 5px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.consultDepositsPreDepositos-body-header-dates-inputs {
+    grid-area: inputsDates;
+    display: grid;
+    grid-template-areas: 
+        'inputDesdeDates inputHastaDates';
+    grid-template-columns: 50% 50%;
+    padding-top: 5px;
+}
+
+.consultDepositsPreDepositos-body-header-dates-inputs-desde {
+    grid-area: inputDesdeDates;
+    display: grid;
+    grid-template-areas: 
+        'labelDesde'
+        'inputDesde';
+    grid-template-rows: 50% 50%;
+    padding-right: 10px;
+    padding-left: 5px;
+}
+
+#lblDesdeDatesConsultDeposits {
+    grid-area: labelDesde;
+    padding-top: 3px;
+    text-align: start;
+    padding-left: 2px;
+    font-size: 15px;
+}
+
+#txtDesdeDatesConsultDeposits {
+    grid-area: inputDesde;
+    color: black;
+    font-size: 14px;
+    text-align: start;
+}
+
+.consultDepositsPreDepositos-body-header-dates-inputs-hasta {
+    grid-area: inputHastaDates;
+    display: grid;
+    grid-template-areas: 
+        'labelHasta'
+        'inputHasta';
+    grid-template-rows: 50% 50%;
+    padding-right: 10px;
+}
+
+.lblHastaDatesConsultDeposits {
+    grid-area: labelHasta;
+    padding-top: 3px;
+    text-align: start;
+    padding-left: 2px;
+    font-size: 15px;
+}
+
+.lblHastaDatesConsultDeposits-Disabled {
+    grid-area: labelHasta;
+    padding-top: 3px;
+    text-align: start;
+    padding-left: 2px;
+    font-size: 15px;
+    text-decoration: line-through;
+}
+
+#txtHastaDatesConsultDeposits {
+    grid-area: inputHasta;
+    color: black;
+    font-size: 14px;
+    text-align: start;
+}
+
+.consultDepositsPreDepositos-body-header-btn {
+    grid-area: btn;
+}
+
+.btnBuscarConsultDeposits {
+    width: 90%;
+    height: 30%;
+    font-size: 15px;
+    margin-top: 20%;
+    background-color: $secundary;
+    color: white;
+    border: none;
+
+    &:hover {
+        background-color: $primary;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+.btnBuscarConsultDeposits-disable {
+    width: 85%;
+    height: 30%;
+    font-size: 15px;
+    margin-top: 20%;
+    background-color: gray;
+    color: white;
+    border: none;
+
+    &:hover {
+        cursor: not-allowed;
+    }
+}
+
+.consultDepositsPreDepositos-body-table {
+    grid-area: table;
+    display: grid;
+    grid-template-areas: 
+        'table'
+        'buttons';
+    grid-template-rows: 90% 10%;
+    border-radius: 5px;
+    border: 1px solid gray;
+    margin-bottom: 5px;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 5px;
+}
+
+.consultDepositsPreDepositos-body-table-main {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    scrollbar-color: rebeccapurple green;
+    scrollbar-width: thin;
+    border-bottom: 1px solid gray;
+    grid-area: table;
+}
+
+.consultDepositsPreDepositos-body-table-btns {
+    display: grid;
+    grid-area: buttons;
+    grid-template-areas: 
+        'labelPagina labelIrPagina labelMostrar btns';
+    grid-template-columns: 10% 13% 8% 15%;
+}
+
+.consultDepositsPreDepositos-body-table-btns-Pagina {
+    grid-area: labelPagina;
+    height: 50%;
+    margin-top: 5px;
+    font-size: 15px;
+}
+
+.consultDepositsPreDepositos-body-table-btns-IrPagina {
+    height: 100%;
+    display: grid;
+    grid-area: labelIrPagina;
+    grid-template-areas: 
+        'title input';
+    grid-template-columns: 70% 30%;
+}
+
+.consultDepositsPreDepositos-body-table-btns-IrPagina-title {
+    grid-area: title;
+    padding-top: 5px;
+}
+
+.consultDepositsPreDepositos-body-table-btns-IrPagina-input {
+    grid-area: input;
+    padding-top: 5px;
+}
+
+.consultDepositsPreDepositos-body-table-btns-Mostrar {
+    grid-area: labelMostrar;
+    height: 100%;
+    padding-top: 5px;
+}
+
+.consultDepositsPreDepositos-body-table-btns-buttons {
+    grid-area: btns;
+    height: 100%;
+    display: grid;
+    grid-template-areas: 
+        'first previous next last';
+    grid-template-columns: 15% 35% 35% 15%;
+}
+
+.consultDepositsPreDepositos-body-table-btns-buttons-first {
+    grid-area: first;
+    padding-top: 5px;
+}
+
+#btnFistyConsultDepositsTable {
+    border: none;
+    border-radius: 10%;
+    height: 80%;
+    width: 80%;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $secundary;
+    }
+}
+
+.consultDepositsPreDepositos-body-table-btns-buttons-previous {
+    grid-area: previous;
+    padding-top: 5px;
+}
+
+#btnPreviousConsultDepositsTable {
+    border: none;
+    border-radius: 10%;
+    height: 80%;
+    width: 80%;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $secundary;
+    }
+}
+
+.consultDepositsPreDepositos-body-table-btns-buttons-next {
+    grid-area: next;
+    padding-top: 5px;
+}
+
+#btnNextConsultDepositsTable {
+    border: none;
+    border-radius: 10%;
+    height: 80%;
+    width: 80%;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $secundary;
+    }
+}
+
+.consultDepositsPreDepositos-body-table-btns-buttons-last {
+    grid-area: last;
+    padding-top: 5px;
+}
+
+#btnLastConsultDepositsTable {
+    border: none;
+    border-radius: 10%;
+    height: 80%;
+    width: 80%;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $secundary;
+    }
+}
+
+.consultDepositsPreDepositos-body-table-header-numero {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 100px;
+}
+
+.consultDepositsPreDepositos-body-table-header-banco {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 250px;
+}
+
+.consultDepositsPreDepositos-body-table-header-cajero {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 400px;
+}
+
+.consultDepositsPreDepositos-body-table-header-monto {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 150px;
+}
+
+// .consultDepositsPreDepositos-body-table-header-monto {
+//     background-color: #BFBCC1;
+//     padding-left: 5px;
+//     text-align: start;
+//     width: 100px;
+// }
+
+// .consultDepositsPreDepositos-body-table-header-estado {
+//     background-color: #BFBCC1;
+//     padding-left: 5px;
+//     text-align: start;
+//     width: 150px;
+// }
+
+// .consultDepositsPreDepositos-body-table-header-mensajeError {
+//     background-color: #BFBCC1;
+//     padding-left: 5px;
+//     text-align: start;
+//     width: 600px;
+// }
+
+.consultDepositsPreDepositos-body-table-body {
+    text-align: start;
+    font-style: normal;
+}
+
+.consultDepositsPreDepositos-body-table-row {
+    &:hover {
+        cursor: pointer;
+        background-color: #ACA9A9;
+    }
+}
+
+.consultDepositsPreDepositos-body-table-numero {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+    height: 25.5px;
+}
+
+.consultDepositsPreDepositos-body-table-banco {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+    height: 25.5px;
+}
+
+.consultDepositsPreDepositos-body-table-cajero {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+    height: 25.5px;
+}
+
+.consultDepositsPreDepositos-body-table-monto {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+    height: 25.5px;
+}
+
+// .consultDepositsPreDepositos-body-table-monto {
+//     border: 1px solid #BFBCC1;
+//     font-size: 15px;
+//     padding-left: 5px;
+//     text-align: start;
+//     height: 25.5px;
+// }
+

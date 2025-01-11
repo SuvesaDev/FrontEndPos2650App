@@ -1,0 +1,60 @@
+.openCash_footer-main {
+    border: 1px solid black;
+    display: grid;
+    height: 100%;
+    padding-top: 3px;
+    grid-template-areas: 
+        'check user';
+    grid-template-columns: 10% 30%;
+}
+
+.openCash_footer-check {
+    display: grid;
+    grid-area: check;
+    height: 85%;
+    margin-top: 3px;
+    grid-template-areas: 
+        'inputAnulada lblAnulada';
+    grid-template-columns: 20% 30%;
+}
+
+#checkAnulada {
+    grid-area: inputAnulada;
+}
+
+#lblAnuladaOC {
+    color: black;
+    font-size: 15px;
+    grid-area: lblAnulada;
+    text-align: center;
+}
+
+.openCash_footer-user {
+    display: grid;
+    grid-area: user;
+    height: 85%;
+    margin-top: 3px;
+    grid-template-areas: 
+        'title pass sistema';
+    grid-template-columns: 30% 30% 30%;
+}
+
+.openCash_footer-user-title {
+    background-color: #3D62DB;
+    color: white;
+    grid-area: title;
+    padding-top: 2px;
+}
+
+.openCash_footer-user-inputPassword {
+    grid-area: pass;
+    padding-top: 5px;
+    text-align: start;
+}
+
+.openCash_footer-user-titleSistema {
+    color: #8C8C89;
+    grid-area: sistema;
+    padding-top: 2px;
+    text-align: start;
+}

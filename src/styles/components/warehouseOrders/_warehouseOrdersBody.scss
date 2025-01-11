@@ -1,0 +1,296 @@
+.warehouse_orders-body-main {
+    border: 1px solid black;
+    display: grid;
+    height: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 2%;
+    grid-template-areas: 
+        'inputs'
+        'table';
+    grid-template-rows: 40% 60%;
+}
+
+.warehouse_orders-body-inputs {
+    display: grid;
+    grid-area: inputs;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    grid-template-areas: 
+        'firstLine'
+        'secondLine'
+        'thirdLine';
+    grid-template-rows: 33% 33% 33%;
+}
+
+.warehouse_orders-body-inputs-firstLine {
+    display: grid;
+    grid-area: firstLine;
+    grid-template-areas: 
+        'fecha usuarioS';
+    grid-template-columns: 30% 70%;
+}
+
+.warehouse_orders-body-inputs-firstLine-fecha {
+    display: grid;
+    grid-area: fecha;
+    grid-template-areas: 
+        'lblFecha'
+        'txtFecha';
+    grid-template-rows: 45% 55%;
+}
+
+#lblFechaWO {
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblFecha;
+    padding-left: 5px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+#txtFechaWO {
+    font-size: 15px;
+    grid-area: txtFecha;
+    height: 90%;
+    margin-left: 5px;
+    text-align: start;
+    width: 95%;
+}
+
+.warehouse_orders-body-inputs-firstLine-usuarioS {
+    display: grid;
+    grid-area: usuarioS;
+    grid-template-areas: 
+        'lblUsuariosS'
+        'txtUsuariosS';
+    grid-template-rows: 45% 55%;
+}
+
+#lblUsuariosSWO {
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblUsuariosS;
+    padding-left: 5px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+#txtUsuariosSWO {
+    font-size: 15px;
+    grid-area: txtUsuariosS;
+    height: 90%;
+    margin-left: 5px;
+    text-align: start;
+    width: 95%;
+}
+
+.warehouse_orders-body-inputs-secondLine {
+    display: grid;
+    grid-area: secondLine;
+    grid-template-areas: 
+        'codigo descrip';
+    grid-template-columns: 20% 80%;
+}
+
+#warehouse_orders-body-inputs-secondLine-codigo {
+    display: grid;
+    grid-area: codigo;
+    grid-template-areas: 
+        'lblCodigo'
+        'txtCodigo';
+    grid-template-rows: 45% 55%;
+}
+
+#lblCodigoWO {
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblCodigo;
+    padding-left: 5px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+#txtCodigoWO {
+    font-size: 15px;
+    grid-area: txtCodigo;
+    height: 48%;
+    margin-left: 5px;
+    margin-top: 2px;
+    text-align: start;
+    width: 95%;
+}
+
+.warehouse_orders-body-inputs-secondLine-descripcion {
+    display: grid;
+    grid-area: descrip;
+    grid-template-areas: 
+        'lblDescrip'
+        'txtDescrip';
+    grid-template-rows: 45% 55%;
+}
+
+#lblDescripWO {
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblDescrip;
+    padding-left: 5px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+#txtDescripWO {
+    font-size: 15px;
+    grid-area: txtDescrip;
+    height: 90%;
+    margin-left: 5px;
+    text-align: start;
+    width: 95.5%;
+}
+
+.warehouse_orders-body-inputs-thirdLine {
+    display: grid;
+    grid-area: thirdLine;
+    grid-template-areas: 
+        'cantidad obser btn';
+    grid-template-columns: 15% 75% 10%;
+}
+
+.warehouse_orders-body-inputs-thirdLine-cantidad {
+    display: grid;
+    grid-area: cantidad;
+    grid-template-areas: 
+        'lblCantidad'
+        'txtCantidad';
+    grid-template-rows: 45% 55%;
+}
+
+#lblCantidadWO {
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblCantidad;
+    padding-left: 5px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+#txtCantidadWO {
+    font-size: 15px;
+    grid-area: txtCantidad;
+    height: 90%;
+    margin-left: 5px;
+    text-align: start;
+    width: 95%;
+}
+
+.warehouse_orders-body-inputs-thirdLine-obser {
+    display: grid;
+    grid-area: obser;
+    grid-template-areas: 
+        'lblObser'
+        'txtObser';
+    grid-template-rows: 45% 55%;
+}
+
+#lblObserWO {
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblObser;
+    padding-left: 5px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+#txtObserWO {
+    font-size: 15px;
+    grid-area: txtObser;
+    height: 90%;
+    margin-left: 5px;
+    text-align: start;
+    width: 98%;
+}
+
+#btnAddWO {
+    font-size: 15px;
+    grid-area: btn;
+    height: 60%;
+    margin-top: 16px;
+    text-align: center;
+
+    &:hover {
+        background-color: #3D59A9;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+.warehouse_orders-body-table {
+    border-top: 1px solid black;
+    grid-area: table;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.warehouse_orders-body-table-main {
+    width: 100%;
+}
+
+.warehouse_orders-body-table-header-codArticulo {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.warehouse_orders-body-table-header-descrip {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.warehouse_orders-body-table-header-cantidad {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.warehouse_orders-body-table-header-obser {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.warehouse_orders-body-table-codArticulo {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.warehouse_orders-body-table-descrip {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.warehouse_orders-body-table-cantidad {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.warehouse_orders-body-table-obser {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+

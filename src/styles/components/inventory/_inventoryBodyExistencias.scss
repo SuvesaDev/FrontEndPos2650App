@@ -1,0 +1,111 @@
+.inventory_body-existencias-main {
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'titulo'
+        'titulos'
+        'campos';
+    grid-template-rows: 25% 30% 45%;
+}
+
+.inventory_body-existencias-titulo {
+    grid-area: titulo;
+}
+
+#lblDatosexistencias {
+    font-size: 15px;
+    padding-left: 15px;
+    text-align: start;
+}
+
+.inventory_body-existencias-titulos {
+    grid-area: titulos;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'minima media maxima actual';
+    grid-template-columns: 25% 20% 20% 20%;
+}
+
+#lblMinima {
+    font-size: 15px;
+    grid-area: minima;
+    padding-right: 45px;
+    padding-top: 5px;
+    text-align: right;
+}
+
+#lblMedia {
+    font-size: 15px;
+    grid-area: media;
+    padding-top: 5px;
+    text-align: center;
+}
+
+#lblMaxima {
+    font-size: 15px;
+    grid-area: maxima;
+    padding-top: 5px;
+    text-align: center;
+}
+
+#lblActual {
+    font-size: 15px;
+    grid-area: actual;
+    padding-top: 5px;
+    text-align: center;
+}
+
+.inventory_body-existencias-campos {
+    grid-area: campos;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'inputMinima inputMedia inputMaxima inputActual';
+    grid-template-columns: 25% 20% 20% 20%;
+}
+
+.inventory_body-existencias-inputMinima {
+    grid-area: inputMinima;
+    padding-left: 20%;
+    padding-top: 5px;
+}
+
+#txtMinima {
+    font-size: 15px;
+    text-align: right;
+    width: 60%;
+}
+
+.inventory_body-existencias-inputMedia {
+    grid-area: inputMedia;
+    padding-top: 5px;
+}
+
+#txtMedia {
+    font-size: 15px;
+    text-align: right;
+    width: 60%;
+}
+
+.inventory_body-existencias-inputMaxima {
+    grid-area: inputMaxima;
+    padding-top: 5px;
+}
+
+#txtMaxima {
+    font-size: 15px;
+    text-align: right;
+    width: 60%;
+}
+
+.inventory_body-existencias-inputActual {
+    grid-area: inputActual;
+    padding-top: 5px;
+}
+
+#txtActual {
+    font-size: 15px;
+    text-align: right;
+    width: 60%;
+}

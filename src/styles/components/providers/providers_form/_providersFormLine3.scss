@@ -1,0 +1,119 @@
+.providers_form-personal-3-telefono {
+    grid-area: telefonoPro;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'labelTelefonoP inputTelefonoP';
+    grid-template-columns: 42% 58%;
+}
+
+.providers_form-personal-3-label-telefono {
+    background-color: #EEF2E6;
+    grid-area: labelTelefonoP;
+    height: 80%;
+    margin: 2px;
+    width: 100%;
+}
+
+#lblTelefonoProviders {
+    color: #5457D5;
+    font-size: 15px;
+    padding-left: 20%;
+    padding-top: 1px;
+    text-align: start;
+}
+
+.providers_form-personal-3-input-telefono {
+    grid-area: inputTelefonoP;
+}
+
+#txtTelefonoProviders {
+    color: #5457D5;
+    font-size: 12px;
+    height: 80%;
+    margin-right: 2%;
+    margin-top: 2px;
+    text-align: start;
+    width: 90%;
+    padding-left: 5px;
+}
+
+.providers_form-personal-3-fax {
+    grid-area: faxPro;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'labelfaxP inputfaxP';
+    grid-template-columns: 42% 58%;
+}
+
+.providers_form-personal-3-label-fax {
+    background-color: #EEF2E6;
+    grid-area: labelfaxP;
+    height: 80%;
+    margin: 2px;
+    width: 100%;
+}
+
+#lblFaxProviders {
+    color: #5457D5;
+    font-size: 15px;
+    padding-left: 20%;
+    padding-top: 1px;
+    text-align: start;
+}
+
+.providers_form-personal-3-input-fax {
+    grid-area: inputfaxP;
+}
+
+#txtFaxProviders {
+    color: #5457D5;
+    font-size: 12px;
+    height: 80%;
+    margin-right: 2%;
+    margin-top: 2px;
+    text-align: start;
+    width: 90%;
+    padding-left: 5px;
+}
+
+.providers_form-personal-3-visitas {
+    grid-area: visitasPro;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'labelvisitasP inputvisitasP';
+    grid-template-columns: 24% 20%;
+}
+
+.providers_form-personal-3-label-visitas {
+    background-color: #EEF2E6;
+    grid-area: labelvisitasP;
+    height: 80%;
+    margin: 2px;
+    width: 100%;
+}
+
+#lblVisitasProviders {
+    color: #5457D5;
+    font-size: 15px;
+    padding-left: 20%;
+    padding-top: 1px;
+    text-align: start;
+}
+
+.providers_form-personal-3-input-visitas {
+    grid-area: inputvisitasP;
+}
+
+#txtVisitasProviders {
+    color: #5457D5;
+    font-size: 12px;
+    height: 80%;
+    margin-left: 10px;
+    margin-right: 2%;
+    margin-top: 2px;
+    text-align: start;
+    width: 90%;
+}

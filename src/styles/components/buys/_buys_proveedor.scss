@@ -1,0 +1,112 @@
+.buys_proveedor-main {
+    height: 100%;
+    display: grid;
+    grid-template-areas: 
+        'left right';
+    grid-template-columns: 40% 60%;
+}
+
+.buys_proveedor-left {
+    grid-area: left;
+    display: grid;
+    grid-template-areas: 
+        'TitleLeft'
+        'InputsLeft';
+    grid-template-rows: 30% 70%;
+}
+
+.buys_proveedor-left-title {
+    grid-area: TitleLeft;
+    padding-top: 5px;
+}
+
+#lblTitleCodigoProveedorBuys {
+    color: #4C58DC;
+    font-size: 15px;
+    text-align: start;
+    padding-left: 10px;
+}
+
+.buys_proveedor-left-inputs {
+    grid-area: InputsLeft;
+    display: grid;
+    grid-template-areas: 
+        'input iconSearch iconAdd';
+    grid-template-columns: 80% 10% 10%;
+}
+
+.buys_proveedor-left-inputs-input {
+    grid-area: input;
+}
+
+#txtcodigoProveedorBuys {
+    color: #4C58DC;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+    width: 90%;
+}
+
+.buys_proveedor-left-inputs-iconSearch {
+    grid-area: iconSearch;
+    padding-top: 3px;
+}
+
+.iconcodigoProveedorSearchBuys {
+    color: #F68A1D;
+    cursor: pointer;
+}
+
+.iconcodigoProveedorSearchBuys-disable {
+    color: gray;
+    cursor: not-allowed;
+}
+
+.buys_proveedor-left-inputs-iconAdd {
+    grid-area: iconAdd;
+    padding-top: 3px;
+}
+
+.iconcodigoProveedorAddBuys {
+    color: #F68A1D;
+    cursor: pointer;
+}
+
+.iconcodigoProveedorAddBuys-disable {
+    color: gray;
+    cursor: not-allowed;
+}
+
+.buys_proveedor-right {
+    grid-area: right;
+    display: grid;
+    grid-template-areas: 
+        'TitleRight'
+        'InputsRight';
+    grid-template-rows: 30% 70%;
+    border-right: 1px solid black;
+}
+
+.buys_proveedor-right-title {
+    grid-area: TitleRight;
+    padding-top: 5px;
+}
+
+#lblTitleNombreProveedorBuys {
+    color: #4C58DC;
+    font-size: 15px;
+    text-align: start;
+    padding-left: 10px;
+}
+
+.buys_proveedor-right-input {
+    grid-area: InputsRight;
+}
+
+#txtnombreProveedorBuys {
+    color: #4C58DC;
+    font-size: 15px;
+    right: 0px;
+    text-align: start;
+    width: 95%;
+}

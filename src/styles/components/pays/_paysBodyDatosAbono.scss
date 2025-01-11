@@ -1,0 +1,224 @@
+.pays_body-datosAbono-main {
+    display: grid;
+    height: 100%;
+    margin-left: 5px;
+    margin-right: 5px;
+    grid-template-areas: 
+        'origen'
+        'forma';
+    grid-template-rows: 50% 50%;
+}
+
+.pays_body-datosAbono-origen {
+    display: grid;
+    grid-area: origen;
+    height: 100%;
+    grid-template-areas: 
+        'title'
+        'banco'
+        'cuenta';
+    grid-template-rows: 25% 37.5% 37.5%;
+}
+
+.pays_body-datosAbono-origen-title {
+    background-color: #3D62DB;
+    display: grid;
+    grid-area: title;
+    height: 100%;
+    grid-template-areas: 
+        'titleOrigen resulOrigen';
+    grid-template-columns: 85% 15%;
+}
+
+#lblOrigenPaysBody {
+    color: white;
+    font-size: 14px;
+    grid-area: titleOrigen;
+    padding-left: 15%;
+    text-align: center;
+}
+
+#lblNumberPaysBody {
+    color: white;
+    font-size: 14px;
+    grid-area: resulOrigen;
+    text-align: center;
+}
+
+.pays_body-datosAbono-origen-banco {
+    display: grid;
+    grid-area: banco;
+    height: 100%;
+    grid-template-areas: 
+        'lblBanco inputBanco';
+    grid-template-columns: 15% 85%;
+}
+
+#lblBancoPaysBody {
+    background-color: #EEF2E6;
+    border: 1px solid black;
+    font-size: 15px;
+    grid-area: lblBanco;
+    margin-bottom: 2px;
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-top: 2px;
+}
+
+#cboBancoPaysBody {
+    font-size: 14px;
+    grid-area: inputBanco;
+    height: 80%;
+    margin-top: 2px;
+}
+
+.pays_body-datosAbono-origen-cuentaBancaria {
+    display: grid;
+    grid-area: cuenta;
+    height: 100%;
+    grid-template-areas: 
+        'lblCuentaB inputCuentaB lblCentro';
+    grid-template-columns: 15% 30% 55%;
+}
+
+#lblCuentaBancariaPaysBody {
+    background-color: #EEF2E6;
+    border: 1px solid black;
+    font-size: 15px;
+    grid-area: lblCuentaB;
+    margin-bottom: 2px;
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-top: 2px;
+}
+
+#cboCuentaBancariaPaysBody {
+    font-size: 14px;
+    grid-area: inputCuentaB;
+    height: 80%;
+    margin-right: 10px;
+    margin-top: 2px;
+}
+
+#lblCentroPaysBody {
+    font-size: 14px;
+    grid-area: lblCentro;
+    height: 80%;
+    margin-top: 2px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+.pays_body-datosAbono-forma {
+    display: grid;
+    grid-area: forma;
+    height: 100%;
+    grid-template-areas: 
+        'title'
+        'inputs';
+    grid-template-rows: 25% 75%;
+}
+
+#lblFormaPaysBody {
+    background-color: #3D62DB;
+    color: white;
+    font-size: 14px;
+    grid-area: title;
+    text-align: center;
+}
+
+.pays_body-datosAbono-forma-inputs {
+    display: grid;
+    grid-area: inputs;
+    height: 100%;
+    grid-template-areas: 
+        'tipoPago documento cuentaDestino';
+    grid-template-columns: 25% 25% 50%;
+}
+
+.pays_body-datosAbono-forma-inputs-tipoPago {
+    display: grid;
+    grid-area: tipoPago;
+    height: 100%;
+    grid-template-areas: 
+        'lbltipoPago'
+        'inputtipoPago';
+    grid-template-rows: 50% 50%;
+}
+
+#lblTipoPagoPaysBody {
+    background-color: #EEF2E6;
+    border: 1px solid black;
+    font-size: 15px;
+    grid-area: lbltipoPago;
+    margin-bottom: 2px;
+    margin-left: 2px;
+    margin-right: 8px;
+    margin-top: 2px;
+}
+
+#cboTipoPagoPaysBody {
+    font-size: 14px;
+    grid-area: inputtipoPago;
+    height: 80%;
+    margin-left: 2px;
+    margin-right: 8px;
+}
+
+.pays_body-datosAbono-forma-inputs-documento {
+    display: grid;
+    grid-area: documento;
+    height: 100%;
+    grid-template-areas: 
+        'lbldocumento'
+        'inputdocumento';
+    grid-template-rows: 50% 50%;
+}
+
+#lblDocumentoPaysBody {
+    background-color: #EEF2E6;
+    border: 1px solid black;
+    font-size: 15px;
+    grid-area: lbldocumento;
+    margin-bottom: 2px;
+    margin-left: 2px;
+    margin-right: 8px;
+    margin-top: 2px;
+}
+
+#txtDocumentoPaysBody {
+    font-size: 14px;
+    grid-area: inputdocumento;
+    height: 80%;
+    margin-left: 2px;
+    margin-right: 8px;
+}
+
+.pays_body-datosAbono-forma-inputs-cuentaDestino {
+    display: grid;
+    grid-area: cuentaDestino;
+    height: 100%;
+    grid-template-areas: 
+        'lblcuentaDestino'
+        'inputcuentaDestino';
+    grid-template-rows: 50% 50%;
+}
+
+#lblCuentaDestinoPaysBody {
+    background-color: #EEF2E6;
+    border: 1px solid black;
+    font-size: 15px;
+    grid-area: lblcuentaDestino;
+    margin-bottom: 2px;
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-top: 2px;
+}
+
+#cboCuentaDestinoPaysBody {
+    font-size: 14px;
+    grid-area: inputcuentaDestino;
+    height: 80%;
+    margin-left: 2px;
+    margin-right: 2px;
+}

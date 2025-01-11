@@ -1,0 +1,89 @@
+.closeCash_apertura-main {
+    border: 1px solid #C1C4B9;
+    display: grid;
+    height: 60px;
+    margin-left: 10px;
+    margin-right: 10px;
+    // margin-top: 5px;
+    grid-template-areas: 
+        'title'
+        'inputs';
+    grid-template-rows: 30% 70%;
+}
+
+.closeCash_apertura-titles {
+    border-bottom: 1px solid #C1C4B9;
+    color: #5691FE;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: title;
+    padding-left: 15px;
+    text-align: start;
+}
+
+.closeCash_apertura-inputs {
+    display: grid;
+    grid-area: inputs;
+    height: 100%;
+    grid-template-areas: 
+        'numero fechaHora';
+    grid-template-columns: 50% 50%;
+}
+
+.closeCash_apertura-inputs-numero {
+    display: grid;
+    grid-area: numero;
+    padding-top: 5px;
+    grid-template-areas: 
+        'title-numero'
+        'input-numero';
+    grid-template-rows: 40% 60%;
+}
+
+#lblNumeroCash {
+    color: #5691FE;
+    font-size: 15px;
+    grid-area: title-numero;
+    text-align: center;
+}
+
+#txtNumeroCash {
+    border: none;
+    color: #5691FE;
+    font-size: 15px;
+    grid-area: input-numero;
+    height: 65%;
+    margin-left: 20%;
+    margin-top: 2px;
+    text-align: center;
+    width: 60%;
+}
+
+.closeCash_apertura-inputs-fechaHora {
+    display: grid;
+    grid-area: fechaHora;
+    padding-top: 5px;
+    grid-template-areas: 
+        'title-fechaHora'
+        'input-fechaHora';
+    grid-template-rows: 40% 60%;
+}
+
+#lblFechaHoraCash {
+    color: #5691FE;
+    font-size: 15px;
+    grid-area: title-fechaHora;
+    text-align: center;
+}
+
+#txtFechaHoraCash {
+    border: none;
+    color: #5691FE;
+    font-size: 15px;
+    grid-area: input-fechaHora;
+    height: 65%;
+    margin-left: 20%;
+    margin-top: 2px;
+    text-align: center;
+    width: 60%;
+}

@@ -1,0 +1,511 @@
+.modal_addProveedor-main {
+    display: grid;
+    text-align: center;
+    grid-template-areas:
+        'title' 
+        'body'
+        'btns';
+    grid-template-rows: 40px 190px 40px;
+}
+
+.modal_addProveedor-title {
+    display: grid;
+    gap: 5px;
+    grid-area: title;
+    grid-template-areas: 
+        'text btnClose';
+    grid-template-columns: 94.3% 5%;
+}
+
+#lblTitleAddProveedorModal {
+    background-color: $primary;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    grid-area: text;
+    margin-bottom: 5px;
+    padding-bottom: 2px;
+    padding-top: 5px;
+    text-align: center;
+}
+
+#lblCloseAddProveedorModal {
+    background-color: red;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    grid-area: btnClose;
+    margin-bottom: 5px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    text-align: center;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.modal_addProveedor-inputs {
+    grid-area: body;
+    display: grid;
+    grid-template-areas:
+        'line1'
+        'line2'
+        'line3'
+        'line4'
+        'line5'
+        'line6'
+        'line7';
+    grid-template-rows: 14% 14% 14% 14% 14% 14% 15%;
+    border: 1px solid black;
+}
+
+.modal_addProveedor-inputs-line1 {
+    grid-area: line1;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblIdentificacion inputIdentificacion';
+    grid-template-columns: 16.5% 52%;
+}
+
+.modal_addProveedor-inputs-line1-label-identi {
+    background-color: rgb(206, 204, 204);
+    grid-area: lblIdentificacion;
+    margin: 2px;
+}
+
+#lblIdentificacionProvidersModalAdd {
+    color: #5457D5;
+    font-size: 15px;
+    padding-left: 6%;
+    padding-top: 3px;
+    text-align: start;
+}
+
+.modal_addProveedor-inputs-line1-input-identi {
+    grid-area: inputIdentificacion;
+    margin-left: 5px;
+}
+
+#txtIdentificacionProvidersModalAdd {
+    color: #5457D5;
+    font-size: 15px;
+    height: 80%;
+    margin-top: 2px;
+    text-align: start;
+    width: 100%;
+}
+
+.modal_addProveedor-inputs-line2 {
+    grid-area: line2;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'nombrePro cedulaPro';
+    grid-template-columns: 55% 45%;
+}
+
+.modal_addProveedor-inputs-line2-nombre {
+    grid-area: nombrePro;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblNombre inputNombre';
+    grid-template-columns: 30% 70%;
+}
+
+.modal_addProveedor-inputs-line2-label-nombre {
+    grid-area: lblNombre;
+    background-color: rgb(206, 204, 204);
+    margin: 2px;
+}
+
+#lblNombreProvidersModalAdd {
+    color: #5457D5;
+    font-size: 15px;
+    padding-left: 10%;
+    padding-top: 3px;
+    text-align: start;
+}
+
+.modal_addProveedor-inputs-line2-input-nombre {
+    grid-area: inputNombre;
+}
+
+#txtNombreProvidersModalAdd {
+    color: #5457D5;
+    font-size: 15px;
+    height: 80%;
+    margin-top: 2px;
+    text-align: start;
+    width: 95%;
+    padding-left: 5px;
+}
+
+.modal_addProveedor-inputs-line2-cedula {
+    grid-area: cedulaPro;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblCedula inputCedula';
+    grid-template-columns: 30% 70%;
+}
+
+.modal_addProveedor-inputs-line2-label-cedula {
+    grid-area: lblCedula;
+    background-color: rgb(206, 204, 204);
+    margin: 2px;
+}
+
+#lblCedulaProvidersModalAdd {
+    color: #5457D5;
+    font-size: 15px;
+    padding-left: 10%;
+    padding-top: 3px;
+    text-align: start;
+}
+
+.modal_addProveedor-inputs-line2-input-cedula {
+    grid-area: inputCedula;
+}
+
+#txtCedulaProvidersModalAdd {
+    color: #5457D5;
+    font-size: 15px;
+    height: 80%;
+    margin-top: 2px;
+    text-align: start;
+    width: 95%;
+    padding-left: 5px;
+}
+
+.modal_addProveedor-inputs-line3 {
+    grid-area: line3;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'telefonoPro faxPro';
+    grid-template-columns: 55% 45%;
+}
+
+.modal_addProveedor-inputs-line3-telefono {
+    grid-area: telefonoPro;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblTelefono inputTelefono';
+    grid-template-columns: 30% 70%;
+}
+
+.modal_addProveedor-inputs-line3-label-telefono {
+    grid-area: lblTelefono;
+    background-color: rgb(206, 204, 204);
+    margin: 2px;
+}
+
+#lblTelefonoProvidersModalAdd {
+    color: #5457D5;
+    font-size: 15px;
+    padding-left: 10%;
+    padding-top: 3px;
+    text-align: start;
+}
+
+.modal_addProveedor-inputs-line3-input-telefono {
+    grid-area: inputTelefono;
+}
+
+#txtTelefonoProvidersModalAdd {
+    color: #5457D5;
+    font-size: 15px;
+    height: 80%;
+    margin-top: 2px;
+    text-align: start;
+    width: 95%;
+    padding-left: 5px;
+}
+
+.modal_addProveedor-inputs-line3-fax {
+    grid-area: faxPro;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblFax inputFax';
+    grid-template-columns: 30% 70%;
+}
+
+.modal_addProveedor-inputs-line3-label-fax {
+    grid-area: lblFax;
+    background-color: rgb(206, 204, 204);
+    margin: 2px;
+}
+
+#lblFaxProvidersModalAdd {
+    color: #5457D5;
+    font-size: 15px;
+    padding-left: 10%;
+    padding-top: 3px;
+    text-align: start;
+}
+
+.modal_addProveedor-inputs-line3-input-fax {
+    grid-area: inputFax;
+}
+
+#txtFaxProvidersModalAdd {
+    color: #5457D5;
+    font-size: 15px;
+    height: 80%;
+    margin-top: 2px;
+    text-align: start;
+    width: 95%;
+    padding-left: 5px;
+}
+
+.modal_addProveedor-inputs-line4 {
+    grid-area: line4;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblEmail inputEmail';
+    grid-template-columns: 16.5% 52%;
+}
+
+.modal_addProveedor-inputs-line4-label-email {
+    grid-area: lblEmail;
+    background-color: rgb(206, 204, 204);
+    margin: 2px;
+}
+
+#lblEmailProvidersModalAdd {
+    color: #5457D5;
+    font-size: 15px;
+    padding-left: 10%;
+    padding-top: 3px;
+    text-align: start;
+}
+
+.modal_addProveedor-inputs-line4-input-email {
+    grid-area: inputEmail;
+    margin-left: 5px;
+}
+
+#txtEmailProvidersModalAdd {
+    color: #5457D5;
+    font-size: 15px;
+    height: 80%;
+    margin-top: 2px;
+    text-align: start;
+    width: 100%;
+    padding-left: 5px;
+}
+
+.modal_addProveedor-inputs-line5 {
+    grid-area: line5;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblDireccion inputDireccion';
+    grid-template-columns: 16.5% 52%;
+}
+
+.modal_addProveedor-inputs-line5-label-direccion {
+    grid-area: lblDireccion;
+    background-color: rgb(206, 204, 204);
+    margin: 2px;
+}
+
+#lblDireccionProvidersModalAdd {
+    color: #5457D5;
+    font-size: 15px;
+    padding-left: 10%;
+    padding-top: 3px;
+    text-align: start;
+}
+
+.modal_addProveedor-inputs-line5-input-direccion {
+    grid-area: inputDireccion;
+    margin-left: 5px;
+}
+
+#txtDireccionProvidersModalAdd {
+    color: #5457D5;
+    font-size: 15px;
+    height: 80%;
+    margin-top: 2px;
+    text-align: start;
+    width: 100%;
+    padding-left: 5px;
+}
+
+.modal_addProveedor-inputs-line6 {
+    grid-area: line6;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblObservacion inputObservacion';
+    grid-template-columns: 16.5% 52%;
+}
+
+.modal_addProveedor-inputs-line6-label-observacion {
+    grid-area: lblObservacion;
+    background-color: rgb(206, 204, 204);
+    margin: 2px;
+}
+
+#lblobservacionProvidersModalAdd {
+    color: #5457D5;
+    font-size: 15px;
+    padding-left: 10%;
+    padding-top: 3px;
+    text-align: start;
+}
+
+.modal_addProveedor-inputs-line6-input-observacion {
+    grid-area: inputObservacion;
+    margin-left: 5px;
+}
+
+#txtobservacionProvidersModalAdd {
+    color: #5457D5;
+    font-size: 15px;
+    height: 80%;
+    margin-top: 2px;
+    text-align: start;
+    width: 100%;
+    padding-left: 5px;
+}
+
+.modal_addProveedor-inputs-line7 {
+    grid-area: line7;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'contactoPro telefonoContPro';
+    grid-template-columns: 55% 45%;
+}
+
+.modal_addProveedor-inputs-line7-contacto {
+    grid-area: contactoPro;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblContacto inputContacto';
+    grid-template-columns: 30% 70%;
+}
+
+.modal_addProveedor-inputs-line7-label-contacto {
+    grid-area: lblContacto;
+    background-color: rgb(206, 204, 204);
+    margin: 2px;
+}
+
+#lblContactoProvidersModalAdd {
+    color: #5457D5;
+    font-size: 15px;
+    padding-left: 10%;
+    padding-top: 3px;
+    text-align: start;
+}
+
+.modal_addProveedor-inputs-line7-input-contacto {
+    grid-area: inputContacto;
+}
+
+#txtContactoProvidersModalAdd {
+    color: #5457D5;
+    font-size: 15px;
+    height: 80%;
+    margin-top: 2px;
+    text-align: start;
+    width: 95%;
+    padding-left: 5px;
+}
+
+.modal_addProveedor-inputs-line7-telefonoContacto {
+    grid-area: telefonoContPro;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblTelefonoContacto inputTelefonoContacto';
+    grid-template-columns: 30% 70%;
+}
+
+.modal_addProveedor-inputs-line7-label-telefonoContacto {
+    grid-area: lblTelefonoContacto;
+    background-color: rgb(206, 204, 204);
+    margin: 2px;
+}
+
+#lblTelefonoContactoProvidersModalAdd {
+    color: #5457D5;
+    font-size: 15px;
+    padding-left: 10%;
+    padding-top: 3px;
+    text-align: start;
+}
+
+.modal_addProveedor-inputs-line7-input-telefonoContacto {
+    grid-area: inputTelefonoContacto;
+}
+
+#txtTelefonoContactoProvidersModalAdd {
+    color: #5457D5;
+    font-size: 15px;
+    height: 80%;
+    margin-top: 2px;
+    text-align: start;
+    width: 95%;
+    padding-left: 5px;
+}
+
+.modal_addProveedor-buttons {
+    gap: 5px;
+    display: grid;
+    grid-area: btns;
+    margin-left: 50%;
+    padding-top: 2px;
+    grid-template-areas: 
+        'btnAdd btnClose';
+    grid-template-columns: 50% 50%;
+}
+
+.modal_addProveedor-buttons-add {
+    grid-area: btnAdd;
+}
+
+#btnAddProveedorModal {
+    font-size: 15px;
+    height: 70%;
+    margin-top: 5px;
+    text-align: center;
+    width: 95%;
+    background-color: $secundary;
+    color: white;
+
+    &:hover {
+        background-color: #3D59A9;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+.modal_addProveedor-buttons-cancel {
+    grid-area: btnClose;
+}
+
+#btnCancelProveedorModal {
+    font-size: 15px;
+    height: 70%;
+    margin-top: 5px;
+    text-align: center;
+    width: 95%;
+    background-color: rgb(234, 84, 84);
+    color: white;
+
+    &:hover {
+        color: white;
+        cursor: pointer;
+    }
+}

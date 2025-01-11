@@ -1,0 +1,137 @@
+.modal_FeaturesCategoria-main {
+    display: grid;
+    text-align: center;
+    grid-template-areas:
+        'title' 
+        'inputs';
+    grid-template-rows: 40px 140px;
+}
+
+.modal_FeaturesCategoria-title {
+    display: grid;
+    gap: 5px;
+    grid-area: title;
+    grid-template-areas: 
+        'text btnClose';
+    grid-template-columns: 95% 5%;
+}
+
+#lblTitleFeaturesCategoriaModal {
+    background-color: $primary;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    grid-area: text;
+    margin-bottom: 5px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    text-align: center;
+}
+
+#lblCloseFeaturesCategoriaModal {
+    background-color: red;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    grid-area: btnClose;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    text-align: center;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.modal_FeaturesCategoria-inputs {
+    display: grid;
+    grid-area: inputs;
+    grid-template-areas: 
+        'descripcion'
+        'btn';
+    grid-template-rows: 45% 55%;
+}
+
+.modal_FeaturesCategoria-inputs-descrip {
+    grid-area: descripcion;
+    display: grid;
+    grid-template-areas: 
+        'lblDescripcion'
+        'txtDescripcion';
+    grid-template-rows: 45% 55%;
+}
+
+.modal_FeaturesCategoria-inputs-descrip-title {
+    grid-area: lblDescripcion;
+}
+
+#lblDescripcionFeaturesCategoriaModal {
+    text-align: start;
+    padding-left: 5px;
+    padding-top: 3px;
+    font-size: 15px;
+}
+
+.modal_FeaturesCategoria-inputs-descrip-input {
+    grid-area: txtDescripcion;
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-right: 30px;
+}
+
+#txtDescripcionFeaturesCategoriaModal {
+    text-align: start;
+    padding-left: 3px;
+    font-size: 15px;
+    width: 100%;
+}
+
+.modal_FeaturesCategoria-inputs-btn {
+    grid-area: btn;
+    display: grid;
+    grid-template-areas: 
+        'btnAgregar btnCancelar';
+    grid-template-columns: 50% 50%;
+    padding-left: 50%;
+}
+
+.modal_FeaturesCategoria-inputs-btn-add {
+    grid-area: btnAgregar;
+}
+
+#btnAgregarFeaturesCategoriaModal {
+    background-color: $secundary;
+    color: white;
+    margin-top: 2px;
+    height: 40%;
+    margin-right: 5px;
+    width: 80%;
+    border-radius: 5%;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $primary;
+    }
+}
+
+.modal_FeaturesCategoria-inputs-btn-cancelar {
+    grid-area: btnCancelar;
+    padding-right: 8px;
+}
+
+#btnCancelarFeaturesCategoriaModal {
+    background-color: rgb(240, 69, 69);
+    color: white;
+    margin-top: 2px;
+    height: 40%;
+    margin-right: 5px;
+    width: 75%;
+    border-radius: 5%;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $primary;
+    }
+}

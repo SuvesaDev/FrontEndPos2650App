@@ -1,0 +1,164 @@
+.bank_icons-main {
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'btnRegistrar btnCerrar user';
+    grid-template-columns: 8% 8% 45%;
+}
+
+.bank_icons-registrar {
+    display: grid;
+    grid-area: btnRegistrar;
+    height: 100%;
+    grid-template-areas: 
+        'iconReg'
+        'lblReg';
+    grid-template-rows: 60% 40%;
+}
+
+.bank_icons-registrar-icon {
+    color: #F68A1D;
+    grid-area: iconReg;
+    padding-top: 4px;
+}
+
+.bank_icons-registrar-icon-disable {
+    color: gray;
+    grid-area: iconReg;
+    padding-top: 4px;
+}
+
+.iconRegistrarBank {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+.iconRegistrarBank-disable {
+    cursor: not-allowed;
+    height: 100%;
+    width: 25%;
+}
+
+#lblRegistrarBank {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblReg;
+    text-align: center;
+}
+
+.bank_icons-cerrar {
+    display: grid;
+    grid-area: btnCerrar;
+    height: 100%;
+    grid-template-areas: 
+        'iconCer'
+        'lblCer';
+    grid-template-rows: 60% 40%;
+}
+
+.bank_icons-cerrar-icon {
+    color: #F68A1D;
+    grid-area: iconCer;
+    padding-top: 4px;
+}
+
+#iconCerrarBank {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblCerrarBank {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblCer;
+    text-align: center;
+}
+
+.bank_icons-user {
+    grid-area: user;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'inputs nameUser';
+    grid-template-columns: 45% 55%;
+}
+
+.bank_icons-user-inputs {
+    grid-area: inputs;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'label'
+        'campos';
+    grid-template-rows: 45% 55%;
+}
+
+.bank_icons-user-inputs-label {
+    grid-area: label;
+    padding-top: 5px;
+}
+
+#lblClaveInternaBankIcons {
+    text-align: start;
+    padding-left: 5px;
+    font-size: 15px;
+}
+
+.bank_icons-user-inputs-campos {
+    grid-area: campos;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'txt icon';
+    grid-template-columns: 90% 10%;
+}
+
+.bank_icons-user-inputs-campos-input {
+    grid-area: txt;
+}
+
+#txtClaveInternaBankIcons {
+    width: 95%;
+    text-align: start;
+    font-size: 15px;
+    padding-left: 5px;
+}
+
+.bank_icons-user-inputs-campos-icon {
+    grid-area: icon;
+}
+
+.iconEyeClaveInternaBankIcons {
+    width: 100%;
+    height: 70%;
+    color: #F68A1D;
+
+    &:hover {
+        cursor: pointer;
+        color: $primary;
+    }
+}
+
+.iconEyeClaveInternaBankIcons-disable {
+    width: 100%;
+    height: 70%;
+    color: gray;
+
+    &:hover {
+        cursor: not-allowed;
+    }
+}
+
+.bank_icons-user-nameUser {
+    grid-area: nameUser;
+    padding-top: 30px;
+}
+
+#lblNameUserBankIcons {
+    text-align: start;
+    padding-left: 5px;
+    font-size: 15px;
+    font-weight: 600;
+}

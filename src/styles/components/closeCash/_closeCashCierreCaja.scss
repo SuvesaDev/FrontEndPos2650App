@@ -1,0 +1,427 @@
+.closeCash_cierreCaja-main {
+    border: 1px solid #C1C4B9;
+    display: grid;
+    height: 95%;
+    margin-left: 5px;
+    margin-right: 25px;
+    margin-top: 10px;
+    grid-template-areas: 
+        'title'
+        'inputs';
+    grid-template-rows: 8% 92%;
+}
+
+.closeCash_cierreCaja-title {
+    border-bottom: 1px solid #C1C4B9;
+    color: #5691FE;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: title;
+    padding-left: 15px;
+    text-align: start;
+}
+
+.closeCash_cierreCaja-inputs {
+    display: grid;
+    grid-area: inputs;
+    height: 100%;
+    grid-template-areas: 
+        'left right';
+    grid-template-columns: 50% 50%;
+}
+
+.closeCash_cierreCaja-inputs-left {
+    display: grid;
+    grid-area: left;
+    height: 100%;
+    grid-template-areas: 
+        'fondo'
+        'abonos'
+        'devoluciones'
+        'anulaciones'
+        'totalSistema'
+        'diferencialCaja';
+    grid-template-rows: 16.4% 16.4% 16.4% 16.4% 16.4% 17%;
+}
+
+.closeCash_cierreCaja-inputs-left-Fondo {
+    display: grid;
+    grid-area: fondo;
+    height: 100%;
+    grid-template-areas: 
+        'titleFondo'
+        'inputFondo';
+    grid-template-rows: 40% 60%;
+}
+
+#lblFondoCash {
+    color: #5691FE;
+    font-size: 13px;
+    grid-area: titleFondo;
+    padding-top: 2px;
+    text-align: center;
+}
+
+#txtFondoCash {
+    color: #5691FE;
+    font-size: 13px;
+    grid-area: inputFondo;
+    height: 75%;
+    margin-left: 20%;
+    margin-top: 4px;
+    text-align: end;
+    width: 60%;
+}
+
+.closeCash_cierreCaja-inputs-left-abonos {
+    display: grid;
+    grid-area: abonos;
+    height: 100%;
+    grid-template-areas: 
+        'titleAbonos'
+        'inputAbonos';
+    grid-template-rows: 40% 60%;
+}
+
+#lblAbonosCash {
+    color: #5691FE;
+    font-size: 13px;
+    grid-area: titleAbonos;
+    padding-top: 2px;
+    text-align: center;
+}
+
+#txtAbonosCash {
+    color: #5691FE;
+    font-size: 13px;
+    grid-area: inputAbonos;
+    height: 75%;
+    margin-left: 20%;
+    margin-top: 4px;
+    text-align: end;
+    width: 60%;
+}
+
+.closeCash_cierreCaja-inputs-left-devoluciones {
+    display: grid;
+    grid-area: devoluciones;
+    height: 100%;
+    grid-template-areas: 
+        'titleDevoluciones'
+        'inputDevoluciones';
+    grid-template-rows: 40% 60%;
+}
+
+#lblDevolucionesCash {
+    color: #5691FE;
+    font-size: 13px;
+    grid-area: titleDevoluciones;
+    padding-top: 2px;
+    text-align: center;
+}
+
+#txtDevolucionesCash {
+    color: #5691FE;
+    font-size: 13px;
+    grid-area: inputDevoluciones;
+    height: 75%;
+    margin-left: 20%;
+    margin-top: 4px;
+    text-align: end;
+    width: 60%;
+}
+
+.closeCash_cierreCaja-inputs-left-anulaciones {
+    display: grid;
+    grid-area: anulaciones;
+    height: 100%;
+    grid-template-areas: 
+        'titleAnulaciones'
+        'inputAnulaciones';
+    grid-template-rows: 40% 60%;
+}
+
+#lblAnulacionesCash {
+    color: #5691FE;
+    font-size: 13px;
+    grid-area: titleAnulaciones;
+    padding-top: 2px;
+    text-align: center;
+}
+
+#txtAnulacionesCash {
+    color: red;
+    font-size: 13px;
+    grid-area: inputAnulaciones;
+    height: 75%;
+    margin-left: 20%;
+    margin-top: 4px;
+    text-align: end;
+    width: 60%;
+}
+
+.closeCash_cierreCaja-inputs-left-totalSistema {
+    display: grid;
+    grid-area: totalSistema;
+    height: 100%;
+    grid-template-areas: 
+        'titleTotalSistema'
+        'inputTotalSistema';
+    grid-template-rows: 40% 60%;
+}
+
+#lblTotalSistemaCash {
+    color: #5691FE;
+    font-size: 13px;
+    font-weight: bold;
+    grid-area: titleTotalSistema;
+    padding-top: 2px;
+    text-align: center;
+}
+
+#txtTotalSistemaCash {
+    color: #5691FE;
+    font-size: 13px;
+    grid-area: inputTotalSistema;
+    height: 75%;
+    margin-left: 20%;
+    margin-top: 4px;
+    text-align: end;
+    width: 60%;
+}
+
+.closeCash_cierreCaja-inputs-left-diferencialCaja {
+    display: grid;
+    grid-area: diferencialCaja;
+    height: 100%;
+    grid-template-areas: 
+        'titleDiferencialCaja'
+        'inputDiferencialCaja';
+    grid-template-rows: 40% 60%;
+}
+
+#lblDiferencialCash {
+    color: #5691FE;
+    font-size: 13px;
+    font-weight: bold;
+    grid-area: titleDiferencialCaja;
+    padding-top: 2px;
+    text-align: center;
+}
+
+#btnDiferencialCash {
+    color: #5691FE;
+    cursor: pointer;
+    font-size: 13px;
+    grid-area: btnDiferencialCaja;
+    margin-bottom: 1px;
+    margin-left: 12px;
+    padding-top: 1px;
+    width: 50%;
+}
+
+#txtDiferencialCash {
+    color: #5691FE;
+    font-size: 13px;
+    grid-area: inputDiferencialCaja;
+    height: 85%;
+    margin-left: 20%;
+    margin-top: 2px;
+    text-align: end;
+    width: 60%;
+}
+
+.closeCash_cierreCaja-inputs-right {
+    display: grid;
+    grid-area: right;
+    height: 100%;
+    grid-template-areas: 
+        'ventasContado'
+        'ventasCredito'
+        'entradasSalidas'
+        'totalCajero'
+        'montoDepositar';
+    grid-template-rows: 16.4% 16.4% 33.4% 16.4% 16.4%;
+}
+
+.closeCash_cierreCaja-inputs-right-ventasContado {
+    display: grid;
+    grid-area: ventasContado;
+    height: 100%;
+    grid-template-areas: 
+        'titlesVentasContado'
+        'inputVentasContado';
+    grid-template-rows: 40% 60%;
+}
+
+#lblVentasContadoCash {
+    color: #5691FE;
+    font-size: 13px;
+    grid-area: titlesVentasContado;
+    padding-top: 2px;
+    text-align: center;
+}
+
+#txtVentasContadoCash {
+    color: #5691FE;
+    font-size: 13px;
+    grid-area: inputVentasContado;
+    height: 75%;
+    margin-left: 20%;
+    margin-top: 4px;
+    text-align: end;
+    width: 60%;
+}
+
+.closeCash_cierreCaja-inputs-right-ventasCredito {
+    display: grid;
+    grid-area: ventasCredito;
+    grid-template-areas: 
+        'titlesVentasCredito'
+        'inputVentasCredito';
+    grid-template-rows: 40% 60%;
+}
+
+#lblVentasCreditoCash {
+    color: #5691FE;
+    font-size: 13px;
+    grid-area: titlesVentasCredito;
+    padding-top: 2px;
+    text-align: center;
+}
+
+#txtVentasCreditoCash {
+    color: #5691FE;
+    font-size: 13px;
+    grid-area: inputVentasCredito;
+    height: 75%;
+    margin-left: 20%;
+    margin-top: 4px;
+    text-align: end;
+    width: 60%;
+}
+
+.closeCash_cierreCaja-inputs-right-entradasSalidas {
+    display: grid;
+    grid-area: entradasSalidas;
+    height: 50%;
+    grid-template-areas: 
+        'entradas salidas';
+    grid-template-columns: 50% 50%;
+}
+
+.closeCash_cierreCaja-inputs-right-entradas {
+    display: grid;
+    grid-area: entradas;
+    grid-template-areas: 
+        'titlesEntradas'
+        'inputEntradas';
+    grid-template-rows: 40% 60%;
+}
+
+#lblEntradasCash {
+    color: #5691FE;
+    font-size: 13px;
+    grid-area: titlesEntradas;
+    padding-right: 30px;
+    padding-top: 2px;
+    text-align: end;
+}
+
+#txtEntradasCash {
+    color: #5691FE;
+    font-size: 13px;
+    grid-area: inputEntradas;
+    height: 75%;
+    margin-left: 40%;
+    margin-top: 4px;
+    text-align: end;
+    width: 55%;
+}
+
+.closeCash_cierreCaja-inputs-right-salidas {
+    display: grid;
+    grid-area: salidas;
+    grid-template-areas: 
+        'titlesSalidas'
+        'inputSalidas';
+    grid-template-rows: 40% 60%;
+}
+
+#lblSalidasCash {
+    color: #5691FE;
+    font-size: 13px;
+    grid-area: titlesSalidas;
+    padding-left: 30px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+#txtSalidasCash {
+    color: #5691FE;
+    font-size: 13px;
+    grid-area: inputSalidas;
+    height: 75%;
+    margin-left: 5%;
+    margin-top: 4px;
+    text-align: end;
+    width: 55%;
+}
+
+.closeCash_cierreCaja-inputs-right-totalCajero {
+    display: grid;
+    grid-area: totalCajero;
+    grid-template-areas: 
+        'titlesTotalCajero'
+        'inputTotalCajero';
+    grid-template-rows: 40% 60%;
+}
+
+#lblTotalCajeroCash {
+    color: #5691FE;
+    font-size: 13px;
+    font-weight: bold;
+    grid-area: titlesTotalCajero;
+    padding-top: 2px;
+    text-align: center;
+}
+
+#txtTotalCajeroCash {
+    color: #5691FE;
+    font-size: 13px;
+    grid-area: inputTotalCajero;
+    height: 75%;
+    margin-left: 20%;
+    margin-top: 4px;
+    text-align: end;
+    width: 60%;
+}
+
+.closeCash_cierreCaja-inputs-right-montoDepositar {
+    display: grid;
+    grid-area: montoDepositar;
+    grid-template-areas: 
+        'titlesMontoDepositar'
+        'inputMontoDepositar';
+    grid-template-rows: 40% 60%;
+}
+
+#lblMontoDepositarCash {
+    color: #5691FE;
+    font-size: 13px;
+    font-weight: bold;
+    grid-area: titlesMontoDepositar;
+    padding-top: 2px;
+    text-align: center;
+}
+
+#txtMontoDepositarCash {
+    color: #5691FE;
+    font-size: 13px;
+    grid-area: inputMontoDepositar;
+    height: 75%;
+    margin-left: 20%;
+    margin-top: 4px;
+    text-align: end;
+    width: 60%;
+}

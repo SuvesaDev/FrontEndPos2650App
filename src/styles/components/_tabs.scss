@@ -1,0 +1,48 @@
+.Tabs_li {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.tab {
+    background: transparent;
+    border-left: 1px solid $secundary;
+    border-top: 1px solid $secundary;
+    border-bottom: 1px solid $secundary;
+    border-right: none;
+    color: $secundary;
+    border-top-left-radius: 5px;
+    cursor: pointer;
+    padding: 5px 15px;
+}
+
+.tab.active {
+    background: $primary;
+    border-top-left-radius: 5px;
+    border: 1px solid #ddd;
+    color: #F2F4F4;
+}
+
+.tab-delete {
+    background: transparent;
+    border-left: 1px solid $primary;
+    border-right: 1px solid $primary;
+    border-top: 1px solid $primary;
+    border-bottom: 1px solid $primary;
+    color: $primary;
+    cursor: pointer;
+    padding: 5px 15px;
+
+    &:hover {
+        background: $secundary;
+        color: white;
+    }
+}
+
+.tab-delete.active {
+    background: $secundary;
+    border-top-right-radius: 15%;
+    border: none;
+    color: #F4F7F7;
+    cursor: pointer;
+    padding: 5px 15px;
+}

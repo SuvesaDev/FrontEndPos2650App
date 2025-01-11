@@ -1,0 +1,385 @@
+.modal_precioImportarFactura-main {
+    display: grid;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+    grid-template-areas:
+        'title' 
+        'body'
+        'footer';
+    grid-template-rows: 40px 190px 30px;
+}
+
+.modal_precioImportarFactura-title {
+    display: grid;
+    gap: 5px;
+    grid-area: title;
+    grid-template-areas: 
+        'text btnClose';
+    grid-template-columns: 95% 5%;
+}
+
+#lblTitlePrecioImportarFModal {
+    background-color: $primary;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    grid-area: text;
+    margin-bottom: 5px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    text-align: center;
+}
+
+#lblClosePrecioImportarFModal {
+    background-color: red;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    grid-area: btnClose;
+    margin-bottom: 5px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    text-align: center;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.modal_precioImportarFactura-body {
+    grid-area: body;
+    display: grid;
+    grid-template-areas: 
+        'title'
+        'inputs'
+        'table';
+    grid-template-rows: 10% 25% 65%;
+    border: 1px solid black;
+}
+
+.modal_precioImportarFactura-body-title {
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblTitle txtTitle';
+    grid-template-columns: 20% 20%;
+}
+
+.modal_precioImportarFactura-body-title-label {
+    grid-area: lblTitle;
+}
+
+#lblNuevoCostoModalPrecioImportarFactura {
+    font-size: 15px;
+    padding-top: 3px;
+    text-align: start;
+    padding-left: 15px;
+}
+
+.modal_precioImportarFactura-body-title-input {
+    grid-area: txtTitle;
+    padding-top: 2px;
+}
+
+#txtNuevoCostoModalPrecioImportarFactura {
+    font-size: 15px;
+    text-align: center;
+    width: 80%;
+
+}
+
+.modal_precioImportarFactura-body-inputs {
+    grid-area: inputs;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'tipo utilidad precio precioIV btn';
+    grid-template-columns: 20% 20% 20% 20% 20%;
+}
+
+.modal_precioImportarFactura-body-inputs-tipo {
+    grid-area: tipo;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'labelTipo'
+        'inputTipo';
+    grid-template-rows: 40% 60%;
+}
+
+.modal_precioImportarFactura-body-inputs-tipo-label {
+    grid-area: labelTipo;
+}
+
+#lblTipoModalPrecioImportarFactura {
+    font-size: 15px;
+    padding-top: 5px;
+    text-align: start;
+    padding-left: 15px;
+}
+
+.modal_precioImportarFactura-body-inputs-tipo-input {
+    grid-area: inputTipo;
+    padding-top: 4px;
+}
+
+#cboTipoModalPrecioImportarFactura {
+    font-size: 15px;
+    text-align: center;
+    width: 80%;
+}
+
+.modal_precioImportarFactura-body-inputs-utilidad {
+    grid-area: utilidad;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'labelUtilidad'
+        'inputUtilidad';
+    grid-template-rows: 40% 60%;
+}
+
+.modal_precioImportarFactura-body-inputs-utilidad-label {
+    grid-area: labelUtilidad;
+}
+
+#lblUtilidadModalPrecioImportarFactura {
+    font-size: 15px;
+    padding-top: 5px;
+    text-align: start;
+    padding-left: 15px;
+}
+
+.modal_precioImportarFactura-body-inputs-utilidad-input {
+    grid-area: inputUtilidad;
+    padding-top: 4px;
+}
+
+#txtUtilidadModalPrecioImportarFactura {
+    font-size: 15px;
+    text-align: start;
+    width: 80%;
+    padding-left: 5px;
+}
+
+.modal_precioImportarFactura-body-inputs-precio {
+    grid-area: precio;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'labelPrecio'
+        'inputPrecio';
+    grid-template-rows: 40% 60%;
+}
+
+.modal_precioImportarFactura-body-inputs-precio-label {
+    grid-area: labelPrecio;
+}
+
+#lblPrecioModalPrecioImportarFactura {
+    font-size: 15px;
+    padding-top: 5px;
+    text-align: start;
+    padding-left: 15px;
+}
+
+.modal_precioImportarFactura-body-inputs-precio-input {
+    grid-area: inputPrecio;
+    padding-top: 4px;
+}
+
+#txtPrecioModalPrecioImportarFactura {
+    font-size: 15px;
+    text-align: start;
+    width: 80%;
+    padding-left: 5px;
+}
+
+.modal_precioImportarFactura-body-inputs-precioIV {
+    grid-area: precioIV;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'labelPrecioIV'
+        'inputPrecioIV';
+    grid-template-rows: 40% 60%;
+}
+
+.modal_precioImportarFactura-body-inputs-precioIV-label {
+    grid-area: labelPrecioIV;
+}
+
+#lblPrecioIVModalPrecioImportarFactura {
+    font-size: 15px;
+    padding-top: 5px;
+    text-align: start;
+    padding-left: 15px;
+}
+
+.modal_precioImportarFactura-body-inputs-precioIV-input {
+    grid-area: inputPrecioIV;
+    padding-top: 4px;
+}
+
+#txtPrecioIVModalPrecioImportarFactura {
+    font-size: 15px;
+    text-align: start;
+    width: 80%;
+    padding-left: 5px;
+}
+
+.modal_precioImportarFactura-body-inputs-btn {
+    grid-area: btn;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'add delete';
+    grid-template-columns: 70% 30%;
+}
+
+.modal_precioImportarFactura-body-inputs-btn-add {
+    grid-area: add;
+}
+
+.btnAddModalPrecioImportarFactura {
+    color: #4184E8;
+    font-size: 15px;
+    height: 50%;
+    width: 80%;
+    margin-top: 20px;
+    text-align: center;
+
+    &:hover {
+        cursor: pointer;
+        background-color: #4184E8;
+        color: white;
+        border: none;
+    }
+}
+
+.btnAddModalPrecioImportarFactura-disable {
+    color: gray;
+    font-size: 15px;
+    height: 50%;
+    width: 80%;
+    margin-top: 20px;
+    text-align: center;
+    cursor: not-allowed;
+}
+
+.modal_precioImportarFactura-body-inputs-btn-delete {
+    grid-area: delete;
+    margin-top: 10px;
+}
+
+.iconDeleteModalPrecioImportarFactura {
+    cursor: pointer;
+    height: 100%;
+    width: 50%;
+    color: red;
+}
+
+.iconDeleteModalPrecioImportarFactura-Disable {
+    cursor: not-allowed;
+    height: 100%;
+    width: 50%;
+    color: gray;
+}
+
+.modal_precioImportarFactura-body-table {
+    grid-area: table;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.modal_precioImportarFactura-body-table-main {
+    // background-color: red;
+    width: 95%;
+    height: 100%;
+    margin-left: 10px;
+    overflow-y: scroll;
+    scrollbar-color: rebeccapurple green;
+    scrollbar-width: thin;
+    border: 1px solid black;
+}
+
+.modal_precioImportarFactura-body-table-header {
+    background-color: #ACA9A9;
+    text-align: start;
+    padding-left: 5px;
+    width: 140px;
+}
+
+.modal_precioImportarFactura-body-table-body-row {
+    text-align: start;
+    font-style: normal;
+
+    &:hover {
+        cursor: pointer;
+        background-color: #ACA9A9;
+    }
+}
+
+.inventory_body-precio-venta-table-body-row {
+    &:hover {
+        cursor: pointer;
+        background-color: #ACA9A9;
+    }
+}
+
+.modal_precioImportarFactura-body-table-body-row-disable {
+    &:hover {
+        cursor: not-allowed;
+    }
+}
+
+.modal_precioImportarFactura-body-table-body-cell {
+    padding-left: 5px;
+    border-bottom: 1px solid #ACA9A9;
+    // cursor: pointer;
+}
+
+.modal_precioImportarFactura-footer {
+    grid-area: footer;
+    display: grid;
+    margin-left: 60%;
+    padding-top: 2px;
+    grid-template-areas:
+        'aceptar cancelar';
+    grid-template-columns: 50% 50%;
+}
+
+.modal_precioImportarFactura-footer-aceptar {
+    grid-area: aceptar;
+}
+
+#btnAceptarModalPrecioImportarFactura {
+    background-color: $secundary;
+    border: none;
+    color: white;
+    font-size: 15px;
+    height: 90%;
+    width: 90%;
+
+    &:hover {
+        cursor: pointer;
+    }	
+}
+
+.modal_precioImportarFactura-footer-Cancelar {
+    grid-area: cancelar;
+}
+
+#btnCancelarModalPrecioImportarFactura {
+    background-color: #F54B5A;
+    border: none;
+    color: white;
+    font-size: 15px;
+    height: 90%;
+    width: 90%;
+
+    &:hover {
+        cursor: pointer;
+    }	
+}

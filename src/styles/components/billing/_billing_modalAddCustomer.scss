@@ -1,0 +1,259 @@
+.modal_addCustomer-main {
+    display: grid;
+    text-align: center;
+    grid-template-areas:
+        'title' 
+        'first'
+        'second'
+        'third'
+        'btn';
+    grid-template-rows: 35px 60px 60px 60px 40px;
+}
+
+.modal_addCustomer-title {
+    display: grid;
+    gap: 5px;
+    grid-area: title;
+    grid-template-areas: 
+        'text btnClose';
+    grid-template-columns: 90% 10%;
+}
+
+#lblTitleAddCustomersModal {
+    background-color: $primary;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    grid-area: text;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    padding-bottom: 2px;
+    padding-top: 5px;
+    text-align: center;
+}
+
+#lblCloseAddCustomers {
+    background-color: red;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    grid-area: btnClose;
+    margin-bottom: 5px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    width: 90%;
+    text-align: center;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.modal_addCustomer-first {
+    display: grid;
+    grid-area: first;
+    padding-left: 5px;
+    grid-template-areas: 
+        'tipo cedula nombre';
+    grid-template-columns: 20% 25% 55%;
+}
+
+.modal_addCustomer-first-tipo {
+    display: grid;
+    grid-area: tipo;
+    text-align: center;
+    grid-template-areas: 
+        'lblTipo'
+        'cboTipo';
+    grid-template-rows: 40% 60%;
+}
+
+#lbltipoModalAddCustomer {
+    color: black;
+    font-size: 15px;
+    grid-area: lblTipo;
+    padding-left: 8px;
+    padding-top: 3px;
+    text-align: start;
+}
+
+#cbotipoModalAddCustomer {
+    border: 1px solid black;
+    font-size: 15px;
+    grid-area: cboTipo;
+    height: 60%;
+    margin-left: 10px;
+    text-align: start;
+    width: 90%;
+}
+
+.modal_addCustomer-first-cedula {
+    display: grid;
+    grid-area: cedula;
+    text-align: center;
+    grid-template-areas: 
+        'lblCdeula'
+        'inputCdeula';
+    grid-template-rows: 40% 60%;
+}
+
+#lblcedulaModalAddCustomer {
+    color: black;
+    font-size: 15px;
+    grid-area: lblCdeula;
+    padding-left: 8px;
+    padding-top: 3px;
+    text-align: start;
+}
+
+#txtcedulaModalAddCustomer {
+    border: 1px solid black;
+    font-size: 15px;
+    grid-area: inputCdeula;
+    height: 60%;
+    margin-left: 10px;
+    text-align: start;
+    width: 90%;
+}
+
+.modal_addCustomer-first-nombre {
+    display: grid;
+    grid-area: nombre;
+    text-align: center;
+    grid-template-areas: 
+        'lblNombre'
+        'inputNombre';
+    grid-template-rows: 40% 60%;
+}
+
+#lblNombreModalAddCustomer {
+    color: black;
+    font-size: 15px;
+    grid-area: lblNombre;
+    padding-left: 8px;
+    padding-top: 3px;
+    text-align: start;
+}
+
+#txtNombreModalAddCustomer {
+    border: 1px solid black;
+    font-size: 15px;
+    grid-area: inputNombre;
+    height: 60%;
+    margin-left: 10px;
+    text-align: start;
+    width: 90%;
+}
+
+.modal_addCustomer-second {
+    display: grid;
+    grid-area: second;
+    padding-left: 5px;
+    grid-template-areas: 
+        'telefono email';
+    grid-template-columns: 25% 75%;
+}
+
+.modal_addCustomer-second-telefono {
+    display: grid;
+    grid-area: telefono;
+    grid-template-areas: 
+        'lblTelefono'
+        'inputTelefono';
+    grid-template-rows: 40% 60%;
+}
+
+#lbltelefonoModalAddCustomer {
+    color: black;
+    font-size: 15px;
+    grid-area: lblTelefono;
+    padding-left: 8px;
+    padding-top: 3px;
+    text-align: start;
+}
+
+#txttelefonoModalAddCustomer {
+    border: 1px solid black;
+    font-size: 15px;
+    grid-area: inputTelefono;
+    height: 60%;
+    margin-left: 10px;
+    text-align: start;
+    width: 90%;
+}
+
+.modal_addCustomer-second-email {
+    display: grid;
+    grid-area: email;
+    grid-template-areas: 
+        'lblEmail'
+        'inputEmail';
+    grid-template-rows: 40% 60%;
+}
+
+#lblemailModalAddCustomer {
+    color: black;
+    font-size: 15px;
+    grid-area: lblEmail;
+    padding-left: 8px;
+    padding-top: 3px;
+    text-align: start;
+}
+
+#txtemailModalAddCustomer {
+    border: 1px solid black;
+    font-size: 15px;
+    grid-area: inputEmail;
+    height: 60%;
+    margin-left: 10px;
+    text-align: start;
+    width: 93%;
+}
+
+.modal_addCustomer-third {
+    display: grid;
+    grid-area: third;
+    padding-left: 5px;
+    grid-template-areas: 
+        'lblDireccion'
+        'inputDireccion';
+    grid-template-rows: 40% 60%;
+}
+
+#lbldireccionModalAddCustomer {
+    color: black;
+    font-size: 15px;
+    grid-area: lblDireccion;
+    padding-left: 10px;
+    padding-top: 3px;
+    text-align: start;
+}
+
+#txtdireccionModalAddCustomer {
+    border: 1px solid black;
+    font-size: 15px;
+    grid-area: inputDireccion;
+    height: 60%;
+    margin-left: 10px;
+    text-align: start;
+    width: 95%;
+}
+
+.modal_addCustomer-btn {
+    grid-area: btn;
+    margin-left: 80%;
+    margin-right: 20px;
+}
+
+#btnaddCustomer {
+    background-color: $secundary;
+    border: none;
+    color: white;
+    height: 70%;
+    margin-left: 25px;
+    width: 70%;
+
+    &:hover {
+        cursor: pointer;
+    }	
+}

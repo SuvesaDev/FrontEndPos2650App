@@ -1,0 +1,207 @@
+.collect_table-main {
+    border: 1px solid black;
+    display: grid;
+    height: 95%;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 5px;
+    grid-template-areas: 
+        'table'
+        'observaciones';
+    grid-template-rows: 85% 15%;
+}
+
+.collect_table-table {
+    grid-area: table;
+}
+
+.collect_table-table-main {
+    width: 100%;
+}
+
+.collect_table-header-factura {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.collect_table-header-fecha {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.collect_table-header-montoFactura {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.collect_table-header-saldoAnt {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.collect_table-header-intereses {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.collect_table-header-abono {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.collect_table-header-saldoAct {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.collect_table-factura {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.collect_table-fecha {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.collect_table-montoFactura {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.collect_table-saldoAnt {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.collect_table-intereses {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.collect_table-abono {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.collect_table-saldoAct {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.collect_table-observaciones {
+    border-top: 1px solid black;
+    display: grid;
+    grid-area: observaciones;
+    grid-template-areas: 
+        'obser cheque';
+    grid-template-columns: 65% 35%;
+}
+
+.collect_table-observaciones-obs {
+    display: grid;
+    grid-area: obser;
+    grid-template-areas: 
+        'lblobservaciones txtobservaciones';
+    grid-template-columns: 15% 85%;
+}
+
+#lblObservacionesTable {
+    color: #5962E1;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblobservaciones;
+    padding-top: 5px;
+}
+
+#txtObservacionesTable {
+    font-size: 15px;
+    grid-area: txtobservaciones;
+    height: 70%;
+    margin-right: 25px;
+    margin-top: 4px;
+    text-align: start;
+}
+
+.collect_table-observaciones-cheque {
+    display: grid;
+    grid-area: cheque;
+    grid-template-areas: 
+        'check input cbo';
+    grid-template-columns: 20% 45% 33%;
+}
+
+.collect_table-observaciones-cheque-check {
+    display: grid;
+    grid-area: check;
+    height: 100%;
+    padding-top: 5px;
+    grid-template-areas: 
+        'inputCheck lblCheck';
+    grid-template-columns: 10% 80%;
+}
+
+.collect_table-observaciones-cheque-check-input {
+    grid-area: inputCheck;
+}
+
+#lblChequeCollect {
+    font-size: 15px;
+    grid-area: lblCheck;
+}
+
+.collect_table-observaciones-cheque-input {
+    grid-area: input;
+    margin-right: 5px;
+    margin-top: 3px;
+}
+
+#txtChequeCollect {
+    color: black;
+    font-size: 15px;
+    text-align: start;
+    width: 85%;
+}
+
+.collect_table-observaciones-cheque-cbo {
+    grid-area: cbo;
+    margin-right: 5px;
+    margin-top: 3px;
+}
+
+#cboChequeCollect {
+    color: black;
+    font-size: 15px;
+    text-align: start;
+    width: 85%;
+}
+
+

@@ -1,0 +1,391 @@
+.providers_table-main {
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'titleTable'
+        'inputsTable'
+        'bodyTable';
+    grid-template-rows: 10% 20% 70%;
+}
+
+.providers_table-title {
+    background-color: #3D62DB;
+    grid-area: titleTable;
+}
+
+#lblTitleProviders {
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    padding-top: 2px;
+    text-align: center;
+}
+
+.providers_table-inputs {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    margin-left: 5%;
+    margin-right: 5%;
+    grid-area: inputsTable;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'tipo banco cuenta moneda btn';
+    grid-template-columns: 15% 25% 30% 15% 10%;
+}
+
+.providers_table-inputs-tipo {
+    grid-area: tipo;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblTipo'
+        'txtTipo';
+    grid-template-rows: 45% 55%;
+}
+
+.providers_table-inputs-tipo-label {
+    grid-area: lblTipo;
+}
+
+#lblTipoProvidersTable {
+    font-size: 15px;
+    text-align: start;
+    padding-left: 15px;
+}
+
+.providers_table-inputs-tipo-input {
+    grid-area: txtTipo;
+    padding-top: 2px;
+}
+
+.txtTipoProvidersTable {
+    font-size: 14px;
+    text-align: start;
+    padding-left: 2px;
+}
+
+.providers_table-inputs-banco {
+    grid-area: banco;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblBanco'
+        'txtBanco';
+    grid-template-rows: 45% 55%;
+}
+
+.providers_table-inputs-banco-label {
+    grid-area: lblBanco;
+}
+
+#lblBancoProvidersTable {
+    font-size: 15px;
+    text-align: start;
+    padding-left: 15px;
+}
+
+.providers_table-inputs-banco-input {
+    grid-area: txtBanco;
+    padding-top: 2px;
+}
+
+.txtBancoProvidersTable {
+    font-size: 14px;
+    text-align: start;
+    padding-left: 2px;
+    width: 90%;
+    margin-left: 15px;
+    margin-right: 80px;
+}
+
+.providers_table-inputs-cuenta {
+    grid-area: cuenta;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblCuenta'
+        'txtCuenta';
+    grid-template-rows: 45% 55%;
+}
+
+.providers_table-inputs-cuenta-label {
+    grid-area: lblCuenta;
+}
+
+#lblCuentaProvidersTable {
+    font-size: 15px;
+    text-align: start;
+    padding-left: 15px;
+}
+
+.providers_table-inputs-cuenta-input {
+    grid-area: txtCuenta;
+    padding-top: 2px;
+}
+
+.txtCuentaProvidersTable {
+    font-size: 14px;
+    text-align: start;
+    padding-left: 2px;
+    width: 90%;
+    margin-left: 15px;
+    margin-right: 80px;
+}
+
+.providers_table-inputs-moneda {
+    grid-area: moneda;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblMoneda'
+        'txtMoneda';
+    grid-template-rows: 45% 55%;
+}
+
+.providers_table-inputs-moneda-label {
+    grid-area: lblMoneda;
+}
+
+#lblMonedaProvidersTable {
+    font-size: 15px;
+    text-align: start;
+    padding-left: 15px;
+}
+
+.providers_table-inputs-moneda-input {
+    grid-area: txtMoneda;
+    padding-top: 2px;
+}
+
+.txtMonedaProvidersTable {
+    font-size: 14px;
+    text-align: start;
+    padding-left: 2px;
+    width: 90%;
+    margin-left: 15px;
+    margin-right: 80px;
+}
+
+.providers_table-inputs-btn {
+    grid-area: btn;
+}
+
+.btnAgregarProvidersTable {
+    width: 100%;
+    height: 70%;
+    margin-left: 10px;
+    margin-top: 10px;
+    font-size: 15px;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $secundary;
+        color: white;
+    }    
+}
+
+.btnAgregarProvidersTable-disable {
+    width: 100%;
+    height: 70%;
+    margin-left: 10px;
+    margin-top: 10px;
+    font-size: 15px;
+
+    &:hover {
+        cursor: not-allowed;
+    } 
+}
+
+.providers_table-table {
+    border: 1px solid #3D62DB;
+    grid-area: bodyTable;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.providers_table-table-main {
+    width: 95%;
+    height: 100%;
+    margin-left: 10px;
+    overflow-y: scroll;
+    scrollbar-color: rebeccapurple green;
+    scrollbar-width: thin;
+    border: 1px solid black;
+}
+
+.providers_table-table-header-tipo {
+    background-color: #ACA9A9;
+    text-align: start;
+    padding-left: 5px;
+    width: 140px;
+}
+
+.providers_table-table-header-banco {
+    background-color: #ACA9A9;
+    text-align: start;
+    padding-left: 5px;
+    width: 250px;
+}
+
+.providers_table-table-header-cuenta {
+    background-color: #ACA9A9;
+    text-align: start;
+    padding-left: 5px;
+    width: 350px;
+}
+
+.providers_table-table-header-moneda {
+    background-color: #ACA9A9;
+    text-align: start;
+    padding-left: 5px;
+    width: 150px;
+}
+
+.providers_table-table-header-icon {
+    background-color: #ACA9A9;
+    text-align: start;
+    padding-left: 5px;
+    width: 50px;
+}
+
+.providers_table-table-body {
+    text-align: start;
+    font-style: normal;
+}
+
+.providers_table-table-body-row {
+    &:hover {
+        cursor: pointer;
+        background-color: #ACA9A9;
+    }
+}
+
+.providers_table-table-body-row-disable {
+    &:hover {
+        cursor: not-allowed;
+        // background-color: #ACA9A9;
+    }
+}
+
+.providers_table-table-body-cell-tipo {
+    padding-left: 5px;
+    border-bottom: 1px solid #ACA9A9;
+}
+
+.providers_table-table-body-cell-banco {
+    padding-left: 5px;
+    border-bottom: 1px solid #ACA9A9;
+}
+
+.providers_table-table-body-cell-cuenta {
+    padding-left: 5px;
+    border-bottom: 1px solid #ACA9A9;
+}
+
+.providers_table-table-body-cell-moneda {
+    padding-left: 5px;
+    border-bottom: 1px solid #ACA9A9;
+}
+
+.providers_table-table-body-cell-icon {
+    border: 1px solid #BFBCC1;
+    padding-top: 1px;
+    height: 100%;
+    text-align: center;
+    color: $secundary;
+
+    &:hover {
+        color: red
+    }
+}
+
+.providers_table-table-body-cell-icon-disable {
+    border: 1px solid #BFBCC1;
+    padding-top: 1px;
+    height: 100%;
+    text-align: center;
+    color: $secundary;
+}
+
+// .providers_table-table {
+//     border: 1px solid #3D62DB;
+//     grid-area: bodyTable;
+//     margin-left: 5%;
+//     margin-right: 5%;
+// }
+
+// .providers_table-main-table {
+//     width: 100%;
+// }
+
+// .providers_table-table-header-p {
+//     background-color: #BFBCC1;
+//     padding-left: 5px;
+//     text-align: start;
+//     width: 1%;
+// }
+
+// .providers_table-table-header-tipo {
+//     background-color: #BFBCC1;
+//     padding-left: 5px;
+//     text-align: start;
+//     width: 2%;
+// }
+
+// .providers_table-table-header-banco {
+//     background-color: #BFBCC1;
+//     padding-left: 5px;
+//     text-align: start;
+//     width: 8%;
+// }
+
+// .providers_table-table-header-cuenta {
+//     background-color: #BFBCC1;
+//     padding-left: 5px;
+//     text-align: start;
+//     width: 8%;
+// }
+
+// .providers_table-table-header-moneda {
+//     background-color: #BFBCC1;
+//     padding-left: 5px;
+//     text-align: start;
+//     width: 5%;
+// }
+
+// .providers_table-table-p {
+//     border: 1px solid #BFBCC1;
+//     font-size: 15px;
+//     padding-left: 5px;
+//     text-align: start;
+// }
+
+// .providers_table-table-tipo {
+//     border: 1px solid #BFBCC1;
+//     font-size: 15px;
+//     padding-left: 5px;
+//     text-align: start;
+// }
+
+// .providers_table-table-banco {
+//     border: 1px solid #BFBCC1;
+//     font-size: 15px;
+//     padding-left: 5px;
+//     text-align: start;
+// }
+
+// .providers_table-table-cuenta {
+//     border: 1px solid #BFBCC1;
+//     font-size: 15px;
+//     padding-left: 5px;
+//     text-align: start;
+// }
+
+// .providers_table-table-moneda {
+//     border: 1px solid #BFBCC1;
+//     font-size: 15px;
+//     padding-left: 5px;
+//     text-align: start;
+// }
+

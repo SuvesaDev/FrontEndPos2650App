@@ -1,0 +1,237 @@
+.company_body-CuentasBancarias-main {
+    display: grid;
+    height: 100%;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-top: 15px;
+    padding-left: 5%;
+    padding-right: 5%;
+    grid-template-areas: 
+        'inputs'
+        'table';
+    grid-template-rows: 25% 60%;
+}
+
+.company_body-CuentasBancarias-inputs {
+    grid-area: inputs;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'firstLine'
+        'secondLine';
+    grid-template-rows: 50% 50%;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+
+.company_body-CuentasBancarias-inputs-firstLine {
+    grid-area: firstLine;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblNumero'
+        'txtNumero';
+    grid-template-rows: 50% 50%;
+}
+
+.company_body-CuentasBancarias-inputs-firstLine-label {
+    grid-area: lblNumero;
+    text-align: start;
+    padding-left: 5px;
+}
+
+#lblNumeroCuentasBancariasTab {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.company_body-CuentasBancarias-inputs-firstLine-txt {
+    grid-area: txtNumero;
+    margin-right: 5%;
+    padding-left: 5px;
+}
+
+#txtNumeroCuentasBancariasTab {
+    text-align: start;
+    padding-left: 5px;
+    width: 100%;
+}
+
+.company_body-CuentasBancarias-inputs-secondLine {
+    grid-area: secondLine;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'banco moneda btn';
+    grid-template-columns: 47.5% 35% 13%;
+}
+
+.company_body-CuentasBancarias-inputs-secondLine-banco {
+    grid-area: banco;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblBanco'
+        'txtBanco';
+    grid-template-rows: 50% 50%;
+}
+
+.company_body-CuentasBancarias-inputs-secondLine-banco-label {
+    grid-area: lblBanco;
+    text-align: start;
+    padding-left: 5px;
+    padding-top: 3px;
+}
+
+#lblBancoCuentasBancariasTab {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.company_body-CuentasBancarias-inputs-secondLine-banco-txt {
+    grid-area: txtBanco;
+    margin-right: 5%;
+    padding-left: 5px;
+}
+
+#selectBancoCuentasBancariasTab {
+    text-align: start;
+    padding-left: 5px;
+    width: 100%;
+    height: 100%;
+}
+
+.company_body-CuentasBancarias-inputs-secondLine-moneda {
+    grid-area: moneda;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblMoneda'
+        'txtMoneda';
+    grid-template-rows: 50% 50%;
+}
+
+.company_body-CuentasBancarias-inputs-secondLine-moneda-label {
+    grid-area: lblMoneda;
+    text-align: start;
+    padding-left: 5px;
+    padding-top: 3px;
+}
+
+#lblMonedaCuentasBancariasTab {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.company_body-CuentasBancarias-inputs-secondLine-moneda-txt {
+    grid-area: txtMoneda;
+    padding-left: 5px;
+}
+
+#selectMonedaCuentasBancariasTab {
+    text-align: start;
+    padding-left: 5px;
+    width: 100%;
+    height: 100%;
+}
+
+.company_body-CuentasBancarias-inputs-secondLine-btn {
+    grid-area: btn;
+}
+
+.btnAddCuentasBancarias {
+    width: 80%;
+    height: 70%;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 15px;
+    background-color: $secundary;
+    color: white;
+    border: none;
+
+    &:hover {
+        background-color: $primary;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+.btnAddCuentasBancarias-disable {
+    width: 80%;
+    height: 70%;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 15px;
+    background-color: gray;
+    color: white;
+    border: none;
+
+    &:hover {
+        cursor: not-allowed;
+    }
+}
+
+
+.company_body-CuentasBancarias-table {
+    grid-area: table;
+    padding-top: 5px;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.company_body-CuentasBancarias-table-main {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    scrollbar-color: rebeccapurple green;
+    scrollbar-width: thin;
+}
+
+.company_body-CuentasBancarias-table-header {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 400px;
+}
+
+.company_body-CuentasBancarias-table-header-accion {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 100px;
+}
+
+.company_body-CuentasBancarias-modal-table-body {
+    text-align: start;
+    font-style: normal;
+}
+
+.company_body-CuentasBancarias-modal-table-body-row {
+    &:hover {
+        cursor: pointer;
+        background-color: #ACA9A9;
+    }
+}
+
+.company_body-CuentasBancarias-modal-table-body-cell {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+    height: 25.5px;
+    width: 50px;
+}
+
+.company_body-CuentasBancarias-modal-table-body-cell-icon {
+    padding-top: 3px;
+    width: 85%;
+    text-align: center;
+    color: $secundary;
+
+    &:hover {
+        color: red
+    }
+
+}

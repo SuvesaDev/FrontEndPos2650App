@@ -1,0 +1,253 @@
+.denominationCoins-main {
+    display: grid;
+    text-align: center;
+    grid-template-areas: 
+        'header'
+        'body'
+        'footer';
+    grid-template-rows: 40px 448px 60px;
+}
+
+.denominationCoins-header {
+    background-color: #3D59A9;
+    grid-area: header;
+}
+
+#lblTitleDenominationCoins {
+    color: white;
+    font-size: 25px;
+    padding-top: 5px;
+    text-align: center;
+}
+
+.denominationCoins-body {
+    display: grid;
+    grid-area: body;
+    margin-bottom: 25%;
+    margin-left: 25%;
+    margin-right: 25%;
+    padding-left: 5%;
+    padding-top: 2%;
+    grid-template-areas: 
+        'moneda denominacion valor';
+    grid-template-columns: 30% 30% 30%;
+}
+
+.denominationCoins-body-moneda {
+    display: grid;
+    gap: 5px;
+    grid-area: moneda;
+    height: 70%;
+    margin-right: 5px;
+    grid-template-areas: 
+        'lblmoneda'
+        'inputmoneda';
+    grid-template-rows: 50% 50%;
+}
+
+#lblMonedaDenominationCoins {
+    background-color: #F0F0F0;
+    color: #3D59A9;
+    font-size: 15px;
+    grid-area: lblmoneda;
+    height: 90%;
+    padding-top: 5px;
+    text-align: center;
+    width: 100%;
+}
+
+#cboMonedaDenominationCoins {
+    color: black;
+    font-size: 15px;
+    grid-area: inputmoneda;
+    height: 80%;
+    text-align: start;
+}
+
+.denominationCoins-body-denominacion {
+    display: grid;
+    gap: 5px;
+    grid-area: denominacion;
+    height: 70%;
+    margin-right: 5px;
+    grid-template-areas: 
+        'lbldenominacion'
+        'inputdenominacion';
+    grid-template-rows: 50% 50%;
+}
+
+#lblDenominacionDenominationCoins {
+    background-color: #F0F0F0;
+    color: #3D59A9;
+    font-size: 15px;
+    grid-area: lbldenominacion;
+    height: 90%;
+    padding-top: 5px;
+    text-align: center;
+    width: 100%;
+}
+
+#cboDenominacionDenominationCoins {
+    color: black;
+    font-size: 15px;
+    grid-area: inputdenominacion;
+    height: 80%;
+    text-align: start;
+}
+
+.denominationCoins-body-valor {
+    display: grid;
+    gap: 5px;
+    grid-area: valor;
+    height: 70%;
+    margin-right: 5px;
+    grid-template-areas: 
+        'lblvalor'
+        'inputvalor';
+    grid-template-rows: 50% 50%;
+}
+
+#lblValorDenominationCoins {
+    background-color: #F0F0F0;
+    color: #3D59A9;
+    font-size: 15px;
+    grid-area: lblvalor;
+    height: 90%;
+    padding-top: 5px;
+    text-align: center;
+    width: 100%;
+}
+
+#txtValorDenominationCoins {
+    color: black;
+    font-size: 15px;
+    grid-area: inputvalor;
+    height: 80%;
+    text-align: start;
+}
+
+.denominationCoins-icons {
+    border: 1px solid black;
+    display: grid;
+    grid-area: footer;
+    height: 100%;
+    grid-template-areas: 
+        'btnNuevo btnRegistrar btnEditar btnCerrar';
+    grid-template-columns: 8% 8% 8% 8%;
+}
+
+.denominationCoins-icons-nuevo {
+    display: grid;
+    grid-area: btnNuevo;
+    height: 100%;
+    grid-template-areas: 
+        'iconNue'
+        'lblNue';
+    grid-template-rows: 60% 40%;
+}
+
+.denominationCoins-icons-nuevo-icon {
+    color: #F68A1D;
+    grid-area: iconNue;
+    padding-top: 4px;
+}
+
+#iconNuevoDenominationC {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblNuevoDenominationC {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblNue;
+    text-align: center;
+}
+
+.denominationCoins-icons-registrar{
+    grid-area: btnRegistrar;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'iconReg'
+        'lblReg';
+    grid-template-rows: 60% 40%;
+}
+
+.denominationCoins-icons-registrar-icon {
+    color: #F68A1D;
+    grid-area: iconReg;
+    padding-top: 4px;
+}
+
+#iconRegistrarDenominationC {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblRegistrarDenominationC {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblReg;
+    text-align: center;
+}
+
+.denominationCoins-icons-Editar {
+    grid-area: btnEditar;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'iconEdit'
+        'lblEdit';
+    grid-template-rows: 60% 40%;
+}
+
+.denominationCoins-icons-Editar-icon {
+    color: #F68A1D;
+    grid-area: iconEdit;
+    padding-top: 4px;
+}
+
+#iconEditarDenominationC {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblEditarDenominationC {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblEdit;
+    text-align: center;
+}
+
+.denominationCoins-icons-cerrar {
+    grid-area: btnCerrar;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'iconCer'
+        'lblCer';
+    grid-template-rows: 60% 40%;
+}
+
+.denominationCoins-icons-cerrar-icon {
+    color: #F68A1D;
+    grid-area: iconCer;
+    padding-top: 4px;
+}
+
+#iconCerrarDenominationC {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblCerrarDenominationC {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblCer;
+    text-align: center;
+}

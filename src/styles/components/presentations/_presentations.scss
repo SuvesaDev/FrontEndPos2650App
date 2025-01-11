@@ -1,0 +1,208 @@
+.presentations-main {
+    display: grid;
+    text-align: center;
+    grid-template-areas: 
+        'header'
+        'body'
+        'footer';
+    grid-template-rows: 40px 448px 60px;
+}
+
+.presentations-header {
+    background-color: #3D59A9;
+    grid-area: header;
+}
+
+#lblTitlePresentation {
+    color: white;
+    font-size: 25px;
+    padding-top: 5px;
+    text-align: center;
+}
+
+.presentations-body {
+    display: grid;
+    grid-area: body;
+    margin-bottom: 20%;
+    margin-left: 25%;
+    margin-right: 25%;
+    padding-top: 2%;
+    grid-template-areas: 
+        'labelPresentation'
+        'cboPresentation';
+    grid-template-rows: 20% 20%;
+}
+
+.presentations-body-tipo-label {
+    border: 1px solid black;
+    color: #3D59A9;
+    font-size: 15px;
+    grid-area: labelPresentation;
+    padding-top: 5px;
+}
+
+.presentations-body-tipo-select {
+    grid-area: cboPresentation;
+    padding-top: 5px;
+}
+
+#cboTipoPresentation {
+    font-size: 15px;
+    text-align: center;
+    width: 100%;
+}
+
+.presentations-icons {
+    border: 1px solid black;
+    display: grid;
+    grid-area: footer;
+    height: 100%;
+    grid-template-areas: 
+        'btnNuevo btnBuscar btnRegistrar btnEliminar btnCerrar';
+    grid-template-columns: 8% 8% 8% 8% 8%;
+}
+
+.presentations-icons-nuevo {
+    display: grid;
+    grid-area: btnNuevo;
+    height: 100%;
+    grid-template-areas: 
+        'iconNue'
+        'lblNue';
+    grid-template-rows: 60% 40%;
+}
+
+.presentations-icons-nuevo-icon {
+    color: #F68A1D;
+    grid-area: iconNue;
+    padding-top: 4px;
+}
+
+#iconNuevoP {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblNuevoP {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblNue;
+    text-align: center;
+}
+
+.presentations-icons-Buscar {
+    grid-area: btnBuscar;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'iconBus'
+        'lblBus';
+    grid-template-rows: 60% 40%;
+}
+
+.presentations-icons-Buscar-icon {
+    color: #F68A1D;
+    grid-area: iconBus;
+    padding-top: 4px;
+}
+
+#iconBusP {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblBuscarP {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblBus;
+    text-align: center;
+}
+
+.presentations-icons-registrar {
+    grid-area: btnRegistrar;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'iconReg'
+        'lblReg';
+    grid-template-rows: 60% 40%;
+}
+
+.presentations-icons-registrar-icon {
+    color: #F68A1D;
+    grid-area: iconReg;
+    padding-top: 4px;
+}
+
+#iconRegistrarP {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblRegistrarP {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblReg;
+    text-align: center;
+}
+
+.presentations-icons-eliminar {
+    grid-area: btnEliminar;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'iconEli'
+        'lblEli';
+    grid-template-rows: 60% 40%;
+}
+
+.presentations-icons-eliminar-icon {
+    color: #F68A1D;
+    grid-area: iconEli;
+    padding-top: 4px;
+}
+
+#iconEliminarP {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblEliminarP {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblEli;
+    text-align: center;
+}
+
+.presentations-icons-cerrar {
+    grid-area: btnCerrar;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'iconCer'
+        'lblCer';
+    grid-template-rows: 60% 40%;
+}
+
+.presentations-icons-cerrar-icon {
+    color: #F68A1D;
+    grid-area: iconCer;
+    padding-top: 4px;
+}
+
+#iconCerrarP {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblCerrarP {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblCer;
+    text-align: center;
+}

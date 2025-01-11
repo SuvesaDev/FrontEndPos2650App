@@ -1,0 +1,811 @@
+.customers_body-datos-main {
+    display: grid;
+    height: 100%;
+    margin-left: 3%;
+    margin-right: 1%;
+    grid-template-areas: 
+        'firstBox secondBox';
+    grid-template-columns: 70% 30%;
+}
+
+.customers_body-datos-firstBox {
+    grid-area: firstBox;
+    display: grid;
+    height: 100%;
+    margin-left: 3%;
+    margin-right: 3%;
+    grid-template-areas: 
+        'Line1'
+        'Line2'
+        'Line3'
+        'Line4'
+        'Line5';
+    grid-template-rows: 20% 20% 20% 20% 20%;
+}
+
+.customers_body-datos-firstBox-1 {
+    grid-area: Line1;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'telefono provincia canton distrito';
+    grid-template-columns: 30% 23% 23% 24%;
+}
+
+.customers_body-datos-firstBox-1-telefono {
+    grid-area: telefono;
+    padding-top: 10px;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblTelefono'
+        'inputTelefono';
+    grid-template-rows: 50% 50%;
+}
+
+.customers_body-datos-firstBox-1-telefono-label {
+    background-color: #EEF2E6;
+    grid-area: lblTelefono;
+    margin-bottom: 5px;
+    margin-right: 10px;
+}
+
+#lblTelefonoDatos {
+   font-size: 15px;
+   padding-left: 5px;
+   padding-top: 1px;
+   text-align: start; 
+}
+
+.customers_body-datos-firstBox-1-telefono-input {
+    grid-area: inputTelefono;
+    margin-right: 10px;
+}
+
+#txtTelefonoDatos {
+    font-size: 15px;
+    text-align: start;
+    width: 100%;
+}
+
+.customers_body-datos-firstBox-1-provincia {
+    grid-area: provincia;
+    padding-top: 10px;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblProvincia'
+        'inputProvincia';
+    grid-template-rows: 50% 50%;
+}
+
+.customers_body-datos-firstBox-1-provincia-label {
+    background-color: #EEF2E6;
+    grid-area: lblProvincia;
+    margin-bottom: 5px;
+    margin-right: 10px;
+}
+
+#lblProvinciaDatos {
+    font-size: 15px;
+    padding-left: 5px;
+    padding-top: 1px;
+    text-align: start; 
+}
+
+.customers_body-datos-firstBox-1-provincia-input {
+    grid-area: inputProvincia;
+    margin-right: 10px;
+}
+
+#cboProvinciaDatos {
+    font-size: 15px;
+    text-align: start;
+    width: 100%;
+}
+
+.customers_body-datos-firstBox-1-canton {
+    grid-area: canton;
+    padding-top: 10px;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblCanton'
+        'inputCanton';
+    grid-template-rows: 50% 50%;
+}
+
+.customers_body-datos-firstBox-1-canton-label {
+    background-color: #EEF2E6;
+    grid-area: lblCanton;
+    margin-bottom: 5px;
+    margin-right: 10px;
+}
+
+#lblCantonDatos {
+    font-size: 15px;
+    padding-left: 5px;
+    padding-top: 1px;
+    text-align: start;
+}
+
+.customers_body-datos-firstBox-1-canton-input {
+    grid-area: inputCanton;
+    margin-right: 10px;
+}
+
+#cboCantonDatos {
+    font-size: 15px;
+    text-align: start;
+    width: 100%;
+}
+
+.customers_body-datos-firstBox-1-distrito {
+    grid-area: distrito;
+    padding-top: 10px;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblDistrito'
+        'inputDistrito';
+    grid-template-rows: 50% 50%;
+}
+
+.customers_body-datos-firstBox-1-distrito-label {
+    background-color: #EEF2E6;
+    grid-area: lblDistrito;
+    margin-bottom: 5px;
+    margin-right: 10px;
+}
+
+#lblDistritoDatos {
+    font-size: 15px;
+    padding-left: 5px;
+    padding-top: 1px;
+    text-align: start;
+}
+
+.customers_body-datos-firstBox-1-distrito-input {
+    grid-area: inputDistrito;
+    margin-right: 10px;
+}
+
+#cboDistritoDatos {
+    font-size: 15px;
+    text-align: start;
+    width: 100%;
+}
+
+.customers_body-datos-firstBox-1-fax {
+    grid-area: fax;
+    padding-top: 10px;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblFax'
+        'inputFax';
+    grid-template-rows: 50% 50%;
+}
+
+.customers_body-datos-firstBox-1-fax-label {
+    background-color: #EEF2E6;
+    grid-area: lblFax;
+    margin-bottom: 5px;
+    margin-right: 10px;
+}
+
+#lblFaxDatos {
+    font-size: 15px;
+    padding-left: 5px;
+    padding-top: 1px;
+    text-align: start; 
+}
+
+.customers_body-datos-firstBox-1-fax-input {
+    grid-area: inputFax;
+    margin-right: 10px;
+}
+
+#txtfaxDatos {
+    font-size: 15px;
+    text-align: start;
+    width: 100%;
+}
+
+.customers_body-datos-firstBox-2 {
+    grid-area: Line2;
+    padding-top: 10px;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblDireccion'
+        'inputDireccion';
+    grid-template-rows: 50% 50%;
+}
+
+.customers_body-datos-firstBox-2-direccion-label {
+    background-color: #EEF2E6;
+    grid-area: lblDireccion;
+    margin-bottom: 5px;
+    margin-right: 10px;
+}
+
+#lblDireccionDatos {
+    font-size: 15px;
+    padding-left: 5px;
+    padding-top: 1px;
+    text-align: start; 
+}
+
+.customers_body-datos-firstBox-2-direccion-input {
+    grid-area: inputDireccion;
+    margin-right: 10px;
+}
+
+#txtDireccionDatos {
+    font-size: 15px;
+    text-align: start;
+    width: 100%;
+}
+
+.customers_body-datos-firstBox-3 {
+    grid-area: Line3;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'correoCuenta tipoCliente';
+    grid-template-columns: 70% 30%;
+}
+
+.customers_body-datos-firstBox-3-correoCuentas {
+    grid-area: correoCuenta;
+    padding-top: 10px;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblCorreoCuenta'
+        'inputCorreoCuenta';
+    grid-template-rows: 50% 50%;
+}
+
+.customers_body-datos-firstBox-3-correoCuentas-label {
+    background-color: #EEF2E6;
+    grid-area: lblCorreoCuenta;
+    margin-bottom: 5px;
+    margin-right: 10px;
+}
+
+#lblCorreoCuentasDatos {
+    font-size: 15px;
+    padding-left: 5px;
+    padding-top: 1px;
+    text-align: start; 
+}
+
+.customers_body-datos-firstBox-3-correoCuentas-input {
+    grid-area: inputCorreoCuenta;
+    margin-right: 10px;
+}
+
+#txtCorreoCuentasDatos {
+    font-size: 15px;
+    text-align: start;
+    width: 100%;
+}
+
+.customers_body-datos-firstBox-3-tipoCliente {
+    grid-area: tipoCliente;
+    padding-top: 10px;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblTipoCliente'
+        'inputTipoCliente';
+    grid-template-rows: 50% 50%;
+}
+
+.customers_body-datos-firstBox-3-tipoCliente-label {
+    background-color: #EEF2E6;
+    grid-area: lblTipoCliente;
+    margin-bottom: 5px;
+    margin-right: 10px;
+}
+
+#lblTipoClienteDatos {
+    font-size: 15px;
+    padding-left: 5px;
+    padding-top: 1px;
+    text-align: start; 
+}
+
+.customers_body-datos-firstBox-3-tipoCliente-input {
+    grid-area: inputTipoCliente;
+    margin-right: 10px;
+}
+
+#cboTipoClienteDatos {
+    font-size: 15px;
+    text-align: start;
+    width: 100%;
+}
+
+.customers_body-datos-firstBox-4 {
+    grid-area: Line4;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'correoFactura agente';
+    grid-template-columns: 70% 30%;
+}
+
+.customers_body-datos-firstBox-4-correoFacturacion {
+    grid-area: correoFactura;
+    padding-top: 10px;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblCorreoFactura'
+        'inputCorreoFactura';
+    grid-template-rows: 50% 50%;
+}
+
+.customers_body-datos-firstBox-4-correoFacturacion-label {
+    background-color: #EEF2E6;
+    grid-area: lblCorreoFactura;
+    margin-bottom: 5px;
+    margin-right: 10px;
+}
+
+#lblCorreoFacturacionDatos {
+    font-size: 15px;
+    padding-left: 5px;
+    padding-top: 1px;
+    text-align: start; 
+}
+
+.customers_body-datos-firstBox-4-correoFacturacion-input {
+    grid-area: inputCorreoFactura;
+    margin-right: 10px;
+}
+
+#txtCorreoFacturacionDatos {
+    font-size: 15px;
+    text-align: start;
+    width: 100%;
+}
+
+.customers_body-datos-firstBox-4-agente {
+    grid-area: agente;
+    padding-top: 10px;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'headerAgente'
+        'inputCorreoFactura';
+    grid-template-rows: 50% 50%;
+}
+
+.customers_body-datos-firstBox-4-agente-header {
+    grid-area: headerAgente;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblAgente checkAgente';
+    grid-template-columns: 55% 45%;
+}
+
+#lblAgenteDatos {
+    background-color: #EEF2E6;
+    font-size: 15px;
+    grid-area: lblAgente;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    padding-left: 5px;
+    padding-top: 1px;
+    text-align: start; 
+}
+
+.customers_body-datos-firstBox-4-agente-header-check {
+    grid-area: checkAgente;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'inputCheckAgente labelcheckAgente';
+    grid-template-columns: 10% 90%;
+}
+
+.customers_body-datos-firstBox-4-agente-header-check-input {
+    grid-area: inputCheckAgente;
+    margin-top: 3px;
+}
+
+#lblSinAgente {
+    font-size: 15px;
+    grid-area: labelcheckAgente;
+    padding-left: 5px;
+    padding-top: 2px;
+    text-align: start; 
+}
+
+.customers_body-datos-firstBox-4-agente-input {
+    grid-area: inputCorreoFactura;
+    margin-right: 10px;
+}
+
+#cboAgenteDatos {
+    font-size: 15px;
+    text-align: start;
+    width: 100%;
+}
+
+.customers_body-datos-firstBox-5 {
+    grid-area: Line5;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'checkNotificar checkActualizado checkFallecido';
+    grid-template-columns: 33% 33% 33%;
+    margin-top: 10px;
+}
+
+.customers_body-datos-firstBox-5-notificar-check {
+    grid-area: checkNotificar;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'inputCheckNotificar labelcheckNotificar';
+    grid-template-columns: 30% 70%;
+}
+
+.customers_body-datos-firstBox-5-notificar-check-input {
+    grid-area: inputCheckNotificar;
+    margin-left: 70%;
+    padding-top: 5px;
+}
+
+.customers_body-datos-firstBox-5-notificar-check-label {
+    background-color: #EEF2E6;
+    grid-area: labelcheckNotificar;
+    height: 35%;
+    padding-top: 4px;
+    width: 80%;
+}
+
+#lblNotificarDatos {
+    font-size: 15px;
+}
+
+.customers_body-datos-firstBox-5-actualizado-check {
+    grid-area: checkActualizado;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'inputCheckActualizado labelcheckActualizado';
+    grid-template-columns: 30% 70%;
+}
+
+.customers_body-datos-firstBox-5-actualizado-check-input {
+    grid-area: inputCheckActualizado;
+    margin-left: 70%;
+    padding-top: 5px;
+}
+
+.customers_body-datos-firstBox-5-actualizado-check-label {
+    grid-area: labelcheckActualizado;
+    height: 35%;
+    padding-left: 5px;
+    padding-top: 4px;
+    text-align: start;
+    width: 80%;
+}
+
+#lblActualizadoDatos {
+    font-size: 15px;
+}
+
+.customers_body-datos-firstBox-5-fallecido-check {
+    grid-area: checkFallecido;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'inputCheckFallecido labelcheckFallecido';
+    grid-template-columns: 30% 70%;
+}
+
+.customers_body-datos-firstBox-5-fallecido-check-input {
+    grid-area: inputCheckFallecido;
+    margin-left: 70%;
+    padding-top: 5px;
+}
+
+.customers_body-datos-firstBox-5-fallecido-check-label {
+    grid-area: labelcheckFallecido;
+    height: 35%;
+    padding-left: 5px;
+    padding-top: 4px;
+    text-align: start;
+    width: 80%;
+}
+
+#lblFallecidoDatos {
+    font-size: 15px;
+}
+
+.customers_body-datos-secondBox {
+    display: grid;
+    grid-area: secondBox;
+    height: 100%;
+    grid-template-areas: 
+        'enviaCorreo'
+        'tipoPrecio'
+        'descuentos'
+        'checks';
+    grid-template-rows: 25% 20% 20% 35%;
+}
+
+.customers_body-datos-secondBox-enviaCorreo {
+    display: grid;
+    grid-area: enviaCorreo;
+    height: 100%;
+    grid-template-areas: 
+        'checkEnviaCorreo'
+        'inputEnviaCorreo';
+    grid-template-rows: 40% 60%;
+    padding-left: 15%;
+}
+
+.customers_body-datos-secondBox-enviaCorreo-check {
+    display: grid;
+    grid-area: checkEnviaCorreo;
+    height: 100%;
+    grid-template-areas: 
+        'inputCheckEnviaCorreo labelcheckEnviaCorreo';
+    grid-template-columns: 10% 70%;
+    padding-top: 5px;
+}
+
+.customers_body-datos-secondBox-check-input {
+    grid-area: inputCheckEnviaCorreo;
+    height: 50%;
+}
+
+.customers_body-datos-secondBox-check-label {
+    grid-area: labelcheckEnviaCorreo;
+    height: 50%;
+    padding-left: 5px;
+    text-align: start;
+    width: 80%;
+}
+
+.customers_body-datos-secondBox-enviaCorreo-input {
+    display: grid;
+    grid-area: inputEnviaCorreo;
+    height: 100%;
+    grid-template-areas: 
+        'inputEnviaCorreoLabel'
+        'inputEnviaCorreoInput';
+    grid-template-rows: 40% 60%;
+}
+
+.customers_body-datos-secondBox-enviaCorreo-input-label {
+    background-color: #EEF2E6;
+    font-size: 15px;
+    grid-area: inputEnviaCorreoLabel;
+    margin-right: 25px;
+    padding-left: 5px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+.customers_body-datos-secondBox-enviaCorreo-input-input {
+    grid-area: inputEnviaCorreoInput;
+    margin-right: 25px;
+    margin-top: 2px;
+}
+
+#txtEnviaCorreoReciboDatos {
+    width: 100%;
+}
+
+.customers_body-datos-secondBox-tipoPrecio {
+    grid-area: tipoPrecio;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblTipoPrecio'
+        'cboTipoPrecio';
+    grid-template-rows: 50% 50%;
+    padding-left: 15%;
+}
+
+.customers_body-datos-secondBox-tipoPrecio-label {
+    background-color: #EEF2E6;
+    font-size: 15px;
+    grid-area: lblTipoPrecio;
+    height: 70%;
+    margin-right: 25px;
+    margin-top: 5px;
+    padding-left: 5px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+.customers_body-datos-secondBox-tipoPrecio-input {
+    grid-area: cboTipoPrecio;
+    margin-right: 25px;
+    margin-top: 2px;
+}
+
+#cboTipoPrecioDatos {
+    font-size: 15px;
+    width: 100%;
+}
+
+.customers_body-datos-secondBox-descuento {
+    grid-area: descuentos;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblDescuentoEspecial'
+        'inputsDescuentoEspecial';
+    grid-template-rows: 30% 70%;
+}
+
+#lblDescuentosEspecialesDatos{
+    border: 1px solid #C0C0C0;
+    color: #999495;
+    font-size: 15px;
+    grid-area: lblDescuentoEspecial;
+    margin-left: 15%;
+    margin-right: 7%;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.customers_body-datos-secondBox-descuento-inputs {
+    grid-area: inputsDescuentoEspecial;
+    display: grid;
+    height: 100%;
+    margin-left: 15%;
+    margin-right: 7%;
+    padding-top: 10px;
+    grid-template-areas: 
+        'lblDescuentoE inputDescuentoE';
+    grid-template-columns: 50% 50%;
+    border: 1px solid #C0C0C0;
+}
+
+.customers_body-datos-secondBox-descuento-inputs-label {
+    font-size: 15px;
+    grid-area: lblDescuentoE;
+}
+
+.customers_body-datos-secondBox-descuento-inputs-input {
+    grid-area: inputDescuentoE;
+}
+
+#txtDescuentoEspecialDatos {
+    font-size: 15px;
+    margin-right: 80px;
+    text-align: end;
+    width: 50%;
+}
+
+.customers_body-datos-secondBox-checks {
+    grid-area: checks;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'inactivo'
+        'registradoMAG'
+        'imprimirPrecio';
+    grid-template-rows: 33% 33% 33%;
+}
+
+.customers_body-datos-secondBox-checks-inactivado {
+    grid-area: inactivo;
+    display: grid;
+    height: 100%;
+    margin-left: 15%;
+    margin-right: 7%;
+    grid-template-areas: 
+        'checkInactivo buttonCambiar';
+    grid-template-columns: 50% 50%;
+}
+
+.customers_body-datos-secondBox-checks-inactivado-check {
+    grid-area: checkInactivo;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'inputCheckInactivo labelCheckInactivo';
+    grid-template-columns: 10% 90%;
+}
+
+.customers_body-datos-secondBox-checks-inactivado-check-input {
+    grid-area: inputCheckInactivo;
+    margin-top: 10px;
+}
+
+.customers_body-datos-secondBox-checks-inactivado-check-label {
+    background-color: #EEF2E6;
+    font-size: 15px;
+    grid-area: labelCheckInactivo;
+    height: 50%;
+    margin-top: 9px;
+    padding-left: 5px;
+    text-align: start;
+    width: 65%;
+}
+
+.customers_body-datos-secondBox-checks-inactivado-button {
+    grid-area: buttonCambiar;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+#btnCambiarDatos {
+    background-color: #EEF2E6;
+    border: 1px solid #C0C0C0;
+    font-size: 15px;
+    height: 100%;
+    text-align: center;
+    width: 100%;
+
+    &:hover {
+        background-color: #C0C0C0;
+        color: #EEF2E6;
+        cursor: pointer;
+    }
+}
+
+.customers_body-datos-secondBox-checks-registradoMAG {
+    grid-area: registradoMAG;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'inputCheckRegistradoMAG labelcheckRegistradoMAG';
+    grid-template-columns: 20% 70%;
+    padding-top: 10px;
+}
+
+.customers_body-datos-secondBox-check-registradoMAG-input {
+    grid-area: inputCheckRegistradoMAG;
+    height: 50%;
+    margin-left: 70%;
+}
+
+.customers_body-datos-secondBox-check-registradoMAG-label {
+    font-size: 15px;
+    grid-area: labelcheckRegistradoMAG;
+    height: 80%;
+    padding-left: 5px;
+    text-align: start;
+    width: 90%;
+}
+
+.customers_body-datos-secondBox-checks-imprimirPrecio {
+    grid-area: imprimirPrecio;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'inputCheckimprimirPrecio labelcheckimprimirPrecio';
+    grid-template-columns: 20% 70%;
+    padding-top: 10px;
+}
+
+.customers_body-datos-secondBox-check-imprimirPrecio-input {
+    grid-area: inputCheckimprimirPrecio;
+    height: 50%;
+    margin-left: 70%;
+}
+
+.customers_body-datos-secondBox-check-imprimirPrecio-label {
+    background-color: #EEF2E6;
+    font-size: 15px;
+    grid-area: labelcheckimprimirPrecio;
+    height: 80%;
+    padding-left: 5px;
+    text-align: start;
+    width: 75%;
+}

@@ -1,0 +1,698 @@
+.consultAlbaranes-body-main {
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'buttons'
+        'header'
+        'table';
+    grid-template-rows: 10% 25% 65%;
+}
+
+.consultAlbaranes-body-buttons {
+    grid-area: buttons;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'opcionesPago anticipiosClientes depositos abonoscxc cuentasAlbaran devoluciones aperturaCaja arqueoCaja';
+    grid-template-columns: 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5%;
+    border-bottom: 1px solid black;
+}
+
+.consultAlbaranes-body-buttons-opcionesPago {
+    grid-area: opcionesPago;
+    padding-top: 5px;
+}
+
+#btnOpcionesPagoCA {
+    height: 80%;
+    width: 90%;
+    text-align: center;
+    font-size: 15px;
+
+    &:hover {
+        background-color: $secundary;
+        cursor: pointer;
+    }
+}
+
+.consultAlbaranes-body-buttons-anticipiosClientes {
+    grid-area: anticipiosClientes;
+    padding-top: 5px;
+}
+
+#btnAnticipiosClientesCA {
+    height: 80%;
+    width: 90%;
+    text-align: center;
+    font-size: 15px;
+
+    &:hover {
+        background-color: $secundary;
+        cursor: pointer;
+    }
+}
+
+.consultAlbaranes-body-buttons-depositos {
+    grid-area: depositos;
+    padding-top: 5px;
+}
+
+#btnDepositosCA {
+    height: 80%;
+    width: 90%;
+    text-align: center;
+    font-size: 15px;
+
+    &:hover {
+        background-color: $secundary;
+        cursor: pointer;
+    }
+}
+
+.consultAlbaranes-body-buttons-Abonoscxc {
+    grid-area: abonoscxc;
+    padding-top: 5px;
+}
+
+#btnAbonosCxCCA {
+    height: 80%;
+    width: 90%;
+    text-align: center;
+    font-size: 15px;
+
+    &:hover {
+        background-color: $secundary;
+        cursor: pointer;
+    }
+}
+
+.consultAlbaranes-body-buttons-cuentasAlbaran {
+    grid-area: cuentasAlbaran;
+    padding-top: 5px;
+}
+
+#btnCuentasAlbaranCA {
+    height: 80%;
+    width: 90%;
+    text-align: center;
+    font-size: 15px;
+
+    &:hover {
+        background-color: $secundary;
+        cursor: pointer;
+    }
+}
+
+.consultAlbaranes-body-buttons-devoluciones {
+    grid-area: devoluciones;
+    padding-top: 5px;
+}
+
+#btnDevolucionesCA {
+    height: 80%;
+    width: 90%;
+    text-align: center;
+    font-size: 15px;
+
+    &:hover {
+        background-color: $secundary;
+        cursor: pointer;
+    }
+}
+
+.consultAlbaranes-body-buttons-aperturaCaja {
+    grid-area: aperturaCaja;
+    padding-top: 5px;
+}
+
+#btnAperturaCajaCA {
+    height: 80%;
+    width: 90%;
+    text-align: center;
+    font-size: 15px;
+
+    &:hover {
+        background-color: $secundary;
+        cursor: pointer;
+    }
+}
+
+.consultAlbaranes-body-buttons-arqueoCaja {
+    grid-area: arqueoCaja;
+    padding-top: 5px;
+}
+
+#btnArqueoCajaCA {
+    height: 80%;
+    width: 90%;
+    text-align: center;
+    font-size: 15px;
+
+    &:hover {
+        background-color: $secundary;
+        cursor: pointer;
+    }
+}
+
+.consultAlbaranes-body-header {
+    grid-area: header;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'left right';
+    grid-template-columns: 70% 30%;
+    border-bottom: 1px solid black;
+}
+
+.consultAlbaranes-body-header-left {
+    grid-area: left;
+    margin: 10px;
+    display: grid;
+    grid-template-areas: 
+        'lefttop'
+        'leftbottom';
+    grid-template-rows: 50% 50%;
+}
+
+.consultAlbaranes-body-header-left-top {
+    grid-area: lefttop;
+    display: grid;
+    grid-template-areas: 
+        'cliente mascota';
+    grid-template-columns: 50% 50%;
+}
+
+.consultAlbaranes-body-header-left-top-cliente {
+    grid-area: cliente;
+    display: grid;
+    grid-template-areas: 
+        'labelCliente'
+        'inputCliente';
+    grid-template-rows: 50% 50%;
+    padding-right: 5px;
+}
+
+.consultAlbaranes-body-header-left-top-cliente-label {
+    grid-area: labelCliente;
+    padding-top: 2px;
+    background-color: #3D59A9;
+}
+
+#lblClienteCA {
+    text-align: center;
+    font-size: 15px;
+    color: white;
+}
+
+.consultAlbaranes-body-header-left-top-cliente-input {
+    grid-area: inputCliente;
+    padding-top: 1px;
+}
+
+#txtClienteCA {
+    text-align: start;
+    padding-left: 2px;
+    font-size: 15px;
+    width: 100%;
+    height: 90%;
+}
+
+.consultAlbaranes-body-header-left-top-mascota {
+    grid-area: mascota;
+    display: grid;
+    grid-template-areas: 
+        'labelMascota'
+        'inputMascota';
+    grid-template-rows: 50% 50%;
+    padding-left: 5px;
+}
+
+.consultAlbaranes-body-header-left-top-mascota-label {
+    grid-area: labelMascota;
+    padding-top: 2px;
+    background-color: #3D59A9;
+}
+
+#lblMascotaCA {
+    text-align: center;
+    font-size: 15px;
+    color: white;
+}
+
+.consultAlbaranes-body-header-left-top-mascota-input {
+    grid-area: inputMascota;
+    padding-top: 1px;
+}
+
+#txtMascotaCA {
+    text-align: start;
+    padding-left: 2px;
+    font-size: 15px;
+    width: 100%;
+    height: 90%;
+}
+
+.consultAlbaranes-body-header-left-bottom {
+    grid-area: leftbottom;
+    display: grid;
+    grid-template-areas: 
+        'dates checkbox';
+    grid-template-columns: 50% 50%;
+}
+
+.consultAlbaranes-body-header-left-bottom-dates {
+    grid-area: dates;
+    display: grid;
+    grid-template-areas: 
+        'desde hasta';
+    grid-template-columns: 50% 50%;
+}
+
+.consultAlbaranes-body-header-left-bottom-dates-desde {
+    grid-area: desde;
+    display: grid;
+    grid-template-areas: 
+        'labelDesde'
+        'inputDesde';
+    grid-template-rows: 50% 50%;
+    padding-right: 5px;
+}
+
+.consultAlbaranes-body-header-left-bottom-dates-desde-label {
+    grid-area: labelDesde;
+    padding-top: 2px;
+    background-color: #3D59A9;
+}
+
+#lblDesdeCA {
+    text-align: center;
+    font-size: 15px;
+    color: white;
+}
+
+.consultAlbaranes-body-header-left-bottom-dates-desde-input {
+    grid-area: inputDesde;
+    padding-top: 1px;
+}
+
+#txtDesdeCA {
+    text-align: start;
+    padding-left: 2px;
+    font-size: 15px;
+    width: 100%;
+    height: 90%;
+}
+
+.consultAlbaranes-body-header-left-bottom-dates-hasta {
+    grid-area: hasta;
+    display: grid;
+    grid-template-areas: 
+        'labelHasta'
+        'inputHasta';
+    grid-template-rows: 50% 50%;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.consultAlbaranes-body-header-left-bottom-dates-hasta-label {
+    grid-area: labelHasta;
+    padding-top: 2px;
+    background-color: #3D59A9;
+}
+
+#lblHastaCA {
+    text-align: center;
+    font-size: 15px;
+    color: white;
+}
+
+.consultAlbaranes-body-header-left-bottom-dates-hasta-input {
+    grid-area: inputHasta;
+    padding-top: 1px;
+}
+
+#txtHastaCA {
+    text-align: start;
+    padding-left: 2px;
+    font-size: 15px;
+    width: 100%;
+    height: 90%;
+}
+
+.consultAlbaranes-body-header-left-bottom-checkbox {
+    grid-area: checkbox;
+    display: grid;
+    grid-template-areas: 
+        'check'
+        'btns';
+    grid-template-rows: 45% 55%;
+}
+
+.consultAlbaranes-body-header-left-bottom-checkbox-check {
+    grid-area: check;
+    display: grid;
+    padding-top: 1px;
+    grid-template-areas: 
+        'inputCheckSolo labelCheckSolo';
+    grid-template-columns: 5% 95%;
+}
+
+.consultAlbaranes-body-header-left-bottom-checkbox-input {
+    grid-area: inputCheckSolo;
+}
+
+.consultAlbaranes-body-header-left-bottom-checkbox-label {
+    grid-area: labelCheckSolo;
+    text-align: start;
+}
+
+.consultAlbaranes-body-header-left-bottom-checkbox-btns {
+    grid-area: btns;
+    display: grid;
+    padding-top: 1px;
+    grid-template-areas: 
+        'btnSearchDates btnShow';
+    grid-template-columns: 20% 20%;
+    gap: 10px;
+}
+
+.consultAlbaranes-body-header-left-bottom-checkbox-btns-searchDates {
+    grid-area: btnSearchDates;
+    padding-left: 5px;
+}
+
+.btnSearchDatesConsultAlbaranes {
+    width: 100%;
+    height: 90%;
+
+    &:hover {
+        background-color: $primary;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+.btnSearchDatesConsultAlbaranes-disable {
+    width: 100%;
+    height: 90%;
+
+    &:hover {
+        cursor: not-allowed;
+    }
+}
+
+.consultAlbaranes-body-header-left-bottom-checkbox-btns-show {
+    grid-area: btnShow;
+}
+
+.btnMostrarTodosConsultAlbaranes {
+    width: 100%;
+    height: 90%;
+
+    &:hover {
+        background-color: $primary;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+.btnSearchDatesConsultAlbaranes-disable {
+    width: 100%;
+    height: 90%;
+
+    &:hover {
+        cursor: not-allowed;
+    }
+}
+
+
+.consultAlbaranes-body-header-right {
+    grid-area: right;
+    display: grid;
+    grid-template-areas: 
+        'btnObtener'
+        'checkboxTodos';
+    grid-template-rows: 75% 25%;
+}
+
+.consultAlbaranes-body-header-right-btn {
+    grid-area: btnObtener;
+    margin: 15px;
+}
+
+.btnObtenerDatosCA {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: 20px;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $secundary;
+    }
+}
+
+.btnObtenerDatosCA-disable {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: 20px;
+
+    &:hover {
+        cursor: not-allowed;
+    }
+}
+
+.consultAlbaranes-body-header-right-checks {
+    grid-area: checkboxTodos;
+    padding-top: 5px;
+    display: grid;
+    grid-template-areas: 
+        'marcar extranjero';
+    grid-template-columns: 50% 50%;
+}
+
+.consultAlbaranes-body-header-right-checks-marcar {
+    grid-area: marcar;
+    padding-left: 5px;
+    display: grid;
+    grid-template-areas: 
+        'inputCheckMarcar labelCheckMarcar';
+    grid-template-columns: 15% 85%;
+}
+
+.consultAlbaranes-body-header-right-check-marcar-input {
+    grid-area: inputCheckMarcar;
+}
+
+.consultAlbaranes-body-header-right-check-marcar-label {
+    grid-area: labelCheckMarcar;
+    text-align: start;
+}
+
+.consultAlbaranes-body-header-right-checks-extranjero {
+    grid-area: extranjero;
+    padding-left: 5px;
+    display: grid;
+    grid-template-areas: 
+        'inputCheckExtranjero labelCheckExtranjero';
+    grid-template-columns: 15% 85%;
+}
+
+.consultAlbaranes-body-header-right-check-extranjero-input {
+    grid-area: inputCheckExtranjero;
+}
+
+.consultAlbaranes-body-header-right-check-extranjero-label {
+    grid-area: labelCheckExtranjero;
+    text-align: start;
+}
+
+.consultAlbaranes-body-table {
+    grid-area: table;
+    margin: 10px;
+    grid-area: table;
+    display: grid;
+    grid-template-areas: 
+        'table'
+        'buttons';
+    grid-template-rows: 90% 10%;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+
+.consultAlbaranes-body-table-main {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    scrollbar-color: rebeccapurple green;
+    scrollbar-width: thin;
+    border-bottom: 1px solid gray;
+    grid-area: table;
+}
+
+.consultAlbaranes-body-table-btns {
+    display: grid;
+    grid-area: buttons;
+    grid-template-areas: 
+        'labelPagina labelIrPagina labelMostrar btns';
+    grid-template-columns: 10% 13% 8% 15%;
+}
+
+.consultAlbaranes-body-table-btns-Pagina {
+    grid-area: labelPagina;
+    height: 50%;
+    margin-top: 5px;
+    font-size: 15px;
+}
+
+.consultAlbaranes-body-table-btns-IrPagina {
+    height: 100%;
+    display: grid;
+    grid-area: labelIrPagina;
+    grid-template-areas: 
+        'title input';
+    grid-template-columns: 70% 30%;
+}
+
+.consultAlbaranes-body-table-btns-IrPagina-title {
+    grid-area: title;
+    padding-top: 5px;
+}
+
+.consultAlbaranes-body-table-btns-IrPagina-input {
+    grid-area: input;
+    padding-top: 3px;
+}
+
+.consultAlbaranes-body-table-btns-Mostrar {
+    grid-area: labelMostrar;
+    height: 100%;
+    padding-top: 3px;
+}
+
+.consultAlbaranes-body-table-btns-buttons {
+    grid-area: btns;
+    height: 100%;
+    display: grid;
+    grid-template-areas: 
+        'first previous next last';
+    grid-template-columns: 15% 35% 35% 15%;
+}
+
+.consultAlbaranes-body-table-btns-buttons-first {
+    grid-area: first;
+    padding-top: 3px;
+}
+
+#btnFistyConsultAlbaranesTable {
+    border: none;
+    border-radius: 10%;
+    height: 80%;
+    width: 80%;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $secundary;
+    }
+}
+
+.consultAlbaranes-body-table-btns-buttons-previous {
+    grid-area: previous;
+    padding-top: 3px;
+}
+
+#btnPreviousConsultAlbaranesTable {
+    border: none;
+    border-radius: 10%;
+    height: 80%;
+    width: 80%;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $secundary;
+    }
+}
+
+.consultAlbaranes-body-table-btns-buttons-next {
+    grid-area: next;
+    padding-top: 3px;
+}
+
+#btnNextConsultAlbaranesTable {
+    border: none;
+    border-radius: 10%;
+    height: 80%;
+    width: 80%;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $secundary;
+    }
+}
+
+.consultAlbaranes-body-table-btns-buttons-last {
+    grid-area: last;
+    padding-top: 3px;
+}
+
+#btnLastConsultAlbaranesTable {
+    border: none;
+    border-radius: 10%;
+    height: 80%;
+    width: 80%;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $secundary;
+    }
+}
+
+.consultAlbaranes-body-table-header {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 12%;
+}
+
+.consultAlbaranes-body-table-body {
+    text-align: start;
+    font-style: normal;
+}
+
+.consultAlbaranes-body-table-body-row {
+    &:hover {
+        cursor: pointer;
+        background-color: #ACA9A9;
+    }
+}
+
+.consultAlbaranes-body-table-body-row-disable {
+    &:hover {
+        cursor: not-allowed;
+        background-color: #ACA9A9;
+    }
+}
+
+.consultAlbaranes-body-table-body-cell {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+    height: 25.5px;
+}
+
+.consultAlbaranes-body-table-body-cell-checkbox {
+    padding-left: 30px;
+    border: 1px solid #BFBCC1;
+
+    &:hover {
+        cursor: default;
+    }
+}
+
+#checkFacturarConsultAlbaranes {
+    &:hover {
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,59 @@
+.modal_selectedUserOpenCash-main {
+    display: grid;
+    text-align: center;
+    grid-template-areas:
+        'title' 
+        'input';
+    grid-template-rows: 35px 60px;
+}
+
+.modal_selectedUserOpenCash-title {
+    grid-area: title;
+}
+
+#lblTitleSelectedUserOpenCashModal {
+    background-color: $primary;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    grid-area: text;
+    margin-bottom: 5px;
+    padding-bottom: 2px;
+    padding-top: 5px;
+    text-align: center;
+}
+
+.modal_selectedUserOpenCash-input {
+    grid-area: input;
+    margin-top: 10px;
+    display: grid;
+    padding-left: 5px;
+    grid-template-areas: 
+        'label select';
+    grid-template-columns: 20% 80%;
+}
+
+.modal_selectedUserOpenCash-input-label {
+    grid-area: label;
+    margin-right: 5px;
+}
+
+#lblUsuarioSelectedUserModal {
+    width: 100%;
+    color: white;
+    font-size: 15px;
+    padding-left: 8px;
+    padding-top: 3px;
+    text-align: center;
+    background-color: $primary;
+}
+
+.modal_selectedUserOpenCash-input-select {
+    grid-area: select;
+}
+
+#cboUserSelectedUserModal {
+    width: 100%;
+    text-align: start;
+    font-size: 15px;
+}

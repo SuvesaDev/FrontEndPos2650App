@@ -1,0 +1,385 @@
+.assign_tab-main {
+    display: grid;
+    text-align: center;
+    grid-template-areas: 
+        'header'
+        'body'
+        'table'
+        'footer';
+    grid-template-rows: 40px 100px 348px 60px;
+}
+
+.assign_tab-header {
+    background-color: #3D59A9;
+    grid-area: header;
+}
+
+#lblTitleAssingTab {
+    color: white;
+    font-size: 25px;
+    padding-top: 5px;
+    text-align: center;
+}
+
+.assign_tab-body {
+    display: grid;
+    grid-area: body;
+    margin-top: 2%;
+    margin-left: 25%;
+    margin-right: 25%;
+    gap: 5px;
+    padding-bottom: 10px;
+    grid-template-areas: 
+        'user from until indicator btn';
+    grid-template-columns: 40% 15% 15% 15% 10%;
+}
+
+.assign_tab-body-user {
+    display: grid;
+    grid-area: user;
+    margin-right: 5px;
+    grid-template-areas: 
+        'lblUser'
+        'inputUser';
+    grid-template-rows: 50% 50%;
+}
+
+#lblUserAssingTab {
+    background-color: #EEF2E6;
+    border: 1px solid black;
+    font-size: 15px;
+    grid-area: lblUser;
+    height: 70%;
+    margin-top: 5px;
+}
+
+#cboUserAssingTab {
+    font-size: 15px;
+    grid-area: inputUser;
+    height: 70%;
+    text-align: start;
+}
+
+.assign_tab-body-from {
+    display: grid;
+    grid-area: from;
+    margin-right: 5px;
+    grid-template-areas: 
+        'lblFrom'
+        'inputFrom';
+    grid-template-rows: 50% 50%;
+}
+
+#lblFromAssingTab {
+    background-color: #EEF2E6;
+    border: 1px solid black;
+    font-size: 15px;
+    grid-area: lblFrom;
+    height: 70%;
+    margin-top: 5px;
+    width: 100%;
+}
+
+#txtFromAssingTab {
+    font-size: 15px;
+    grid-area: inputFrom;
+    height: 70%;
+    text-align: start;
+    width: 100%;
+}
+
+.assign_tab-body-until {
+    display: grid;
+    grid-area: until;
+    // margin-right: 5px;
+    padding-left: 10px;
+    grid-template-areas: 
+        'lblUntil'
+        'inputUntil';
+    grid-template-rows: 50% 50%;
+}
+
+#lblUntilAssingTab {
+    background-color: #EEF2E6;
+    border: 1px solid black;
+    font-size: 15px;
+    grid-area: lblUntil;
+    height: 70%;
+    margin-top: 5px;
+    width: 90%;
+}
+
+#txtUntilAssingTab {
+    font-size: 15px;
+    grid-area: inputUntil;
+    height: 70%;
+    text-align: start;
+    width: 90%;
+}
+
+.assign_tab-body-indicator {
+    display: grid;
+    grid-area: indicator;
+    grid-template-areas: 
+        'lblIndicator'
+        'inputIndicator';
+    grid-template-rows: 50% 50%;
+}
+
+#lblIndicatorAssingTab {
+    background-color: #EEF2E6;
+    border: 1px solid black;
+    font-size: 15px;
+    grid-area: lblIndicator;
+    height: 70%;
+    margin-top: 5px;
+    width: 100%;
+}
+
+#txtIndicatorAssingTab {
+    font-size: 15px;
+    grid-area: inputIndicator;
+    height: 70%;
+    text-align: start;
+    width: 100%;
+}
+
+.assign_tab-body-btn {
+    grid-area: btn;
+    padding-top: 33px;
+    margin-left: 5px;
+}
+
+#btnAddAssingTab {
+    font-size: 15px;
+    width: 100%;
+
+    &:hover {
+        cursor: pointer;
+        background-color: #3D59A9;
+        color: white;
+    }
+}
+
+.assign_tab-table {
+    grid-area: table;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-bottom: 25px;
+    border: 1px solid black;
+}
+
+.assign_tab-table-main {
+    width: 100%;
+}
+
+.assign_tab-table-header-user {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.assign_tab-table-header-from {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 3%;
+}
+
+.assign_tab-table-header-until {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 3%;
+}
+
+.assign_tab-table-header-indicator {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 3%;
+}
+
+.assign_tab-table-user {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.assign_tab-table-from {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.assign_tab-table-until {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.assign_tab-table-indicator {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.assign_tab-icons {
+    border: 1px solid black;
+    display: grid;
+    grid-area: footer;
+    height: 100%;
+    grid-template-areas: 
+        'btnNuevo btnEditar btnRegistrar btnEliminar btnCerrar';
+    grid-template-columns: 8% 8% 8% 8% 8%;
+}
+
+.assign_tab-icons-nuevo {
+    display: grid;
+    grid-area: btnNuevo;
+    height: 100%;
+    grid-template-areas: 
+        'iconNue'
+        'lblNue';
+    grid-template-rows: 60% 40%;
+}
+
+.assign_tab-icons-nuevo-icon {
+    color: #F68A1D;
+    grid-area: iconNue;
+    padding-top: 4px;
+}
+
+#iconNuevoAssingTab {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblNuevoAssingTab {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblNue;
+    text-align: center;
+}
+
+.assign_tab-icons-Editar {
+    display: grid;
+    grid-area: btnEditar;
+    height: 100%;
+    grid-template-areas: 
+        'iconEdit'
+        'lblEdit';
+    grid-template-rows: 60% 40%;
+}
+
+.assign_tab-icons-Editar-icon {
+    color: #F68A1D;
+    grid-area: iconEdit;
+    padding-top: 4px;
+}
+
+#iconEditAssingTab {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblEditAssingTab {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblEdit;
+    text-align: center;
+}
+
+.assign_tab-icons-registrar {
+    display: grid;
+    grid-area: btnRegistrar;
+    height: 100%;
+    grid-template-areas: 
+        'iconReg'
+        'lblReg';
+    grid-template-rows: 60% 40%;
+}
+
+.assign_tab-icons-registrar-icon {
+    color: #F68A1D;
+    grid-area: iconReg;
+    padding-top: 4px;
+}
+
+#iconRegistrarAssingTab {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblRegistrarAssingTab {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblReg;
+    text-align: center;
+}
+
+.assign_tab-icons-eliminar {
+    display: grid;
+    grid-area: btnEliminar;
+    height: 100%;
+    grid-template-areas: 
+        'iconEli'
+        'lblEli';
+    grid-template-rows: 60% 40%;
+}
+
+.assign_tab-icons-eliminar-icon {
+    color: #F68A1D;
+    grid-area: iconEli;
+    padding-top: 4px;
+}
+
+#iconEliminarAssingTab {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblEliminarAssingTab {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblEli;
+    text-align: center;
+}
+
+.assign_tab-icons-cerrar {
+    display: grid;
+    grid-area: btnCerrar;
+    height: 100%;
+    grid-template-areas: 
+        'iconCer'
+        'lblCer';
+    grid-template-rows: 60% 40%;
+}
+
+.assign_tab-icons-cerrar-icon {
+    color: #F68A1D;
+    grid-area: iconCer;
+    padding-top: 4px;
+}
+
+#iconCerrarAssingTab {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblCerrarAssingTab {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblCer;
+    text-align: center;
+}

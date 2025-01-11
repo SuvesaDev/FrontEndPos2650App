@@ -1,0 +1,477 @@
+.movementItems_body-main {
+    border: 1px solid black;
+    display: grid;
+    height: 100%;
+    margin-left: 5%;
+    margin-right: 5%;
+    grid-template-areas: 
+        'inputs'
+        'compras'
+        'ventas';
+    grid-template-rows: 10% 45% 45%;
+}
+
+.movementItems_body-inputs {
+    border-bottom: 1px solid black;
+    display: grid;
+    grid-area: inputs;
+    height: 100%;
+    grid-template-areas: 
+        'codigo descripcion desde hasta btns imprimir';
+    grid-template-columns: 14% 42% 12% 12% 10% 10%;
+}
+
+.movementItems_body-inputs-codigo {
+    display: grid;
+    grid-area: codigo;
+    grid-template-areas: 
+        'lblCodigo'
+        'txtCodigo';
+    grid-template-rows: 45% 55%;
+}
+
+#lblCodigoMovementItems {
+    color: #4169e1;
+    font-size: 15px;
+    grid-area: lblCodigo;
+    padding-left: 5px;
+    padding-top: 1px;
+    text-align: start;
+}
+
+#txtCodigoMovementItems {
+    grid-area: txtCodigo;
+    height: 80%;
+    margin-left: 5px;
+    margin-top: 1px;
+    width: 95%;
+}
+
+.movementItems_body-inputs-descripcion {
+    display: grid;
+    grid-area: descripcion;
+    grid-template-areas: 
+        'lblDescripcion'
+        'txtDescripcion';
+    grid-template-rows: 45% 55%;
+}
+
+#lblDescripMovementItems {
+    color: #4169e1;
+    font-size: 15px;
+    grid-area: lblDescripcion;
+    padding-left: 5px;
+    padding-top: 1px;
+    text-align: start;
+}
+
+#txtDescripMovementItems {
+    grid-area: txtDescripcion;
+    height: 80%;
+    margin-left: 5px;
+    margin-top: 1px;
+    width: 98%;
+}
+
+.movementItems_body-inputs-desde {
+    display: grid;
+    grid-area: desde;
+    grid-template-areas: 
+        'lblDesde'
+        'txtDesde';
+    grid-template-rows: 45% 55%;
+}
+
+#lblDesdeMovementItems {
+    color: #4169e1;
+    font-size: 15px;
+    grid-area: lblDesde;
+    padding-left: 5px;
+    padding-top: 1px;
+    text-align: start;
+}
+
+#txtDesdeMovementItems {
+    grid-area: txtDesde;
+    height: 80%;
+    margin-left: 5px;
+    margin-top: 1px;
+    width: 95%;
+}
+
+.movementItems_body-inputs-hasta {
+    display: grid;
+    grid-area: hasta;
+    grid-template-areas: 
+        'lblHasta'
+        'txtHasta';
+    grid-template-rows: 45% 55%;
+}
+
+#lblHastaMovementItems {
+    color: #4169e1;
+    font-size: 15px;
+    grid-area: lblHasta;
+    padding-left: 5px;
+    padding-top: 1px;
+    text-align: start;
+}
+
+#txtHastaMovementItems {
+    grid-area: txtHasta;
+    height: 80%;
+    margin-left: 5px;
+    margin-top: 1px;
+    width: 95%;
+}
+
+.movementItems_body-inputs-btns {
+    display: grid;
+    grid-area: btns;
+    grid-template-areas: 
+        'compras'
+        'ventas';
+    grid-template-rows: 50% 50%;
+}
+
+#btnComprasMovementItems {
+    font-size: 15px;
+    grid-area: compras;
+    height: 90%;
+    margin-left: 3px;
+    text-align: center;
+    width: 95%;
+
+    &:hover {
+        background-color: #4169e1;
+        border: none;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+#btnVentasMovementItems {
+    font-size: 15px;
+    grid-area: ventas;
+    height: 90%;
+    margin-left: 3px;
+    text-align: center;
+    width: 95%;
+
+    &:hover {
+        background-color: #4169e1;
+        border: none;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+.movementItems_body-inputs-imprimir {
+    grid-area: imprimir;
+}
+
+#btnImprimirMovementItems {
+    font-size: 15px;
+    height: 70%;
+    margin-left: 3px;
+    margin-top: 5px;
+    text-align: center;
+    width: 90%;
+
+    &:hover {
+        background-color: #4169e1;
+        border: none;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+.movementItems_body-compras {
+    grid-area: compras;
+    display: grid;
+    grid-template-areas: 
+        'titleCompras'
+        'tableCompras'
+        'totalsCompras';
+    grid-template-rows: 10% 75% 15%;
+}
+
+.movementItems_body-compras-title {
+    grid-area: titleCompras;
+}
+
+#lblComprasTitleMovementItems {
+    color: black;
+    font-size: 15px;
+    margin-left: 5px;
+    text-align: start;
+    padding-top: 1px;
+}
+
+.movementItems_body-compras-table {
+    grid-area: tableCompras;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 2px;
+    border: 1px solid black;
+}
+
+.movementItems_body-compras-table-main {
+    width: 100%;
+}
+
+.movementItems_body-compras-table-header-factura {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 3%;
+}
+
+.movementItems_body-compras-table-header-tipo {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 3%;
+}
+
+.movementItems_body-compras-table-header-fecha {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 3%;
+}
+
+.movementItems_body-compras-table-header-proveedor {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 9%;
+}
+
+.movementItems_body-compras-table-header-cantidad {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 3%;
+}
+
+.movementItems_body-compras-table-header-precio {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 3%;
+}
+
+.movementItems_body-compras-table-factura {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.movementItems_body-compras-table-tipo {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.movementItems_body-compras-table-fecha {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.movementItems_body-compras-table-proveedor {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.movementItems_body-compras-table-cantidad {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.movementItems_body-compras-table-precio {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.movementItems_body-compras-totals {
+    grid-area: totalsCompras;
+    margin-left: 70%;
+    display: grid;
+    grid-template-areas: 
+        'lblTotalCompras txtTotalCompras';
+    grid-template-columns: 40% 60%;
+}
+
+#lblTotalsComprasMovementItems {
+    grid-area: lblTotalCompras;
+    padding-top: 5px;
+    font-size: 15px;
+    text-align: center;
+    color: #4169e1;
+}
+
+#txtTotalsComprasMovementItems {
+    grid-area: txtTotalCompras;
+    width: 90%;
+    height: 80%;
+    margin-top: 2px;
+    text-align: start;
+    font-size: 15px;
+}
+
+.movementItems_body-ventas {
+    grid-area: ventas;
+    border-top: 1px solid black;
+    display: grid;
+    grid-template-areas: 
+        'titleVentas'
+        'tableVentas'
+        'totalsVentas';
+    grid-template-rows: 10% 75% 15%;
+    // background-color: blueviolet;
+}
+
+.movementItems_body-ventas-title {
+    grid-area: titleVentas;
+}
+
+#lblVentasTitleMovementItems {
+    color: black;
+    font-size: 15px;
+    margin-left: 5px;
+    text-align: start;
+    padding-top: 1px;
+}
+
+.movementItems_body-ventas-table {
+    grid-area: tableVentas;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 2px;
+    border: 1px solid black;
+}
+
+.movementItems_body-ventas-table-main {
+    width: 100%;
+}
+
+.movementItems_body-ventas-table-header-factura {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 3%;
+}
+
+.movementItems_body-ventas-table-header-tipo {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 3%;
+}
+
+.movementItems_body-ventas-table-header-fecha {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 3%;
+}
+
+.movementItems_body-ventas-table-header-proveedor {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 9%;
+}
+
+.movementItems_body-ventas-table-header-cantidad {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 3%;
+}
+
+.movementItems_body-ventas-table-header-precio {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 3%;
+}
+
+.movementItems_body-ventas-table-factura {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.movementItems_body-ventas-table-tipo {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.movementItems_body-ventas-table-fecha {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.movementItems_body-ventas-table-proveedor {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.movementItems_body-ventas-table-cantidad {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.movementItems_body-ventas-table-precio {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.movementItems_body-ventas-totals {
+    grid-area: totalsVentas;
+    margin-left: 70%;
+    display: grid;
+    grid-template-areas: 
+        'lblTotalVentas txtTotalVentas';
+    grid-template-columns: 40% 60%;
+}
+
+#lblTotalsventasMovementItems {
+    grid-area: lblTotalVentas;
+    padding-top: 5px;
+    font-size: 15px;
+    text-align: center;
+    color: #4169e1;
+}
+
+#txtTotalsventasMovementItems {
+    grid-area: txtTotalVentas;
+    width: 90%;
+    height: 80%;
+    margin-top: 2px;
+    text-align: start;
+    font-size: 15px;
+}

@@ -1,0 +1,32 @@
+.sales_agent-main {
+    background-color: #F4F8FB;
+    display: grid;
+    height: 100%;
+    text-align: center;
+    grid-template-areas: 
+        'title'
+        'body'
+        'icons';
+    grid-template-rows: 40px 448px 60px;
+}
+
+.sales_agent-title {
+    grid-area: title;
+    padding-top: 2px;
+    background-color: #3D59A9;
+}
+
+#lblTitleSalesAgent {
+    font-size: 30px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+
+.sales_agent-body {
+    grid-area: body;
+}
+
+.sales_agent-icons {
+    grid-area: icons;
+}

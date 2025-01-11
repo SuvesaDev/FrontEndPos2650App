@@ -1,0 +1,123 @@
+.areas_icons-main {
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'btnNuevo btnGuardar btnBuscar btnAnular';
+    grid-template-columns: 10% 10% 10% 10%;
+}
+
+.areas_icons-nuevo {
+    display: grid;
+    grid-area: btnNuevo;
+    height: 100%;
+    grid-template-areas: 
+        'iconNuevo'
+        'lblNuevo';
+    grid-template-rows: 60% 40%;
+}
+
+.areas_icons-nuevo-icon {
+    color: #F68A1D;
+    grid-area: iconNuevo;
+    padding-top: 4px;
+}
+
+#iconNuevoAreas {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblNuevoAreas {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblNuevo;
+    text-align: center;
+}
+
+.areas_icons-guardar {
+    display: grid;
+    grid-area: btnGuardar;
+    height: 100%;
+    grid-template-areas: 
+        'iconGuardar'
+        'lblGuardar';
+    grid-template-rows: 60% 40%;
+}
+
+.areas_icons-guardar-icon {
+    color: #F68A1D;
+    grid-area: iconGuardar;
+    padding-top: 4px;
+}
+
+#iconGuardarAreas {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblGuardarAreas {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblGuardar;
+    text-align: center;
+}
+
+.areas_icons-Buscar {
+    display: grid;
+    grid-area: btnBuscar;
+    height: 100%;
+    grid-template-areas: 
+        'iconBus'
+        'lblBus';
+    grid-template-rows: 60% 40%;
+}
+
+.areas_icons-Buscar-icon {
+    color: #F68A1D;
+    grid-area: iconBus;
+    padding-top: 4px;
+}
+
+#iconBusAreas {
+    cursor: pointer;
+    height: 100%;
+    width: 20%;
+}
+
+#lblBuscarAreas {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblBus;
+    text-align: center;
+}
+
+.areas_icons-anular {
+    display: grid;
+    grid-area: btnAnular;
+    height: 100%;
+    grid-template-areas: 
+        'iconAnu'
+        'lblAnu';
+    grid-template-rows: 60% 40%;
+}
+
+.areas_icons-anular-icon {
+    color: #F68A1D;
+    grid-area: iconAnu;
+    padding-top: 4px;
+}
+
+#iconAnularAreas {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblAnularAreas {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblAnu;
+    text-align: center;
+}

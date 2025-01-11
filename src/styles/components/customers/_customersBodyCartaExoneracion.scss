@@ -1,0 +1,849 @@
+.customers_body-carta-main {
+    background-color: #F0F0F0;
+    display: grid;
+    height: 100%;
+    margin-left: 3%;
+    margin-right: 3%;
+    grid-template-areas: 
+        'inputCarta';
+    grid-template-rows: 50%;
+}
+
+.customers_body-carta-first-box-data {
+    display: grid;
+    grid-area: inputCarta;
+    height: 70%;
+    margin-top: 3%;
+    grid-template-areas: 
+        'firstLine'
+        'secondLine';
+    grid-template-rows: 50% 50%;
+}
+
+.customers_body-carta-first-box-data-firstLine {
+    display: grid;
+    grid-area: firstLine;
+    height: 100%;
+    padding-left: 2.5%;
+    padding-right: 2%;
+    grid-template-areas: 
+        'motivo numeroDocumento fechaEmision fechaVence exoneracion';
+    grid-template-columns: 20% 20% 20% 20% 20%;
+}
+
+.customers_body-carta-first-box-data-firstLine-motivo {
+    display: grid;
+    grid-area: motivo;
+    height: 100%;
+    grid-template-areas: 
+        'lblMotivo'
+        'cboMotivo';
+    grid-template-rows: 40% 60%;
+}
+
+#lblCEMotivo {
+    background-color: #E3E3E3;
+    color: #4A58DC;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblMotivo;
+    margin-right: 10px;
+    margin-top: 1px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+#cboCEMotivo {
+    color: #3429C5;
+    height: 80%;
+    margin-top: 3px;
+    text-align: start;
+    width: 95%;
+}
+
+.customers_body-carta-first-box-data-firstLine-numeroDocumento {
+    display: grid;
+    grid-area: numeroDocumento;
+    height: 100%;
+    grid-template-areas: 
+        'lblNumeroDocumento'
+        'inputsNumeroDocumento';
+    grid-template-rows: 40% 60%;
+}
+
+#lblCEnumeroDocumento {
+    background-color: #E3E3E3;
+    color: #4A58DC;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblNumeroDocumento;
+    margin-right: 10px;
+    margin-top: 1px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.customers_body-carta-first-box-data-firstLine-numeroDocumento-inputs {
+    display: grid;
+    grid-area: inputsNumeroDocumento;
+    height: 100%;
+    grid-template-areas: 
+        'inputNumeroDocumento btnCheckNumeroDocumento';
+    grid-template-columns: 85% 15%;
+}
+
+#txtCENumeroDocumento {
+    color: black;
+    font-size: 15px;
+    grid-area: inputNumeroDocumento;
+    height: 80%;
+    margin-top: 3px;
+    text-align: start;
+    width: 100%;
+}
+
+.customers_body-carta-first-box-data-firstLine-numeroDocumento-inputs-icon {
+    grid-area: btnCheckNumeroDocumento;
+    padding-right: 5px;
+    padding-top: 2px;
+}
+
+#btnCECheckDocumento {
+    color: $secundary;
+    
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.customers_body-carta-first-box-data-firstLine-fechaEmision {
+    display: grid;
+    grid-area: fechaEmision;
+    height: 100%;
+    grid-template-areas: 
+        'lblFechaEmision'
+        'inputFechaEmision';
+    grid-template-rows: 40% 60%;
+}
+
+#lblCEfechaEmision {
+    background-color: #E3E3E3;
+    color: #4A58DC;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblFechaEmision;
+    margin-right: 10px;
+    margin-top: 1px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+#txtCEfechaEmision {
+    color: black;
+    font-size: 15px;
+    grid-area: inputFechaEmision;
+    height: 80%;
+    margin-top: 3px;
+    text-align: start;
+    width: 95%;
+}
+
+.customers_body-carta-first-box-data-firstLine-fechaVence {
+    display: grid;
+    grid-area: fechaVence;
+    height: 100%;
+    grid-template-areas: 
+        'lblFechaVence'
+        'inputFechaVence';
+    grid-template-rows: 40% 60%;
+}
+
+#lblCEfechaVence {
+    background-color: #E3E3E3;
+    color: #4A58DC;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblFechaVence;
+    margin-right: 10px;
+    margin-top: 1px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+#txtCEfechaVence {
+    color: black;
+    font-size: 15px;
+    grid-area: inputFechaVence;
+    height: 80%;
+    margin-top: 3px;
+    text-align: start;
+    width: 95%;
+}
+
+.customers_body-carta-first-box-data-firstLine-exoneracion {
+    display: grid;
+    grid-area: exoneracion;
+    height: 100%;
+    grid-template-areas: 
+        'lblExoneracion'
+        'inputExoneracion';
+    grid-template-rows: 40% 60%;
+}
+
+#lblCEexoneracion {
+    background-color: #E3E3E3;
+    color: #4A58DC;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblExoneracion;
+    margin-right: 10px;
+    margin-top: 1px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.customers_body-carta-first-box-data-firstLine-exoneracion-inputs {
+    display: grid;
+    grid-area: inputExoneracion;
+    height: 100%;
+    grid-template-areas: 
+        'lblExoneracionPorcentaje inputExoneracionPorcentaje';
+    grid-template-columns: 15% 85%;
+}
+
+#lblCEexoneracionPorcentaje {
+    background-color: #E3E3E3;
+    color: #4A58DC;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblExoneracionPorcentaje;
+    height: 85%;
+    margin-left: 2px;
+    margin-right: 5px;
+    margin-top: 1px;
+    padding-top: 3px;
+    text-align: center;
+}   
+
+#txtCEExoneracion {
+    color: black;
+    font-size: 15px;
+    grid-area: inputExoneracionPorcentaje;
+    height: 80%;
+    margin-top: 3px;
+    text-align: start;
+    width: 95%;
+}
+
+.customers_body-carta-first-box-data-secondLine {
+    display: grid;
+    grid-area: secondLine;
+    height: 100%;
+    padding-left: 2.5%;
+    padding-right: 2%;
+    grid-template-areas: 
+        'iv descripcion';
+    grid-template-columns: 10% 90%;
+}
+
+.customers_body-carta-first-box-data-secondLine-IV {
+    display: grid;
+    grid-area: iv;
+    height: 100%;
+    grid-template-areas: 
+        'lblIV'
+        'inputIV';
+    grid-template-rows: 40% 60%;
+}
+
+#lblCEIV {
+    background-color: #E3E3E3;
+    color: #4A58DC;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblIV;
+    margin-right: 7px;
+    margin-top: 1px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+#txtCEIV {
+    color: black;
+    font-size: 15px;
+    grid-area: inputIV;
+    height: 80%;
+    margin-top: 3px;
+    text-align: start;
+    width: 95%;
+}
+
+.customers_body-carta-first-box-data-secondLine-descripcion {
+    display: grid;
+    grid-area: descripcion;
+    height: 100%;
+    grid-template-areas: 
+        'lblDescripcion'
+        'inputDescripcion';
+    grid-template-rows: 40% 60%;
+}
+
+#lblCEDescripcion {
+    background-color: #E3E3E3;
+    color: #4A58DC;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblDescripcion;
+    margin-right: 7px;
+    margin-top: 1px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+#txtCEDescripcion {
+    color: black;
+    font-size: 15px;
+    grid-area: inputDescripcion;
+    height: 80%;
+    margin-top: 3px;
+    text-align: start;
+    width: 99%;
+}
+
+// Style respaldo
+// .customers_body-carta-main {
+//     display: grid;
+//     height: 100%;
+//     margin-left: 3%;
+//     margin-right: 3%;
+//     grid-template-areas: 
+//         'firstBox'
+//         'secondBox';
+//     grid-template-rows: 50% 50%;
+// }
+
+// .customers_body-carta-first-box {
+//     display: grid;
+//     grid-area: firstBox;
+//     height: 100%;
+//     padding-bottom: 5px;
+//     padding-left: 1%;
+//     padding-right: 1%;
+//     padding-top: 1%;
+//     grid-template-areas: 
+//         'firstBoxCliente'
+//         'secondBoxCliente';
+//     grid-template-rows: 35% 65%;
+// }
+
+// .customers_body-carta-first-box-cliente {
+//     display: grid;
+//     grid-area: firstBoxCliente;
+//     height: 100%;
+//     grid-template-areas: 
+//         'inputsLabels buttons';
+//     grid-template-columns: 80% 20%;
+// }
+
+// .customers_body-carta-first-box-cliente-labelsInputs {
+//     display: grid;
+//     grid-area: inputsLabels;
+//     height: 100%;
+//     padding-left: 3%;
+//     padding-right: 3%;
+//     grid-template-areas: 
+//         'lblNombreClienteCE'
+//         'inputsNombreClienteCE';
+//     grid-template-rows: 45% 55%;
+// }
+
+// #lblCECliente {
+//     background-color: #EEF2E6;
+//     color: #4A58DC;
+//     font-size: 15px;
+//     font-weight: bold;
+//     grid-area: lblNombreClienteCE;
+// }
+
+// .customers_body-carta-first-box-cliente-labelsInputs-inputs {
+//     display: grid;
+//     grid-area: inputsNombreClienteCE;
+//     height: 85%;
+//     margin-bottom: 1px;
+//     margin-top: 2px;
+//     grid-template-areas: 
+//         'inputIDClienteCE inputNombreClienteCE';
+//     grid-template-columns: 10% 89.5%;
+//     gap: 5px;
+// }
+
+// #txtCEidCliente {
+//     color: black;
+//     font-size: 15px;
+//     grid-area: inputIDClienteCE;
+//     text-align: right;
+// }
+
+// #txtCENombreCliente {
+//     color: black;
+//     font-size: 15px;
+//     grid-area: inputNombreClienteCE;
+//     text-align: start;
+// }
+
+// .customers_body-carta-first-box-cliente-buttons {
+//     grid-area: buttons;
+// }
+
+// #btnCEBuscarCliente {
+//     font-size: 15px;
+//     height: 75%;
+//     margin-top: 5px;
+//     width: 80%;
+
+//     &:hover {
+//         background-color: $secundary;
+//         color: white;
+//         cursor: pointer;
+//     }
+// }
+
+// .customers_body-carta-first-box-data {
+//     display: grid;
+//     grid-area: secondBoxCliente;
+//     height: 100%;
+//     grid-template-areas: 
+//         'firstLine'
+//         'secondLine';
+//     grid-template-rows: 50% 50%;
+// }
+
+// .customers_body-carta-first-box-data-firstLine {
+//     display: grid;
+//     grid-area: firstLine;
+//     height: 100%;
+//     padding-left: 2.5%;
+//     padding-right: 2%;
+//     grid-template-areas: 
+//         'motivo numeroDocumento fechaEmision fechaVence exoneracion';
+//     grid-template-columns: 20% 20% 20% 20% 20%;
+// }
+
+// .customers_body-carta-first-box-data-firstLine-motivo {
+//     display: grid;
+//     grid-area: motivo;
+//     height: 100%;
+//     grid-template-areas: 
+//         'lblMotivo'
+//         'cboMotivo';
+//     grid-template-rows: 40% 60%;
+// }
+
+// #lblCEMotivo {
+//     background-color: #EEF2E6;
+//     color: #4A58DC;
+//     font-size: 15px;
+//     font-weight: bold;
+//     grid-area: lblMotivo;
+//     margin-right: 10px;
+//     margin-top: 1px;
+//     padding-left: 5px;
+//     text-align: start;
+// }
+
+// #cboCEMotivo {
+//     color: #3429C5;
+//     height: 80%;
+//     margin-top: 3px;
+//     text-align: start;
+//     width: 95%;
+// }
+
+// .customers_body-carta-first-box-data-firstLine-numeroDocumento {
+//     display: grid;
+//     grid-area: numeroDocumento;
+//     height: 100%;
+//     grid-template-areas: 
+//         'lblNumeroDocumento'
+//         'inputsNumeroDocumento';
+//     grid-template-rows: 40% 60%;
+// }
+
+// #lblCEnumeroDocumento {
+//     background-color: #EEF2E6;
+//     color: #4A58DC;
+//     font-size: 15px;
+//     font-weight: bold;
+//     grid-area: lblNumeroDocumento;
+//     margin-right: 10px;
+//     margin-top: 1px;
+//     padding-left: 5px;
+//     text-align: start;
+// }
+
+// .customers_body-carta-first-box-data-firstLine-numeroDocumento-inputs {
+//     display: grid;
+//     grid-area: inputsNumeroDocumento;
+//     height: 100%;
+//     grid-template-areas: 
+//         'inputNumeroDocumento btnCheckNumeroDocumento';
+//     grid-template-columns: 85% 15%;
+// }
+
+// #txtCENumeroDocumento {
+//     color: black;
+//     font-size: 15px;
+//     grid-area: inputNumeroDocumento;
+//     height: 80%;
+//     margin-top: 3px;
+//     text-align: start;
+//     width: 95%;
+// }
+
+// #btnCECheckDocumento {
+//     color: $secundary;
+//     grid-area: btnCheckNumeroDocumento;
+//     margin-top: 5px;
+//     width: 100%;
+    
+//     &:hover {
+//         cursor: pointer;
+//     }
+// }
+
+// .customers_body-carta-first-box-data-firstLine-fechaEmision {
+//     display: grid;
+//     grid-area: fechaEmision;
+//     height: 100%;
+//     grid-template-areas: 
+//         'lblFechaEmision'
+//         'inputFechaEmision';
+//     grid-template-rows: 40% 60%;
+// }
+
+// #lblCEfechaEmision {
+//     background-color: #EEF2E6;
+//     color: #4A58DC;
+//     font-size: 15px;
+//     font-weight: bold;
+//     grid-area: lblFechaEmision;
+//     margin-right: 10px;
+//     margin-top: 1px;
+//     padding-left: 5px;
+//     text-align: start;
+// }
+
+// #txtCEfechaEmision {
+//     color: black;
+//     font-size: 15px;
+//     grid-area: inputFechaEmision;
+//     height: 80%;
+//     margin-top: 3px;
+//     text-align: start;
+//     width: 95%;
+// }
+
+// .customers_body-carta-first-box-data-firstLine-fechaVence {
+//     display: grid;
+//     grid-area: fechaVence;
+//     height: 100%;
+//     grid-template-areas: 
+//         'lblFechaVence'
+//         'inputFechaVence';
+//     grid-template-rows: 40% 60%;
+// }
+
+// #lblCEfechaVence {
+//     background-color: #EEF2E6;
+//     color: #4A58DC;
+//     font-size: 15px;
+//     font-weight: bold;
+//     grid-area: lblFechaVence;
+//     margin-right: 10px;
+//     margin-top: 1px;
+//     padding-left: 5px;
+//     text-align: start;
+// }
+
+// #txtCEfechaVence {
+//     color: black;
+//     font-size: 15px;
+//     grid-area: inputFechaVence;
+//     height: 80%;
+//     margin-top: 3px;
+//     text-align: start;
+//     width: 95%;
+// }
+
+// .customers_body-carta-first-box-data-firstLine-exoneracion {
+//     display: grid;
+//     grid-area: exoneracion;
+//     height: 100%;
+//     grid-template-areas: 
+//         'lblExoneracion'
+//         'inputExoneracion';
+//     grid-template-rows: 40% 60%;
+// }
+
+// #lblCEexoneracion {
+//     background-color: #EEF2E6;
+//     color: #4A58DC;
+//     font-size: 15px;
+//     font-weight: bold;
+//     grid-area: lblExoneracion;
+//     margin-right: 10px;
+//     margin-top: 1px;
+//     padding-left: 5px;
+//     text-align: start;
+// }
+
+// .customers_body-carta-first-box-data-firstLine-exoneracion-inputs {
+//     display: grid;
+//     grid-area: inputExoneracion;
+//     height: 100%;
+//     grid-template-areas: 
+//         'lblExoneracionPorcentaje inputExoneracionPorcentaje';
+//     grid-template-columns: 15% 85%;
+// }
+
+// #lblCEexoneracionPorcentaje {
+//     background-color: #EEF2E6;
+//     color: #4A58DC;
+//     font-size: 15px;
+//     font-weight: bold;
+//     grid-area: lblExoneracionPorcentaje;
+//     height: 85%;
+//     margin-left: 2px;
+//     margin-right: 5px;
+//     margin-top: 1px;
+//     padding-top: 3px;
+//     text-align: center;
+// }   
+
+// #txtCEExoneracion {
+//     color: black;
+//     font-size: 15px;
+//     grid-area: inputExoneracionPorcentaje;
+//     height: 80%;
+//     margin-top: 3px;
+//     text-align: start;
+//     width: 95%;
+// }
+
+// .customers_body-carta-first-box-data-secondLine {
+//     display: grid;
+//     grid-area: secondLine;
+//     height: 100%;
+//     padding-left: 2.5%;
+//     padding-right: 2%;
+//     grid-template-areas: 
+//         'iv descripcion btnAddCarta btnDeleteCarta';
+//     grid-template-columns: 10% 60% 15% 15%;
+// }
+
+// .customers_body-carta-first-box-data-secondLine-IV {
+//     display: grid;
+//     grid-area: iv;
+//     height: 100%;
+//     grid-template-areas: 
+//         'lblIV'
+//         'inputIV';
+//     grid-template-rows: 40% 60%;
+// }
+
+// #lblCEIV {
+//     background-color: #EEF2E6;
+//     color: #4A58DC;
+//     font-size: 15px;
+//     font-weight: bold;
+//     grid-area: lblIV;
+//     margin-right: 7px;
+//     margin-top: 1px;
+//     padding-left: 5px;
+//     text-align: start;
+// }
+
+// #txtCEIV {
+//     color: black;
+//     font-size: 15px;
+//     grid-area: inputIV;
+//     height: 80%;
+//     margin-top: 3px;
+//     text-align: start;
+//     width: 95%;
+// }
+
+// .customers_body-carta-first-box-data-secondLine-descripcion {
+//     display: grid;
+//     grid-area: descripcion;
+//     height: 100%;
+//     grid-template-areas: 
+//         'lblDescripcion'
+//         'inputDescripcion';
+//     grid-template-rows: 40% 60%;
+// }
+
+// #lblCEDescripcion {
+//     background-color: #EEF2E6;
+//     color: #4A58DC;
+//     font-size: 15px;
+//     font-weight: bold;
+//     grid-area: lblDescripcion;
+//     margin-right: 7px;
+//     margin-top: 1px;
+//     padding-left: 5px;
+//     text-align: start;
+// }
+
+// #txtCEDescripcion {
+//     color: black;
+//     font-size: 15px;
+//     grid-area: inputDescripcion;
+//     height: 80%;
+//     margin-top: 3px;
+//     text-align: start;
+//     width: 99%;
+// }
+
+// .customers_body-carta-first-box-data-secondLine-btnAgregarCarta {
+//     grid-area: btnAddCarta;
+// }
+
+// #btnCEAgregarCarta {
+//     font-size: 15px;
+//     height: 80%;
+//     margin-top: 5px;
+//     text-align: center;
+//     width: 90%;
+
+//     &:hover {
+//         background-color: $secundary;
+//         cursor: pointer;
+//     }
+// }
+
+// .customers_body-carta-first-box-data-secondLine-btnEliminarCarta {
+//     grid-area: btnDeleteCarta;
+// }
+
+// #btnCEEliminarCarta {
+//     font-size: 15px;
+//     height: 80%;
+//     margin-top: 5px;
+//     text-align: center;
+//     width: 90%;
+
+//     &:hover {
+//         background-color: #FC473E;
+//         cursor: pointer;
+//     }
+// }
+
+// .customers_body-carta-second-box {
+//     grid-area: secondBox;
+//     padding-bottom: 5px; 
+//     padding-top: 5px; 
+//     border: 1px solid black;
+// }
+
+// .customers_body-carta-second-box-table-main {
+//     width: 100%;
+// }
+
+// .customers_body-carta-second-box-table-header-tipo {
+//     background-color: #BFBCC1;
+//     padding-left: 5px;
+//     text-align: start;
+//     width: 8%;
+// }
+
+// .customers_body-carta-second-box-table-header-numeroDocumento {
+//     background-color: #BFBCC1;
+//     padding-left: 5px;
+//     text-align: start;
+//     width: 8%;
+// }
+
+// .customers_body-carta-second-box-table-header-fechaEmision {
+//     background-color: #BFBCC1;
+//     padding-left: 5px;
+//     text-align: start;
+//     width: 8%;
+// }
+
+// .customers_body-carta-second-box-table-header-fechaVence {
+//     background-color: #BFBCC1;
+//     padding-left: 5px;
+//     text-align: start;
+//     width: 8%;
+// }
+
+// .customers_body-carta-second-box-table-header-porcentaje {
+//     background-color: #BFBCC1;
+//     padding-left: 5px;
+//     text-align: start;
+//     width: 8%;
+// }
+
+// .customers_body-carta-second-box-table-header-impuesto {
+//     background-color: #BFBCC1;
+//     padding-left: 5px;
+//     text-align: start;
+//     width: 8%;
+// }
+
+// .customers_body-carta-second-box-table-header-nota {
+//     background-color: #BFBCC1;
+//     padding-left: 5px;
+//     text-align: start;
+//     width: 8%;
+// }
+
+// .customers_body-carta-second-box-table-tipo {
+//     border: 1px solid #BFBCC1;
+//     font-size: 15px;
+//     padding-left: 5px;
+//     text-align: start;
+// }
+
+// .customers_body-carta-second-box-table-numeroDocumento {
+//     border: 1px solid #BFBCC1;
+//     font-size: 15px;
+//     padding-left: 5px;
+//     text-align: start;
+// }
+
+// .customers_body-carta-second-box-table-fechaEmision {
+//     border: 1px solid #BFBCC1;
+//     font-size: 15px;
+//     padding-left: 5px;
+//     text-align: start;
+// }
+
+// .customers_body-carta-second-box-table-fechaVence {
+//     border: 1px solid #BFBCC1;
+//     font-size: 15px;
+//     padding-left: 5px;
+//     text-align: start;
+// }
+
+// .customers_body-carta-second-box-table-porcentaje {
+//     border: 1px solid #BFBCC1;
+//     font-size: 15px;
+//     padding-left: 5px;
+//     text-align: start;
+// }
+
+// .customers_body-carta-second-box-table-impuesto {
+//     border: 1px solid #BFBCC1;
+//     font-size: 15px;
+//     padding-left: 5px;
+//     text-align: start;
+// }
+
+// .customers_body-carta-second-box-table-nota {
+//     border: 1px solid #BFBCC1;
+//     font-size: 15px;
+//     padding-left: 5px;
+//     text-align: start;
+// }

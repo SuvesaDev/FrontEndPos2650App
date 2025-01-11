@@ -1,0 +1,36 @@
+.inventory_adjustment-main {
+    display: grid;
+    height: 100%;
+    text-align: center;
+    grid-template-areas: 
+        'header'
+        'datos'
+        'table'
+        'icons';
+    grid-template-rows: 30px 230px 228px 60px;
+}
+
+.inventory_adjustment-header {
+    background-color: #6284BF;
+    grid-area: header;
+}
+
+#lblInventoryAdjTitle {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    padding-top: 3px;
+    text-align: center;
+}
+
+.inventory_adjustment-datos {
+    grid-area: datos;
+}
+
+.inventory_adjustment-table {
+    grid-area: table;
+}
+
+.inventory_adjustment-icons {
+    grid-area: icons;
+}

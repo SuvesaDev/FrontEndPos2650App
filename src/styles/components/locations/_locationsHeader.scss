@@ -1,0 +1,143 @@
+.locations_header-main {
+    border: 1px solid black;
+    display: grid;
+    height: 100%;
+    margin-left: 5%;
+    margin-right: 5%;
+    grid-template-areas: 
+        'first'
+        'second';
+    grid-template-rows: 35% 65%;
+}
+
+.locations_header-first {
+    display: grid;
+    grid-area: first;
+    grid-template-areas: 
+        'codigo descrip';
+    grid-template-columns: 20% 80%;
+}
+
+.locations_header-first-codigo {
+    display: grid;
+    grid-area: codigo;
+    grid-template-areas: 
+        'lblCodigo'
+        'inputCodigo';
+    grid-template-rows: 45% 55%;
+}
+
+#lblCodigoLocationsH {
+    background-color: #EEF2E6;
+    color: #4264D8;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblCodigo;
+    margin-left: 2px;
+    margin-top: 1px;
+    padding-left: 5px;
+    text-align: start;
+    width: 90%;
+}
+
+#txtCodigoLocationsH {
+    color: black;
+    font-size: 15px;
+    grid-area: inputCodigo;
+    height: 80%;
+    margin-left: 2px;
+    margin-top: 3px;
+    text-align: start;
+    width: 90%;
+}
+
+.locations_header-first-descrip {
+    display: grid;
+    grid-area: descrip;
+    grid-template-areas: 
+        'lblDescrip'
+        'inputDescrip';
+    grid-template-rows: 45% 55%;
+}
+
+#lblDescripLocationsH {
+    background-color: #EEF2E6;
+    color: #4264D8;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblDescrip;
+    margin-left: 2px;
+    margin-top: 1px;
+    padding-left: 5px;
+    text-align: start;
+    width: 90%;
+}
+
+#txtDescripLocationsH {
+    color: black;
+    font-size: 15px;
+    grid-area: inputDescrip;
+    height: 80%;
+    margin-left: 2px;
+    margin-top: 3px;
+    text-align: start;
+    width: 90%;
+}
+
+.locations_header-second {
+    display: grid;
+    grid-area: second;
+    grid-template-areas: 
+        'obser btn';
+    grid-template-columns: 92% 8%;
+}
+
+.locations_header-second-obser {
+    display: grid;
+    grid-area: obser;
+    grid-template-areas: 
+        'lblObser'
+        'inputObser';
+    grid-template-rows: 18% 55%;
+}
+
+#lblObserLocationsH {
+    background-color: #EEF2E6;
+    color: #4264D8;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblObser;
+    margin-left: 2px;
+    margin-top: 1px;
+    padding-left: 5px;
+    text-align: start;
+    width: 100%;
+}
+
+#txtObserLocationsH {
+    color: black;
+    font-size: 15px;
+    grid-area: inputObser;
+    height: 90%;
+    margin-left: 2px;
+    margin-top: 3px;
+    text-align: start;
+    width: 100%;
+}
+
+.locations_header-second-btn {
+    grid-area: btn;
+    padding-top: 50px;
+}
+
+#btnGuardarLocationsH {
+    color: #4264D8;
+    font-size: 15px;
+    width: 85%;
+
+    &:hover {
+        background-color: #4264D8;
+        color: white;
+        cursor: pointer;
+    }	
+}

@@ -1,0 +1,33 @@
+.arqueoCash_main {
+    background-color: #F4F8FB;
+    display: grid;
+    height: 100%;
+    text-align: center;
+    grid-template-areas: 
+        'header'
+        'body'
+        'icons';
+    grid-template-rows: 30px 458px 60px;
+}
+
+.arqueoCash_main-title {
+    background-color: #3D59A9;
+    grid-area: header;
+}
+
+#lblarqueoCashTitle {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    padding-top: 3px;
+    text-align: center;
+}
+
+.arqueoCash_main-body {
+    grid-area: body;
+}
+
+.arqueoCash_main-icons {
+    grid-area: icons;
+    border: 1px solid black;
+}

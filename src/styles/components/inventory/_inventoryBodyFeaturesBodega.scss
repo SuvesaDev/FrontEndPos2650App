@@ -1,0 +1,151 @@
+.inventory_body-featuresBodega {
+    background-color: #F0F0F0;
+    display: grid;
+    height: 100%;
+    padding-top: 5px;
+    grid-template-areas:
+        'inputs'
+        'table';
+    grid-template-rows: 30% 70%;
+}
+
+.inventory_body-featuresBodega-inputs {
+    display: grid;
+    grid-area: inputs;
+    height: 100%;
+    grid-template-areas:
+        'nombre btn existencia';
+    grid-template-columns: 42.5% 15% 42.5%;
+}
+
+.inventory_body-featuresBodega-inputs-nombre {
+    // display: grid;
+    grid-area: nombre;
+    margin-top: 20px;
+    // height: 100%;
+    // grid-template-areas:
+    //     'lblNombre';
+    //     //'inputNombre';
+    // grid-template-rows: 40% 60%;
+}
+
+// .inventory_body-bodega-secondLine-cbo {
+//     display: grid;
+//     grid-area: cboBodega;
+//     height: 100%;
+//     grid-template-areas: 
+//         'cbo icon';
+//     grid-template-columns: 90% 10%;
+// }
+
+// #cboBodega {
+//     color: #4184E8;
+//     grid-area: cbo;
+//     margin-left: 50px;
+//     width: 85%;
+//     height: 70%;
+// }
+#cboBodega2 {
+    color: #4184E8;
+    font-size: 15px;
+    //grid-area: lblNombre;
+    margin-left: 5px;
+    //padding-top: 2px;
+    height: 78%;
+    text-align: start;
+    width: 85%;
+}
+
+#txtNombreFeaturesBodegaInv {
+    font-size: 15px;
+    grid-area: inputNombre;
+    height: 75%;
+    margin-left: 20px;
+    margin-right: 20px;
+    text-align: start;
+}
+
+.inventory_body-featuresBodega-inputs-existencia {
+    display: grid;
+    grid-area: existencia;
+    height: 100%;
+    grid-template-areas:
+        'lblExistencia'
+        'inputExistencia';
+    grid-template-rows: 40% 60%;
+}
+
+#lblExistenciaFeaturesBodegaInv {
+    color: #4184E8;
+    font-size: 15px;
+    grid-area: lblExistencia;
+    margin-left: 20px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+#txtExistenciaFeaturesBodegaInv {
+    font-size: 15px;
+    grid-area: inputExistencia;
+    height: 75%;
+    margin-left: 20px;
+    margin-right: 20px;
+    text-align: start;
+}
+
+.inventory_body-featuresBodega-inputs-btn {
+    color: #4184E8;
+    font-size: 15px;
+    grid-area: btn;
+    height: 50%;
+    margin-right: 10px;
+    margin-top: 20px;
+    text-align: center;
+
+    &:hover {
+        cursor: pointer;
+        background-color: #4184E8;
+        color: white;
+    }
+}
+
+.inventory_body-featuresBodega-table {
+    border: 1px solid black;
+    grid-area: table;
+    height: 90%;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 5px;
+}
+
+.inventory_body-featuresBodega-table-main {
+    width: 100%;
+}
+
+.inventory_body-featuresBodega-table-header-nombre {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 5%;
+}
+
+.inventory_body-featuresBodega-table-header-existencia {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 5%;
+}
+
+.inventory_body-featuresBodega-table-nombre {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.inventory_body-featuresBodega-table-existencia {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}

@@ -1,0 +1,96 @@
+.bagsKilos_icons-main {
+    border: 1px solid black;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'btnBuscar btnAnular btnCerrar';
+    grid-template-columns: 8% 8% 8%;
+}
+
+.bagsKilos_icons-icon-Buscar {
+    display: grid;
+    grid-area: btnBuscar;
+    height: 100%;
+    grid-template-areas: 
+        'iconBus'
+        'lblBus';
+    grid-template-rows: 60% 40%;
+}
+
+.bagsKilos_icons-icon-Buscar-icon {
+    color: #F68A1D;
+    grid-area: iconBus;
+    padding-top: 4px;
+}
+
+#iconBusBagsKilos {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblBuscarBagsKilos {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblBus;
+    text-align: center;
+}
+
+.bagsKilos_icons-icon-anular {
+    display: grid;
+    grid-area: btnAnular;
+    height: 100%;
+    grid-template-areas: 
+        'iconAnu'
+        'lblAnu';
+    grid-template-rows: 60% 40%;
+}
+
+.bagsKilos_icons-icon-anular-icon {
+    color: #F68A1D;
+    grid-area: iconAnu;
+    padding-top: 4px;
+}
+
+#iconAnularBagsKilos {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblAnularBagsKilos {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblAnu;
+    text-align: center;
+}
+
+.bagsKilos_icons-icon-cerrar {
+    display: grid;
+    grid-area: btnCerrar;
+    height: 100%;
+    grid-template-areas: 
+        'iconCer'
+        'lblCer';
+    grid-template-rows: 60% 40%;
+}
+
+.bagsKilos_icons-icon-cerrar-icon {
+    color: #F68A1D;
+    grid-area: iconCer;
+    padding-top: 4px;
+}
+
+#iconCerrarBagsKilos {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblCerrarBagsKilos {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblCer;
+    text-align: center;
+}
+

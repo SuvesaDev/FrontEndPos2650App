@@ -1,0 +1,31 @@
+.documentsEmited-main {
+    text-align: center;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'header'
+        'body'
+        'footer';
+    grid-template-rows: 45px 443px 60px;
+}
+
+.documentsEmited-header {
+    grid-area: header;
+    background-color: #3D59A9;
+}
+
+#lblTitleDocumentsEmited {
+    color: white;
+    font-size: 25px;
+    padding-top: 8px;
+    text-align: center;
+}
+
+.documentsEmited-body {
+    grid-area: body;
+}
+
+.documentsEmited-footer {
+    grid-area: footer;
+    border: 1px solid black;
+}

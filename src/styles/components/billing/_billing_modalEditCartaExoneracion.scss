@@ -1,0 +1,304 @@
+
+.modalEditCarta_body-carta-first-box-data-firstLine {
+    margin-top: 15px;
+    display: grid;
+    grid-area: firstLine;
+    height: 100%;
+    padding-left: 2.5%;
+    padding-right: 2%;
+    grid-template-areas: 
+        'motivo numeroDocumento fechaEmision fechaVence exoneracion';
+    grid-template-columns: 20% 20% 20% 20% 20%;
+}
+
+.modalEditCarta_body-carta-first-box-data-firstLine-motivo {
+    display: grid;
+    grid-area: motivo;
+    height: 100%;
+    grid-template-areas: 
+        'lblMotivo'
+        'cboMotivo';
+    grid-template-rows: 40% 60%;
+}
+
+#lblCEMotivo {
+    background-color: #E3E3E3;
+    color: #4A58DC;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblMotivo;
+    margin-right: 10px;
+    margin-top: 1px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+#cboCEMotivo {
+    color: #3429C5;
+    height: 80%;
+    margin-top: 3px;
+    text-align: start;
+    width: 95%;
+}
+
+.modalEditCarta_body-carta-first-box-data-firstLine-numeroDocumento {
+    display: grid;
+    grid-area: numeroDocumento;
+    height: 100%;
+    grid-template-areas: 
+        'lblNumeroDocumento'
+        'inputsNumeroDocumento';
+    grid-template-rows: 40% 60%;
+}
+
+#lblCEnumeroDocumento {
+    background-color: #E3E3E3;
+    color: #4A58DC;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblNumeroDocumento;
+    margin-right: 10px;
+    margin-top: 1px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.modalEditCarta_body-carta-first-box-data-firstLine-numeroDocumento-inputs {
+    display: grid;
+    grid-area: inputsNumeroDocumento;
+    height: 100%;
+    grid-template-areas: 
+        'inputNumeroDocumento btnCheckNumeroDocumento';
+    grid-template-columns: 85% 15%;
+}
+
+#txtCENumeroDocumento {
+    color: black;
+    font-size: 15px;
+    grid-area: inputNumeroDocumento;
+    height: 80%;
+    margin-top: 3px;
+    text-align: start;
+    width: 95%;
+}
+
+#btnCECheckDocumento {
+    color: $secundary;
+    grid-area: btnCheckNumeroDocumento;
+    margin-top: 5px;
+    width: 100%;
+    
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.modalEditCarta_body-carta-first-box-data-firstLine-fechaEmision {
+    display: grid;
+    grid-area: fechaEmision;
+    height: 100%;
+    grid-template-areas: 
+        'lblFechaEmision'
+        'inputFechaEmision';
+    grid-template-rows: 40% 60%;
+}
+
+#lblCEfechaEmision {
+    background-color: #E3E3E3;
+    color: #4A58DC;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblFechaEmision;
+    margin-right: 10px;
+    margin-top: 1px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+#txtCEfechaEmision {
+    color: black;
+    font-size: 15px;
+    grid-area: inputFechaEmision;
+    height: 80%;
+    margin-top: 3px;
+    text-align: start;
+    width: 95%;
+}
+
+.modalEditCarta_body-carta-first-box-data-firstLine-fechaVence {
+    display: grid;
+    grid-area: fechaVence;
+    height: 100%;
+    grid-template-areas: 
+        'lblFechaVence'
+        'inputFechaVence';
+    grid-template-rows: 40% 60%;
+}
+
+#lblCEfechaVence {
+    background-color: #E3E3E3;
+    color: #4A58DC;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblFechaVence;
+    margin-right: 10px;
+    margin-top: 1px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+#txtCEfechaVence {
+    color: black;
+    font-size: 15px;
+    grid-area: inputFechaVence;
+    height: 80%;
+    margin-top: 3px;
+    text-align: start;
+    width: 95%;
+}
+
+.modalEditCarta_body-carta-first-box-data-firstLine-exoneracion {
+    display: grid;
+    grid-area: exoneracion;
+    height: 100%;
+    grid-template-areas: 
+        'lblExoneracion'
+        'inputExoneracion';
+    grid-template-rows: 40% 60%;
+}
+
+#lblCEexoneracion {
+    background-color: #E3E3E3;
+    color: #4A58DC;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblExoneracion;
+    margin-right: 10px;
+    margin-top: 1px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.modalEditCarta_body-carta-first-box-data-firstLine-exoneracion-inputs {
+    display: grid;
+    grid-area: inputExoneracion;
+    height: 100%;
+    grid-template-areas: 
+        'lblExoneracionPorcentaje inputExoneracionPorcentaje';
+    grid-template-columns: 15% 85%;
+}
+
+#lblCEexoneracionPorcentaje {
+    background-color: #E3E3E3;
+    color: #4A58DC;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblExoneracionPorcentaje;
+    height: 85%;
+    margin-left: 2px;
+    margin-right: 5px;
+    margin-top: 1px;
+    padding-top: 3px;
+    text-align: center;
+}   
+
+#txtCEExoneracion {
+    color: black;
+    font-size: 15px;
+    grid-area: inputExoneracionPorcentaje;
+    height: 80%;
+    margin-top: 3px;
+    text-align: start;
+    width: 95%;
+}
+
+.modalEditCarta_body-carta-first-box-data-secondLine {
+    margin-top: 10px;
+    display: grid;
+    grid-area: secondLine;
+    height: 100%;
+    padding-left: 2.5%;
+    padding-right: 2%;
+    grid-template-areas: 
+        'iv descripcion';
+    grid-template-columns: 10% 90%;
+}
+
+.modalEditCarta_body-carta-first-box-data-secondLine-IV {
+    display: grid;
+    grid-area: iv;
+    height: 100%;
+    grid-template-areas: 
+        'lblIV'
+        'inputIV';
+    grid-template-rows: 40% 60%;
+}
+
+#lblCEIV {
+    background-color: #E3E3E3;
+    color: #4A58DC;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblIV;
+    margin-right: 7px;
+    margin-top: 1px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+#txtCEIV {
+    color: black;
+    font-size: 15px;
+    grid-area: inputIV;
+    height: 80%;
+    margin-top: 3px;
+    text-align: start;
+    width: 95%;
+}
+
+.modalEditCarta_body-carta-first-box-data-secondLine-descripcion {
+    display: grid;
+    grid-area: descripcion;
+    height: 100%;
+    grid-template-areas: 
+        'lblDescripcion'
+        'inputDescripcion';
+    grid-template-rows: 40% 60%;
+}
+
+#lblCEDescripcion {
+    background-color: #E3E3E3;
+    color: #4A58DC;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblDescripcion;
+    margin-right: 7px;
+    margin-top: 1px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+#txtCEDescripcion {
+    color: black;
+    font-size: 15px;
+    grid-area: inputDescripcion;
+    height: 80%;
+    margin-top: 3px;
+    text-align: start;
+    width: 99%;
+}
+
+#btneditCarta {
+    background-color: $secundary;
+    color: white;
+    font-size: 15px;
+    height: 30px;
+    margin-top: 10px;
+    width: 99%;
+    border: none;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $primary;
+    }
+}

@@ -1,0 +1,249 @@
+.family_familia-main {
+    display: grid;
+    height: 100%;
+    margin-left: 5%;
+    margin-right: 5%;
+    grid-template-areas: 
+        'descrip'
+        'cuentaCont'
+        'obser';
+    grid-template-rows: 15% 50% 35%; 
+}
+
+.family_familia-descrip {
+    display: grid;
+    grid-area: descrip;
+    grid-template-areas: 
+        'lbldescrip txtdescrip';
+    grid-template-columns: 15% 85%; 
+}
+
+#lblDescripFamilia {
+    background-color: #F4F8FB;
+    color: #4264D8;
+    font-size: 15px;
+    grid-area: lbldescrip;
+    height: 70%;
+    margin-top: 5px;
+    text-align: start;
+    width: 85%;
+}
+
+#txtDescripFamilia {
+    grid-area: txtdescrip;
+    height: 70%;
+    margin-top: 5px;
+    width: 100%;
+}
+
+.family_familia-cuentasCont {
+    border: 1px solid black;
+    display: grid;
+    grid-area: cuentaCont;
+    grid-template-areas: 
+        'title'
+        'inputs';
+    grid-template-rows: 20% 80%; 
+}
+
+#lblCuentasContFamilia {
+    color: #4264D8;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: title;
+    margin-left: 2px;
+    margin-top: 1px;
+    padding-left: 5px;
+    text-align: start;
+    width: 100%;
+}
+
+.family_familia-cuentasCont-inputs {
+    display: grid;
+    grid-column: inputs;
+    grid-template-areas: 
+        'gravada'
+        'exenta'
+        'venta';
+    grid-template-rows: 33% 33% 33%; 
+}
+
+.family_familia-cuentasCont-inputs-ventaGravada {
+    display: grid;
+    grid-area: gravada;
+    grid-template-areas: 
+        'lblgravada inputgravada inputgravada2';
+    grid-template-columns: 20% 20% 20%; 
+}
+
+#lblVentaGravadaFamilias {
+    border: 1px solid black;
+    color: #4264D8;
+    font-size: 15px;
+    grid-area: lblgravada;
+    height: 70%;
+    margin-left: 25px;
+    margin-top: 5px;
+    width: 85%;
+}
+
+#txtVentaGravadaFamilias {
+    color: #4264D8;
+    font-size: 15px;
+    grid-area: inputgravada;
+    height: 70%;
+    margin-top: 5px;
+    text-align: start;
+    width: 85%;
+}
+
+#txtVentaGravadaFamilias2 {
+    color: #4264D8;
+    font-size: 15px;
+    grid-area: inputgravada2;
+    height: 70%;
+    margin-top: 5px;
+    text-align: start;
+    width: 85%;
+}
+
+.family_familia-cuentasCont-inputs-ventaExenta {
+    display: grid;
+    grid-area: exenta;
+    grid-template-areas: 
+        'lblexenta inputexenta inputexenta2';
+    grid-template-columns: 20% 20% 20%;
+}
+
+#lblVentaExentaFamilias {
+    border: 1px solid black;
+    color: #4264D8;
+    font-size: 15px;
+    grid-area: lblexenta;
+    height: 70%;
+    margin-left: 25px;
+    margin-top: 5px;
+    width: 85%;
+}
+
+#txtVentaExentaFamilias {
+    color: #4264D8;
+    font-size: 15px;
+    grid-area: inputexenta;
+    height: 70%;
+    margin-top: 5px;
+    text-align: start;
+    width: 85%;
+}
+
+#txtVentaExentaFamilias2 {
+    color: #4264D8;
+    font-size: 15px;
+    grid-area: inputexenta2;
+    height: 70%;
+    margin-top: 5px;
+    text-align: start;
+    width: 85%;
+}
+
+.family_familia-cuentasCont-inputs-costoVenta {
+    display: grid;
+    grid-area: venta;
+    grid-template-areas: 
+        'lblcostoVenta inputcostoVenta inputcostoVenta2';
+    grid-template-columns: 20% 20% 20%;
+}
+
+#lblCostoVentaFamilias {
+    border: 1px solid black;
+    color: #4264D8;
+    font-size: 15px;
+    grid-area: lblcostoVenta;
+    height: 70%;
+    margin-left: 25px;
+    margin-top: 5px;
+    width: 85%;
+}
+
+#txtCostoVentaFamilias {
+    color: #4264D8;
+    font-size: 15px;
+    grid-area: inputcostoVenta;
+    height: 70%;
+    margin-top: 5px;
+    text-align: start;
+    width: 85%;
+}
+
+#txtCostoVentaFamilias2 {
+    color: #4264D8;
+    font-size: 15px;
+    grid-area: inputcostoVenta2;
+    height: 70%;
+    margin-top: 5px;
+    text-align: start;
+    width: 85%;
+}
+
+.family_familia-obser {
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    display: grid;
+    grid-area: obser;
+    grid-template-areas: 
+        'inputsObser btns';
+    grid-template-columns: 58% 10%;
+}
+
+.family_familia-obser-input {
+    display: grid;
+    grid-area: inputsObser;
+    grid-template-areas: 
+        'lblObser'
+        'inputObser';
+    grid-template-rows: 25% 75%;
+}
+
+#lblObservFamilia {
+    color: #4264D8;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblObser;
+    margin-left: 2px;
+    margin-top: 1px;
+    padding-left: 5px;
+    text-align: start;
+    width: 100%;
+}
+
+#txtObservFamilia {
+    color: black;
+    font-size: 15px;
+    grid-area: inputObser;
+    height: 80%;
+    height: 90%;
+    margin-left: 25px;
+    margin-top: 3px;
+    text-align: start;
+    width: 95%;
+}
+
+.family_familia-obser-input-btn {
+    grid-area: btns;
+    padding-top: 30px;
+}
+
+#btnGuardarFamilia {
+    color: #4264D8;
+    font-size: 15px;
+    height: 70%;
+    margin-left: 8px;
+    width: 85%;
+
+    &:hover {
+        background-color: #4264D8;
+        color: white;
+        cursor: pointer;
+    }	
+}

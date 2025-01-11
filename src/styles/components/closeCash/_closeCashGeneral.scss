@@ -1,0 +1,448 @@
+.closeCash_general-main {
+    border: 1px solid #C1C4B9;
+    display: grid;
+    height: 97%;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+    grid-template-areas: 
+        'title'
+        'table';
+    grid-template-rows: 6% 94%;
+}
+
+.closeCash_general-title {
+    border-bottom: 1px solid #C1C4B9;
+    color: #5691FE;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: title;
+    padding-left: 15px;
+    text-align: start;
+}
+
+.closeCash_general-table {
+    border: 1px solid black;
+    grid-area: table;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+}
+
+.closeCash_general-table-main {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    scrollbar-color: rebeccapurple green;
+    scrollbar-width: thin;
+}
+
+.closeCash_general-table-body {
+    text-align: start;
+    font-style: normal;
+}
+
+.closeCash_general-table-body-row {
+    &:hover {
+        background-color: #ACA9A9;
+    }
+}
+
+.closeCash_general-table-header {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 8%;
+}
+
+.closeCash_general-table-cell {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+// .closeCash_general-inputs {
+//     display: grid;
+//     grid-area: inputs;
+//     height: 100%;
+//     grid-template-areas: 
+//         'titles'
+//         'efectivoColones'
+//         'efectivoDolares'
+//         'tarjetaColones'
+//         'tarjetaDolares'
+//         'chequesColones'
+//         'chequesDolares'
+//         'depositosColones'
+//         'depositosDolares'
+//         'totales';
+//     grid-template-rows: 8% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+// }
+
+// .closeCash_general-inputs-titles {
+//     display: grid;
+//     grid-area: titles;
+//     height: 100%;
+//     grid-template-areas: 
+//         'cajero medio sistema';
+//     grid-template-columns: 45% 10% 45%;
+// }
+
+// #lblCajeroCash {
+//     color: #5691FE;
+//     font-size: 15px;
+//     font-weight: bold;
+//     grid-area: cajero;
+//     padding-top: 5px;
+//     text-align: end;
+// }
+
+// #lblMedioCash {
+//     color: #5691FE;
+//     font-size: 15px;
+//     font-weight: bold;
+//     grid-area: medio;
+//     padding-top: 5px;
+// }
+
+// #lblSistemaCash {
+//     color: #5691FE;
+//     font-size: 15px;
+//     font-weight: bold;
+//     grid-area: sistema;
+//     padding-top: 5px;
+//     text-align: start;
+// }
+
+// .closeCash_general-inputs-efectivoColones {
+//     display: grid;
+//     grid-area: efectivoColones;
+//     height: 100%;
+//     grid-template-areas: 
+//         'titleEfectivoColones'
+//         'inputsEfectivoColones';
+//     grid-template-rows: 40% 60%;
+// }
+
+// .closeCash_general-inputs-efectivoColones-title {
+//     color: #5691FE;
+//     font-size: 15px;
+//     grid-area: titleEfectivoColones;
+//     text-align: center;
+// }
+
+// .closeCash_general-inputs-efectivoColones-inputs {
+//     grid-area: inputsEfectivoColones;
+//     padding-top: 1px;
+// }
+
+// #txtEfectivoColones1 {
+//     color: #5691FE;
+//     font-size: 13px;
+//     text-align: end;
+// }
+
+// #txtEfectivoColones2 {
+//     color: #5691FE;
+//     font-size: 13px;
+//     text-align: end;
+// }
+
+// .closeCash_general-inputs-efectivoDolares {
+//     display: grid;
+//     grid-area: efectivoDolares;
+//     height: 100%;
+//     grid-template-areas: 
+//         'titleEfectivoDolares'
+//         'inputsEfectivoDolares';
+//     grid-template-rows: 40% 60%;
+// }
+
+// .closeCash_general-inputs-efectivoDolares-title {
+//     color: #5691FE;
+//     font-size: 15px;
+//     grid-area: titleEfectivoDolares;
+//     text-align: center;
+// }
+
+// .closeCash_general-inputs-efectivoDolares-inputs {
+//     grid-area: inputsEfectivoDolares;
+//     padding-top: 1px;
+// }
+
+// #txtefectivoDolares1 {
+//     color: #5691FE;
+//     font-size: 13px;
+//     text-align: end;
+// }
+
+// #txtefectivoDolares2 {
+//     color: #5691FE;
+//     font-size: 13px;
+//     text-align: end;
+// }
+
+// .closeCash_general-inputs-tarjetaColones {
+//     display: grid;
+//     grid-area: tarjetaColones;
+//     height: 100%;
+//     grid-template-areas: 
+//         'titleTarjetaColones'
+//         'inputsTarjetaColones';
+//     grid-template-rows: 40% 60%;
+// }
+
+// .closeCash_general-inputs-tarjetaColones-title {
+//     color: #5691FE;
+//     font-size: 15px;
+//     grid-area: titleTarjetaColones;
+//     text-align: center;
+// }
+
+// .closeCash_general-inputs-tarjetaColones-inputs {
+//     grid-area: inputsTarjetaColones;
+//     padding-top: 1px;
+// }
+
+// #txtTarjetaColones1 {
+//     color: #5691FE;
+//     font-size: 13px;
+//     text-align: end;
+// }
+
+// #txtTarjetaColones2 {
+//     color: #5691FE;
+//     font-size: 13px;
+//     text-align: end;
+// }
+
+// .closeCash_general-inputs-tarjetaDolares {
+//     display: grid;
+//     grid-area: tarjetaDolares;
+//     height: 100%;
+//     grid-template-areas: 
+//         'titleTarjetaDolares'
+//         'inputsTarjetaDolares';
+//     grid-template-rows: 40% 60%;
+// }
+
+// .closeCash_general-inputs-tarjetaDolares-title {
+//     color: #5691FE;
+//     font-size: 15px;
+//     grid-area: titleTarjetaDolares;
+//     text-align: center;
+// }
+
+// .closeCash_general-inputs-tarjetaDolares-inputs {
+//     grid-area: inputsTarjetaDolares;
+//     padding-top: 1px;
+// }
+
+// #txtTarjetaDolares1 {
+//     color: #5691FE;
+//     font-size: 13px;
+//     text-align: end;
+// }
+
+// #txtTarjetaDolares2 {
+//     color: #5691FE;
+//     font-size: 13px;
+//     text-align: end;
+// }
+
+// .closeCash_general-inputs-chequesColones {
+//     display: grid;
+//     grid-area: chequesColones;
+//     height: 100%;
+//     grid-template-areas: 
+//         'titleChequesColones'
+//         'inputsChequesColones';
+//     grid-template-rows: 40% 60%;
+// }
+
+// .closeCash_general-inputs-chequesColones-title {
+//     color: #5691FE;
+//     font-size: 15px;
+//     grid-area: titleChequesColones;
+//     text-align: center;
+// }
+
+// .closeCash_general-inputs-chequesColones-inputs {
+//     grid-area: inputsChequesColones;
+//     padding-top: 1px;
+// }
+
+// #txtChequesColones1 {
+//     color: #5691FE;
+//     font-size: 13px;
+//     text-align: end;
+// }
+
+// #txtChequesColones2 {
+//     color: #5691FE;
+//     font-size: 13px;
+//     text-align: end;
+// }
+
+// .closeCash_general-inputs-chequesDolares {
+//     display: grid;
+//     grid-area: chequesDolares;
+//     height: 100%;
+//     grid-template-areas: 
+//         'titleChequesDolares'
+//         'inputsChequesDolares';
+//     grid-template-rows: 40% 60%;
+// }
+
+// .closeCash_general-inputs-chequesDolares-title {
+//     color: #5691FE;
+//     font-size: 15px;
+//     grid-area: titleChequesDolares;
+//     text-align: center;
+// }
+
+// .closeCash_general-inputs-chequesDolares-inputs {
+//     grid-area: inputsChequesDolares;
+//     padding-top: 1px;
+// }
+
+// #txtChequesDolares1 {
+//     color: #5691FE;
+//     font-size: 13px;
+//     text-align: end;
+// }
+
+// #txtChequesDolares2 {
+//     color: #5691FE;
+//     font-size: 13px;
+//     text-align: end;
+// }
+
+// .closeCash_general-inputs-depositosColones {
+//     display: grid;
+//     grid-area: depositosColones;
+//     height: 100%;
+//     grid-template-areas: 
+//         'titleDepositosColones'
+//         'inputsDepositosColones';
+//     grid-template-rows: 40% 60%;
+// }
+
+// .closeCash_general-inputs-depositosColones-title {
+//     color: #5691FE;
+//     font-size: 15px;
+//     grid-area: titleDepositosColones;
+//     text-align: center;
+// }
+
+// .closeCash_general-inputs-depositosColones-inputs {
+//     grid-area: inputsDepositosColones;
+//     padding-top: 1px;
+// }
+
+// #txtDepositosColones1 {
+//     color: #5691FE;
+//     font-size: 13px;
+//     text-align: end;
+// }
+
+// #txtDepositosColones2 {
+//     color: #5691FE;
+//     font-size: 13px;
+//     text-align: end;
+// }
+
+// .closeCash_general-inputs-depositosDolares {
+//     display: grid;
+//     grid-area: depositosDolares;
+//     height: 100%;
+//     grid-template-areas: 
+//         'titleDepositosDolares'
+//         'inputsDepositosDolares';
+//     grid-template-rows: 40% 60%;
+// }
+
+// .closeCash_general-inputs-depositosDolares-title {
+//     color: #5691FE;
+//     font-size: 15px;
+//     grid-area: titleDepositosDolares;
+//     text-align: center;
+// }
+
+// .closeCash_general-inputs-depositosDolares-inputs {
+//     grid-area: inputsDepositosDolares;
+//     padding-top: 1px;
+// }
+
+// #txtDepositosDolares1 {
+//     color: #5691FE;
+//     font-size: 13px;
+//     text-align: end;
+// }
+
+// #txtDepositosDolares2 {
+//     color: #5691FE;
+//     font-size: 13px;
+//     text-align: end;
+// }
+
+// .closeCash_general-inputs-totales {
+//     display: grid;
+//     grid-area: totales;
+//     height: 100%;
+//     grid-template-areas: 
+//         'titleTotales'
+//         'inputsTotales';
+//     grid-template-rows: 40% 60%;
+// }
+
+// .closeCash_general-inputs-totales-title {
+//     display: grid;
+//     grid-area: titleTotales;
+//     height: 100%;
+//     grid-template-areas: 
+//         'totalcajero totalmedio totalsistema';
+//     grid-template-columns: 45% 10% 45%;
+// }
+
+// #lblTotalesCajeroCash {
+//     color: #5691FE;
+//     font-size: 15px;
+//     font-weight: bold;
+//     grid-area: totalcajero;
+//     text-align: end;
+// }
+
+// #lblTotalesMedioCash {
+//     color: #5691FE;
+//     font-size: 15px;
+//     font-weight: bold;
+//     grid-area: totalmedio;
+// }
+
+// #lblTotalesSistemaCash {
+//     color: #5691FE;
+//     font-size: 15px;
+//     font-weight: bold;
+//     grid-area: totalsistema;
+//     text-align: start;
+// }
+
+// .closeCash_general-inputs-totales-inputs {
+//     grid-area: inputsTotales;
+//     padding-top: 1px;
+// }
+
+// #txttotalesCajero {
+//     color: #5691FE;
+//     font-size: 13px;
+//     text-align: end;
+// }
+
+// #txttotalesSistema {
+//     color: #5691FE;
+//     font-size: 13px;
+//     text-align: end;
+// }

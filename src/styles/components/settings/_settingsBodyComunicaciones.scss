@@ -1,0 +1,211 @@
+.settings_body-comuni-main {
+    display: grid;
+    height: 80%;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 3%;
+    grid-template-areas: 
+        'mostrarFacturas'
+        'address'
+        'user'
+        'password'
+        'checks'
+        'asunto'
+        'mensaje';
+    grid-template-rows: 10% 10% 10% 10% 10% 10% 40%;
+}
+
+.settings_body-comuni-main-mostrarFacturas {
+    display: grid;
+    grid-area: mostrarFacturas;
+    grid-template-areas: 
+        'checkMostrarFactura lblMostrarFactura';
+    grid-template-columns: 5% 70%;
+}
+
+.settings_body-comuni-main-mostrarFacturas-input {
+    grid-area: checkMostrarFactura;
+    padding-top: 5px;
+}
+
+#lblmostrarFacturasSettingsB {
+    font-size: 15px;
+    grid-area: lblMostrarFactura;
+    padding-top: 5px;
+    text-align: start;
+}
+
+.settings_body-comuni-main-address {
+    display: grid;
+    grid-area: address;
+    grid-template-areas: 
+        'lblAddress inputAddress';
+    grid-template-columns: 35% 65%;
+}
+
+#lblAddressSettingB {
+    font-size: 15px;
+    grid-area: lblAddress;
+    padding-right: 5px;
+    padding-top: 6px;
+    text-align: center;
+}
+
+#txtAddressSettingB {
+    font-size: 14px;
+    grid-area: inputAddress;
+    height: 60%;
+    margin-top: 5px;
+    text-align: start;
+    width: 100%;
+}
+
+.settings_body-comuni-main-user {
+    display: grid;
+    grid-area: user;
+    grid-template-areas: 
+        'lblUserEmail inputUserEmail';
+    grid-template-columns: 35% 65%;
+}
+
+#lblUserEmailSettingB {
+    font-size: 15px;
+    grid-area: lblUserEmail;
+    padding-right: 5px;
+    padding-top: 6px;
+    text-align: center;
+}
+
+#txtUserEmailSettingB {
+    font-size: 14px;
+    grid-area: inputUserEmail;
+    height: 60%;
+    margin-top: 5px;
+    text-align: start;
+    width: 100%;
+}
+
+.settings_body-comuni-main-password {
+    display: grid;
+    grid-area: password;
+    grid-template-areas: 
+        'lblPassword inputPassword';
+    grid-template-columns: 35% 65%;
+}
+
+#lblPasswordSettingB {
+    font-size: 15px;
+    grid-area: lblPassword;
+    padding-right: 5px;
+    padding-top: 6px;
+    text-align: center;
+}
+
+#txtPasswordSettingB {
+    font-size: 14px;
+    grid-area: inputPassword;
+    height: 60%;
+    margin-top: 5px;
+    text-align: start;
+    width: 100%;
+}
+
+.settings_body-comuni-main-checks {
+    display: grid;
+    grid-area: checks;
+    grid-template-areas: 
+        'autenti conexionCifrada';
+    grid-template-columns: 40% 40%;
+}
+
+.settings_body-comuni-main-checks-autenti {
+    display: grid;
+    grid-area: autenti;
+    grid-template-areas: 
+        'checkAutenti lblAutenti';
+    grid-template-columns: 10% 55%;
+}
+
+.settings_body-comuni-main-checks-autenti-input {
+    grid-area: checkAutenti;
+    padding-left: 10px;
+    padding-top: 5px;
+}
+
+#lblAutenticacionSettingsB {
+    font-size: 15px;
+    grid-area: lblAutenti;
+    padding-left: 10px;
+    padding-top: 5px;
+    text-align: start;
+}
+
+.settings_body-comuni-main-checks-conexionCifrada {
+    display: grid;
+    grid-area: conexionCifrada;
+    grid-template-areas: 
+        'checkConexionCifrada lblConexionCifrada';
+    grid-template-columns: 15% 70%;
+}
+
+.settings_body-comuni-main-checks-conexionCifrada-input {
+    grid-area: checkConexionCifrada;
+    padding-left: 10px;
+    padding-top: 5px;
+}
+
+#lblconexionCifradaSettingsB {
+    font-size: 15px;
+    grid-area: lblConexionCifrada;
+    padding-left: 5px;
+    padding-top: 5px;
+    text-align: start;
+}
+
+.settings_body-comuni-main-asunto {
+    display: grid;
+    grid-area: asunto;
+    grid-template-areas: 
+        'lblAsunto inputAsunto';
+    grid-template-columns: 35% 65%;
+}
+
+#lblAsuntoSettingB {
+    font-size: 15px;
+    grid-area: lblAsunto;
+    padding-right: 5px;
+    padding-top: 6px;
+    text-align: center;
+}
+
+#txtAsuntoSettingB {
+    font-size: 14px;
+    grid-area: inputAsunto;
+    height: 60%;
+    margin-top: 5px;
+    text-align: start;
+    width: 100%;
+}
+
+.settings_body-comuni-main-mensaje {
+    display: grid;
+    grid-area: mensaje;
+    grid-template-areas: 
+        'lblMensaje'
+        'inputMensaje';
+    grid-template-rows: 20% 80%;
+}
+
+#lblMensajeSettingB {
+    font-size: 15px;
+    grid-area: lblMensaje;
+    padding-left: 15px;
+    padding-top: 4px;
+    text-align: start;
+}
+
+#txtMensajeSettingB {
+    color: black;
+    font-size: 15px;
+    grid-area: inputMensaje;
+}

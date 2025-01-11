@@ -1,0 +1,66 @@
+.pays_adjustment-main {
+    display: grid;
+    height: 100%;
+    text-align: center;
+    grid-template-areas: 
+        'header'
+        'datosGenerales'
+        'body'
+        'icons'
+        'footer';
+    grid-template-rows: 35px 100px 320px 60px 33px;
+}
+
+.pays_adjustment-header {
+    background-color: #4559A1;
+    display: grid;
+    grid-area: header;
+    height: 100%;
+    grid-template-areas: 
+        'ajusteNo title';
+    grid-template-columns: 20% 80%;
+}
+
+#lblAjusteNoPaysA {
+    background-color: white;
+    font-size: 15px;
+    grid-area: ajusteNo;
+    height: 60%;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 8px;
+    padding-left: 10px;
+    padding-top: 3px;
+    text-align: start;
+    width: 80%;
+}
+
+#lblTitlePaysA {
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    grid-area: title;
+    padding-right: 20%;
+    padding-top: 3px;
+    text-align: center;
+}
+
+.pays_adjustment-datosGenerales {
+    grid-area: datosGenerales;
+    background-color: #DDE1D5;
+}
+
+.pays_adjustment-body {
+    grid-area: body;
+    background-color: #DDE1D5;
+}
+
+.pays_adjustment-icons {
+    grid-area: icons;
+    background-color: #DDE1D5;
+}
+
+.pays_adjustment-footer {
+    grid-area: footer;
+    background-color: #DDE1D5;
+}

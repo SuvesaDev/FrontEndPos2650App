@@ -1,0 +1,197 @@
+.arqueoCash_body {
+    background-color: #F4F8FB;
+    margin-left: 10%;
+    margin-right: 10%;
+    display: grid;
+    height: 100%;
+    text-align: center;
+    grid-template-areas: 
+        'top'
+        'bottom';
+    grid-template-rows: 45% 55%;
+}
+
+.arqueoCash_body-top {
+    grid-area: top;
+    display: grid;
+    height: 100%;
+    text-align: center;
+    grid-template-areas: 
+        'top-left top-right';
+    grid-template-columns: 60% 40%;
+}
+
+.arqueoCash_body-top-left {
+    grid-area: top-left;
+}
+
+.arqueoCash_body-top-right {
+    grid-area: top-right;
+}
+
+.arqueoCash_body-bottom {
+    grid-area: bottom;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'left right';
+    grid-template-columns: 60% 40%;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    border-bottom: 1px solid gray;
+}
+
+.arqueoCash_body-bottom-left {
+    grid-area: left;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'tarjetas'
+        'observaciones'
+        'lastLine';
+    grid-template-rows: 60% 30% 10%;
+}
+
+.arqueoCash_body-bottom-left-tarjetas {
+    grid-area: tarjetas;
+}
+
+.arqueoCash_body-bottom-left-observaciones {
+    grid-area: observaciones;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'title'
+        'input';
+    grid-template-rows: 30% 70%;
+}
+
+.arqueoCash_body-bottom-left-observaciones-title {
+    grid-area: title;
+    border-bottom: 1px solid gray;
+}
+
+#lblObservacionesArqueoTitle {
+    text-align: start;
+    font-size: 15px;
+    padding-left: 5px;
+    padding-top: 3px;
+}
+
+.arqueoCash_body-bottom-left-observaciones-input {
+    grid-area: input;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#txtObservacionesArqueo {
+    width: 100%;
+    height: 90%;
+    margin-top: 2px;
+    padding-top: 2px;
+    padding-left: 10px;
+    font-size: 15px;
+    resize: none;
+}
+
+.arqueoCash_body-bottom-left-lastLine {
+    grid-area: lastLine;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'diferenciado button cajero';
+    grid-template-columns: 40% 10% 50%;
+}
+
+.arqueoCash_body-bottom-left-diferencia {
+    grid-area: diferenciado;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'labelDiferenciado inputDiferenciado';
+    grid-template-columns: 50% 50%;
+}
+
+.arqueoCash_body-bottom-left-diferencia-label {
+    grid-area: labelDiferenciado;
+}
+
+#lblDiferenciaArqueo {
+    text-align: start;
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+.arqueoCash_body-bottom-left-diferencia-input {
+    grid-area: inputDiferenciado;
+}
+
+#txtDiferenciaArqueo {
+    text-align: start;
+    width: 90%;
+    margin-top: 3px;
+}
+
+.arqueoCash_body-bottom-left-botton {
+    grid-area: button;
+    display: grid;
+    padding-left: 20%;
+}
+
+.btnF1ArqueoCash {
+    font-size: 15px;
+    margin-left: 5%;
+    width: 50%;
+
+    &:hover {
+        background-color: $secundary;
+        cursor: pointer;
+        border: none;
+    }
+}
+
+.btnF1ArqueoCash-disable {
+    font-size: 15px;
+    margin-left: 5%;
+    width: 50%;
+    height: 90%;
+    background-color: gray;
+    border: none;
+
+    &:hover {
+        cursor: not-allowed;
+    }
+}
+
+.arqueoCash_body-bottom-left-cajero {
+    grid-area: cajero;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'labelCajero inputCajero';
+    grid-template-columns: 20% 80%;
+}
+
+.arqueoCash_body-bottom-left-Cajero-label {
+    grid-area: labelCajero;
+}
+
+#lblCajeroArqueo {
+    text-align: start;
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+.arqueoCash_body-bottom-left-Cajero-input {
+    grid-area: inputCajero;
+}
+
+#txtCajeroArqueo {
+    text-align: start;
+    width: 95%;
+    margin-top: 3px;
+}
+.arqueoCash_body-bottom-right {
+    grid-area: right;
+}
+

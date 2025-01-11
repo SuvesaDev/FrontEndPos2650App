@@ -1,0 +1,364 @@
+.company_body-DatosEmisor-main {
+    display: grid;
+    height: 100%;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-top: 15px;
+    padding-left: 5%;
+    padding-right: 5%;
+    grid-template-areas: 
+        'firstLine'
+        'secondLine'
+        'thirdLine';
+    grid-template-rows: 15% 15% 30%;
+}
+
+.company_body-DatosEmisor-firstLine {
+    grid-area: firstLine;
+    border-top: 1px solid rgb(192, 190, 190);
+    border-left: 1px solid rgb(192, 190, 190);
+    border-right: 1px solid rgb(192, 190, 190);
+    display: grid;
+    grid-template-areas: 
+        'tipoIdentificacion identificacion razonSocial';
+    grid-template-columns: 25% 25% 50%;
+}
+
+.company_body-DatosEmisor-firstLine-tipoIdentificacion {
+    grid-area: tipoIdentificacion;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblTipoIdentificacion'
+        'txtTipoIdentificacion';
+    grid-template-rows: 50% 50%;
+}
+
+.company_body-DatosEmisor-firstLine-tipoIdentificacion-label {
+    grid-area: lblTipoIdentificacion;
+    padding-top: 3px;
+}
+
+#lblTipoIdentificacionCompany {
+    text-align: start;
+    padding-left: 10px;
+    font-size: 15px;
+}
+
+.company_body-DatosEmisor-firstLine-tipoIdentificacion-input {
+    grid-area: txtTipoIdentificacion;
+}
+
+#txtTipoIdentificacionCompany {
+    width: 90%;
+    text-align: start;
+    font-size: 15px;
+}
+
+.company_body-DatosEmisor-firstLine-identificacion {
+    grid-area: identificacion;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblIdentificacion'
+        'txtIdentificacion';
+    grid-template-rows: 50% 50%;
+}
+
+.company_body-DatosEmisor-firstLine-identificacion-label {
+    grid-area: lblIdentificacion;
+    padding-top: 3px;
+}
+
+#lblIdentificacionCompany {
+    text-align: start;
+    padding-left: 10px;
+    font-size: 15px;
+}
+
+.company_body-DatosEmisor-firstLine-identificacion-input {
+    grid-area: txtIdentificacion;
+}
+
+#txtIdentificacionCompany {
+    width: 90%;
+    text-align: start;
+    font-size: 15px;
+}
+
+.company_body-DatosEmisor-firstLine-razonSocial {
+    grid-area: razonSocial;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblRazonSocial'
+        'txtRazonSocial';
+    grid-template-rows: 50% 50%;
+}
+
+.company_body-DatosEmisor-firstLine-razonSocial-label {
+    grid-area: lblRazonSocial;
+    padding-top: 3px;
+}
+
+#lblRazonSocialCompany {
+    text-align: start;
+    padding-left: 10px;
+    font-size: 15px;
+}
+
+.company_body-DatosEmisor-firstLine-razonSocial-input {
+    grid-area: txtRazonSocial;
+}
+
+#txtRazonSocialCompany {
+    width: 95%;
+    text-align: start;
+    font-size: 15px;
+}
+
+.company_body-DatosEmisor-secondLine {
+    grid-area: secondLine;
+    border-right: 1px solid rgb(192, 190, 190);
+    border-left: 1px solid rgb(192, 190, 190);
+    display: grid;
+    grid-template-areas: 
+        'email telefono NSurcursal';
+    grid-template-columns: 50% 25% 25%; 
+}
+
+.company_body-DatosEmisor-secondLine-email {
+    grid-area: email;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblEmail'
+        'txtEmail';
+    grid-template-rows: 50% 50%;
+}
+
+.company_body-DatosEmisor-secondLine-email-label {
+    grid-area: lblEmail;
+    padding-top: 3px;
+}
+
+#lblEmailCompany {
+    text-align: start;
+    padding-left: 10px;
+    font-size: 15px;
+}
+
+.company_body-DatosEmisor-secondLine-email-input {
+    grid-area: txtEmail;
+}
+
+#txtEmailCompany {
+    width: 95%;
+    text-align: start;
+    font-size: 15px;
+}
+
+.company_body-DatosEmisor-secondLine-telefono {
+    grid-area: telefono;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblTelefono'
+        'txtTelefono';
+    grid-template-rows: 50% 50%;
+}
+
+.company_body-DatosEmisor-secondLine-telefono-label {
+    grid-area: lblTelefono;
+    padding-top: 3px;
+}
+
+#lblTelefonoCompany {
+    text-align: start;
+    padding-left: 10px;
+    font-size: 15px;
+}
+
+.company_body-DatosEmisor-secondLine-telefono-input {
+    grid-area: txtTelefono;
+}
+
+#txtTelefonoCompany {
+    width: 90%;
+    text-align: start;
+    font-size: 15px;
+}
+
+.company_body-DatosEmisor-secondLine-NSurcursal {
+    grid-area: NSurcursal;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblNSurcursal'
+        'txtNSurcursal';
+    grid-template-rows: 50% 50%;
+}
+
+.company_body-DatosEmisor-secondLine-NSurcursal-label {
+    grid-area: lblNSurcursal;
+    padding-top: 3px;
+}
+
+#lblNSurcursalCompany {
+    text-align: start;
+    padding-left: 10px;
+    font-size: 15px;
+}
+
+.company_body-DatosEmisor-secondLine-NSurcursal-input {
+    grid-area: txtNSurcursal;
+}
+
+#txtNSurcursalCompany {
+    width: 90%;
+    text-align: start;
+    font-size: 15px;
+}
+
+.company_body-DatosEmisor-thirdLine {
+    grid-area: thirdLine;
+    border-right: 1px solid rgb(192, 190, 190);
+    border-left: 1px solid rgb(192, 190, 190);
+    border-bottom: 1px solid rgb(192, 190, 190);
+    display: grid;
+    grid-template-areas: 
+        'leftSide rightSide';
+    grid-template-columns: 50% 50%; 
+}
+
+.company_body-DatosEmisor-thirdLine-leftSide {
+    grid-area: leftSide;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'provincia'
+        'canton'
+        'distrito';
+    grid-template-rows: 33% 33% 34%;
+}
+
+.company_body-DatosEmisor-thirdLine-leftSide-provincia {
+    grid-area: provincia;
+    display: grid;
+    grid-template-areas: 
+        'lblProvincia txtProvincia';
+    grid-template-columns: 20% 40%;
+}
+
+.company_body-DatosEmisor-thirdLine-leftSide-provincia-label {
+    grid-area: lblProvincia;
+    padding-top: 5px;
+}
+
+#lblProvinciaCompany {
+    text-align: center;
+    font-size: 15px;
+}
+
+.company_body-DatosEmisor-thirdLine-leftSide-provincia-input {
+    grid-area: txtProvincia;
+    padding-top: 5px;
+}
+
+#cboProvinciaCompany {
+    width: 100%;
+    text-align: start;
+    font-size: 15px;
+}
+
+.company_body-DatosEmisor-thirdLine-leftSide-canton {
+    grid-area: canton;
+    display: grid;
+    grid-template-areas: 
+        'lblCanton txtCanton';
+    grid-template-columns: 20% 40%;
+}
+
+.company_body-DatosEmisor-thirdLine-leftSide-canton-label {
+    grid-area: lblCanton;
+    padding-top: 5px;
+}
+
+#lblCantonCompany {
+    text-align: start;
+    padding-left: 15px;
+    font-size: 15px;
+}
+
+.company_body-DatosEmisor-thirdLine-leftSide-canton-input {
+    grid-area: txtCanton;
+    padding-top: 5px;
+}
+
+#cboCantonCompany {
+    width: 100%;
+    text-align: start;
+    font-size: 15px;
+}
+
+.company_body-DatosEmisor-thirdLine-leftSide-distrito {
+    grid-area: distrito;
+    display: grid;
+    grid-template-areas: 
+        'lblDistrito txtDistrito';
+    grid-template-columns: 20% 40%;
+}
+
+.company_body-DatosEmisor-thirdLine-leftSide-distrito-label {
+    grid-area: lblDistrito;
+    padding-top: 5px;
+}
+
+#lblDistritoCompany {
+    text-align: start;
+    padding-left: 15px;
+    font-size: 15px;
+}
+
+.company_body-DatosEmisor-thirdLine-leftSide-distrito-input {
+    grid-area: txtDistrito;
+    padding-top: 5px;
+}
+
+#cboDistritoCompany {
+    width: 100%;
+    text-align: start;
+    font-size: 15px;
+}
+
+.company_body-DatosEmisor-thirdLine-rightSide {
+    grid-area: rightSide;
+    display: grid;
+    grid-template-areas: 
+        'title'
+        'input';
+    grid-template-rows: 20% 80%;
+}
+
+.company_body-DatosEmisor-thirdLine-rightSide-label {
+    grid-area: title;
+}
+
+#lblDireccionCompany {
+    text-align: start;
+    padding-left: 15px;
+}
+
+.company_body-DatosEmisor-thirdLine-rightSide-input {
+    grid-area: input;
+    padding-top: 5px;
+}
+
+#txtDireccionCompany {
+    width: 95%;
+    height: 90%;
+    text-align: start;
+    padding-left: 5px;
+    font-size: 15px;
+    resize: none;
+}

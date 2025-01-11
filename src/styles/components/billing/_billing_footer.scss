@@ -1,0 +1,386 @@
+
+.billing_footer-main {
+    display: grid;
+    grid-template-areas: 
+        'Buttons user';
+    grid-template-columns: 15% 40%;
+}
+
+.billing_footer-buttons {
+    grid-area: Buttons;
+    display: grid;
+    grid-template-areas: 
+        'Save Cancel';
+    grid-template-columns: 50% 50%;
+}
+
+.billing_footer-buttons-save {
+    grid-area: Save;
+    margin-bottom: 5px;
+    margin-left: 15px;
+    margin-top: 5px;
+    width: 80%;
+    display: grid;
+    grid-template-areas: 
+        'IconSave'
+        'LabelSave';
+    grid-template-rows: 60% 40%;
+    cursor: pointer;
+}
+
+.billing_footer-buttons-save-icon {
+    grid-area: IconSave;
+    color: #F68A1D;
+
+    // :hover {
+    //     background-color: #c7c7c7;
+    // }
+}
+
+.billing_footer-buttons-save-icon-disable {
+    grid-area: IconSave;
+    color: gray;
+
+    // :hover {
+    //     background-color: #c7c7c7;
+    // }
+}
+
+.iconSave {
+    height: 100%;
+    width: 35%;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.iconSave-disable {
+    height: 100%;
+    width: 35%;
+
+    &:hover {
+        cursor: not-allowed;
+    }
+}
+
+#labelSave {
+    font-size: 15px;
+    font-weight: 600;
+    grid-area: LabelSave;
+}
+
+// .billing_footer-buttons-next {
+//     grid-area: Next;
+//     margin-bottom: 5px;
+//     margin-left: 15px;
+//     margin-top: 5px;
+//     width: 80%;
+//     display: grid;
+//     grid-template-areas: 
+//         'IconNext'
+//         'LabelNext';
+//     grid-template-rows: 60% 40%;
+//     cursor: pointer;
+// }
+
+// .billing_footer-buttons-next-icon {
+//     grid-area: IconNext;
+//     color: #F68A1D;
+
+//     // :hover {
+//     //     background-color: #c7c7c7;
+//     // }
+// }
+
+// #iconNext {
+//     height: 100%;
+//     width: 25%;
+// }
+
+// #labelNext{
+//     font-size: 15px;
+//     font-weight: 600;
+//     grid-area: LabelNext;
+// }
+
+.billing_footer-buttons-cancel {
+    grid-area: Cancel;
+    margin-bottom: 5px;
+    margin-left: 15px;
+    margin-top: 5px;
+    width: 80%;
+    display: grid;
+    grid-template-areas: 
+        'IconCancel'
+        'LabelCancel';
+    grid-template-rows: 60% 40%;
+    cursor: pointer;
+}
+
+.billing_footer-buttons-cancel-icon {
+    grid-area: IconCancel;
+    color: #F68A1D;
+    
+    // :hover {
+    //     background-color: #c7c7c7;
+    // }
+}
+
+#iconCancel {
+    height: 100%;
+    width: 35%;
+}
+
+#labelCancel {
+    font-size: 15px;
+    font-weight: 600;
+    grid-area: LabelCancel;
+}
+
+.billing_footer-user {
+    grid-area: user;
+    display: grid;
+    grid-template-areas: 
+        'input label';
+    grid-template-columns: 50% 50%;
+}
+
+// .billing_footer-user-cbo {
+//     grid-area: cbo;
+//     width: 100%;
+//     display: grid;
+//     grid-template-areas: 
+//         'cboTitle'
+//         'cboInput';
+//     grid-template-rows: 50% 50%;
+// }
+
+// .billing_footer-user-cbo-title {
+//     grid-area: cboTitle;
+//     padding-top: 8px;
+//     padding-left: 10px;
+// }
+
+// #lblUsuarioBillingFooter {
+//     text-align: start;
+//     font-size: 15px;
+// }
+
+.billing_footer-user-cbo-input {
+    grid-area: cboInput;
+}
+
+#cboUsuarioBillingFooter {
+    width: 92%;
+    text-align: start;
+    font-size: 15px;
+}
+
+.billing_footer-user-input {
+    grid-area: input;
+    width: 100%;
+    display: grid;
+    grid-template-areas: 
+        'inputTitle'
+        'inputInput';
+    grid-template-rows: 50% 50%;
+}
+
+.billing_footer-user-input-title {
+    grid-area: inputTitle;
+    padding-top: 8px;
+    padding-left: 10px;
+}
+
+#lblClaveInternaBillingFooter {
+    text-align: start;
+    font-size: 15px;
+}
+
+.billing_footer-user-input-input {
+    grid-area: inputInput;
+    display: grid;
+    grid-template-areas: 
+        'txt icon';
+    grid-template-columns: 90% 10%;
+}
+
+.billing_footer-user-input-input-txt {
+    grid-area: txt;
+}
+
+#txtClaveInternaBillingFooter {
+    width: 95%;
+    text-align: start;
+    font-size: 15px;
+    padding-left: 5px;
+}
+
+.billing_footer-user-input-input-icon {
+    grid-area: icon;
+}
+
+.iconEyeClaveInternaBillingFooter {
+    width: 100%;
+    height: 75%;
+    color: #F68A1D;
+
+    &:hover {
+        cursor: pointer;
+        color: $primary;
+    }
+}
+
+.iconEyeClaveInternaBillingFooter-disable {
+    width: 100%;
+    height: 75%;
+    color: gray;
+
+    &:hover {
+        cursor: not-allowed;
+    }
+}
+
+.billing_footer-user-label {
+    grid-area: label;
+    padding-top: 33px;
+}
+
+#lblUserBillingFooter {
+    text-align: start;
+    padding-left: 20px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+// .billing_footer-data-date {
+//     grid-area: date;
+//     display: grid;
+//     grid-template-areas: 
+//         'labelFecha'
+//         'inputFecha';
+//     grid-template-rows: 50% 50%;      
+// }
+
+// #lblFecha {
+//     font-size: 15px;
+//     grid-area: labelFecha;
+//     margin-top: 10px;
+//     margin-left: 5px;
+//     text-align: start;
+// }
+
+// #txtFecha {
+//     font-size: 12px;
+//     grid-area: inputFecha;
+//     height: 70%;
+//     margin-left: 5px;
+//     width: 90%;
+// }
+
+// .billing_footer-data-vence {
+//     grid-area: vence;
+//     display: grid;
+//     grid-template-areas: 
+//         'labelVence'
+//         'inputVence';
+//     grid-template-rows: 50% 50%; 
+// }
+
+// #lblVence {
+//     font-size: 15px;
+//     grid-area: labelVence;
+//     margin-top: 10px;
+//     margin-left: 5px;
+//     text-align: start;
+// }
+
+// #txtVence {
+//     font-size: 12px;
+//     grid-area: inputVence;
+//     height: 70%;
+//     width: 90%;
+//     margin-left: 5px;
+// }
+
+// .billing_footer-data-checks {
+//     grid-area: checks;
+//     display: grid;
+//     grid-template-areas: 
+//         'checkEntregado checkAnulada';
+//     grid-template-columns: 50% 50%; 
+//     font-size: 15px;
+//     padding-top: 15px;
+// }
+
+// .billing_footer-data-checks-Entregado {
+//     grid-area: checkEntregado;
+//     margin-left: 5px;
+// }
+
+// .billing_footer-data-checks-Anulada {
+//     grid-area: checkAnulada;
+// }
+
+// .billing_footer-data-name {
+//     grid-area: name;
+// }
+
+// #lblName {
+//     font-size: 15px;
+//     padding-top: 25px;
+// }
+
+// .billing_footer-data-user {
+//     grid-area: user;
+//     display: grid;
+//     grid-template-areas: 
+//         'labelCaja'
+//         'dataUser';
+//     grid-template-rows: 40% 60%; 
+// }
+
+// .billing_footer-data-user-caja {
+//     color: #3083E1;
+//     font-size: 20px;
+//     grid-area: labelCaja;
+//     padding-left: 15px;
+//     padding-top: 5px;
+//     text-align: center;
+// }
+
+// .billing_footer-data-user-data {
+//     grid-area: dataUser;
+//     display: grid;
+//     grid-template-areas: 
+//         'labelUser labelPass labelSistema';
+//     grid-template-columns: 40% 20% 40%; 
+//     margin-top: 5px;
+// }
+
+// #lblUser {
+//     background-color: red;
+//     color: white;
+//     font-size: 15px;
+//     grid-area: labelUser;
+//     margin-bottom: 5px;
+//     padding-left: 5px;
+//     text-align: start;
+// }
+
+// #lblPass {
+//     font-size: 15px;
+//     grid-area: labelPass;
+//     padding-left: 5px;
+//     padding-top: 5px;
+//     text-align: start;
+//     height: 50%;
+// }
+
+// #lblSistema {
+//     background-color: #93EADA;
+//     grid-area: labelSistema;
+//     margin-bottom: 5px;
+// }
+

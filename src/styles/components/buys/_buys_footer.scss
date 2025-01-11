@@ -1,0 +1,180 @@
+.buys_footer-main {
+    height: 100%;
+    display: grid;
+    grid-template-areas: 
+        'firstLine'
+        'secondLine';
+    grid-template-rows: 45% 55%;
+}
+
+.buys_footer-firstLine {
+    grid-area: firstLine;
+    height: 100%;
+    display: grid;
+    grid-template-areas: 
+        'checkCambiar checkUtilidad inputUtilidad lblUsuario';
+    grid-template-columns: 14% 10%;
+}
+
+.buys_footer-firstLine-cambiarMonto-check {
+    grid-area: checkCambiar;
+    height: 100%;
+    display: grid;
+    grid-template-areas: 
+        'inputCambiar lblCambiar';
+}
+
+.buys_footer-firstLine-cambiarMonto-check-input {
+    grid-area: inputCambiar;
+    padding-left: 95%;
+    padding-top: 1px;
+}
+
+#lblCambiarMonto {
+    color: #2C13EF;
+    font-size: 15px;
+    grid-area: lblCambiar;
+}
+
+.buys_footer-firstLine-utilidadFija-check {
+    grid-area: checkUtilidad;
+    height: 100%;
+    display: grid;
+    grid-template-areas: 
+        'inputUtilidad lblUtilidad';
+    grid-template-columns: 15% 85%;
+}
+
+.buys_footer-firstLine-utilidadFija-check-input {
+    grid-area: inputUtilidad;
+    padding-top: 1px;
+}
+
+#lblUtilidadFija {
+    color: #A8A8A9;
+    font-size: 15px;
+    grid-area: lblUtilidad;
+    padding-left: 10px;
+    text-align: start;
+}
+
+.buys_footer-firstLine-input {
+    grid-area: inputUtilidad;
+}
+
+#txtUtilidadF {
+    border: none;
+    color: #1017DE;
+    font-size: 15px;
+    text-align: start;
+    width: 100%;
+}
+
+// .buys_footer-firstLine-usuario {
+//     grid-area: lblUsuario;
+// }
+
+// #lblUsuarioF {
+//     background-color: #3D62DB;
+//     border: none;
+//     color: white;
+//     font-size: 15px;
+//     text-align: center;
+//     width: 20%;
+// }
+
+// .buys_footer-secondLine {
+//     grid-area: secondLine;
+//     height: 100%;
+//     display: grid;
+//     grid-template-areas: 
+//         'date data';
+//     grid-template-columns: 30% 70%;
+// }
+
+// .buys_footer-secondLine-date {
+//     grid-area: date;
+//     height: 100%;
+//     display: grid;
+//     grid-template-areas: 
+//         'iconDate inputDate';
+//     grid-template-columns: 10% 90%;
+// }
+
+// #iconDate {
+//     color: #F68A1D;
+//     grid-area: iconDate;
+//     margin-left: 20px;
+//     padding-top: 1px;
+// }
+
+// #txtDateBuys {
+//     font-size: 15px;
+//     font-weight: bold;
+//     grid-area: inputDate;
+// }
+
+// .buys_footer-secondLine-data {
+//     grid-area: data;
+//     height: 100%;
+//     display: grid;
+//     grid-template-areas: 
+//         'iconData lblSistema inputNameVet inputVenta inputCompra inputDateTipoCambio';
+//     grid-template-columns: 5% 15% 25% 15% 15% 15% 15%;
+//     gap: 5px;
+// }
+
+// #iconData { 
+//     color: #F68A1D;
+//     grid-area: iconData;
+//     margin-left: 20px;
+//     padding-top: 1px;
+// }
+
+// .buys_footer-secondLine-labelSistema {  
+//     grid-area: lblSistema;
+//     height: 100%;
+//     display: grid;
+//     grid-template-areas: 
+//         'lblSis lblSisValue';
+//     grid-template-columns: 60% 40%;
+// }
+
+// #lblSistemaF {
+//     font-size: 14px;
+//     font-weight: bold;
+//     grid-area: lblSis;
+//     padding-top: 2px;
+// }
+
+// #lblSistemaValueF {
+//     font-size: 14px;
+//     font-weight: bold;
+//     grid-area: lblSisValue;
+//     padding-top: 2px;
+// }
+
+
+// #txtNameVet {
+//     font-size: 14px;
+//     font-weight: bold;
+//     grid-area: inputNameVet;
+// }
+
+// #txtVentaF {
+//     font-size: 14px;
+//     font-weight: bold;
+//     grid-area: inputVenta;
+// }
+
+// #txtCompraF {
+//     font-size: 14px;
+//     font-weight: bold;
+//     grid-area: inputCompra;
+// }
+
+// #txtDateTipoCambio {
+//     font-size: 14px;
+//     font-weight: bold;
+//     grid-area: inputDateTipoCambio;
+// }

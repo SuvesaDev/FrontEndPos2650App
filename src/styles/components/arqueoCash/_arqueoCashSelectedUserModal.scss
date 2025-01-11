@@ -1,0 +1,59 @@
+.modal_selectedUserArqueoCash-main {
+    display: grid;
+    text-align: center;
+    grid-template-areas:
+        'title' 
+        'input';
+    grid-template-rows: 35px 60px;
+}
+
+.modal_selectedUserArqueoCash-title {
+    grid-area: title;
+}
+
+#lblTitleSelectedUserArqueoCashModal {
+    background-color: $primary;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    grid-area: text;
+    margin-bottom: 5px;
+    padding-bottom: 2px;
+    padding-top: 5px;
+    text-align: center;
+}
+
+.modal_selectedUserArqueoCash-input {
+    grid-area: input;
+    margin-top: 10px;
+    display: grid;
+    padding-left: 5px;
+    grid-template-areas: 
+        'label select';
+    grid-template-columns: 20% 80%;
+}
+
+.modal_selectedUserArqueoCash-input-label {
+    grid-area: label;
+    margin-right: 5px;
+}
+
+#lblUsuarioSelectedUserModalArqueoCash {
+    width: 100%;
+    color: white;
+    font-size: 15px;
+    padding-left: 8px;
+    padding-top: 3px;
+    text-align: center;
+    background-color: $primary;
+}
+
+.modal_selectedUserArqueoCash-input-select {
+    grid-area: select;
+}
+
+#cboUserSelectedUserModalArqueoCash {
+    width: 100%;
+    text-align: start;
+    font-size: 15px;
+}

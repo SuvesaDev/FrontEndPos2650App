@@ -1,0 +1,496 @@
+.inventory_adjustment-datos-main {
+    border: 1px solid black;
+    display: grid;
+    height: 95%;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 5px;
+    grid-template-areas: 
+        'firstBox'
+        'secondBox';
+    grid-template-rows: 25% 75%;
+}
+
+.inventory_adjustment-datos-firstBox {
+    display: grid;
+    grid-area: firstBox;
+    height: 100%;
+    grid-template-areas: 
+        'firstBoxTitle'
+        'firstBoxInputs';
+    grid-template-rows: 28% 73%;
+}
+
+.inventory_adjustment-datos-firstBox-title {
+    grid-area: firstBoxTitle;
+}
+
+#lbldatosInventario {
+    color: #9DA297;
+    font-size: 12px;
+    padding-left: 15px;
+    text-align: start;
+}
+
+.inventory_adjustment-datos-firstBox-inputs {
+    display: grid;
+    grid-area: firstBoxInputs;
+    height: 100%;
+    grid-template-areas: 
+        'codigo descrip existencia costoUnit';
+    grid-template-columns: 15% 60% 12.5% 12.5%;
+}
+
+.inventory_adjustment-datos-firstBox-inputs-codigo {
+    display: grid;
+    grid-area: codigo;
+    height: 100%;
+    margin-left: 15px;
+    margin-right: 15px;
+    grid-template-areas: 
+        'lblCodigo'
+        'inoutCodigo';
+    grid-template-rows: 40% 60%;
+}
+
+#lblCodigoInventoryAd {
+    background-color: #DDE1D5;
+    font-size: 14px;
+    grid-area: lblCodigo;
+    padding-left: 5px;
+    text-align: start;
+}
+
+#txtCodigoInventoryAd {
+    font-size: 14px;
+    grid-area: inoutCodigo;
+    height: 80%;
+    margin-top: 2px;
+    text-align: start;
+}
+
+.inventory_adjustment-datos-firstBox-inputs-descrip {
+    display: grid;
+    grid-area: descrip;
+    height: 100%;
+    margin-left: 15px;
+    margin-right: 15px;
+    grid-template-areas: 
+        'lblDescrip'
+        'inputDescrip';
+    grid-template-rows: 40% 60%;
+}
+
+#lblDescripInventoryAd {
+    background-color: #DDE1D5;
+    font-size: 14px;
+    grid-area: lblDescrip;
+    padding-left: 5px;
+    text-align: start;
+}
+
+#txtDescripInventoryAd {
+    font-size: 14px;
+    grid-area: inputDescrip;
+    height: 80%;
+    margin-top: 2px;
+    text-align: start;
+}
+
+.inventory_adjustment-datos-firstBox-inputs-existencia {
+    display: grid;
+    grid-area: existencia;
+    height: 100%;
+    margin-left: 15px;
+    margin-right: 15px;
+    grid-template-areas: 
+        'lblExistencia'
+        'inputExistencia';
+    grid-template-rows: 40% 60%;
+}
+
+#lblExistenciaInventoryAd {
+    background-color: #DDE1D5;
+    font-size: 14px;
+    grid-area: lblExistencia;
+    padding-left: 5px;
+    text-align: start;
+    width: 100%;
+}
+
+#txtExistenciaInventoryAd {
+    font-size: 14px;
+    grid-area: inputExistencia;
+    height: 80%;
+    margin-top: 2px;
+    text-align: start;
+    width: 100%;
+}
+
+.inventory_adjustment-datos-firstBox-inputs-costoUnit {
+    display: grid;
+    grid-area: costoUnit;
+    height: 100%;
+    margin-left: 15px;
+    margin-right: 15px;
+    grid-template-areas: 
+        'lblCostoUnit'
+        'inputCostoUnit';
+    grid-template-rows: 40% 60%;
+}
+
+#lblCostoInventoryAd {
+    background-color: #DDE1D5;
+    font-size: 14px;
+    grid-area: lblCostoUnit;
+    padding-left: 5px;
+    text-align: start;
+    width: 100%;
+}
+
+#txtCostoInventoryAd {
+    font-size: 14px;
+    grid-area: inputCostoUnit;
+    height: 80%;
+    margin-top: 2px;
+    text-align: start;
+    width: 100%;
+}
+
+.inventory_adjustment-datos-secondBox {
+    display: grid;
+    grid-area: secondBox;
+    height: 100%;
+    grid-template-areas: 
+        'movimientos inputsRight';
+    grid-template-columns: 30% 70%;
+}
+
+.inventory_adjustment-datos-secondBox-movimientos {
+    border: 1px solid #9DA297;
+    display: grid;
+    grid-area: movimientos;
+    height: 85%;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 10px;
+    grid-template-areas: 
+        'titlemovimientos'
+        'entrada'
+        'salida'
+        'muerteAnimales';
+    grid-template-rows: 15% 25% 25% 35%;
+}
+
+#lblMovimientosIventario {
+    color: #9DA297;
+    font-size: 12px;
+    grid-area: titlemovimientos;
+    padding-left: 15px;
+    padding-top: 5px;
+    text-align: start;
+}
+
+.inventory_adjustment-datos-secondBox-movimientos-entrada {
+    display: grid;
+    grid-area: entrada;
+    height: 100%;
+    grid-template-areas: 
+        'rbEntrada lblEntrada';
+    grid-template-columns: 70% 30%;
+}
+
+.inventory_adjustment-datos-secondBox-movimientos-entrada-radio {
+    display: grid;
+    grid-area: rbEntrada;
+    height: 100%;
+    padding-top: 10px;
+    grid-template-areas: 
+        'radioE lblE';
+    grid-template-columns: 10% 20%;
+}
+
+#rbMovimientosEntrada {
+    grid-area: radioE;
+    margin-left: 15px;
+}
+
+#lblRadioEntradaInv {
+    color: #B3BAB2;
+    font-size: 15px;
+    grid-area: lblE;
+    margin-left: 15px;
+}
+
+#lblResulEntradaInventoryAd {
+    grid-area: lblEntrada;
+    padding-top: 10px;
+}
+
+.inventory_adjustment-datos-secondBox-movimientos-salida {
+    display: grid;
+    grid-area: salida;
+    height: 100%;
+    grid-template-areas: 
+        'rbSalida lblSalida';
+    grid-template-columns: 70% 30%;
+}
+
+.inventory_adjustment-datos-secondBox-movimientos-salida-radio {
+    display: grid;
+    grid-area: rbSalida;
+    height: 100%;
+    padding-top: 10px;
+    grid-template-areas: 
+        'radioS lblS';
+    grid-template-columns: 10% 20%;
+}
+
+#rbMovimientosSalida {
+    grid-area: radioS;
+    margin-left: 15px;
+}
+
+#lblRadioSalidaInv {
+    color: #B3BAB2;
+    font-size: 15px;
+    grid-area: lblS;
+    margin-left: 15px;
+}
+
+#lblSalidaInventoryAd {
+    grid-area: lblSalida;
+    padding-top: 10px;
+}
+
+.inventory_adjustment-datos-secondBox-movimientos-muerteAnimales {
+    display: grid;
+    grid-area: muerteAnimales;
+    height: 100%;
+    padding-top: 5px;
+    grid-template-areas: 
+        'inputCheckM lblCheckM';
+    grid-template-columns: 10% 40%;
+}
+
+.inventory_adjustment-datos-secondBox-movimientos-muerteAnimales-input {
+    background-color: red;
+    grid-area: inputCheckM;
+    height: 60%;
+    margin-left: 5px;
+    padding-top: 5px;
+}
+
+#lblmuerteAnimalesInventoryAd {
+    background-color: red;
+    grid-area: lblCheckM;
+    height: 60%;
+    padding-top: 5px;
+}
+
+.inventory_adjustment-datos-secondBox-inputs {
+    border: 1px solid #9DA297;
+    display: grid;
+    grid-area: inputsRight;
+    height: 85%;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 10px;
+    grid-template-areas: 
+        'firstLineI'
+        'secondLineI'
+        'thirdLineI';
+    grid-template-rows: 33% 33% 33%;
+}
+
+.inventory_adjustment-datos-secondBox-inputs-firstLine {
+    display: grid;
+    grid-area: firstLineI;
+    height: 100%;
+    grid-template-areas: 
+        'obser cantidad';
+    grid-template-columns: 75% 25%;
+}
+
+.inventory_adjustment-datos-secondBox-inputs-firstLine-obser {
+    display: grid;
+    grid-area: obser;
+    height: 100%;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 2px;
+    grid-template-areas: 
+        'lblObser'
+        'inputObser';
+    grid-template-rows: 40% 60%;
+}
+
+#lblObservacionInventoryAd {
+    background-color: #DDE1D5;
+    font-size: 14px;
+    grid-area: lblObser;
+    margin-top: 2px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+#txtObservacionInventoryAd {
+    font-size: 14px;
+    grid-area: inputObser;
+    height: 70%;
+    margin-top: 2px;
+    text-align: start;
+}
+
+.inventory_adjustment-datos-secondBox-inputs-firstLine-cantidad {
+    display: grid;
+    grid-area: cantidad;
+    height: 100%;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 2px;
+    grid-template-areas: 
+        'lblCantidad'
+        'inputCantidad';
+    grid-template-rows: 40% 60%;
+}
+
+#lblCantidadInventoryAd {
+    background-color: #DDE1D5;
+    font-size: 14px;
+    grid-area: lblCantidad;
+    margin-top: 2px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+#txtCantidadInventoryAd {
+    font-size: 14px;
+    grid-area: inputCantidad;
+    height: 70%;
+    margin-top: 2px;
+    text-align: start;
+}
+
+.inventory_adjustment-datos-secondBox-inputs-secondLine {
+    display: grid;
+    grid-area: secondLineI;
+    height: 100%;
+    grid-template-areas: 
+        'cuentaC productoA';
+    grid-template-columns: 40% 40%;
+}
+
+.inventory_adjustment-datos-secondBox-inputs-secondLine-cuentaContable {
+    display: grid;
+    grid-area: cuentaC;
+    height: 100%;
+    grid-template-areas: 
+        'lblcuentaC inputcuentaC';
+    grid-template-columns: 50% 50%;
+}
+
+#lblCuentaInventoryAd {
+    background-color: #DDE1D5;
+    font-size: 15px;
+    grid-area: lblcuentaC;
+    height: 45%;
+    margin-left: 15px;
+    margin-right: 10px;
+    margin-top: 10px;
+    padding-top: 2px;
+}
+
+#txtCuentaInventoryAd {
+    font-size: 14px;
+    grid-area: inputcuentaC;
+    height: 45%;
+    margin-right: 10px;
+    margin-top: 10px;
+    text-align: start;
+}
+
+.inventory_adjustment-datos-secondBox-inputs-secondLine-productoA {
+    display: grid;
+    grid-area: productoA;
+    height: 100%;
+    grid-template-areas: 
+        'lblDescrip1 checkProductoA';
+    grid-template-columns: 30% 70%;
+}
+
+#lblDescripInventoryAd1 {
+    background-color: #DDE1D5;
+    font-size: 15px;
+    grid-area: lblDescrip1;
+    height: 45%;
+    margin-left: 15px;
+    margin-right: 10px;
+    margin-top: 10px;
+    padding-top: 2px;
+}
+
+.inventory_adjustment-datos-secondBox-inputs-secondLine-productoA-check {
+    display: grid;
+    grid-area: checkProductoA;
+    height: 100%;
+    padding-top: 12px;
+    grid-template-areas: 
+        'inputProductoA lblProductoA';
+    grid-template-columns: 10% 70%;
+}
+
+.inventory_adjustment-datos-secondBox-inputs-secondLine-productoA-check-input {
+    grid-area: inputProductoA;
+}
+
+#lblproductoActInventoryAd {
+    color: #B3BAB2;
+    font-size: 15px;
+    grid-area: lblProductoA;
+    text-align: start;
+}
+
+.inventory_adjustment-datos-secondBox-inputs-thirdLine {
+    display: grid;
+    grid-area: thirdLineI;
+    height: 100%;
+    grid-template-areas: 
+        'gasto v2';
+    grid-template-columns: 40% 10%;
+}
+
+.inventory_adjustment-datos-secondBox-inputs-thirdLine-gasto {
+    display: grid;
+    grid-area: gasto;
+    height: 100%;
+    grid-template-areas: 
+        'lblGasto inputGasto';
+    grid-template-columns: 50% 50%;
+}
+
+#lblGastoInventoryAd {
+    background-color: #DDE1D5;
+    font-size: 15px;
+    grid-area: lblGasto;
+    height: 45%;
+    margin-left: 15px;
+    margin-right: 10px;
+    margin-top: 10px;
+    padding-top: 2px;
+}
+
+#txtGastoInventoryAd {
+    font-size: 14px;
+    grid-area: inputGasto;
+    height: 45%;
+    margin-right: 10px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+#lblV2InventoryAd {
+    font-size: 15px;
+    grid-area: v2;
+    padding-top: 10px;
+}

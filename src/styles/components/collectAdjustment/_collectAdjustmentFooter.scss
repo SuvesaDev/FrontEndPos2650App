@@ -1,0 +1,319 @@
+.collectAdjustment_footer-main {
+    border: 1px solid black;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'icons saldoCuenta';
+    grid-template-columns: 70% 30%;
+}
+
+.collectAdjustment_footer-icons {
+    display: grid;
+    grid-area: icons;
+    height: 100%;
+    grid-template-areas: 
+        'icon'
+        'footer';
+    grid-template-rows: 70% 30%;
+}
+
+.collectAdjustment_footer-icons-icon {
+    display: grid;
+    grid-area: icon;
+    height: 100%;
+    grid-template-areas: 
+        'btnNuevo btnBuscar btnRegistrar btnAnular btnCerrar';
+    grid-template-columns: 10% 10% 10% 10% 10%;
+}
+
+.collectAdjustment_footer-icons-nuevo {
+    display: grid;
+    grid-area: btnNuevo;
+    height: 100%;
+    grid-template-areas: 
+        'iconNue'
+        'lblNue';
+    grid-template-rows: 60% 40%;
+}
+
+.collectAdjustment_footer-icons-nuevo-icon {
+    color: #F68A1D;
+    grid-area: iconNue;
+    padding-top: 4px;
+}
+
+#iconNuevoCollAdj {
+    cursor: pointer;
+    height: 100%;
+    width: 35%;
+}
+
+#lblNuevoCollAdj {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblNue;
+    text-align: center;
+}
+
+.collectAdjustment_footer-icons-Buscar {
+    display: grid;
+    grid-area: btnBuscar;
+    height: 100%;
+    grid-template-areas: 
+        'iconBus'
+        'lblBus';
+    grid-template-rows: 60% 40%;
+}
+
+.collectAdjustment_footer-icons-Buscar-icon {
+    color: #F68A1D;
+    grid-area: iconBus;
+    padding-top: 4px;
+}
+
+#iconBusCollAdj {
+    cursor: pointer;
+    height: 100%;
+    width: 30%;
+}
+
+#lblBuscarCollAdj {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblBus;
+    text-align: center;
+}
+
+.collectAdjustment_footer-icons-registrar {
+    display: grid;
+    grid-area: btnRegistrar;
+    height: 100%;
+    grid-template-areas: 
+        'iconReg'
+        'lblReg';
+    grid-template-rows: 60% 40%;
+}
+
+.collectAdjustment_footer-icons-registrar-icon {
+    color: #F68A1D;
+    grid-area: iconReg;
+    padding-top: 4px;
+}
+
+#iconRegistrarCollAdj {
+    cursor: pointer;
+    height: 100%;
+    width: 35%;
+}
+
+#lblRegistrarCollAdj {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblReg;
+    text-align: center;
+}
+
+.collectAdjustment_footer-icons-anular {
+    display: grid;
+    grid-area: btnAnular;
+    height: 100%;
+    grid-template-areas: 
+        'iconAnu'
+        'lblAnu';
+    grid-template-rows: 60% 40%;
+}
+
+.collectAdjustment_footer-icons-anular-icon {
+    color: #F68A1D;
+    grid-area: iconAnu;
+    padding-top: 4px;
+}
+
+#iconAnularCollAdj {
+    cursor: pointer;
+    height: 100%;
+    width: 35%;
+}
+
+#lblAnularCollAdj {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblAnu;
+    text-align: center;
+}
+
+.collectAdjustment_footer-icons-cerrar {
+    display: grid;
+    grid-area: btnCerrar;
+    height: 100%;
+    grid-template-areas: 
+        'iconCer'
+        'lblCer';
+    grid-template-rows: 60% 40%;
+}
+
+.collectAdjustment_footer-icons-cerrar-icon {
+    color: #F68A1D;
+    grid-area: iconCer;
+    padding-top: 4px;
+}
+
+#iconCerrarCollAdj {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblCerrarCollAdj {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblCer;
+    text-align: center;
+}
+
+.collectAdjustment_footer-icons-footer {
+    border-top: 1px solid black;
+    display: grid;
+    grid-area: footer;
+    height: 100%;
+    grid-template-areas: 
+        'anulada user';
+    grid-template-columns: 15% 30%;
+}
+
+.collectAdjustment_footer-icons-footer-anulada {
+    border-right: 1px solid black;
+    display: grid;
+    grid-area: anulada;
+    height: 100%;
+    padding-top: 3px;
+    grid-template-areas: 
+        'checkanulada lblanulada';
+    grid-template-columns: 20% 50%;
+}
+
+.collectAdjustment_footer-icons-footer-anulada-input {
+    grid-area: checkanulada;
+}
+
+#lblAnuladaCollectAdjustment {
+    font-size: 15px;
+    grid-area: lblanulada;
+}
+
+.collectAdjustment_footer-icons-footer-user {
+    grid-area: user;
+}
+
+#lblUserCollectAdjustment {
+    background-color: #3D62DB;
+    color: white;
+    font-size: 15px;
+    height: 100%;
+    padding-left: 5px;
+    padding-top: 2px;
+    text-align: start;  
+    width: 30%;
+}
+
+.collectAdjustment_footer-saldosCuenta {
+    border-left: 1px solid black;
+    display: grid;
+    grid-area: saldoCuenta;
+    height: 100%;
+    grid-template-areas: 
+        'title'
+        'inputs';
+    grid-template-rows: 25% 75%;
+}
+
+#lblsaldosCuentaTitleCollectAdj {
+    background-color: #3D62DB;
+    color: white;
+    font-size: 15px;
+    grid-area: title;
+    padding-top: 1px;
+}
+
+.collectAdjustment_footer-saldosCuenta-inputs {
+    display: grid;
+    grid-area: inputs;
+    height: 100%;
+    grid-template-areas: 
+        'saldoAnt'
+        'montoRecido'
+        'saldoAct';
+    grid-template-rows: 33% 33% 33%;
+}
+
+.collectAdjustment_footer-saldosCuenta-inputs-saldoAnt {
+    display: grid;
+    grid-area: saldoAnt;
+    height: 100%;
+    grid-template-areas: 
+        'lblsaldoAnt inputsaldoAnt';
+    grid-template-columns: 50% 50%;
+}
+
+#lblSaldoAntIconsCollectAdjustment {
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblsaldoAnt;
+    text-align: center;
+}
+
+#txtSaldoAntIconsCollectAdjustment {
+    font-size: 12px;
+    grid-area: inputsaldoAnt;
+    height: 80%;
+    margin-right: 25px;
+}
+
+.collectAdjustment_footer-saldosCuenta-inputs-montoRecidos {
+    display: grid;
+    grid-area: montoRecido;
+    height: 100%;
+    grid-template-areas: 
+        'lblmontoRec inputmontoRec';
+    grid-template-columns: 50% 50%;
+}
+
+#lblMontoRecIconsCollectAdjustment {
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblmontoRec;
+    text-align: center;
+}
+
+#txtMontoRecIconsCollectAdjustment {
+    font-size: 12px;
+    grid-area: inputmontoRec;
+    height: 80%;
+    margin-right: 25px;
+}
+
+.collectAdjustment_footer-saldosCuenta-inputs-saldoAct {
+    display: grid;
+    grid-area: saldoAct;
+    height: 100%;
+    grid-template-areas: 
+        'lblsaldoAct inputsaldoAct';
+    grid-template-columns: 50% 50%;
+}
+
+#lblSaldoActIconsCollectAdjustment {
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblsaldoAct;
+    text-align: center;
+}
+
+#txtSaldoActIconsCollectAdjustment {
+    font-size: 12px;
+    grid-area: inputsaldoAct;
+    height: 80%;
+    margin-right: 25px;
+}

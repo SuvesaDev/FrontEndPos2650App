@@ -1,0 +1,23 @@
+.repayment_body-tab-general-main {
+    text-align: center;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'body'
+        'table'
+        'totals';
+    grid-template-rows: 50% 35% 15%;
+}
+
+.repayment_body-tab-general-body {
+    grid-area: body;
+}
+
+.repayment_body-tab-general-table {
+    grid-area: table;
+}
+
+.repayment_body-tab-general-totals {
+    grid-area: totals;
+    border-bottom: 1px solid rgb(176, 175, 175);
+}

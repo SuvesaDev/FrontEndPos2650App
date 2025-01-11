@@ -1,0 +1,181 @@
+.raffle_icons-main {
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'btnNuevo btnBuscar btnRegistrar btnEliminar btnEditar btnCerrar';
+    grid-template-columns: 8% 8% 8% 8% 8% 8%;
+}
+
+.raffle_icons-nuevo {
+    display: grid;
+    grid-area: btnNuevo;
+    height: 100%;
+    grid-template-areas: 
+        'iconNuevo'
+        'lblNuevo';
+    grid-template-rows: 60% 40%;
+}
+
+.raffle_icons-nuevo-icon {
+    color: #F68A1D;
+    grid-area: iconNuevo;
+    padding-top: 4px;
+}
+
+#iconNuevoRaffle {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblNuevoRaffle {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblNuevo;
+    text-align: center;
+}
+
+.raffle_icons-Buscar {
+    display: grid;
+    grid-area: btnBuscar;
+    height: 100%;
+    grid-template-areas: 
+        'iconBus'
+        'lblBus';
+    grid-template-rows: 60% 40%;
+}
+
+.raffle_icons-Buscar-icon {
+    color: #F68A1D;
+    grid-area: iconBus;
+    padding-top: 4px;
+}
+
+#iconBusRaffle {
+    cursor: pointer;
+    height: 100%;
+    width: 20%;
+}
+
+#lblBuscarRaffle {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblBus;
+    text-align: center;
+}
+
+.raffle_icons-registrar {
+    display: grid;
+    grid-area: btnRegistrar;
+    height: 100%;
+    grid-template-areas: 
+        'iconRegistrar'
+        'lblRegistrar';
+    grid-template-rows: 60% 40%;
+}
+
+.raffle_icons-registrar-icon {
+    color: #F68A1D;
+    grid-area: iconRegistrar;
+    padding-top: 4px;
+}
+
+#iconRegistrarRaffle {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblRegistrarRaffle {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblRegistrar;
+    text-align: center;
+}
+
+.raffle_icons-eliminar {
+    display: grid;
+    grid-area: btnEliminar;
+    height: 100%;
+    grid-template-areas: 
+        'iconEli'
+        'lblEli';
+    grid-template-rows: 60% 40%;
+}
+
+.raffle_icons-eliminar-icon {
+    color: #F68A1D;
+    grid-area: iconEli;
+    padding-top: 4px;
+}
+
+#iconEliminarRaffle {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblEliminarRaffle {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblEli;
+    text-align: center;
+}
+
+.raffle_icons-Editar {
+    display: grid;
+    grid-area: btnEditar;
+    height: 100%;
+    grid-template-areas: 
+        'iconEdi'
+        'lblEdi';
+    grid-template-rows: 60% 40%;
+}
+
+.raffle_icons-Editar-icon {
+    color: #F68A1D;
+    grid-area: iconEdi;
+    padding-top: 4px;
+}
+
+#iconEditRaffle {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblEditarRaffle {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblEdi;
+    text-align: center;
+}
+
+.raffle_icons-cerrar {
+    display: grid;
+    grid-area: btnCerrar;
+    height: 100%;
+    grid-template-areas: 
+        'iconCer'
+        'lblCer';
+    grid-template-rows: 60% 40%;
+}
+
+.raffle_icons-cerrar-icon {
+    color: #F68A1D;
+    grid-area: iconCer;
+    padding-top: 4px;
+}
+
+#iconCerrarRaffle {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblCerrarRaffle {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblCer;
+    text-align: center;
+}

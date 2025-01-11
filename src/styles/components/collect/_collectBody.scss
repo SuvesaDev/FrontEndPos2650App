@@ -1,0 +1,662 @@
+.collect_body-main {
+    border: 1px solid black;
+    display: grid;
+    height: 95%;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 5px;
+    grid-template-areas: 
+        'firstLine'
+        'secondLine';
+    grid-template-rows: 35% 65%;
+}
+
+.collect_body-firstLine {
+    display: grid;
+    grid-area: firstLine;
+    height: 100%;
+    grid-template-areas: 
+        'datosCliente monedas';
+    grid-template-columns: 70% 30%;
+}
+
+.collect_body-firstLine-datosCliente {
+    border-right: 1px solid black;
+    display: grid;
+    grid-area: datosCliente;
+    height: 100%;
+    grid-template-areas: 
+        'titleDatosCliente'
+        'inputsDatosCliente';
+    grid-template-rows: 30% 70%;
+}
+
+#lblDatosClienteCollect {
+    background-color: #3D62DB;
+    color: white;
+    font-size: 15px;
+    grid-area: titleDatosCliente;
+    padding-top: 2px;
+}
+
+.collect_body-firstLine-datosCliente-inputs {
+    display: grid;
+    grid-area: inputsDatosCliente;
+    height: 100%;
+    grid-template-areas: 
+        'codigo nombreCliente filtrar';
+    grid-template-columns: 20% 60% 20%;
+}
+
+.collect_body-firstLine-datosCliente-inputs-codigo {
+    display: grid;
+    grid-area: codigo;
+    height: 100%;
+    margin-bottom: 5px;
+    grid-template-areas: 
+        'lblcodigo'
+        'inputs';
+    grid-template-rows: 40% 60%;
+}
+
+.collect_body-firstLine-datosCliente-inputs-codigo-label {
+    grid-area: lblcodigo;
+}
+
+#lblCodigoClienteCollect {
+    font-size: 15px;
+    padding-left: 30px;
+    padding-top: 3px;
+    text-align: start;
+}
+
+.collect_body-firstLine-datosCliente-inputs-codigo-inputs {
+    display: grid;
+    grid-area: inputs;
+    height: 100%;
+    margin-bottom: 5px;
+    grid-template-areas: 
+        'txt icon';
+    grid-template-columns: 80% 20%;
+}
+
+.collect_body-firstLine-datosCliente-inputs-codigo-inputs-txt {
+    grid-area: txt;
+}
+
+#txtCodigoClienteCollect {
+    font-size: 15px;
+    height: 70%;
+    margin-left: 30px;
+    margin-top: 1px;
+    width: 80%;
+}
+
+.collect_body-firstLine-datosCliente-inputs-codigo-inputs-icon {
+    grid-area: icon;
+    padding-top: 3px;
+}
+
+.btnSearchClienteCollect {
+    color: $secundary;
+    
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.btnSearchClienteCollect-disable {
+    color: gray;
+    
+    &:hover {
+        cursor: not-allowed;
+    }
+}
+
+.collect_body-firstLine-datosCliente-inputs-nombre {
+    display: grid;
+    grid-area: nombreCliente;
+    height: 100%;
+    margin-bottom: 5px;
+    grid-template-areas: 
+        'lblnombre'
+        'txtnombre';
+    grid-template-rows: 40% 60%;
+}
+
+#lblNombreClienteCollect {
+    font-size: 15px;
+    grid-area: lblnombre;
+    padding-left: 30px;
+    padding-top: 3px;
+    text-align: start;
+}
+
+#txtNombreClienteCollect {
+    font-size: 15px;
+    grid-area: txtnombre;
+    height: 70%;
+    margin-left: 30px;
+    margin-top: 1px;
+    width: 90%;
+}
+
+.collect_body-firstLine-datosCliente-inputs-filtrar {
+    display: grid;
+    grid-area: filtrar;
+    height: 100%;
+    margin-bottom: 5px;
+    padding-top: 15px;
+    grid-template-areas: 
+        'checkFiltar lblFiltar';
+    grid-template-rows: 10% 90%;
+}
+
+.collect_body-firstLine-datosCliente-inputs-filtrar-input {
+    grid-area: checkFiltar;
+}
+
+#lblFiltrarCollect {
+    font-size: 15px;
+    grid-area: lblFiltar;
+    text-align: start;
+}
+
+.collect_body-firstLine-monedas {
+    display: grid;
+    grid-area: monedas;
+    height: 100%;
+    margin-left: 15px;
+    margin-right: 15px;
+    grid-template-areas: 
+        'monedaCollect'
+        // 'tipoCambioCollect'
+        'fechaCollect';
+    // grid-template-rows: 33% 33% 33%;
+    grid-template-rows: 50% 50%;
+}
+
+.collect_body-firstLine-monedas-moneda {
+    display: grid;
+    grid-area: monedaCollect;
+    height: 100%;
+    grid-template-areas: 
+        'lblMoneda cboMoneda';
+    grid-template-columns: 50% 50%;
+}
+
+#lblMonedaCollect {
+    color: #566DC7;
+    font-weight: bold;
+    grid-area: lblMoneda;
+    padding-top: 10px;
+}
+
+#cboMonedaCollect {
+    font-size: 15px;
+    grid-area: cboMoneda;
+    height: 55%;
+    margin-top: 8px;
+    text-align: start;
+}
+
+// .collect_body-firstLine-monedas-tipoCambio {
+//     display: grid;
+//     grid-area: tipoCambioCollect;
+//     height: 100%;
+//     grid-template-areas: 
+//         'lbltipoCambio inputtipoCambio';
+//     grid-template-columns: 50% 50%;
+// }
+
+// #lblTipoCambioCollect {
+//     color: #566DC7;
+//     font-weight: bold;
+//     grid-area: lbltipoCambio;
+//     padding-top: 3px;
+// }
+
+// #txtTipoCambioCollect {
+//     font-size: 15px;
+//     grid-area: inputtipoCambio;
+//     height: 80%;
+//     margin-top: 2px;
+//     text-align: start;
+// }
+
+.collect_body-firstLine-monedas-fecha {
+    display: grid;
+    grid-area: fechaCollect;
+    height: 100%;
+    grid-template-areas: 
+        'lblfecha inputfecha';
+    grid-template-columns: 50% 50%;
+}
+
+#lblFechaCollect {
+    color: #566DC7;
+    font-weight: bold;
+    grid-area: lblfecha;
+    padding-top: 10px;
+}
+
+#txtFechaCollect {
+    font-size: 15px;
+    grid-area: inputfecha;
+    height: 55%;
+    margin-top: 8px;
+    text-align: start;
+}
+
+.collect_body-secondLine {
+    display: grid;
+    grid-area: secondLine;
+    height: 100%;
+    grid-template-areas: 
+        'facturas datosFactura';
+    grid-template-columns: 50% 50%;
+}
+
+.collect_body-secondLine-facturas {
+    border: 1px solid black;
+    display: grid;
+    grid-area: facturas;
+    height: 100%;
+    padding: 5px;
+    grid-template-areas: 
+        'lblfacturas'
+        'tablefacturas';
+    grid-template-rows: 15% 85%;
+}
+
+#lblFacturasCollect {
+    border: 1px solid black;
+    font-size: 15px;
+    grid-area: lblfacturas;
+    padding-top: 1px;
+}
+
+.collect_body-secondLine-facturas-table {
+    border: 1px solid black;
+    grid-area: tablefacturas;
+}
+
+.collect_body-table {
+    width: 100%;
+    height: 100%;
+    // margin-left: 10px;
+    overflow-y: scroll;
+    scrollbar-color: rebeccapurple green;
+    scrollbar-width: thin;
+}
+
+.collect_body-table-header-numeroFactura {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.collect_body-table-header-fecha {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.collect_body-table-numeroFactura {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.collect_body-table-fecha {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.collect_body-secondLine-facturas-datosFactura {
+    border: 1px solid black;
+    display: grid;
+    grid-area: datosFactura;
+    height: 100%;
+    padding: 5px;
+    grid-template-areas: 
+        'lbldatosFactura'
+        'inputsdatosFactura';
+    grid-template-rows: 15% 85%;
+}
+
+#lblDatosFacturaCollect {
+    background-color: #3B62DD;
+    border: 1px solid black;
+    color: white;
+    font-size: 15px;
+    grid-area: lbldatosFactura;
+    padding-top: 1px;
+}
+
+.collect_body-secondLine-facturas-datosFactura-inputs {
+    display: grid;
+    grid-area: inputsdatosFactura;
+    height: 100%;
+    grid-template-areas: 
+        'leftSide rightSide btnAddFactura';
+    grid-template-columns: 40% 40% 20%;
+}
+
+.collect_body-secondLine-facturas-datosFactura-inputs-leftSide {
+    display: grid;
+    grid-area: leftSide;
+    height: 100%;
+    grid-template-areas: 
+        'facturaNo'
+        'fecha'
+        'monto'
+        'saldo';
+    grid-template-rows: 25% 25% 25% 25%;
+}
+
+.collect_body-secondLine-facturas-datosFactura-inputs-leftSide-factura {
+    display: grid;
+    grid-area: facturaNo;
+    height: 100%;
+    grid-template-areas: 
+        'lblfacturaNo txtfacturaNo';
+    grid-template-columns: 50% 50%;
+}
+
+#lblFacturaNoCollect {
+    color: #5962E1;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblfacturaNo;
+    padding-top: 4px;
+}
+
+#txtFacturaNoCollect {
+    font-size: 14px;
+    grid-area: txtfacturaNo;
+    height: 65%;
+    margin-right: 5px;
+    margin-top: 5px;
+    text-align: start;
+}
+
+.collect_body-secondLine-facturas-datosFactura-inputs-leftSide-fecha {
+    display: grid;
+    grid-area: fecha;
+    height: 100%;
+    grid-template-areas: 
+        'lblfecha txtfecha';
+    grid-template-columns: 50% 50%;
+}
+
+#lblFecha2Collect {
+    color: #5962E1;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblfecha;
+    padding-top: 4px;
+}
+
+#txtFecha2Collect {
+    font-size: 14px;
+    grid-area: txtfecha;
+    height: 65%;
+    margin-right: 5px;
+    margin-top: 5px;
+    text-align: start;
+}
+
+.collect_body-secondLine-facturas-datosFactura-inputs-leftSide-monto {
+    display: grid;
+    grid-area: monto;
+    height: 100%;
+    grid-template-areas: 
+        'lblmonto txtmonto';
+    grid-template-columns: 50% 50%;
+}
+
+#lblMontoCollect {
+    color: #5962E1;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblmonto;
+    padding-top: 4px;
+}
+
+#txtMontoCollect {
+    font-size: 14px;
+    grid-area: txtmonto;
+    height: 65%;
+    margin-right: 5px;
+    margin-top: 5px;
+    text-align: start;
+}
+
+.collect_body-secondLine-facturas-datosFactura-inputs-leftSide-saldo {
+    display: grid;
+    grid-area: saldo;
+    height: 100%;
+    grid-template-areas: 
+        'lblsaldo txtsaldo';
+    grid-template-columns: 50% 50%;
+}
+
+#lblSaldoCollect {
+    color: #5962E1;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblsaldo;
+    padding-top: 4px;
+}
+
+#txtSaldoCollect {
+    font-size: 14px;
+    grid-area: txtsaldo;
+    height: 65%;
+    margin-right: 5px;
+    margin-top: 5px;
+    text-align: start;
+}
+
+.collect_body-secondLine-facturas-datosFactura-inputs-rightSide {
+    display: grid;
+    grid-area: rightSide;
+    height: 100%;
+    grid-template-areas: 
+        'intereses'
+        'saldoPrevio'
+        'abono'
+        'saldoActual';
+    grid-template-rows: 25% 25% 25% 25%;
+}
+
+.collect_body-secondLine-facturas-datosFactura-inputs-rightSide-intereses {
+    display: grid;
+    grid-area: intereses;
+    height: 100%;
+    grid-template-areas: 
+        'lblintereses txtintereses';
+    grid-template-columns: 50% 50%;
+}
+
+#lblInteresesCollect {
+    color: #5962E1;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblintereses;
+    padding-top: 4px;
+}
+
+#txtInteresesCollect {
+    font-size: 14px;
+    grid-area: txtintereses;
+    height: 65%;
+    margin-right: 5px;
+    margin-top: 5px;
+    text-align: start;
+}
+
+.collect_body-secondLine-facturas-datosFactura-inputs-rightSide-saldoPrevio {
+    display: grid;
+    grid-area: saldoPrevio;
+    height: 100%;
+    grid-template-areas: 
+        'lblsaldoPrevio txtsaldoPrevio';
+    grid-template-columns: 50% 50%;
+}
+
+#lblSaldoPrevioCollect {
+    color: #5962E1;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblsaldoPrevio;
+    padding-top: 4px;
+}
+
+#txtSaldoPrevioCollect {
+    font-size: 14px;
+    grid-area: txtsaldoPrevio;
+    height: 65%;
+    margin-right: 5px;
+    margin-top: 5px;
+    text-align: start;
+}
+
+.collect_body-secondLine-facturas-datosFactura-inputs-rightSide-abono {
+    display: grid;
+    grid-area: abono;
+    height: 100%;
+    grid-template-areas: 
+        'lblabono txtabono';
+    grid-template-columns: 50% 50%;
+}
+
+#lblAbonoCollect {
+    color: #5962E1;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblabono;
+    padding-top: 4px;
+}
+
+#txtAbonoCollect {
+    font-size: 14px;
+    grid-area: txtabono;
+    height: 65%;
+    margin-right: 5px;
+    margin-top: 5px;
+    text-align: start;
+}
+
+.collect_body-secondLine-facturas-datosFactura-inputs-rightSide-saldoActual {
+    display: grid;
+    grid-area: saldoActual;
+    height: 100%;
+    grid-template-areas: 
+        'lblsaldoActual txtsaldoActual';
+    grid-template-columns: 50% 50%;
+}
+
+#lblSaldoActualCollect {
+    color: #5962E1;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblsaldoActual;
+    padding-top: 4px;
+}
+
+#txtSaldoActualCollect {
+    font-size: 14px;
+    grid-area: txtsaldoActual;
+    height: 65%;
+    margin-right: 5px;
+    margin-top: 5px;
+    text-align: start;
+}
+
+.collect_body-secondLine-facturas-datosFactura-inputs-rightSide-btn {
+    grid-area: btnAddFactura;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'info add';
+    grid-template-columns: 30% 70%;
+}
+
+.collect_body-secondLine-facturas-datosFactura-inputs-rightSide-btn-info {
+    grid-area: info;
+    margin-top: 210%;
+}
+
+.iconInfoCollectBodyAdd {
+    width: 30%;
+    height: 80%;
+    color: $secundary;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.iconInfoCollectBodyAdd-disable {
+    width: 30%;
+    height: 80%;
+    color: gray;
+
+    &:hover {
+        cursor: not-allowed;
+    }
+}
+
+.lblMensajeInfoCollectBody {
+    visibility: visible;
+    width: 250px;
+    background-color: rgb(183, 181, 181);
+    color: #767373;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+  
+    /* Position the tooltip */
+    position: absolute;
+    top: 240px;
+    left: 1050px;
+    z-index: 1;
+}
+
+.collect_body-secondLine-facturas-datosFactura-inputs-rightSide-btn-add {
+    grid-area: add;
+    padding-top: 90%;
+}
+
+.btnAddCollectBody {
+    width: 90%;
+    height: 90%;
+    font-size: 15px;
+    background-color: $primary;
+    color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+
+    &:hover {
+        background-color: $secundary;
+    }
+}
+
+.btnAddCollectBody-disable {
+    width: 90%;
+    height: 90%;
+    font-size: 15px;
+    background-color: gray;
+    color: white;
+    cursor: not-allowed;
+    border: none;
+    border-radius: 3px;
+}

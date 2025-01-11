@@ -1,0 +1,201 @@
+.inventory_footer-main {
+    border-bottom: 1px solid black;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'iconNuevo iconBuscar iconRegistrar iconEliminar iconCerrar';
+    grid-template-columns: 10% 10% 10% 10% 10%;
+}
+
+.inventory_footer-Nuevo {
+    grid-area: iconNuevo;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'iconNew'
+        'lblNew';
+    grid-template-rows: 60% 40%;
+}
+
+.inventory_footer-Nuevo-icon {
+    color: #F68A1D;
+    grid-area: iconNew;
+    padding-top: 4px;
+}
+
+.inventory_footer-Nuevo-icon-disable {
+    color: gray;
+    grid-area: iconNew;
+    padding-top: 4px;
+}
+
+.iconNue {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+.iconNuevoIDisable {
+    cursor: not-allowed;
+    height: 100%;
+    width: 25%;
+}
+
+#lblNuevo {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblNew;
+    text-align: center;
+}
+
+.inventory_footer-Buscar {
+    grid-area: iconBuscar;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'iconBus'
+        'lblBus';
+    grid-template-rows: 60% 40%;
+}
+
+.inventory_footer-Buscar-icon {
+    color: #F68A1D;
+    grid-area: iconBus;
+    padding-top: 4px;
+}
+
+.inventory_footer-Buscar-icon-disable {
+    color: gray;
+    grid-area: iconBus;
+    padding-top: 4px;
+}
+
+.iconBus {
+    cursor: pointer;
+    height: 100%;
+    width: 20%;
+}
+
+.iconBuscarIDisable {
+    cursor: not-allowed;
+    height: 100%;
+    width: 25%;
+}
+
+#lblBuscar {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblBus;
+    text-align: center;
+}
+
+.inventory_footer-Registrar {
+    grid-area: iconRegistrar;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'iconReg'
+        'lblReg';
+    grid-template-rows: 60% 40%;
+}
+
+.inventory_footer-Registrar-icon {
+    color: #F68A1D;
+    grid-area: iconReg;
+    padding-top: 4px;
+}
+
+.inventory_footer-Registrar-icon-disable {
+    color: gray;
+    grid-area: iconReg;
+    padding-top: 4px;
+}
+
+.iconReg {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+.iconRegistrarIDisable {
+    cursor: not-allowed;
+    height: 100%;
+    width: 25%;
+}
+
+#lblRegistrar {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblReg;
+    text-align: center;
+}
+
+.inventory_footer-Eliminar {
+    grid-area: iconEliminar;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'iconEli'
+        'lblEli';
+    grid-template-rows: 60% 40%;
+}
+
+.inventory_footer-Eliminar-icon {
+    color: #F68A1D;
+    grid-area: iconEli;
+    padding-top: 4px;
+}
+
+.inventory_footer-Eliminar-icon-disable {
+    color: gray;
+    grid-area: iconEli;
+    padding-top: 4px;
+}
+
+.iconEli {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+.iconEliminarIDisable {
+    cursor: not-allowed;
+    height: 100%;
+    width: 25%;
+}
+
+#lblEliminar {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblEli;
+    text-align: center;
+}
+
+.inventory_footer-Cerrar {
+    grid-area: iconCerrar;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'iconCer'
+        'lblCer';
+    grid-template-rows: 60% 40%;
+}
+
+.inventory_footer-Cerrar-icon {
+    color: #F68A1D;
+    grid-area: iconCer;
+    padding-top: 4px;
+}
+
+#iconCer {
+    cursor: pointer;
+    height: 100%;
+    width: 20%;
+}
+
+#lblCerrar {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblCer;
+    text-align: center;
+}

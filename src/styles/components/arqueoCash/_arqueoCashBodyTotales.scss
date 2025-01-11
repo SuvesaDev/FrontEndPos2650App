@@ -1,0 +1,300 @@
+.arqueoCash_body_totales {
+    display: grid;
+    height: 100%;
+    margin-right: 2%;
+    grid-template-areas: 
+        'title'
+        'body';
+    grid-template-rows: 10% 90%;
+    border: 1px solid gray;
+}
+
+.arqueoCash_body_totales-title {
+    grid-area: title;
+    border-bottom: 1px solid gray;
+}
+
+#lblTotalesArqueoTitle {
+    text-align: start;
+    font-size: 15px;
+    padding-left: 10px;
+    padding-top: 3px;
+}
+
+.arqueoCash_body_totales-body {
+    grid-area: body;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'colones'
+        'dolares'
+        'tarjetaColones'
+        'tarjetaDolares'
+        'chequesColones'
+        'chequesDolares'
+        'depositosColones'
+        'depositosDolares'
+        'totalSistema';
+    grid-template-rows: 11% 11% 11% 11% 11% 11% 11% 11% 12%;
+}
+
+.arqueoCash_body_totales-body-colones {
+    grid-area: colones;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'labelColones inputColones';
+    grid-template-columns: 50% 30%;
+}
+
+.arqueoCash_body_totales-body-colones-label {
+    grid-area: labelColones;
+}
+
+#lblColonesArqueo {
+    text-align: start;
+    padding-left: 10px;
+    padding-top: 3px;
+}
+
+.arqueoCash_body_totales-body-colones-input {
+    grid-area: inputColones;
+}
+
+#txtColonesArqueo {
+    text-align: start;
+    width: 100%;
+    margin-top: 3px;
+}
+
+.arqueoCash_body_totales-body-dolares {
+    grid-area: dolares;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'labelDolares inputDolares';
+    grid-template-columns: 50% 30%;
+}
+
+.arqueoCash_body_totales-body-dolares-label {
+    grid-area: labelDolares;
+}
+
+#lblDolaresArqueo{
+    text-align: start;
+    padding-left: 10px;
+    padding-top: 3px;
+}
+
+.arqueoCash_body_totales-body-dolares-input {
+    grid-area: inputDolares;
+}
+
+#txtDolaresArqueo{
+    text-align: start;
+    width: 100%;
+    margin-top: 3px;
+}
+
+.arqueoCash_body_totales-body-tarjetaColones {
+    grid-area: tarjetaColones;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'labeltarjetaColones inputtarjetaColones';
+    grid-template-columns: 50% 30%;
+}
+
+.arqueoCash_body_totales-body-tarjetaColones-label {
+    grid-area: labeltarjetaColones;
+}
+
+#lblTarjetasColonesArqueo {
+    text-align: start;
+    padding-left: 10px;
+    padding-top: 3px;
+}
+
+.arqueoCash_body_totales-body-tarjetaColones-input {
+    grid-area: inputtarjetaColones;
+}
+
+#txtTarjetasColonesArqueo {
+    text-align: start;
+    width: 100%;
+    margin-top: 3px;
+}
+
+.arqueoCash_body_totales-body-tarjetaDolares {
+    grid-area: tarjetaDolares;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'labeltarjetaDolares inputtarjetaDolares';
+    grid-template-columns: 50% 30%;
+}
+
+.arqueoCash_body_totales-body-tarjetaDolares-label {
+    grid-area: labeltarjetaDolares;
+}
+
+#lblTarjetasDolaresArqueo {
+    text-align: start;
+    padding-left: 10px;
+    padding-top: 3px;
+}
+
+.arqueoCash_body_totales-body-tarjetaDolares-input {
+    grid-area: inputtarjetaDolares;
+}
+
+#txtTarjetasDolaresArqueo {
+    text-align: start;
+    width: 100%;
+    margin-top: 3px;
+}
+
+.arqueoCash_body_totales-body-chequesColones {
+    grid-area: chequesColones;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'labelchequesColones inputchequesColones';
+    grid-template-columns: 50% 30%;
+}
+
+.arqueoCash_body_totales-body-chequesColones-label {
+    grid-area: labelchequesColones;
+}
+
+#lblChequesColonesArqueo {
+    text-align: start;
+    padding-left: 10px;
+    padding-top: 3px;
+}
+
+.arqueoCash_body_totales-body-chequesColones-input {
+    grid-area: inputchequesColones;
+}
+
+#txtChequesColonesArqueo {
+    text-align: start;
+    width: 100%;
+    margin-top: 3px;
+}
+
+.arqueoCash_body_totales-body-chequesDolares {
+    grid-area: chequesDolares;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'labelchequesDolares inputchequesDolares';
+    grid-template-columns: 50% 30%;
+}
+
+.arqueoCash_body_totales-body-chequesDolares-label {
+    grid-area: labelchequesDolares;
+}
+
+#lblChequesDolaresArqueo {
+    text-align: start;
+    padding-left: 10px;
+    padding-top: 3px;
+}
+
+.arqueoCash_body_totales-body-chequesDolares-input {
+    grid-area: inputchequesDolares;
+}
+
+#txtChequesDolaresArqueo {
+    text-align: start;
+    width: 100%;
+    margin-top: 3px;
+}
+
+.arqueoCash_body_totales-body-depositosColones {
+    grid-area: depositosColones;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'labeldepositosColones inputdepositosColones';
+    grid-template-columns: 50% 30%;
+}
+
+.arqueoCash_body_totales-body-depositosColones-label {
+    grid-area: labeldepositosColones;
+}
+
+#lblDepositosColonesArqueo {
+    text-align: start;
+    padding-left: 10px;
+    padding-top: 3px;
+}
+
+.arqueoCash_body_totales-body-depositosColones-input {
+    grid-area: inputdepositosColones;
+}
+
+#txtDepositosColonesArqueo {
+    text-align: start;
+    width: 100%;
+    margin-top: 3px;
+}
+
+.arqueoCash_body_totales-body-depositosDolares {
+    grid-area: depositosDolares;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'labeldepositosDolares inputdepositosDolares';
+    grid-template-columns: 50% 30%;
+}
+
+.arqueoCash_body_totales-body-depositosDolares-label {
+    grid-area: labeldepositosDolares;
+}
+
+#lblDepositosDolaresArqueo {
+    text-align: start;
+    padding-left: 10px;
+    padding-top: 3px;
+}
+
+.arqueoCash_body_totales-body-depositosDolares-input {
+    grid-area: inputdepositosDolares;
+}
+
+#txtDepositosDolaresArqueo {
+    text-align: start;
+    width: 100%;
+    margin-top: 3px;
+}
+
+.arqueoCash_body_totales-body-totalSistema {
+    grid-area: totalSistema;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'labeltotalSistema inputtotalSistema';
+    grid-template-columns: 50% 30%;
+}
+
+.arqueoCash_body_totales-body-totalSistema-label {
+    grid-area: labeltotalSistema;
+}
+
+#lblTotalSistemaArqueo {
+    text-align: start;
+    padding-left: 10px;
+    padding-top: 3px;
+}
+
+.arqueoCash_body_totales-body-totalSistema-input {
+    grid-area: inputtotalSistema;
+}
+
+#txtTotalSistemaArqueo {
+    text-align: start;
+    width: 100%;
+    margin-top: 3px;
+}

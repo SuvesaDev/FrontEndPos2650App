@@ -1,0 +1,85 @@
+.repayment_main {
+    text-align: center;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'header'
+        'bodyGeneral'
+        'icons';
+    grid-template-rows: 38px 550px 60px;
+}
+
+.repayment_header {
+    background-color: #3D59A9;
+    display: grid;
+    grid-area: header;
+    height: 100%;
+    grid-template-areas: 
+        'inputs label';
+    grid-template-columns: 25% 75%;
+}
+
+.repayment_header-inputs {
+    display: grid;
+    grid-area: inputs;
+    height: 100%;
+    grid-template-areas: 
+        'labelNumero inputNumero';
+    grid-template-rows: 50% 50%;
+}
+
+.repayment_header-inputs-label {
+    color: white;
+    font-size: 15px;
+    grid-area: labelNumero;
+    height: 100%;
+    margin-top: 10px;
+}
+
+.repayment_header-inputs-input {
+    grid-area: inputNumero;
+    height: 100%;
+    margin-top: 10px;
+}
+
+#txtNumeroDevolucion {
+    font-size: 15px;
+    text-align: start;
+}
+
+.repayment_header-labels {
+    grid-area: label;
+}
+
+#lblTitleDevoluciones {
+    color: white;
+    font-size: 25px;
+    text-align: start;
+    padding-left: 200px;
+    padding-top: 5px;
+}
+
+.repayment_body_general {
+    border-radius: 5px;
+    border: 1px solid rgb(176, 175, 175);
+    grid-area: bodyGeneral;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+.repayment_body {
+    grid-area: body;
+}
+
+.repayment_table {
+    grid-area: table;
+}
+
+.repayment_totals {
+    grid-area: totals;
+}
+
+.repayment_icons {
+    grid-area: icons;
+}

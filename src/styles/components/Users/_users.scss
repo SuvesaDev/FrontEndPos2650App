@@ -1,0 +1,31 @@
+.users_main {
+    text-align: center;
+    display: grid;
+    width: 100%;
+    grid-template-areas: 
+        'header header header'
+        'body body body'
+        'icons icons icons';
+    grid-template-rows: 45px 443px 60px;
+}
+
+.users_main-header {
+    grid-area: header;
+    background-color: #3D59A9;
+}
+
+#lblTitleUsers {
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    padding-top: 5px;
+}
+
+.users_main-body {
+    grid-area: body;
+}
+
+.users_main-icons {
+    grid-area: icons;
+    border: 1px solid #3D59A9;
+}

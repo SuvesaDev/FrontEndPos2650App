@@ -1,0 +1,187 @@
+.lockUnlockWarehouse-main {
+    display: grid;
+    text-align: center;
+    grid-template-areas: 
+        'header'
+        'body'
+        'footer';
+    grid-template-rows: 40px 448px 60px;
+}
+
+.lockUnlockWarehouse-header {
+    background-color: #3D59A9;
+    grid-area: header;
+}
+
+#lblTitlelockUnlockWarehouse {
+    color: white;
+    font-size: 25px;
+    padding-top: 5px;
+    text-align: center;
+}
+
+.lockUnlockWarehouse-body {
+    grid-area: body;
+    margin-left: 3%;
+    margin-right: 3%;
+    display: grid;
+    grid-template-areas: 
+        'title'
+        'table'
+        'btn';
+    grid-template-rows: 5% 85% 10%;
+}
+
+.lockUnlockWarehouse-body-title {
+    grid-area: title;
+    border: 1px solid #c4c4c4;
+}
+
+#lblTitleBodyLUWarehouse {
+    color: black;
+    font-size: 15px;
+    padding-top: 3px;
+    text-align: start;
+    padding-left: 5px;
+}
+
+.lockUnlockWarehouse-body-table {
+    grid-area: table;
+    border: 1px solid #c4c4c4;
+}
+
+.lockUnlockWarehouse-body-table-main {
+    width: 100%;
+}
+
+.lockUnlockWarehouse-body-table-header-bodega {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 8%;
+}
+
+.lockUnlockWarehouse-body-table-header-observaciones {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 15%;
+}
+
+.lockUnlockWarehouse-body-table-header-bloquea {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 2%;
+}
+
+.lockUnlockWarehouse-body-table-bodega {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.lockUnlockWarehouse-body-table-observaciones {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.lockUnlockWarehouse-body-table-bloquea {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: center;
+}
+
+#chkLockUnlockWarehouse {
+    margin-top: 2px;
+}
+
+.lockUnlockWarehouse-body-btn {
+    grid-area: btn;
+    margin-left: 80%;
+}
+
+#btnSavelockunlockWarehouse {
+    height: 80%;
+    margin-left: 30px;
+    margin-top: 5px;
+    width: 80%;
+
+    &:hover {
+        background-color: #3D59A9;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+.lockUnlockWarehouse-icons {
+    border: 1px solid black;
+    display: grid;
+    grid-area: footer;
+    height: 100%;
+    grid-template-areas: 
+        'btnRegistrar btnCerrar';
+    grid-template-columns: 8% 8% 8% 8% 8%;
+}
+
+.lockUnlockWarehouse-icons-registrar {
+    grid-area: btnRegistrar;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'iconReg'
+        'lblReg';
+    grid-template-rows: 60% 40%;
+}
+
+.lockUnlockWarehouse-icons-registrar-icon {
+    color: #F68A1D;
+    grid-area: iconReg;
+    padding-top: 4px;
+}
+
+#iconRegistrarLockUnlockWarehouse {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblRegistrarLockUnlockWarehouse {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblReg;
+    text-align: center;
+}
+
+.lockUnlockWarehouse-icons-cerrar {
+    grid-area: btnCerrar;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'iconCer'
+        'lblCer';
+    grid-template-rows: 60% 40%;
+}
+
+.lockUnlockWarehouse-icons-cerrar-icon {
+    color: #F68A1D;
+    grid-area: iconCer;
+    padding-top: 4px;
+}
+
+#iconCerrarLockUnlockWarehouse {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblCerrarLockUnlockWarehouse {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblCer;
+    text-align: center;
+}

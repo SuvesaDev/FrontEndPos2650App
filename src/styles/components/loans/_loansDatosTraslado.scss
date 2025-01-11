@@ -1,0 +1,240 @@
+.loans_datosTraslado-main {
+    border: 1px solid black;
+    display: grid;
+    height: 95%;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 5px;
+    grid-template-areas: 
+        'header'
+        'firstLine'
+        'secondine'
+        'thirdLine';
+    grid-template-rows: 15% 28% 28% 28%;
+}
+
+.loans_datosTraslado-header {
+    border-bottom: 1px solid black;
+    grid-area: header;
+}
+
+#lblDatosTrasladoTitle {
+    color: #AAA6AC;
+    font-size: 15px;
+    padding-left: 5px;
+    padding-top: 1px;
+    text-align: start;
+}
+
+.loans_datosTraslado-firstLine {
+    display: grid;
+    grid-area: firstLine;
+    grid-template-areas: 
+        'nBoleta boletaPro fecha';
+    grid-template-columns: 25% 25% 50%;
+}
+
+.loans_datosTraslado-firstLine-nBoleta {
+    display: grid;
+    grid-area: nBoleta;  
+    grid-template-areas: 
+        'lblnBoleta'
+        'inputnBoleta';
+    grid-template-rows: 40% 60%;
+}
+
+#lblNBoletaLoans {
+    color: #807D7F;
+    font-size: 15px;
+    grid-area: lblnBoleta;
+    padding-left: 30%;
+}
+
+#txtNBoletaLoans {
+    font-size: 15px;
+    grid-area: inputnBoleta;
+    height: 80%;
+    margin-left: 40%;
+    margin-top: 1px;
+    text-align: start;
+    width: 50%;
+}
+
+.loans_datosTraslado-firstLine-boletaProvee {
+    display: grid;
+    grid-area: boletaPro;
+    grid-template-areas: 
+        'lblboletaProvee'
+        'inputboletaProvee';
+    grid-template-rows: 40% 60%;    
+}
+
+#lblBoletaProveeLoans {
+    color: #807D7F;
+    font-size: 15px;
+    grid-area: lblboletaProvee;
+}
+
+#txtBoletaProveeLoans {
+    font-size: 15px;
+    grid-area: inputboletaProvee;
+    height: 80%;
+    margin-left: 25%;
+    margin-top: 1px;
+    text-align: start;
+    width: 50%;
+}
+
+.loans_datosTraslado-firstLine-fecha {
+    display: grid;
+    grid-area: fecha;    
+    grid-template-areas: 
+        'lblFechaLoans inputFechaLoans lblResultLoans';
+    grid-template-columns: 20% 70% 10%;    
+}
+
+#lblFechaLoans {
+    color: #807D7F;
+    font-size: 15px;
+    grid-area: lblFechaLoans;
+    padding-top: 12px;
+}
+
+#txtFechaLoans {
+    grid-area: inputFechaLoans;
+    height: 50%;
+    margin-top: 10px;
+    width: 40%;
+}
+
+#lblResultLoans {
+    color: #807D7F;
+    font-size: 15px;
+    grid-area: lblResultLoans;
+    padding-top: 12px;
+}
+
+.loans_datosTraslado-secondLine {
+    display: grid;
+    grid-area: secondine;
+    grid-template-areas: 
+        'destino origen';
+    grid-template-columns: 50% 50%;   
+}
+
+.loans_datosTraslado-secondLine-destino {
+    display: grid;
+    grid-area: destino;
+    grid-template-areas: 
+        'lblDestinoLoans inputDestinoLoans';
+    grid-template-columns: 30% 60%;
+}
+
+#lblDestinoLoans {
+    color: #807D7F;
+    font-size: 15px;
+    grid-area: lblDestinoLoans;
+    padding-right: 15px;
+    padding-top: 12px;
+    text-align: end;
+}
+
+#cboDestinoLoans {
+    font-size: 15px;
+    grid-area: inputDestinoLoans;
+    height: 50%;
+    margin-top: 10px;
+    text-align: start;
+    width: 96%;
+}
+
+.loans_datosTraslado-secondLine-origen {
+    display: grid;
+    grid-area: origen;
+    grid-template-areas: 
+        'lblOrigenLoans inputOrigenLoans';
+    grid-template-columns: 20% 80%;
+}
+
+#lblOrigenLoans {
+    color: #807D7F;
+    font-size: 15px;
+    grid-area: lblOrigenLoans;
+    padding-top: 12px;
+    text-align: center;
+}
+
+#cboOrigenLoans {
+    font-size: 15px;
+    grid-area: inputOrigenLoans;
+    height: 50%;
+    margin-top: 10px;
+    text-align: start;
+    width: 80%;
+}
+
+.loans_datosTraslado-thirdLine {
+    display: grid;
+    grid-area: thirdLine;
+    grid-template-areas: 
+        'transportista radiosButtons';
+    grid-template-columns: 50% 50%;
+}
+
+.loans_datosTraslado-thirdLine-transportista {
+    display: grid;
+    grid-area: transportista;
+    grid-template-areas: 
+        'lblTransportistaLoans inputTransportistaLoans';
+    grid-template-columns: 30% 60%;
+}
+
+#lblTransportistaLoans {
+    color: #807D7F;
+    font-size: 15px;
+    grid-area: lblTransportistaLoans;
+    padding-right: 15px;
+    padding-top: 12px;
+    text-align: end;
+}
+
+#txtTransportistaLoans {
+    font-size: 15px;
+    grid-area: inputTransportistaLoans;
+    height: 50%;
+    margin-top: 10px;
+    text-align: start;
+    width: 96%;
+}
+
+.loans_datosTraslado-thirdLine-radioButtons {
+    display: grid;
+    grid-area: radiosButtons;
+    grid-template-areas: 
+        'radio1 radio2';
+    grid-template-columns: 30% 30%;
+}
+
+.loans_datosTraslado-thirdLine-radioButtons-radio1 {
+    grid-area: radio1;
+    padding-top: 12px;
+}
+
+#lblRadioMePrestanLoans {
+    color: #AAADA2;
+    font-size: 15px;
+    padding-left: 10px;
+}
+
+.loans_datosTraslado-thirdLine-radioButtons-radio2 {
+    grid-area: radio2;
+    padding-right: 50%;
+    padding-top: 12px;
+}
+
+#lblRadioPrestarLoans {
+    color: #AAADA2;
+    font-size: 15px;
+    padding-left: 10px;
+}
+

@@ -1,0 +1,142 @@
+.closeCash_periodo-main {
+    border: 1px solid #C1C4B9;
+    display: grid;
+    height: 75px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    grid-template-areas: 
+        'title'
+        'inputs';
+    grid-template-rows: 25% 75%;
+}
+
+.closeCash_periodo-title {
+    border-bottom: 1px solid #C1C4B9;
+    color: #5691FE;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: title;
+    padding-left: 15px;
+    text-align: start;
+}
+
+.closeCash_periodo-inputs {
+    display: grid;
+    grid-area: inputs;
+    height: 100%;
+    grid-template-areas: 
+        'codigo nombre fecha';
+    grid-template-columns: 30% 30% 40%;
+}
+
+.closeCash_periodo-inputs-codigo {
+    display: grid;
+    grid-area: codigo;
+    padding-top: 5px;
+    grid-template-areas: 
+        'left right';
+    grid-template-columns: 80% 20%;
+}
+
+.closeCash_periodo-inputs-codigo-left {
+    display: grid;
+    grid-area: left;
+    padding-top: 5px;
+    grid-template-areas: 
+        'title-codigo'
+        'input-codigo';
+    grid-template-rows: 40% 60%;
+}
+
+#lblCodigoCajeroCash {
+    color: #5691FE;
+    font-size: 15px;
+    grid-area: title-codigo;
+    text-align: center;
+}
+
+#txtCodigoCajeroCash {
+    margin-top: 5px;
+    color: #5691FE;
+    font-size: 15px;
+    grid-area: input-codigo;
+    height: 65%;
+    margin-left: 20%;
+    text-align: center;
+    width: 70%;
+}
+
+.closeCash_periodo-inputs-codigo-right {
+    grid-area: right;
+    padding-top: 20px;
+}
+
+#btnF1Cash {
+    font-size: 15px;
+    grid-area: btn-nombre;
+    margin-left: 5%;
+    width: 80%;
+
+    &:hover {
+        background-color: $secundary;
+        cursor: pointer;
+        border: none;
+    }
+}
+
+.closeCash_periodo-inputs-nombre {
+    display: grid;
+    grid-area: nombre;
+    padding-top: 5px;
+    grid-template-areas: 
+        'title-nombre'
+        'lbl-nombre';
+    grid-template-rows: 50% 50%;
+}
+
+.closeCash_periodo-inputs-nombre-title {
+    grid-area: title-nombre;
+}
+
+#lblTitleNombreCash {
+    color: #5691FE;
+    font-size: 15px;
+    padding-top: 5px;
+}
+
+.closeCash_periodo-inputs-nombre-lbl {
+    grid-area: lbl-nombre;
+}
+
+#lblLabelNombreCash {
+    color: black;
+    font-size: 15px;
+    padding-top: 5px;
+}
+
+.closeCash_periodo-inputs-fecha {
+    display: grid;
+    grid-area: fecha;
+    padding-top: 5px;
+    grid-template-areas: 
+        'title-fecha'
+        'input-fecha';
+    grid-template-rows: 40% 60%;
+}
+
+#lblFechaCierreCash {
+    color: #5691FE;
+    font-size: 15px;
+    grid-area: title-fecha;
+    text-align: center;
+}
+
+#txtFechaCierreCash {
+    font-size: 15px;
+    grid-area: input-fecha;
+    height: 65%;
+    margin-left: 5%;
+    text-align: center;
+    width: 90%;
+}

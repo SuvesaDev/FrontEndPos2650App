@@ -1,0 +1,283 @@
+.inventory_adjustment-table-main {
+    border: 1px solid black;
+    display: grid;
+    height: 95%;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 5px;
+    grid-template-areas: 
+        'table'
+        'inputs';
+    grid-template-rows: 75% 25%;
+}
+
+.inventory_adjustment-table-table {
+    grid-area: table;
+}
+
+.inventory_adjustment-table-table-main {
+    width: 100%;
+}
+
+.inventory_adjustment-table-header-cantidad {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 5%;
+}
+
+.inventory_adjustment-table-header-codigo {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 5%;
+}
+
+.inventory_adjustment-table-header-descrip {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 18%;
+}
+
+.inventory_adjustment-table-header-muerte {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.inventory_adjustment-table-header-entrada {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.inventory_adjustment-table-header-salida {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.inventory_adjustment-table-header-observación {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 8%;
+}
+
+.inventory_adjustment-table-header-Tentrada {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.inventory_adjustment-table-header-Tsalida {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.inventory_adjustment-table-header-cuenta {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 8%;
+}
+
+.inventory_adjustment-table-header-lote {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 8%;
+}
+
+.inventory_adjustment-table-cantidad {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.inventory_adjustment-table-codigo {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.inventory_adjustment-table-descrip {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.inventory_adjustment-table-muerte {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.inventory_adjustment-table-entrada {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.inventory_adjustment-table-salida {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.inventory_adjustment-table-observación {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.inventory_adjustment-table-Tentrada {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.inventory_adjustment-table-Tsalida {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.inventory_adjustment-table-cuenta {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.inventory_adjustment-table-lote {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.inventory_adjustment-table-inputs {
+    border-top: 1px solid black;
+    display: grid;
+    grid-area: inputs;
+    grid-template-areas: 
+        'totalEntrada totalSalida totalAjuste';
+    grid-template-columns: 70% 15% 15%;
+}
+
+.inventory_adjustment-table-inputs-totalEntrada {
+    display: grid;
+    grid-area: totalEntrada;
+    margin-left: 78%;
+    grid-template-areas: 
+        'lbltotalEntrada'
+        'inputtotalEntrada';
+    grid-template-rows: 50% 50%;
+}
+
+#lbltotalEntradaInvA {
+    background-color: #DDE1D5;
+    color: #39A1F9;
+    font-size: 15px;
+    grid-area: lbltotalEntrada;
+    height: 70%;
+    margin-left: 5px;
+    margin-top: 5px;
+    padding-right: 5px;
+    text-align: end;
+    text-align: start;
+    width: 95%;
+}
+
+#txttotalEntradaInvA {
+    font-size: 15px;
+    grid-area: inputtotalEntrada;
+    height: 70%;
+    margin-left: 5px;
+    padding-left: 5px;
+    text-align: end;
+    width: 95%;
+}
+
+.inventory_adjustment-table-inputs-totalSalida {
+    display: grid;
+    grid-area: totalSalida;
+    grid-template-areas: 
+        'lbltotalSalida'
+        'inputtotalSalida';
+    grid-template-rows: 50% 50%;
+}
+
+#lbltotalSalidaInvA {
+    background-color: #DDE1D5;
+    color: #39A1F9;
+    font-size: 15px;
+    grid-area: lbltotalSalida;
+    height: 70%;
+    margin-left: 5px;
+    margin-top: 5px;
+    padding-right: 5px;
+    text-align: end;
+    text-align: start;
+    width: 95%;
+}
+
+#txttotalSalidaInvA {
+    font-size: 15px;
+    grid-area: inputtotalSalida;
+    height: 70%;
+    margin-left: 5px;
+    padding-left: 5px;
+    text-align: end;
+    width: 95%;
+}
+
+.inventory_adjustment-table-inputs-totalAjuste {
+    display: grid;
+    grid-area: totalAjuste;
+    grid-template-areas: 
+        'lbltotalAjuste'
+        'inputtotalAjuste';
+    grid-template-rows: 50% 50%;
+}
+
+#lbltotalAjusteInvA {
+    background-color: #DDE1D5;
+    color: #39A1F9;
+    font-size: 15px;
+    grid-area: lbltotalAjuste;
+    height: 70%;
+    margin-left: 5px;
+    margin-top: 5px;
+    padding-right: 5px;
+    text-align: end;
+    text-align: start;
+    width: 95%;
+}
+
+#txttotalAjusteInvA {
+    font-size: 15px;
+    grid-area: inputtotalAjuste;
+    height: 70%;
+    margin-left: 5px;
+    padding-left: 5px;
+    text-align: end;
+    width: 95%;
+}

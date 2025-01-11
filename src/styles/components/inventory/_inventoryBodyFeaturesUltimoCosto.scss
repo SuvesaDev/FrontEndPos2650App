@@ -1,0 +1,296 @@
+.inventory_body-featuresUC {
+    display: grid;
+    height: 100%;
+    background-color: #E4BF8A;
+    grid-template-areas: 
+        'moneda'
+        'impuesto'
+        'Base'
+        'Fletes'
+        'OCargo'
+        'Costo'
+        'CostoR';
+    grid-template-rows: 14% 14% 14% 14% 14% 14% 15%;
+    padding-top: 5px;
+}
+
+.inventory_body-featuresUC-moneda {
+    grid-area: moneda;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'labelmoneda inputTipoMoneda inputMoneda';
+    grid-template-columns: 34% 20% 45%;
+}
+
+#lblMoneda {
+    font-size: 15px;
+    grid-area: labelmoneda;
+    padding-top: 3px;
+}
+
+.inventory_body-featuresUC-moneda-inputTipo {
+    grid-area: inputTipoMoneda;
+    padding-top: 2px;
+}
+
+#cboTipoMoneda {
+    font-size: 15px;
+    text-align: center;
+    width: 80%;
+}
+
+.inventory_body-featuresUC-moneda-mensaje {
+    grid-area: inputMoneda;
+    padding-top: 2px;
+}
+
+#labelDiasMensajeInventory_Body-featuresUC {
+    font-size: 14px;
+}
+
+// #txtMoneda {
+//     font-size: 15px;
+//     text-align: right;
+//     width: 85%;
+// }
+
+.inventory_body-featuresUC-impuesto {
+    grid-area: impuesto;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'labelImpuesto inputImpuesto inputTipoImpuesto';
+    grid-template-columns: 34% 10% 30%;
+}
+
+#lblImpuesto {
+    font-size: 15px;
+    grid-area: labelImpuesto;
+    padding-left: 10px;
+    padding-top: 3px;
+}
+
+.inventory_body-featuresUC-impuesto-inputImpuesto {
+    grid-area: inputImpuesto;
+    padding-left: 8px;
+    padding-top: 2px;
+}
+
+#txtImpuesto {
+    font-size: 15px;
+    text-align: right;
+    width: 80%;
+}
+
+.inventory_body-featuresUC-impuesto-inputTipoImpuesto {
+    grid-area: inputTipoImpuesto;
+    padding-top: 2px;
+}
+
+#cboTipoImpuesto {
+    font-size: 15px;
+    text-align: start;
+    width: 90%;
+}
+
+.inventory_body-featuresUC-base {
+    grid-area: Base;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'labelBase inputBase inputBase2';
+    grid-template-columns: 34% 20% 20%;
+}
+
+#lblBase {
+    font-size: 15px;
+    grid-area: labelBase;
+    padding-right: 18px;
+    padding-top: 3px;
+}
+
+.inventory_body-featuresUC-base-inputBase {
+    grid-area: inputBase;
+    padding-top: 2px;
+}
+
+#txtBase {
+    font-size: 15px;
+    text-align: right;
+    width: 80%;
+}
+
+.inventory_body-featuresUC-base-inputBase2 {
+    grid-area: inputBase2;
+    padding-top: 2px;
+}
+
+#txtBase2 {
+    font-size: 15px;
+    text-align: right;
+    width: 85%;
+}
+
+.inventory_body-featuresUC-fletes {
+    grid-area: Fletes;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'labelFletes inputFletes inputFletes2';
+    grid-template-columns: 34% 20% 20%;
+}
+
+#lblFletes {
+    font-size: 15px;
+    grid-area: labelFletes;
+    padding-right: 10px;
+    padding-top: 3px;
+}
+
+.inventory_body-featuresUC-fletes-inputFletes {
+    grid-area: inputFletes;
+    padding-top: 2px;
+}
+
+#txtFletes {
+    font-size: 15px;
+    text-align: right;
+    width: 80%;
+}
+
+.inventory_body-featuresUC-fletes-inputFletes2 {
+    grid-area: inputFletes2;
+    padding-top: 2px;
+}
+
+#txtFletes2 {
+    font-size: 15px;
+    text-align: right;
+    width: 85%;
+}
+
+.inventory_body-featuresUC-OCargo {
+    grid-area: OCargo;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'labelOCargo inputOCargo inputOCargo2';
+    grid-template-columns: 34% 20% 20%;
+}
+
+#lblOCargo {
+    font-size: 15px;
+    grid-area: labelOCargo;
+    padding-left: 20px;
+    padding-top: 3px;
+}
+
+.inventory_body-featuresUC-OCargo-inputOCargo {
+    grid-area: inputOCargo;
+    padding-top: 2px;
+}
+
+#txtOCargo {
+    font-size: 15px;
+    text-align: right;
+    width: 80%;
+}
+
+.inventory_body-featuresUC-OCargo-inputOCargo2 {
+    grid-area: inputOCargo2;
+    padding-top: 2px;
+}
+
+#txtOCargo2 {
+    font-size: 15px;
+    text-align: right;
+    width: 85%;
+}
+
+.inventory_body-featuresUC-costo {
+    grid-area: Costo;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'labelCosto inputCosto inputCosto2';
+    grid-template-columns: 34% 20% 20%;
+}
+
+#lblCosto {
+    font-size: 15px;
+    grid-area: labelCosto;
+    padding-right: 15px;
+    padding-top: 3px;
+}
+
+.inventory_body-featuresUC-Costo-inputCosto {
+    grid-area: inputCosto;
+    padding-top: 2px;
+}
+
+#txtCosto {
+    font-size: 15px;
+    text-align: right;
+    width: 80%;
+}
+
+.inventory_body-featuresUC-Costo-inputCosto2 {
+    grid-area: inputCosto2;
+    padding-top: 2px;
+}
+
+#txtCosto2 {
+    font-size: 15px;
+    text-align: right;
+    width: 85%;
+}
+
+.inventory_body-featuresUC-costoR {
+    grid-area: CostoR;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'labelCostoR inputCostoR checkCostoR';
+    grid-template-columns: 34% 20% 30%;
+}
+
+#lblCostoR {
+    font-size: 15px;
+    grid-area: labelCostoR;
+    padding-left: 20px;
+    padding-top: 3px;
+}
+
+.inventory_body-featuresUC-CostoR-inputCostoR {
+    grid-area: inputCostoR;
+    padding-top: 2px;
+}
+
+#txtCostoR {
+    font-size: 15px;
+    text-align: right;
+    width: 80%;
+}
+
+.inventory_body-featuresUC-CostoR-check {
+    grid-area: checkCostoR;
+    padding-top: 2px;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'labelCheckRegistrado inputCheckRegistrado';
+    grid-template-columns: 20% 80%;
+}
+
+.inventory_body-featuresUC-CostoR-check-input {
+    grid-area: labelCheckRegistrado;
+    padding-top: 3px;
+}
+
+#lblRegistrado {
+    font-size: 15px;
+    grid-area: inputCheckRegistrado;
+    padding-top: 2px;
+    text-align: start;
+}

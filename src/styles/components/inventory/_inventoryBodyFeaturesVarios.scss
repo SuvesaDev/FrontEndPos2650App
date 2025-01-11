@@ -1,0 +1,506 @@
+.inventory_body-featuresVarios {
+    background-color: #F0F0F0;
+    display: grid;
+    height: 100%;
+    padding-top: 5px;
+    grid-template-areas: 
+        'firstBox'
+        'secondBox'
+        'thirdBox';
+    grid-template-rows: 33% 33% 33%;
+}
+
+.inventory_body-featuresVarios-firstBox {
+    display: grid;
+    grid-area: firstBox;
+    height: 100%;
+    padding-top: 5px;
+    grid-template-areas: 
+        'checks dates';
+    grid-template-columns: 50% 50%;
+}
+
+.inventory_body-featuresVarios-firstBox-checks {
+    display: grid;
+    grid-area: checks;
+    height: 100%;
+    grid-template-areas: 
+        'promo'
+        'second';
+    grid-template-rows: 50% 50%;
+}
+
+.inventory_body-featuresVarios-firstBox-checks-promo {
+    display: grid;
+    grid-area: promo;
+    height: 100%;
+    grid-template-areas: 
+        'checkpromo lblpromo';
+    grid-template-columns: 20% 40%;
+}
+
+.inventory_body-featuresVarios-firstBox-checks-promo-input {
+    grid-area: checkpromo;
+    padding-left: 80%;
+    padding-top: 3px;
+}
+
+#lblPromoInventory {
+    color: #4169E1;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblpromo;
+    padding-left: 2px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+.inventory_body-featuresVarios-firstBox-checks-second {
+    display: grid;
+    grid-area: second;
+    height: 100%;
+    grid-template-areas: 
+        'con cre';
+    grid-template-columns: 50% 50%;
+}
+
+.inventory_body-featuresVarios-firstBox-checks-second-con {
+    display: grid;
+    grid-area: con;
+    height: 100%;
+    grid-template-areas: 
+        'checkcon lblcon';
+    grid-template-columns: 40% 60%;
+}
+
+.inventory_body-featuresVarios-firstBox-checks-con-input {
+    grid-area: checkcon;
+    padding-left: 80%;
+    padding-top: 3px;
+}
+
+#lblconInventory {
+    color: #4169E1;
+    font-size: 15px;
+    grid-area: lblcon;
+    padding-left: 2px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+.inventory_body-featuresVarios-firstBox-checks-second-cre {
+    display: grid;
+    grid-area: cre;
+    height: 100%;
+    grid-template-areas: 
+        'checkcre lblcre';
+    grid-template-columns: 10% 50%;
+}
+
+.inventory_body-featuresVarios-firstBox-checks-cre-input {
+    grid-area: checkcre;
+    padding-left: 30%;
+    padding-top: 3px;
+}
+
+#lblcreInventory {
+    color: #4169E1;
+    font-size: 15px;
+    grid-area: lblcre;
+    padding-left: 2px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+.inventory_body-featuresVarios-firstBox-dates {
+    display: grid;
+    grid-area: dates;
+    height: 100%;
+    grid-template-areas: 
+        'desde hasta';
+    grid-template-columns: 50% 50%;
+}
+
+.inventory_body-featuresVarios-firstBox-dates-desde {
+    display: grid;
+    grid-area: desde;
+    height: 100%;
+    grid-template-areas: 
+        'lblDesde'
+        'inputDesde';
+    grid-template-rows: 40% 60%;
+}
+
+#lblDesdeInventory {
+    color: black;
+    font-size: 15px;
+    grid-area: lblDesde;
+    padding-left: 5px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+#txtDesdeInventory {
+    grid-area: inputDesde;
+    height: 80%;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.inventory_body-featuresVarios-firstBox-dates-hasta {
+    display: grid;
+    grid-area: hasta;
+    height: 100%;
+    grid-template-areas: 
+        'lblHasta'
+        'inputHasta';
+    grid-template-rows: 40% 60%;
+}
+
+#lblHastaInventory {
+    color: black;
+    font-size: 15px;
+    grid-area: lblHasta;
+    padding-left: 5px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+#txtHastaInventory {
+    grid-area: inputHasta;
+    height: 80%;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.inventory_body-featuresVarios-secondBox {
+    display: grid;
+    grid-area: secondBox;
+    height: 100%;
+    grid-template-areas: 
+        'maximos precio';
+    grid-template-columns: 50% 50%;
+}
+
+// .inventory_body-featuresVarios-secondBox-check {
+//     display: grid;
+//     grid-area: checkBon;
+//     height: 100%;
+//     grid-template-areas: 
+//         'checkbonif lblbonif';
+//     grid-template-columns: 10% 50%;
+// }
+
+// .inventory_body-featuresVarios-secondBox-check-promo-bonif {
+//     grid-area: checkbonif;
+//     padding-left: 80%;
+//     padding-top: 3px;
+// }
+
+// #lblbonifInventory {
+//     color: red;
+//     font-size: 15px;
+//     font-weight: bold;
+//     grid-area: lblbonif;
+//     padding-left: 2px;
+//     padding-top: 2px;
+//     text-align: start;
+// }
+
+.inventory_body-featuresVarios-secondBox-maximos {
+    display: grid;
+    grid-area: maximos;
+    height: 100%;
+    grid-template-areas: 
+        'descuento'
+        'comision';
+    grid-template-rows: 50% 50%;
+}
+
+.inventory_body-featuresVarios-secondBox-maximos-descuento {
+    display: grid;
+    grid-area: descuento;
+    height: 100%;
+    grid-template-areas: 
+        'lblMaxDesc inputMaxDesc lblDesPor';
+    grid-template-columns: 50% 20% 10%;
+    // background-color: green;
+}
+
+#lblMaxDescuentoInventory {
+    color: #4169E1;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblMaxDesc;
+    margin-left: 20px;
+    padding-top: 2px;
+    text-align: center;
+}
+
+#txtMaxDescuentoInventory {
+    color: #4169E1;
+    grid-area: inputMaxDesc;
+    height: 60%;
+    text-align: start;
+}
+
+#lblDescPorInventory {
+    background-color: #E3E3E3;
+    color: #4169E1;
+    font-size: 15px;
+    grid-area: lblDesPor;
+    height: 60%;
+    margin-left: 5px;
+}
+
+.inventory_body-featuresVarios-secondBox-maximos-comision {
+    display: grid;
+    grid-area: comision;
+    height: 100%;
+    grid-template-areas: 
+        'lblMaxComi inputMaxComi lblComiPor';
+    grid-template-columns: 30% 8% 5%;
+}
+
+#lblMaxComisionInventory {
+    color: #4169E1;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblMaxComi;
+    padding-left: 20px;
+    padding-top: 2px;
+    text-align: center;
+}
+
+#txtMaxComisionInventory {
+    color: #4169E1;
+    grid-area: inputMaxComi;
+    height: 90%;
+    text-align: start;
+}
+
+#lblComiPorInventory {
+    background-color: #E3E3E3;
+    color: #4169E1;
+    font-size: 15px;
+    grid-area: lblComiPor;
+    height: 80%;
+    margin-left: 5px;
+}
+
+.inventory_body-featuresVarios-secondBox-precio {
+    grid-area: precio;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblPrecio'
+        'inputPrecio';
+    grid-template-rows: 40% 60%;
+}
+
+#lblPrecioInventory {
+    grid-area: lblPrecio;
+    color: black;
+    font-size: 15px;
+    padding-left: 5px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+#txtPrecioInventory {
+    grid-area: inputPrecio;
+    height: 60%;
+    width: 47%;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+
+.inventory_body-featuresVarios-thirdBox {
+    display: grid;
+    grid-area: thirdBox;
+    height: 100%;
+    grid-template-areas: 
+        'leftSide rightSide';
+    grid-template-columns: 50% 50%;;
+}
+
+.inventory_body-featuresVarios-thirdBox-leftSide {
+    display: grid;
+    grid-area: leftSide;
+    height: 100%;
+    grid-template-areas: 
+        'receta'
+        'orden';
+    grid-template-rows: 50% 50%;
+}
+
+.inventory_body-featuresVarios-thirdBox-leftSide-receta {
+    display: grid;
+    grid-area: receta;
+    height: 100%;
+    grid-template-areas: 
+        'checkreceta lblreceta';
+    grid-template-columns: 20% 40%;
+}
+
+.inventory_body-featuresVarios-thirdBox-leftSide-receta-input {
+    grid-area: checkreceta;
+    padding-left: 80%;
+    padding-top: 8px;
+}
+
+#lblrecetaInventory {
+    color: red;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblreceta;
+    padding-left: 2px;
+    padding-top: 7px;
+    text-align: start;
+}
+
+.inventory_body-featuresVarios-thirdBox-leftSide-orden {
+    display: grid;
+    grid-area: orden;
+    height: 100%;
+    grid-template-areas: 
+        'checkorden lblorden';
+    grid-template-columns: 20% 40%;
+}
+
+.inventory_body-featuresVarios-thirdBox-leftSide-orden-input {
+    grid-area: checkorden;
+    padding-left: 80%;
+    padding-top: 4px;
+}
+
+#lblordenInventory {
+    color: red;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblorden;
+    padding-left: 2px;
+    padding-top: 3px;
+    text-align: start;
+}
+
+.inventory_body-featuresVarios-thirdBox-rightSide {
+    display: grid;
+    grid-area: rightSide;
+    height: 100%;
+    grid-template-areas: 
+        'first second';
+    grid-template-columns: 50% 50%;
+}
+
+.inventory_body-featuresVarios-thirdBox-rightSide-first {
+    display: grid;
+    grid-area: first;
+    height: 100%;
+    grid-template-areas: 
+        // 'lote'
+        'servicio'
+        'inhabilitado';
+    grid-template-rows: 33% 33% 33%;
+}
+
+.inventory_body-featuresVarios-thirdBox-rightSide-first-lote {
+    display: grid;
+    grid-area: lote;
+    height: 100%;
+    grid-template-areas: 
+        'checklote lbllote';
+    grid-template-columns: 20% 40%;
+}
+
+.inventory_body-featuresVarios-thirdBox-rightSide-first-lote-input {
+    grid-area: checklote;
+    padding-left: 80%;
+    padding-top: 4px;
+}
+
+#lblloteInventory {
+    color: #4169E1;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lbllote;
+    padding-left: 10px;
+    padding-top: 3px;
+    text-align: start;
+}
+
+.inventory_body-featuresVarios-thirdBox-rightSide-first-servicio {
+    display: grid;
+    grid-area: servicio;
+    height: 100%;
+    grid-template-areas: 
+        'checkservicio lblservicio';
+    grid-template-columns: 10% 40%;
+}
+
+.inventory_body-featuresVarios-thirdBox-rightSide-first-servicio-input {
+    grid-area: checkservicio;
+    padding-left: 50%;
+    padding-top: 4px;
+}
+
+#lblservicioInventory {
+    color: #4169E1;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblservicio;
+    padding-left: 10px;
+    padding-top: 3px;
+    text-align: start;
+}
+
+.inventory_body-featuresVarios-thirdBox-rightSide-first-inhabilitado {
+    display: grid;
+    grid-area: inhabilitado;
+    height: 100%;
+    grid-template-areas: 
+        'checkinhabilitado lblinhabilitado';
+    grid-template-columns: 20% 40%;
+}
+
+.inventory_body-featuresVarios-thirdBox-rightSide-first-inhabilitado-input {
+    grid-area: checkinhabilitado;
+    padding-left: 80%;
+    padding-top: 3px;
+}
+
+#lblinhabilitadoInventory {
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblinhabilitado;
+    padding-left: 10px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+.inventory_body-featuresVarios-thirdBox-rightSide-second {
+    display: grid;
+    grid-area: second;
+    height: 100%;
+    grid-template-areas: 
+        'checkrequiere lblrequiere';
+    grid-template-columns: 20% 40%;
+}
+
+.inventory_body-featuresVarios-thirdBox-rightSide-second-requiere-input {
+    grid-area: checkrequiere;
+    padding-left: 80%;
+    padding-top: 3px;
+}
+
+#lblrequireInventory {
+    color: #4169E1;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblrequiere;
+    padding-left: 10px;
+    padding-top: 2px;
+    text-align: start;
+}

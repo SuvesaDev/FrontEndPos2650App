@@ -1,0 +1,334 @@
+.pretake_body-main {
+    border: 1px solid #c4c4c4;
+    display: grid;
+    height: 100%;
+    margin-left: 3%;
+    margin-right: 3%;
+    text-align: center;
+    grid-template-areas: 
+        'inputs'
+        'datos';
+    grid-template-rows: 10% 90%;
+}
+
+.pretake_body-header {
+    grid-area: inputs;
+    display: grid;
+    grid-template-areas: 
+        'proveedor fecha';
+    grid-template-columns: 80% 20%;
+}
+
+.pretake_body-header-proveedor {
+    display: grid;
+    grid-area: proveedor;
+    margin-top: 5px;
+    grid-template-areas: 
+        'lblproveedor iconBuscar inputBuscar inputproveedor';
+    grid-template-columns: 25% 5% 10% 60%;
+}
+
+#lblProveedorPretake {
+    background-color: #4169e6;
+    border: 1px solid #c4c4c4;
+    color: white;
+    grid-area: lblproveedor;
+    height: 50%;
+    margin-left: 20px;
+    margin-top: 10px;
+    text-align: center;
+    width: 80%;
+}
+
+#lblBusPretake {
+    border: 1px solid #c4c4c4;
+    color: #4169e6;
+    grid-area: iconBuscar;
+    height: 50%;
+    margin-left: 20px;
+    margin-top: 10px;
+    text-align: center;
+    width: 80%;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+#txtBuscadorProveedorPretake {
+    border: 1px solid #c4c4c4;
+    color: #4169e6;
+    grid-area: inputBuscar;
+    height: 50%;
+    margin-left: 20px;
+    margin-top: 10px;
+    text-align: center;
+    width: 80%;
+}
+
+#txtProveedorPretake {
+    color: black;
+    grid-area: inputproveedor;
+    height: 50%;
+    margin-left: 20px;
+    margin-top: 10px;
+    text-align: start;
+    width: 95%;
+}
+
+.pretake_body-header-fecha {
+    display: grid;
+    grid-area: fecha;
+    margin-top: 5px;
+    grid-template-areas: 
+        'lblfecha inputfecha';
+    grid-template-columns: 25% 75%;
+}
+
+#lblFechaPretake {
+    background-color: #4169e6;
+    border: 1px solid #c4c4c4;
+    color: white;
+    grid-area: lblfecha;
+    height: 50%;
+    margin-left: 20px;
+    margin-top: 10px;
+    text-align: center;
+    width: 80%;
+}
+
+#txtFechaPretake {
+    color: black;
+    grid-area: inputfecha;
+    height: 50%;
+    margin-left: 20px;
+    margin-top: 10px;
+    text-align: start;
+    width: 80%;
+}
+
+.pretake_body-datosProductos {
+    display: grid;
+    grid-area: datos;
+    grid-template-areas: 
+        'title'
+        'inputs'
+        'table';
+    grid-template-rows: 5% 15% 80%;
+}
+
+.pretake_body-datosProductos-title {
+    border-bottom: 1px solid #c4c4c4;
+    border-top: 1px solid #c4c4c4;
+    grid-area: title;
+}
+
+#lblTitleDatosProductos {
+    color: #c4c4c4;
+    font-size: 15px;
+    padding-left: 5px;
+    padding-top: 1px;
+    text-align: start;
+}
+
+.pretake_body-datosProductos-inputs {
+    display: grid;
+    grid-area: inputs;
+    grid-template-areas: 
+        'codigo descripcion existencia cantidad btn';
+    grid-template-columns: 15% 45% 15% 15% 10%;
+}
+
+.pretake_body-datosProductos-inputs-codigo {
+    display: grid;
+    grid-area: codigo;
+    margin-top: 5px;
+    grid-template-areas: 
+        'lblcodigo'
+        'txtcodigo';
+    grid-template-rows: 45% 55%;
+}
+
+#lblCodigoPretake {
+    font-size: 15px;
+    grid-area: lblcodigo;
+    height: 90%;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding-left: 5px;
+    padding-top: 3px;
+    text-align: start;
+}
+
+#txtCodigoPretake {
+    font-size: 15px;
+    grid-area: txtcodigo;
+    height: 75%;
+    margin-left: 10px;
+    margin-right: 5px;
+    padding-top: 3px;
+    text-align: start;
+}
+
+.pretake_body-datosProductos-inputs-descripcion {
+    display: grid;
+    grid-area: descripcion;
+    margin-top: 5px;
+    grid-template-areas: 
+        'lbldescripcion'
+        'txtdescripcion';
+    grid-template-rows: 45% 55%;
+}
+
+#lblDescripcionPretake {
+    font-size: 15px;
+    grid-area: lbldescripcion;
+    height: 90%;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding-left: 5px;
+    padding-top: 3px;
+    text-align: start;
+}
+
+#txtDescripcionPretake {
+    font-size: 15px;
+    grid-area: txtdescripcion;
+    height: 75%;
+    margin-left: 10px;
+    margin-right: 5px;
+    padding-top: 3px;
+    text-align: start;
+}
+
+.pretake_body-datosProductos-inputs-existencia {
+    display: grid;
+    grid-area: existencia;
+    margin-top: 5px;
+    grid-template-areas: 
+        'lblexistencia'
+        'txtexistencia';
+    grid-template-rows: 45% 55%;
+}
+
+#lblExistenciaPretake {
+    font-size: 15px;
+    grid-area: lblexistencia;
+    height: 90%;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding-left: 5px;
+    padding-top: 3px;
+    text-align: start;
+}
+
+#txtExistenciaPretake {
+    font-size: 15px;
+    grid-area: txtexistencia;
+    height: 75%;
+    margin-left: 10px;
+    margin-right: 5px;
+    padding-top: 3px;
+    text-align: start;
+}
+
+.pretake_body-datosProductos-inputs-cantidad {
+    display: grid;
+    grid-area: cantidad;
+    margin-top: 5px;
+    grid-template-areas: 
+        'lblcantidad'
+        'txtcantidad';
+    grid-template-rows: 45% 55%;
+}
+
+#lblcantidadPretake {
+    font-size: 15px;
+    grid-area: lblcantidad;
+    height: 90%;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding-left: 5px;
+    padding-top: 3px;
+    text-align: start;
+}
+
+#txtCantidadPretake {
+    font-size: 15px;
+    grid-area: txtcantidad;
+    height: 75%;
+    margin-left: 10px;
+    margin-right: 5px;
+    padding-top: 3px;
+    text-align: start;
+}
+
+.pretake_body-datosProductos-inputs-btn {
+    grid-area: btn;
+}
+
+#btnAgregarPretake {
+    color: black;
+    font-size: 15px;
+    height: 40%;
+    margin-left: 10px;
+    margin-top: 30px;
+    width: 80%;
+
+    &:hover {
+        background-color: #4169e6;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+.pretake_body-datosProductos-table {
+    grid-area: table;
+    border: 1px solid #c4c4c4;
+}
+
+.pretake_body-datosProductos-table-main {
+    width: 100%;
+}
+
+.pretake_body-datosProductos-table-header-codigo {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 2%;
+}
+
+.pretake_body-datosProductos-table-header-descrip {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 7%;
+}
+
+.pretake_body-datosProductos-table-header-cantidad {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 2%;
+}
+
+.pretake_body-datosProductos-table-codigo {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.pretake_body-datosProductos-table-descrip {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.pretake_body-datosProductos-table-cantidad {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}

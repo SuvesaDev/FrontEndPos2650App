@@ -1,0 +1,258 @@
+.modal_magCustomer-main {
+    display: grid;
+    text-align: center;
+    grid-template-areas:
+        'title' 
+        'first'
+        'second'
+        'btn';
+    grid-template-rows: 35px 60px 185px 40px;
+}
+
+.modal_magCustomer-title {
+    display: grid;
+    gap: 5px;
+    grid-area: title;
+    grid-template-areas: 
+        'text btnClose';
+    grid-template-columns: 90% 10%;
+}
+
+#lblTitleAddCustomers {
+    background-color: $primary;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    grid-area: text;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    padding-bottom: 2px;
+    padding-top: 5px;
+    text-align: center;
+}
+
+#lblCloseAddCustomers {
+    background-color: red;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    grid-area: btnClose;
+    margin-bottom: 5px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    text-align: center;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.modal_magCustomer-first {
+    display: grid;
+    grid-area: first;
+    padding-left: 5px;
+    text-align: center;
+    grid-template-areas: 
+        'lblNombre'
+        'inputNombre';
+    grid-template-rows: 40% 60%;
+}
+
+#lblNombreModalMAGCustomer {
+    color: black;
+    font-size: 15px;
+    grid-area: lblNombre;
+    padding-left: 10px;
+    padding-top: 3px;
+    text-align: start;
+}
+
+#txtNombreModalMAGCustomer {
+    border: 1px solid black;
+    font-size: 15px;
+    grid-area: inputNombre;
+    height: 60%;
+    margin-left: 10px;
+    text-align: start;
+    width: 94%;
+}
+
+.modal_magCustomer-second {
+    display: grid;
+    grid-area: second;
+    padding-left: 5px;
+    grid-template-areas: 
+        'inputs'
+        'textArea';
+    grid-template-rows: 25% 75%;
+}
+
+.modal_magCustomer-second-inputs {
+    display: grid;
+    grid-area: inputs;
+    grid-template-areas: 
+        'check estado fecha';
+    grid-template-columns: 33% 33% 34%;
+}
+
+.modal_magCustomer-second-inputs-check {
+    display: grid;
+    grid-area: check;
+    margin-left: 10px;
+    grid-template-areas: 
+        'inputcheck lblcheck';
+    grid-template-columns: 10% 90%;
+}
+
+.modal_magCustomer-second-inputs-check-input {
+    grid-area: inputcheck;
+    padding-top: 12px;
+}
+
+#lbActivoMAG {
+    color: #B0ADB5;
+    grid-area: lblcheck;
+    height: 50%;
+    margin-top: 12px;
+    text-align: start;
+    width: 85%;
+}   
+
+.modal_magCustomer-second-inputs-estado {
+    display: grid;
+    grid-area: estado;
+    grid-template-areas: 
+        'lblestado'
+        'inputestado';
+    grid-template-rows: 40% 60%;
+}
+
+#lblEstadoModalMAGCustomer {
+    color: black;
+    font-size: 15px;
+    grid-area: lblestado;
+    padding-left: 10px;
+    padding-top: 3px;
+    text-align: start;
+}
+
+#txtEstadoModalMAGCustomer {
+    border: 1px solid black;
+    font-size: 15px;
+    grid-area: inputestado;
+    height: 60%;
+    margin-left: 10px;
+    margin-top: 3px;
+    text-align: start;
+    width: 90%;
+}
+
+.modal_magCustomer-second-inputs-fecha {
+    display: grid;
+    grid-area: fecha;
+    grid-template-areas: 
+        'lblfecha'
+        'inputfecha';
+    grid-template-rows: 40% 60%;
+}
+
+#lblFechaModalMAGCustomer {
+    color: black;
+    font-size: 15px;
+    grid-area: lblfecha;
+    padding-left: 10px;
+    padding-top: 3px;
+    text-align: start;
+}
+
+#txtFechaModalMAGCustomer {
+    border: 1px solid black;
+    font-size: 15px;
+    grid-area: inputfecha;
+    height: 60%;
+    margin-left: 10px;
+    margin-top: 3px;
+    text-align: start;
+    width: 83%;
+}
+
+.modal_magCustomer-second-textArea {
+    grid-area: textArea;
+    margin-left: 10px;
+    margin-right: 28px;
+}
+
+#txtMAGCustomerModal {
+    border: 1px solid black;
+    font-size: 15px;
+    height: 98%;
+    margin-top: 1px;
+    text-align: start;
+    width: 100%;
+}
+
+.modal_magCustomer-btn {
+    display: grid;
+    grid-area: btn;
+    padding-left: 5px;
+    margin-left: 10px;
+    margin-right: 25px;
+    grid-template-areas: 
+        'checkP btnSave';
+    grid-template-columns: 35% 65%;
+}
+
+.modal_magCustomer-btn-check {
+    display: grid;
+    grid-area: checkP;
+    grid-template-areas: 
+        'inputcheckP lblcheckP';
+    grid-template-columns: 10% 90%;
+}
+
+.modal_magCustomer-btn-check-input {
+    grid-area: inputcheckP;
+    padding-top: 12px;
+}
+
+#lbProductorMAG {
+    color: #B0ADB5;
+    font-size: 15px;
+    grid-area: lblcheckP;
+    height: 50%;
+    margin-top: 12px;
+    text-align: start;
+    width: 85%;
+}
+
+.modal_magCustomer-btn-aceptar {
+    grid-area: btnSave;
+    margin-left: 70%;
+    padding-top: 5px;
+}
+
+.btnMAGCustomer {
+    background-color: $secundary;
+    border: none;
+    color: white;
+    height: 80%;
+    margin-left: 25px;
+    width: 70%;
+
+    &:hover {
+        cursor: pointer;
+    }	
+}
+
+.btnMAGCustomer-disable {
+    background-color: gray;
+    border: none;
+    color: white;
+    height: 80%;
+    margin-left: 25px;
+    width: 70%;
+
+    &:hover {
+        cursor: not-allowed;
+    }	
+}

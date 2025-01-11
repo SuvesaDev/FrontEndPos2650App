@@ -1,0 +1,221 @@
+.inventory_body-featuresRebajaOtroArticulo {
+    background-color: #F0F0F0;
+    display: grid;
+    height: 100%;
+    padding-top: 5px;
+    margin-left: 50px;
+    margin-right: 50px;
+    padding: 15px;
+    grid-template-areas: 
+        'firstLine'
+        'secondLine';
+    grid-template-rows: 40% 40%;
+}
+
+.inventory_body-featuresRebajaOtroArticulo-firstLine {
+    grid-area: firstLine;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'codigo descrip';
+    grid-template-columns: 30% 70%;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+
+.inventory_body-featuresRebajaOtroArticulo-firstLine-codigo {
+    grid-area: codigo;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblCodigo'
+        'inputsCodigo';
+    grid-template-rows: 45% 55%;
+}
+
+.inventory_body-featuresRebajaOtroArticulo-firstLine-codigo-label {
+    grid-area: lblCodigo;
+    padding-top: 5px;
+    padding-left: 10px;
+}
+
+#lblCodigoRebajaOtroArticuloFeaturesInv {
+    text-align: start;
+    font-size: 15px;
+}
+
+.inventory_body-featuresRebajaOtroArticulo-firstLine-codigo-inputs {
+    grid-area: inputsCodigo;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'txtCodigo icon';
+    grid-template-columns: 80% 20%;
+}
+
+.inventory_body-featuresRebajaOtroArticulo-firstLine-codigo-inputs-input {
+    grid-area: txtCodigo;
+    padding-left: 3px;
+}
+
+#txtCodigoRebajaOtroArticuloFeaturesInv {
+    width: 95%;
+    text-align: start;
+    padding-left: 2px;
+    font-size: 15px;
+}
+
+.inventory_body-featuresRebajaOtroArticulo-firstLine-codigo-inputs-icon {
+    grid-area: icon;
+    padding-right: 5px;
+}
+
+.iconSearchCodigoRebajaOtroArticuloFeatures {
+    color: $secundary;
+    
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.iconSearchCodigoRebajaOtroArticuloFeaturesDisable {
+    color: gray;
+
+    &:hover {
+        cursor: not-allowed;
+    }
+}
+
+.inventory_body-featuresRebajaOtroArticulo-firstLine-descripcion {
+    grid-area: descrip;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblDescripcion'
+        'txtDescripcion';
+    grid-template-rows: 45% 55%;
+}
+
+.inventory_body-featuresRebajaOtroArticulo-firstLine-descripcion-label {
+    grid-area: lblDescripcion;
+    padding-top: 5px;
+    padding-left: 10px;
+}
+
+#lblDescripcionRebajaOtroArticuloFeaturesInv {
+    text-align: start;
+    font-size: 15px;
+}
+
+.inventory_body-featuresRebajaOtroArticulo-firstLine-descripcion-input {
+    grid-area: txtDescripcion;
+    padding-left: 3px;
+}
+
+#txtDescripcionRebajaOtroArticuloFeaturesInv {
+    width: 95%;
+    text-align: start;
+    padding-left: 2px;
+    font-size: 15px;
+}
+
+.inventory_body-featuresRebajaOtroArticulo-secondLine {
+    grid-area: secondLine;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'presentacion cantidad';
+    grid-template-columns: 50% 50%;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+
+.inventory_body-featuresRebajaOtroArticulo-secondLine-presentacion {
+    grid-area: presentacion;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblPresentacion'
+        'inputsPresentacion';
+    grid-template-rows: 45% 55%;
+}
+
+.inventory_body-featuresRebajaOtroArticulo-secondLine-presentacion-label {
+    grid-area: lblPresentacion;
+    padding-top: 5px;
+    padding-left: 10px;
+}
+
+#lblPresentacionRebajaOtroArticuloFeaturesInv {
+    text-align: start;
+    font-size: 15px;
+}
+
+.inventory_body-featuresRebajaOtroArticulo-secondLine-presentacion-inputs {
+    grid-area: inputsPresentacion;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'txtPresentacionCantidad txtPresentacionTipo';
+    grid-template-columns: 30% 70%;
+}
+
+.inventory_body-featuresRebajaOtroArticulo-secondLine-presentacion-inputs-cantidad {
+    grid-area: txtPresentacionCantidad;
+    padding-left: 3px;
+}
+
+#txtPresentacionCantidadRebajaOtroArticuloFeaturesInv {
+    width: 80%;
+    text-align: start;
+    padding-left: 2px;
+    font-size: 15px;
+}
+
+.inventory_body-featuresRebajaOtroArticulo-secondLine-presentacion-inputs-tipo {
+    grid-area: txtPresentacionTipo;
+    padding-right: 20px;
+}
+
+#txtPresentacionTipoRebajaOtroArticuloFeaturesInv {
+    width: 100%;
+    text-align: start;
+    padding-left: 2px;
+    font-size: 15px;
+}
+
+.inventory_body-featuresRebajaOtroArticulo-secondLine-cantidad {
+    grid-area: cantidad;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblCantidad'
+        'txtCantidad';
+    grid-template-rows: 45% 55%;
+}
+
+.inventory_body-featuresRebajaOtroArticulo-secondLine-cantidad-label {
+    grid-area: lblCantidad;
+    padding-top: 5px;
+    padding-left: 10px;
+}
+
+#lblCantidadRebajaOtroArticuloFeaturesInv {
+    text-align: start;
+    font-size: 15px;
+}
+
+.inventory_body-featuresRebajaOtroArticulo-secondLine-cantidad-input {
+    grid-area: txtCantidad;
+    padding-left: 5px;
+    margin-right: 40%;
+}
+
+#txtCantidadRebajaOtroArticuloFeaturesInv {
+    width: 95%;
+    text-align: start;
+    padding-left: 2px;
+    font-size: 15px;
+}

@@ -1,0 +1,42 @@
+.customers_body-main {
+    display: grid;
+    height: 100%;
+    margin-left: 5%;
+    margin-right: 5%;
+    background-color: #F0F0F0;
+    grid-template-areas: 
+        'tabs'
+        'content';
+    grid-template-rows: 10% 90%;
+    border: 1px solid black;
+}
+
+.customers_body-tabs {
+    grid-area: tabs;
+    padding-top: 3px;
+}
+
+.customers-tabs {
+    display: inline-block;
+}
+
+.customers-tab {
+    background: transparent;
+    border: 1px solid black;
+    color: black;
+    cursor: pointer;
+    font-size: 15px;
+    margin-right: 5px;
+    padding: 5px 15px;
+}
+
+.customers-tab.active {
+    background: $primary;
+    border-top-right-radius: 15%;
+    border: 1px solid #ddd;
+    color: #F2F4F4;
+}
+
+.customers_body-content {
+    grid-area: content;
+}

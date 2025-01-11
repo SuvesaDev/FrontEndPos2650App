@@ -1,0 +1,29 @@
+.inventory_body-main{
+    display: grid;
+    grid-template-areas: 
+        'features precioVenta'
+        'bodega existencias';
+    grid-template-rows: 220px 80px;
+    grid-template-columns: 56% 44%;
+}
+
+.inventory_body-features{
+    grid-area: features;
+}
+
+.inventory_body-precioVenta{
+    grid-area: precioVenta;
+    margin-left: 5px;
+    background-color: #F6F2DE;
+}
+
+.inventory_body-bodega{
+    grid-area: bodega;
+    background-color: #038B7F;
+}
+
+.inventory_body-existencias{
+    grid-area: existencias;
+    margin-left: 5px;
+    background-color: #D38347;
+}

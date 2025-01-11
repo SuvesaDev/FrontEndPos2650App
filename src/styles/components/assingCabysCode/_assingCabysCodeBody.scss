@@ -1,0 +1,331 @@
+.assingCabysCode_body-main {
+    display: grid;
+    height: 100%;
+    margin-left: 3%;
+    margin-right: 3%;
+    border: 1px solid black;
+    grid-template-areas: 
+        'inputs'
+        'table';
+    grid-template-rows: 15% 85%;
+}
+
+.assingCabysCode_body-inputs {
+    grid-area: inputs;
+    display: grid;
+    grid-template-areas: 
+        'firstBox secondBox thirdBox';
+    grid-template-columns: 25% 50% 25%;
+}
+
+.assingCabysCode_body-inputs-firstBox {
+    border-right: 1px solid black;
+    display: grid;
+    grid-area: firstBox;
+    grid-template-areas: 
+        'count'
+        'opcion';
+    grid-template-rows: 30% 70%;
+}
+
+.assingCabysCode_body-inputs-firstBox-count {
+    grid-area: count;
+}
+
+#lblAssignCabysCodeCount {
+    font-size: 15px;
+    padding-left: 5px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+.assingCabysCode_body-inputs-firstBox-opcion {
+    border-top: 1px solid black;
+    display: grid;
+    grid-area: opcion;
+    grid-template-areas: 
+        'lblopcion'
+        'txtopcion';
+    grid-template-rows: 45% 55%;
+}
+
+#lblAssingCabysCodeOpcion {
+    font-size: 15px;
+    grid-area: lblopcion;
+    padding-left: 5px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+#cboAssignCabysCodeOpcion {
+    font-size: 15px;
+    grid-area: txtopcion;
+    height: 90%;
+    margin-left: 5px;
+    margin-top: 1px;
+    text-align: start;
+    width: 95%;
+}
+
+.assingCabysCode_body-inputs-secondBox {
+    display: grid;
+    grid-area: secondBox;
+    grid-template-areas: 
+        'check'
+        'buscar';
+    grid-template-rows: 32% 68%;
+}
+
+.assingCabysCode_body-inputs-secondBox-check {
+    display: grid;
+    grid-area: check;
+    grid-template-areas: 
+        'inputcheck lblcheck';
+    grid-template-columns: 5% 20%;
+}
+
+.assingCabysCode_body-inputs-secondBox-check-input {
+    grid-area: inputcheck;
+    height: 90%;
+    padding-left: 10px;
+    padding-top: 5px;
+    text-align: start;
+    width: 95%;
+}
+
+#lblActivosAssingCabysCode {
+    font-size: 15px;
+    grid-area: lblcheck;
+    height: 55%;
+    margin-top: 5px;
+    text-align: start;
+}
+
+.assingCabysCode_body-inputs-secondBox-buscar {
+    display: grid;
+    grid-area: buscar;
+    grid-template-areas: 
+        'lblBuscar'
+        'txtBuscar';
+    grid-template-rows: 45% 55%;
+}
+
+#lblBuscarDescripcionAssingCabysCode {
+    font-size: 15px;
+    grid-area: lblBuscar;
+    padding-left: 5px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+#txtBuscarDescripcionAssingCabysCode {
+    font-size: 15px;
+    grid-area: txtBuscar;
+    height: 90%;
+    margin-left: 5px;
+    margin-top: 1px;
+    text-align: start;
+    width: 98%;
+}
+
+.assingCabysCode_body-inputs-thirdBox {
+    display: grid;
+    grid-area: thirdBox;
+    grid-template-areas: 
+        'firstLine'
+        'secondLine';
+    grid-template-rows: 50% 50%;
+}
+
+.assingCabysCode_body-inputs-thirdBox-firstLine {
+    display: grid;
+    grid-area: firstLine;
+    grid-template-areas: 
+        'productoAgricula quitar';
+    grid-template-columns: 50% 50%;
+}
+
+#btnProductoAgriculaACC {
+    grid-area: productoAgricula;
+    height: 80%;
+    margin-top: 3px;
+    width: 95%;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+#btnQuitarMAGACC {
+    grid-area: quitar;
+    height: 80%;
+    margin-top: 3px;
+    width: 95%;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.assingCabysCode_body-inputs-thirdBox-secondLine {
+    display: grid;
+    grid-area: secondLine;
+    grid-template-areas: 
+        'asignar puntos quitarC';
+    grid-template-columns: 40% 10% 50%;
+}
+
+#btnAsignarCabysACC {
+    grid-area: asignar;
+    height: 80%;
+    margin-top: 3px;
+    width: 95%;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+#btnPuntosACC {
+    grid-area: puntos;
+    height: 80%;
+    margin-top: 3px;
+    width: 95%;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+#btnQuitarCodigoACC {
+    grid-area: quitarC;
+    height: 80%;
+    margin-top: 3px;
+    width: 95%;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.assingCabysCode_body-table {
+    grid-area: table;
+    border: 1px solid black;
+}
+
+.assingCabysCode_body-table-main {
+    width: 100%;
+}
+
+.assingCabysCode_body-table-header-codArticulo {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 5%;
+}
+
+.assingCabysCode_body-table-header-descrip {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 15%;
+}
+
+.assingCabysCode_body-table-header-proveedor {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 10%;
+}
+
+.assingCabysCode_body-table-header-existencia {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 5%;
+}
+
+.assingCabysCode_body-table-header-mag {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 1%;
+}
+
+.assingCabysCode_body-table-header-servicio {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 1%;
+}
+
+.assingCabysCode_body-table-header-codcabys {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 5%;
+}
+
+.assingCabysCode_body-table-header-cabys {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 5%;
+}
+
+.assingCabysCode_body-table-codArticulo {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: center;
+}
+
+.assingCabysCode_body-table-descrip {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: center;
+}
+
+.assingCabysCode_body-table-proveedor {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: center;
+}
+
+.assingCabysCode_body-table-existencia {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: center;
+}
+
+.assingCabysCode_body-table-mag {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: center;
+}
+
+.assingCabysCode_body-table-servicio {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: center;
+}
+
+.assingCabysCode_body-table-codcabys {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: center;
+}
+
+.assingCabysCode_body-table-cabys {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: center;
+}
+

@@ -1,0 +1,36 @@
+.bills-main {
+    display: grid;
+    height: 100%;
+    text-align: center;
+    grid-template-areas: 
+        'header'
+        'bodyHeader'
+        'bodyDetalle'
+        'footer';
+    grid-template-rows: 40px 100px 348px 60px;
+}
+
+.bills-header {
+    grid-area: header;
+    background-color: #385ba5;
+}
+
+#lblTitleBills {
+    color: white;
+    font-size: 30px;
+    padding-top: 2px;
+    text-align: center;
+}
+
+.bills-body-header {
+    grid-area: bodyHeader;
+}
+
+.bills-body-detalle {
+    grid-area: bodyDetalle;
+}
+
+.bills-body-footer {
+    grid-area: footer;
+    border: 1px solid black;
+}

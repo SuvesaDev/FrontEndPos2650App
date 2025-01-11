@@ -1,0 +1,268 @@
+.inventory_body-featuresCodigoBarras {
+    background-color: #F0F0F0;
+    display: grid;
+    height: 100%;
+    padding-top: 5px;
+    grid-template-areas: 
+        'inputs'
+        'table';
+    grid-template-rows: 30% 70%;
+}
+
+.inventory_body-featuresCodigoBarras-inputs {
+    display: grid;
+    grid-area: inputs;
+    height: 100%;
+    grid-template-areas: 
+        'descrip codigo tarifa btn';
+    grid-template-columns: 35% 30% 20% 15%;
+}
+
+.inventory_body-featuresCodigoBarras-inputs-descripcion {
+    display: grid;
+    grid-area: descrip;
+    height: 100%;
+    grid-template-areas: 
+        'lblDescripcion'
+        'inputDescripcion';
+    grid-template-rows: 40% 60%;
+}
+
+#lblDescripFeaturesCodigoBarrasInv {
+    color: #4184E8;
+    font-size: 15px;
+    grid-area: lblDescripcion;
+    margin-left: 20px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+.inventory_body-featuresRelacionados-inputs-codigo-inputs {
+    grid-area: inputDescripcion;
+}
+
+#txtDescripFeaturesCodigoBarrasInv {
+    font-size: 15px;
+    height: 75%;
+    width: 100%;
+    margin-left: 20px;
+    text-align: start;
+}
+
+.inventory_body-featuresCodigoBarras-inputs-codigo {
+    display: grid;
+    grid-area: codigo;
+    height: 100%;
+    grid-template-areas: 
+        'lblCodigo'
+        'inputCodigo';
+    grid-template-rows: 40% 60%;
+}
+
+#lblCodigoFeaturesCodigoBarrasInv {
+    color: #4184E8;
+    font-size: 15px;
+    grid-area: lblCodigo;
+    margin-left: 10px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+#txtCodigoFeaturesCodigoBarrasInv {
+    font-size: 15px;
+    grid-area: inputCodigo;
+    height: 75%;
+    margin-left: 10px;
+    margin-right: 20px;
+    text-align: start;
+}
+
+.inventory_body-featuresCodigoBarras-inputs-tarifa {
+    display: grid;
+    grid-area: tarifa;
+    height: 100%;
+    grid-template-areas: 
+        'lblTarifa'
+        'inputTarifa';
+    grid-template-rows: 40% 60%;
+}
+
+#lblTarifaFeaturesCodigoBarrasInv {
+    color: #4184E8;
+    font-size: 15px;
+    grid-area: lblTarifa;
+    margin-left: 10px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+#txtTarifaFeaturesCodigoBarrasInv {
+    font-size: 15px;
+    grid-area: inputTarifa;
+    height: 75%;
+    margin-left: 10px;
+    margin-right: 20px;
+    width: 75%;
+    text-align: start;
+}
+
+.inventory_body-featuresCodigoBarras-inputs-btn {
+    display: grid;
+    grid-area: btn;
+    height: 100%;
+    grid-template-areas: 
+        'btnAdd btnDelete';
+    grid-template-columns: 65% 35%;
+}
+
+.inventory_body-featuresCodigoBarras-inputs-btn-add {
+    grid-area: btnAdd;
+}
+
+.inventory_body-featuresCodigoBarras-inputs-btn-add-button {
+    color: #4184E8;
+    font-size: 15px;
+    height: 50%;
+    width: 90%;
+    margin-top: 20px;
+    text-align: center;
+
+    &:hover {
+        cursor: pointer;
+        background-color: #4184E8;
+        color: white;
+    }
+}
+
+.inventory_body-featuresCodigoBarras-inputs-btn-add-button-disable {
+    color: gray;
+    font-size: 15px;
+    height: 50%;
+    width: 90%;
+    margin-top: 20px;
+    text-align: center;
+    cursor: not-allowed;
+}
+
+.inventory_body-featuresCodigoBarras-inputs-btn-delete {
+    grid-area: btnDelete;
+    margin-top: 10px;
+}
+
+.iconDeleteCodigoBarrasTable {
+    cursor: pointer;
+    height: 100%;
+    width: 50%;
+    color: red;
+}
+
+.iconDeleteCodigoBarrasTableDisable {
+    cursor: not-allowed;
+    height: 100%;
+    width: 50%;
+    color: gray;
+}
+
+.inventory_body-featuresCodigoBarras-table {
+    border: 1px solid black;
+    grid-area: table;
+    height: 95%;
+    margin-left: 20px;
+    margin-right: 10px;
+}
+
+// .inventory_body-featuresRelacionados-table-main {
+//     width: 100%;
+// }
+
+// .inventory_body-featuresRelacionados-table-header-codigo {
+//     background-color: #BFBCC1;
+//     padding-left: 5px;
+//     text-align: start;
+//     width: 5%;
+// }
+
+// .inventory_body-featuresRelacionados-table-header-descrip {
+//     background-color: #BFBCC1;
+//     padding-left: 5px;
+//     text-align: start;
+//     width: 5%;
+// }
+
+// .inventory_body-featuresRelacionados-table-header-cantidad {
+//     background-color: #BFBCC1;
+//     padding-left: 5px;
+//     text-align: start;
+//     width: 5%;
+// }
+
+// .inventory_body-featuresRelacionados-table-codigo {
+//     border: 1px solid #BFBCC1;
+//     font-size: 15px;
+//     padding-left: 5px;
+//     text-align: start;
+// }
+
+// .inventory_body-featuresRelacionados-table-descrip {
+//     border: 1px solid #BFBCC1;
+//     font-size: 15px;
+//     padding-left: 5px;
+//     text-align: start;
+// }
+
+// .inventory_body-featuresRelacionados-table-cantidad {
+//     border: 1px solid #BFBCC1;
+//     font-size: 15px;
+//     padding-left: 5px;
+//     text-align: start;
+// }
+
+.inventory_body-featuresCodigoBarras-table-table {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    scrollbar-color: rebeccapurple green;
+    scrollbar-width: thin;
+}
+
+.inventory_body-featuresCodigoBarras-table-header {
+    background-color: #ACA9A9;
+    text-align: start;
+    padding-left: 5px;
+    width: 300px;
+}
+
+.inventory_body-featuresCodigoBarras-table-body {
+    text-align: start;
+    font-style: normal;
+}
+
+.inventory_body-featuresCodigoBarras-table-body-row {
+    &:hover {
+        cursor: pointer;
+        background-color: #ACA9A9;
+    }
+}
+
+.inventory_body-featuresCodigoBarras-table-body-row-disable {
+    &:hover {
+        cursor: not-allowed;
+    }
+}
+
+.inventory_body-featuresCodigoBarras-table-body-row-seleted {
+
+    background-color: $primary;
+    color: white;
+
+    &:hover {
+        cursor: pointer;
+        background-color: #ACA9A9;
+    }
+}
+
+.inventory_body-featuresCodigoBarras-table-body-cell {
+    padding-left: 5px;
+    border-bottom: 1px solid #ACA9A9;
+    // cursor: pointer;
+}

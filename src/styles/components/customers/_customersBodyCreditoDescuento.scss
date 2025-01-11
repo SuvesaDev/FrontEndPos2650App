@@ -1,0 +1,351 @@
+.customers_body-credito-main {
+    background-color: #F0F0F0;
+    display: grid;
+    height: 100%;
+    margin-left: 3%;
+    margin-right: 3%;
+    grid-template-areas: 
+        'btn'
+        'check'
+        'box';
+    grid-template-rows: 15% 10% 75%;
+}
+
+.customers_body-credito-btn {
+    grid-area: btn;
+    padding-right: 77.5%;
+    padding-top: 15px;
+}
+
+#btnActivarOpeCustomersCre {
+    color: #3E67E1;
+    font-size: 15px;
+    height: 80%;
+
+    &:hover {
+        background-color: #3E67E1;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+.customers_body-credito-check {
+    background-color: #C0C0C0;
+    display: grid;
+    grid-area: check;
+    height: 100%;
+    margin-left: 3%;
+    margin-right: 3%;
+    grid-template-areas: 
+        'checkActivarCre lblActivarCre';
+    grid-template-columns: 2% 15%;
+}
+
+.customers_body-credito-check-input {
+    grid-area: checkActivarCre;
+    padding-top: 5px;
+}
+
+#lblActivarCre {
+    color: black;
+    font-size: 15px;
+    grid-area: lblActivarCre;
+    padding-left: 5px;
+    padding-top: 4px;
+    text-align: start;
+}
+
+.customers_body-credito-box {
+    background-color: #C0C0C0;
+    display: grid;
+    grid-area: box;
+    height: 100%;
+    margin-left: 3%;
+    margin-right: 3%;
+    grid-template-areas: 
+        'leftSide rightSide';
+    grid-template-columns: 40% 40%;
+}
+
+.customers_body-credito-box-leftSide {
+    display: grid;
+    grid-area: leftSide;
+    height: 100%;
+    grid-template-areas: 
+        'credito'
+        'moneda'
+        'plazo'
+        'limite'
+        'limiteDesc';
+    grid-template-rows: 20% 20% 20% 20% 20%;
+}
+
+.customers_body-credito-box-leftSide-credito {
+    display: grid;
+    grid-area: credito;
+    height: 100%;
+    grid-template-areas: 
+        'lblCredito cboCredito';
+    grid-template-columns: 40% 40%;
+}
+
+#lblCreditoCustomersB {
+    background-color: #E3E3E3;
+    color: #3E67E1;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblCredito;
+    height: 50%;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 15px;
+    padding-top: 3px;
+    text-align: center;
+}
+
+#cboCreditoCustomersB {
+    font-size: 15px;
+    grid-area: cboCredito;
+    height: 50%;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 15px;
+}
+
+.customers_body-credito-box-leftSide-moneda {
+    display: grid;
+    grid-area: moneda;
+    height: 100%;
+    grid-template-areas: 
+        'lblMonedaCredito cboMonedaCredito';
+    grid-template-columns: 40% 40%;
+}
+
+#lblMonedaCreditoCustomersB {
+    background-color: #E3E3E3;
+    color: #3E67E1;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblMonedaCredito;
+    height: 50%;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 15px;
+    padding-top: 3px;
+    text-align: center;
+}
+
+#cboMonedaCreditoCustomersB {
+    font-size: 15px;
+    grid-area: cboMonedaCredito;
+    height: 50%;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 15px;
+}
+
+.customers_body-credito-box-leftSide-plazo {
+    display: grid;
+    grid-area: plazo;
+    height: 100%;
+    grid-template-areas: 
+        'lblPlazoCredito inputPlazoCredito';
+    grid-template-columns: 50% 30%;
+}
+
+#lblPlazoCreditoCustomersB {
+    background-color: #E3E3E3;
+    color: #3E67E1;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblPlazoCredito;
+    height: 50%;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 10px;
+    padding-top: 3px;
+    text-align: center;
+}
+
+#txtPlazoCreditoCustomersB {
+    font-size: 15px;
+    grid-area: inputPlazoCredito;
+    height: 50%;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 10px;
+}
+
+.customers_body-credito-box-leftSide-limite {
+    display: grid;
+    grid-area: limite;
+    height: 100%;
+    grid-template-areas: 
+        'lblLimiteCredito inputLimiteCredito';
+    grid-template-columns: 50% 30%;
+}
+
+#lblLimiteCreditoCustomersB {
+    background-color: #E3E3E3;
+    color: #3E67E1;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblLimiteCredito;
+    height: 50%;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 10px;
+    padding-top: 3px;
+    text-align: center;
+}
+
+#txtLimiteCreditoCustomersB {
+    font-size: 15px;
+    grid-area: inputLimiteCredito;
+    height: 50%;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 10px;
+}
+
+.customers_body-credito-box-leftSide-limiteDesc {
+    display: grid;
+    grid-area: limiteDesc;
+    height: 100%;
+    grid-template-areas: 
+        'lblLimiteDesc inputLimiteDesc';
+    grid-template-columns: 50% 30%;
+}
+
+#lblLimiteDescCustomersB {
+    background-color: #E3E3E3;
+    color: #3E67E1;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblLimiteDesc;
+    height: 50%;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 10px;
+    padding-top: 3px;
+    text-align: center;
+}
+
+#txtLimiteDescCustomersB {
+    font-size: 15px;
+    grid-area: inputLimiteDesc;
+    height: 50%;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 10px;
+}
+
+.customers_body-credito-box-rightSide {
+    display: grid;
+    gap: 5px;
+    grid-area: rightSide;
+    height: 90%;
+    margin-top: 15px;
+    grid-template-areas: 
+        'firstCheck'
+        'secondCheck'
+        'thirdCheck'
+        'fourthCheck';
+    grid-template-rows: 10% 10% 10% 10%;
+}
+
+.customers_body-credito-box-rightSide-first {
+    background-color: #E3E3E3;
+    display: grid;
+    grid-area: firstCheck;
+    height: 100%;
+    grid-template-areas: 
+        'checkEmpresa lblEmpresa';
+    grid-template-columns: 10% 90%;
+}
+
+.customers_body-credito-box-rightSide-first-input {
+    grid-area: checkEmpresa;
+    padding-top: 3px;
+}
+
+#lblEmpresaCustomersB {
+    color: #434649;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblEmpresa;
+    padding-top: 2px;
+    text-align: start;
+}
+
+.customers_body-credito-box-rightSide-second {
+    background-color: #E3E3E3;
+    display: grid;
+    grid-area: secondCheck;
+    height: 100%;
+    grid-template-areas: 
+        'checkPermitir lblPermitir';
+    grid-template-columns: 10% 90%;
+}
+
+.customers_body-credito-box-rightSide-second-input {
+    grid-area: checkPermitir;
+    padding-top: 3px;
+}
+
+#lblPermitirCustomersB {
+    color: #434649;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblPermitir;
+    padding-top: 2px;
+    text-align: start;
+}
+
+.customers_body-credito-box-rightSide-third {
+    background-color: #E3E3E3;
+    display: grid;
+    grid-area: thirdCheck;
+    height: 100%;
+    grid-template-areas: 
+        'checkMoroso lblMoroso';
+    grid-template-columns: 10% 90%;
+}
+
+.customers_body-credito-box-rightSide-third-input {
+    grid-area: checkMoroso;
+    padding-top: 3px;
+}
+
+#lblmorosoCustomersB {
+    color: red;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblMoroso;
+    padding-top: 2px;
+    text-align: start;
+}
+
+.customers_body-credito-box-rightSide-fourth {
+    background-color: #E3E3E3;
+    display: grid;
+    grid-area: fourthCheck;
+    height: 100%;
+    grid-template-areas: 
+        'checkOrdenCompra lblOrdenCompra';
+    grid-template-columns: 10% 90%;
+}
+
+.customers_body-credito-box-rightSide-fourth-input {
+    grid-area: checkOrdenCompra;
+    padding-top: 3px;
+}
+
+#lblordenCompraCustomersB {
+    color: red;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblOrdenCompra;
+    padding-top: 2px;
+    text-align: start;
+}

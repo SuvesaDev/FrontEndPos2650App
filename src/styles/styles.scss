@@ -1,0 +1,451 @@
+
+// Base and settings
+@import './base/settings';
+@import './base/base';
+
+// Components shared
+@import './components/vet';
+@import './components/navbar';
+@import './components/tabs';
+@import './components/nothing';
+@import './components/modal';
+
+// Login components
+@import 'components/auth/login';
+
+// Billing components
+@import './components/billing/billing';
+@import './components/billing/billing_header';
+@import './components/billing/billing_header-customer';
+@import './components/billing/billing_conditions';
+@import './components/billing/billing_totals';
+@import './components/billing/billing_iteams';
+@import './components/billing/billing_footer';
+@import './components/billing/billing_modalAddCustomer';
+@import './components/billing/billing_modalEditCustomer';
+@import './components/billing/billing_modalEditCartaExoneracion';//prueba
+@import './components/billing/billing_modalMAGCustomer';
+@import './components/billing/billing_modalAddCorreos';
+
+// Inventory components
+@import './components/inventory/inventory';
+@import './components/inventory/inventoryHeader';
+@import './components/inventory/inventoryHeaderArticle';
+@import './components/inventory/inventoryBody';
+@import './components/inventory/inventoryBodyFeatures';
+@import './components/inventory/inventoryBodyFeaturesUltimoCosto';
+@import './components/inventory/inventoryBodyFeaturesBodega';
+@import './components/inventory/inventoryBodyFeaturesRelacionados';
+@import './components/inventory/inventoryBodyFeaturesSerie';
+@import './components/inventory/inventoryBodyFeaturesDetalle';
+@import './components/inventory/inventoryBodyFeaturesVarios';
+@import './components/inventory/inventoryBodyFeaturesCategoria';
+@import './components/inventory/inventoryBodyFeaturesLotes';
+@import './components/inventory/inventoryBodyFeaturesCodigoBarras';
+@import './components/inventory/inventoryBodyPrecioVenta';
+@import './components/inventory/inventoryBodyBodega';
+@import './components/inventory/inventoryBodyExistencias';
+@import './components/inventory/inventoryFooter';
+@import './components/inventory/InventorySearchModal';
+@import './components/inventory/inventoryPresentacionModal';
+@import './components/inventory/inventoryFamiliaModal';
+@import './components/inventory/inventoryUbicacionModal';
+@import './components/inventory/inventoryProveedorModal';
+@import './components/inventory/inventoryBodegaModal';
+@import './components/inventory/inventoryBodyFeaturesCategoriaModal';
+@import './components/inventory/inventoryBodyFeaturesRebajaOtroArticulo';
+@import './components/inventory/inventoryCodigoCabysModal';
+@import './components/inventory/inventoryBodyFeaturesInformacionPost';
+
+// Buys components
+@import './components/buys/buys';
+@import './components/buys/buys_header';
+@import './components/buys/buys_proveedor';
+@import './components/buys/buys_header_factura';
+@import './components/buys/buys_articulos';
+@import './components/buys/buys_articulos_header';
+@import './components/buys/buys_articulos_table';
+@import './components/buys/buys_articulos_footer';
+@import './components/buys/buys_icons';
+@import './components/buys/buys_footer';
+@import './components/buys/buys_ImportarFactura';
+@import './components/buys/buys_add_proveedor_modal';
+@import './components/buys/buys_CodigoCabysModal';
+@import './components/buys/buysSearchModal';
+@import './components/buys/buysSearchInventariosModal';
+@import './components/buys/buysSearchInventariosModal';
+@import './components/buys/buys_PrecioImportarFacturaModal';
+
+// Providers components
+@import './components/providers/providers';
+@import './components/providers/providers_form/providersForm';
+@import './components/providers/providers_form/providersFormLine2';
+@import './components/providers/providers_form/providersFormLine3';
+@import './components/providers/providers_form/providersFormLine4';
+@import './components/providers/providers_form/providersFormLine5';
+@import './components/providers/providers_form/providersFormLine6';
+@import './components/providers/providers_form/providersFormLine7';
+@import './components/providers/providers_form/providersFormAccoInputs';
+@import './components/providers/providersTable';
+@import './components/providers/providersIcons';
+
+// Customers components
+@import './components/customers/customers';
+@import './components/customers/customersHeader';
+@import './components/customers/customersBody';
+@import './components/customers/customersBodyDatosGenerales';
+@import './components/customers/customersIcons';
+@import './components/customers/customersBodyCartaExoneracion';
+@import './components/customers/customersBodyReferenciasBancarias';
+@import './components/customers/customersBodyReferenciasComerciales';
+@import './components/customers/customersBodyEncargadoCompras';
+@import './components/customers/customersBodyCreditoDescuento';
+@import './components/customers/customersSearchModal';
+
+// Settings components
+@import './components/settings/settings';
+@import './components/settings/settingsBody';
+@import './components/settings/settingsBodyEmpresa';
+@import './components/settings/settingsIcons';
+@import './components/settings/settingsBodyValores';
+@import './components/settings/settingsBodyPermiso';
+@import './components/settings/settingsBodyComunicaciones';
+@import './components/settings/settingsBodyTarifas';
+
+// Close Cash components
+@import './components/closeCash/closeCash';
+@import './components/closeCash/closeCashPeriodo';
+@import './components/closeCash/closeCashApertura';
+@import './components/closeCash/closeCashGeneral';
+@import './components/closeCash/closeCashCierreCaja';
+@import './components/closeCash/closeCashDetalleTarjetas';
+@import './components/closeCash/CloseCashDetalleOperaciones.scss';
+@import './components/closeCash/closeCashIcons';
+@import './components/closeCash/closeCashSeletedAperturaModal';
+@import './components/closeCash/closeCashSearchModal';
+
+// Presentation components
+@import './components/presentations/presentations';
+
+// Coins components
+@import './components/coins/coins';
+
+// Category components
+@import './components/category/category';
+
+// Repayment components
+@import './components/repayment/repayment';
+@import './components/repayment/repaymentBody';
+@import './components/repayment/repaymentTable';
+@import './components/repayment/repaymentTotals';
+@import './components/repayment/repaymentIcons';
+@import './components/repayment/repaymentBodyGeneral';
+@import './components/repayment/repaymentBodyTabGeneral';
+@import './components/repayment/repaymentBodyTabValidacion';
+@import './components/repayment/repaymentSearchBillingModal';
+
+// Open Cash components
+@import './components/openCash/openCash';
+@import './components/openCash/openCashDatosCajero';
+@import './components/openCash/openCashDetalleTotal';
+@import './components/openCash/openCashDetalleDenominacion';
+@import './components/openCash/openCashIcons';
+@import './components/openCash/openCashFooter';
+@import './components/openCash/openCashSelectedUserModal';
+@import './components/openCash/openCashSearchModal';
+
+// Inventory adjustment components
+@import './components/inventoryAdjustment/inventoryAdjustment';
+@import './components/inventoryAdjustment/inventoryAdjustmentDatos';
+@import './components/inventoryAdjustment/inventoryAdjustmentTable';
+@import './components/inventoryAdjustment/inventoryAdjustmentIcons';
+
+// Wineries adjustment components
+@import './components/wineriesAdjustment/wineriesAdjustment';
+@import './components/wineriesAdjustment/wineriesAdjustmentDatos';
+@import './components/wineriesAdjustment/wineriesAdjustmentDetalle';
+@import './components/wineriesAdjustment/wineriesAdjustmentTable';
+@import './components/wineriesAdjustment/wineriesAdjustmentIcons';
+
+// Loans components
+@import './components/loans/loans';
+@import './components/loans/loansDatosTraslado';
+@import './components/loans/loansDatosProducto';
+@import './components/loans/loansIcons';
+
+// Collect components
+@import './components/collect/collect';
+@import './components/collect/collectBody';
+@import './components/collect/collectTable';
+@import './components/collect/collectFooter';
+@import './components/collect/collectSearchCustomerModal';
+
+// Pays components
+@import './components/pays/pays';
+@import './components/pays/paysDatosProveedor';
+@import './components/pays/paysBody';
+@import './components/pays/paysBodyDatosAbono';
+@import './components/pays/paysTable';
+@import './components/pays/paysObservaciones';
+@import './components/pays/paysIcons';
+@import './components/pays/paysBodyDetalle';
+
+// Collect adjustment components
+@import './components/collectAdjustment/collectAdjustment';
+@import './components/collectAdjustment/collectAdjustmentBody';
+@import './components/collectAdjustment/collectAdjustmentTable';
+@import './components/collectAdjustment/collectAdjustmentFooter';
+
+// Pays Adjustment components
+@import './components/paysAdjustment/paysAdjustment';
+@import './components/paysAdjustment/paysAdjustmentDatosGenerales';
+@import './components/paysAdjustment/paysAdjustmentBody';
+@import './components/paysAdjustment/paysAdjustmentIcons';
+@import './components/paysAdjustment/paysAdjustmentFooter';
+
+// Wineries components
+@import './components/wineries/wineries';
+
+// Locations components
+@import './components/locations/locations';
+@import './components/locations/locationsHeader';
+@import './components/locations/locationsUbicacionesE';
+@import './components/locations/locationsIcons';
+
+// Family components
+@import './components/family/family';
+@import './components/family/familyFamilia';
+@import './components/family/familySubFamilia';
+@import './components/family/familyIcons';
+
+// Denomination Coins components
+@import './components/denominationCoins/denominationCoins';
+
+// Usual Customers components
+@import './components/usualCustomers/usualCustomers';
+@import './components/usualCustomers/usualCustomersHeader';
+@import './components/usualCustomers/usualCustomersBody';
+@import './components/usualCustomers/usualCustomersIcons';
+
+// Category Actions components
+@import './components/categoryActions/categoryActions';
+
+// Assing tab components
+@import './components/assignTab/assingTab';
+
+// Rates components
+@import './components/rates/rates';
+
+// Terms components
+@import './components/terms/terms';
+@import './components/terms/termsBody';
+@import './components/terms/termsBodyCondicciones';
+@import './components/terms/termsBodyExcepciones';
+@import './components/terms/termsIcons';
+
+// Proforma components
+@import './components/proforma/proforma';
+@import './components/proforma/proformaDatos';
+@import './components/proforma/proformaTable';
+@import './components/proforma/proformaTotals';
+@import './components/proforma/proformaIcons';
+
+// Tracking Quotes components
+@import './components/trackingQuotes/trackingQuotes';
+@import './components/trackingQuotes/trackingQoutesHeader';
+@import './components/trackingQuotes/trackingQoutesBody';
+@import './components/trackingQuotes/trackingQoutesIcons';
+
+// Sales Agent components
+@import './components/salesAgent/salesAgent';
+@import './components/salesAgent/salesAgentIcons';
+@import './components/salesAgent/salesAgentBody';
+
+// Bags Kilos Components
+@import './components/bagsKilos/bagsKilos';
+@import './components/bagsKilos/bagsKilosIcons';
+@import './components/bagsKilos/bagsKilosBody';
+
+// Warehouse orders components
+@import './components/warehouseOrders/warehouseOrders';
+@import './components/warehouseOrders/warehouseOrdersIcons';
+@import './components/warehouseOrders/warehouseOrdersBody';
+
+// Check orders components
+@import './components/checkOrders/checkOrders';
+@import './components/checkOrders/checkOrdersIcons';
+@import './components/checkOrders/checkOrdersHeader';
+@import './components/checkOrders/checkOrdersBody';
+
+// Movements items components
+@import './components/movementItems/movementItems';
+@import './components/movementItems/movementItemsIcons';
+@import './components/movementItems/movementItemsBody';
+
+// Request Winery components
+@import './components/requestWinery/requestWinery';
+@import './components/requestWinery/requestWineryIcons';
+@import './components/requestWinery/requestWineryBody';
+
+// Purchase Order components
+@import './components/purchaseOrder/purchaseOrder';
+@import './components/purchaseOrder/purchaseOrderBody';
+@import './components/purchaseOrder/purchaseOrderIcons';
+
+// Purchase Returns components
+@import './components/purchaseReturns/purchaseReturns';
+@import './components/purchaseReturns/purchaseReturnsIcons';
+@import './components/purchaseReturns/purchaseReturnsDatosFacturas';
+@import './components/purchaseReturns/purchaseReturnsTable';
+
+// Bills components
+@import './components/bills/bills';
+@import './components/bills/billsIcons';
+@import './components/bills/billsBodyHeader';
+@import './components/bills/billsBodyDetalle';
+
+// Pretake components
+@import './components/pretake/pretake';
+@import './components/pretake/pretakeIcons';
+@import './components/pretake/pretakeBody';
+
+// Take components
+@import './components/take/take';
+@import './components/take/takeIcons';
+@import './components/take/takeBody';
+
+// Tax Claim components
+@import './components/taxClaim/taxClaim';
+@import './components/taxClaim/taxClaimIcons';
+@import './components/taxClaim/taxClaimBody';
+
+// Areas components
+@import './components/areas/areas';
+@import './components/areas/areasIcons';
+@import './components/areas/areasBody';
+
+// Raffle components
+@import './components/raffle/raffle';
+@import './components/raffle/raffleIcons';
+@import './components/raffle/raffleBody';
+
+// Screen Register components
+@import './components/screenRegister/screenRegister';
+
+// Lock Unlock warehouse components
+@import './components/lockUnlockWarehouse/lockUnlockWarehouse';
+
+// Lock Unlock Commercial House components
+@import './components/lockUnlockCommercialHouse/lockUnlockCommercialHouse';
+
+// Tagger components
+@import './components/tagger/tagger';
+@import './components/tagger/taggerIcons';
+@import './components/tagger/taggerBody';
+
+// Unify Code 
+@import './components/unifyCode/unifyCode';
+@import './components/unifyCode/unifyCodeIcons';
+@import './components/unifyCode/unifyCodeBody';
+@import './components/unifyCode/unifyCodeModal';
+
+// Transfer Points sale components
+@import './components/transferPointsSale/transferPointsSale';
+@import './components/transferPointsSale/tranferPointsSaleIcons';
+@import './components/transferPointsSale/tranferPointsSaleBody';
+
+// MAG Iteams List components
+@import './components/magIteamsList/magIteamsList';
+@import './components/magIteamsList/modalAddImpuesto';
+
+// Assing Cabys Code components
+@import './components/assingCabysCode/assingCabysCode';
+@import './components/assingCabysCode/assingCabysCodeBody';
+@import './components/assingCabysCode/searchProvidersModal';
+@import './components/assingCabysCode/assingCabysCodeModal';
+
+// Documents Emited components
+@import './components/documentsEmited/documentsEmited';
+@import './components/documentsEmited/documentsEmitedFooter';
+@import './components/documentsEmited/documentsEmitedBody';
+
+//Arqueo Cash components
+@import './components/arqueoCash/arqueoCash';
+@import './components/arqueoCash/arqueoCashIcons';
+@import './components/arqueoCash/arqueoCashBody';
+@import './components/arqueoCash/arqueoCashBodyDesgloceEfectivo';
+@import './components/arqueoCash/arqueoCashBodyTarjetas';
+@import './components/arqueoCash/arqueoCashBodyTotales';
+@import './components/arqueoCash/arqueoCashSelectedUserModal';
+@import './components/arqueoCash/arqueoCashSearchModal';
+@import './components/arqueoCash/arqueoCashBodyDetalleOperaciones';
+@import './components/arqueoCash/arqueoCashModalAddPreDeposito';
+@import './components/arqueoCash/arqueoCashSeletedAperturaModal';
+
+// Consult Albaranes components
+@import './components/consultAlbaranes/consultAlbaranes';
+@import './components/consultAlbaranes/consultAlbaranesFooter';
+@import './components/consultAlbaranes/consultAlbaranesBody';
+@import './components/consultAlbaranes/consultAlbaranesModal';
+@import './components/consultAlbaranes/consultAlbaranesGenerarFacturasModal';
+@import './components/consultAlbaranes/consultAlbaranesmodalAddCustomer';
+
+// Users components
+@import './components/Users/users';
+@import './components/Users/usersIcons';
+@import './components/Users/usersBody';
+@import './components/Users/usersSearchModal';
+
+// Charge components
+@import './components/charge/charge';
+@import './components/charge/chargeHeader';
+@import './components/charge/chargeBody';
+@import './components/charge/chargeBodyLeft';
+@import './components/charge/chargeBodyRight';
+@import './components/charge/chargeFooter';
+@import './components/charge/chargeDetailsPreventaModal';
+
+// Company components
+@import './components/company/company';
+@import './components/company/companyIcons';
+@import './components/company/companyBody';
+@import './components/company/companyBodyDatosEmisor';
+@import './components/company/companyBodyDatosTributarios';
+@import './components/company/companyBodyActividadesEmpresas';
+@import './components/company/companyBodyCuentasBancarias';
+
+// Branch components
+@import './components/branch/branch';
+@import './components/branch/branchIcons';
+@import './components/branch/branchBody';
+
+// Down Payment
+@import './components/downPayment/downPayment';
+@import './components/downPayment/downPaymentBody';
+@import './components/downPayment/downPaymentIcons';
+@import './components/downPayment/downPaymentSearchCustomersModal';
+@import './components/downPayment/downPaymentSearchModal';
+
+// Pre Deposits
+@import './components/preDeposits/preDeposits';
+@import './components/preDeposits/preDepositsIcons';
+@import './components/preDeposits/preDepositsBody';
+
+// Generate Deposits
+@import './components/generateDeposits/generateDeposits';
+@import './components/generateDeposits/generateDepositsIcons';
+@import './components/generateDeposits/generateDepositsBody';
+
+// Consult Deposits
+@import './components/consultDeposits/consultDeposits';
+@import './components/consultDeposits/consultDepositsIcons';
+@import './components/consultDeposits/consultDepositsBody';
+@import './components/consultDeposits/consultDepositsDepositosBody';
+@import './components/consultDeposits/consultDepositsPreDepositosBody';
+@import './components/consultDeposits/consultDepositsPreDepositsModal';
+@import './components/consultDeposits/consultDepositsDepositsModal';
+
+// Bank
+@import './components/bank/bank';
+@import './components/bank/bankIcons';
+@import './components/bank/bankBody';

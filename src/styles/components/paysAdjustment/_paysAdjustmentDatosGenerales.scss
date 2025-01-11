@@ -1,0 +1,303 @@
+.pays_adjustment-DatosGeneral-main {
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'firstLine'
+        'secondLine';
+    grid-template-rows: 50% 50%;
+}
+
+.pays_adjustment-DatosGeneral-firstLine {
+    display: grid;
+    grid-area: firstLine;
+    height: 100%;
+    grid-template-areas: 
+        'codigo nombre moneda fecha';
+    grid-template-columns: 15% 55% 15% 15%;
+}
+
+.pays_adjustment-DatosGeneral-firstLine-codigo {
+    display: grid;
+    grid-area: codigo;
+    height: 100%;
+    margin-left: 15px;
+    margin-right: 15px;
+    grid-template-areas: 
+        'lblcodigo'
+        'inputcodigo';
+    grid-template-rows: 45% 55%;
+}
+
+#lblCodigoDatosGPaysT {
+    background-color: #EEF2E6;
+    color: #5387E7;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblcodigo;
+    margin-top: 2px;
+    padding-left: 5px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+#txtCodigoDatosGPaysT {
+    font-size: 15px;
+    grid-area: inputcodigo;
+    height: 75%;
+    margin-top: 3px;
+    text-align: start;
+}
+
+.pays_adjustment-DatosGeneral-firstLine-nombre {
+    display: grid;
+    grid-area: nombre;
+    height: 100%;
+    margin-left: 15px;
+    margin-right: 15px;
+    grid-template-areas: 
+        'lblnombre'
+        'inputnombre';
+    grid-template-rows: 45% 55%;
+}
+
+#lblNombreDatosGPaysT {
+    background-color: #EEF2E6;
+    color: #5387E7;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblnombre;
+    margin-top: 2px;
+    padding-left: 5px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+#txtNombreDatosGPaysT {
+    font-size: 15px;
+    grid-area: inputnombre;
+    height: 75%;
+    margin-top: 3px;
+    text-align: start;
+}
+
+.pays_adjustment-DatosGeneral-firstLine-moneda {
+    display: grid;
+    grid-area: moneda;
+    height: 100%;
+    margin-left: 15px;
+    margin-right: 15px;
+    grid-template-areas: 
+        'lblmoneda'
+        'inputmoneda';
+    grid-template-rows: 45% 55%;
+}
+
+#lblMonedaDatosGPaysT {
+    background-color: #EEF2E6;
+    color: #5387E7;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblmoneda;
+    margin-top: 2px;
+    padding-left: 5px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+#cboMonedaDatosGPaysT {
+    font-size: 15px;
+    grid-area: inputmoneda;
+    height: 75%;
+    margin-top: 3px;
+    text-align: start;
+}
+
+.pays_adjustment-DatosGeneral-firstLine-fecha {
+    display: grid;
+    grid-area: fecha;
+    height: 100%;
+    margin-left: 15px;
+    margin-right: 15px;
+    grid-template-areas: 
+        'lblfecha'
+        'inputfecha';
+    grid-template-rows: 45% 55%;
+}
+
+#lblFechaDatosGPaysT {
+    background-color: #EEF2E6;
+    color: #5387E7;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblfecha;
+    margin-top: 2px;
+    padding-left: 5px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+#txtFechaDatosGPaysT {
+    font-size: 15px;
+    grid-area: inputfecha;
+    height: 75%;
+    margin-top: 3px;
+    text-align: start;
+}
+
+.pays_adjustment-DatosGeneral-secondLine {
+    display: grid;
+    grid-area: secondLine;
+    height: 100%;
+    grid-template-areas: 
+        'tipo doc observaciones';
+    grid-template-columns: 25% 15% 60%;
+}
+
+.pays_adjustment-DatosGeneral-secondLine-tipo {
+    background-color: white;
+    display: grid;
+    grid-area: tipo;
+    height: 100%;
+    margin-left: 15px;
+    margin-right: 15px;
+    grid-template-areas: 
+        'lbltipo'
+        'check';
+    grid-template-rows: 45% 55%;
+}
+
+#lblTipoNotaDatosGPaysT {
+    background-color: #3D62DB;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lbltipo;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 2px;
+    padding-left: 5px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+.pays_adjustment-DatosGeneral-secondLine-tipo-check {
+    display: grid;
+    grid-area: check;
+    height: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+    grid-template-areas: 
+        'credito debito';
+    grid-template-columns: 50% 50%;
+}
+
+.pays_adjustment-DatosGeneral-secondLine-tipo-check-credito {
+    display: grid;
+    grid-area: credito;
+    height: 100%;
+    grid-template-areas: 
+        'inputcredito lblcredito';
+    grid-template-columns: 50% 50%;
+}
+
+#rdCreditoDatosGPaysT {
+    grid-area: inputcredito;
+    margin-left: 55px;
+    margin-top: 7px;
+}
+
+#lblCreditoDatosGPaysT {
+    color: #B6B8A9;
+    font-size: 15px;
+    grid-area: lblcredito;
+    padding-top: 5px;
+    text-align: start;
+}
+
+.pays_adjustment-DatosGeneral-secondLine-tipo-check-debito {
+    display: grid;
+    grid-area: debito;
+    height: 100%;
+    grid-template-areas: 
+        'inputdebito lbldebito';
+    grid-template-columns: 50% 50%;
+}
+
+#rdDebitoDatosGPaysT {
+    grid-area: inputdebito;
+    margin-left: 55px;
+    margin-top: 7px;
+}
+
+#lblDebitoDatosGPaysT {
+    color: #B6B8A9;
+    font-size: 15px;
+    grid-area: lbldebito;
+    padding-top: 5px;
+    text-align: start;
+}
+
+.pays_adjustment-DatosGeneral-secondLine-doc {
+    display: grid;
+    grid-area: doc;
+    height: 100%;
+    margin-left: 15px;
+    margin-right: 15px;
+    grid-template-areas: 
+        'lbldoc'
+        'inputdoc';
+    grid-template-rows: 45% 55%;
+}
+
+#lblDocDatosGPaysT {
+    background-color: #EEF2E6;
+    color: #5387E7;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lbldoc;
+    margin-top: 2px;
+    padding-left: 5px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+#txtDocDatosGPaysT {
+    font-size: 15px;
+    grid-area: inputdoc;
+    height: 75%;
+    margin-top: 3px;
+    text-align: start;
+}
+
+.pays_adjustment-DatosGeneral-secondLine-observaciones {
+    display: grid;
+    grid-area: observaciones;   
+    height: 100%;
+    margin-left: 15px;
+    margin-right: 15px;
+    grid-template-areas: 
+        'lbldoc inputdoc';
+    grid-template-columns: 17% 83%;
+}
+
+#lblObservacionesDatosGPaysT {
+    background-color: #EEF2E6;
+    color: #5387E7;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lbldoc;
+    height: 50%;
+    margin-right: 5px;
+    padding-left: 5px;
+    padding-top: 2px;
+    text-align: start;
+
+}
+
+#txtObservacionesDatosGPaysT {
+    font-size: 15px;
+    grid-area: inputdoc;
+    height: 90%;
+    text-align: start;
+}
+

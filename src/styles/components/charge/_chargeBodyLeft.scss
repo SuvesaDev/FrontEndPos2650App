@@ -1,0 +1,238 @@
+.chargeBody-left-main {
+    grid-area: left;
+    display: grid;
+    padding-right: 5px;
+    grid-template-areas: 
+        'title'
+        'table';
+    grid-template-rows: 20px 350px;
+}
+
+.chargeBody-left-title {
+    grid-area: title;
+    border-bottom: 1px solid gray;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+}
+
+#lblDetallePreVentaTitleChargeBody {
+    text-align: start;
+    padding-left: 2px;
+    font-size: 15px;
+}
+
+.chargeBody-left-table {
+    grid-area: table;
+    display: grid;
+    margin-bottom: 5px;
+    border-bottom: 1px solid gray;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    border-radius: 5px;
+    border: 1px solid gray;
+    margin-bottom: 5px;
+    margin-left: 1px;
+    margin-right: 2px;
+    margin-top: 5px;
+    grid-template-areas: 
+        'table'
+        'buttons';
+    grid-template-rows: 90% 10%;
+}
+
+.chargeBody-body-table-main {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    scrollbar-color: rebeccapurple green;
+    scrollbar-width: thin;
+    border-bottom: 1px solid gray;
+    grid-area: table;
+}
+
+.chargeBody-body-table-header {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 5%;
+}
+
+.chargeBody-body-table-header-ficha {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 120px;
+}
+
+.chargeBody-body-table-header-tipoFactura {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 140px;
+}
+
+.chargeBody-body-table-header-cedula {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 210px;
+}
+
+.chargeBody-body-table-header-cliente {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 300px;
+}
+
+.chargeBody-body-table-header-fecha {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 150px;
+}
+
+.chargeBody-body-table-header-total {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 150px;
+}
+
+
+.chargeBody-body-table-body {
+    text-align: start;
+    font-style: normal;
+}
+
+.chargeBody-body-table-row {
+    &:hover {
+        cursor: pointer;
+        background-color: #ACA9A9;
+    }
+}
+
+.chargeBody-body-table {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+    height: 25.5px;
+}
+
+.chargeBody-body-table-btns {
+    display: grid;
+    grid-area: buttons;
+    grid-template-areas: 
+        'labelPagina labelIrPagina labelMostrar btns';
+    grid-template-columns: 13% 13% 13% 15%;
+}
+
+.chargeBody-body-table-btns-Pagina {
+    grid-area: labelPagina;
+    height: 50%;
+    margin-top: 10px;
+    font-size: 15px;
+}
+
+.chargeBody-body-table-btns-IrPagina {
+    height: 100%;
+    display: grid;
+    grid-area: labelIrPagina;
+    grid-template-areas: 
+        'title input';
+    grid-template-columns: 70% 30%;
+}
+
+.chargeBody-body-table-btns-IrPagina-title {
+    grid-area: title;
+    padding-top: 10px;
+}
+
+.chargeBody-body-table-btns-IrPagina-input {
+    grid-area: input;
+    padding-top: 8px;
+}
+
+.chargeBody-body-table-btns-Mostrar {
+    grid-area: labelMostrar;
+    height: 100%;
+    padding-top: 8px;
+}
+
+.chargeBody-body-table-btns-buttons {
+    grid-area: btns;
+    height: 100%;
+    display: grid;
+    grid-template-areas: 
+        'first previous next last';
+    grid-template-columns: 15% 35% 35% 15%;
+}
+
+.chargeBody-body-table-btns-buttons-first {
+    grid-area: first;
+    padding-top: 8px;
+}
+
+#btnFistyChargeBodyTable {
+    border: none;
+    border-radius: 10%;
+    height: 80%;
+    width: 80%;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $secundary;
+    }
+}
+
+.chargeBody-body-table-btns-buttons-previous {
+    grid-area: previous;
+    padding-top: 8px;
+}
+
+#btnPreviousChargeBodyTable {
+    border: none;
+    border-radius: 10%;
+    height: 80%;
+    width: 80%;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $secundary;
+    }
+}
+
+.chargeBody-body-table-btns-buttons-next {
+    grid-area: next;
+    padding-top: 8px;
+}
+
+#btnNextChargeBodyTable {
+    border: none;
+    border-radius: 10%;
+    height: 80%;
+    width: 80%;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $secundary;
+    }
+}
+
+.chargeBody-body-table-btns-buttons-last {
+    grid-area: last;
+    padding-top: 8px;
+}
+
+#btnLastChargeBodyTable {
+    border: none;
+    border-radius: 10%;
+    height: 80%;
+    width: 80%;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $secundary;
+    }
+}

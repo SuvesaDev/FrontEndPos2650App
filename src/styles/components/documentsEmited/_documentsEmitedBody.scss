@@ -1,0 +1,552 @@
+.documentsEmited-body-main {
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'header'
+        'table';
+    grid-template-rows: 100px 343px;
+}
+
+.documentsEmited-body-header {
+    grid-area: header;
+    display: grid;
+    padding-left: 2%;
+    grid-template-areas: 
+        'customer dates monto documento btn';
+    grid-template-columns: 15% 20% 10% 10% 10%;
+    border-radius: 5px;
+    border: 1px solid gray;
+    margin-bottom: 5px;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 5px;
+}
+
+.documentsEmited-body-header-customer {
+    grid-area: customer;
+    display: grid;
+    grid-template-areas: 
+        'labelCustomer'
+        'inputsCustomer';
+    grid-template-rows: 30% 60%;
+}
+
+.documentsEmited-body-header-customer-label {
+    grid-area: labelCustomer;
+    display: grid;
+    grid-template-areas: 
+        'radioButtonCustomer lblCustomer';
+    grid-template-columns: 10% 60%;
+}
+
+.documentsEmited-body-header-customer-label-radioButton {
+    grid-area: radioButtonCustomer;
+    padding-top: 7px;
+}
+
+#lblTitleClienteDocumentsEmited {
+    grid-area: lblCustomer;
+    font-size: 15px;
+    padding-top: 5px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.documentsEmited-body-header-customer-inputs {
+    grid-area: inputsCustomer;
+    display: grid;
+    grid-template-areas: 
+        'inputsCus'
+        'labelNombre';
+    grid-template-rows: 60% 40%;
+}
+
+.documentsEmited-body-header-customer-inputs-input {
+    grid-area: inputsCus;
+    display: grid;
+    grid-template-areas: 
+        'inputCustomer iconCustomer';
+    grid-template-columns: 80% 20%;
+}
+
+.documentsEmited-body-header-customer-input {
+    grid-area: inputCustomer;
+    padding-top: 5px;
+}
+
+#txtClienteDocumentsEmited {
+    font-size: 15px;
+    width: 90%;
+}
+
+.documentsEmited-body-header-customer-icon {
+    grid-area: iconCustomer;
+    padding-top: 7px;
+    text-align: start;
+    padding-left: 5px;
+}
+
+#btnSearchClienteDocumentsEmited {
+    color: $secundary;
+    
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.documentsEmited-body-header-customer-inputs-labelNombre {
+    grid-area: labelNombre;
+}
+
+#lblNombreCustomerDocumentsEmited {
+    text-align: start;
+    font-size: 15px;
+    padding-left: 10px;
+}
+
+.documentsEmited-body-header-dates {
+    grid-area: dates;
+    display: grid;
+    grid-template-areas: 
+        'labelDates'
+        'inputsDates';
+    grid-template-rows: 30% 60%;
+    border-left: 1px solid #dbd9d9;
+    border-right: 1px solid #dbd9d9;
+}
+
+.documentsEmited-body-header-dates-label {
+    grid-area: labelDates;
+    display: grid;
+    grid-template-areas: 
+        'radioButtonDates lblDates';
+    grid-template-columns: 10% 60%;
+}   
+
+.documentsEmited-body-header-dates-label-radioButton {
+    grid-area: radioButtonDates;
+    padding-top: 7px;
+}
+
+#lblTitleDatesDocumentsEmited {
+    grid-area: lblDates;
+    font-size: 15px;
+    padding-top: 5px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.documentsEmited-body-header-dates-inputs {
+    grid-area: inputsDates;
+    display: grid;
+    grid-template-areas: 
+        'inputDesdeDates inputHastaDates';
+    grid-template-columns: 50% 50%;
+    padding-top: 5px;
+}
+
+.documentsEmited-body-header-dates-inputs-desde {
+    grid-area: inputDesdeDates;
+    display: grid;
+    grid-template-areas: 
+        'labelDesde'
+        'inputDesde';
+    grid-template-rows: 50% 50%;
+    padding-right: 10px;
+    padding-left: 5px;
+}
+
+#lblDesdeDatesDocumentsEmited {
+    grid-area: labelDesde;
+    padding-top: 3px;
+    text-align: start;
+    padding-left: 2px;
+    font-size: 15px;
+}
+
+#txtDesdeDatesDocumentsEmited {
+    grid-area: inputDesde;
+    color: black;
+    font-size: 14px;
+    text-align: start;
+
+}
+
+.documentsEmited-body-header-dates-inputs-hasta {
+    grid-area: inputHastaDates;
+    display: grid;
+    grid-template-areas: 
+        'labelHasta'
+        'inputHasta';
+    grid-template-rows: 50% 50%;
+    padding-right: 10px;
+}
+
+.lblHastaDatesDocumentsEmited {
+    grid-area: labelHasta;
+    padding-top: 3px;
+    text-align: start;
+    padding-left: 2px;
+    font-size: 15px;
+}
+
+.lblHastaDatesDocumentsEmited-Disabled {
+    grid-area: labelHasta;
+    padding-top: 3px;
+    text-align: start;
+    padding-left: 2px;
+    font-size: 15px;
+    text-decoration: line-through;
+}
+
+#txtHastaDatesDocumentsEmited {
+    grid-area: inputHasta;
+    color: black;
+    font-size: 14px;
+    text-align: start;
+}
+
+.documentsEmited-body-header-monto {
+    grid-area: monto;
+    display: grid;
+    grid-template-areas: 
+        'labelMonto'
+        'inputsMonto';
+    grid-template-rows: 30% 60%;
+    border-right: 1px solid #dbd9d9;
+}
+
+.documentsEmited-body-header-monto-label {
+    grid-area: labelMonto;
+}
+
+.lblTitleMontoDocumentsEmited {
+    font-size: 15px;
+    padding-top: 5px;
+    padding-left: 15px;
+    text-align: start;
+}
+
+.lblTitleMontoDocumentsEmited-Disable {
+    font-size: 15px;
+    padding-top: 5px;
+    padding-left: 15px;
+    text-align: start;
+    text-decoration: line-through;
+}
+
+.documentsEmited-body-header-monto-input {
+    grid-area: inputsMonto;
+    text-align: start;
+    padding-top: 5px;
+}
+
+#txtMontoDocumentsEmited {
+    font-size: 15px;
+    width: 80%;
+    margin-left: 15px;
+}
+
+.documentsEmited-body-header-documento {
+    grid-area: documento;
+    display: grid;
+    grid-template-areas: 
+        'labelDocumento'
+        'inputsDocumento';
+    grid-template-rows: 30% 60%;
+    border-right: 1px solid #dbd9d9;
+}
+
+.documentsEmited-body-header-documento-label {
+    grid-area: labelDocumento;
+}
+
+.lblTitleDocumentoDocumentsEmited {
+    font-size: 15px;
+    padding-top: 5px;
+    padding-left: 15px;
+    text-align: start;
+}
+
+.lblTitleDocumentoDocumentsEmited-Disabled {
+    font-size: 15px;
+    padding-top: 5px;
+    padding-left: 15px;
+    text-align: start;
+    text-decoration: line-through;
+}
+
+.documentsEmited-body-header-documento-input {
+    grid-area: inputsDocumento;
+    text-align: start;
+    padding-top: 5px;
+}
+
+#txtDocumentoDocumentsEmited {
+    font-size: 15px;
+    width: 80%;
+    margin-left: 15px;
+}
+
+.documentsEmited-body-header-btn {
+    grid-area: btn;
+}
+
+#btnBuscarDocumentsEmited {
+    width: 85%;
+    height: 30%;
+    font-size: 15px;
+    margin-top: 20%;
+    background-color: $secundary;
+    color: white;
+
+    &:hover {
+        background-color: $primary;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+.documentsEmited-body-table {
+    grid-area: table;
+    display: grid;
+    grid-template-areas: 
+        'table'
+        'buttons';
+    grid-template-rows: 90% 10%;
+    border-radius: 5px;
+    border: 1px solid gray;
+    margin-bottom: 5px;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 5px;
+}
+
+.documentsEmited-body-table-main {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    scrollbar-color: rebeccapurple green;
+    scrollbar-width: thin;
+    border-bottom: 1px solid gray;
+    grid-area: table;
+}
+
+.documentsEmited-body-table-btns {
+    display: grid;
+    grid-area: buttons;
+    grid-template-areas: 
+        'labelPagina labelIrPagina labelMostrar btns';
+    grid-template-columns: 10% 13% 8% 15%;
+}
+
+.documentsEmited-body-table-btns-Pagina {
+    grid-area: labelPagina;
+    height: 50%;
+    margin-top: 10px;
+    font-size: 15px;
+}
+
+.documentsEmited-body-table-btns-IrPagina {
+    height: 100%;
+    display: grid;
+    grid-area: labelIrPagina;
+    grid-template-areas: 
+        'title input';
+    grid-template-columns: 70% 30%;
+}
+
+.documentsEmited-body-table-btns-IrPagina-title {
+    grid-area: title;
+    padding-top: 10px;
+}
+
+.documentsEmited-body-table-btns-IrPagina-input {
+    grid-area: input;
+    padding-top: 8px;
+}
+
+.documentsEmited-body-table-btns-Mostrar {
+    grid-area: labelMostrar;
+    height: 100%;
+    padding-top: 8px;
+}
+
+.documentsEmited-body-table-btns-buttons {
+    grid-area: btns;
+    height: 100%;
+    display: grid;
+    grid-template-areas: 
+        'first previous next last';
+    grid-template-columns: 15% 35% 35% 15%;
+}
+
+.documentsEmited-body-table-btns-buttons-first {
+    grid-area: first;
+    padding-top: 8px;
+}
+
+#btnFistyDocumentsEmitedTable {
+    border: none;
+    border-radius: 10%;
+    height: 80%;
+    width: 80%;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $secundary;
+    }
+}
+
+.documentsEmited-body-table-btns-buttons-previous {
+    grid-area: previous;
+    padding-top: 8px;
+}
+
+#btnPreviousDocumentsEmitedTable {
+    border: none;
+    border-radius: 10%;
+    height: 80%;
+    width: 80%;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $secundary;
+    }
+}
+
+.documentsEmited-body-table-btns-buttons-next {
+    grid-area: next;
+    padding-top: 8px;
+}
+
+#btnNextDocumentsEmitedTable {
+    border: none;
+    border-radius: 10%;
+    height: 80%;
+    width: 80%;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $secundary;
+    }
+}
+
+.documentsEmited-body-table-btns-buttons-last {
+    grid-area: last;
+    padding-top: 8px;
+}
+
+#btnLastDocumentsEmitedTable {
+    border: none;
+    border-radius: 10%;
+    height: 80%;
+    width: 80%;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $secundary;
+    }
+}
+
+.documentsEmited-body-table-header-numFactura {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 100px;
+}
+
+.documentsEmited-body-table-header-tipo {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 120px;
+}
+
+.documentsEmited-body-table-header-nombreCliente {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 250px;
+}
+
+.documentsEmited-body-table-header-fecha {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 150px;
+}
+
+.documentsEmited-body-table-header-monto {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 100px;
+}
+
+.documentsEmited-body-table-header-estado {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 150px;
+}
+
+.documentsEmited-body-table-header-mensajeError {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 600px;
+}
+
+.documentsEmited-body-table-body {
+    text-align: start;
+    font-style: normal;
+}
+
+.documentsEmited-body-table-row {
+    &:hover {
+        cursor: pointer;
+        background-color: #ACA9A9;
+    }
+}
+
+.documentsEmited-body-table-numFactura {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+    height: 25.5px;
+}
+
+.documentsEmited-body-table-tipo {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+    height: 25.5px;
+}
+
+.documentsEmited-body-table-nombreCliente {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+    height: 25.5px;
+}
+
+.documentsEmited-body-table-fecha {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+    height: 25.5px;
+}
+
+.documentsEmited-body-table-monto {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+    height: 25.5px;
+}
+

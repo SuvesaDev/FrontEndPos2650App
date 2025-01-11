@@ -1,0 +1,242 @@
+.family_subfamilia-main {
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+    display: grid;
+    height: 100%;
+    margin-left: 5%;
+    margin-right: 5%;
+    grid-template-areas: 
+        'inputs'
+        'table';
+    grid-template-rows: 45% 55%;
+}
+
+.family_subfamilia-inputs {
+    display: grid;
+    grid-area: inputs;
+    grid-template-areas: 
+        'title'
+        'first'
+        'second';
+    grid-template-rows: 15% 35% 50%;
+}
+
+.family_subfamilia-inputs-title {
+    grid-area: title;
+    padding-left: 5px;
+}
+
+#lblTitleSubFamilias {
+    color: #141F64;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: start;
+}
+
+.family_subfamilia-inputs-first {
+    display: grid;
+    grid-area: first;
+    grid-template-areas: 
+        'codigo descrip';
+    grid-template-columns: 20% 80%;
+}
+
+.family_subfamilia-inputs-first-codigo {
+    display: grid;
+    grid-area: codigo;
+    grid-template-areas: 
+        'lblCodigo'
+        'inputCodigo';
+    grid-template-rows: 45% 55%;
+}
+
+#lblCodigoSubFamilias {
+    background-color: #EEF2E6;
+    color: #4264D8;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblCodigo;
+    margin-left: 2px;
+    margin-top: 1px;
+    padding-left: 5px;
+    text-align: start;
+    width: 90%;
+}
+
+#txtCodigoSubFamilias {
+    color: black;
+    font-size: 15px;
+    grid-area: inputCodigo;
+    height: 80%;
+    margin-left: 2px;
+    margin-top: 3px;
+    text-align: start;
+    width: 90%;
+}
+
+.family_subfamilia-inputs-first-descrip {
+    display: grid;
+    grid-area: descrip;
+    grid-template-areas: 
+        'lblDescrip'
+        'inputDescrip';
+    grid-template-rows: 45% 55%;
+}
+
+#lblDescripSubFamilias {
+    background-color: #EEF2E6;
+    color: #4264D8;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblDescrip;
+    margin-left: 2px;
+    margin-top: 1px;
+    padding-left: 5px;
+    text-align: start;
+    width: 90%;
+}
+
+#txtDescripSubFamilias {
+    color: black;
+    font-size: 15px;
+    grid-area: inputDescrip;
+    height: 80%;
+    margin-left: 2px;
+    margin-top: 3px;
+    text-align: start;
+    width: 90%;
+}
+
+.family_subfamilia-inputs-second {
+    display: grid;
+    grid-area: second;
+    grid-template-areas: 
+        'obser btn';
+    grid-template-columns: 92% 8%;
+}
+
+.family_subfamilia-inputs-second-obser {
+    display: grid;
+    grid-area: obser;
+    grid-template-areas: 
+        'lblObser'
+        'inputObser';
+    grid-template-rows: 18% 82%;
+}
+
+#lblObserSubFamilias {
+    background-color: #EEF2E6;
+    color: #4264D8;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblObser;
+    margin-left: 2px;
+    margin-top: 1px;
+    padding-left: 5px;
+    text-align: start;
+    width: 100%;
+}
+
+#txtObserSubFamilias {
+    color: black;
+    font-size: 15px;
+    grid-area: inputObser;
+    height: 90%;
+    margin-left: 2px;
+    margin-top: 3px;
+    text-align: start;
+    width: 100%;
+    height: 38%;
+}
+
+.family_subfamilia-inputs-second-btn {
+    display: grid;
+    gap: 5px;
+    grid-area: btn;
+    grid-template-areas: 
+        'btnNuevo'
+        'btnAgregar';
+    grid-template-rows: 25% 25%;
+}
+
+#btnNuevoSubFamilias {
+    color: #4264D8;
+    font-size: 15px;
+    grid-area: btnNuevo;
+    height: 80%;
+    margin-left: 8px;
+    width: 85%;
+
+    &:hover {
+        background-color: #4264D8;
+        color: white;
+        cursor: pointer;
+    }	
+}
+
+#btnAgregarSubFamilias {
+    color: #4264D8;
+    font-size: 15px;
+    grid-area: btnAgregar;
+    height: 80%;
+    margin-left: 8px;
+    width: 85%;
+
+    &:hover {
+        background-color: #4264D8;
+        color: white;
+        cursor: pointer;
+    }	
+}
+
+.family_subfamilia-table {
+    border-top: 1px solid black;
+    grid-area: table;
+}
+
+.family_subfamilia-table-tab {
+    width: 100%;
+}
+
+.family_subfamilia-table-header-codigo {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 3%;
+}
+
+.family_subfamilia-table-header-descrip {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 15%;
+}
+
+.family_subfamilia-table-header-obser {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 5%;
+}
+
+.family_subfamilia-table-codigo {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.family_subfamilia-table-descrip {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.family_subfamilia-table-obser {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}

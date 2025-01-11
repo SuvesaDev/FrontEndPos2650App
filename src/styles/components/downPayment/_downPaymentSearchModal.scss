@@ -1,0 +1,292 @@
+.modal_searchDownPayment-main {
+    display: grid;
+    text-align: center;
+    grid-template-areas:
+        'title' 
+        'inputs'
+        'table';
+    grid-template-rows: 40px 60px 320px;
+}
+
+.modal_searchDownPayment-title {
+    display: grid;
+    gap: 5px;
+    grid-area: title;
+    grid-template-areas: 
+        'text btnClose';
+    grid-template-columns: 90% 5%;
+}
+
+#lblTitleSearchCustomersDownPayment {
+    background-color: $primary;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    grid-area: text;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    text-align: center;
+}
+
+#lblCloseSearchCustomersDownPayment {
+    background-color: red;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    grid-area: btnClose;
+    margin-bottom: 5px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    text-align: center;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.modal_searchDownPayment-inputs {
+    display: grid;
+    grid-area: inputs;
+    grid-template-areas: 
+        'id cedula nombre btn';
+    grid-template-columns: 20% 25% 40% 15%;
+}
+
+.modal_searchDownPayment-inputs-id {
+    grid-area: id;
+    display: grid;
+    text-align: center;
+    grid-template-areas: 
+        'titles'
+        'inputID';
+    grid-template-rows: 40% 60%;
+}
+
+.modal_searchDownPayment-inputs-id-titles {
+    grid-area: titles;
+    display: grid;
+    grid-template-areas: 
+        'checkId labelId';
+    grid-template-columns: 20% 80%;
+}
+
+.modal_searchDownPayment-inputs-id-titles-check {
+    grid-area: checkId;
+    padding-top: 5px;
+    padding-left: 10%;
+}
+
+.modal_searchDownPayment-inputs-id-titles-label {
+    grid-area: labelId;
+}
+
+#lblIdModalSearchCustomerDownPayment {
+    color: black;
+    font-size: 15px;
+    padding-top: 3px;
+    text-align: start;
+}
+
+#txtIdModalSearchCustomerDownPayment {
+    border: 1px solid black;
+    font-size: 15px;
+    grid-area: inputID;
+    height: 60%;
+    margin-left: 10px;
+    text-align: start;
+    width: 90%;
+    padding-left: 3px;
+}
+
+.modal_searchDownPayment-inputs-cedula {
+    display: grid;
+    grid-area: cedula;
+    text-align: center;
+    grid-template-areas: 
+        'titles'
+        'inputCdeula';
+    grid-template-rows: 40% 60%;
+}
+
+.modal_searchDownPayment-inputs-cedula-titles {
+    grid-area: titles;
+    display: grid;
+    grid-template-areas: 
+        'checkCedula labelCedula';
+    grid-template-columns: 15% 60%;
+}
+
+.modal_searchDownPayment-inputs-cedula-titles-check {
+    grid-area: checkCedula;
+    padding-top: 5px;
+    padding-left: 10%;
+}
+
+.modal_searchDownPayment-inputs-cedula-titles-label {
+    grid-area: labelCedula;
+}
+
+#lblcedulaModalSearchCustomerDownPayment {
+    color: black;
+    font-size: 15px;
+    padding-top: 3px;
+    text-align: start;
+}
+
+#txtcedulaModalSearchCustomerDownPayment {
+    border: 1px solid black;
+    font-size: 15px;
+    grid-area: inputCdeula;
+    height: 60%;
+    margin-left: 10px;
+    text-align: start;
+    width: 90%;
+    padding-left: 3px;
+}
+
+.modal_searchDownPayment-inputs-nombre {
+    display: grid;
+    grid-area: nombre;
+    text-align: center;
+    grid-template-areas: 
+        'titles'
+        'inputNombre';
+    grid-template-rows: 40% 60%;
+}
+
+.modal_searchDownPayment-inputs-nombre-titles {
+    grid-area: titles;
+    display: grid;
+    grid-template-areas: 
+        'checkNombre labelNombre';
+    grid-template-columns: 10% 60%;
+}
+
+.modal_searchDownPayment-inputs-nombre-titles-check {
+    grid-area: checkNombre;
+    padding-top: 5px;
+    padding-left: 25%;
+}
+
+.modal_searchDownPayment-inputs-nombre-titles-label {
+    grid-area: labelNombre;
+}
+
+#lblNombreModalSearchCustomerDownPayment {
+    color: black;
+    font-size: 15px;
+    padding-left: 5px;
+    padding-top: 3px;
+    text-align: start;
+}
+
+#txtNombreModalSearchCustomerDownPayment {
+    border: 1px solid black;
+    font-size: 15px;
+    grid-area: inputNombre;
+    height: 60%;
+    margin-left: 10px;
+    text-align: start;
+    width: 90%;
+    padding-left: 3px;
+}
+
+.modal_searchDownPayment-inputs-btn {
+    grid-area: btn;
+}
+
+#btnSearchCustomerDownPayment {
+    background-color: $secundary;
+    border: none;
+    color: white;
+    margin-top: 15px;
+    height: 50%;
+    margin-right: 25px;
+    width: 70%;
+
+    &:hover {
+        cursor: pointer;
+    }	
+}
+
+.modal_searchDownPayment-table {
+    grid-area: table;
+    // background-color: blue;
+}
+
+.modal_searchDownPayment-table-table {
+    width: 95%;
+    height: 100%;
+    margin-left: 10px;
+    overflow-y: scroll;
+    scrollbar-color: rebeccapurple green;
+    scrollbar-width: thin;
+    border: 1px solid black;
+}
+
+.modal_searchDownPayment-table-header {
+    width: 500%;
+    background-color: blue;
+}
+
+.modal_searchDownPayment-table-header-cedula {
+    background-color: #ACA9A9;
+    text-align: start;
+    padding-left: 5px;
+    width: 160px;
+}
+
+.modal_searchDownPayment-table-header-nombre {
+    background-color: #ACA9A9;
+    text-align: start;
+    padding-left: 5px;
+    width: 500px;
+}
+
+.modal_searchDownPayment-table-header-id {
+    background-color: #ACA9A9;
+    text-align: start;
+    padding-left: 5px;
+    width: 180px;
+}
+
+.modal_searchDownPayment-table-body {
+    text-align: start;
+    font-style: normal;
+}
+
+.modal_searchDownPayment-table-body-row {
+    &:hover {
+        cursor: pointer;
+        background-color: #ACA9A9;
+    }
+}
+
+.modal_searchDownPayment-table-body-cell {
+    padding-left: 5px;
+    border-bottom: 1px solid #ACA9A9;
+    // cursor: pointer;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+::-webkit-scrollbar-track {
+background: #f1f1f1; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+background: #555; 
+}
+

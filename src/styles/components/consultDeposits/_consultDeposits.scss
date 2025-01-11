@@ -1,0 +1,31 @@
+.consultDeposits-main {
+    text-align: center;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'header'
+        'body'
+        'footer';
+    grid-template-rows: 45px 443px 60px;
+}
+
+.consultDeposits-header {
+    grid-area: header;
+    background-color: #3D59A9;
+}
+
+#lblTitleConsultDeposits {
+    color: white;
+    font-size: 25px;
+    padding-top: 8px;
+    text-align: center;
+}
+
+.consultDeposits-body {
+    grid-area: body;
+}
+
+.consultDeposits-footer {
+    grid-area: footer;
+    border: 1px solid black;
+}

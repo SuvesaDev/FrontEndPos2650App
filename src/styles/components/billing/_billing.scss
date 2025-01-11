@@ -1,0 +1,74 @@
+.billing_main {
+    text-align: center;
+    display: grid;
+    grid-template-areas: 
+        'header'
+        'body'
+        'footer';
+    grid-template-rows: 33px 455px 60px;
+}
+
+.billing_header {
+    grid-area: header;
+    border: 1px black solid;
+}
+
+.billing_body {
+    grid-area: body;
+    display: grid;
+    grid-template-areas: 
+        'left right';
+    grid-template-columns: 80% 20%;
+    border: 1px black solid;
+}
+
+.billing_body-left {
+    grid-area: left;
+    display: grid;
+    grid-template-areas: 
+        'top'
+        'bottom';
+    grid-template-rows: 30% 70%;
+}
+
+.billing_body-left-top {
+    grid-area: top;
+    display: grid;
+    grid-template-areas: 
+        'headerCustomer conditions';
+    grid-template-columns: 65% 35%;
+}
+
+.billing_header-customer{
+    grid-area: headerCustomer;
+    border-right: 1px black solid;
+    border-bottom: 1px black solid;
+}
+
+.billing_header-conditions {
+    grid-area: conditions;
+    border-bottom: 1px black solid;
+}
+
+.billing_body-left-bottom {
+    grid-area: bottom;
+}
+
+.billing_items{
+    grid-area: main;
+    // border: 1px black solid;
+}
+
+.billing_body-right {
+    grid-area: right;
+}
+
+.billing_totals {
+    grid-area: totals;
+    border-left: 1px black solid;
+}
+
+.billing_footer{
+    grid-area: footer;
+    border: 1px black solid;
+}

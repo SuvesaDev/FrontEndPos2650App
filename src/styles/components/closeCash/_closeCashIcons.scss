@@ -1,0 +1,280 @@
+.closeCash_icons-main {
+    border: 1px solid black;
+    display: grid;
+    grid-area: icon;
+    height: 100%;
+    margin-right: 25px;
+    grid-template-areas: 
+        'btnRegistrar btnBuscar btnAnular btnCerrar user labelUser';
+    grid-template-columns: 8% 8% 8% 8% 20% 20%;
+}
+
+.closeCash_icons-icon-nuevo {
+    display: grid;
+    grid-area: btnNuevo;
+    height: 100%;
+    grid-template-areas: 
+        'iconNue'
+        'lblNue';
+    grid-template-rows: 60% 40%;
+}
+
+.closeCash_icons-icon-nuevo-icon {
+    color: #F68A1D;
+    grid-area: iconNue;
+    padding-top: 4px;
+}
+
+#iconNuevoCloseCash {
+    cursor: pointer;
+    height: 100%;
+    width: 35%;
+}
+
+#lblNuevoCloseCash {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblNue;
+    text-align: center;
+}
+
+.closeCash_icons-icon-Buscar {
+    display: grid;
+    grid-area: btnBuscar;
+    height: 100%;
+    grid-template-areas: 
+        'iconBus'
+        'lblBus';
+    grid-template-rows: 60% 40%;
+}
+
+.closeCash_icons-icon-Buscar-icon {
+    color: #F68A1D;
+    grid-area: iconBus;
+    padding-top: 4px;
+}
+
+.closeCash_icons-icon-Buscar-icon-disable {
+    color: gray;
+    grid-area: iconBus;
+    padding-top: 4px;
+}
+
+.iconBusCloseCash {
+    cursor: pointer;
+    height: 100%;
+    width: 35%;
+}
+
+.iconBusCloseCash-disable {
+    cursor: pointer;
+    height: 100%;
+    width: 35%;
+
+    &:hover {
+        cursor: not-allowed;
+    }
+}
+
+#lblBuscarCloseCash {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblBus;
+    text-align: center;
+}
+
+.closeCash_icons-icon-registrar {
+    display: grid;
+    grid-area: btnRegistrar;
+    height: 100%;
+    grid-template-areas: 
+        'iconReg'
+        'lblReg';
+    grid-template-rows: 60% 40%;
+}
+
+.closeCash_icons-icon-registrar-icon {
+    color: #F68A1D;
+    grid-area: iconReg;
+    padding-top: 4px;
+}
+
+.closeCash_icons-icon-registrar-icon-disable {
+    color: gray;
+    grid-area: iconReg;
+    padding-top: 4px;
+}
+
+.iconRegistrarCloseCash {
+    cursor: pointer;
+    height: 100%;
+    width: 35%;
+}
+
+.iconRegistrarCloseCash-disable {
+    cursor: pointer;
+    height: 100%;
+    width: 35%;
+
+    &:hover {
+        cursor: not-allowed;
+    }
+}
+
+#lblRegistrarCloseCash {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblReg;
+    text-align: center;
+}
+
+.closeCash_icons-icon-anular {
+    display: grid;
+    grid-area: btnAnular;
+    height: 100%;
+    grid-template-areas: 
+        'iconAnu'
+        'lblAnu';
+    grid-template-rows: 60% 40%;
+}
+
+.closeCash_icons-icon-anular-icon {
+    color: #F68A1D;
+    grid-area: iconAnu;
+    padding-top: 4px;
+}
+
+.closeCash_icons-icon-anular-icon-disable {
+    color: gray;
+    grid-area: iconAnu;
+    padding-top: 4px;
+}
+
+.iconAnularCloseCash {
+    cursor: pointer;
+    height: 100%;
+    width: 35%;
+}
+
+.iconAnularCloseCash-disable {
+    cursor: pointer;
+    height: 100%;
+    width: 35%;
+
+    &:hover {
+        cursor: not-allowed;
+    }
+}
+
+#lblAnularCloseCash {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblAnu;
+    text-align: center;
+}
+
+.closeCash_icons-icon-cerrar {
+    display: grid;
+    grid-area: btnCerrar;
+    height: 100%;
+    grid-template-areas: 
+        'iconCer'
+        'lblCer';
+    grid-template-rows: 60% 40%;
+}
+
+.closeCash_icons-icon-cerrar-icon {
+    color: #F68A1D;
+    grid-area: iconCer;
+    padding-top: 4px;
+}
+
+#iconCerrarCloseCash {
+    cursor: pointer;
+    height: 100%;
+    width: 35%;
+}
+
+#lblCerrarCloseCash {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblCer;
+    text-align: center;
+}
+
+.closeCash_icons-users {
+    grid-area: user;
+    width: 100%;
+    display: grid;
+    grid-template-areas: 
+        'title'
+        'inputs';
+    grid-template-rows: 50% 50%;
+}
+
+.closeCash_icons-users-title {
+    grid-area: title;
+    padding-top: 8px;
+    padding-left: 10px;
+}
+
+#lblClaveInternaCloseCash {
+    text-align: start;
+    font-size: 15px;
+}
+
+.closeCash_icons-users-inputs {
+    grid-area: inputs;
+    display: grid;
+    grid-template-areas: 
+        'txt icon';
+    grid-template-columns: 90% 10%;
+}
+
+.closeCash_icons-users-input {
+    grid-area: txt;
+}
+
+#txtClaveInternaCloseCash {
+    width: 95%;
+    text-align: start;
+    font-size: 15px;
+    padding-left: 5px;
+}
+
+.closeCash_icons-users-icon {
+    grid-area: icon;
+}
+
+.iconEyeClaveInternaCloseCash {
+    width: 100%;
+    height: 75%;
+    color: #F68A1D;
+
+    &:hover {
+        cursor: pointer;
+        color: $primary;
+    }
+}
+
+.iconEyeClaveInternaCloseCash-disable {
+    width: 100%;
+    height: 75%;
+    color: gray;
+
+    &:hover {
+        cursor: not-allowed;
+    }
+}
+
+.closeCash_icons-users-label {
+    grid-area: labelUser;
+    padding-top: 33px;
+}
+
+#lblUserNameCloseCash {
+    text-align: start;
+    padding-left: 20px;
+    font-size: 15px;
+    font-weight: 600;
+}

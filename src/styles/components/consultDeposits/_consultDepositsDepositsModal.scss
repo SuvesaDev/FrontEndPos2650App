@@ -1,0 +1,460 @@
+.modal_Deposits-main {
+    display: grid;
+    text-align: center;
+    grid-template-areas:
+        'title' 
+        'body'
+        'footer';
+    grid-template-rows: 40px 285px 40px;
+}
+
+.modal_Deposits-title {
+    display: grid;
+    gap: 5px;
+    grid-area: title;
+    grid-template-areas: 
+        'text btnClose';
+    grid-template-columns: 90% 10%;
+}
+
+#lblTitleDepositsModal {
+    background-color: $primary;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    grid-area: text;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    text-align: center;
+}
+
+#lblCloseDepositsModal {
+    background-color: red;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    grid-area: btnClose;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    text-align: center;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.modal_Deposits-body {
+    grid-area: body;
+    margin-left: 10px;
+    display: grid;
+    grid-template-areas:
+        'firstLine' 
+        'secondLine'
+        'thirdLine';
+    grid-template-rows: 20% 20% 60%;
+}
+
+.modal_Deposits-body-firstLine {
+    grid-area: firstLine;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'empresa banco cuenta';
+    grid-template-columns: 33% 33% 34%;
+}
+
+.modal_Deposits-body-firstLine-empresa {
+    grid-area: empresa;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblEmpresa'
+        'txtEmpresa';
+    grid-template-rows: 50% 50%;
+}
+
+.modal_Deposits-body-firstLine-empresa-label {
+    grid-area: lblEmpresa;
+    padding-top: 8px;
+    padding-left: 10px;
+}
+
+#lblEmpresaConsultDepositsModal {
+    text-align: start;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.modal_Deposits-body-firstLine-empresa-input {
+    grid-area: txtEmpresa;
+    padding-left: 10px;
+    padding-right: 5px;
+}
+
+#selectEmpresaConsultDepositsModal {
+    width: 100%;
+    text-align: start;
+    font-size: 15px;
+}
+
+.modal_Deposits-body-firstLine-banco {
+    grid-area: banco;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblBanco'
+        'txtBanco';
+    grid-template-rows: 50% 50%;
+}
+
+.modal_Deposits-body-firstLine-banco-label {
+    grid-area: lblBanco;
+    padding-top: 8px;
+    padding-left: 10px;
+}
+
+#lblBancoConsultDepositsModal {
+    text-align: start;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.modal_Deposits-body-firstLine-banco-input {
+    grid-area: txtBanco;
+    padding-left: 10px;
+    padding-right: 5px;
+}
+
+#selectBancoConsultDepositsModal {
+    width: 100%;
+    text-align: start;
+    font-size: 15px;
+}
+
+.modal_Deposits-body-firstLine-cuenta {
+    grid-area: cuenta;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblCuenta'
+        'txtCuenta';
+    grid-template-rows: 50% 50%;
+}
+
+.modal_Deposits-body-firstLine-cuenta-label {
+    grid-area: lblCuenta;
+    padding-top: 8px;
+    padding-left: 10px;
+}
+
+#lblCuentaConsultDepositsModal {
+    text-align: start;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.modal_Deposits-body-firstLine-cuenta-input {
+    grid-area: txtCuenta;
+    padding-left: 10px;
+    padding-right: 5px;
+}
+
+#selectCuentaConsultDepositsModal {
+    width: 100%;
+    text-align: start;
+    font-size: 15px;
+}
+
+.modal_Deposits-body-secondLine {
+    grid-area: secondLine;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'numeroDeposito fecha totalDeposito';
+    grid-template-columns: 33% 33% 34%;
+}
+
+.modal_Deposits-body-secondLine-numeroDeposito {
+    grid-area: numeroDeposito;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblNumeroDeposito'
+        'txtNumeroDeposito';
+    grid-template-rows: 50% 50%;
+}
+
+.modal_Deposits-body-secondLine-numeroDeposito-label {
+    grid-area: lblNumeroDeposito;
+    padding-top: 8px;
+    padding-left: 10px;
+}
+
+#lblNumeroDepositoConsultDepositsModal {
+    text-align: start;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.modal_Deposits-body-secondLine-numeroDeposito-input {
+    grid-area: txtNumeroDeposito;
+    padding-left: 10px;
+    padding-right: 5px;
+}
+
+#txtNumeroDepositoConsultDepositsModal {
+    width: 100%;
+    text-align: start;
+    font-size: 15px;
+}
+
+.modal_Deposits-body-secondLine-fecha {
+    grid-area: fecha;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblFecha'
+        'txtFecha';
+    grid-template-rows: 50% 50%;
+}
+
+.modal_Deposits-body-secondLine-fecha-label {
+    grid-area: lblFecha;
+    padding-top: 8px;
+    padding-left: 10px;
+}
+
+#lblFechasConsultDepositsModal {
+    text-align: start;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.modal_Deposits-body-secondLine-fecha-input {
+    grid-area: txtFecha;
+    padding-left: 10px;
+    padding-right: 5px;
+}
+
+#txtFechasConsultDepositsModal {
+    width: 100%;
+    text-align: start;
+}
+
+.modal_Deposits-body-secondLine-totalDeposito {
+    grid-area: totalDeposito;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblTotalDeposito'
+        'txtTotalDeposito';
+    grid-template-rows: 50% 50%;
+}
+
+.modal_Deposits-body-secondLine-totalDeposito-label {
+    grid-area: lblTotalDeposito;
+    padding-top: 8px;
+    padding-left: 10px;
+}
+
+#lblTotalDepositosConsultDepositsModal {
+    text-align: start;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.modal_Deposits-body-secondLine-totalDeposito-input {
+    grid-area: txtTotalDeposito;
+    padding-left: 10px;
+    padding-right: 5px;
+}
+
+#txtTotalDepositosConsultDepositsModal {
+    width: 100%;
+    text-align: start;
+    font-size: 15px;
+}
+
+.modal_Deposits-body-thirdLine {
+    grid-area: thirdLine;
+    margin: 5px;
+    border: 1px solid rgb(134, 133, 133);
+}
+
+.modal_Deposits-table-table-main {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    scrollbar-color: rebeccapurple green;
+    scrollbar-width: thin;
+}
+
+.modal_Deposits-table-table-header {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 8%;
+}
+
+.modal_Deposits-table-table-header-id {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 50px
+}
+
+.modal_Deposits-table-table-header-fecha {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 200px
+}
+
+.modal_Deposits-table-table-header-cajero {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 250px
+}
+
+.modal_Deposits-table-table-header-depositante {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 250px
+}
+
+.modal_Deposits-table-table-header-monto {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 100px
+}
+
+
+.modal_Deposits-table-table-body {
+    text-align: start;
+    font-style: normal;
+}
+
+// .modal_Deposits-table-table-body-row {
+//     // &:hover {
+//     //     background-color: #ACA9A9;
+//     // }
+// }
+
+.modal_Deposits-table-table-header-moneda {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 5%;
+}
+
+.modal_Deposits-table-table-header-totalCajero {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 8%;
+}
+
+.modal_Deposits-table-table-header-totalSistema {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 8%;
+}
+
+.modal_Deposits-table-table-cell {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.modal_Deposits-table-table-moneda {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.modal_Deposits-table-table-totalCajero {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: end;
+}
+
+.modal_Deposits-table-table-totalSistema {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: end;
+}
+
+.modal_Deposits-ThirdLine-total {
+    grid-area: total;
+    display: grid;
+    height: 100%;
+    margin-left: 65%;
+    grid-template-areas: 
+        'label input';
+    grid-template-columns: 50% 50%;
+}
+
+.modal_Deposits-ThirdLine-total-label {
+    grid-area: label;
+    padding-top: 5px;
+}
+
+#lblTotalDepositoGenerateDeposits {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.modal_Deposits-ThirdLine-total-input {
+    grid-area: input;
+    padding-top: 5px;
+}
+
+#txtTotalDepositoGenerateDeposits {
+    text-align: center;
+}
+
+.modal_Deposits-table-table-cell-checkbox {
+    padding-left: 40px;
+    border: 1px solid #BFBCC1;
+
+    &:hover {
+        cursor: default;
+    }
+}
+
+#checkSeleccionarPreDeposito {
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.modal_Deposits-footer {
+    grid-area: footer;
+    margin-left: 80%;
+    margin-right: 5px;
+}
+
+#btnAceptarModalDeposits {
+    width: 100%;
+    height: 80%;
+    font-size: 15px;
+    background-color: $primary;
+    color: white;
+    border: none;
+
+    &:hover {
+        cursor: pointer;
+    }
+}

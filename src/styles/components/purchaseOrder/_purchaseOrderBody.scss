@@ -1,0 +1,989 @@
+.purchaseOrden_body-main {
+    display: grid;
+    height: 100%;
+    margin-left: 1%;
+    margin-right: 1%;
+    grid-template-areas: 
+        'firstLine'
+        'secondLine'
+        'thirdLine'
+        'table';
+    grid-template-rows: 14% 14% 23% 49%;
+}
+
+.purchaseOrden_body-firstLine {
+    display: grid;
+    grid-area: firstLine;
+    grid-template-areas: 
+        'infoProveedor formaPago';
+    grid-template-columns: 70% 30%;
+}
+
+.purchaseOrden_body-firstLine-infoProveedor {
+    border: 1px solid #c4c4c4;
+    display: grid;
+    grid-area: infoProveedor;
+    grid-template-areas: 
+        'titleInfoPro'
+        'inputs';
+    grid-template-rows: 30% 70%;
+}
+
+#lblTitleInfoProveedor {
+    color: #848585;
+    font-size: 15px;
+    grid-area: titleInfoPro;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.purchaseOrden_body-firstLine-infoProveedor-inputs {
+    display: grid;
+    grid-area: inputs;
+    grid-template-areas: 
+        'codigoInfoPro nombreInfoPro';
+    grid-template-columns: 30% 70%;
+}
+
+.purchaseOrden_body-firstLine-infoProveedor-codigo {
+    display: grid;
+    grid-area: codigoInfoPro;
+    grid-template-areas: 
+        'lblCodigoInfoPro'
+        'txtCodigoInfoPro';
+    grid-template-rows: 45% 55%;
+}
+
+#lblCodigoPurchaseOrden {
+    background-color: #e3e3e3;
+    font-size: 15px;
+    grid-area: lblCodigoInfoPro;
+    margin-left: 5px;
+    padding-top: 2px;
+    text-align: start;
+    width: 90%;
+}
+
+#txtCodigoPurchaseOrden {
+    grid-area: txtCodigoInfoPro; 
+    height: 80%;
+    margin-left: 5px;
+    margin-top: 2px;
+    width: 90%;
+}
+
+.purchaseOrden_body-firstLine-infoProveedor-nombre {
+    display: grid;
+    grid-area: nombreInfoPro;
+    grid-template-areas: 
+        'lblNombreProInfoPro'
+        'txtNombreProInfoPro';
+    grid-template-rows: 45% 55%;
+}
+
+#lblNombreProPurchaseOrden {
+    background-color: #e3e3e3;
+    font-size: 15px;
+    grid-area: lblNombreProInfoPro;
+    margin-left: 5px;
+    padding-top: 2px;
+    text-align: start;
+    width: 95%;
+}
+
+#txtNombreProPurchaseOrden {
+    grid-area: txtNombreProInfoPro; 
+    height: 80%;
+    margin-left: 5px;
+    margin-top: 2px;
+    width: 95%;
+}
+
+.purchaseOrden_body-firstLine-formaPago {
+    border: 1px solid #c4c4c4;
+    display: grid;
+    grid-area: formaPago;
+    grid-template-areas: 
+        'titleFormaPago'
+        'inputsFormaPago';
+    grid-template-rows: 30% 70%;
+}
+
+#lblTitleFormaPago {
+    color: #848585;
+    font-size: 15px;
+    grid-area: titleFormaPago;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.purchaseOrden_body-firstLine-formaPago-inputs {
+    display: grid;
+    grid-area: inputsFormaPago;
+    grid-template-areas: 
+        'contado'
+        'credito';
+    grid-template-rows: 50% 50%;
+}
+
+.purchaseOrden_body-firstLine-formaPago-contado {
+    display: grid;
+    grid-area: contado;
+    grid-template-areas: 
+        'rbcontado lblcontado';
+    grid-template-columns: 5% 20%;
+}
+
+#rbContadoFormaPagoPO {
+    grid-area: rbcontado;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+#lblContadoFormaPagoPO {
+    font-size: 15px;
+    grid-area: lblcontado;
+    margin-left: 10px;
+    padding-top: 3px;
+    text-align: start;
+    width: 95%;
+}
+
+.purchaseOrden_body-firstLine-formaPago-credito {
+    display: grid;
+    grid-area: credito;
+    grid-template-areas: 
+        'rbs dias';
+    grid-template-columns: 30% 30%;
+}
+
+.purchaseOrden_body-firstLine-formaPago-credito-rb {
+    display: grid;
+    grid-area: rbs;
+    grid-template-areas: 
+        'rbCredito lblCredito';
+    grid-template-columns: 15% 85%;
+}
+
+#rbCreditoFormaPagoPO {
+    grid-area: rbCredito;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+#lblCreditoFormaPagoPO {
+    font-size: 15px;
+    grid-area: lblCredito;
+    margin-left: 12px;
+    padding-top: 3px;
+    text-align: start;
+    width: 95%;
+}
+
+.purchaseOrden_body-firstLine-formaPago-credito-dias {
+    display: grid;
+    grid-area: dias;
+    height: 90%;
+    grid-template-areas: 
+        'txtdias lbldias';
+    grid-template-columns: 50% 50%;
+}
+
+#txtDiasCreditoFormaPagoPO {
+    grid-area: txtdias;
+    height: 70%;
+    margin-top: 2px;
+}
+
+#lblDiasCreditoFormaPagoPO {
+    grid-area: lbldias;
+    padding-top: 1px;
+    text-align: center;
+}
+
+.purchaseOrden_body-secondLine {
+    display: grid;
+    grid-area: secondLine;
+    grid-template-areas: 
+        'opciones moneda';
+    grid-template-columns: 70% 30%;
+}
+
+.purchaseOrden_body-secondLine-opciones {
+    border: 1px solid #c4c4c4;
+    display: grid;
+    grid-area: opciones;
+    grid-template-areas: 
+        'titleOpciones'
+        'inputsOpciones';
+    grid-template-rows: 30% 70%;
+}
+
+#lblTitleOpciones {
+    color: #848585;
+    font-size: 15px;
+    grid-area: titleOpciones;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.purchaseOrden_body-secondLine-opciones-inputs {
+    display: grid;
+    grid-area: inputsOpciones;
+    grid-template-areas: 
+        'entregaOpciones entregarOpciones';
+    grid-template-columns: 30% 70%;
+}
+
+.purchaseOrden_body-secondLine-opciones-entrega {
+    display: grid;
+    grid-area: entregaOpciones;
+    grid-template-areas: 
+        'lblEntregaOpciones'
+        'txtEntregaOpciones';
+    grid-template-rows: 45% 55%;
+}
+
+#lblentregaPurchaseOrden {
+    background-color: #e3e3e3; 
+    font-size: 15px;
+    grid-area: lblEntregaOpciones;
+    margin-left: 5px;
+    padding-top: 2px;
+    text-align: start;
+    width: 90%;
+}
+
+.purchaseOrden_body-secondLine-opciones-entrega-inputs {
+    display: grid;
+    grid-area: txtEntregaOpciones;
+    width: 91.5%;
+    grid-template-areas: 
+        'inputEntrega lblDiasEntrega';
+    grid-template-columns: 80% 20%;
+}
+
+#txtentregaPurchaseOrden {
+    grid-area: inputEntrega; 
+    height: 80%;
+    margin-left: 5px;
+    margin-top: 2px;
+    width: 90%;
+}
+
+#lblDiasEntregaPurchaseOrden {
+    background-color: #e3e3e3;
+    grid-area: lblDiasEntrega;
+    padding-top: 1px;
+    text-align: start;
+}
+
+.purchaseOrden_body-secondLine-opciones-entregar {
+    display: grid;
+    grid-area: entregarOpciones;
+    grid-template-areas: 
+        'lblEntregarOpciones'
+        'txtEntregarOpciones';
+    grid-template-rows: 45% 55%;
+}
+
+#lblentregarProPurchaseOrden {
+    background-color: #e3e3e3; 
+    font-size: 15px;
+    grid-area: lblEntregarOpciones;
+    margin-left: 5px;
+    padding-top: 2px;
+    text-align: start;
+    width: 95%;
+}
+
+#txtentregarProPurchaseOrden {
+    grid-area: txtEntregarOpciones; 
+    height: 80%;
+    margin-left: 5px;
+    margin-top: 2px;
+    width: 95%;
+}
+
+.purchaseOrden_body-secondLine-moneda  {
+    border: 1px solid #c4c4c4;
+    display: grid;
+    grid-area: moneda;
+    grid-template-areas: 
+        'titleMoneda'
+        'inputsMoneda';
+    grid-template-rows: 30% 70%;
+}
+
+#lblTitleMoneda {
+    color: #848585;
+    font-size: 15px;
+    grid-area: titleMoneda;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.purchaseOrden_body-secondLine-moneda-inputs {
+    display: grid;
+    grid-area: inputsMoneda;
+    grid-template-areas: 
+        'lblMoneda'
+        'inputMoneda';
+    grid-template-rows: 45% 55%;
+}
+
+#lblMonedaPurchaseOrden {
+    background-color: #e3e3e3; 
+    font-size: 15px;
+    grid-area: lblMoneda;
+    margin-left: 5px;
+    padding-top: 2px;
+    text-align: center;
+    width: 40%;
+}
+
+#cboMonedaPurchaseOrden {
+    grid-area: inputMoneda;
+    height: 80%;
+    margin-left: 5px;
+    margin-top: 2px;
+    text-align: center;
+    width: 40%;
+}
+
+.purchaseOrden_body-thirdLine {
+    border: 1px solid #c4c4c4;
+    display: grid;
+    grid-area: thirdLine;
+    grid-template-areas: 
+        'first'
+        'second';
+    grid-template-rows: 55% 45%;
+}
+
+.purchaseOrden_body-thirdLine-first {
+    display: grid;
+    grid-area: first;
+    grid-template-areas: 
+        'titleArticulos'
+        'inputsArticulos';
+    grid-template-rows: 30% 70%;
+}
+
+#lblTitleInfoArticuloPurO {
+    color: #848585;
+    font-size: 15px;
+    grid-area: titleArticulos;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.purchaseOrden_body-thirdLine-first-inputs {
+    display: grid;
+    grid-area: inputsArticulos;
+    grid-template-areas: 
+        'codigoArt descrip';
+    grid-template-columns: 30% 70%;
+}
+
+.purchaseOrden_body-thirdLine-first-inputs-codigoArt {
+    display: grid;
+    grid-area: codigoArt;
+    grid-template-areas: 
+        'lblCodigoArt'
+        'txtCodigoArt';
+    grid-template-rows: 45% 55%;
+}
+
+#lblCodigoArtPurchaseOrden {
+    background-color: #e3e3e3; 
+    font-size: 15px;
+    grid-area: lblCodigoArt;
+    margin-left: 5px;
+    padding-top: 2px;
+    text-align: start;
+    width: 90%;
+}
+
+#txtCodigoArtPurchaseOrden {
+    grid-area: txtCodigoArt; 
+    height: 80%;
+    margin-left: 5px;
+    margin-top: 2px;
+    width: 90%;
+}
+
+.purchaseOrden_body-thirdLine-first-inputs-descrip {
+    display: grid;
+    grid-area: descrip;
+    grid-template-areas: 
+        'lblDescrip'
+        'txtDescrip';
+    grid-template-rows: 45% 55%;
+}
+
+#lblDescripPurchaseOrden {
+    background-color: #e3e3e3; 
+    font-size: 15px;
+    grid-area: lblDescrip;
+    margin-left: 5px;
+    padding-top: 2px;
+    text-align: start;
+    width: 95%;
+}
+
+#txtDescripPurchaseOrden {
+    grid-area: txtDescrip; 
+    height: 80%;
+    margin-left: 5px;
+    margin-top: 2px;
+    width: 95%;
+}
+
+.purchaseOrden_body-thirdLine-second {
+    display: grid;
+    grid-area: second;
+    grid-template-areas: 
+        'precioUnit fletes otros costos desc imp cantidad subtotal';
+    grid-template-columns: 15% 11.5% 11.5% 11.5% 10.5% 10.5% 11.5% 18%;
+}
+
+.purchaseOrden_body-thirdLine-second-precioUnit {
+    display: grid;
+    grid-area: precioUnit;
+    margin-top: 3px;
+    grid-template-areas: 
+        'lblPrecioUnit'
+        'txtPrecioUnit';
+    grid-template-rows: 45% 55%;
+}
+
+#lblPrecioUnitPurchaseOrden {
+    background-color: #e3e3e3; 
+    font-size: 15px;
+    grid-area: lblPrecioUnit;
+    margin-left: 5px;
+    padding-top: 2px;
+    text-align: start;
+    width: 90%;
+}
+
+#txtPrecioUnitPurchaseOrden {
+    grid-area: txtPrecioUnit; 
+    height: 80%;
+    margin-left: 5px;
+    margin-top: 2px;
+    width: 90%;
+}
+
+.purchaseOrden_body-thirdLine-second-fletes {
+    display: grid;
+    grid-area: fletes;
+    margin-top: 3px;
+    grid-template-areas: 
+        'lblFletes'
+        'txtFletes';
+    grid-template-rows: 45% 55%;
+}
+
+#lblFletesPurchaseOrden {
+    background-color: #e3e3e3; 
+    font-size: 15px;
+    grid-area: lblFletes;
+    margin-left: 5px;
+    padding-top: 2px;
+    text-align: start;
+    width: 90%;
+}
+
+#txtFletesPurchaseOrden {
+    grid-area: txtFletes; 
+    height: 80%;
+    margin-left: 5px;
+    margin-top: 2px;
+    width: 90%;
+}
+
+.purchaseOrden_body-thirdLine-second-otros {
+    display: grid;
+    grid-area: otros;
+    margin-top: 3px;
+    grid-template-areas: 
+        'lblOtros'
+        'txtOtros';
+    grid-template-rows: 45% 55%;
+}
+
+#lblOtrosPurchaseOrden {
+    background-color: #e3e3e3; 
+    font-size: 15px;
+    grid-area: lblOtros;
+    margin-left: 5px;
+    padding-top: 2px;
+    text-align: start;
+    width: 90%;
+}
+
+#txtOtrosPurchaseOrden {
+    grid-area: txtOtros; 
+    height: 80%;
+    margin-left: 5px;
+    margin-top: 2px;
+    width: 90%;
+}
+
+.purchaseOrden_body-thirdLine-second-costo {
+    display: grid;
+    grid-area: costos;
+    margin-top: 3px;
+    grid-template-areas: 
+        'lblCostos'
+        'txtCostos';
+    grid-template-rows: 45% 55%;
+}
+
+#lblCostoPurchaseOrden {
+    background-color: #e3e3e3; 
+    font-size: 15px;
+    grid-area: lblCostos;
+    margin-left: 5px;
+    padding-top: 2px;
+    text-align: start;
+    width: 90%;
+}
+
+#txtCostoPurchaseOrden {
+    grid-area: txtCostos; 
+    height: 80%;
+    margin-left: 5px;
+    margin-top: 2px;
+    width: 90%;
+}
+
+.purchaseOrden_body-thirdLine-second-desc {
+    display: grid;
+    grid-area: desc;
+    margin-top: 3px;
+    grid-template-areas: 
+        'lblDesc'
+        'txtDesc';
+    grid-template-rows: 45% 55%;
+}
+
+#lblDescPurchaseOrden {
+    background-color: #e3e3e3; 
+    font-size: 15px;
+    grid-area: lblDesc;
+    margin-left: 5px;
+    padding-top: 2px;
+    text-align: start;
+    width: 90%;
+}
+
+#txtDescPurchaseOrden {
+    grid-area: txtDesc; 
+    height: 80%;
+    margin-left: 5px;
+    margin-top: 2px;
+    width: 90%;
+}
+
+.purchaseOrden_body-thirdLine-second-imp {
+    display: grid;
+    grid-area: imp;
+    margin-top: 3px;
+    grid-template-areas: 
+        'lblImp'
+        'txtImp';
+    grid-template-rows: 45% 55%;
+}
+
+#lblImpPurchaseOrden {
+    background-color: #e3e3e3; 
+    font-size: 15px;
+    grid-area: lblImp;
+    margin-left: 5px;
+    padding-top: 2px;
+    text-align: start;
+    width: 90%;
+}
+
+#txtImpPurchaseOrden {
+    grid-area: txtImp; 
+    height: 80%;
+    margin-left: 5px;
+    margin-top: 2px;
+    width: 90%;
+}
+
+.purchaseOrden_body-thirdLine-second-cantidad {
+    display: grid;
+    grid-area: cantidad;
+    margin-top: 3px;
+    grid-template-areas: 
+        'lblCantidad'
+        'txtCantidad';
+    grid-template-rows: 45% 55%;
+}
+
+#lblCantidadPurchaseOrden {
+    background-color: #e3e3e3; 
+    font-size: 15px;
+    grid-area: lblCantidad;
+    margin-left: 5px;
+    padding-top: 2px;
+    text-align: start;
+    width: 90%;
+}
+
+#txtCantidadPurchaseOrden {
+    grid-area: txtCantidad; 
+    height: 80%;
+    margin-left: 5px;
+    margin-top: 2px;
+    width: 90%;
+}
+
+.purchaseOrden_body-thirdLine-second-subtotal {
+    display: grid;
+    grid-area: subtotal;
+    margin-top: 3px;
+    grid-template-areas: 
+        'lblSubTotal'
+        'txtSubTotal';
+    grid-template-rows: 45% 55%;
+}
+
+#lblSubTotalPurchaseOrden {
+    background-color: #e3e3e3; 
+    font-size: 15px;
+    grid-area: lblSubTotal;
+    margin-left: 5px;
+    padding-top: 2px;
+    text-align: start;
+    width: 80%;
+}
+
+#txtSubTotalPurchaseOrden {
+    grid-area: txtSubTotal; 
+    height: 80%;
+    margin-left: 5px;
+    margin-top: 2px;
+    width: 80%;
+}
+
+.purchaseOrden_body-table {
+    border: 1px solid #c4c4c4;
+    display: grid;
+    grid-area: table;
+    margin-top: 3px;
+    grid-template-areas: 
+        'observaciones'
+        'table'
+        'totals';
+    grid-template-rows: 20% 60% 20%;
+}
+
+.purchaseOrden_body-table-obser {
+    display: grid;
+    grid-area: observaciones;
+    grid-template-areas: 
+        'lblObser'
+        'txtObser';
+    grid-template-rows: 45% 55%;
+}
+
+#lblObserPurchaseOrden {
+    background-color: #e3e3e3;
+    font-size: 15px;
+    grid-area: lblObser;
+    margin-left: 5px;
+    text-align: start;
+    width: 97%;
+}
+
+#txtObserPurchaseOrden {
+    font-size: 15px;
+    grid-area: txtObser;
+    height: 80%;
+    margin-left: 5px;
+    margin-top: 3px;
+    text-align: start;
+    width: 97%;
+}
+
+.purchaseOrden_body-table-table {
+    grid-area: table;
+}
+
+.purchaseOrden_body-table-table-main {
+    width: 100%;
+}
+
+.purchaseOrden_body-table-header-codigo {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 8%;
+}
+
+.purchaseOrden_body-table-header-descrip {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 12%;
+}
+
+.purchaseOrden_body-table-header-precioUnit {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 8%;
+}
+
+.purchaseOrden_body-table-header-cantidad {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 8%;
+}
+
+.purchaseOrden_body-table-header-iv {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 8%;
+}
+
+.purchaseOrden_body-table-header-desc {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 8%;
+}
+
+.purchaseOrden_body-table-header-gravado {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 8%;
+}
+
+.purchaseOrden_body-table-codigo {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.purchaseOrden_body-table-descrip {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.purchaseOrden_body-table-precioUnit {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.purchaseOrden_body-table-cantidad {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.purchaseOrden_body-table-iv {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.purchaseOrden_body-table-desc {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.purchaseOrden_body-table-gravado {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.purchaseOrden_body-table-totals {
+    display: grid;
+    grid-area: totals;
+    grid-template-areas: 
+        'subgravado subexento subtotal descuento impuesto total';
+    grid-template-columns: 16.66% 16.66% 16.66% 16.66% 16.66% 16.66%;
+}
+
+.purchaseOrden_body-table-totals-subgravado {
+    display: grid;
+    grid-area: subgravado;
+    margin-left: 5px;
+    margin-right: 5px;
+    grid-template-areas: 
+        'lblSubGravado'
+        'txtSubGravado';
+    grid-template-rows: 45% 55%;
+}
+
+#lblsubgravadoPurchaseOrden {
+    background-color: #BFBCC1;
+    color: #4169e1;
+    grid-area: lblSubGravado;
+    text-align: center;
+}
+
+#txtsubgravadoPurchaseOrden {
+    color: black;
+    font-size: 15px;
+    grid-area: txtSubGravado;
+    height: 80%;
+    margin-top: 2px;
+    text-align: center;
+}
+
+.purchaseOrden_body-table-totals-subexento {
+    display: grid;
+    grid-area: subexento;
+    margin-left: 5px;
+    margin-right: 5px;
+    grid-template-areas: 
+        'lblSubExento'
+        'txtSubExento';
+    grid-template-rows: 45% 55%;
+}
+
+#lblsubexentoPurchaseOrden {
+    background-color: #BFBCC1;
+    color: #4169e1;
+    grid-area: lblSubExento;
+    text-align: center;
+}
+
+#txtsubexentoPurchaseOrden {
+    color: black;
+    font-size: 15px;
+    grid-area: txtSubExento;
+    height: 80%;
+    margin-top: 2px;
+    text-align: center;
+}
+
+.purchaseOrden_body-table-totals-subTotal {
+    display: grid;
+    grid-area: subtotal;
+    margin-left: 5px;
+    margin-right: 5px;
+    grid-template-areas: 
+        'lblSubTotal'
+        'txtSubTotal';
+    grid-template-rows: 45% 55%;
+}
+
+#lblsubTotalPurchaseOrden {
+    background-color: #BFBCC1;
+    color: #4169e1;
+    grid-area: lblSubTotal;
+    text-align: center;
+}
+
+#txtsubTotalPurchaseOrden {
+    color: black;
+    font-size: 15px;
+    grid-area: txtSubTotal;
+    height: 80%;
+    margin-top: 2px;
+    text-align: center;
+}
+
+.purchaseOrden_body-table-totals-descuento {
+    display: grid;
+    grid-area: descuento;
+    margin-left: 5px;
+    margin-right: 5px;
+    grid-template-areas: 
+        'lblDescuento'
+        'txtDescuento';
+    grid-template-rows: 45% 55%;
+}
+
+#lbldescuentoPurchaseOrden {
+    background-color: #BFBCC1;
+    color: #4169e1;
+    grid-area: lblDescuento;
+    text-align: center;
+}
+
+#txtdescuentoPurchaseOrden {
+    color: black;
+    font-size: 15px;
+    grid-area: txtDescuento;
+    height: 80%;
+    margin-top: 2px;
+    text-align: center;
+}
+
+.purchaseOrden_body-table-totals-impuesto {
+    display: grid;
+    grid-area: impuesto;
+    margin-left: 5px;
+    margin-right: 5px;
+    grid-template-areas: 
+        'lblImpuesto'
+        'txtImpuesto';
+    grid-template-rows: 45% 55%;
+}
+
+#lblimpuestoPurchaseOrden {
+    background-color: #BFBCC1;
+    color: #4169e1;
+    grid-area: lblImpuesto;
+    text-align: center;
+}
+
+#txtimpuestoPurchaseOrden {
+    color: black;
+    font-size: 15px;
+    grid-area: txtImpuesto;
+    height: 80%;
+    margin-top: 2px;
+    text-align: center;
+}
+
+.purchaseOrden_body-table-totals-total {
+    display: grid;
+    grid-area: total;
+    margin-left: 5px;
+    margin-right: 5px;
+    grid-template-areas: 
+        'lblTotal'
+        'txtTotal';
+    grid-template-rows: 45% 55%;
+}
+
+#lbltotalPurchaseOrden {
+    background-color: #BFBCC1;
+    color: #4169e1;
+    grid-area: lblTotal;
+    text-align: center;
+}
+
+#txttotalPurchaseOrden {
+    color: black;
+    font-size: 15px;
+    grid-area: txtTotal;
+    height: 80%;
+    margin-top: 2px;
+    text-align: center;
+}

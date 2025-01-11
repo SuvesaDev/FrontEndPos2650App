@@ -1,0 +1,170 @@
+.usualCustomers_header-main {
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'title'
+        'firstLine'
+        'secondLine';
+    grid-template-rows: 25% 35% 40%;
+}
+
+.usualCustomers_header-title {
+    background-color: #2E8B57;
+    display: grid;
+    grid-area: title;
+    height: 100%;
+    grid-template-areas: 
+        'inputTitle lbltitle';
+    grid-template-columns: 20% 60%;
+}
+
+.usualCustomers_header-title-input {
+    grid-area: inputTitle;
+    padding-top: 10px;
+}
+
+#inputUsualTitleCustomers {
+    color: red;
+    font-size: 15px;
+    text-align: center;
+}
+
+#lblTitleUsualCustomers {
+    color: white;
+    font-size: 25px;
+    grid-area: lbltitle;
+    padding-top: 5px;
+    text-align: center;
+}
+
+.usualCustomers_header-firstLine {
+    display: grid;
+    grid-area: firstLine;
+    height: 100%;
+    margin-left: 5%;
+    margin-right: 5%;
+    grid-template-areas: 
+        'nombre cedula';
+    grid-template-columns: 70% 30%;
+    background-color: #CCD0C4;
+}
+
+.usualCustomers_header-firstLine-Nombre {
+    display: grid;
+    grid-area: nombre;
+    height: 100%;
+    grid-template-areas: 
+        'labelNombre'
+        'inputNombre';
+    grid-template-rows: 40% 60%;
+}
+
+.usualCustomers_header-firstLine-nombre-label {
+    background-color: #EEF2E6;
+    grid-area: labelNombre;
+    margin-left: 5%;
+    margin-right: 3%;
+    margin-top: 5px;
+}
+
+#lblNombreUsualCustomers {
+    color: black;
+    font-size: 15px;
+    padding-left: 1px;
+    text-align: start;
+}
+
+.usualCustomers_header-firstLine-nombre-input {
+    grid-area: inputNombre;
+    margin-left: 5%;
+    margin-right: 3%;
+}
+
+#txtUsualNombreCustomers {
+    color: black;
+    font-size: 15px;
+    margin-top: 5px;
+    text-align: start;
+    width: 100%;
+}
+
+.usualCustomers_header-firstLine-Cedula {
+    grid-area: cedula;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'labelCedula'
+        'inputCedula';
+    grid-template-rows: 40% 60%;
+}
+
+.usualCustomers_header-firstLine-cedula-label {
+    background-color: #EEF2E6;
+    grid-area: labelCedula;
+    margin-left: 5%;
+    margin-right: 3%;
+    margin-top: 5px;
+}
+
+#lblCedulaUsualCustomers {
+    color: black;
+    font-size: 15px;
+    padding-left: 1px;
+    text-align: start;
+}
+
+.usualCustomers_header-firstLine-cedula-input {
+    grid-area: inputCedula;
+    margin-left: 5%;
+    margin-right: 3%;
+}
+
+#txtCedulaUsualCustomers {
+    color: black;
+    font-size: 15px;
+    margin-top: 5px;
+    text-align: start;
+    width: 100%;
+}
+
+.usualCustomers_header-secondLine {
+    grid-area: secondLine;
+    margin-left: 5%;
+    margin-right: 5%;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'labelobser'
+        'inputobser';
+    grid-template-rows: 40% 60%;
+    background-color: #CCD0C4;
+}
+
+.usualCustomers_header-secondLine-observaciones-label {
+    background-color: #EEF2E6;
+    grid-area: labelobser;
+    margin-left: 45px;
+    margin-right: 12px;
+    margin-top: 5px;
+}
+
+#lblObservacionesUsualCustomers {
+    color: black;
+    font-size: 15px;
+    padding-left: 1px;
+    text-align: start;
+}
+
+.usualCustomers_header-secondLine-observaciones-input {
+    grid-area: inputobser;
+    margin-left: 45px;
+    margin-right: 12px;
+    margin-top: 5px;
+}
+
+#txtObservacionesUsualCustomers {
+    color: black;
+    font-size: 15px;
+    text-align: start;
+    width: 100%;
+}

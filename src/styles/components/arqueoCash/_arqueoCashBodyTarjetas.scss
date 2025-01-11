@@ -1,0 +1,240 @@
+.arqueoCash_body_tarjetas {
+    display: grid;
+    height: 75%;
+    grid-template-areas: 
+        'title'
+        'table';
+    grid-template-rows: 10% 90%;
+    border: 1px solid gray;
+}
+
+.arqueoCash_body_tarjetas-title {
+    grid-area: title;
+    border-bottom: 1px solid gray;
+}
+
+#lblTarjetasArqueoTitle {
+    text-align: start;
+    font-size: 15px;
+    padding-left: 10px;
+}
+
+.arqueoCash_body_tarjetas-table {
+    grid-area: table;
+    // display: grid;
+    height: 100%;
+    // grid-template-areas: 
+    //     'tabla';
+    // grid-template-rows: 100%;
+}
+
+.arqueoCash_body_tarjetas-table-inputs {
+    grid-area: inputs;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'tarjeta moneda total';
+    grid-template-columns: 33% 33% 33%;
+}
+
+.arqueoCash_body_tarjetas-table-inputs-tarjeta {
+    grid-area: tarjeta;
+    display: grid;
+    padding-left: 25px;
+    grid-template-areas: 
+        'lbltarjetaD'
+        'txttarjetaD';
+    grid-template-rows: 45% 55%;
+}
+
+.arqueoCash_body_tarjetas-table-inputs-tarjeta-label {
+    grid-area: lbltarjetaD;
+}
+
+#lbltarjetaDesgloce {
+    text-align: center;
+    font-size: 15px;
+    padding-top: 2px;
+}
+
+.arqueoCash_body_tarjetas-table-inputs-tarjeta-input {
+    grid-area: txttarjetaD;
+    padding-top: 1px;   
+}
+
+#txttarjetaDesgloce {
+    text-align: center;
+    text-align: center;
+    font-size: 15px;
+}
+
+.arqueoCash_body_tarjetas-table-inputs-moneda {
+    grid-area: moneda;
+    display: grid;
+    padding-left: 25px;
+    grid-template-areas: 
+        'lblmonedaD'
+        'txtmonedaD';
+    grid-template-rows: 45% 55%;
+}
+
+.arqueoCash_body_tarjetas-table-inputs-moneda-label {
+    grid-area: lblmonedaD;
+}
+
+#lblmonedaDesgloce {
+    text-align: center;
+    font-size: 15px;
+    padding-top: 2px;
+}
+
+.arqueoCash_body_tarjetas-table-inputs-moneda-input {
+    grid-area: txtmonedaD;
+    padding-top: 1px;   
+}
+
+#txtmonedaDesgloce {
+    text-align: center;
+    text-align: center;
+    font-size: 15px;
+}
+
+.arqueoCash_body_tarjetas-table-inputs-total {
+    grid-area: total;
+    display: grid;
+    padding-left: 25px;
+    grid-template-areas: 
+        'lbltotalD'
+        'txttotalD';
+    grid-template-rows: 45% 55%;
+}
+
+.arqueoCash_body_tarjetas-table-inputs-total-label {
+    grid-area: lbltotalD;
+}
+
+#lbltotalDesgloce {
+    text-align: center;
+    font-size: 15px;
+    padding-top: 2px;
+}
+
+.arqueoCash_body_tarjetas-table-inputs-total-input {
+    grid-area: txttotalD;
+    padding-top: 1px;   
+}
+
+#txttotalDesgloce {
+    text-align: center;
+    text-align: center;
+    font-size: 15px;
+    width: 90%;
+}
+
+.arqueoCash_body_tarjetas-table-inputs-cantidad {
+    grid-area: cantidad;
+    display: grid;
+    padding-left: 25px;
+    grid-template-areas: 
+        'lblcantidadD'
+        'txtcantidadD';
+    grid-template-rows: 45% 55%;
+}
+
+.arqueoCash_body_tarjetas-table-inputs-cantidad-label {
+    grid-area: lblcantidadD;
+}
+
+#lblCantidadDesgloce {
+    text-align: center;
+    font-size: 15px;
+    padding-top: 2px;
+}
+
+.arqueoCash_body_tarjetas-table-inputs-cantidad-input {
+    grid-area: txtcantidadD;
+    padding-top: 1px;   
+}
+
+#txtCantidadDesgloce {
+    text-align: center;
+    text-align: center;
+    font-size: 15px;
+}
+
+.arqueoCash_body_tarjetas-table-inputs-total {
+    grid-area: total;
+    display: grid;
+    padding-left: 25px;
+    grid-template-areas: 
+        'lbltotalD'
+        'txttotalD';
+    grid-template-rows: 45% 55%;
+}
+
+.arqueoCash_body_tarjetas-table-inputs-total-label {
+    grid-area: lbltotalD;
+}
+
+#lblTotalDesgloce {
+    text-align: center;
+    font-size: 15px;
+    padding-top: 2px;
+}
+
+.arqueoCash_body_tarjetas-table-inputs-total-input {
+    grid-area: txttotalD;
+    padding-top: 1px;   
+}
+
+#txtTotalDesgloce {
+    text-align: center;
+    font-size: 15px;
+}
+
+// .arqueoCash_body_tarjetas-table-tabla {
+//     grid-area: tabla;
+//     border-top: 1px solid gray;
+// }
+
+.arqueoCash_body_tarjetas-table-tabla-main {
+    width: 95%;
+    height: 100%;
+    margin-left: 10px;
+    overflow-y: scroll;
+    scrollbar-color: rebeccapurple green;
+    scrollbar-width: thin;
+    border: 1px solid black;
+}
+
+.arqueoCash_body_tarjetas-table-tabla-header {
+    background-color: #ACA9A9;
+    text-align: start;
+    padding-left: 5px;
+    width: 250px;
+}
+
+.arqueoCash_body_tarjetas-table-tabla-body {
+    text-align: start;
+    font-style: normal;
+}
+
+.arqueoCash_body_tarjetas-table-tabla-body-row {
+    &:hover {
+        cursor: pointer;
+        background-color: #ACA9A9;
+    }
+}
+
+.arqueoCash_body_tarjetas-table-tabla-body-cell {
+    padding-left: 5px;
+    border-bottom: 1px solid #ACA9A9;
+    // cursor: pointer;
+}
+
+#txtMontoArqueoCashDetalleTarjeta {
+    text-align: start;
+    padding-left: 2px;
+    font-size: 12px;
+    width: 90%;
+}

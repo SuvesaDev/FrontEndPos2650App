@@ -1,0 +1,64 @@
+.providers_form-personal-4-email {
+    grid-area: emailPro;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'labelemailP inputemailP';
+    grid-template-columns: 25% 75%;
+}
+
+.providers_form-personal-4-label-email {
+    background-color: #EEF2E6;
+    grid-area: labelemailP;
+    height: 80%;
+    margin: 2px;
+}
+
+#lblEmailProviders {
+    color: #5457D5;
+    font-size: 15px;
+    padding-left: 20%;
+    padding-top: 1px;
+    text-align: start;
+}
+
+.providers_form-personal-4-input-email {
+    grid-area: inputemailP;
+}
+
+#txtEmailProviders {
+    color: #5457D5;
+    font-size: 12px;
+    height: 80%;
+    margin-left: 2px;
+    margin-right: 5px;
+    margin-top: 2px;
+    text-align: start;
+    width: 97%;
+    padding-left: 5px;
+}
+
+.providers_form-personal-4-series {
+    grid-area: seriesPro;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'inputCheckSeriesP labelCheckSeriesP';
+    grid-template-columns: 5% 95%;
+}
+
+.providers_form-personal-4-check-series-input {
+    grid-area: inputCheckSeriesP;
+}
+
+#checkSeries {
+    margin-top: 5px;
+}
+
+#lblSeries {
+    color: #5457D5;
+    font-size: 15px;
+    grid-area: labelCheckSeriesP;
+    padding-top: 3px;
+    text-align: start;
+}

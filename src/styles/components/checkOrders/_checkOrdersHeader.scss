@@ -1,0 +1,419 @@
+.checkOrders_header-main {
+    display: grid;
+    height: 100%;
+    margin-left: 5%;
+    margin-right: 5%;
+    grid-template-areas: 
+        'filtrarFecha filtrarEstado buttons';
+    grid-template-columns: 30% 30% 30%;
+}
+
+.checkOrders_header-filtarFecha {
+    border: 1px solid #ccc;
+    display: grid;
+    grid-area: filtrarFecha;
+    height: 90%;
+    margin: 5px;
+    grid-template-areas: 
+        'check'
+        'desde'
+        'hasta';
+    grid-template-rows: 25% 30% 30%;
+}
+
+.checkOrders_header-filtarFecha-check {
+    display: grid;
+    grid-area: check;
+    grid-template-areas: 
+        'inputcheck lblcheck';
+    grid-template-columns: 10% 35%;
+}
+
+.checkOrders_header-filtarFecha-check-input {
+    grid-area: inputcheck;
+    padding-top: 5px;
+}
+
+#lblFiltrarFecha {
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblcheck;
+    padding-top: 5px;
+    text-align: start;
+}
+
+.checkOrders_header-filtarFecha-desde {
+    display: grid;
+    grid-area: desde;
+    grid-template-areas: 
+        'lblDesde txtDesde';
+    grid-template-columns: 40% 50%;
+}
+
+#lblDesdeFiltrarFechaTQ {
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblDesde;
+    padding-top: 10px;
+    text-align: center;
+}
+
+#txtDesdeFiltrarFechaTQ {
+    font-size: 15px;
+    grid-area: txtDesde;
+    height: 70%;
+    margin-top: 6px;
+}
+
+.checkOrders_header-filtarFecha-hasta {
+    display: grid;
+    grid-area: hasta;
+    grid-template-areas: 
+        'lblHasta txtHasta';
+    grid-template-columns: 40% 50%;
+}
+
+#lblHastaFiltrarFechaTQ {
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblHasta;
+    padding-top: 10px;
+    text-align: center;
+}
+
+#txtHastaFiltrarFechaTQ {
+    font-size: 15px;
+    grid-area: txtHasta;
+    height: 70%;
+    margin-top: 6px;
+}
+
+.checkOrders_header-filtarEstado {
+    border: 1px solid #ccc;
+    display: grid;
+    grid-area: filtrarEstado;
+    height: 90%;
+    margin: 5px;
+    grid-template-areas: 
+        'check'
+        'inputs';
+    grid-template-rows: 25% 75%;
+}
+
+.checkOrders_header-filtarEstado-check {
+    display: grid;
+    grid-area: check;
+    grid-template-areas: 
+        'inputcheck lblcheck';
+    grid-template-columns: 10% 40%;
+}
+
+.checkOrders_header-filtarEstado-check-input {
+    grid-area: inputcheck;
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+#lblFiltrarFecha {
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblcheck;
+    padding-top: 5px;
+    text-align: start;
+}
+
+.checkOrders_header-filtarEstado-inputs {
+    display: grid;
+    grid-area: inputs;
+    grid-template-areas: 
+        'leftSide rightSide';
+    grid-template-columns: 60% 40%;
+}
+
+.checkOrders_header-filtarEstado-inputs-leftSide {
+    display: grid;
+    grid-area: leftSide;
+    margin-left: 10px;
+    grid-template-areas: 
+        'solicitado'
+        'recibido'
+        'agotado';
+    grid-template-rows: 33% 33% 33%;
+}
+
+.checkOrders_header-filtarEstado-inputs-leftSide-solicitado {
+    display: grid;
+    grid-area: solicitado;
+    grid-template-areas: 
+        'inputcheckS lblcheckS';
+    grid-template-columns: 10% 75%;
+}
+
+.checkOrders_header-filtarEstado-inputs-leftSide-solicitado-input {
+    grid-area: inputcheckS;
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+#lblSolicitadoCK {
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblcheckS;
+    height: 60%;
+    margin-top: 5px;
+    text-align: start;
+    width: 50%;
+}
+
+.checkOrders_header-filtarEstado-inputs-leftSide-recibido {
+    display: grid;
+    grid-area: recibido;
+    grid-template-areas: 
+        'inputcheckR lblcheckR';
+    grid-template-columns: 10% 80%;
+}
+
+.checkOrders_header-filtarEstado-inputs-leftSide-recibido-input {
+    grid-area: inputcheckR;
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+#lblRecibidoCK {
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblcheckR;
+    height: 60%;
+    margin-top: 5px;
+    text-align: start;
+    width: 40%;
+}
+
+.checkOrders_header-filtarEstado-inputs-leftSide-agotado {
+    display: grid;
+    grid-area: agotado;
+    grid-template-areas: 
+        'inputcheckA lblcheckA';
+    grid-template-columns: 10% 50%;
+}
+
+.checkOrders_header-filtarEstado-inputs-leftSide-agotado-input {
+    grid-area: inputcheckA;
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+#lblAgotadoCK {
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblcheckA;
+    height: 60%;
+    margin-top: 5px;
+    text-align: start;
+    width: 65%;
+}
+
+.checkOrders_header-filtarEstado-inputs-rightSide {
+    display: grid;
+    grid-area: rightSide;
+    margin-left: 10px;
+    grid-template-areas: 
+        'pedido'
+        'anulada'
+        'perdida';
+    grid-template-rows: 33% 33% 33%;
+}
+
+.checkOrders_header-filtarEstado-inputs-leftSide-pedido {
+    display: grid;
+    grid-area: pedido;
+    grid-template-areas: 
+        'inputcheckR lblcheckR';
+    grid-template-columns: 20% 50%;
+}
+
+.checkOrders_header-filtarEstado-inputs-leftSide-pedido-input {
+    grid-area: inputcheckR;
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+#lblPedidoCK {
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblcheckR;
+    height: 60%;
+    margin-top: 5px;
+    text-align: start;
+    width: 80%;
+}
+
+.checkOrders_header-filtarEstado-inputs-leftSide-anulada {
+    display: grid;
+    grid-area: anulada;
+    grid-template-areas: 
+        'inputcheckAnu lblcheckAnu';
+    grid-template-columns: 20% 50%;
+}
+
+.checkOrders_header-filtarEstado-inputs-leftSide-anulada-input {
+    grid-area: inputcheckAnu;
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+#lblAnuladaCK {
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblcheckAnu;
+    height: 60%;
+    margin-top: 5px;
+    text-align: start;
+}
+
+.checkOrders_header-filtarEstado-inputs-leftSide-perdida {
+    display: grid;
+    grid-area: perdida;
+    grid-template-areas: 
+        'inputcheckP lblcheckP';
+    grid-template-columns: 20% 50%;
+}
+
+.checkOrders_header-filtarEstado-inputs-leftSide-perdida-input {
+    grid-area: inputcheckP;
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+#lblPerdidaTQ {
+    background-color: lighten(#800080, 20%);
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblcheckP;
+    height: 60%;
+    margin-top: 5px;
+    text-align: start;
+}
+
+.checkOrders_header-buttons {
+    border: 1px solid #ccc;
+    display: grid;
+    grid-area: buttons;
+    height: 90%;
+    margin: 5px;
+    grid-template-areas: 
+        'checks btns';
+    grid-template-columns: 50% 50%;
+}
+
+.checkOrders_header-buttons-checks {
+    display: grid;
+    grid-area: checks;
+    grid-template-areas: 
+        'pedidosBodega'
+        'pendientesSolicitar'
+        'pendientesRecibir';
+    grid-template-rows: 33% 33% 33%;
+}
+
+.checkOrders_header-buttons-checks-pedidosBodega {
+    display: grid;
+    grid-area: pedidosBodega;
+    grid-template-areas: 
+        'inputcheckPedidos lblcheckPedidos';
+    grid-template-columns: 10% 90%;
+}
+
+.checkOrders_header-buttons-check-pedidosBodega-inputs {
+    grid-area: inputcheckPedidos;
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+#lblPedidosBodega {
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblcheckPedidos;
+    height: 60%;
+    margin-top: 5px;
+    text-align: start;
+    padding-left: 5px;
+    width: 80%;
+}
+
+.checkOrders_header-buttons-checks-pendientesSolicitar {
+    display: grid;
+    grid-area: pendientesSolicitar;
+    grid-template-areas: 
+        'inputcheckPenSoli lblcheckPenSoli';
+    grid-template-columns: 10% 90%;
+}
+
+.checkOrders_header-buttons-check-pendientesSolicitar-inputs {
+    grid-area: inputcheckPenSoli;
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+#lblPendientesSolicitar {
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblcheckPenSoli;
+    height: 60%;
+    margin-top: 5px;
+    text-align: start;
+    padding-left: 5px;
+    width: 100%;
+}
+
+.checkOrders_header-buttons-checks-pendientesRecibir {
+    display: grid;
+    grid-area: pendientesRecibir;
+    grid-template-areas: 
+        'inputcheckPenRec lblcheckPenRec';
+    grid-template-columns: 10% 90%;
+}
+
+.checkOrders_header-buttons-check-pendientesRecibir-inputs {
+    grid-area: inputcheckPenRec;
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+#lblPendientesRecibir {
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblcheckPenRec;
+    height: 60%;
+    margin-top: 5px;
+    text-align: start;
+    padding-left: 5px;
+    width: 95%;
+}
+
+.checkOrders_header-buttons-btn {
+    grid-area: btns;
+    padding-top: 10px;
+}
+
+#btnExportarExcel {
+    font-size: 15px;
+    font-weight: bold;
+    height: 30%;
+    text-align: center;
+    width: 90%;
+
+    &:hover {
+        background-color: #ccc;
+        cursor: pointer;
+    }
+}

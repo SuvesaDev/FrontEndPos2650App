@@ -1,0 +1,84 @@
+.repayment_body_general_main {
+    text-align: center;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'tabs'
+        'content'
+        'btn';
+    grid-template-rows: 7% 85% 8%;
+}
+
+.repayment_body_general-tabs {
+    grid-area: tabs;
+    padding-top: 5px;
+    border-bottom: 1px solid rgb(176, 175, 175);
+}
+
+.repayment_body_general-tabs-tabs {
+    display: inline-block;
+}
+
+.repayment-tab {
+    background: transparent;
+    border: 1px solid black;
+    border-radius: 5px;
+    color: black;
+    cursor: pointer;
+    font-size: 15px;
+    margin-right: 5px;
+    padding: 5px 15px;
+}
+
+.repayment-tab-disable {
+    background: gray;
+    border: 1px solid black;
+    border-radius: 5px;
+    color: black;
+    cursor: not-allowed;
+    font-size: 15px;
+    margin-right: 5px;
+    padding: 5px 15px;
+}
+
+.repayment-tab-active {
+    background: $primary;
+    border-radius: 10%;
+    border: 1px solid #ddd;
+    color: #F2F4F4;
+    cursor: pointer;
+    font-size: 15px;
+    margin-right: 5px;
+    padding: 5px 15px;
+}
+
+.repayment_body_general-content {
+    grid-area: content;
+}
+
+.repayment_body_general-btn {
+    grid-area: btn;
+    padding-top: 5px;
+    margin-left: 90%;
+}
+
+.iconArrowRepaymentBodyGeneral {
+    height: 90%;
+    width: 30%;
+    color: gray;
+
+    &:hover {
+        cursor: pointer;
+        color: $secundary;
+    }
+}
+
+.iconArrowRepaymentBodyGeneral-disable {
+    height: 90%;
+    width: 30%;
+    color: gray;
+
+    &:hover {
+        cursor: not-allowed;
+    }
+}

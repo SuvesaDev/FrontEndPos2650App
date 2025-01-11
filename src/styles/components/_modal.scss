@@ -1,0 +1,557 @@
+/* Modal */
+.ReactModalPortal > div{
+    opacity: 0;
+}
+
+.ReactModalPortal .ReactModal__Overlay {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    transition: opacity .2s ease-in-out;
+    z-index: 999;
+}
+
+.modal-fondo {
+    background-color: rgba(0, 0, 0, 0.3);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    position: fixed;
+}
+
+.ReactModalPortal .ReactModal__Overlay--after-open {
+    opacity: 1;
+}
+
+.ReactModalPortal .ReactModal__Overlay--before-close {
+    opacity: 0;
+}
+
+.modal-addCustomer {
+    background: #F0F0F0;
+    border-radius: 5px;
+    color: rgb(51, 51, 51);
+    display: inline;
+    height: 280px;
+    width: 50%;
+    margin-top: 200px;
+    margin-right: 50%;
+    outline: none;
+    padding: 10px;
+}
+
+.modal-editCustomer {
+    background: #F0F0F0;
+    border-radius: 5px;
+    color: rgb(51, 51, 51);
+    display: inline;
+    height: 425px;
+    width: 75%;
+    margin-top: 400px;
+    margin-left: 25%;
+    outline: none;
+    padding: 10px;
+}
+
+.modal-magCustomer {
+    background: #F0F0F0;
+    border-radius: 5px;
+    color: rgb(51, 51, 51);
+    display: inline;
+    height: 350px;
+    width: 50%;
+    margin-top: 280px;
+    margin-right: 50%;
+    outline: none;
+    padding: 10px;
+}
+
+.modal-importarFactura {
+    background: #F0F0F0;
+    border-radius: 5px;
+    color: rgb(51, 51, 51);
+    display: inline;
+    height: 450px;
+    width: 75%;
+    margin-top: 300px;
+    margin-left: 25%;
+    outline: none;
+    padding: 10px;
+}
+
+.modal-importarFacturaPrecio {
+    background: #F0F0F0;
+    border-radius: 5px;
+    color: rgb(51, 51, 51);
+    display: inline;
+    height: 280px;
+    width: 45%;
+    outline: none;
+    padding: 10px;
+}
+
+.modal-unifyCodeAdd {
+    background: #F0F0F0;
+    border-radius: 5px;
+    color: rgb(51, 51, 51);
+    display: inline;
+    height: 180px;
+    width: 50%;
+    outline: none;
+    padding: 10px;
+}
+
+.modal-addImpuesto {
+    background: #F0F0F0;
+    border-radius: 5px;
+    color: rgb(51, 51, 51);
+    display: inline;
+    height: 140px;
+    margin-bottom: 100px;
+    outline: none;
+    padding: 10px;
+    width: 50%;
+}
+
+.modal-searchProviders {
+    background: #F0F0F0;
+    border-radius: 5px;
+    color: rgb(51, 51, 51);
+    display: inline;
+    height: 500px;
+    margin-top: 350px;
+    margin-left: 25%;
+    outline: none;
+    padding: 10px;
+    width: 80%;
+}
+
+.modal-assingCabysCode {
+    background: #F0F0F0;
+    border-radius: 5px;
+    color: rgb(51, 51, 51);
+    display: inline;
+    height: 500px;
+    margin-top: 400px;
+    margin-left: 25%;
+    outline: none;
+    padding: 10px;
+    width: 80%;
+}
+
+.alert-class {
+    background-color: transparent;
+    color: white;
+}
+
+.modal-searchCustomer {
+    background: #F0F0F0;
+    border-radius: 5px;
+    color: rgb(51, 51, 51);
+    display: inline;
+    height: 450px;
+    width: 45%;
+    margin-top: 200px;
+    margin-right: 50%;
+    outline: none;
+    padding: 10px;
+}
+
+.modal-searchInventory {
+    background: #F0F0F0;
+    border-radius: 5px;
+    color: rgb(51, 51, 51);
+    height: 450px;
+    width: 80%;
+    margin-top: 300px;
+    // margin-right: 50%;
+    outline: none;
+    padding: 10px;
+}
+
+.modal-searchCompras {
+    background: #F0F0F0;
+    border-radius: 5px;
+    color: rgb(51, 51, 51);
+    height: 450px;
+    width: 80%;
+    margin-top: 300px;
+    // margin-right: 50%;
+    outline: none;
+    padding: 10px;
+}
+
+
+.modal-searchPresentacion {
+    background: #F0F0F0;
+    border-radius: 5px;
+    color: rgb(51, 51, 51);
+    height: 400px;
+    width: 50%;
+    margin-top: 200px;
+    // margin-right: 600px;
+    outline: none;
+    padding: 10px;
+}
+
+.modal-searchFamilia {
+    background: #F0F0F0;
+    border-radius: 5px;
+    color: rgb(51, 51, 51);
+    height: 400px;
+    width: 50%;
+    margin-top: 200px;
+    // margin-right: 600px;
+    outline: none;
+    padding: 10px;
+}
+
+.modal-searchUbicacion {
+    background: #F0F0F0;
+    border-radius: 5px;
+    color: rgb(51, 51, 51);
+    height: 400px;
+    width: 50%;
+    margin-top: 200px;
+    // margin-right: 600px;
+    outline: none;
+    padding: 10px;
+}
+
+.modal-searchProveedor {
+    background: #F0F0F0;
+    border-radius: 5px;
+    color: rgb(51, 51, 51);
+    height: 400px;
+    width: 50%;
+    margin-top: 200px;
+    // margin-right: 600px;
+    outline: none;
+    padding: 10px;
+}
+
+.modal-searchBodega {
+    background: #F0F0F0;
+    border-radius: 5px;
+    color: rgb(51, 51, 51);
+    height: 400px;
+    width: 50%;
+    margin-top: 200px;
+    // margin-right: 600px;
+    outline: none;
+    padding: 10px;
+}
+
+.modal-addCorreos {
+    background: #F0F0F0;
+    border-radius: 5px;
+    color: rgb(51, 51, 51);
+    display: inline;
+    height: 350px;
+    width: 50%;
+    margin-top: 280px;
+    margin-right: 50%;
+    outline: none;
+    padding: 10px;
+}
+
+.modal_getAlbaran {
+    background: #F0F0F0;
+    border-radius: 5px;
+    color: rgb(51, 51, 51);
+    height: 400px;
+    width: 60%;
+    margin-top: 200px;
+    outline: none;
+    padding: 10px;
+}
+
+.modal_generarFactura {
+    background: #F0F0F0;
+    border-radius: 5px;
+    color: rgb(51, 51, 51);
+    height: 300px;
+    width: 50%;
+    margin-top: 100px;
+    outline: none;
+    padding: 10px;
+}
+
+.modal_createNuevaCategoria {
+    background: #F0F0F0;
+    border-radius: 5px;
+    color: rgb(51, 51, 51);
+    height: 200px;
+    width: 40%;
+    margin-top: 50px;
+    outline: none;
+    padding: 10px;
+}
+
+.modal-addProveedor {
+    background: #F0F0F0;
+    border-radius: 5px;
+    color: rgb(51, 51, 51);
+    height: 300px;
+    width: 50%;
+    margin-top: 200px;
+    // margin-right: 600px;
+    outline: none;
+    padding: 10px;
+}
+
+.modal-selectedUserOpenCash {
+    background: #F0F0F0;
+    border-radius: 5px;
+    color: rgb(51, 51, 51);
+    display: inline;
+    height: 130px;
+    width: 50%;
+    margin-right: 50%;
+    outline: none;
+    padding: 10px;
+}
+
+.modal-selectedUserArqueoCash {
+    background: #F0F0F0;
+    border-radius: 5px;
+    color: rgb(51, 51, 51);
+    display: inline;
+    height: 130px;
+    width: 50%;
+    margin-right: 50%;
+    outline: none;
+    padding: 10px;
+}
+
+.modal-searchOpenCash {
+    background: #F0F0F0;
+    border-radius: 5px;
+    color: rgb(51, 51, 51);
+    height: 420px;
+    width: 50%;
+    margin-top: 200px;
+    outline: none;
+    padding: 10px;
+}
+
+.modal-searchArqueoCash {
+    background: #F0F0F0;
+    border-radius: 5px;
+    color: rgb(51, 51, 51);
+    height: 420px;
+    width: 50%;
+    margin-top: 200px;
+    outline: none;
+    padding: 10px;
+}
+
+.modal-searchUsers {
+    background: #F0F0F0;
+    border-radius: 5px;
+    color: rgb(51, 51, 51);
+    height: 400px;
+    width: 50%;
+    margin-top: 200px;
+    // margin-right: 600px;
+    outline: none;
+    padding: 10px;
+}
+
+.modal-deatilsPreventaCharge {
+    background: #F0F0F0;
+    border-radius: 5px;
+    color: rgb(51, 51, 51);
+    height: 420px;
+    width: 50%;
+    margin-top: 200px;
+    outline: none;
+    padding: 10px;
+}
+
+.modal-ticketCharge {
+    background: #F0F0F0;
+    border-radius: 5px;
+    color: rgb(51, 51, 51);
+    height: 480px;
+    width: 50%;
+    margin-top: 300px;
+    outline: none;
+    padding: 10px;
+}
+
+.modal-addCustomerConsultAlbaranes {
+    background: #F0F0F0;
+    border-radius: 5px;
+    color: rgb(51, 51, 51);
+    display: inline;
+    height: 280px;
+    width: 50%;
+    margin-top: 200px;
+    margin-right: 50%;
+    outline: none;
+    padding: 10px;
+}
+
+.modal-searchCodigoCabys {
+    background: #F0F0F0;
+    border-radius: 5px;
+    color: rgb(51, 51, 51);
+    height: 400px;
+    width: 50%;
+    margin-top: 200px;
+    // margin-right: 600px;
+    outline: none;
+    padding: 10px;
+}
+
+.modal-searchCodigoCabysBuys {
+    background: #F0F0F0;
+    border-radius: 5px;
+    color: rgb(51, 51, 51);
+    height: 400px;
+    width: 50%;
+    margin-top: 200px;
+    // margin-right: 600px;
+    outline: none;
+    padding: 10px;
+}
+
+.modal-seletedAperturaCloseCash {
+    background: #F0F0F0;
+    border-radius: 5px;
+    color: rgb(51, 51, 51);
+    height: 400px;
+    width: 50%;
+    margin-top: 200px;
+    // margin-right: 600px;
+    outline: none;
+    padding: 10px;
+}
+
+.modal-searchCloseCash {
+    background: #F0F0F0;
+    border-radius: 5px;
+    color: rgb(51, 51, 51);
+    height: 400px;
+    width: 50%;
+    margin-top: 200px;
+    // margin-right: 600px;
+    outline: none;
+    padding: 10px;
+}
+
+.modal-searchCustomerDownPayment {
+    background: #F0F0F0;
+    border-radius: 5px;
+    color: rgb(51, 51, 51);
+    display: inline;
+    height: 450px;
+    width: 45%;
+    margin-top: 200px;
+    margin-right: 50%;
+    outline: none;
+    padding: 10px;
+}
+
+.modal-searchDownPayment {
+    background: #F0F0F0;
+    border-radius: 5px;
+    color: rgb(51, 51, 51);
+    display: inline;
+    height: 450px;
+    width: 45%;
+    margin-top: 200px;
+    margin-right: 50%;
+    outline: none;
+    padding: 10px;
+}
+
+.modal-ConsultDepositsOnePreDeposits {
+    background: #F0F0F0;
+    border-radius: 5px;
+    color: rgb(51, 51, 51);
+    display: inline;
+    height: 350px;
+    width: 55%;
+    margin-right: 50%;
+    outline: none;
+    padding: 10px;
+}
+
+.modal-ConsultDepositsOnePreDeposits {
+    background: #F0F0F0;
+    border-radius: 5px;
+    color: rgb(51, 51, 51);
+    display: inline;
+    height: 380px;
+    width: 55%;
+    margin-top: 200px;
+    margin-right: 50%;
+    outline: none;
+    padding: 10px;
+}
+
+.modal-addPreDeposito {
+    background: #F0F0F0;
+    border-radius: 5px;
+    color: rgb(51, 51, 51);
+    display: inline;
+    height: 320px;
+    width: 50%;
+    margin-top: 150px;
+    margin-right: 50%;
+    outline: none;
+    padding: 10px;
+}
+
+.modal-searchBillingRepayment {
+    background: #F0F0F0;
+    border-radius: 5px;
+    color: rgb(51, 51, 51);
+    display: inline;
+    height: 450px;
+    width: 50%;
+    margin-top: 200px;
+    margin-right: 50%;
+    outline: none;
+    padding: 10px;
+}
+
+.modal-searchInventarioBuys {
+    background: #F0F0F0;
+    border-radius: 5px;
+    color: rgb(51, 51, 51);
+    height: 400px;
+    width: 50%;
+    margin-top: 200px;
+    // margin-right: 600px;
+    outline: none;
+    padding: 10px;
+}
+
+.modal-seletedAperturaArqueoCash {
+    background: #F0F0F0;
+    border-radius: 5px;
+    color: rgb(51, 51, 51);
+    height: 400px;
+    width: 50%;
+    margin-top: 200px;
+    // margin-right: 600px;
+    outline: none;
+    padding: 10px;
+}
+
+.modal-searchCustomerCollect {
+    background: #F0F0F0;
+    border-radius: 5px;
+    color: rgb(51, 51, 51);
+    display: inline;
+    height: 350px;
+    width: 45%;
+    margin-top: 200px;
+    margin-right: 50%;
+    outline: none;
+    padding: 10px;
+}

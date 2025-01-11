@@ -1,0 +1,78 @@
+.providers_form-personal-7-contacto {
+    grid-area: contactoPro;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'inputContactoP labelContactoP';
+    grid-template-columns: 25% 75%;
+}
+
+.providers_form-personal-7-label-contacto {
+    background-color: #EEF2E6;
+    grid-area: inputContactoP;
+    height: 80%;
+    margin: 2px;
+}
+
+#lblContactoProviders {
+    color: #5457D5;
+    font-size: 15px;
+    padding-left: 20%;
+    padding-top: 1px;
+    text-align: start;
+}
+
+.providers_form-personal-7-input-contacto {
+    grid-area: labelContactoP;
+}
+
+#txtContactoProviders {
+    color: #5457D5;
+    font-size: 12px;
+    height: 80%;
+    margin-left: 5px;
+    margin-right: 8%;
+    margin-top: 2px;
+    text-align: start;
+    width: 97%;
+    padding-left: 5px;
+}
+
+.providers_form-personal-7-telefonoContacto {
+    grid-area: telefonoContactoPro;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'inputTelefonoContactoP labelTelefonoContactoP';
+    grid-template-columns: 25% 75%;
+}
+
+.providers_form-personal-7-label-telefonoContacto {
+    background-color: #EEF2E6;
+    grid-area: inputTelefonoContactoP;
+    height: 80%;
+    margin: 2px;
+}
+
+#lblTelefonoContactoProviders {
+    color: #5457D5;
+    font-size: 15px;
+    padding-left: 20%;
+    padding-top: 1px;
+    text-align: start;
+}
+
+.providers_form-personal-7-input-telefonoContacto {
+    grid-area: labelTelefonoContactoP;
+}
+
+#txtTelefonoContactoProviders {
+    color: #5457D5;
+    font-size: 12px;
+    height: 80%;
+    margin-right: 8%;
+    margin-top: 2px;
+    text-align: start;
+    width: 90%;
+    padding-left: 5px;
+}

@@ -1,0 +1,256 @@
+.screenRegister-main {
+    display: grid;
+    text-align: center;
+    grid-template-areas: 
+        'header'
+        'body'
+        'footer';
+    grid-template-rows: 40px 448px 60px;
+}
+
+.screenRegister-header {
+    background-color: #3D59A9;
+    grid-area: header;
+}
+
+#lblTitleScreenRegister {
+    color: white;
+    font-size: 25px;
+    padding-top: 5px;
+    text-align: center;
+}
+
+.screenRegister-body {
+    display: grid;
+    grid-area: body;
+    margin-bottom: 20%;
+    margin-left: 25%;
+    margin-right: 25%;
+    padding-top: 2%;
+    grid-template-areas: 
+        'codigo pantalla';
+    grid-template-columns: 30% 70%;
+}
+
+.screenRegister-body-codigo {
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    display: grid;
+    grid-area: codigo;
+    height: 50%;
+    grid-template-areas: 
+        'lblCodigo'
+        'txtCodigo';
+    grid-template-rows: 40% 60%;
+}
+
+#lblCodigoScreenRegister {
+    background-color: #f0f0f0;
+    border: 1px solid black;
+    font-size: 15px;
+    grid-area: lblCodigo;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+    text-align: center;
+}
+
+#txtCodigoScreenRegister {
+    font-size: 15px;
+    grid-area: txtCodigo;
+    height: 70%;
+    margin-left: 10px;
+    margin-top: 5px;
+    text-align: center;
+    width: 90%;
+}
+
+.screenRegister-body-pantalla {
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+    display: grid;
+    grid-area: pantalla;
+    height: 50%;
+    grid-template-areas: 
+        'lblPantalla'
+        'txtPantalla';
+    grid-template-rows: 40% 60%;
+}
+
+#lblPantallaScreenRegister {
+    background-color: #f0f0f0;
+    border: 1px solid black;
+    font-size: 15px;
+    grid-area: lblPantalla;
+    margin-left: 10px;
+    margin-right: 15px;
+    margin-top: 5px;
+    text-align: center;
+}
+
+#txtPantallaScreenRegister {
+    font-size: 15px;
+    grid-area: txtPantalla;
+    height: 70%;
+    margin-left: 10px;
+    margin-top: 5px;
+    text-align: center;
+    width: 95%;
+}
+
+.screenRegister-icons {
+    border: 1px solid black;
+    display: grid;
+    grid-area: footer;
+    height: 100%;
+    grid-template-areas: 
+        'btnNuevo btnBuscar btnRegistrar btnEliminar btnCerrar';
+    grid-template-columns: 8% 8% 8% 8% 8%;
+}
+
+.screenRegister-icons-nuevo {
+    display: grid;
+    grid-area: btnNuevo;
+    height: 100%;
+    grid-template-areas: 
+        'iconNue'
+        'lblNue';
+    grid-template-rows: 60% 40%;
+}
+
+.screenRegister-icons-nuevo-icon {
+    color: #F68A1D;
+    grid-area: iconNue;
+    padding-top: 4px;
+}
+
+#iconNuevoScreenRegister {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblNuevoScreenRegister {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblNue;
+    text-align: center;
+}
+
+.screenRegister-icons-Buscar {
+    grid-area: btnBuscar;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'iconBus'
+        'lblBus';
+    grid-template-rows: 60% 40%;
+}
+
+.screenRegister-icons-Buscar-icon {
+    color: #F68A1D;
+    grid-area: iconBus;
+    padding-top: 4px;
+}
+
+#iconBusScreenRegister {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblBuscarScreenRegister {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblBus;
+    text-align: center;
+}
+
+.screenRegister-icons-registrar {
+    grid-area: btnRegistrar;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'iconReg'
+        'lblReg';
+    grid-template-rows: 60% 40%;
+}
+
+.screenRegister-icons-registrar-icon {
+    color: #F68A1D;
+    grid-area: iconReg;
+    padding-top: 4px;
+}
+
+#iconRegistrarScreenRegister {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblRegistrarScreenRegister {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblReg;
+    text-align: center;
+}
+
+.screenRegister-icons-eliminar {
+    grid-area: btnEliminar;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'iconEli'
+        'lblEli';
+    grid-template-rows: 60% 40%;
+}
+
+.screenRegister-icons-eliminar-icon {
+    color: #F68A1D;
+    grid-area: iconEli;
+    padding-top: 4px;
+}
+
+#iconEliminarScreenRegister {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblEliminarScreenRegister {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblEli;
+    text-align: center;
+}
+
+.screenRegister-icons-cerrar {
+    grid-area: btnCerrar;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'iconCer'
+        'lblCer';
+    grid-template-rows: 60% 40%;
+}
+
+.screenRegister-icons-cerrar-icon {
+    color: #F68A1D;
+    grid-area: iconCer;
+    padding-top: 4px;
+}
+
+#iconCerrarScreenRegister {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblCerrarScreenRegister {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblCer;
+    text-align: center;
+}

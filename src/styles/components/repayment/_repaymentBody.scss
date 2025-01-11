@@ -1,0 +1,721 @@
+.repayment_body-main {
+    display: grid;
+    grid-area: inputs;
+    height: 100%;
+    grid-template-areas: 
+        'leftSide rightSide';
+    grid-template-columns: 50% 50%;
+}
+
+.repayment_body-leftSide {
+    display: grid;
+    grid-area: leftSide;
+    height: 100%;
+    padding: 10px;
+    grid-template-areas: 
+        'leftfirstBox'
+        'leftsecondBox';
+    grid-template-rows: 55% 45%;
+}
+
+.repayment_body-leftSide-firstBox {
+    display: grid;
+    grid-area: leftfirstBox;
+    height: 100%;
+    grid-template-areas: 
+        'lFirstLine'
+        'lSecondLine'
+        'lThirdLine';
+    grid-template-rows: 34% 33% 31%;
+}
+
+.repayment_body-leftSide-firstBox-firstLine {
+    display: grid;
+    grid-area: lFirstLine;
+    height: 100%;
+    grid-template-areas: 
+        'tipo caja numero fecha';
+    grid-template-columns: 25% 25% 25% 25%;
+}
+
+.repayment_body-leftSide-firstBox-firstLine-tipo {
+    display: grid;
+    grid-area: tipo;
+    height: 100%;
+    margin-right: 5px;
+    grid-template-areas: 
+        'lblTipo'
+        'inputTipo';
+    grid-template-rows: 45% 55%;
+}
+
+#lblTipoDevoluciones {
+    background-color: #EEF2E6;
+    color: #3D59A9;
+    font-size: 14px;
+    grid-area: lblTipo;
+    text-align: start;
+    padding-left: 5px;
+}
+
+#cboTipoDevoluciones {
+    font-size: 14px;
+    grid-area: inputTipo;
+    height: 85%;
+    text-align: start;
+    padding-left: 5px;
+}
+
+.repayment_body-leftSide-firstBox-firstLine-caja {
+    display: grid;
+    grid-area: caja;
+    height: 100%;
+    margin-right: 5px;
+    grid-template-areas: 
+        'lblCaja'
+        'inputCaja';
+    grid-template-rows: 45% 55%;
+}
+
+#lblCajaDevoluciones {
+    background-color: #EEF2E6;
+    color: #3D59A9;
+    font-size: 14px;
+    grid-area: lblCaja;
+    text-align: start;
+    padding-left: 5px;
+}
+
+#txtCajaDevoluciones {
+    font-size: 14px;
+    grid-area: inputCaja;
+    height: 85%;
+    text-align: start;
+    padding-left: 5px;
+}
+
+.repayment_body-leftSide-firstBox-firstLine-numero {
+    display: grid;
+    grid-area: numero;
+    height: 100%;
+    margin-right: 5px;
+    grid-template-areas: 
+        'lblNumero'
+        'inputNumero';
+    grid-template-rows: 45% 55%;
+}
+
+.repayment_body-leftSide-firstBox-firstLine-numero-label {
+    grid-area: lblNumero;
+}
+
+#lblNumeroDevoluciones {
+    background-color: #EEF2E6;
+    color: #3D59A9;
+    font-size: 14px;
+    text-align: start;
+    padding-left: 5px;
+}
+
+.repayment_body-leftSide-firstBox-firstLine-numero-inputs {
+    grid-area: inputNumero;
+    display: grid;
+    height: 100%;
+    margin-right: 5px;
+    grid-template-areas: 
+        'txtNumero iconSearch ';
+    grid-template-columns: 85% 15%;
+}
+
+.repayment_body-leftSide-firstBox-firstLine-numero-inputs-input {
+    grid-area: txtNumero;
+}
+
+#txtNumeroDevoluciones {
+    font-size: 14px;
+    width: 90%;
+    height: 85%;
+    text-align: start;
+    padding-left: 5px;
+}
+
+.repayment_body-leftSide-firstBox-firstLine-numero-inputs-icon {
+    grid-area: iconSearch;
+    margin-top: 2px;
+}
+
+.btnSearchNumeroFacturaRepayment {
+    color: $secundary;
+    
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.btnSearchNumeroFacturaRepayment-disable {
+    color: gray;
+    
+    &:hover {
+        cursor: not-allowed;
+    }
+}
+
+.repayment_body-leftSide-firstBox-firstLine-fecha {
+    display: grid;
+    grid-area: fecha;
+    height: 100%;
+    margin-right: 5px;
+    grid-template-areas: 
+        'lblFecha'
+        'inputFecha';
+    grid-template-rows: 45% 55%;
+}
+
+#lblFechaDevoluciones {
+    background-color: #EEF2E6;
+    color: #3D59A9;
+    font-size: 14px;
+    grid-area: lblFecha;
+    text-align: start;
+    padding-left: 5px;
+}
+
+#txtFechaDevoluciones {
+    font-size: 14px;
+    grid-area: inputFecha;
+    height: 85%;
+    text-align: center;
+}
+
+.repayment_body-leftSide-firstBox-secondLine {
+    display: grid;
+    grid-area: lSecondLine;
+    height: 100%;
+    margin-right: 5px;
+    grid-template-areas: 
+        'lblNombreCliente'
+        'inputNombreCliente';
+    grid-template-rows: 45% 55%;
+}
+
+#lblNombreClienteDevoluciones {
+    background-color: #EEF2E6;
+    color: #3D59A9;
+    font-size: 14px;
+    grid-area: lblNombreCliente;
+    padding-left: 5px;
+    text-align: start;
+}
+
+#txtNombreClienteDevoluciones {
+    font-size: 14px;
+    grid-area: inputNombreCliente;
+    height: 85%;
+    text-align: start;
+    padding-left: 5px;
+}
+
+.repayment_body-leftSide-firstBox-thirdLine {
+    display: grid;
+    grid-area: lThirdLine;
+    height: 100%;
+    grid-template-areas: 
+        'moneda monto';
+    grid-template-columns: 50% 50%;
+}
+
+.repayment_body-leftSide-firstBox-thirdLine-Moneda {
+    display: grid;
+    gap: 5px;
+    grid-area: moneda;
+    height: 100%;
+    margin-right: 12px;
+    grid-template-areas: 
+        'lblMoneda cboMoneda';
+    grid-template-columns: 50% 50%;
+}
+
+#lblMonedaDevoluciones {
+    background-color: #EEF2E6;
+    color: #3D59A9;
+    font-size: 14px;
+    grid-area: lblMoneda;
+    height: 50%;
+    margin-top: 8px;
+    padding-left: 5px;
+    text-align: center;
+}
+
+#cboMonedaDevoluciones {
+    font-size: 14px;
+    grid-area: cboMoneda;
+    height: 50%;
+    margin-top: 8px;
+    text-align: start;
+    padding-left: 5px;
+}
+
+.repayment_body-leftSide-firstBox-thirdLine-Monto {
+    display: grid;
+    gap: 5px;
+    grid-area: monto;
+    height: 100%;
+    margin-right: 10px;
+    grid-template-areas: 
+        'lblMonto txtMonto';
+    grid-template-columns: 50% 50%;
+}
+
+#lblMontoDevoluciones {
+    background-color: #EEF2E6;
+    color: #3D59A9;
+    font-size: 14px;
+    grid-area: lblMonto;
+    height: 50%;
+    margin-top: 8px;
+    padding-left: 5px;
+    text-align: center;
+}
+
+#txtMontoDevoluciones {
+    font-size: 14px;
+    grid-area: txtMonto;
+    height: 50%;
+    margin-top: 8px;
+    text-align: start;
+    padding-left: 5px;
+}
+
+.repayment_body-leftSide-secondBox {
+    display: grid;
+    grid-area: leftsecondBox;
+    height: 100%;
+    padding-top: 5px;
+    grid-template-areas: 
+        'leftSecondBox rightSecondBox';
+    grid-template-columns: 50% 50%;
+}
+
+.repayment_body-leftSide-secondBox-leftSide {
+    display: grid;
+    grid-area: leftSecondBox;
+    height: 100%;
+    grid-template-areas: 
+        'codigo'
+        'precioUnitario'
+        'descuento';
+    grid-template-rows: 33% 33% 33%;
+}
+
+.repayment_body-leftSide-secondBox-leftSide-firstLine {
+    display: grid;
+    gap: 5px;
+    grid-area: codigo;
+    height: 100%;
+    margin-right: 5px;
+    grid-template-areas: 
+        'lblCodigo txtCodigo';
+    grid-template-columns: 50% 50%;
+}
+
+#lblCodigoDevoluciones {
+    background-color: #EEF2E6;
+    color: #3D59A9;
+    font-size: 14px;
+    grid-area: lblCodigo;
+    height: 65%;
+}
+
+#txtCodigoDevoluciones {
+    font-size: 15px;
+    grid-area: txtCodigo;
+    height: 65%;
+    text-align: start;
+    padding-left: 5px;
+    width: 95%;
+}
+
+.repayment_body-leftSide-secondBox-leftSide-secondLine {
+    display: grid;
+    gap: 5px;
+    grid-area: precioUnitario;
+    height: 100%;
+    margin-right: 5px;
+    grid-template-areas: 
+        'lblPrecioUnitario txtPrecioUnitario';
+    grid-template-columns: 50% 50%;
+}
+
+#lblPrecioUnitarioDevoluciones {
+    background-color: #EEF2E6;
+    color: #3D59A9;
+    font-size: 14px;
+    grid-area: lblPrecioUnitario;
+    height: 65%;
+}
+
+#txtPrecioUnitarioDevoluciones {
+    font-size: 15px;
+    grid-area: txtPrecioUnitario;
+    padding-left: 5px;
+    height: 65%;
+    text-align: start;
+    width: 95%;
+}
+
+.repayment_body-leftSide-secondBox-leftSide-thirdLine {
+    display: grid;
+    gap: 5px;
+    grid-area: descuento;
+    height: 100%;
+    margin-right: 5px;
+    grid-template-areas: 
+        'lblDescuento txtDescuento';
+    grid-template-columns: 50% 50%;
+}
+
+#lblDescuentoDevoluciones {
+    background-color: #EEF2E6;
+    color: #3D59A9;
+    font-size: 14px;
+    grid-area: lblDescuento;
+    height: 65%;
+}
+
+#txtDescuentoDevoluciones {
+    font-size: 15px;
+    grid-area: txtDescuento;
+    height: 65%;
+    text-align: start;
+    width: 95%;
+    padding-left: 5px;
+}
+
+.repayment_body-leftSide-secondBox-rightSide {
+    display: grid;
+    grid-area: rightSecondBox;
+    height: 100%;
+    grid-template-areas: 
+        'cantOriginal'
+        'devolucion'
+        'button';
+    grid-template-rows: 33% 33% 33%;
+}
+
+.repayment_body-leftSide-secondBox-rightSide-firstLine {
+    display: grid;
+    gap: 5px;
+    grid-area: cantOriginal;
+    height: 100%;
+    margin-right: 5px;
+    grid-template-areas: 
+        'lblCantOriginal txtCantOriginal';
+    grid-template-columns: 50% 50%;
+}
+
+#lblCantOriginalDevoluciones {
+    background-color: #EEF2E6;
+    color: #3D59A9;
+    font-size: 14px;
+    grid-area: lblCantOriginal;
+    height: 65%;
+}
+
+#txtCantOriginalDevoluciones {
+    font-size: 15px;
+    grid-area: txtCantOriginal;
+    height: 65%;
+    text-align: start;
+    width: 95%;
+    padding-left: 5px;
+}
+
+.repayment_body-leftSide-secondBox-rightSide-secondLine {
+    display: grid;
+    gap: 5px;
+    grid-area: devolucion;
+    height: 100%;
+    margin-right: 5px;
+    grid-template-areas: 
+        'lblDevolucion txtDevolucion';
+    grid-template-columns: 50% 50%;
+}
+
+#lblDevolucionDevoluciones {
+    background-color: #EEF2E6;
+    color: #3D59A9;
+    font-size: 14px;
+    grid-area: lblDevolucion;
+    height: 65%;
+}
+
+#txtDevolucionDevoluciones {
+    font-size: 15px;
+    grid-area: txtDevolucion;
+    height: 65%;
+    text-align: start;
+    width: 95%;
+    padding-left: 5px;
+}
+
+.repayment_body-leftSide-secondBox-rightSide-thirdLine {
+    display: grid;
+    grid-area: button;
+    height: 80%;
+    grid-template-areas: 
+        'btnAddAll btnInfo btnAdd';
+    grid-template-columns: 40% 20% 40%;
+}
+
+.repayment_body-leftSide-secondBox-rightSide-thirdLine-btnAddAll {
+    grid-area: btnAddAll;
+}
+
+.btnAddAllDevolucionRepaymentBody {
+    width: 90%;
+    height: 100%;
+    font-size: 15px;
+    background-color: $primary;
+    color: white;
+    border: none;
+    border-radius: 3px;
+
+    &:hover {
+        background-color: $secundary;
+        cursor: pointer;
+    }
+}
+
+.btnAddAllDevolucionRepaymentBody-disable {
+    width: 90%;
+    height: 100%;
+    font-size: 15px;
+    background-color: gray;
+    color: white;
+    border: none;
+    border-radius: 3px;
+
+    &:hover {
+        cursor: not-allowed;
+    }
+}
+
+.repayment_body-leftSide-secondBox-rightSide-thirdLine-info {
+    grid-area: btnInfo;
+    padding-top: 3px;
+}
+
+.iconInfoRepaymentBody {
+    color: $secundary;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.iconInfoRepaymentBody-disable {
+    color: gray;
+
+    &:hover {
+        cursor: not-allowed;
+    }
+}
+
+.lblMensajeInfoRepaymentBody {
+    visibility: visible;
+    width: 250px;
+    background-color: rgb(183, 181, 181);
+    color: #767373;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+  
+    /* Position the tooltip */
+    position: absolute;
+    top: 270px;
+    left: 300px;
+    z-index: 1;
+}
+
+.repayment_body-leftSide-secondBox-rightSide-thirdLine-btn {
+    grid-area: btnAdd;
+    margin-right: 15px;
+}
+
+.btnAddDevolucionRepaymentBody {
+    width: 90%;
+    height: 100%;
+    font-size: 15px;
+    background-color: $primary;
+    color: white;
+    border: none;
+    border-radius: 3px;
+
+    &:hover {
+        background-color: $secundary;
+        cursor: pointer;
+    }
+}
+
+.btnAddDevolucionRepaymentBody-disable {
+    width: 90%;
+    height: 100%;
+    font-size: 15px;
+    background-color: gray;
+    color: white;
+    border: none;
+    border-radius: 3px;
+
+    &:hover {
+        cursor: not-allowed;
+    }
+}
+
+.repayment_body-rightSide {
+    display: grid;
+    grid-area: rightSide;
+    height: 100%;
+    padding: 10px;
+    grid-template-areas: 
+        'title'
+        'table'
+        'inputs';
+    grid-template-rows: 10% 75% 15%;
+}
+
+.repayment_body-rightSide-title {
+    background-color: #EEF2E6;
+    color: #3D59A9;
+    grid-area: title;
+}
+
+#lblTitleRightSide {
+    font-size: 15px;
+    padding-left: 5px;
+    padding-top: 1px;
+    text-align: start;
+}
+
+.repayment_body-rightSide-table {
+    border: 1px solid rgb(83, 82, 82);
+    grid-area: table;
+    height: 168px;
+    overflow: auto;
+}
+
+.repayment_body-table-main {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    scrollbar-color: rebeccapurple green;
+    scrollbar-width: thin;
+    border: 1px solid rgb(176, 173, 173);
+}
+
+.repayment_body-table-header {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 8%;
+}
+
+.repayment_body-table-body {
+    text-align: start;
+    font-style: normal;
+}
+
+.repayment_body-table-body-row {
+    &:hover {
+        cursor: pointer;
+        background-color: #ACA9A9;
+    }
+}
+
+.repayment_body-table-body-row-selected {
+
+    background-color: $primary;
+    color: white;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.repayment_body-table-cell {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.repayment_body-rightSide-inputs {
+    display: grid;
+    gap: 5px;
+    grid-area: inputs;
+    height: 100%;
+    margin-right: 5px;
+    padding-top: 5px;
+    grid-template-areas: 
+        'vete cantBod';
+    grid-template-columns: 50% 50%;
+}
+
+.repayment_body-rightSide-inputs-vete {
+    display: grid;
+    gap: 5px;
+    grid-area: vete;
+    height: 100%;
+    margin-right: 5px;
+    grid-template-areas: 
+        'lblVete inputVete';
+    grid-template-columns: 50% 50%;
+    padding-top: 5px;
+}
+
+#lblVeteDevoluciones {
+    background-color: #EEF2E6;
+    color: #3D59A9;
+    font-size: 14px;
+    grid-area: lblVete;
+    height: 85%;
+    padding-top: 3px;
+}
+
+#txtVeteDevoluciones {
+    font-size: 15px;
+    grid-area: inputVete;
+    height: 85%;
+    text-align: start;
+    width: 95%;
+    padding-left: 5px;
+}
+
+.repayment_body-rightSide-inputs-cantBod {
+    display: grid;
+    gap: 5px;
+    grid-area: cantBod;
+    height: 100%;
+    margin-right: 5px;
+    grid-template-areas: 
+        'lblCantBod inputCantBod';
+    grid-template-columns: 50% 50%;
+    padding-top: 5px;
+}
+
+#lblCantBodDevoluciones {
+    background-color: #EEF2E6;
+    color: #3D59A9;
+    font-size: 14px;
+    grid-area: lblCantBod;
+    height: 85%;
+    padding-top: 3px;
+}
+
+#txtCantBodDevoluciones {
+    font-size: 15px;
+    grid-area: inputCantBod;
+    height: 85%;
+    text-align: start;
+    width: 95%;
+    padding-left: 5px;
+}

@@ -1,0 +1,31 @@
+.raffle_main {
+    display: grid;
+    height: 100%;
+    text-align: center;
+    grid-template-areas: 
+        'header'
+        'body'
+        'footer';
+    grid-template-rows: 40px 448px 60px;
+}
+
+.raffle_header {
+    grid-area: header;
+    background-color: #385ba5;
+}
+
+#lblTitleRaffle {
+    color: white;
+    font-size: 30px;
+    padding-top: 2px;
+    text-align: center;
+}
+
+.raffle_body {
+    grid-area: body;
+}
+
+.raffle_footer {
+    grid-area: footer;
+    border: 1px solid black;
+}

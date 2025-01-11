@@ -1,0 +1,66 @@
+.collectAdjustment_main {
+    display: grid;
+    height: 100%;
+    text-align: center;
+    grid-template-areas: 
+        'header'
+        'body'
+        'table'
+        'footer';
+    grid-template-rows: 35px 233px 200px 80px;
+}
+
+.collectAdjustment_header {
+    background-color: #3D59A9;
+    display: grid;
+    grid-area: header;
+    height: 100%;
+    grid-template-areas: 
+        'title data';
+    grid-template-columns: 85% 15%;
+}
+
+#lblCollectAdjustmentTitle {
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    grid-area: title;
+    padding-left: 25%;
+    padding-top: 4px;
+    text-align: center;
+}
+
+.collectAdjustment_header-data {
+    background-color: #3D59A9;
+    display: grid;
+    grid-area: data;
+    height: 100%;
+    padding-left: 55%;
+    grid-template-areas: 
+        'numbers'
+        'data';
+    grid-template-rows: 50% 50%;
+}
+
+#lblCollectAdjustmentDataNumber {
+    color: white;
+    font-size: 15px;
+    grid-area: numbers;
+}
+
+#lblCollectAdjustmentDataName {
+    font-size: 15px;
+    grid-area: data;
+}
+
+.collectAdjustment_main-body {
+    grid-area: body; 
+}
+
+.collectAdjustment_main-table {
+    grid-area: table;
+}
+
+.collectAdjustment_main-footer {
+    grid-area: footer;
+}

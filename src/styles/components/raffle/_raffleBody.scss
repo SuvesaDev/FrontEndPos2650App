@@ -1,0 +1,271 @@
+.raffle_body-main {
+    border: 1px solid #c4c4c4;
+    display: grid;
+    height: 100%;
+    margin-left: 3%;
+    margin-right: 3%;
+    text-align: center;
+    grid-template-areas: 
+        'inputs'
+        'table';
+    grid-template-rows: 30% 70%;
+}
+
+.raffle_body-inputs {
+    grid-area: inputs;
+    display: grid;
+    grid-template-areas: 
+        'firstLine'
+        'secondLine'
+        'thirdLine';
+    grid-template-rows: 33% 33% 33%;
+}
+
+.raffle_body-inputs-firstLine {
+    grid-area: firstLine;
+    display: grid;
+    grid-template-areas: 
+        'lblDescripcion txtDescripcion';
+    grid-template-columns: 20% 80%;
+}
+
+#lblDescripcionRaffleBody {
+    color: black;
+    font-size: 15px;
+    grid-area: lblDescripcion;
+    padding-top: 12px;
+    text-align: center;
+}
+
+#txtDescripcionRaffleBody {
+    font-size: 15px;
+    grid-area: txtDescripcion;
+    height: 60%;
+    margin-top: 10px;
+    text-align: start;
+    width: 90%;
+}
+
+.raffle_body-inputs-secondLine {
+    grid-area: secondLine;
+    display: grid;
+    grid-template-areas: 
+        'fechaInicio fechaFin';
+    grid-template-columns: 50% 50%;
+}
+
+.raffle_body-inputs-secondLine-fechaInicio {
+    grid-area: fechaInicio;
+    display: grid;
+    margin-left: 80px;
+    grid-template-areas: 
+        'lblFechaInicio txtFechaInicio';
+    grid-template-columns: 30% 70%;
+}
+
+#lblFechaInicioRaffleBody {
+    color: black;
+    font-size: 15px;
+    grid-area: lblFechaInicio;
+    padding-top: 12px;
+    padding-left: 15px;
+    text-align: start;
+}
+
+#txtFechaInicioRaffleBody {
+    font-size: 15px;
+    grid-area: txtFechaInicio;
+    height: 60%;
+    margin-top: 10px;
+    margin-left: 10px;
+    text-align: start;
+    width: 50%;
+}
+
+.raffle_body-inputs-secondLine-fechaFin {
+    grid-area: fechaFin;
+    display: grid;
+    grid-template-areas: 
+        'lblFechaFin txtFechaFin';
+    grid-template-columns: 20% 80%;
+}
+
+#lblFechaFinRaffleBody {
+    color: black;
+    font-size: 15px;
+    grid-area: lblFechaFin;
+    padding-top: 12px;
+    text-align: center;
+}
+
+#txtFechaFinRaffleBody {
+    font-size: 15px;
+    grid-area: txtFechaFin;
+    height: 60%;
+    margin-top: 10px;
+    text-align: start;
+    width: 40%;
+}
+
+.raffle_body-inputs-thirdLine {
+    grid-area: thirdLine;
+    display: grid;
+    grid-template-areas: 
+        'monto check';
+    grid-template-columns: 50% 50%;
+}
+
+.raffle_body-inputs-thirdLine-monto {
+    grid-area: monto;
+    display: grid;
+    margin-left: 80px;
+    grid-template-areas: 
+        'lblMonto txtMonto';
+    grid-template-columns: 30% 70%;
+}
+
+#lblMontoRaffleBody {
+    color: black;
+    font-size: 15px;
+    grid-area: lblMonto;
+    padding-left: 15px;
+    padding-top: 12px;
+    text-align: start;
+}
+
+#txtMontoRaffleBody {
+    font-size: 15px;
+    grid-area: txtMonto;
+    height: 60%;
+    margin-left: 10px;
+    margin-top: 10px;
+    text-align: start;
+    width: 50%;
+}
+
+.raffle_body-inputs-thirdLine-checks {
+    grid-area: check;
+    display: grid;
+    grid-template-areas: 
+        'finalizada anulada';
+    grid-template-columns: 30% 30%;
+}
+
+.raffle_body-inputs-thirdLine-checks-finalizada {
+    grid-area: finalizada;
+    display: grid;
+    grid-template-areas: 
+        'checkFinalizada lblFinalizada';
+    grid-template-columns: 30% 50%;
+}
+
+.raffle_body-inputs-thirdLine-checks-finalizada-input {
+    grid-area: checkFinalizada;
+    margin-left: 15px;
+    margin-top: 12px;
+}
+
+#lblFinalizadaRaffle {
+    color: black;
+    font-size: 15px;
+    grid-area: lblFinalizada;
+    height: 40%;
+    margin-top: 12px;
+    text-align: start;
+    width: 70%;
+}
+
+.raffle_body-inputs-thirdLine-checks-anulada {
+    grid-area: anulada;
+    display: grid;
+    grid-template-areas: 
+        'checkAnulada lblAnulada';
+    grid-template-columns: 30% 50%;
+}
+
+.raffle_body-inputs-thirdLine-checks-anulada-input {
+    grid-area: checkAnulada;
+    margin-left: 15px;
+    margin-top: 12px;
+}
+
+#lblAnuladaRaffle {
+    color: black;
+    font-size: 15px;
+    grid-area: lblAnulada;
+    height: 40%;
+    margin-top: 12px;
+    text-align: start;
+    width: 55%;
+}
+
+.raffle_body-table {
+    grid-area: table;
+    display: grid;
+    grid-template-areas: 
+        'table'
+        'buttons';
+    grid-template-rows: 85% 15%;
+}
+
+.raffle_body-table-table {
+    grid-area: table;
+    border: 1px solid #c4c4c4;
+}
+
+.raffle_body-table-table-main {
+    width: 100%;
+}
+
+.raffle_body-table-table-proveedor {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 2%;
+}
+
+.raffle_body-table-table-header-proveedor {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.raffle_body-table-buttons {
+    grid-area: buttons;
+    display: grid;
+    margin-left: 65%;
+    grid-template-areas: 
+        'btnAdd btnDelete';
+    grid-template-columns: 50% 50%;
+}
+
+#btnAddRaffle {
+    grid-area: btnAdd;
+    height: 70%;
+    margin-left: 10px;
+    margin-top: 5px;
+    width: 80%;
+
+    &:hover {
+        background-color: #4169e6;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+#btnDeleteRaffle {
+    grid-area: btnDelete;
+    height: 70%;
+    margin-left: 10px;
+    margin-top: 5px;
+    width: 80%;
+
+    &:hover {
+        background-color: #D5300C;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+

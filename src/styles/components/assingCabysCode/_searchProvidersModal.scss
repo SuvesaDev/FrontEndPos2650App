@@ -1,0 +1,147 @@
+.modal_searchProviders-main {
+    display: grid;
+    text-align: center;
+    grid-template-areas:
+        'title' 
+        'body'
+        'btns';
+    grid-template-rows: 30px 400px 50px;
+}
+
+.modal_searchProviders-title {
+    display: grid;
+    gap: 5px;
+    grid-area: title;
+    grid-template-areas: 
+        'text btnClose';
+    grid-template-columns: 94.3% 5%;
+}
+
+#lblTitleSearchProvidersModal {
+    background-color: $primary;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    grid-area: text;
+    margin-bottom: 5px;
+    padding-bottom: 2px;
+    padding-top: 5px;
+    text-align: center;
+}
+
+#lblCloseSearchProvidersModal {
+    background-color: red;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    grid-area: btnClose;
+    margin-bottom: 5px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    text-align: center;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.modal_searchProviders-table {
+    grid-area: body;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.modal_searchProviders-table-main {
+    width: 100%;
+}
+
+.modal_searchProviders-table-header-proveedor {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 5%;
+}
+
+.modal_searchProviders-table-header-descrip {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 10%;
+}
+
+.modal_searchProviders-table-header-cabys {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 5%;
+}
+
+.modal_searchProviders-table-header-descripCabys {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 10%;
+}
+
+.modal_searchProviders-table-proveedor {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: center;
+}
+
+.modal_searchProviders-table-descrip {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: center;
+}
+
+.modal_searchProviders-table-cabys {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: center;
+}
+
+.modal_searchProviders-table-descripCabys {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: center;
+}
+
+.modal_searchProviders-buttons {
+    display: grid;
+    grid-area: btns;
+    grid-template-areas: 
+        'txtbuscar btnBuscar';
+    grid-template-columns: 80% 20%;
+}
+
+#lblBuscarSearchProviders {
+    font-size: 15px;
+    grid-area: txtbuscar;
+    height: 50%;
+    margin-top: 15px;
+    text-align: start;
+    width: 95%;
+}
+
+#btnBuscarSearchProviders {
+    font-size: 15px;
+    grid-area: btnBuscar;
+    height: 50%;
+    margin-top: 15px;
+    text-align: center;
+    width: 95%;
+
+    &:hover {
+        background-color: #3D59A9;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+

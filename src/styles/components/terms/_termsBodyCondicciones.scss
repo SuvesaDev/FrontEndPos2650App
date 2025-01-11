@@ -1,0 +1,256 @@
+.terms_body-condiccionesUso-main {
+    display: grid;
+    margin-left: 25%;
+    margin-right: 25%;
+    grid-template-areas: 
+        'title'
+        'first'
+        'second'
+        'btn';
+    grid-template-rows: 45px 100px 100px 60px;
+}
+
+.terms_body-condiccionesUso-title {
+    grid-area: title;
+}
+
+#lblTitleTermsCondicciones {
+    color: black;
+    font-size: 25px;
+    padding-top: 8px;
+    text-align: center;
+}
+
+.terms_body-condiccionesUso-first {
+    display: grid;
+    grid-area: first;
+    grid-template-areas: 
+        'tipos'
+        'monto'
+        'exigir';
+    grid-template-rows: 33% 33% 33%;
+}
+
+.terms_body-condiccionesUso-first-tipos {
+    display: grid;
+    grid-area: tipos;
+    grid-template-areas: 
+        'lbltipos check';
+    grid-template-columns: 50% 50%;
+}
+
+#lblTiposTermsCondicciones {
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lbltipos;
+    padding-top: 8px;
+    text-align: center;
+}
+
+.terms_body-condiccionesUso-first-tipos-check {
+    display: grid;
+    grid-area: check;
+    grid-template-areas: 
+        'checkcontado checkpve';
+    grid-template-columns: 50% 50%;
+}
+
+.terms_body-condiccionesUso-first-tipos-check-contado {
+    display: grid;
+    grid-area: checkcontado;
+    grid-template-areas: 
+        'inputcontado lblcontado';
+    grid-template-columns: 50% 50%;
+}
+
+.terms_body-condiccionesUso-first-tipos-check-contado-input {
+    grid-area: inputcontado;
+    margin-left: 80%;
+    margin-top: 8px;
+}
+
+#lblContadoTermsBody {
+    font-size: 15px;
+    grid-area: lblcontado;
+    padding-top: 8px;
+    text-align: center;
+}
+
+.terms_body-condiccionesUso-first-tipos-check-pve {
+    display: grid;
+    grid-area: checkpve;
+    grid-template-areas: 
+        'inputpve lblpve';
+    grid-template-columns: 50% 50%;
+}
+
+.terms_body-condiccionesUso-first-tipos-check-pve-input {
+    grid-area: inputpve;
+    margin-left: 80%;
+    margin-top: 8px;
+}
+
+#lblpveTermsBody {
+    font-size: 15px;
+    grid-area: lblpve;
+    padding-left: 5px;
+    padding-top: 8px;
+    text-align: start;
+    width: 50%;
+}
+
+.terms_body-condiccionesUso-first-monto {
+    display: grid;
+    grid-area: monto;
+    grid-template-areas: 
+        'lblmonto inputmonto';
+    grid-template-columns: 50% 50%;
+}
+
+#lblMontoTermsCondicciones {
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblmonto;
+    padding-top: 8px;
+    text-align: center;
+}
+
+#txtMontoTermsCondicciones {
+    color: black;
+    font-size: 15px;
+    grid-area: inputmonto;
+    height: 70%;
+    margin-top: 5px;
+    text-align: end;
+}
+
+.terms_body-condiccionesUso-first-exigir {
+    display: grid;
+    grid-area: exigir;
+    margin-left: 50%;
+    grid-template-areas: 
+        'inputexigir lblexigir';
+    grid-template-columns: 25% 75%;
+}
+
+.terms_body-condiccionesUso-first-exigir-input {
+    grid-area: inputexigir;
+    margin-left: 80%;
+    margin-top: 8px;
+}
+
+#lblExigirTermsBody {
+    font-size: 15px;
+    grid-area: lblexigir;
+    padding-left: 5px;
+    padding-top: 8px;
+    text-align: start;
+    width: 75%;
+}
+
+.terms_body-condiccionesUso-second {
+    display: grid;
+    grid-area: second;
+    grid-template-areas: 
+        'cliente'
+        'autoriza'
+        'retira';
+    grid-template-rows: 33% 33% 33%;
+}
+
+.terms_body-condiccionesUso-second-cliente {
+    display: grid;
+    grid-area: cliente;
+    grid-template-areas: 
+        'lblcliente inputcliente';
+    grid-template-columns: 50% 50%;
+}
+
+#lblClienteTermsCondicciones {
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblcliente;
+    margin-left: 15%;
+    padding-top: 8px;
+    text-align: start;
+}
+
+#txtClienteTermsCondicciones {
+    color: black;
+    font-size: 15px;
+    grid-area: inputcliente;
+    height: 70%;
+    margin-top: 5px;
+    text-align: end;
+}
+
+.terms_body-condiccionesUso-second-autoriza {
+    display: grid;
+    grid-area: autoriza;
+    grid-template-areas: 
+        'lblautoriza inputautoriza';
+    grid-template-columns: 50% 50%;
+}
+
+#lblAutorizaTermsCondicciones {
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblautoriza;
+    margin-left: 15%;
+    padding-top: 8px;
+    text-align: start;
+}
+
+#txtAutorizaTermsCondicciones {
+    color: black;
+    font-size: 15px;
+    grid-area: inputautoriza;
+    height: 70%;
+    margin-top: 5px;
+    text-align: end;
+}
+
+.terms_body-condiccionesUso-second-retira {
+    display: grid;
+    grid-area: retira;
+    grid-template-areas: 
+        'lblretira inputretira';
+    grid-template-columns: 50% 50%;
+}
+
+#lblRetiraTermsCondicciones {
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblretira;
+    margin-left: 15%;
+    padding-top: 8px;
+    text-align: start;
+}
+
+#txtRetiraTermsCondicciones {
+    color: black;
+    font-size: 15px;
+    grid-area: inputretira;
+    height: 70%;
+    margin-top: 5px;
+    text-align: end;
+}
+
+.terms_body-condiccionesUso-btn {
+    grid-area: btn;
+    height: 50%;
+    margin-left: 85%;
+}
+
+#btnAceptarTermsCondicciones {
+    font-size: 15px;
+    height: 100%;
+    text-align: center;
+    width: 100%;
+
+    &:hover {
+        background-color: #3D59A9;
+        color: white;
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,31 @@
+.branch-main {
+    text-align: center;
+    display: grid;
+    width: 100%;
+    grid-template-areas: 
+        'header header header'
+        'body body body'
+        'icons icons icons';
+    grid-template-rows: 45px 443px 60px;
+}
+
+.branch_main-header {
+    grid-area: header;
+    background-color: #3D59A9;
+}
+
+#lblTitleBranch {
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    padding-top: 5px;
+}
+
+.branch_main-body {
+    grid-area: body;
+}
+
+.branch_main-icons {
+    grid-area: icons;
+    border: 1px solid #3D59A9;
+}

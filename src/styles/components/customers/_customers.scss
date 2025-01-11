@@ -1,0 +1,23 @@
+.customers-main {
+    text-align: center;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'header header header'
+        'body body body'
+        'footer footer footer';
+    grid-template-rows: 150px 338px 60px;
+}
+
+.customers-header {
+    grid-area: header;
+}
+
+.customers-body {
+    grid-area: body;
+}
+
+.customers-footer {
+    grid-area: footer;
+    border: 1px solid black;
+}

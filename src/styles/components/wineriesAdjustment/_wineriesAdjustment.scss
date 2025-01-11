@@ -1,0 +1,59 @@
+.wineries_adjustment-main {
+    display: grid;
+    height: 100%;
+    text-align: center;
+    grid-template-areas: 
+        'header'
+        'datos'
+        'detalleAjuste'
+        'table'
+        'icons';
+    grid-template-rows: 40px 110px 100px 238px 60px;
+}
+
+.wineries_adjustment-header {
+    background-color: #6284BF;
+    display: grid;
+    grid-area: header;
+    height: 100%;
+    grid-template-areas: 
+        'inputNumero title';
+    grid-template-columns: 15% 85%;
+}
+
+.wineries_adjustment-header-input {
+    grid-area: inputNumero;
+    padding-top: 10px;
+}
+
+#txtNumeroWineriesA {
+    color: #332BB3;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#lblWineriesATitle {
+    color: white;
+    font-size: 25px;
+    grid-area: title;
+    padding-right: 100px;
+    padding-top: 5px;
+}
+
+.wineries_adjustment-datos {
+    grid-area: datos;
+}
+
+.wineries_adjustment-detalleAjuste {
+    grid-area: detalleAjuste;
+}
+
+.wineries_adjustment-table {
+    grid-area: table;
+}
+
+.wineries_adjustment-icons {
+    grid-area: icons;
+    border: 1px solid black;
+}

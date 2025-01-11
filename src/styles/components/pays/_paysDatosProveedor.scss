@@ -1,0 +1,219 @@
+.pays_datosP-main {
+    border: 1px solid black;
+    display: grid;
+    height: 90%;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 5px;
+    grid-template-areas: 
+        'header'
+        'inputs';
+    grid-template-rows: 30% 70%;
+}
+
+.pays_datosP-header {
+    background-color: #3D62DB;
+    grid-area: header;
+}
+
+#lblDatosPTitle {
+    color: white;
+    font-size: 15px;
+    text-align: center;
+}
+
+.pays_datosP-inputs {
+    display: grid;
+    grid-area: inputs;
+    height: 100%;
+    grid-template-areas: 
+        'codigo nombre recibo fecha moneda tipoCambio';
+    grid-template-columns: 12% 40% 12% 12% 12% 12%;
+}
+
+.pays_datosP-inputs-codigo {
+    display: grid;
+    grid-area: codigo;
+    height: 100%;
+    grid-template-areas: 
+        'lblcodigo'
+        'txtcodigo';
+    grid-template-rows: 50% 50%;
+}
+
+#lblCodigoDatosPays {
+    border: 1px solid black;
+    font-size: 13px;
+    grid-area: lblcodigo;
+    margin-bottom: 1px;
+    margin-left: 2px;
+    margin-right: 5px;
+    margin-top: 1px;
+    padding-left: 2px;
+    text-align: start;
+}
+
+#txtCodigoDatosPays {
+    font-size: 13px;
+    grid-area: txtcodigo;
+    height: 95%;
+    margin-left: 2px;
+    margin-right: 5px;
+    text-align: start;
+}
+
+.pays_datosP-inputs-nombre {
+    display: grid;
+    grid-area: nombre;
+    height: 100%;
+    grid-template-areas: 
+        'lblnombre'
+        'txtnombre';
+    grid-template-rows: 50% 50%;
+}
+
+#lblNombreDatosPays {
+    border: 1px solid black;
+    font-size: 13px;
+    grid-area: lblnombre;
+    margin-bottom: 1px;
+    margin-left: 2px;
+    margin-right: 5px;
+    margin-top: 1px;
+    padding-left: 2px;
+    text-align: start;
+}
+
+#txtNombreDatosPays {
+    font-size: 13px;
+    grid-area: txtnombre;
+    height: 95%;
+    margin-left: 2px;
+    margin-right: 5px;
+    text-align: start;
+}
+
+.pays_datosP-inputs-recibo {
+    display: grid;
+    grid-area: recibo;
+    height: 100%;
+    grid-template-areas: 
+        'lblrecibo'
+        'txtrecibo';
+    grid-template-rows: 50% 50%;
+}
+
+#lblReciboDatosPays {
+    border: 1px solid black;
+    font-size: 13px;
+    grid-area: lblrecibo;
+    margin-bottom: 1px;
+    margin-left: 2px;
+    margin-right: 5px;
+    margin-top: 1px;
+    padding-left: 2px;
+    text-align: start;
+}
+
+#txtReciboDatosPays {
+    font-size: 13px;
+    grid-area: txtrecibo;
+    height: 95%;
+    margin-left: 2px;
+    margin-right: 5px;
+    text-align: start;
+}
+
+.pays_datosP-inputs-fecha {
+    display: grid;
+    grid-area: fecha;
+    height: 100%;
+    grid-template-areas: 
+        'lblfecha'
+        'txtfecha';
+    grid-template-rows: 50% 50%;
+}
+
+#lblFechaDatosPays {
+    border: 1px solid black;
+    font-size: 13px;
+    grid-area: lblfecha;
+    margin-bottom: 1px;
+    margin-left: 2px;
+    margin-right: 5px;
+    margin-top: 1px;
+    padding-left: 2px;
+    text-align: start;
+}
+
+#txtFechaDatosPays {
+    font-size: 13px;
+    grid-area: txtfecha;
+    height: 95%;
+    margin-left: 2px;
+    margin-right: 5px;
+    text-align: start;
+}
+
+.pays_datosP-inputs-moneda {
+    display: grid;
+    grid-area: moneda;
+    height: 100%;
+    grid-template-areas: 
+        'lblmoneda'
+        'txtmoneda';
+    grid-template-rows: 50% 50%;
+}
+
+#lblMonedaDatosPays {
+    border: 1px solid black;
+    font-size: 13px;
+    grid-area: lblmoneda;
+    margin-bottom: 1px;
+    margin-left: 2px;
+    margin-right: 5px;
+    margin-top: 1px;
+    padding-left: 2px;
+    text-align: start;
+}
+
+#cboMonedaDatosPays {
+    font-size: 13px;
+    grid-area: txtmoneda;
+    height: 95%;
+    margin-left: 2px;
+    margin-right: 5px;
+    text-align: start;
+}
+
+.pays_datosP-inputs-tipoCambio {
+    display: grid;
+    grid-area: tipoCambio;
+    height: 100%;
+    grid-template-areas: 
+        'lbltipoCambio'
+        'txttipoCambio';
+    grid-template-rows: 50% 50%;
+}
+
+#lblTipoCambioDatosPays {
+    border: 1px solid black;
+    font-size: 13px;
+    grid-area: lbltipoCambio;
+    margin-bottom: 1px;
+    margin-left: 2px;
+    margin-right: 5px;
+    margin-top: 1px;
+    padding-left: 2px;
+    text-align: start;
+}
+
+#txtTipoCambioDatosPays {
+    font-size: 13px;
+    grid-area: txttipoCambio;
+    height: 95%;
+    margin-left: 2px;
+    margin-right: 5px;
+    text-align: start;
+}
+

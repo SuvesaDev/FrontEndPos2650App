@@ -1,0 +1,238 @@
+.lockUnlockCommercialHouse-main {
+    display: grid;
+    text-align: center;
+    grid-template-areas: 
+        'header'
+        'body'
+        'footer';
+    grid-template-rows: 40px 448px 60px;
+}
+
+.lockUnlockCommercialHouse-header {
+    background-color: #3D59A9;
+    grid-area: header;
+}
+
+#lblTitlelockUnlockCommercialHouse {
+    color: white;
+    font-size: 25px;
+    padding-top: 5px;
+    text-align: center;
+}
+
+.lockUnlockCommercialHouse-body {
+    display: grid;
+    grid-area: body;
+    margin-left: 3%;
+    margin-right: 3%;
+    grid-template-areas: 
+        'inputs'
+        'table';
+    grid-template-rows: 10% 85%;
+}
+
+.lockUnlockCommercialHouse-body-inputs {
+    grid-area: inputs;
+    display: grid;
+    grid-template-areas: 
+        'buscar bloquear desbloquear';
+    grid-template-columns: 70% 15% 15%;
+}
+
+.lockUnlockCommercialHouse-body-inputs-buscar {
+    border-left: 1px solid #c4c4c4;
+    display: grid;
+    grid-area: buscar;
+    grid-template-areas: 
+        'lblbuscar txtbuscar';
+    grid-template-columns: 20% 80%;
+}
+
+#lblbuscarLockUnlockCommercialHouse {
+    grid-area: lblbuscar;
+    padding-top: 15px;
+    text-align: center;
+}
+
+#txtbuscarLockUnlockCommercialHouse {
+    color: black;
+    font-size: 15px;
+    grid-area: txtbuscar;
+    height: 60%;
+    margin-top: 10px;
+    text-align: start;
+    width: 95%;
+}
+
+.lockUnlockCommercialHouse-body-inputs-bloquear {
+    border: 1px solid #c4c4c4;
+    display: grid;
+    grid-area: bloquear;
+    height: 80%;
+    margin-top: 5px;
+    width: 70%;
+    grid-template-areas: 
+        'iconlock lbllock';
+    grid-template-columns: 30% 70%;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+#iconLockCommercialHouse {
+    color: $secundary;
+    grid-area: iconlock;
+    height: 90%;
+    margin-top: 2px;
+    width: 80%;
+}
+
+#lblBloquearLockUnlockCommercialHouse {
+    font-size: 15px;
+    grid-area: lbllock;
+    padding-top: 8px;
+    text-align: start;
+    width: 100%;
+}
+
+.lockUnlockCommercialHouse-body-inputs-desbloquear {
+    border: 1px solid #c4c4c4;
+    display: grid;
+    grid-area: desbloquear;
+    height: 80%;
+    margin-top: 5px;
+    width: 70%;
+    grid-template-areas: 
+        'iconunlock lblunlock';
+    grid-template-columns: 30% 70%;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+#iconUnLockCommercialHouse {
+    color: $secundary;
+    grid-area: iconunlock;
+    height: 90%;
+    margin-top: 2px;
+    width: 80%;
+}
+
+#lblDesbloquearLockUnlockCommercialHouse {
+    font-size: 15px;
+    grid-area: lblunlock;
+    padding-top: 8px;
+    text-align: start;
+    width: 100%;
+}
+
+.lockUnlockCommercialHouse-body-table {
+    grid-area: table;
+    border: 1px solid #c4c4c4;
+}
+
+.lockUnlockCommercialHouse-body-table-main {
+    width: 100%;
+}
+
+.lockUnlockCommercialHouse-body-table-header-casacomercial {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 20%;
+}
+
+.lockUnlockCommercialHouse-body-table-header-bloqueado {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 1%;
+}
+
+.lockUnlockCommercialHouse-body-table-casacomercial {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.lockUnlockCommercialHouse-body-table-bloqueado {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: center;
+}
+
+#chklockUnlockCommercialHouse {
+    margin-top: 2px;
+}
+
+.lockUnlockCommercialHouse-icons {
+    border: 1px solid black;
+    display: grid;
+    grid-area: footer;
+    height: 100%;
+    grid-template-areas: 
+        'btnRegistrar btnCerrar';
+    grid-template-columns: 8% 8% 8% 8% 8%;
+}
+
+.lockUnlockCommercialHouse-icons-registrar {
+    grid-area: btnRegistrar;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'iconReg'
+        'lblReg';
+    grid-template-rows: 60% 40%;
+}
+
+.lockUnlockCommercialHouse-icons-registrar-icon {
+    color: #F68A1D;
+    grid-area: iconReg;
+    padding-top: 4px;
+}
+
+#iconRegistrarLockUnlockCommercialHouse {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblRegistrarLockUnlockCommercialHouse {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblReg;
+    text-align: center;
+}
+
+.lockUnlockCommercialHouse-icons-cerrar {
+    grid-area: btnCerrar;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'iconCer'
+        'lblCer';
+    grid-template-rows: 60% 40%;
+}
+
+.lockUnlockCommercialHouse-icons-cerrar-icon {
+    color: #F68A1D;
+    grid-area: iconCer;
+    padding-top: 4px;
+}
+
+#iconCerrarLockUnlockCommercialHouse {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblCerrarLockUnlockCommercialHouse {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblCer;
+    text-align: center;
+}

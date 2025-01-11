@@ -1,0 +1,215 @@
+.repayment_totals-main {
+    border: 1px solid black;
+    display: grid;
+    height: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+    grid-template-areas: 
+        'title'
+        'inputs';
+    grid-template-rows: 30% 70%;
+}
+
+.repayment_totals-title {
+    background-color: #3D62DB;
+    grid-area: title;
+}
+
+#lblTitleTotals {
+    color: white;
+    font-size: 15px;
+    text-align: center;
+}
+
+.repayment_totals-inputs {
+    display: grid;
+    grid-area:inputs;
+    height: 100%;
+    grid-template-areas: 
+        'subgravado subexento transporte descuento impVenta total';
+    grid-template-columns: 16.6% 16.6% 16.6% 16.6% 16.6% 16.9%;
+}
+
+.repayment_totals-inputs-subGravado {
+    display: grid;
+    grid-area: subgravado;
+    height: 100%;
+    grid-template-areas: 
+        'lblsubgravado'
+        'inputsubgravado';
+    grid-template-rows: 40% 60%;
+}
+
+#lblSubGravadoDevoluciones {
+    color: black;
+    font-size: 15px;
+    grid-area: lblsubgravado;
+    padding-right: 8px;
+    text-align: end;
+}
+
+#txtSubGravadoDevoluciones {
+    font-size: 15px;
+    grid-area: inputsubgravado;
+    height: 80%;
+    margin-left: 5px;
+    margin-right: 5px;
+    text-align: end;
+}
+
+.repayment_totals-inputs-subExento {
+    display: grid;
+    grid-area: subexento;
+    height: 100%;
+    grid-template-areas: 
+        'lblsubexento'
+        'inputsubexento';
+    grid-template-rows: 40% 60%;
+}
+
+#lblSubExentoDevoluciones {
+    color: black;
+    font-size: 15px;
+    grid-area: lblsubexento;
+    padding-right: 8px;
+    text-align: end;
+}
+
+#txtSubExentoDevoluciones {
+    font-size: 15px;
+    grid-area: inputsubexento;
+    height: 80%;
+    margin-left: 5px;
+    margin-right: 5px;
+    text-align: end;
+}
+
+.repayment_totals-inputs-transporte {
+    display: grid;
+    grid-area: transporte;
+    height: 100%;
+    grid-template-areas: 
+        'titlesTransporte'
+        'inputTransporte';
+    grid-template-rows: 40% 60%;
+}
+
+.repayment_totals-inputs-transporte-titles {
+    display: grid;
+    grid-area: titlesTransporte;
+    height: 100%;
+    grid-template-areas: 
+        'btntrans lbltrans';
+    grid-template-columns: 20% 80%;
+}
+
+#btnTransporteDevoluciones {
+    background-color: #DDE1D5;
+    border: 1px solid black;
+    grid-area: btntrans;
+    height: 90%;
+    margin-left: 5px;
+    text-align: center;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+#lblTransporteDevoluciones {
+    color: black;
+    font-size: 15px;
+    grid-area: lbltrans;
+    padding-right: 8px;
+    text-align: end;
+}
+
+#txtTransporteDevoluciones {
+    font-size: 15px;
+    grid-area: inputTransporte;
+    height: 80%;
+    margin-left: 5px;
+    margin-right: 5px;
+    text-align: end;
+}
+
+.repayment_totals-inputs-descuento {
+    display: grid;
+    grid-area: descuento;
+    height: 100%;
+    grid-template-areas: 
+        'lbldescuento'
+        'inputdescuento';
+    grid-template-rows: 40% 60%;
+}
+
+#lblDescuento2Devoluciones {
+    color: black;
+    font-size: 15px;
+    grid-area: lbldescuento;
+    padding-right: 8px;
+    text-align: end;
+}
+
+#txtDescuento2Devoluciones {
+    font-size: 15px;
+    grid-area: inputdescuento;
+    height: 80%;
+    margin-left: 5px;
+    margin-right: 5px;
+    text-align: end;
+}
+
+.repayment_totals-inputs-impVenta {
+    display: grid;
+    grid-area: impVenta;
+    height: 100%;
+    grid-template-areas: 
+        'lblimpVenta'
+        'inputimpVenta';
+    grid-template-rows: 40% 60%;
+}
+
+#lblimpVentaDevoluciones {
+    color: black;
+    font-size: 15px;
+    grid-area: lblimpVenta;
+    padding-right: 8px;
+    text-align: end;
+}
+
+#txtimpVentaDevoluciones {
+    font-size: 15px;
+    grid-area: inputimpVenta;
+    height: 80%;
+    margin-left: 5px;
+    margin-right: 5px;
+    text-align: end;
+}
+
+.repayment_totals-inputs-total {
+    display: grid;
+    grid-area: total;
+    height: 100%;
+    grid-template-areas: 
+        'lbltotal'
+        'inputtotal';
+    grid-template-rows: 40% 60%;
+}
+
+#lblTotalDevoluciones {
+    color: black;
+    font-size: 15px;
+    grid-area: lbltotal;
+    padding-right: 8px;
+    text-align: end;
+}
+
+#txtTotalDevoluciones {
+    font-size: 15px;
+    grid-area: inputtotal;
+    height: 80%;
+    margin-left: 5px;
+    margin-right: 5px;
+    text-align: end;
+}

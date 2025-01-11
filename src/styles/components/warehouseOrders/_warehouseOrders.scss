@@ -1,0 +1,32 @@
+.warehouse_orders-main {
+    text-align: center;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'header header header'
+        'body body body'
+        'footer footer footer';
+    grid-template-rows: 40px 448px 60px;
+}
+
+.warehouse_orders-header {
+    grid-area: header;
+    padding-top: 2px;
+    background-color: #3D59A9;
+}
+
+#lblTitleWarehouseO {
+    font-size: 30px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+
+.warehouse_orders-body {
+    grid-area: body;
+}
+
+.warehouse_orders-footer {
+    grid-area: footer;
+    border: 1px solid black;
+}

@@ -1,0 +1,370 @@
+.billing_header-customer-main {
+    display: grid;
+    grid-template-areas: 
+        'first'
+        'second'
+        'third';
+    grid-template-rows: 43px 43px 43px;
+}
+
+.billing_header-customer-first {
+    grid-area: first;
+    display: grid;
+    grid-template-areas: 
+        'cedula tipo nombre buttons';
+    grid-template-columns: 20% 14% 43% 18%;
+}
+
+.billing_header-customer-first-cedula {
+    grid-area: cedula;
+    display: grid;
+    grid-template-areas: 
+        'inputs icon';
+    grid-template-columns: 85% 15%;
+}
+
+.billing_header-customer-first-cedula-input {
+    grid-area: inputs;
+    display: grid;
+    grid-template-areas: 
+        'labelCedula'
+        'inputCedula';
+    grid-template-rows: 40% 60%;
+    // background-color: red;
+}
+
+#lblCedula {
+    font-size: 15px;
+    grid-area: labelCedula;
+    padding-left: 15px;
+    text-align: start;
+}
+
+#txtCedula {
+    font-size: 15px;
+    grid-area: inputCedula;
+    margin-left: 15px;
+    width: 85%;
+    height: 80%;
+}
+
+.billing_header-customer-first-cedula-input-icon {
+    grid-area: icon;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    padding-top: 3px;
+}
+
+.btnSearchClienteBilling {
+    color: $secundary;
+    
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.btnSearchClienteBilling-disable {
+    color: gray;
+    
+    &:hover {
+        cursor: not-allowed;
+    }
+}
+
+.billing_header-customer-first-tipo {
+    grid-area: tipo;
+    display: grid;
+    grid-template-areas: 
+        'labelTipo'
+        'inputTipo';
+    grid-template-rows: 50% 50%;
+}
+
+#lblTipo {
+    font-size: 15px;
+    grid-area: labelTipo;
+    padding-left: 15px;    
+    text-align: start;
+}
+
+#cboTipo {
+    grid-area: inputTipo;
+    margin-left: 15px
+}
+
+
+.billing_header-customer-first-nombre {
+    grid-area: nombre;
+    display: grid;
+    grid-template-areas: 
+        'labelNombre'
+        'inputNombre';
+    grid-template-rows: 50% 50%;
+}
+
+#lblNombre {
+    font-size: 15px;
+    grid-area: labelNombre;
+    padding-left: 15px;
+    text-align: start;
+}
+
+#txtNombre {
+    font-size: 15px;
+    grid-area: inputNombre;
+    margin-left: 15px;
+    width: 90%;
+}
+
+.billing_header-customer-first-buttons {
+    grid-area: buttons;
+    display: grid;
+    grid-template-areas: 
+        'button1 button2 button3 button4';
+    grid-template-columns: 30% 30% 30% 30%;
+    gap: 0px;
+    color : #F68A1D;
+}
+
+.button1 {
+    cursor: pointer;
+    grid-area: button1;
+    height: 85%;
+    margin-top: 5px;
+    
+    :hover {
+        background-color: #c7c7c7;
+    }
+}
+
+.button2 {
+    cursor: pointer;
+    grid-area: button2;
+    height: 85%;
+    margin-top: 5px;
+    
+    :hover {
+        background-color: #c7c7c7;
+    }
+
+}
+
+.button3 {
+    cursor: pointer;
+    grid-area: button3;
+    height: 85%;
+    margin-top: 5px;
+    
+    :hover {
+        background-color: #c7c7c7;
+    }
+
+}
+
+.button4 {
+    cursor: pointer;
+    grid-area: button4;
+    height: 85%;
+    margin-top: 5px;
+    
+    :hover {
+        background-color: #c7c7c7;
+    }
+
+}
+
+.btnEdit-Billing {
+    height: 75%;
+    margin-top: 5px;
+    width: 70%;
+    
+}
+
+.btnEdit-Billing-disable {
+    height: 75%;
+    margin-top: 5px;
+    width: 70%;
+    color : #c7c7c7;
+
+    :hover {
+        cursor: not-allowed;
+    }
+}
+
+#button1, #button2, #button3 {
+    height: 75%;
+    margin-top: 5px;
+    width: 70%;
+}
+
+.billing_header-customer-second {
+    grid-area: second;
+    display: grid;
+    grid-template-areas: 
+        'telefono direccion encargado';
+    grid-template-columns: 20% 55% 30%;
+}
+
+.billing_header-customer-second-telefono {
+    grid-area: telefono;
+    display: grid;
+    grid-template-areas: 
+        'labelTelefono'
+        'inputTelefono';
+    grid-template-rows: 50% 50%;
+}
+
+#lblTelefono {
+    font-size: 15px;
+    grid-area: labelTelefono;
+    padding-left: 15px;
+    text-align: start;
+}
+
+#txtTelefono {
+    font-size: 15px;
+    grid-area: inputTelefono;
+    margin-left: 15px;
+    width: 90%;
+}
+
+.billing_header-customer-second-direccion {
+    grid-area: direccion;
+    display: grid;
+    grid-template-areas: 
+        'labelDireccion'
+        'inputDireccion';
+    grid-template-rows: 50% 50%;
+}
+
+#lblDireccion {
+    font-size: 15px;
+    grid-area: labelDireccion;
+    padding-left: 15px;
+    text-align: start;
+}
+
+#txtDireccion {
+    font-size: 15px;
+    grid-area: inputDireccion;
+    margin-left: 15px;
+}
+
+
+.billing_header-customer-second-Encargado {
+    grid-area: encargado;
+    display: grid;
+    grid-template-areas: 
+        'labelEncargado'
+        'inputEncargado';
+    grid-template-rows: 50% 50%;
+}
+
+#lblEncargado{
+    font-size: 15px;
+    grid-area: labelEncargado;
+    padding-left: 15px;
+    text-align: start;
+}
+
+#txtEncargado{
+    font-size: 15px;
+    grid-area: inputEncargado;
+    margin-left: 15px;
+    width: 90%;
+}
+
+.billing_header-customer-third {
+    grid-area: third;
+    display: grid;
+    grid-template-areas: 
+        'observaciones empresa button';
+    grid-template-columns: 40% 35% 20%;
+}
+
+.billing_header-customer-third-observaciones {
+    grid-area: observaciones;
+    grid-template-areas: 
+        'labelObservaciones'
+        'inputObservaciones';
+    grid-template-rows: 50% 50%;
+}
+
+#lblObservaciones {
+    font-size: 15px;
+    grid-area: labelObservaciones;
+    padding-left: 15px;
+    text-align: start;
+}
+
+#txtObservaciones {
+    font-size: 15px;
+    grid-area: labelObservaciones;
+    margin-left: 15px;
+    width: 93%;
+}
+
+.billing_header-customer-third-empresa {
+    grid-area: empresa;
+    grid-template-areas: 
+        'labelEmpresa'
+        'inputEmpresa';
+    grid-template-rows: 50% 50%;
+}
+
+#lblEmpresa {
+    font-size: 15px;
+    grid-area: labelEmpresa;
+    padding-left: 5px;
+    text-align: start;
+}
+
+#cboEmpresa {
+    font-size: 15px;
+    grid-area: inputEmpresa;
+    width: 98%;
+}
+
+.billing_header-customer-third-button {
+    grid-area: button;
+    padding-top: 15px;
+}
+
+.btnVerCorreos-BillingHeaderCustomer {
+    width: 60%;
+    height: 90%;
+    font-size: 15px;
+    background-color: $secundary;
+    color: white;
+
+    &:hover {
+        background-color: $primary;
+        cursor: pointer;
+    }
+}
+
+.btnVerCorreos-BillingHeaderCustomer-disable {
+    width: 60%;
+    height: 90%;
+    font-size: 15px;
+    background-color: gray;
+    color: white;
+
+    &:hover {
+        cursor: not-allowed;
+    }
+}
+
+// .buttonPencil {
+//     cursor: pointer;
+//     padding-top: 10px;
+    
+//     :hover {
+//         background-color: #c7c7c7;
+//     }
+// }
+
+// #buttonPencil {
+//     height: 100%;
+//     width: 40%;  
+// }

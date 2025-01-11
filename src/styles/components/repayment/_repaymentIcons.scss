@@ -1,0 +1,251 @@
+.repayment_icons-main {
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'btnRegistrar btnBuscar btnAnular btnCerrar user';
+    grid-template-columns: 8% 8% 8% 8% 45%;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid rgb(176, 175, 175);
+}
+
+.repayment_icons-Buscar {
+    display: grid;
+    grid-area: btnBuscar;
+    height: 100%;
+    grid-template-areas: 
+        'iconBus'
+        'lblBus';
+    grid-template-rows: 60% 40%;
+}
+
+.repayment_icons-Buscar-icon {
+    color: #F68A1D;
+    grid-area: iconBus;
+    padding-top: 4px;
+}
+
+.repayment_icons-Buscar-icon-disable {
+    color: gray;
+    grid-area: iconBus;
+    padding-top: 4px;
+}
+
+.iconBuscarRepayment {
+    cursor: pointer;
+    height: 100%;
+    width: 20%;
+}
+
+.iconBuscarRepayment-disable {
+    cursor: not-allowed;
+    height: 100%;
+    width: 20%;
+}
+
+#lblBuscarDev {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblBus;
+    text-align: center;
+}
+
+.repayment_icons-registrar {
+    display: grid;
+    grid-area: btnRegistrar;
+    height: 100%;
+    grid-template-areas: 
+        'iconReg'
+        'lblReg';
+    grid-template-rows: 60% 40%;
+}
+
+.repayment_icons-registrar-icon {
+    color: #F68A1D;
+    grid-area: iconReg;
+    padding-top: 4px;
+}
+
+.repayment_icons-registrar-icon-disable {
+    color: gray;
+    grid-area: iconReg;
+    padding-top: 4px;
+}
+
+.iconRegistrarRepayment {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+.iconRegistrarRepayment-disable {
+    cursor: not-allowed;
+    height: 100%;
+    width: 25%;
+}
+
+#lblRegistrarD {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblReg;
+    text-align: center;
+}
+
+.repayment_icons-anular {
+    display: grid;
+    grid-area: btnAnular;
+    height: 100%;
+    grid-template-areas: 
+        'iconAnu'
+        'lblAnu';
+    grid-template-rows: 60% 40%;
+}
+
+.repayment_icons-anular-icon {
+    color: #F68A1D;
+    grid-area: iconAnu;
+    padding-top: 4px;
+}
+
+.repayment_icons-anular-icon-disable {
+    color: gray;
+    grid-area: iconAnu;
+    padding-top: 4px;
+}
+
+.iconAnularRepayment {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+.iconAnularRepayment-disable {
+    cursor: not-allowed;
+    height: 100%;
+    width: 25%;
+}
+
+#lblAnularD {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblAnu;
+    text-align: center;
+}
+
+.repayment_icons-cerrar {
+    display: grid;
+    grid-area: btnCerrar;
+    height: 100%;
+    grid-template-areas: 
+        'iconCer'
+        'lblCer';
+    grid-template-rows: 60% 40%;
+}
+
+.repayment_icons-cerrar-icon {
+    color: #F68A1D;
+    grid-area: iconCer;
+    padding-top: 4px;
+}
+
+#iconCerrarD {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblCerrarD {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblCer;
+    text-align: center;
+}
+
+.repayment_icons-user {
+    grid-area: user;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'inputs nameUser';
+    grid-template-columns: 45% 55%;
+}
+
+.repayment_icons-user-inputs {
+    grid-area: inputs;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'label'
+        'campos';
+    grid-template-rows: 45% 55%;
+}
+
+.repayment_icons-user-inputs-label {
+    grid-area: label;
+    padding-top: 5px;
+}
+
+#lblClaveInternaRepaymentIcons {
+    text-align: start;
+    padding-left: 5px;
+    font-size: 15px;
+}
+
+.repayment_icons-user-inputs-campos {
+    grid-area: campos;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'txt icon';
+    grid-template-columns: 90% 10%;
+}
+
+.repayment_icons-user-inputs-campos-input {
+    grid-area: txt;
+}
+
+#txtClaveInternaRepaymentIcons {
+    width: 95%;
+    text-align: start;
+    font-size: 15px;
+    padding-left: 5px;
+}
+
+.repayment_icons-user-inputs-campos-icon {
+    grid-area: icon;
+}
+
+.iconEyeClaveInternaRepaymentIcons {
+    width: 100%;
+    height: 70%;
+    color: #F68A1D;
+
+    &:hover {
+        cursor: pointer;
+        color: $primary;
+    }
+}
+
+.iconEyeClaveInternaRepaymentIcons-disable {
+    width: 100%;
+    height: 70%;
+    color: gray;
+
+    &:hover {
+        cursor: not-allowed;
+    }
+}
+
+.repayment_icons-user-nameUser {
+    grid-area: nameUser;
+    padding-top: 28px;
+}
+
+#lblNameUserRepaymentIcons {
+    text-align: start;
+    padding-left: 5px;
+    font-size: 15px;
+    font-weight: 600;
+}

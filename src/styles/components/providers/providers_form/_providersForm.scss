@@ -1,0 +1,127 @@
+.providers_form-main {
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'personal'
+        'accounting';
+    grid-template-rows: 60% 40%;
+}
+
+.providers_form-personal {
+    grid-area: personal;
+    display: grid;
+    height: 100%;
+    margin-left: 5%;
+    margin-right: 5%;
+    grid-template-areas: 
+        'line1'
+        'line2'
+        'line3'
+        'line4'
+        'line5'
+        'line6'
+        'line7';
+    grid-template-rows: 14% 14% 14% 14% 14% 14% 15%;
+}
+
+.providers_form-personal-1 {
+    grid-area: line1;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblIdentificacion inputIdentificacion';
+    grid-template-columns: 15% 10%;
+}
+
+.providers_form-personal-1-label-identi {
+    background-color: #EEF2E6;
+    grid-area: lblIdentificacion;
+    margin: 2px;
+}
+
+#lblIdentificacionProviders {
+    color: #5457D5;
+    font-size: 15px;
+    padding-left: 20%;
+    padding-top: 1px;
+    text-align: start;
+}
+
+.providers_form-personal-1-input-identi {
+    grid-area: inputIdentificacion;
+}
+
+#txtIdentificacionProviders {
+    color: #5457D5;
+    font-size: 12px;
+    height: 75%;
+    margin-top: 2px;
+    text-align: start;
+    width: 90%;
+    padding-left: 5px;
+}
+
+.providers_form-personal-2 {
+    grid-area: line2;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'nombrePro cedulaPro';
+    grid-template-columns: 60% 40%;
+}
+
+.providers_form-personal-3 {
+    grid-area: line3;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'telefonoPro faxPro visitasPro';
+    grid-template-columns: 35% 25% 40%;
+}
+
+.providers_form-personal-4 {
+    grid-area: line4;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'emailPro seriesPro';
+    grid-template-columns: 60% 40%;
+}
+
+.providers_form-personal-5 {
+    grid-area: line5;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblDireccion inputDireccion';
+    grid-template-columns: 15% 45%;
+}
+
+.providers_form-personal-6 {
+    grid-area: line6;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'lblObservacion inputObservacion';
+    grid-template-columns: 15% 45%;
+}
+
+.providers_form-personal-7 {
+    grid-area: line7;
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'contactoPro telefonoContactoPro';
+    grid-template-columns: 60% 40%;
+}
+
+.providers_form-accounting {
+    grid-area: accounting;
+    display: grid;
+    height: 100%;
+    margin-left: 5%;
+    margin-right: 5%;
+    grid-template-areas: 
+        'inputs-accounting checks-accounting';
+    grid-template-columns: 60% 40%;
+}

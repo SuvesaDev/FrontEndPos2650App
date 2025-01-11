@@ -1,0 +1,273 @@
+.tagger_body-main {
+    display: grid;
+    height: 60%;
+    margin-left: 10%;
+    margin-right: 10%;
+    grid-template-areas: 
+        'inputs'
+        'image';
+    grid-template-rows: 55% 45%;
+}
+
+.tagger_body-inputs {
+    grid-area: inputs;
+    display: grid;
+    border: 1px solid #ccc;
+    grid-template-areas: 
+        'firstLine'
+        'secondLine'
+        'thirdLine'
+        'fourthLine'
+        'fifthLine';
+    grid-template-rows: 20% 20% 20% 20% 20%;
+}
+
+.tagger_body-inputs-firstLine {
+    grid-area: firstLine;
+    display: grid;
+    grid-template-areas: 
+        'lblBarras inputsBarras';
+    grid-template-columns: 15% 85%;
+}
+
+#lblBarraTaggerBody {
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblBarras;
+    padding-top: 5px;
+    text-align: center;
+}
+
+.tagger_body-inputs-firstLine-input {
+    grid-area: inputsBarras;
+    display: grid;
+    grid-template-areas: 
+        'btnF1 input';
+    grid-template-columns: 5% 95%;
+}
+
+#btnBarraTaggerBodyF1 {
+    font-size: 15px;
+    font-size: 15px;
+    grid-area: btnF1;
+    height: 90%;
+    margin-top: 2px;
+    text-align: center;
+}
+
+#txtBarraTaggerBody {
+    font-size: 15px;
+    grid-area: input;
+    height: 80%;
+    margin-left: 10px;
+    margin-top: 3px;
+    text-align: start;
+    width: 95%;
+}
+
+.tagger_body-inputs-secondLine {
+    grid-area: secondLine;
+    display: grid;
+    grid-template-areas: 
+        'lblCodigo txtCodigo';
+    grid-template-columns: 15% 85%;
+}
+
+#lblCodigoTaggerBody {
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblCodigo;
+    padding-top: 5px;
+    text-align: center;
+}
+
+#txtCodigoTaggerBody {
+    font-size: 15px;
+    grid-area: txtCodigo;
+    height: 80%;
+    margin-top: 3px;
+    text-align: start;
+    width: 96.3%;
+}
+
+.tagger_body-inputs-thirdLine {
+    grid-area: thirdLine;
+    display: grid;
+    grid-template-areas: 
+        'lblTexto txtTexto';
+    grid-template-columns: 15% 85%;
+}
+
+#lblTextoTaggerBody {
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblTexto;
+    padding-top: 5px;
+    text-align: center;
+}
+
+#txtTextoTaggerBody {
+    font-size: 15px;
+    grid-area: txtTexto;
+    height: 80%;
+    margin-top: 3px;
+    text-align: start;
+    width: 96.3%;
+}
+
+.tagger_body-inputs-fourthLine {
+    grid-area: fourthLine;
+    display: grid;
+    grid-template-areas: 
+        'precio presentacion';
+    grid-template-columns: 60% 40%;
+}
+
+.tagger_body-inputs-fourthLine-precio {
+    grid-area: precio;
+    display: grid;
+    grid-template-areas: 
+        'lblPrecio txtPrecio txtPrecio2 txtPrecio3';
+    grid-template-columns: 25% 25% 25% 15%;
+}
+
+#lblPrecioTaggerBody {
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblPrecio;
+    padding-top: 5px;
+    text-align: center;
+}
+
+#txtPrecioTaggerBody {
+    grid-area: txtPrecio;
+    font-size: 15px;
+    height: 80%;
+    margin-top: 3px;
+    text-align: start;
+    width: 96.3%;
+}
+
+#txtPrecio2TaggerBody {
+    grid-area: txtPrecio2;
+    font-size: 15px;
+    height: 80%;
+    margin-top: 3px;
+    text-align: start;
+    width: 96.3%;
+}
+
+#txtPrecioT3aggerBody {
+    grid-area: txtPrecio3;
+    font-size: 15px;
+    height: 80%;
+    margin-top: 3px;
+    text-align: start;
+    width: 96.3%;
+}
+
+.tagger_body-inputs-fourthLine-presentacion {
+    grid-area: presentacion;
+    display: grid;
+    grid-template-areas: 
+        'lblPresentacion txtPresentacion';
+    grid-template-columns: 30% 70%;
+}
+
+#lblPresentacionTaggerBody {
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblPresentacion;
+    padding-top: 5px;
+    text-align: center;
+}
+
+#txtPresentacionTaggerBody {
+    grid-area: txtPresentacion;
+    font-size: 15px;
+    height: 80%;
+    margin-top: 3px;
+    text-align: start;
+    width: 89.5%;
+}
+
+.tagger_body-inputs-fifthLine {
+    grid-area: fifthLine;
+    display: grid;
+    grid-template-areas: 
+        'cantidad copias imprimir';
+    grid-template-columns: 30% 30% 40%;
+}
+
+.tagger_body-inputs-fifthLine-cantidad {
+    grid-area: cantidad;
+    display: grid;
+    grid-template-areas: 
+        'lblCantidad txtCantidad';
+    grid-template-columns: 50% 50%;
+}
+
+#lblCantidadTaggerBody {
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblCantidad;
+    padding-top: 5px;
+    text-align: center;
+}
+
+#txtCantidadTaggerBody {
+    grid-area: txtCantidad;
+    font-size: 15px;
+    height: 80%;
+    margin-top: 3px;
+    text-align: start;
+    width: 95%;
+}
+
+.tagger_body-inputs-fifthLine-copias {
+    grid-area: copias;
+    display: grid;
+    grid-template-areas: 
+        'lblCopias txtCopias';
+    grid-template-columns: 30% 70%;
+}
+
+#lblCopiasTaggerBody {
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblCopias;
+    padding-top: 5px;
+    text-align: center;
+}
+
+#txtCopiasTaggerBody {
+    font-size: 15px;
+    grid-area: txtCopias;
+    height: 80%;
+    margin-top: 3px;
+    text-align: start;
+    width: 70%;
+}
+
+#btnImprimirTaggerBody {
+    font-size: 15px;
+    grid-area: imprimir;
+    height: 90%;
+    margin-left: 15px;
+    margin-top: 2px;
+    text-align: center;
+    width: 90%;
+
+    &:hover {
+        background-color: #3D59A9;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+.tagger_body-image {
+    border: 1px solid black;
+    grid-area: image;
+    padding-top: 50px;
+    text-align: center;
+}

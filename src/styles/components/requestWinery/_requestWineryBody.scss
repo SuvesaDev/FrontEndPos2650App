@@ -1,0 +1,331 @@
+.requestWinery-body-main {
+    border: 1px solid black;
+    display: grid;
+    height: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 2%;
+    grid-template-areas: 
+        'inputs'
+        'table';
+    grid-template-rows: 40% 60%;
+}
+
+.requestWinery-body-inputs {
+    display: grid;
+    gap: 5px;
+    grid-area: inputs;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    grid-template-areas: 
+        'firstLine'
+        'datosProductos';
+    grid-template-rows: 30% 70%;
+}
+
+.requestWinery-body-inputs-firstLine {
+    display: grid;
+    grid-area: firstLine;
+    grid-template-areas: 
+        'fecha descrip';
+    grid-template-columns: 20% 80%;
+}
+
+.requestWinery-body-inputs-firstLine-fecha {
+    display: grid;
+    grid-area: fecha;
+    grid-template-areas: 
+        'lblFecha'
+        'txtFecha';
+    grid-template-rows: 45% 55%;
+}
+
+#lblFechaRW {
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblFecha;
+    padding-left: 5px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+#txtFechaRW {
+    font-size: 15px;
+    grid-area: txtFecha;
+    height: 90%;
+    margin-left: 5px;
+    text-align: start;
+    width: 95%;
+}
+
+.requestWinery-body-inputs-firstLine-descrip {
+    display: grid;
+    grid-area: descrip;
+    grid-template-areas: 
+        'lblDescrip'
+        'txtDescrip';
+    grid-template-rows: 45% 55%;
+}
+
+#lbldescripRW {
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblDescrip;
+    padding-left: 5px;
+    padding-top: 2px;
+    text-align: start;
+}
+
+#txtdescripRW {
+    font-size: 15px;
+    grid-area: txtDescrip;
+    height: 90%;
+    margin-left: 5px;
+    text-align: start;
+    width: 99%;
+}
+
+.requestWinery-body-inputs-datosProductos {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+    display: grid;
+    grid-area: datosProductos;
+    grid-template-areas: 
+        'title'
+        'datosFirstLine'
+        'datosSecondLine';
+    grid-template-rows: 20% 45% 35%;
+}
+
+#lblDatosProductosTitleRW {
+    font-size: 15px;
+    grid-area: title;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.requestWinery-body-inputs-datosProductos-firstLine {
+    display: grid;
+    grid-area: datosFirstLine;
+    grid-template-areas: 
+        'codigo descrip existencia cantidad btn';
+    grid-template-columns: 15% 55% 10% 10% 10%;
+}
+
+.requestWinery-body-inputs-datosProductos-firstLine-codigo {
+    display: grid;
+    grid-area: codigo;
+    grid-template-areas: 
+        'lblCodigo'
+        'txtCodigo';
+    grid-template-rows: 45% 55%;
+}
+
+#lblCodigoRW {
+    font-size: 15px;
+    grid-area: lblCodigo;
+    padding-left: 5px;
+    padding-top: 1px;
+    text-align: start;
+}
+
+#txtCodigoRW {
+    grid-area: txtCodigo;
+    height: 80%;
+    margin-left: 5px;
+    text-align: start;
+    width: 95%;
+}
+
+.requestWinery-body-inputs-datosProductos-firstLine-descrip {
+    display: grid;
+    grid-area: descrip;
+    grid-template-areas: 
+        'lblDescrip'
+        'txtDescrip';
+    grid-template-rows: 45% 55%;
+}
+
+#lblDescripRW {
+    font-size: 15px;
+    grid-area: lblDescrip;
+    padding-left: 5px;
+    padding-top: 1px;
+    text-align: start;
+}
+
+#txtDescripRW {
+    grid-area: txtDescrip;
+    height: 80%;
+    margin-left: 5px;
+    text-align: start;
+    width: 98%;
+}
+
+.requestWinery-body-inputs-datosProductos-firstLine-existencia {
+    display: grid;
+    grid-area: existencia;
+    grid-template-areas: 
+        'lblExistencia'
+        'txtExistencia';
+    grid-template-rows: 45% 55%;
+}
+
+#lblExistenciaRW {
+    font-size: 15px;
+    grid-area: lblExistencia;
+    padding-left: 5px;
+    padding-top: 1px;
+    text-align: start;
+}
+
+#txtExistenciaRW {
+    grid-area: txtExistencia;
+    height: 80%;
+    margin-left: 5px;
+    text-align: start;
+    width: 90%;
+}
+
+.requestWinery-body-inputs-datosProductos-firstLine-cantidad {
+    display: grid;
+    grid-area: cantidad;
+    grid-template-areas: 
+        'lblCantidad'
+        'txtCantidad';
+    grid-template-rows: 45% 55%;
+}
+
+#lblCantidadRW {
+    font-size: 15px;
+    grid-area: lblCantidad;
+    padding-left: 5px;
+    padding-top: 1px;
+    text-align: start;
+}
+
+#txtCantidadRW {
+    grid-area: txtCantidad;
+    height: 80%;
+    margin-left: 5px;
+    text-align: start;
+    width: 90%;
+}
+
+.requestWinery-body-inputs-datosProductos-firstLine-btn {
+    grid-area: btn;
+}
+
+#btnAgregarRW {
+    font-size: 15px;
+    font-weight: bold;
+    height: 70%;
+    margin-top: 5px;
+    text-align: center;
+    width: 80%;
+
+    &:hover {
+        background-color: #4169e1;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+.requestWinery-body-inputs-datosProductos-secondLine {
+    display: grid;
+    grid-area: datosSecondLine;
+    grid-template-areas: 
+        'lblNota txtNota';
+    grid-template-columns: 5% 95%;
+}
+
+#lblNotaRW {
+    font-size: 15px;
+    grid-area: lblNota;
+    padding-left: 5px;
+    padding-top: 5px;
+    text-align: center;
+}
+
+#txtNotaRW {
+    font-size: 15px;
+    grid-area: txtNota;
+    height: 60%;
+    margin-left: 5px;
+    margin-top: 5px;
+    text-align: start;
+    width: 98%;
+}
+
+.requestWinery-body-table {
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    grid-area: table;
+    margin-bottom: 5px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.requestWinery-body-table-main {
+    width: 100%;
+}
+
+.requestWinery-body-table-header-codArticulo {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 3%;
+}
+
+.requestWinery-body-table-header-descrip {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 9%;
+}
+
+.requestWinery-body-table-header-cantidad {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 3%;
+}
+
+.requestWinery-body-table-header-nota {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.requestWinery-body-table-codArticulo {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.requestWinery-body-table-descrip {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.requestWinery-body-table-cantidad {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.requestWinery-body-table-nota {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}

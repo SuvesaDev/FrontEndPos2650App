@@ -1,0 +1,152 @@
+.loans-icons-main {
+    display: grid;
+    height: 100%;
+    grid-template-areas: 
+        'btnNuevo btnRegistrar btnEditar btnBuscar btnAnular';
+    grid-template-columns: 8% 8% 8% 8% 8%;
+}
+
+.loans-icons-nuevo {
+    display: grid;
+    grid-area: btnNuevo;
+    height: 100%;
+    grid-template-areas: 
+        'iconNue'
+        'lblNue';
+    grid-template-rows: 60% 40%;
+}
+
+.loans-icons-nuevo-icon {
+    color: #F68A1D;
+    grid-area: iconNue;
+    padding-top: 4px;
+}
+
+#iconNuevoWA {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblNuevoWA {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblNue;
+    text-align: center;
+}
+
+.loans-icons-registrar {
+    display: grid;
+    grid-area: btnRegistrar;
+    height: 100%;
+    grid-template-areas: 
+        'iconReg'
+        'lblReg';
+    grid-template-rows: 60% 40%;
+}
+
+.loans-icons-registrar-icon {
+    color: #F68A1D;
+    grid-area: iconReg;
+    padding-top: 4px;
+}
+
+#iconRegistrarWA {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblRegistrarWA {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblReg;
+    text-align: center;
+}
+
+.loans-icons-Editar {
+    display: grid;
+    grid-area: btnEditar;
+    height: 100%;
+    grid-template-areas: 
+        'iconEdi'
+        'lblEdi';
+    grid-template-rows: 60% 40%;
+}
+
+.loans-icons-Editar-icon {
+    color: #F68A1D;
+    grid-area: iconEdi;
+    padding-top: 4px;
+}
+
+#iconEditP {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblEditarP {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblEdi;
+    text-align: center;
+}
+
+.loans-icons-Buscar {
+    display: grid;
+    grid-area: btnBuscar;
+    height: 100%;
+    grid-template-areas: 
+        'iconBus'
+        'lblBus';
+    grid-template-rows: 60% 40%;
+}
+
+.loans-icons-Buscar-icon {
+    color: #F68A1D;
+    grid-area: iconBus;
+    padding-top: 4px;
+}
+
+#iconBusWA {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblBuscarWA {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblBus;
+    text-align: center;
+}
+
+.loans-icons-anular {
+    display: grid;
+    grid-area: btnAnular;
+    height: 100%;
+    grid-template-areas: 
+        'iconAnu'
+        'lblAnu';
+    grid-template-rows: 60% 40%;
+}
+
+.loans-icons-anular-icon {
+    color: #F68A1D;
+    grid-area: iconAnu;
+    padding-top: 4px;
+}
+
+#iconAnularWA {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblAnularWA {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblAnu;
+    text-align: center;
+}

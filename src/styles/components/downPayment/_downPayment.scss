@@ -1,0 +1,31 @@
+.downPayment-main {
+    text-align: center;
+    display: grid;
+    width: 100%;
+    grid-template-areas: 
+        'header'
+        'body'
+        'icons';
+    grid-template-rows: 45px 443px 60px;
+}
+
+.downPayment-main-header {
+    grid-area: header;
+    background-color: #3D59A9;
+}
+
+#lblTitleDownPayment {
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    padding-top: 5px;
+}
+
+.downPayment-main-body {
+    grid-area: body;
+}
+
+.downPayment-main-icons {
+    grid-area: icons;
+    border: 1px solid #3D59A9;
+}

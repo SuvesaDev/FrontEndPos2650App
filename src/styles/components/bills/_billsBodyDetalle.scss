@@ -1,0 +1,549 @@
+.billsBody_detalle-main {
+    border: 1px solid #c4c4c4;
+    display: grid;
+    height: 100%;
+    margin-left: 3%;
+    margin-right: 3%;
+    text-align: center;
+    grid-template-areas: 
+        'title'
+        'inputs'
+        'table'
+        'totals';
+    grid-template-rows: 5% 15% 65% 15%;
+}
+
+.billsBody_detalle-title {
+    grid-area: title;
+}
+
+#lblTitleBodyDetalleBills {
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.billsBody_detalle-inputs {
+    grid-area: inputs;
+    display: grid;
+    grid-template-areas: 
+        'cantidad descripcion precio impuesto descuento cuentaContable descripcion2';
+    grid-template-columns: 10% 21.5% 12% 10% 10% 15% 21.5%;
+}
+    
+.billsBody_detalle-inputs-cantidad {
+    grid-area: cantidad;
+    display: grid;
+    grid-template-areas: 
+        'lblCantidad'
+        'txtCantidad';
+    grid-template-rows: 50% 50%;
+}
+
+#lblCantidadBodyDetalleBills {
+    border: 1px solid #c4c4c4;
+    color: #4169e6;
+    font-size: 15px;
+    grid-area: lblCantidad;
+    height: 80%;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    padding-top: 1px;
+    text-align: center;
+    width: 90%;
+}
+
+#txtCantidadBodyDetalleBills {
+    font-size: 15px;
+    grid-area: txtCantidad;
+    height: 80%;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 3px;
+    padding-top: 1px;
+    text-align: start;
+    width: 90%;
+}
+
+.billsBody_detalle-inputs-descripcion {
+    grid-area: descripcion;
+    display: grid;
+    grid-template-areas: 
+        'lblDescripcion'
+        'txtDescripcion';
+    grid-template-rows: 50% 50%;
+}
+
+#lblDescripcionBodyDetalleBills {
+    border: 1px solid #c4c4c4;
+    color: #4169e6;
+    font-size: 15px;
+    grid-area: lblDescripcion;
+    height: 80%;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    padding-top: 1px;
+    text-align: center;
+    width: 95%;
+}
+
+#txtDescripcionBodyDetalleBills {
+    font-size: 15px;
+    grid-area: txtDescripcion;
+    height: 80%;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 3px;
+    padding-top: 1px;
+    text-align: start;
+    width: 95%;
+}
+
+.billsBody_detalle-inputs-precio {
+    grid-area: precio;
+    display: grid;
+    grid-template-areas: 
+        'lblPrecio'
+        'txtPrecio';
+    grid-template-rows: 50% 50%;
+}
+
+#lblPrecioBodyDetalleBills {
+    border: 1px solid #c4c4c4;
+    color: #4169e6;
+    font-size: 15px;
+    grid-area: lblPrecio;
+    height: 80%;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    padding-top: 1px;
+    text-align: center;
+    width: 90%;
+}
+
+#txtPrecioBodyDetalleBills {
+    font-size: 15px;
+    grid-area: txtPrecio;
+    height: 80%;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 3px;
+    padding-top: 1px;
+    text-align: start;
+    width: 90%;
+}
+
+.billsBody_detalle-inputs-impuesto {
+    grid-area: impuesto;
+    display: grid;
+    grid-template-areas: 
+        'lblImpuesto'
+        'txtImpuesto';
+    grid-template-rows: 50% 50%;
+}
+
+#lblimpuestoBodyDetalleBills {
+    border: 1px solid #c4c4c4;
+    color: #4169e6;
+    font-size: 15px;
+    grid-area: lblImpuesto;
+    height: 80%;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    padding-top: 1px;
+    text-align: center;
+    width: 90%;
+}
+
+#txtImpuestoBodyDetalleBills {
+    font-size: 15px;
+    grid-area: txtImpuesto;
+    height: 80%;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 3px;
+    padding-top: 1px;
+    text-align: start;
+    width: 90%;
+}
+
+.billsBody_detalle-inputs-descuento {
+    grid-area: descuento;
+    display: grid;
+    grid-template-areas: 
+        'lblDescuento'
+        'txtDescuento';
+    grid-template-rows: 50% 50%;
+}
+
+#lbldescuentoBodyDetalleBills {
+    border: 1px solid #c4c4c4;
+    color: #4169e6;
+    font-size: 15px;
+    grid-area: lblDescuento;
+    height: 80%;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    padding-top: 1px;
+    text-align: center;
+    width: 90%;
+}
+
+#txtDescuentoBodyDetalleBills {
+    font-size: 15px;
+    grid-area: txtDescuento;
+    height: 80%;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 3px;
+    padding-top: 1px;
+    text-align: start;
+    width: 90%;
+}
+
+.billsBody_detalle-inputs-cuentaContable {
+    grid-area: cuentaContable;
+    display: grid;
+    grid-template-areas: 
+        'lblcuentaContable'
+        'txtcuentaContable';
+    grid-template-rows: 50% 50%;
+}
+
+#lblcuentaContableBodyDetalleBills {
+    border: 1px solid #c4c4c4;
+    color: #4169e6;
+    font-size: 15px;
+    grid-area: lblcuentaContable;
+    height: 80%;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    padding-top: 1px;
+    text-align: center;
+    width: 90%;
+}
+
+#txtCuentaContableBodyDetalleBills {
+    font-size: 15px;
+    grid-area: txtcuentaContable;
+    height: 80%;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 3px;
+    padding-top: 1px;
+    text-align: start;
+    width: 90%;
+}
+
+.billsBody_detalle-inputs-descripcion2 {
+    grid-area: descripcion2;
+    display: grid;
+    grid-template-areas: 
+        'lbldescripcion2'
+        'txtdescripcion2';
+    grid-template-rows: 50% 50%;
+}
+
+#lbldescripcion2BodyDetalleBills {
+    border: 1px solid #c4c4c4;
+    color: #4169e6;
+    font-size: 15px;
+    grid-area: lbldescripcion2;
+    height: 80%;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    padding-top: 1px;
+    text-align: center;
+    width: 95%;
+}
+
+#txtDescripcion2BodyDetalleBills {
+    font-size: 15px;
+    grid-area: txtdescripcion2;
+    height: 80%;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 3px;
+    padding-top: 1px;
+    text-align: start;
+    width: 95%;
+}
+
+.billsBody_detalle-table {
+    grid-area: table;
+    border: 1px solid #c4c4c4;
+}
+
+.billsBody_detalle-table-main {
+    width: 100%;
+}
+
+.billsBody_detalle-table-header-cantidad {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 2%;
+}
+
+.billsBody_detalle-table-header-descrip {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 10%;
+}
+
+.billsBody_detalle-table-header-precioUnidad {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 4%;
+}
+
+.billsBody_detalle-table-header-descuento {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 3%;
+}
+
+.billsBody_detalle-table-header-impuesto {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 3%;
+}
+
+.billsBody_detalle-table-header-subtotal {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 4%;
+}
+
+.billsBody_detalle-table-header-cuentaContable {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.billsBody_detalle-table-header-descrip {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.billsBody_detalle-table-cantidad {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.billsBody_detalle-table-descrip {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.billsBody_detalle-table-precioUnidad {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.billsBody_detalle-table-descuento {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.billsBody_detalle-table-impuesto {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.billsBody_detalle-table-subtotal {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.billsBody_detalle-table-cuentaContable {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.billsBody_detalle-table-descrip {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.billsBody_detalle-totals {
+    grid-area: totals;
+    display: grid;
+    grid-template-areas: 
+        'subtotalT descuentoT impuestoT totalT';
+    grid-template-columns: 25% 25% 25% 25%;
+}
+
+.billsBody_detalle-totals-subtotal {
+    grid-area: subtotalT;
+    display: grid;
+    grid-template-areas: 
+        'lblsubtotalT'
+        'txtsubtotalT';
+    grid-template-rows: 50% 50%;
+}
+
+#lblSubtotalBodyDetalleBillsT {
+    border: 1px solid #c4c4c4;
+    color: #4169e6;
+    font-size: 15px;
+    grid-area: lblsubtotalT;
+    height: 80%;
+    margin-left: 40px;
+    margin-right: 5px;
+    margin-top: 5px;
+    padding-top: 1px;
+    text-align: center;
+    width: 70%;
+}
+
+#txtSubtotalBodyDetalleBillsT {
+    font-size: 15px;
+    grid-area: txtsubtotalT;
+    height: 80%;
+    margin-left: 40px;
+    margin-right: 5px;
+    margin-top: 3px;
+    padding-top: 1px;
+    text-align: start;
+    width: 70%;
+}
+
+.billsBody_detalle-totals-descuento {
+    grid-area: descuentoT;
+    display: grid;
+    grid-template-areas: 
+        'lbldescuentoT'
+        'txtdescuentoT';
+    grid-template-rows: 50% 50%;
+}
+
+#lblDescuentoBodyDetalleBillsT {
+    border: 1px solid #c4c4c4;
+    color: #4169e6;
+    font-size: 15px;
+    grid-area: lbldescuentoT;
+    height: 80%;
+    margin-left: 40px;
+    margin-right: 5px;
+    margin-top: 5px;
+    padding-top: 1px;
+    text-align: center;
+    width: 70%;
+}
+
+#txtDescuentoBodyDetalleBillsT {
+    font-size: 15px;
+    grid-area: txtdescuentoT;
+    height: 80%;
+    margin-left: 40px;
+    margin-right: 5px;
+    margin-top: 3px;
+    padding-top: 1px;
+    text-align: start;
+    width: 70%;
+}
+
+.billsBody_detalle-totals-impuesto {
+    grid-area: impuestoT;
+    display: grid;
+    grid-template-areas: 
+        'lblimpuestoT'
+        'txtimpuestoT';
+    grid-template-rows: 50% 50%;
+}
+
+#lblImpuestoBodyDetalleBillsT {
+    border: 1px solid #c4c4c4;
+    color: #4169e6;
+    font-size: 15px;
+    grid-area: lblimpuestoT;
+    height: 80%;
+    margin-left: 40px;
+    margin-right: 5px;
+    margin-top: 5px;
+    padding-top: 1px;
+    text-align: center;
+    width: 70%;
+}
+
+#txtImpuestoBodyDetalleBillsT {
+    font-size: 15px;
+    grid-area: txtimpuestoT;
+    height: 80%;
+    margin-left: 40px;
+    margin-right: 5px;
+    margin-top: 3px;
+    padding-top: 1px;
+    text-align: start;
+    width: 70%;
+}
+
+.billsBody_detalle-totals-total {
+    grid-area: totalT;
+    display: grid;
+    grid-template-areas: 
+        'lbltotalT'
+        'txttotalT';
+    grid-template-rows: 50% 50%;
+}
+
+#lblTotalBodyDetalleBillsT {
+    border: 1px solid #c4c4c4;
+    color: #4169e6;
+    font-size: 15px;
+    grid-area: lbltotalT;
+    height: 80%;
+    margin-left: 40px;
+    margin-right: 5px;
+    margin-top: 5px;
+    padding-top: 1px;
+    text-align: center;
+    width: 70%;
+}
+
+#txtTotalBodyDetalleBillsT {
+    font-size: 15px;
+    grid-area: txttotalT;
+    height: 80%;
+    margin-left: 40px;
+    margin-right: 5px;
+    margin-top: 3px;
+    padding-top: 1px;
+    text-align: start;
+    width: 70%;
+}
+

@@ -1,0 +1,43 @@
+.terms_body-main {
+    border: 1px solid black;
+    display: grid;
+    height: 100%;
+    margin-left: 5%;
+    margin-right: 5%;
+    grid-template-areas: 
+        'tabs'
+        'content';
+    grid-template-rows: 10% 90%;
+}
+
+.terms_body-tabs {
+    grid-area: tabs;
+    padding-top: 8px;
+}
+
+.terms-tabs {
+    display: inline-block;
+}
+
+.terms-tab {
+    background: transparent;
+    border: 1px solid black;
+    color: black;
+    cursor: pointer;
+    font-size: 15px;
+    margin-right: 5px;
+    padding: 5px 15px;
+}
+
+.terms-tab.active {
+    background: $primary;
+    border-top-right-radius: 15%;
+    border: 1px solid #ddd;
+    color: #F2F4F4;
+}
+
+.terms_body-content {
+    background-color: #F0F0F0;
+    border-top: 1px solid #ddd;
+    grid-area: content;
+}

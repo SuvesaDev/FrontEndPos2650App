@@ -1,0 +1,342 @@
+.rates-main {
+    display: grid;
+    text-align: center;
+    grid-template-areas: 
+        'header'
+        'body'
+        'table'
+        'footer';
+    grid-template-rows: 40px 100px 348px 60px;
+}
+
+.rates-header {
+    background-color: #3D59A9;
+    grid-area: header;
+}
+
+#lblTitleRates {
+    color: white;
+    font-size: 25px;
+    padding-top: 5px;
+    text-align: center;
+}
+
+.rates-body {
+    display: grid;
+    grid-area: body;
+    margin-top: 2%;
+    margin-left: 20%;
+    margin-right: 20%;
+    padding-bottom: 10px;
+    grid-template-areas: 
+        'tarifa descrip moneda btn';
+    grid-template-columns: 30% 40% 20% 10%;
+}
+
+.rates-tarifa {
+    display: grid;
+    grid-area: tarifa;
+    margin-right: 5px;
+    grid-template-areas: 
+        'lblTarifa'
+        'inputTarifa';
+    grid-template-rows: 50% 50%;
+}
+
+#lblTarifaRates {
+    background-color: #EEF2E6;
+    border: 1px solid black;
+    font-size: 15px;
+    grid-area: lblTarifa;
+    height: 70%;
+    margin-top: 5px;
+}
+
+#txtTarifaRates {
+    font-size: 15px;
+    grid-area: inputTarifa;
+    height: 70%;
+    text-align: start;
+}
+
+.rates-descrip {
+    display: grid;
+    grid-area: descrip;
+    margin-right: 5px;
+    grid-template-areas: 
+        'lblDescrip'
+        'inputDescrip';
+    grid-template-rows: 50% 50%;
+}
+
+#lblDescripRates {
+    background-color: #EEF2E6;
+    border: 1px solid black;
+    font-size: 15px;
+    grid-area: lblDescrip;
+    height: 70%;
+    margin-top: 5px;
+    width: 100%;
+}
+
+#txtDescripRates {
+    font-size: 15px;
+    grid-area: inputDescrip;
+    height: 70%;
+    text-align: start;
+    width: 100%;
+}
+
+.rates-moneda {
+    display: grid;
+    grid-area: moneda;
+    // margin-right: 5px;
+    padding-left: 10px;
+    grid-template-areas: 
+        'lblMoneda'
+        'inputMoneda';
+    grid-template-rows: 50% 50%;
+}
+
+#lblMonedaRates {
+    background-color: #EEF2E6;
+    border: 1px solid black;
+    font-size: 15px;
+    grid-area: lblMoneda;
+    height: 70%;
+    margin-top: 5px;
+    width: 90%;
+}
+
+#cboMonedaRates {
+    font-size: 15px;
+    grid-area: inputMoneda;
+    height: 70%;
+    text-align: start;
+    width: 90%;
+}
+
+.rates-btn {
+    grid-area: btn;
+    padding-top: 30px;
+}
+
+#btnAddTarifaRates {
+    font-size: 15px;
+    width: 100%;
+
+    &:hover {
+        cursor: pointer;
+        background-color: #3D59A9;
+        color: white;
+    }
+}
+
+.rates-table {
+    grid-area: table;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-bottom: 25px;
+    border: 1px solid black;
+}
+
+.rates-table-main {
+    width: 100%;
+}
+
+.rates-table-header-tarifa {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 5%;
+}
+
+.rates-table-header-descrip {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 5%;
+}
+
+.rates-table-header-moneda {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 5%;
+}
+
+.rates-table-tarifa {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.rates-table-descrip {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.rates-table-moneda {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.rates-icons {
+    border: 1px solid black;
+    display: grid;
+    grid-area: footer;
+    height: 100%;
+    grid-template-areas: 
+        'btnNuevo btnEditar btnRegistrar btnEliminar btnCerrar';
+    grid-template-columns: 8% 8% 8% 8% 8%;
+}
+
+.rates-icons-nuevo {
+    display: grid;
+    grid-area: btnNuevo;
+    height: 100%;
+    grid-template-areas: 
+        'iconNue'
+        'lblNue';
+    grid-template-rows: 60% 40%;
+}
+
+.rates-icons-nuevo-icon {
+    color: #F68A1D;
+    grid-area: iconNue;
+    padding-top: 4px;
+}
+
+#iconNuevoRates {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblNuevoRates {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblNue;
+    text-align: center;
+}
+
+.rates-icons-Editar {
+    display: grid;
+    grid-area: btnEditar;
+    height: 100%;
+    grid-template-areas: 
+        'iconEdit'
+        'lblEdit';
+    grid-template-rows: 60% 40%;
+}
+
+.rates-icons-Editar-icon {
+    color: #F68A1D;
+    grid-area: iconEdit;
+    padding-top: 4px;
+}
+
+#iconEditRates {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblEditRates {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblEdit;
+    text-align: center;
+}
+
+.rates-icons-registrar {
+    display: grid;
+    grid-area: btnRegistrar;
+    height: 100%;
+    grid-template-areas: 
+        'iconReg'
+        'lblReg';
+    grid-template-rows: 60% 40%;
+}
+
+.rates-icons-registrar-icon {
+    color: #F68A1D;
+    grid-area: iconReg;
+    padding-top: 4px;
+}
+
+#iconRegistrarRates {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblRegistrarRates {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblReg;
+    text-align: center;
+}
+
+.rates-icons-eliminar {
+    display: grid;
+    grid-area: btnEliminar;
+    height: 100%;
+    grid-template-areas: 
+        'iconEli'
+        'lblEli';
+    grid-template-rows: 60% 40%;
+}
+
+.rates-icons-eliminar-icon {
+    color: #F68A1D;
+    grid-area: iconEli;
+    padding-top: 4px;
+}
+
+#iconEliminarRates {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblEliminarRates {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblEli;
+    text-align: center;
+}
+
+.rates-icons-cerrar {
+    display: grid;
+    grid-area: btnCerrar;
+    height: 100%;
+    grid-template-areas: 
+        'iconCer'
+        'lblCer';
+    grid-template-rows: 60% 40%;
+}
+
+.rates-icons-cerrar-icon {
+    color: #F68A1D;
+    grid-area: iconCer;
+    padding-top: 4px;
+}
+
+#iconCerrarRates {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+}
+
+#lblCerrarRates {
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: lblCer;
+    text-align: center;
+}

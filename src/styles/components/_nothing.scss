@@ -1,0 +1,29 @@
+.nothing_main {
+    display: grid;
+    background-color: #f4efe3;
+    grid-template-areas: 
+        'Title'
+        'Image';
+    grid-template-rows: 80px 495px;
+}
+
+.nothing_title {
+    // background-color: #f4efe3;
+    font-size: 20px;
+    grid-area: Title;
+    padding-top: 15px;
+    text-align: center;
+}
+
+.nothing_Image {
+    background-color: #f4efe3;
+    width: 100%;
+    height: 100%;
+    grid-area: Image;
+}
+
+.nothing_Image-img {
+    height: 95%;
+    margin-left: 40%;
+}
+

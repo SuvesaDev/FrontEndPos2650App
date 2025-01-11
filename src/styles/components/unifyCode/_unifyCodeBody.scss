@@ -1,0 +1,124 @@
+.unifyCode_body-main {
+    display: grid;
+    height: 100%;
+    margin-left: 3%;
+    margin-right: 3%;
+    grid-template-areas: 
+        'btn'
+        'table';
+    grid-template-rows: 10% 90%;
+}
+
+.unifyCode_body-btn {
+    grid-area: btn;
+    margin-right: 90%;
+    padding-top: 10px;
+}
+
+#btnAddUnifyCode {
+    font-size: 15px;
+    height: 80%;
+    text-align: center;
+    width: 100%;
+
+    &:hover {
+        background-color: #3D59A9;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+.unifyCode_body-table {
+    grid-area: table;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+
+.unifyCode_body-table-main {
+    width: 100%;
+}
+
+.unifyCode_body-table-header-puntoventa1 {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 3%;
+}
+
+.unifyCode_body-table-header-codigo1 {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 2%;
+}
+
+.unifyCode_body-table-header-descrip1 {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 8%;
+}
+
+.unifyCode_body-table-header-puntoventa2 {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 3%;
+}
+
+.unifyCode_body-table-header-codigo2 {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 2%;
+}
+
+.unifyCode_body-table-header-descrip2 {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 8%;
+}
+
+.unifyCode_body-table-puntoventa1 {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.unifyCode_body-table-codigo1 {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.unifyCode_body-table-descrip1 {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.unifyCode_body-table-puntoventa2 {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.unifyCode_body-table-codigo2 {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.unifyCode_body-table-descrip2 {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}

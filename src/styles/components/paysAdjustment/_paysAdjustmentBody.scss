@@ -1,0 +1,483 @@
+.pays_adjustment-body-main {
+    display: grid;
+    height: 100%;
+    padding-left: 5px;
+    grid-template-areas: 
+        'facturasPen datosFactura';
+    grid-template-columns: 30% 70%;
+}
+
+.pays_adjustment-body-facturasPen {
+    background-color: white;
+    display: grid;
+    grid-area: facturasPen;
+    height: 96%;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+    grid-template-areas: 
+        'lblfacturasPen'
+        'tablefacturasPen';
+    grid-template-rows: 10% 90%;
+}
+
+#lblFacturasPendienteBodyPaysT {
+    border: 1px solid black;
+    font-size: 15px;
+    grid-area: lblfacturasPen;
+    padding-top: 4px;
+}
+
+.pays_adjustment-body-facturasPen-table {
+    border: 1px solid black;
+    grid-area: tablefacturasPen;
+}
+
+.pays_adjustment-body-facturasPen-table-main {
+    width: 100%;
+}
+
+.pays_adjustment-body-facturasPen-table-header-numeroFactura {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.pays_adjustment-body-facturasPen-table-header-fecha {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.pays_adjustment-body-facturasPen-table-numeroFactura {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.pays_adjustment-body-facturasPen-table-fecha {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.pays_adjustment-body-datosFactura {
+    border: 1px solid #A9ADA1;
+    display: grid;
+    grid-area: datosFactura;
+    height: 96%;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+    grid-template-areas: 
+        'datosFactura'
+        'table';
+    grid-template-rows: 45% 55%;
+}
+
+.pays_adjustment-body-datosFactura-datos {
+    display: grid;
+    grid-area: datosFactura;
+    height: 98%;
+    grid-template-areas: 
+        'lbldatosFactura'
+        'inputdatosFactura';
+    grid-template-rows: 15% 85%;
+}
+
+#lblDatosFacturaPaysT {
+    background-color: #3D62DB;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lbldatosFactura;
+    text-align: center;
+}
+
+.pays_adjustment-body-datosFactura-datos-inputs {
+    display: grid;
+    grid-area: inputdatosFactura;
+    height: 100%;
+    grid-template-areas: 
+        'leftSideDatosF rightSideDatosF';
+    grid-template-columns: 50% 50%;
+}
+
+.pays_adjustment-body-datosFactura-datos-inputs-leftSide {
+    display: grid;
+    grid-area: leftSideDatosF;
+    height: 100%;
+    grid-template-areas: 
+        'facturaNo'
+        'fecha'
+        'monto'
+        'cuentaCont';
+    grid-template-rows: 25% 25% 25% 25%;
+}
+
+.pays_adjustment-body-datosFactura-datos-inputs-leftSide-FacturaNo {
+    display: grid;
+    grid-area: facturaNo;
+    height: 100%;
+    grid-template-areas: 
+        'lblFacturaNo inputFacturaNo';
+    grid-template-columns: 50% 50%;
+}
+
+#lblFacturaNoBodyPaysT {
+    background-color: #EEF2E6;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblFacturaNo;
+    height: 80%;
+    margin-left: 20px;
+    margin-top: 2px;
+    padding-top: 2px;
+    width: 80%;
+}
+
+#txtFacturaNoBodyPaysT {
+    font-size: 15px;
+    grid-area: inputFacturaNo;
+    height: 80%;
+    margin-top: 2px;
+    text-align: start;
+    width: 90%;
+}
+
+.pays_adjustment-body-datosFactura-datos-inputs-leftSide-fecha {
+    display: grid;
+    grid-area: fecha;
+    height: 100%;
+    grid-template-areas: 
+        'lblFecha inputFecha';
+    grid-template-columns: 50% 50%;
+}
+
+#lblFechaBodyPaysT {
+    background-color: #EEF2E6;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblFecha;
+    height: 80%;
+    margin-left: 20px;
+    margin-top: 2px;
+    padding-top: 2px;
+    width: 80%;
+}
+
+#txtFechaBodyPaysT {
+    font-size: 15px;
+    grid-area: inputFecha;
+    height: 80%;
+    margin-top: 2px;
+    text-align: start;
+    width: 90%;
+}
+
+.pays_adjustment-body-datosFactura-datos-inputs-leftSide-monto {
+    display: grid;
+    grid-area: monto;
+    height: 100%;
+    grid-template-areas: 
+        'lblMonto inputMonto';
+    grid-template-columns: 50% 50%;
+}
+
+#lblMontoBodyPaysT {
+    background-color: #EEF2E6;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblMonto;
+    height: 80%;
+    margin-left: 20px;
+    margin-top: 2px;
+    padding-top: 2px;
+    width: 80%;
+}
+
+#txtMontoBodyPaysT {
+    font-size: 15px;
+    grid-area: inputMonto;
+    height: 80%;
+    margin-top: 2px;
+    text-align: start;
+    width: 90%;
+}
+
+.pays_adjustment-body-datosFactura-datos-inputs-leftSide-cuentaCont {
+    display: grid;
+    grid-area: cuentaCont;
+    height: 100%;
+    grid-template-areas: 
+        'lblCuentaCont inputCuentaCont';
+    grid-template-columns: 50% 50%;
+}
+
+#lblCuentaContBodyPaysT {
+    background-color: #EEF2E6;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblCuentaCont;
+    height: 80%;
+    margin-left: 20px;
+    margin-top: 2px;
+    padding-top: 2px;
+    width: 80%;
+}
+
+#txtCuentaContBodyPaysT {
+    font-size: 15px;
+    grid-area: inputCuentaCont;
+    height: 80%;
+    margin-top: 2px;
+    text-align: start;
+    width: 90%;
+}
+
+.pays_adjustment-body-datosFactura-datos-inputs-rightSide {
+    display: grid;
+    grid-area: rightSideDatosF;
+    height: 100%;
+    grid-template-areas: 
+        'saldo'
+        'ajuste'
+        'saldoActual'
+        'descrip';
+    grid-template-rows: 25% 25% 25% 25%;
+}
+
+.pays_adjustment-body-datosFactura-datos-inputs-rightSide-saldo {
+    display: grid;
+    grid-area: saldo;
+    height: 100%;
+    grid-template-areas: 
+        'lblSaldo inputSaldo';
+    grid-template-columns: 50% 50%;
+}
+
+#lblSaldoBodyPaysT {
+    background-color: #EEF2E6;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblSaldo;
+    height: 80%;
+    margin-left: 20px;
+    margin-top: 2px;
+    padding-top: 2px;
+    width: 80%;
+}
+
+#txtSaldoBodyPaysT {
+    font-size: 15px;
+    grid-area: inputSaldo;
+    height: 80%;
+    margin-top: 2px;
+    text-align: start;
+    width: 90%;
+}
+
+.pays_adjustment-body-datosFactura-datos-inputs-rightSide-ajuste {
+    display: grid;
+    grid-area: ajuste;
+    height: 100%;
+    grid-template-areas: 
+        'lblAjuste inputAjuste';
+    grid-template-columns: 50% 50%;
+}
+
+#lblAjusteBodyPaysT {
+    background-color: #EEF2E6;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblAjuste;
+    height: 80%;
+    margin-left: 20px;
+    margin-top: 2px;
+    padding-top: 2px;
+    width: 80%;
+}
+
+#txtAjusteBodyPaysT {
+    font-size: 15px;
+    grid-area: inputAjuste;
+    height: 80%;
+    margin-top: 2px;
+    text-align: start;
+    width: 90%;
+}
+
+.pays_adjustment-body-datosFactura-datos-inputs-rightSide-saldoActual {
+    display: grid;
+    grid-area: saldoActual;
+    height: 100%;
+    grid-template-areas: 
+        'lblSaldoActual inputSaldoActual';
+    grid-template-columns: 50% 50%;
+}
+
+#lblSaldoActualBodyPaysT {
+    background-color: #EEF2E6;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblSaldoActual;
+    height: 80%;
+    margin-left: 20px;
+    margin-top: 2px;
+    padding-top: 2px;
+    width: 80%;
+}
+
+#txtSaldoActualBodyPaysT {
+    font-size: 15px;
+    grid-area: inputSaldoActual;
+    height: 80%;
+    margin-top: 2px;
+    text-align: start;
+    width: 90%;
+}
+
+.pays_adjustment-body-datosFactura-datos-inputs-rightSide-descrip {
+    display: grid;
+    grid-area: descrip;
+    height: 100%;
+    grid-template-areas: 
+        'lblDescrip inputDescrip';
+    grid-template-columns: 50% 50%;
+}
+
+#lblDescripBodyPaysT {
+    background-color: #EEF2E6;
+    font-size: 15px;
+    font-weight: bold;
+    grid-area: lblDescrip;
+    height: 80%;
+    margin-left: 20px;
+    margin-top: 2px;
+    padding-top: 2px;
+    width: 80%;
+}
+
+#txtDescripBodyPaysT {
+    font-size: 15px;
+    grid-area: inputDescrip;
+    height: 80%;
+    margin-top: 2px;
+    text-align: start;
+    width: 90%;
+}
+
+.pays_adjustment-body-datosFactura-table {
+    border: 1px solid black;
+    grid-area: table;
+    margin-bottom: 5px;
+    margin-left: 3px;
+    margin-right: 3px;
+    margin-top: 5px;
+}
+
+.pays_adjustment-body-datosFactura-table-main {
+    width: 100%;
+}
+
+.pays_adjustment-body-header-factura {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.pays_adjustment-body-header-montoFactura {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.pays_adjustment-body-header-saldoAnt {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.pays_adjustment-body-header-ajuste {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.pays_adjustment-body-header-saldoAct {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.pays_adjustment-body-header-grid {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.pays_adjustment-body-header-cuentaCont {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.pays_adjustment-body-factura {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.pays_adjustment-body-montoFactura {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.pays_adjustment-body-saldoAnt {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.pays_adjustment-body-ajuste {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.pays_adjustment-body-saldoAct {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.pays_adjustment-body-grid {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.pays_adjustment-body-cuentaCont {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}

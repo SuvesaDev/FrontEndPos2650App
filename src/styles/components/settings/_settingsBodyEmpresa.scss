@@ -1,0 +1,296 @@
+.settings_body-empresas-main{
+    display: grid;
+    height: 100%;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-top: 20px;
+    grid-template-areas: 
+        'firstLine'
+        'secondLine'
+        'thirdLine'
+        'fourthLine'
+        'fifthLine';
+    grid-template-rows: 15% 15% 15% 15% 40%;
+}
+
+.settings_body-empresas-firstLine {
+    grid-area: firstLine;
+    display: grid;
+    height: 100%;
+    margin-left: 10%;
+    margin-right: 10%;
+    grid-template-areas: 
+        'TitlefirstLine'
+        'InputfirstLine';
+    grid-template-rows: 40% 60%;
+}
+
+.settings_body-empresas-firstLine-title {
+    background-color: #E3E3E3;
+    color: #311BB9;
+    grid-area: TitlefirstLine;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 5px;
+    padding-top: 2px;
+    text-align: center;
+}
+
+.settings_body-empresas-firstLine-input {
+    grid-area: InputfirstLine;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+#txtNameEmpresaSettings {
+    color: #311BB9;
+    font-size: 15px;
+    margin-top: 8px;
+    text-align: start;
+    width: 100%;
+}
+
+.settings_body-empresas-secondLine{
+    grid-area: secondLine;
+    display: grid;
+    height: 100%;
+    margin-left: 10%;
+    margin-right: 10%;
+    grid-template-areas: 
+        'cedulaSettings telefonoSettings';
+    grid-template-columns: 50% 50%;
+}
+
+.settings_body-empresas-secondLine-cedula {
+    grid-area: cedulaSettings;
+    display: grid;
+    height: 100%;
+    margin-left: 10%;
+    margin-right: 10%;
+    grid-template-areas: 
+        'TitleCedulaSettings'
+        'InputCedulaSettings';
+    grid-template-rows: 40% 60%;
+}
+
+.settings_body-empresas-secondLine-cedula-title {
+    background-color: #E3E3E3;
+    color: #311BB9;
+    font-size: 15px;
+    grid-area: TitleCedulaSettings;
+    margin-top: 5px;
+    padding-top: 2px;
+    text-align: center;
+}
+
+.settings_body-empresas-secondLine-cedula-input {
+    grid-area: InputCedulaSettings;
+}
+
+#txtcedulaSettings {
+    color: #311BB9;
+    font-size: 15px;
+    margin-top: 8px;
+    text-align: start;
+    width: 100%;
+}
+
+.settings_body-empresas-secondLine-telefono {
+    grid-area: telefonoSettings;
+    display: grid;
+    height: 100%;
+    margin-left: 10%;
+    margin-right: 10%;
+    grid-template-areas: 
+        'TitleTelefonoSettings'
+        'InputTelefonoSettings';
+    grid-template-rows: 40% 60%;
+}
+
+.settings_body-empresas-secondLine-telefono-title {
+    background-color: #E3E3E3;
+    color: #311BB9;
+    font-size: 15px;
+    grid-area: TitleTelefonoSettings;
+    margin-top: 5px;
+    padding-top: 2px;
+    text-align: center;
+}
+
+.settings_body-empresas-secondLine-telefono-input {
+    grid-area: InputTelefonoSettings;
+}
+
+#txttelefonoSettings {
+    color: #311BB9;
+    font-size: 15px;
+    margin-top: 8px;
+    text-align: start;
+    width: 100%;
+}
+
+.settings_body-empresas-thirdLine{
+    grid-area: thirdLine;
+    display: grid;
+    height: 100%;
+    margin-left: 10%;
+    margin-right: 10%;
+    grid-template-areas: 
+        'fraseSettings faxSettings';
+    grid-template-columns: 50% 50%;
+}
+
+.settings_body-empresas-thirdLine-frase {
+    grid-area: fraseSettings;
+    display: grid;
+    height: 100%;
+    margin-left: 10%;
+    margin-right: 10%;
+    grid-template-areas: 
+        'TitleFraseSettings'
+        'InputFraseSettings';
+    grid-template-rows: 40% 60%;
+}
+
+.settings_body-empresas-thirdLine-frase-title {
+    background-color: #E3E3E3;
+    color: #311BB9;
+    font-size: 15px;
+    grid-area: TitleFraseSettings;
+    margin-top: 5px;
+    text-align: center;
+}
+
+.settings_body-empresas-thirdLine-frase-input {
+    grid-area: InputFraseSettings;
+}
+
+#txtFraseSettings {
+    color: #311BB9;
+    font-size: 15px;
+    margin-top: 8px;
+    text-align: start;
+    width: 100%;
+}
+
+.settings_body-empresas-thirdLine-fax {
+    grid-area: faxSettings;
+    display: grid;
+    height: 100%;
+    margin-left: 10%;
+    margin-right: 10%;
+    grid-template-areas: 
+        'TitleFaxSettings'
+        'InputFaxSettings';
+    grid-template-rows: 40% 60%;
+}
+
+.settings_body-empresas-thirdLine-fax-title {
+    background-color: #E3E3E3;
+    color: #311BB9;
+    font-size: 15px;
+    grid-area: TitleFaxSettings;
+    margin-top: 5px;
+    text-align: center;
+}
+
+.settings_body-empresas-thirdLine-fax-input {
+    grid-area: InputFaxSettings;
+}
+
+#txtfaxSettings {
+    color: #311BB9;
+    font-size: 15px;
+    margin-top: 8px;
+    text-align: start;
+    width: 100%;
+}
+
+.settings_body-empresas-fourthLine{
+    grid-area: fourthLine;
+    display: grid;
+    height: 100%;
+    margin-left: 10%;
+    margin-right: 10%;
+    grid-template-areas: 
+        'TitleFourthLine'
+        'InputFourthLine';
+    grid-template-rows: 40% 60%;
+}
+
+.settings_body-empresas-fourthLine-title {
+    background-color: #E3E3E3;
+    color: #311BB9;
+    grid-area: TitleFourthLine;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 5px;
+    padding-top: 2px;
+    text-align: center;
+}
+
+.settings_body-empresas-fourthLine-input {
+    grid-area: InputFourthLine;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+#txtdirreccionSettings {
+    color: #311BB9;
+    font-size: 15px;
+    margin-top: 8px;
+    text-align: start;
+    width: 100%;
+}
+
+.settings_body-empresas-fifthLine {
+    grid-area: fifthLine;
+    display: grid;
+    height: 100%;
+    margin-left: 10%;
+    margin-right: 10%;
+    grid-template-areas: 
+        'btnLogo'
+        'imageLogo';
+    grid-template-rows: 15% 85%;
+}
+
+.settings_body-empresas-fifthLine-btn {
+    grid-area: btnLogo;
+    text-align: start;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+#btnSubirLogo {
+    background-color: #E3E3E3;
+    width: 15%;
+    text-align: center;
+    font-size: 15px;
+    padding-top: 2px;
+    height: 100%;
+    border: 1px solid #4F4F4F;
+
+    &:hover {
+        background-color: #4F4F4F;
+        color: #E3E3E3;
+        cursor: pointer;
+    }
+}
+
+#fileSelector {
+    display: none;
+}
+
+.settings_body-empresas-fifthLine-image {
+    grid-area: imageLogo;
+    margin-top: 5px;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 10px;
+}
+
+.settings_body-empresas-fifthLine-image-logo {
+    height: 100%;
+    width: 250px;
+}

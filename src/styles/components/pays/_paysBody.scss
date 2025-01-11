@@ -1,0 +1,113 @@
+.pays_body-main {
+    border: 1px solid black;
+    display: grid;
+    height: 95%;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 5px;
+    grid-template-areas: 
+        'table tabs';
+    grid-template-columns: 30% 70%;
+}
+
+.pays_body-table {
+    // border: 1px solid black;
+    display: grid;
+    grid-area: table;
+    height: 100%;
+    padding: 5px;
+    grid-template-areas: 
+        'lblfacturas'
+        'tablefacturas';
+    grid-template-rows: 15% 85%;
+}
+
+#lblFacturasPaysBody {
+    border: 1px solid black;
+    font-size: 15px;
+    grid-area: lblfacturas;
+    padding-top: 1px;
+}
+
+.pays_body-table-main {
+    border: 1px solid black;
+    grid-area: tablefacturas;
+}
+
+.pays_body-table-table {
+    width: 100%;
+}
+
+.pays_body-table-header-numeroFactura {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.pays_body-table-header-fecha {
+    background-color: #BFBCC1;
+    padding-left: 5px;
+    text-align: start;
+    width: 6%;
+}
+
+.pays_body-table-numeroFactura {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.pays_body-table-fecha {
+    border: 1px solid #BFBCC1;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: start;
+}
+
+.pays_body-tabs {
+    border: 1px solid black;
+    display: grid;
+    grid-area: tabs;
+    height: 95%;
+    margin: 5px;
+    grid-template-areas: 
+        'tabs'
+        'body';
+    grid-template-rows: 20% 80%;
+}
+
+.pays_body-tabs-tab {
+    grid-area: tabs;
+    padding-top: 3px;
+}
+
+.pays-tabs {
+    display: inline-block;
+}
+
+.pays-tab {
+    background: transparent;
+    border: 1px solid black;
+    color: black;
+    cursor: pointer;
+    font-size: 15px;
+    margin-right: 5px;
+    padding: 5px 15px;
+}
+
+.pays-tab.active {
+    background: $primary;
+    border-top-right-radius: 15%;
+    border: 1px solid #ddd;
+    color: #F2F4F4;
+}
+
+.pays_body-tabs-body {
+    grid-area: body;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
