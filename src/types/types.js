@@ -1488,6 +1488,8 @@ export const types = {
   SetEmailUsers: '[Users] SetEmailUsers',
   SetActivoUsers: '[Users] SetActivoUsers',
   SetMaximoVentasUsers: '[Users] SetMaximoVentasUsers',
+  SetIsAdministradoCostaPetsUsers: '[Users] SetIsAdministradoCostaPetsUsers',
+  SetIsAgenteCostaPetsUsers: '[Users] SetIsAgenteCostaPetsUsers',
 
   SetValorFiltroSearchUsers: '[Users] SetValorFiltroSearchUsers',
   SetIdUsuarioSearchUsers: '[Users] SetIdUsuarioSearchUsers',
@@ -1499,6 +1501,8 @@ export const types = {
   SetIsEqualsClaveUsers: '[Users] SetIsEqualsClaveUsers',
   SetShowInfoMessageUsers: '[Users] SetShowInfoMessageUsers',
 
+  SetShowCostaPetsUsers: '[Users] SetShowCostaPetsUsers',
+  
   CleanUsers: '[Users] CleanUsers',
 
   // Charge Action

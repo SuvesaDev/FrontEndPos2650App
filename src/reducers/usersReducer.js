@@ -13,6 +13,7 @@ const initialState = {
     isEditUser: false,
     isEquealsClave: true,
     showInfoMessageClave: false,
+    showCostaPets: false,   
     searchUsers: [],
     optionsSearchUsers: {
         valorFiltro: '',
@@ -37,7 +38,9 @@ const initialState = {
         observaciones: '',
         email: '',
         maximoVentas: 1,
-        activo: false
+        activo: false,
+        isAdministradorCostaPets: false,
+        isAgenteCostaPets: false,
     }
 };
 
@@ -370,6 +373,30 @@ export const usersReducer = (state = initialState, action) => {
             return {
                 ...state,
                 showInfoMessageClave: action.payload,
+            }
+
+        case types.SetShowCostaPetsUsers:
+            return {
+                ...state,
+                showCostaPets: action.payload,
+            }
+
+        case types.SetIsAdministradoCostaPetsUsers:
+            return {
+                ...state,
+                user: {
+                    ...state.user,
+                    isAdministradorCostaPets: action.payload
+                }
+            }
+
+        case types.SetIsAgenteCostaPetsUsers:
+            return {
+                ...state,
+                user: {
+                    ...state.user,
+                    isAgenteCostaPets: action.payload
+                }
             }
 
         default:

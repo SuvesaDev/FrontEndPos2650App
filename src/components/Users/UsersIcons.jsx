@@ -39,6 +39,7 @@ export const UsersIcons = () => {
         startOpening,
         isEditUser,
         isEquealsClave,
+        showCostaPets,
         user
     } = useSelector(state => state.users);
 
@@ -59,7 +60,9 @@ export const UsersIcons = () => {
         observaciones,
         email,
         maximoVentas,
-        activo
+        activo,
+        isAdministradorCostaPets,
+        isAgenteCostaPets
     } = user;
 
     const handleNewUser = (e) => {
@@ -135,7 +138,10 @@ export const UsersIcons = () => {
                 observaciones: observaciones,
                 email: email,
                 activo: true,
-                cantidadPreventas: maximoVentas
+                cantidadPreventas: maximoVentas,
+                costaPets: showCostaPets,
+                agenteCostaPets: (showCostaPets) ? isAgenteCostaPets : null,
+                administrador: (showCostaPets) ? isAdministradorCostaPets : null,
             }
 
             dispatch(startValidatePassword(newUser));

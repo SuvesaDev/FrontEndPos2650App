@@ -13,6 +13,8 @@ import {
     SetExistNegativaUsers,
     SetIdUsuarioUsers,
     SetInicialesUsers,
+    SetIsAdministradoCostaPetsUsers,
+    SetIsAgenteCostaPetsUsers,
     SetIsEqualsClaveUsers,
     SetMaximoVentasUsers,
     SetNombreUsers,
@@ -20,6 +22,7 @@ import {
     SetPerfilUsers,
     SetPorcDescUsers,
     SetPorcPrecioUsers,
+    SetShowCostaPetsUsers,
     SetShowInfoMessageUsers,
     SetUsuarioUsers,
     SetVisibleClaveEntradaUsers,
@@ -36,6 +39,7 @@ export const UsersBody = () => {
         disableInputs,
         isEquealsClave,
         showInfoMessageClave,
+        showCostaPets,
         user
     } = useSelector(state => state.users);
 
@@ -54,7 +58,9 @@ export const UsersBody = () => {
         usuario,
         observaciones,
         email,
-        maximoVentas
+        maximoVentas,
+        isAdministradorCostaPets,
+        isAgenteCostaPets
     } = user;
 
     useEffect(() => {
@@ -109,6 +115,27 @@ export const UsersBody = () => {
         e.preventDefault();
         dispatch(SetShowInfoMessageUsers(false));
     }
+
+    const handleInputChangePerfil = ({ target }, action) => {
+        
+        if(target.value == 3){
+            dispatch(SetShowCostaPetsUsers(true));
+        } else {
+            dispatch(SetShowCostaPetsUsers(false));
+        }
+
+        dispatch(action(target.value));
+    };
+
+    const handleInputChangeCheckAdminCostaPets = () => {
+        dispatch(SetIsAdministradoCostaPetsUsers(true));
+        dispatch(SetIsAgenteCostaPetsUsers(false));
+    };
+
+    const handleInputChangeCheckAgenteCostaPets = () => {
+        dispatch(SetIsAdministradoCostaPetsUsers(false));
+        dispatch(SetIsAgenteCostaPetsUsers(true));
+    };
 
     return (
         <>
@@ -268,11 +295,12 @@ export const UsersBody = () => {
                             name='perfil'
                             disabled={disableInputs}
                             value={perfil}
-                            onChange={e => handleInputChangeWithDispatch(e, SetPerfilUsers)}
+                            onChange={e => handleInputChangePerfil(e, SetPerfilUsers)}
                         >
                             <option value={0} selected disabled hidden> Seleccione... </option>
                             <option value={1}>Administrador</option>
                             <option value={2}>Cajero</option>
+                            <option value={3}>Costa Pets</option>
                         </select>
                     </div>
                 </div>
@@ -315,6 +343,7 @@ export const UsersBody = () => {
             </div>
 
             <div className="row mb-0 text-center">
+
                 <div className="col-md-6 mb-2">
                     <h5>Opciones en Ventas y Cotizaciones</h5>
                     <hr />
@@ -412,6 +441,7 @@ export const UsersBody = () => {
                         </div>
                     </div>
                 </div>
+
                 <div className="col-md-6 mb-2">
                     <h5>Observaciones</h5>
                     <div className="input-group">
@@ -428,6 +458,48 @@ export const UsersBody = () => {
                             onChange={e => handleInputChangeWithDispatch(e, SetObservacionesUsers)}
                         ></textarea>
                     </div>
+
+                    <div className={showCostaPets ? 'mt-3' : 'mt-3 d-none'}>
+                        <h5>CostaPets</h5>
+                        <hr />
+
+                        <div className="col-md-12 mb-3">
+                            <div className='row'>
+
+                                <div className="col-md-6 mb-3">
+                                    <div className="form-check">
+                                        <input
+                                            type="checkbox"
+                                            class="form-check-input checkP"
+                                            id='checkEsCostaPetsUserBody'
+                                            name='existNegativa'
+                                            disabled={disableInputs}
+                                            checked={isAdministradorCostaPets}
+                                            onChange={e => handleInputChangeCheckAdminCostaPets()}
+                                        />
+                                        <h5 className="form-check-label" for="checkEsCostaPetsUserBody">Es Administrador</h5>
+                                    </div>
+                                </div>
+
+                                <div className="col-md-6 mb-3">
+                                    <div className="form-check">
+                                        <input
+                                            type="checkbox"
+                                            class="form-check-input checkP"
+                                            id='checkEsAgenteCostaPetsUserBody'
+                                            name='existNegativa'
+                                            disabled={disableInputs}
+                                            checked={isAgenteCostaPets}
+                                            onChange={e => handleInputChangeCheckAgenteCostaPets()}
+                                        />
+                                        <h5 className="form-check-label" for="checkEsAgenteCostaPetsUserBody">Es Agente</h5>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
         </>

@@ -713,3 +713,18 @@ export const SetShowInfoMessageUsers = (value) => ({
     type: types.SetShowInfoMessageUsers,
     payload: value
 })
+
+export const SetShowCostaPetsUsers = (value) => ({
+    type: types.SetShowCostaPetsUsers,
+    payload: value
+})
+
+export const SetIsAdministradoCostaPetsUsers = (value) => ({
+    type: types.SetIsAdministradoCostaPetsUsers,
+    payload: value
+})
+
+export const SetIsAgenteCostaPetsUsers = (value) => ({
+    type: types.SetIsAgenteCostaPetsUsers,
+    payload: value
+})
