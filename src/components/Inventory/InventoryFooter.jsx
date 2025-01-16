@@ -37,6 +37,7 @@ import {
     IsEditInventory,
     IsInventoryDisable,
     IsNewInventory,
+    IsOpenSearchModalRelacionados,
     IsSelectedRelatedArticleInventory,
     IsShowTabCodigoBarrasInventory,
     OpenSearchModalInventory,
@@ -276,6 +277,9 @@ export const InventoryFooter = () => {
 
         //False isShowTabCodigoBarras
         dispatch(IsShowTabCodigoBarrasInventory(false));
+
+        //False isShowTabCodigoBarras
+        dispatch(IsOpenSearchModalRelacionados(false));
     }
 
     const handleNewInventory = async (e) => {

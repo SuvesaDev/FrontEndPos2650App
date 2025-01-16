@@ -490,7 +490,7 @@ export const startGetOneInventory = ( codigo ) => {
 
                 //Call end-point de la Articulos relacionados
                 const { data } = await suvesaApi.post('/articulosRelacionados/BuscarArticulosRelacionados', { codigoPrincipal: responses.cod_Articulo } );
-
+                
                 // Cerrar el modal de espera
                 Swal.close();
 

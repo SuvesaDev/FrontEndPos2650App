@@ -194,7 +194,7 @@ export class Inventory {
         this.categorias = categorias || [],
         this.codigoBarras = codigoBarras || [],
         this.codigoIntQVET = codigoIntQVET || 0,
-        this.codigoPro = codigoPro || 0,
+        this.codigoPro = codigoPro || '',
         this.descripcionPro = descripcionPro || '',
         this.estado = estado || true,
         this.idUsuarioCreacion = idUsuarioCreacion || ''
