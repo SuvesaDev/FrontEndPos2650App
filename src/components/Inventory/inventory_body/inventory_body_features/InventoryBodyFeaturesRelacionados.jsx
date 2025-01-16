@@ -140,6 +140,8 @@ export const InventoryBodyFeaturesRelacionados = () => {
                 }
                 type="button"
                 onClick={handleSearchArticle}
+                data-bs-toggle="modal"
+                data-bs-target="#modalBuscarArticulo"
               >
                 <FaSearch className="iconSize" />
               </button>
