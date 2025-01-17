@@ -8,8 +8,10 @@ export const InventoryHeader = () => {
   const dispatch = useDispatch();
 
   const { inventory, disableInputs } = useSelector((state) => state.inventory);
-
   const { codigo, soloConExistencia, inhabilitado } = inventory;
+
+  const { auth } = useSelector((state) => state.login);
+  const { costaPets } = auth;
 
   const handleInputChangeCheckBoxWithDispatch = ({ target }, action) => {
     dispatch(action(target.checked));
@@ -19,7 +21,7 @@ export const InventoryHeader = () => {
     <> 
         <div className="row mb-0">
             <div className="col-md-4 mb-1">
-                <div className="input-group">
+                <div className={ !costaPets ? 'input-group' : 'input-group d-none'}>
                     <span className="input-group-text">
                         <ImSortNumbericDesc className="iconSize" />
                     </span>

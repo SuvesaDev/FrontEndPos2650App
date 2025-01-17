@@ -73,6 +73,9 @@ export const InventoryHeaderArticle = () => {
   const { bodegasInventory } = useSelector((state) => state.bodegas);
   const { categoriasInventory } = useSelector((state) => state.categorias);
 
+  const { auth } = useSelector((state) => state.login);
+  const { costaPets } = auth;
+  
   const {
     cod_Articulo,
     descripcion,
@@ -191,6 +194,7 @@ export const InventoryHeaderArticle = () => {
   return (
     <>
       <div className="row mb-3 text-md-center">
+
         <div className="col-md-3 mb-3">
           <h5>Código</h5>
           <div className="input-group">
@@ -302,6 +306,7 @@ export const InventoryHeaderArticle = () => {
       </div>
 
       <div className="row mb-3 text-md-center">
+
         <div className="col-md-3 mb-3">
           <h5>Familia</h5>
           <div className="input-group">
@@ -344,7 +349,7 @@ export const InventoryHeaderArticle = () => {
           </div>
         </div>
 
-        <div className="col-md-3 mb-3">
+        <div className={ !costaPets ? 'col-md-3 mb-3' : 'col-md-3 mb-3 d-none'}>
           <h5>Ubicación</h5>
           <div className="input-group">
             <span className="input-group-text">
@@ -459,8 +464,9 @@ export const InventoryHeaderArticle = () => {
         </div>
       </div>
 
-      <div className="row mb-3 text-md-center">
+      <div className={ !costaPets ? 'row mb-3 text-md-center' : 'row mb-3 text-md-center d-none'}>
         <div className="col-md-1 mb-0"></div>
+
         <div className="col-md-3 mb-3">
           <div className="form-check">
             <input
@@ -529,8 +535,9 @@ export const InventoryHeaderArticle = () => {
         <div className="col-md-1 mb-0"></div>
       </div>
 
-      <div className="row mb-3 text-md-center">
+      <div className={ !costaPets ? 'row mb-3 text-md-center' : 'row mb-3 text-md-center d-none'}>
         <div className="col-md-1 mb-0"></div>
+
         <div className="col-md-3 mb-3">
           <div className="form-check">
             <input
@@ -550,6 +557,7 @@ export const InventoryHeaderArticle = () => {
           </div>
           <hr />
         </div>
+
         <div className="col-md-4 mb-3">
           <div className="form-check">
             <input
@@ -587,11 +595,13 @@ export const InventoryHeaderArticle = () => {
           </div>
           <hr />
         </div>
+
         <div className="col-md-1 mb-0"></div>
       </div>
 
       <div className="row mb-3 text-md-center">
         <div className="col-md-2 mb-0"></div>
+
         <div className="col-md-4 mb-3">
           <div className="inline-container">
             <h5>Código Barras</h5>
@@ -634,7 +644,9 @@ export const InventoryHeaderArticle = () => {
             </div>
           ) : null}
         </div>
-        <div className="col-md-4 mb-3">
+
+        <div className={ !costaPets ? 'col-md-4 mb-3' : 'col-md-4 mb-3 d-none'}>
+
           <div className="inline-container">
             <h5>Tipo Pantalla</h5>
             <div className="form-check">
@@ -654,6 +666,7 @@ export const InventoryHeaderArticle = () => {
               </h5>
             </div>
           </div>
+
           <div className="input-group">
             <span className="input-group-text">
               <CgScreen className="iconSize" />
@@ -680,7 +693,9 @@ export const InventoryHeaderArticle = () => {
               )}
             </select>
           </div>
+
         </div>
+        
         <div className="col-md-2 mb-0"></div>
       </div>
       <hr />

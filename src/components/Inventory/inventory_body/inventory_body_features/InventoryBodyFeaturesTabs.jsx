@@ -9,6 +9,9 @@ export const InventoryBodyFeaturesTabs = () => {
     (state) => state.inventory
   );
 
+  const { auth } = useSelector((state) => state.login);
+  const { costaPets } = auth;
+
   const handleSelectTabInventory = (nameTab) => {
     dispatch(SelectTabInventory(nameTab));
   };
@@ -16,6 +19,7 @@ export const InventoryBodyFeaturesTabs = () => {
   return (
     <>
         <div className="inline-containerBtns">
+
             <button
             className={
                 currentTabInventory == "UltimoCosto"
@@ -28,33 +32,36 @@ export const InventoryBodyFeaturesTabs = () => {
             </button>
 
             <button
-            className={
-                currentTabInventory == "RebajaOtroArticulo"
-                ? "btn btn-outline-primary activeP"
-                : "btn btn-primary"
-            }
+             className={ 
+                (!costaPets) 
+                    ? currentTabInventory == "RebajaOtroArticulo"
+                        ? "btn btn-outline-primary activeP"
+                        : "btn btn-primary" 
+                    : 'col-md-3 mb-3 d-none'}
             onClick={() => handleSelectTabInventory("RebajaOtroArticulo")}
             >
             Rebaja Otro Articulo
             </button>
 
             <button
-            className={
-                currentTabInventory == "InformacionPost"
-                ? "btn btn-outline-primary activeP"
-                : "btn btn-primary"
-            }
+            className={ 
+                (!costaPets) 
+                    ? currentTabInventory == "InformacionPost"
+                        ? "btn btn-outline-primary activeP"
+                        : "btn btn-primary" 
+                    : 'col-md-3 mb-3 d-none'}
             onClick={() => handleSelectTabInventory("InformacionPost")}
             >
             Información POST
             </button>
 
             <button
-            className={
-                currentTabInventory == "Bodega"
-                ? "btn btn-outline-primary activeP"
-                : "btn btn-primary"
-            }
+            className={ 
+                (!costaPets) 
+                    ? currentTabInventory == "Bodega"
+                        ? "btn btn-outline-primary activeP"
+                        : "btn btn-primary" 
+                    : 'col-md-3 mb-3 d-none'}
             onClick={() => handleSelectTabInventory("Bodega")}
             >
             Bodega
@@ -72,11 +79,12 @@ export const InventoryBodyFeaturesTabs = () => {
             </button>
 
             <button
-            className={
-                currentTabInventory == "Categoria"
-                ? "btn btn-outline-primary activeP"
-                : "btn btn-primary"
-            }
+            className={ 
+                (!costaPets) 
+                    ? currentTabInventory == "Categoria"
+                        ? "btn btn-outline-primary activeP"
+                        : "btn btn-primary" 
+                    : 'col-md-3 mb-3 d-none'}
             onClick={() => handleSelectTabInventory("Categoria")}
             >
             Categoria
@@ -107,22 +115,24 @@ export const InventoryBodyFeaturesTabs = () => {
             ) : null}
 
             <button
-            className={
-                currentTabInventory == "Serie"
-                ? "btn btn-outline-primary activeP"
-                : "btn btn-primary"
-            }
+            className={ 
+                (!costaPets) 
+                    ? currentTabInventory == "Serie"
+                        ? "btn btn-outline-primary activeP"
+                        : "btn btn-primary" 
+                    : 'col-md-3 mb-3 d-none'}
             onClick={() => handleSelectTabInventory("Serie")}
             >
             Serie
             </button>
 
             <button
-            className={
-                currentTabInventory == "Detalle"
-                ? "btn btn-outline-primary activeP"
-                : "btn btn-primary"
-            }
+            className={ 
+                (!costaPets) 
+                    ? currentTabInventory == "Detalle"
+                        ? "btn btn-outline-primary activeP"
+                        : "btn btn-primary" 
+                    : 'col-md-3 mb-3 d-none'}
             onClick={() => handleSelectTabInventory("Detalle")}
             >
             Detalle Articulos
