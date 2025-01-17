@@ -20,6 +20,7 @@ const initialState = {
         idUsuario: true,
         nombre: false
     },
+    perfiles: [],
     user: {
         id: 0,
         idUsuario: '',
@@ -397,6 +398,12 @@ export const usersReducer = (state = initialState, action) => {
                     ...state.user,
                     isAgenteCostaPets: action.payload
                 }
+            }
+
+        case types.SetPerfilesUsers:
+            return {
+                ...state,
+                perfiles: action.payload
             }
 
         default:

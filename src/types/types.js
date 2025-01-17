@@ -1502,6 +1502,7 @@ export const types = {
   SetShowInfoMessageUsers: '[Users] SetShowInfoMessageUsers',
 
   SetShowCostaPetsUsers: '[Users] SetShowCostaPetsUsers',
+  SetPerfilesUsers: '[Users] SetPerfilesUsers',
   
   CleanUsers: '[Users] CleanUsers',
 

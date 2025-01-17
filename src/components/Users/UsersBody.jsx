@@ -40,6 +40,7 @@ export const UsersBody = () => {
         isEquealsClave,
         showInfoMessageClave,
         showCostaPets,
+        perfiles,
         user
     } = useSelector(state => state.users);
 
@@ -118,7 +119,9 @@ export const UsersBody = () => {
 
     const handleInputChangePerfil = ({ target }, action) => {
         
-        if(target.value == 3){
+        const namePerfilSelected = perfiles.find( perfil => perfil.idPerfil == target.value );
+
+        if(namePerfilSelected.descripcion === "Costa Pets"){
             dispatch(SetShowCostaPetsUsers(true));
         } else {
             dispatch(SetShowCostaPetsUsers(false));
@@ -297,10 +300,25 @@ export const UsersBody = () => {
                             value={perfil}
                             onChange={e => handleInputChangePerfil(e, SetPerfilUsers)}
                         >
-                            <option value={0} selected disabled hidden> Seleccione... </option>
-                            <option value={1}>Administrador</option>
+                            <option value="" selected disabled hidden>
+                                {" "}
+                                Seleccione...{" "}
+                            </option>
+                            {perfiles.length > 0 ? (
+                                perfiles.map((tipo) => {
+                                    return (
+                                        <option value={tipo.idPerfil}>
+                                        {" "}
+                                        {tipo.descripcion}{" "}
+                                        </option>
+                                    );
+                                })
+                            ) : (
+                                <option value="">No se cargaron los perfiles</option>
+                            )}
+                            {/* <option value={1}>Administrador</option>
                             <option value={2}>Cajero</option>
-                            <option value={3}>Costa Pets</option>
+                            <option value={3}>Costa Pets</option> */}
                         </select>
                     </div>
                 </div>

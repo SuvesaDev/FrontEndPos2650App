@@ -2,8 +2,6 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
 
-
-
 import { RiDeleteBin2Fill } from 'react-icons/ri';
 import { MdNoteAdd } from 'react-icons/md';
 import { FaFloppyDisk, FaMagnifyingGlass } from 'react-icons/fa6';
@@ -19,6 +17,7 @@ import {
     SetStartOpeningUsers,
     startActiveAndDisableUsers,
     startEditUsers,
+    startGetAllPerfiles,
     startValidatePassword
 } from '../../actions/UsersAction';
 
@@ -68,13 +67,16 @@ export const UsersIcons = () => {
     const handleNewUser = (e) => {
 
         if (activeButtonNew) {
-            //TODO: Traer catalogos
+            
             e.preventDefault();
 
             dispatch(SetDisableInputsUsers(false));
             dispatch(SetActiveButtonSaveUsers(true));
             dispatch(SetActiveButtonNewUsers(false));
             dispatch(SetStartOpeningUsers(true));
+
+            //Traer catalogos
+            dispatch( startGetAllPerfiles() );
         }
 
     }
@@ -127,7 +129,7 @@ export const UsersIcons = () => {
                 nombre: nombre,
                 claveEntrada: claveEntrada,
                 claveInterna: claveInterna,
-                perfil: perfil,
+                perfil: parseInt(perfil),
                 iniciales: iniciales,
                 cambiarPrecio: cambiarPrecio,
                 porcPrecio: porcPrecio,
