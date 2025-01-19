@@ -229,7 +229,8 @@ export const InventoryFooter = () => {
                     inventory.descripcionProveedor,
                     true,
                     auth.username,
-                    auth.username
+                    auth.username,
+                    inventory.esPadre
                 ),
                 relatedArticlesArray
             ));

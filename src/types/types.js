@@ -307,6 +307,7 @@ export const types = {
   SetCodigoIntQVETInventory: '[Inventory] SetCodigoIntQVETInventory',
   SetCodigoProInventory: '[Inventory] SetCodigoProInventory',
   SetDescripcionProInventory: '[Inventory] SetDescripcionProInventory',
+  SetEsPadreInventory: '[Inventory] SetEsPadreInventory',
 
   ActiveButtonNewInventory: '[Inventory] ActiveButtonNewInventory',
   ActiveButtonSearchInventory: '[Inventory] ActiveButtonSearchInventory',

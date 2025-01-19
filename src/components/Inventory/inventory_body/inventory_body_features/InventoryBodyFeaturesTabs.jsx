@@ -5,9 +5,11 @@ import { SelectTabInventory } from "../../../../actions/inventory";
 export const InventoryBodyFeaturesTabs = () => {
   const dispatch = useDispatch();
 
-  const { currentTabInventory, isShowTabCodigoBarras } = useSelector(
+  const { currentTabInventory, isShowTabCodigoBarras, inventory } = useSelector(
     (state) => state.inventory
   );
+
+  const { esPadre } = inventory;
 
   const { auth } = useSelector((state) => state.login);
   const { costaPets } = auth;
@@ -101,6 +103,33 @@ export const InventoryBodyFeaturesTabs = () => {
             Relacionados
             </button>
 
+            <button
+            className={ 
+                (costaPets) 
+                    ? currentTabInventory == "Formula"
+                        ? "btn btn-outline-primary activeP"
+                        : "btn btn-primary" 
+                    : 'col-md-3 mb-3 d-none'}
+            onClick={() => handleSelectTabInventory("Formula")}
+            >
+            Formula
+            </button>
+
+            {esPadre ? (
+                <button
+                    className={ 
+                        (costaPets) 
+                            ? currentTabInventory == "Convertidor"
+                                ? "btn btn-outline-primary activeP"
+                                : "btn btn-primary" 
+                            : 'col-md-3 mb-3 d-none'}
+                    onClick={() => handleSelectTabInventory("Convertidor")}
+                    >
+                    Convertidor
+                    </button>
+            ) : null }
+            
+
             {isShowTabCodigoBarras ? (
             <button
                 className={
@@ -148,6 +177,7 @@ export const InventoryBodyFeaturesTabs = () => {
             >
             Lotes
             </button>
+
         </div>
     </>
   );

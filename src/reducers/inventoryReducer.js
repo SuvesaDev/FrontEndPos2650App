@@ -190,7 +190,8 @@ const initialState = {
         descripcionProveedor: '',
         estado: null,
         idUsuarioCreacion: null,
-        idUsuarioModificacion: null
+        idUsuarioModificacion: null,
+        esPadre: false,
     },
     detalleArticuloBodega: {
         idBodega: 0.00,
@@ -1047,6 +1048,15 @@ export const InventoryReducer = (state = initialState, action) => {
                 }
             }
 
+        case types.SetEsPadreInventory:
+            return {
+                ...state,
+                inventory: {
+                    ...state.inventory,
+                    esPadre: action.payload
+                }
+            }
+
         case types.ActiveButtonNewInventory:
             return {
                 ...state,
@@ -1194,7 +1204,8 @@ export const InventoryReducer = (state = initialState, action) => {
                     descripcionProveedor: '',
                     estado: null,
                     idUsuarioCreacion: null,
-                    idUsuarioModificacion: null
+                    idUsuarioModificacion: null,
+                    esPadre: false
                 },
                 isShowTabCodigoBarras : false
             }

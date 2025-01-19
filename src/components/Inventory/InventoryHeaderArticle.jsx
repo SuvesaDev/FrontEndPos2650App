@@ -42,6 +42,7 @@ import {
   IsShowTabCodigoBarrasInventory,
   SetServicioInventory,
   SetOpenModalSearchCodigoCabysInventory,
+  SetEsPadreInventory,
 } from "../../actions/inventory";
 import { startGetAllSubFamilias } from "../../actions/SubFamiliasAction";
 import { startGetAllSubUbicaciones } from "../../actions/SubUbicacionesAction";
@@ -95,6 +96,7 @@ export const InventoryHeaderArticle = () => {
     codPresentacion,
     codMarca,
     servicio,
+    esPadre
   } = inventory;
 
   // useEffect(async () => {
@@ -462,6 +464,29 @@ export const InventoryHeaderArticle = () => {
             </button>
           </div>
         </div>
+
+        <div className={ costaPets ? 'col-md-1 mt-5' : 'col-md-4 mb-3 d-none'}>
+          <div className="form-check">
+              <input
+                id="checkEsPadre"
+                type="checkbox"
+                // name="isShowTabCodigoBarras"
+                class="form-check-input checkP"
+                disabled={disableInputs}
+                checked={esPadre}
+                onChange={(e) =>
+                  handleInputChangeCheckBoxWithDispatch(
+                    e,
+                    SetEsPadreInventory
+                  )
+                }
+              />
+              <h5 className="form-check-label" for="checkVariosCodigoBarras">
+                Es Padre
+              </h5>
+            </div>
+        </div>
+
       </div>
 
       <div className={ !costaPets ? 'row mb-3 text-md-center' : 'row mb-3 text-md-center d-none'}>
@@ -644,6 +669,9 @@ export const InventoryHeaderArticle = () => {
             </div>
           ) : null}
         </div>
+
+        
+        
 
         <div className={ !costaPets ? 'col-md-4 mb-3' : 'col-md-4 mb-3 d-none'}>
 

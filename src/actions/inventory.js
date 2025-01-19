@@ -1423,6 +1423,11 @@ export const SetDescripcionProInventory = ( value ) => ({
     payload: value
 });
 
+export const SetEsPadreInventory = ( value ) => ({
+    type: types.SetEsPadreInventory,
+    payload: value
+});
+
 export const ActiveButtonNewInventory = ( value ) => ({
     type: types.ActiveButtonNewInventory,
     payload: value
