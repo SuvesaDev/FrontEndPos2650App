@@ -5,11 +5,12 @@ import { SelectTabInventory } from "../../../../actions/inventory";
 export const InventoryBodyFeaturesTabs = () => {
   const dispatch = useDispatch();
 
-  const { currentTabInventory, isShowTabCodigoBarras, inventory } = useSelector(
-    (state) => state.inventory
-  );
-
-  const { esPadre } = inventory;
+  const { 
+    currentTabInventory, 
+    isShowTabCodigoBarras, 
+    isEditInventory,
+    idTipoArticuloSelected
+  } = useSelector( (state) => state.inventory );
 
   const { auth } = useSelector((state) => state.login);
   const { costaPets } = auth;
@@ -93,32 +94,40 @@ export const InventoryBodyFeaturesTabs = () => {
             </button>
 
             <button
-            className={
-                currentTabInventory == "Relacionados"
-                ? "btn btn-outline-primary activeP"
-                : "btn btn-primary"
+            className={ 
+                (costaPets) 
+                    ? (idTipoArticuloSelected == 3) 
+                        ? 'col-md-3 mb-3 d-none'
+                        : currentTabInventory == "Relacionados"
+                            ? "btn btn-outline-primary activeP"
+                            : "btn btn-primary" 
+                    : currentTabInventory == "Relacionados"
+                        ? "btn btn-outline-primary activeP"
+                        : "btn btn-primary"
             }
             onClick={() => handleSelectTabInventory("Relacionados")}
             >
             Relacionados
             </button>
 
-            <button
-            className={ 
-                (costaPets) 
-                    ? currentTabInventory == "Formula"
-                        ? "btn btn-outline-primary activeP"
-                        : "btn btn-primary" 
-                    : 'col-md-3 mb-3 d-none'}
-            onClick={() => handleSelectTabInventory("Formula")}
-            >
-            Formula
-            </button>
-
-            {esPadre ? (
+            {idTipoArticuloSelected == 3 ? (
                 <button
                     className={ 
-                        (costaPets) 
+                        (costaPets && isEditInventory) 
+                            ? currentTabInventory == "Formula"
+                                ? "btn btn-outline-primary activeP"
+                                : "btn btn-primary" 
+                            : 'col-md-3 mb-3 d-none'}
+                    onClick={() => handleSelectTabInventory("Formula")}
+                >
+                Formula
+                </button>
+            ) : null}
+            
+            {idTipoArticuloSelected == 2 ? (
+                <button
+                    className={ 
+                        (costaPets && isEditInventory) 
                             ? currentTabInventory == "Convertidor"
                                 ? "btn btn-outline-primary activeP"
                                 : "btn btn-primary" 

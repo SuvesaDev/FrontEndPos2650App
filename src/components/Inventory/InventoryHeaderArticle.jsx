@@ -8,6 +8,7 @@ import { CgScreen } from "react-icons/cg";
 import { MdNumbers, MdFamilyRestroom } from "react-icons/md";
 import { FaTruckFast, FaMapLocationDot, FaBoxesPacking } from "react-icons/fa6";
 import { IoIosCloseCircle } from "react-icons/io";
+import { MdOutlineProductionQuantityLimits } from "react-icons/md";
 
 // Import action
 import {
@@ -43,6 +44,7 @@ import {
   SetServicioInventory,
   SetOpenModalSearchCodigoCabysInventory,
   SetEsPadreInventory,
+  SetIdTipoArticuloSelectedIntentory,
 } from "../../actions/inventory";
 import { startGetAllSubFamilias } from "../../actions/SubFamiliasAction";
 import { startGetAllSubUbicaciones } from "../../actions/SubUbicacionesAction";
@@ -57,7 +59,14 @@ import { startGetAllCategoriasInventory } from "../../actions/CategoriasAction";
 export const InventoryHeaderArticle = () => {
   const dispatch = useDispatch();
 
-  const { inventory, disableInputs, isShowTabCodigoBarras } = useSelector(
+  const { 
+      inventory, 
+      disableInputs, 
+      isShowTabCodigoBarras, 
+      tiposArticulos, 
+      isEditInventory, 
+      idTipoArticuloSelected 
+    } = useSelector(
     (state) => state.inventory
   );
   const { subFamiliasInventory } = useSelector((state) => state.subFamilias);
@@ -192,6 +201,18 @@ export const InventoryHeaderArticle = () => {
       dispatch(SetOpenModalSearchCodigoCabysInventory(true));
     }
   };
+
+  const handleChangeTipoArticulo = ({ target }) => {
+    
+    if(target.value == 2) {
+      dispatch(SetEsPadreInventory( true ));
+    } else {
+      dispatch(SetEsPadreInventory( false ));
+    }
+
+    dispatch( SetIdTipoArticuloSelectedIntentory(target.value) );
+
+  }
 
   return (
     <>
@@ -465,8 +486,37 @@ export const InventoryHeaderArticle = () => {
           </div>
         </div>
 
-        <div className={ costaPets ? 'col-md-1 mt-5' : 'col-md-4 mb-3 d-none'}>
-          <div className="form-check">
+        <div className={ costaPets && isEditInventory ? 'col-md-3 mb-3' : 'col-md-4 mb-3 d-none'}>
+          <h5>Tipo Articulo</h5>
+          <div className="input-group">
+            <span className="input-group-text">
+              <MdOutlineProductionQuantityLimits className="iconSize" />
+            </span>
+            <select
+              name="idTipoArticuloSelected"
+              disabled={disableInputs}
+              value={idTipoArticuloSelected}
+              className="form-select"
+              onChange={(e) => 
+                handleChangeTipoArticulo(e)
+              }
+            >
+              <option value="" selected disabled hidden>
+                {" "}
+                Seleccione...{" "}
+              </option>
+              {tiposArticulos != null ? (
+                tiposArticulos.map((tipo) => {
+                  return (
+                    <option value={tipo.id}> {tipo.nombre} </option>
+                  );
+                })
+              ) : (
+                <option value="">No se cargaron los tipos Articulos</option>
+              )}
+            </select>
+          </div>
+          {/* <div className="form-check">
               <input
                 id="checkEsPadre"
                 type="checkbox"
@@ -484,7 +534,7 @@ export const InventoryHeaderArticle = () => {
               <h5 className="form-check-label" for="checkVariosCodigoBarras">
                 Es Padre
               </h5>
-            </div>
+            </div> */}
         </div>
 
       </div>

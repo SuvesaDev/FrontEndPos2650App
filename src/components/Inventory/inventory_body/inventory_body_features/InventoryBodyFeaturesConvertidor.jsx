@@ -18,6 +18,7 @@ import {
 } from "../../../../actions/inventory";
 
 import { InventoryBodyFeaturesRelacionadosTable } from "./InventoryBodyFeaturesRelacionadosTable";
+import { useEffect } from "react";
 
 export const InventoryBodyFeaturesConvertidor = () => {
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ export const InventoryBodyFeaturesConvertidor = () => {
     seletedrelatedArticles,
     isEditInventory,
     isInventoryDisable,
+    currentTabInventory
   } = useSelector((state) => state.inventory);
 
   const { codigo, descripcion, cantidad } = relatedArticles;
@@ -50,6 +52,24 @@ export const InventoryBodyFeaturesConvertidor = () => {
       accessor: "cantidad",
     },
   ];
+
+  useEffect(() => {
+    
+    if(currentTabInventory === "Convertidor") {
+      
+      if(relatedArticlesInventory.length == 0) {
+        //Se muestra mensaje que no tiene relacionados
+        Swal.fire({
+          icon: 'warning',
+          title: 'Este artículo no tiene articulos relacionados no se puede Ingresar a este Tab.',
+          showConfirmButton: true,
+      });
+      }
+
+    }
+
+  }, [currentTabInventory])
+  
 
   const handleInputChangeWithDispatch = ({ target }, action) => {
     dispatch(action(target.value));

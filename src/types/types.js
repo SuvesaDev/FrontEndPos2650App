@@ -416,6 +416,7 @@ export const types = {
   SetValorFiltroCodigoCabysInventory: '[Inventory] SetValorFiltroCodigoCabysInventory',
   SetFilterCodigoCabysIntentory: '[Inventory] SetFilterCodigoCabysIntentory',
   CleanStateSearchCodigoCabysInventory: '[Inventory] CleanStateSearchCodigoCabysInventory',
+  SetIdTipoArticuloSelectedIntentory: '[Inventory] SetIdTipoArticuloSelectedIntentory',
 
   // Customers actions
   SelectTabCustomers: '[Customers] SelectTabCustomers',

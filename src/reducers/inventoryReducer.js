@@ -92,6 +92,21 @@ const initialState = {
     isOpenModalSearchCodigoCabys: false,
     valorfiltroCodigoCabys: '',
     filterCodigoCabysInventory: [],
+    tiposArticulos: [
+        {
+            id: 1,
+            nombre: "Normal",
+        },
+        {
+            id: 2,
+            nombre: "Padre",
+        },
+        {
+            id: 3,
+            nombre: "Hijo",
+        }
+    ],
+    idTipoArticuloSelected: 0,
     inventory: {
         codigo: null,
         cod_Articulo: null,
@@ -1207,7 +1222,22 @@ export const InventoryReducer = (state = initialState, action) => {
                     idUsuarioModificacion: null,
                     esPadre: false
                 },
-                isShowTabCodigoBarras : false
+                isShowTabCodigoBarras : false,
+                tiposArticulos: [
+                    {
+                        id: 1,
+                        nombre: "Normal",
+                    },
+                    {
+                        id: 2,
+                        nombre: "Padre",
+                    },
+                    {
+                        id: 3,
+                        nombre: "Hijo",
+                    }
+                ],
+                idTipoArticuloSelected: 1
             }
 
         case types.IsNewInventory:
@@ -1987,6 +2017,12 @@ export const InventoryReducer = (state = initialState, action) => {
                 ...state,
                 valorfiltroCodigoCabys: '',
                 filterCodigoCabysInventory: [],
+            }
+
+        case types.SetIdTipoArticuloSelectedIntentory:
+            return {
+                ...state,
+                idTipoArticuloSelected: action.payload
             }
 
         default:

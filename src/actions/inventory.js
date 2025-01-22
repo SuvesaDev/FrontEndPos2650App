@@ -1945,3 +1945,8 @@ export const SetFilterCodigoCabysIntentory = (value) => ({
 export const CleanStateSearchCodigoCabysInventory = () => ({
     type: types.CleanStateSearchCodigoCabysInventory
 })
+
+export const SetIdTipoArticuloSelectedIntentory = (value) => ({
+    type: types.SetIdTipoArticuloSelectedIntentory,
+    payload: value
+})
