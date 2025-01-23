@@ -1226,7 +1226,8 @@ export const InventoryReducer = (state = initialState, action) => {
                     estado: null,
                     idUsuarioCreacion: null,
                     idUsuarioModificacion: null,
-                    esPadre: false
+                    esPadre: false,
+                    codigoPadre: 0
                 },
                 isShowTabCodigoBarras : false,
                 tiposArticulos: [

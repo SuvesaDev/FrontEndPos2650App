@@ -50,17 +50,17 @@ export const InventoryBodyFeaturesConvertidor = () => {
         setDisableInputs(true);
       }
 
-    }
+      if( codigoPadre == 0 ) {
+        //Se muestra mensaje que no tiene padre
+        Swal.fire({
+          icon: 'warning',
+          title: 'Este artículo no tiene artículo padre relacionado.',
+          showConfirmButton: true,
+        });
+  
+        setDisableInputs(true);
+      }
 
-    if( codigoPadre == 0 ) {
-      //Se muestra mensaje que no tiene padre
-      Swal.fire({
-        icon: 'warning',
-        title: 'Este artículo no tiene artículo padre relacionado.',
-        showConfirmButton: true,
-      });
-
-      setDisableInputs(true);
     }
 
   }, [currentTabInventory])
