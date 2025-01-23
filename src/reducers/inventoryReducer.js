@@ -107,6 +107,11 @@ const initialState = {
         }
     ],
     idTipoArticuloSelected: 0,
+    idBodegaSelectedConvertidor: 0,
+    cantidadDisponibleConvertidor: 0,
+    calculoRealizadoConvertidor: false,
+    cantidadConvertirConvertidor: 0,
+    disableInputBodegaConvertidor: false,
     inventory: {
         codigo: null,
         cod_Articulo: null,
@@ -207,6 +212,7 @@ const initialState = {
         idUsuarioCreacion: null,
         idUsuarioModificacion: null,
         esPadre: false,
+        codigoPadre: 0
     },
     detalleArticuloBodega: {
         idBodega: 0.00,
@@ -2023,6 +2029,36 @@ export const InventoryReducer = (state = initialState, action) => {
             return {
                 ...state,
                 idTipoArticuloSelected: action.payload
+            }
+
+        case types.SetIdBodegaSelectedConvertidorIntentory:
+            return {
+                ...state,
+                idBodegaSelectedConvertidor: action.payload
+            }
+
+        case types.SetCantidadDisponiblesConvertidorIntentory:
+            return {
+                ...state,
+                cantidadDisponibleConvertidor: action.payload
+            }
+
+        case types.SetCalculoRealizadoConvertidorIntentory:
+            return {
+                ...state,
+                calculoRealizadoConvertidor: action.payload
+            }
+
+        case types.SetCantidadConvertirConvertidorIntentory:
+            return {
+                ...state,
+                cantidadConvertirConvertidor: action.payload
+            }
+
+        case types.SetDisableInputBodegaConvertidorIntentory:
+            return {
+                ...state,
+                disableInputBodegaConvertidor: action.payload
             }
 
         default:

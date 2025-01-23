@@ -110,7 +110,7 @@ export const InventoryBodyFeaturesTabs = () => {
             Relacionados
             </button>
 
-            {idTipoArticuloSelected == 3 ? (
+            {idTipoArticuloSelected == 3  ? (
                 <button
                     className={ 
                         (costaPets && isEditInventory) 
@@ -124,7 +124,7 @@ export const InventoryBodyFeaturesTabs = () => {
                 </button>
             ) : null}
             
-            {idTipoArticuloSelected == 2 ? (
+            {idTipoArticuloSelected == 3 ? (
                 <button
                     className={ 
                         (costaPets && isEditInventory) 

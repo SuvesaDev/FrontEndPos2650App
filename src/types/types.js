@@ -417,6 +417,11 @@ export const types = {
   SetFilterCodigoCabysIntentory: '[Inventory] SetFilterCodigoCabysIntentory',
   CleanStateSearchCodigoCabysInventory: '[Inventory] CleanStateSearchCodigoCabysInventory',
   SetIdTipoArticuloSelectedIntentory: '[Inventory] SetIdTipoArticuloSelectedIntentory',
+  SetIdBodegaSelectedConvertidorIntentory: '[Inventory] SetIdBodegaSelectedConvertidorIntentory',
+  SetCantidadDisponiblesConvertidorIntentory: '[Inventory] SetCantidadDisponiblesConvertidorIntentory',
+  SetCalculoRealizadoConvertidorIntentory: '[Inventory] SetCalculoRealizadoConvertidorIntentory',
+  SetCantidadConvertirConvertidorIntentory: '[Inventory] SetCantidadConvertirConvertidorIntentory',
+  SetDisableInputBodegaConvertidorIntentory: '[Inventory] SetDisableInputBodegaConvertidorIntentory',
 
   // Customers actions
   SelectTabCustomers: '[Customers] SelectTabCustomers',

@@ -1,57 +1,39 @@
 import Swal from "sweetalert2";
+
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { RiDeleteBin2Fill } from "react-icons/ri";
-import { IoAddCircle } from "react-icons/io5";
-import { FaSearch } from "react-icons/fa";
-import { GoNumber } from "react-icons/go";
-import { TbNotes, TbNumber } from "react-icons/tb";
+import { TbNumber } from "react-icons/tb";
+import { FaDatabase } from "react-icons/fa6";
+import { FaCalculator } from "react-icons/fa6";
+import { VscGitPullRequestCreate } from "react-icons/vsc";
+
 import {
-  CleanInputsRelatedArticleInventory,
-  IsOpenSearchModalRelacionados,
-  OpenSearchModalInventory,
-  SetCantidadRelatedArticleInventory,
-  SetCodigoRelatedArticleInventory,
-  SetDescripcionRelatedArticleInventory,
-  SetRelatedArticleInventory,
-  startDeleteRelatedArticle,
+  SetCantidadConvertirConvertidorIntentory,
+  SetIdBodegaSelectedConvertidorIntentory,
+  startCalculateCantidadDisponiblesConvertidorInventory,
+  startConvetirCantidadDisponiblesConvertidorInventory
 } from "../../../../actions/inventory";
 
-import { InventoryBodyFeaturesRelacionadosTable } from "./InventoryBodyFeaturesRelacionadosTable";
-import { useEffect } from "react";
 
 export const InventoryBodyFeaturesConvertidor = () => {
   const dispatch = useDispatch();
 
+  const [disableInputs, setDisableInputs] = useState(false);
+
   const {
-    disableInputs,
-    relatedArticles,
     relatedArticlesInventory,
-    inventory,
-    isSeletedRelatedArticles,
-    seletedrelatedArticles,
-    isEditInventory,
-    isInventoryDisable,
-    currentTabInventory
+    currentTabInventory,
+    idBodegaSelectedConvertidor,
+    cantidadDisponibleConvertidor,
+    calculoRealizadoConvertidor,
+    cantidadConvertirConvertidor,
+    disableInputBodegaConvertidor,
+    inventory
   } = useSelector((state) => state.inventory);
 
-  const { codigo, descripcion, cantidad } = relatedArticles;
-  const { cod_Articulo } = inventory;
-
-  const columns = [
-    {
-      Header: "Codigo",
-      accessor: "codigo",
-    },
-    {
-      Header: "Descripcion",
-      accessor: "descripcion",
-    },
-    {
-      Header: "Cantidad",
-      accessor: "cantidad",
-    },
-  ];
+  const { bodegasInventory } = useSelector(state => state.bodegas);
+  const { codigo, codigoPadre } = inventory;
 
   useEffect(() => {
     
@@ -63,113 +45,114 @@ export const InventoryBodyFeaturesConvertidor = () => {
           icon: 'warning',
           title: 'Este artículo no tiene articulos relacionados no se puede Ingresar a este Tab.',
           showConfirmButton: true,
-      });
+        });
+
+        setDisableInputs(true);
       }
 
     }
 
+    if( codigoPadre == 0 ) {
+      //Se muestra mensaje que no tiene padre
+      Swal.fire({
+        icon: 'warning',
+        title: 'Este artículo no tiene artículo padre relacionado.',
+        showConfirmButton: true,
+      });
+
+      setDisableInputs(true);
+    }
+
   }, [currentTabInventory])
+
+  useEffect(() => {
+    
+    if(cantidadDisponibleConvertidor == 0 && calculoRealizadoConvertidor ) {
+      
+      //Se muestra mensaje que no tiene relacionados
+      Swal.fire({
+        icon: 'warning',
+        title: 'Las cantidades disponibles son cero no se puede convertir.',
+        showConfirmButton: true,
+      });
+
+      setDisableInputs(true);
+
+    }
+
+  }, [cantidadDisponibleConvertidor])
   
 
   const handleInputChangeWithDispatch = ({ target }, action) => {
     dispatch(action(target.value));
   };
 
-  const handleSearchArticle = (e) => {
-    e.preventDefault();
+  const handleGetCantidadDisponibles = () => {
 
-    dispatch(IsOpenSearchModalRelacionados(true));
-    dispatch(OpenSearchModalInventory());
-  };
-
-  const handleSaveRelatedArticle = (e) => {
-    e.preventDefault();
-
-    if (codigo === "" || descripcion === "" || cantidad === 0) return;
-
-    const existRelatedArticle = relatedArticlesInventory.find(
-      (value) =>
-        value.codigo === codigo &&
-        value.descripcion === descripcion &&
-        value.cantidad === cantidad
-    );
-
-    if (existRelatedArticle === undefined) {
-      if (cod_Articulo !== null) {
-        dispatch(
-          SetRelatedArticleInventory({
-            id: 0,
-            codigo,
-            cod_Articulo,
-            descripcion,
-            cantidad,
-            isNewEdit: isEditInventory,
-          })
-        );
-        dispatch(CleanInputsRelatedArticleInventory());
-      } else {
-        Swal.fire({
-          icon: "warning",
-          title: "Error",
-          text: "Primero debe ingresar un Código de Articulo",
-        });
-      }
+    if( idBodegaSelectedConvertidor == 0 ) {
+      //Se muestra mensaje que no tiene padre
+      Swal.fire({
+        icon: 'warning',
+        title: 'Debe seleccionar un bodega para realizar el calculo.',
+        showConfirmButton: true,
+      });
     }
-  };
+    
+    dispatch( startCalculateCantidadDisponiblesConvertidorInventory( codigo, idBodegaSelectedConvertidor ) );
+  }
 
-  const handleDeleteRelatedArticle = (e) => {
-    e.preventDefault();
+  const handleConvertirCantidadDisponibles = () => {
 
-    if (isSeletedRelatedArticles && isInventoryDisable) {
-      dispatch(
-        startDeleteRelatedArticle(
-          seletedrelatedArticles,
-          seletedrelatedArticles.id != 0 ? true : false
-        )
-      );
+    if( idBodegaSelectedConvertidor == 0 ) {
+      //Se muestra mensaje que no tiene padre
+      Swal.fire({
+        icon: 'warning',
+        title: 'Debe seleccionar un bodega para realizar el calculo.',
+        showConfirmButton: true,
+      });
     }
-  };
+    
+    dispatch( startConvetirCantidadDisponiblesConvertidorInventory( codigo, idBodegaSelectedConvertidor, cantidadConvertirConvertidor) );
+  }
 
   return (
     <>
       <div className="container-fluid mt-2">
-        <div className="row mb-2">
-          <div className="col-md-6 mb-3">
-            <h5>Código</h5>
+
+        <div className='row mb-2'>
+
+          <div className='col-md-5 mb-3'>
+            <h5>Bodegas</h5>
             <div className="input-group">
               <span className="input-group-text">
-                <GoNumber className="iconSize" />
+                <FaDatabase className="iconSize" />
               </span>
-              <input
-                type="text"
-                name="codigo"
-                className="form-control"
-                placeholder="Código Producto"
-                disabled={disableInputs}
-                value={codigo}
-                onChange={(e) =>
-                  handleInputChangeWithDispatch(
-                    e,
-                    SetCodigoRelatedArticleInventory
-                  )
-                }
-              />
-              <button
-                className={
-                  disableInputs ? "btn btn-primary disabled" : "btn btn-primary"
-                }
-                type="button"
-                onClick={handleSearchArticle}
-                data-bs-toggle="modal"
-                data-bs-target="#modalBuscarArticulo"
+              <select
+                name="idTipoArticuloSelected"
+                disabled={(disableInputs) ? disableInputs : disableInputBodegaConvertidor}
+                value={idBodegaSelectedConvertidor}
+                className="form-select"
+                onChange={(e) =>  handleInputChangeWithDispatch( e, SetIdBodegaSelectedConvertidorIntentory)}
               >
-                <FaSearch className="iconSize" />
-              </button>
+                <option value={0} selected disabled hidden>
+                  {" "}
+                  Seleccione...{" "}
+                </option>
+                {bodegasInventory != null ? (
+                  bodegasInventory.map((bodega) => {
+                    return (
+                      <option value={bodega.idBodega}> {bodega.nombreBodega} </option>
+                    );
+                  })
+                ) : (
+                  <option value="">No se cargaron las bodegas</option>
+                )}
+              </select>
             </div>
           </div>
 
-          <div className="col-md-6 mb-3">
-            <h5>Cantidad</h5>
+          <div className='col-md-4 mb-3'>
+            <h5>Cantidad Disponiles</h5>
             <div className="input-group">
               <span className="input-group-text">
                 <TbNumber className="iconSize" />
@@ -179,80 +162,66 @@ export const InventoryBodyFeaturesConvertidor = () => {
                 name="cantidad"
                 className="form-control"
                 placeholder="Cantidad de Producto"
-                disabled={disableInputs}
-                value={cantidad}
-                onChange={(e) =>
-                  handleInputChangeWithDispatch(
-                    e,
-                    SetCantidadRelatedArticleInventory
-                  )
-                }
-              />
-            </div>
-          </div>
-        </div>
-        <div className="row mb-2">
-          <div className="col-md-12 mb-2">
-            <h5>Descipción</h5>
-            <div className="input-group">
-              <span className="input-group-text">
-                <TbNotes className="iconSize" />
-              </span>
-              <input
-                type="text"
-                name="descripcion"
-                className="form-control"
-                placeholder="Descripción del Producto"
                 disabled={true}
-                value={descripcion}
-                onChange={(e) =>
-                  handleInputChangeWithDispatch(
-                    e,
-                    SetDescripcionRelatedArticleInventory
-                  )
-                }
+                value={cantidadDisponibleConvertidor}
               />
             </div>
           </div>
+
+          <div className='col-md-3 mb-1'>
+            <div className="w-100 pt-4"></div>
+            <button
+                className={
+                  disableInputs ? "btn btn-primary disabled" : "btn btn-primary"
+                }
+                disabled={disableInputs}
+                onClick={ handleGetCantidadDisponibles }
+              >
+                Calcular <FaCalculator className="iconSize" />
+            </button>
+          </div>
+          
         </div>
 
         <div className="row mb-2">
-          <div className="col-md-4 mb-2">
-            <h5>Opciones</h5>
-            <div className="inline-container">
-              <button
+
+          <div className="col-md-4 mb-3">
+            <h5>Cantidades a Convertir</h5>
+            <div className="input-group">
+              <span className="input-group-text">
+                <TbNumber className="iconSize" />
+              </span>
+              <input
+                type="number"
+                name="codigo"
+                className="form-control"
+                placeholder="Cantidades a Convertir"
+                disabled={disableInputs}
+                value={ cantidadConvertirConvertidor }
+                onChange={(e) => 
+                  handleInputChangeWithDispatch(
+                    e,
+                    SetCantidadConvertirConvertidorIntentory
+                  )
+                }
+              />
+            </div>
+          </div>
+
+          <div className="col-md-3 mb-3">
+            <div className="w-100 pt-4"></div>
+            <button
                 className={
                   disableInputs ? "btn btn-success disabled" : "btn btn-success"
                 }
                 disabled={disableInputs}
-                onClick={handleSaveRelatedArticle}
+                onClick={ handleConvertirCantidadDisponibles }
               >
-                Agregar <IoAddCircle className="iconSize" />
-              </button>
+                Convertir <VscGitPullRequestCreate className="iconSize" />
+            </button>
+          </div>
+        </div>
 
-              <button
-                className={
-                  isSeletedRelatedArticles && isInventoryDisable
-                    ? "btn btn-danger"
-                    : "btn btn-danger disabled"
-                }
-                onClick={handleDeleteRelatedArticle}
-                type="button"
-              >
-                <RiDeleteBin2Fill className="iconSize" />
-              </button>
-            </div>
-            <hr />
-          </div>
-        </div>
-        <div className="row mb-3">
-          <div className="col-md-12 mb-2">
-            <InventoryBodyFeaturesRelacionadosTable
-              columns={columns}
-              data={relatedArticlesInventory}
-            />
-          </div>
-        </div>
       </div>
     </>
   );
