@@ -45,6 +45,7 @@ import {
   SetOpenModalSearchCodigoCabysInventory,
   SetEsPadreInventory,
   SetIdTipoArticuloSelectedIntentory,
+  startGetAllProductsPadreInventory
 } from "../../actions/inventory";
 import { startGetAllSubFamilias } from "../../actions/SubFamiliasAction";
 import { startGetAllSubUbicaciones } from "../../actions/SubUbicacionesAction";
@@ -213,6 +214,14 @@ export const InventoryHeaderArticle = () => {
     dispatch( SetIdTipoArticuloSelectedIntentory(target.value) );
 
   }
+
+  const handleSearchCodPadre = (e) => {
+    if (!disableInputs) {
+      e.preventDefault();
+      dispatch(startGetAllProductsPadreInventory());
+    }
+  };
+
 
   return (
     <>
@@ -718,11 +727,8 @@ export const InventoryHeaderArticle = () => {
               />
             </div>
           ) : null}
-        </div>
-
+        </div>    
         
-        
-
         <div className={ !costaPets ? 'col-md-4 mb-3' : 'col-md-4 mb-3 d-none'}>
 
           <div className="inline-container">
@@ -770,6 +776,36 @@ export const InventoryHeaderArticle = () => {
                 <option value="">No se cargaron las marcas</option>
               )}
             </select>
+          </div>
+
+        </div>
+
+        <div className={ costaPets && idTipoArticuloSelected == 3 ? 'col-md-3 mb-3' : 'col-md-4 mb-3 d-none'}>
+
+          <h5>Código Padre</h5>
+          <div className="input-group">
+            <span className="input-group-text">
+              <GoNumber className="iconSize" />
+            </span>
+            <input
+              type="text"
+              name="codigo"
+              className="form-control"
+              placeholder="Código Padre"
+              disabled={true}
+              value={0}
+            />
+            <button
+              className={
+                disableInputs ? "btn btn-primary disabled" : "btn btn-primary"
+              }
+              type="button"
+              onClick={ handleSearchCodPadre }
+              data-bs-toggle="modal"
+              data-bs-target="#modalCodPadre"
+            >
+              <FaSearch className="iconSize" />
+            </button>
           </div>
 
         </div>

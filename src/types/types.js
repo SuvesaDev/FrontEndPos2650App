@@ -422,6 +422,8 @@ export const types = {
   SetCalculoRealizadoConvertidorIntentory: '[Inventory] SetCalculoRealizadoConvertidorIntentory',
   SetCantidadConvertirConvertidorIntentory: '[Inventory] SetCantidadConvertirConvertidorIntentory',
   SetDisableInputBodegaConvertidorIntentory: '[Inventory] SetDisableInputBodegaConvertidorIntentory',
+  SetAllProductsPadreIntentory: '[Inventory] SetAllProductsPadreIntentory',
+   
 
   // Customers actions
   SelectTabCustomers: '[Customers] SelectTabCustomers',

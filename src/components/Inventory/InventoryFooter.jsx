@@ -58,6 +58,7 @@ import { startGetAllMonedas } from '../../actions/MonedasAction';
 import { startGetAllImpuestos } from '../../actions/ImpuestosAction';
 import { startGetAllBodegas } from '../../actions/bodegasAction';
 import { startGetAllCategoriasInventory } from '../../actions/CategoriasAction';
+import { InventorySearchCodPadreModal } from './InventorySearchCodPadreModal';
 
 
 export const InventoryFooter = () => {
@@ -527,6 +528,7 @@ export const InventoryFooter = () => {
             ));
         } 
     }
+    
     const handleDeleteInventory = (e) => {
         e.preventDefault();
 
@@ -620,6 +622,8 @@ export const InventoryFooter = () => {
             <InventoryBodyFeautesCategoriaModal />
 
             <InventorySearchCodigoCabysModal />
+
+            <InventorySearchCodPadreModal />
         </>
     )
 }

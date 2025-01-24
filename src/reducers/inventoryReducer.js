@@ -112,6 +112,7 @@ const initialState = {
     calculoRealizadoConvertidor: false,
     cantidadConvertirConvertidor: 0,
     disableInputBodegaConvertidor: false,
+    allProductsPadres: [],
     inventory: {
         codigo: null,
         cod_Articulo: null,
@@ -2060,6 +2061,12 @@ export const InventoryReducer = (state = initialState, action) => {
             return {
                 ...state,
                 disableInputBodegaConvertidor: action.payload
+            }
+
+        case types.SetAllProductsPadreIntentory:
+            return {
+                ...state,
+                allProductsPadres: action.payload
             }
 
         default:

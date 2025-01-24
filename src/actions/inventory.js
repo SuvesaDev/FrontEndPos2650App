@@ -1002,7 +1002,7 @@ export const startCalculateCantidadDisponiblesConvertidorInventory = ( CodArticu
     }
 }
 
-export const startConvetirCantidadDisponiblesConvertidorInventory = ( CodArticuloHijo, CodBodega, cantidadConvertir ) => {
+export const startConvetirCantidadDisponiblesConvertidorInventory = ( CodArticuloHijo, CodBodega, Cantidad ) => {
    
     return async ( dispatch ) => {
 
@@ -1021,7 +1021,7 @@ export const startConvetirCantidadDisponiblesConvertidorInventory = ( CodArticul
     
             //Call end-point 
             const { data } = await suvesaApi.post(`/CalculadoraProduccion/ConvertirCantidadHijos`, { 
-                cantidadConvertir,
+                Cantidad,
                 CodArticuloHijo,
                 CodBodega
             });
@@ -1034,8 +1034,138 @@ export const startConvetirCantidadDisponiblesConvertidorInventory = ( CodArticul
                 
                 Swal.fire({
                     icon: 'success',
-                    title: `Se convertido la cantidad ${cantidadConvertir} correctamente.`,
+                    title: 'Convertidor',
+                    text: `Se convertido la cantidad ${cantidadConvertir} correctamente.`
+                });
+
+            } else {
+    
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
+                
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
                     text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
+    
+            }
+
+        } catch (error) {
+            
+            Swal.close();
+            console.log(error);
+            if( error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al obtener las cantidades disponibles',
+                });
+            }
+        }
+    }
+}
+
+export const startGetAllProductsPadreInventory = () => {
+   
+    return async ( dispatch ) => {
+
+        try {
+
+            //Mostrar el loading
+            Swal.fire({
+                title: 'Por favor, espere',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                imageUrl: loadingImage,
+                customClass: 'alert-class-login',
+                imageHeight: 100,
+            });
+    
+            //Call end-point 
+            const { data } = await suvesaApi.get(`/inventario/ObtenerTodosInventariosPadre`);
+            const { status, responses } = data;
+            
+            // Cerrar modal
+            Swal.close();
+
+            if( status === 0 ) {
+                
+                dispatch( SetAllProductsPadreIntentory( responses ) );
+
+            } else {
+    
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
+                
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
+    
+            }
+
+        } catch (error) {
+            
+            Swal.close();
+            console.log(error);
+            if( error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al obtener las cantidades disponibles',
+                });
+            }
+        }
+    }
+}
+
+export const startSetCodPadreInventory = ( CodPadre, codArticulo ) => {
+   
+    return async ( dispatch ) => {
+
+        try {
+
+            //Mostrar el loading
+            Swal.fire({
+                title: 'Por favor, espere',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                imageUrl: loadingImage,
+                customClass: 'alert-class-login',
+                imageHeight: 100,
+            });
+    
+            //Call end-point 
+            const { data } = await suvesaApi.put(`/inventario/putIDInventario?cod_articulo=${codArticulo}&CodPadre=${CodPadre}`);
+            const { status } = data;
+            
+            // Cerrar modal
+            Swal.close();
+
+            if( status === 0 ) {
+
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Codigo Padre',
+                    text: `Se configurado correctamente el codigo padre.`,
                 });
 
             } else {
@@ -2115,5 +2245,10 @@ export const SetCantidadConvertirConvertidorIntentory = (value) => ({
 
 export const SetDisableInputBodegaConvertidorIntentory = (value) => ({
     type: types.SetDisableInputBodegaConvertidorIntentory,
+    payload: value
+})
+
+export const SetAllProductsPadreIntentory = (value) => ({
+    type: types.SetAllProductsPadreIntentory,
     payload: value
 })
