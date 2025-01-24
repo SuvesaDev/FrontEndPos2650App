@@ -2252,3 +2252,33 @@ export const SetAllProductsPadreIntentory = (value) => ({
     type: types.SetAllProductsPadreIntentory,
     payload: value
 })
+
+export const SetCodigoFormulaArticleInventory = (value) => ({
+    type: types.SetCodigoFormulaArticleInventory,
+    payload: value
+})
+
+export const SetDescripcionFormulaArticleInventory = (value) => ({
+    type: types.SetDescripcionFormulaArticleInventory,
+    payload: value
+})
+
+export const SetCantidadFormulaArticleInventory = (value) => ({
+    type: types.SetCantidadFormulaArticleInventory,
+    payload: value
+})
+
+export const SetFormulaArticleInventory = (value) => ({
+    type: types.SetFormulaArticleInventory,
+    payload: value
+})
+
+export const CleanInputsFormulaArticleInventory = (value) => ({
+    type: types.CleanInputsFormulaArticleInventory,
+    payload: value
+})
+
+export const IsOpenSearchModalFormulaInventory = (value) => ({
+    type: types.IsOpenSearchModalFormulaInventory,
+    payload: value
+})

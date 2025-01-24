@@ -423,6 +423,12 @@ export const types = {
   SetCantidadConvertirConvertidorIntentory: '[Inventory] SetCantidadConvertirConvertidorIntentory',
   SetDisableInputBodegaConvertidorIntentory: '[Inventory] SetDisableInputBodegaConvertidorIntentory',
   SetAllProductsPadreIntentory: '[Inventory] SetAllProductsPadreIntentory',
+  SetCodigoFormulaArticleInventory: '[Inventory] SetCodigoFormulaArticleInventory',
+  SetDescripcionFormulaArticleInventory: '[Inventory] SetDescripcionFormulaArticleInventory',
+  SetCantidadFormulaArticleInventory: '[Inventory] SetCantidadFormulaArticleInventory',
+  SetFormulaArticleInventory: '[Inventory] SetFormulaArticleInventory',
+  CleanInputsFormulaArticleInventory: '[Inventory] CleanInputsFormulaArticleInventory',
+  IsOpenSearchModalFormulaInventory: '[Inventory] isOpenSearchModalFormulaInventory',
    
 
   // Customers actions

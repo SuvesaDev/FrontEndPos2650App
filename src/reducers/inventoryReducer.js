@@ -113,6 +113,15 @@ const initialState = {
     cantidadConvertirConvertidor: 0,
     disableInputBodegaConvertidor: false,
     allProductsPadres: [],
+    formulaArticles: {
+        codigo: '',
+        cod_Articulo: '',
+        descripcion: '',
+        cantidad: 0,
+    },
+    isSeletedFormulaArticles: false,
+    formulaArticlesInventory: [],
+    isOpenSearchModalFormula: false,
     inventory: {
         codigo: null,
         cod_Articulo: null,
@@ -2067,6 +2076,59 @@ export const InventoryReducer = (state = initialState, action) => {
             return {
                 ...state,
                 allProductsPadres: action.payload
+            }
+
+        case types.SetCodigoFormulaArticleInventory:
+            return {
+                ...state,
+                formulaArticles: {
+                    ...state.formulaArticles,
+                    codigo: action.payload
+                }
+            }
+
+        case types.SetDescripcionFormulaArticleInventory:
+            return {
+                ...state,
+                formulaArticles: {
+                    ...state.formulaArticles,
+                    descripcion: action.payload
+                }
+            }
+
+        case types.SetCantidadFormulaArticleInventory:
+            return {
+                ...state,
+                formulaArticles: {
+                    ...state.formulaArticles,
+                    cantidad: action.payload,
+                },
+            }
+
+        case types.SetFormulaArticleInventory:
+            return {
+                ...state,
+                formulaArticlesInventory: [
+                    ...state.formulaArticlesInventory,
+                    action.payload
+                ]
+            }
+
+        case types.CleanInputsFormulaArticleInventory:
+            return {
+                ...state,
+                formulaArticles: {
+                    codigo: '',
+                    cod_Articulo: '',
+                    descripcion: '',
+                    cantidad: 0,
+                },
+            }
+
+        case types.IsOpenSearchModalFormulaInventory:
+            return {
+                ...state,
+                isOpenSearchModalFormula: action.payload
             }
 
         default:
