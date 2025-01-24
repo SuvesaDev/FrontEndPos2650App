@@ -30,23 +30,23 @@ export const InventoryBodyFeaturesFormulaTable = ({ columns, data }) => {
   });
 
   const handleSelectedRow = async (cell) => {
-    if (!isInventoryDisable) {
-      // Obtiene el price seleccionado
-      const { codigo, descripcion, cantidad } = cell.row.values;
+    // if (!isInventoryDisable) {
+    //   // Obtiene el price seleccionado
+    //   const { codigo, descripcion, cantidad } = cell.row.values;
 
-      // Searcha articleRelated
-      const articleRelated = relatedArticlesInventory.find(
-        (article) =>
-          article.codigo === codigo &&
-          article.descripcion === descripcion &&
-          article.cantidad === cantidad
-      );
+    //   // Searcha articleRelated
+    //   const articleRelated = relatedArticlesInventory.find(
+    //     (article) =>
+    //       article.codigo === codigo &&
+    //       article.descripcion === descripcion &&
+    //       article.cantidad === cantidad
+    //   );
 
-      if (articleRelated != undefined) {
-        dispatch(IsSelectedRelatedArticleInventory(true));
-        dispatch(SelectedRelatedArticleInventory(articleRelated));
-      }
-    }
+    //   if (articleRelated != undefined) {
+    //     dispatch(IsSelectedRelatedArticleInventory(true));
+    //     dispatch(SelectedRelatedArticleInventory(articleRelated));
+    //   }
+    // }
   };
 
   return (

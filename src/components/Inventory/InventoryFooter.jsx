@@ -389,7 +389,7 @@ export const InventoryFooter = () => {
                     0,
                     parseInt(inventory.cod_Articulo),
                     parseInt(relatedArticles.codigo),
-                    "12", //parseInt(relatedArticles.cod_Articulo),
+                    parseInt(relatedArticles.cod_Articulo),
                     relatedArticles.descripcion,
                     parseInt(relatedArticles.cantidad),
                     true,

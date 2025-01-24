@@ -17,9 +17,11 @@ import {
   SetDescripcionFormulaArticleInventory,
   SetFormulaArticleInventory,
   startDeleteRelatedArticle,
+  startSaveArticleFormulaInventory,
 } from "../../../../actions/inventory";
 
 import { InventoryBodyFeaturesFormulaTable } from "./InventoryBodyFeaturesFormulaTable";
+import { RelatedArticles } from "../../../../models/relatedArticles";
 
 export const InventoryBodyFeaturesFormula = () => {
 
@@ -82,17 +84,21 @@ export const InventoryBodyFeaturesFormula = () => {
 
       if (cod_Articulo !== null) {
 
-        dispatch(
-          SetFormulaArticleInventory({
-            id: 0,
-            codigo,
-            cod_Articulo,
-            descripcion,
-            cantidad,
-            isNewEdit: isEditInventory,
-          })
-        );
-        dispatch(CleanInputsFormulaArticleInventory());
+        let formulaArticlesArray = [];
+        formulaArticlesArray.push( new RelatedArticles(
+              0,
+              parseInt(cod_Articulo),
+              parseInt(codigo),
+              "", // parseInt(relatedArticles.cod_Articulo),
+              descripcion,
+              parseInt(cantidad),
+              true,
+              auth.username,
+              relatedArticles.isNewEdit,
+              true // Es formula
+          ) );
+
+        dispatch( startSaveArticleFormulaInventory( formulaArticlesArray ) );
 
       } else {
 
@@ -109,14 +115,14 @@ export const InventoryBodyFeaturesFormula = () => {
   const handleDeleteRelatedArticle = (e) => {
     e.preventDefault();
 
-    if (isSeletedRelatedArticles && isInventoryDisable) {
-      dispatch(
-        startDeleteRelatedArticle(
-          seletedrelatedArticles,
-          seletedrelatedArticles.id != 0 ? true : false
-        )
-      );
-    }
+    // if (isSeletedRelatedArticles && isInventoryDisable) {
+    //   dispatch(
+    //     startDeleteRelatedArticle(
+    //       seletedrelatedArticles,
+    //       seletedrelatedArticles.id != 0 ? true : false
+    //     )
+    //   );
+    // }
   };
 
   return (
@@ -231,6 +237,7 @@ export const InventoryBodyFeaturesFormula = () => {
                     ? "btn btn-danger"
                     : "btn btn-danger disabled"
                 }
+                disabled
                 onClick={handleDeleteRelatedArticle}
                 type="button"
               >

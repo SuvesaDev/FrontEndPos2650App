@@ -1203,6 +1203,93 @@ export const startSetCodPadreInventory = ( CodPadre, codArticulo ) => {
     }
 }
 
+export const startSaveArticleFormulaInventory = ( formulaArticle ) => {
+   
+    return async ( dispatch ) => {
+
+        try {
+
+            let formulaArticles = [];
+
+            //Mostrar el loading
+            Swal.fire({
+                title: 'Por favor, espere',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                imageUrl: loadingImage,
+                customClass: 'alert-class-login',
+                imageHeight: 100,
+            });
+
+            formulaArticle.forEach(article => {
+                if(!article.isNewEdit)
+                    formulaArticles.push( article.toJson() );
+            });
+    
+            //Call end-point 
+            const { data } = await suvesaApi.post(`/articulosRelacionados`, formulaArticles );
+            const { status } = data;
+            
+            // Cerrar modal
+            Swal.close();
+
+            if( status === 0 ) {
+
+                dispatch(
+                    SetFormulaArticleInventory({
+                        id: 0,
+                        codigo: formulaArticle[0].codigo,
+                        cod_Articulo : formulaArticle[0].cod_Articulo,
+                        descripcion : formulaArticle[0].descripcion,
+                        cantidad : formulaArticle[0].cantidad,
+                        isNewEdit: false,
+                    })
+                );
+
+                dispatch(CleanInputsFormulaArticleInventory());
+
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Articulo Formula',
+                    text: `Se agrego correctamente el articulo de formula.`,
+                });
+
+            } else {
+    
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
+                
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
+    
+            }
+
+        } catch (error) {
+            
+            Swal.close();
+            console.log(error);
+            if( error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al obtener las cantidades disponibles',
+                });
+            }
+        }
+    }
+}
+
 // Functions
 const CalculatePreciosVenta = ( base, flete, otroC, impuesto, pre ) => {
 
