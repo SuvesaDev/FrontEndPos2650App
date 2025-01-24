@@ -108,7 +108,8 @@ export const InventoryFooter = () => {
                     parseInt(relatedArticles.cantidad),
                     true,
                     auth.username,
-                    relatedArticles.isNewEdit
+                    relatedArticles.isNewEdit,
+                    false,
                 ));
             });
 
@@ -393,7 +394,8 @@ export const InventoryFooter = () => {
                     parseInt(relatedArticles.cantidad),
                     true,
                     auth.username,
-                    relatedArticles.isNewEdit
+                    relatedArticles.isNewEdit,
+                    false
                 ) );
             });
 

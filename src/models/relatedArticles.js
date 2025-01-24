@@ -1,7 +1,7 @@
 
 export class RelatedArticles {
 
-    constructor( id, codigoPrincipal, codigo, codArticulo, descripcion, cantidad, estado, usuarioCreacion, isNewEdit) {
+    constructor( id, codigoPrincipal, codigo, codArticulo, descripcion, cantidad, estado, usuarioCreacion, isNewEdit, esFormula) {
         this.id              = id;
         this.codigoPrincipal = codigoPrincipal;
         this.codigo          = codigo;
@@ -11,6 +11,7 @@ export class RelatedArticles {
         this.estado          = estado;
         this.usuarioCreacion = usuarioCreacion || '';
         this.isNewEdit       = isNewEdit || false;
+        this.esFormula       = esFormula || false
     }
 
     toJson() {
@@ -22,7 +23,8 @@ export class RelatedArticles {
         descripcion       : this.descripcion,
         cantidad          : this.cantidad,
         estado            : this.estado,
-        idUsuarioCreacion : this.usuarioCreacion
+        idUsuarioCreacion : this.usuarioCreacion,
+        esFormula         : this.esFormula
       }
     }
 }
