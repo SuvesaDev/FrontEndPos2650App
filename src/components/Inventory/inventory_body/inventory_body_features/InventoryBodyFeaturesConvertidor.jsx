@@ -39,16 +39,16 @@ export const InventoryBodyFeaturesConvertidor = () => {
     
     if(currentTabInventory === "Convertidor") {
       
-      if(relatedArticlesInventory.length == 0) {
-        //Se muestra mensaje que no tiene relacionados
-        Swal.fire({
-          icon: 'warning',
-          title: 'Este artículo no tiene articulos relacionados no se puede Ingresar a este Tab.',
-          showConfirmButton: true,
-        });
+      // if(relatedArticlesInventory.length == 0) {
+      //   //Se muestra mensaje que no tiene relacionados
+      //   Swal.fire({
+      //     icon: 'warning',
+      //     title: 'Este artículo no tiene articulos relacionados no se puede Ingresar a este Tab.',
+      //     showConfirmButton: true,
+      //   });
 
-        setDisableInputs(true);
-      }
+      //   setDisableInputs(true);
+      // }
 
       if( codigoPadre == 0 ) {
         //Se muestra mensaje que no tiene padre

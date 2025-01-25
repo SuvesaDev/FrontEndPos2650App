@@ -38,8 +38,11 @@ export const InventoryBodyFeaturesFormula = () => {
     isInventoryDisable,
   } = useSelector((state) => state.inventory);
 
+  const { auth } = useSelector(state => state.login);
+
   const { codigo, descripcion, cantidad } = formulaArticles;
   const { cod_Articulo } = inventory;
+
 
   const columns = [
     {
@@ -89,12 +92,12 @@ export const InventoryBodyFeaturesFormula = () => {
               0,
               parseInt(cod_Articulo),
               parseInt(codigo),
-              "", // parseInt(relatedArticles.cod_Articulo),
+              `${cod_Articulo}`,
               descripcion,
               parseInt(cantidad),
               true,
               auth.username,
-              relatedArticles.isNewEdit,
+              false,
               true // Es formula
           ) );
 

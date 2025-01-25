@@ -41,7 +41,7 @@ export const startSaveInventory = ( inventory, relatedArticle ) => {
                     
                     //Quitar el loading
                      Swal.close();
-                    
+                    debugger;
                     if( status === 0) {
 
                         //Clean State
@@ -57,7 +57,7 @@ export const startSaveInventory = ( inventory, relatedArticle ) => {
                         dispatch( CleanArrayStatePricesSellInventory() );
 
                         //Save Articulos Relacionados
-                        if( relatedArticle.lenght > 0 ) {
+                        if( relatedArticle.length > 0 ) {
 
                             relatedArticle.forEach(article => {
                                 if(!article.isNewEdit)
@@ -1283,7 +1283,7 @@ export const startSaveArticleFormulaInventory = ( formulaArticle ) => {
                 Swal.fire({
                     icon: 'error',
                     title: 'Error',
-                    text: 'Ocurrio un problema al obtener las cantidades disponibles',
+                    text: 'Ocurrio un problema al guardar el articulo formula',
                 });
             }
         }

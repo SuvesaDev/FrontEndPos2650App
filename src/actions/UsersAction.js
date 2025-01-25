@@ -34,39 +34,39 @@ export const startSaveUsers = ( user ) => {
                         customClass: 'alert-class-login',
                         imageHeight: 100,
                     });
-                    console.log(user)
+                    
                     //Call end-point 
-                    // const { data } = await suvesaApi.post('/usuario/CrearUsuario', user);
-                    // const { status } = data;
+                    const { data } = await suvesaApi.post('/usuario/CrearUsuario', user);
+                    const { status } = data;
                     
                     //Quitar el loading
                     Swal.close();
-
-                    // if (status === 0) {
+                    debugger;
+                    if (status === 0) {
                         
-                    //     //Si es correcta entonces mostrar un mensaje de afirmacion
-                    //     Swal.fire({
-                    //         icon: 'success',
-                    //         title: `Usuario ${user.nombre} agregado correctamente`,
-                    //         showConfirmButton: false,
-                    //         timer: 2500
-                    //     });
+                        //Si es correcta entonces mostrar un mensaje de afirmacion
+                        Swal.fire({
+                            icon: 'success',
+                            title: `Usuario ${user.nombre} agregado correctamente`,
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
 
-                    //     dispatch( CleanUsers() );
+                        dispatch( CleanUsers() );
 
-                    // } else {
+                    } else {
 
-                    //     //Caso contrario respuesta incorrecto mostrar mensaje de error
-                    //     const { currentException } = data;
-                    //     const msj = currentException.split(',');
+                        //Caso contrario respuesta incorrecto mostrar mensaje de error
+                        const { currentException } = data;
+                        const msj = currentException.split(',');
 
-                    //     Swal.fire({
-                    //         icon: 'error',
-                    //         title: 'Error',
-                    //         text: (currentException.includes(',')) ? msj[3] : currentException,
-                    //     });
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: (currentException.includes(',')) ? msj[3] : currentException,
+                        });
 
-                    // }
+                    }
 
                 }
 

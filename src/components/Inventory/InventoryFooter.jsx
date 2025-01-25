@@ -103,7 +103,7 @@ export const InventoryFooter = () => {
                     0,
                     parseInt(inventory.cod_Articulo),
                     parseInt(relatedArticles.codigo),
-                    parseInt(relatedArticles.cod_Articulo),
+                    `${inventory.cod_Articulo}`,
                     relatedArticles.descripcion,
                     parseInt(relatedArticles.cantidad),
                     true,
@@ -387,9 +387,9 @@ export const InventoryFooter = () => {
             relatedArticlesInventory.forEach(relatedArticles => {
                 relatedArticlesArray.push( new RelatedArticles(
                     0,
-                    parseInt(inventory.cod_Articulo),
-                    parseInt(relatedArticles.codigo),
                     parseInt(relatedArticles.cod_Articulo),
+                    parseInt(relatedArticles.codigo),
+                    `${inventory.cod_Articulo}`,
                     relatedArticles.descripcion,
                     parseInt(relatedArticles.cantidad),
                     true,

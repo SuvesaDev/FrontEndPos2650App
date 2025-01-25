@@ -238,6 +238,7 @@ export const usersReducer = (state = initialState, action) => {
 
         case types.CleanUsers:
             return {
+                ...state,
                 activeButtonNew: true,
                 activeButtonSave: false,
                 activeButtonSearch: true,
@@ -274,7 +275,9 @@ export const usersReducer = (state = initialState, action) => {
                     observaciones: '',
                     email: '',
                     maximoVentas: 1,
-                    activo: false
+                    activo: false,
+                    isAdministradorCostaPets: false,
+                    isAgenteCostaPets: false,
                 }
             }
 
