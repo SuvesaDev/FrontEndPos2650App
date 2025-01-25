@@ -374,7 +374,7 @@ export const startGetOneInventory = ( codigo ) => {
             //Call end-point 
             const resp = await suvesaApi.post('/inventario/ObtenerUnInventario', { codigo });
             const { status, responses } = resp.data;
-            console.log(responses);
+            
             if( status === 0 ) {
                 
                 //seleccionarlo y meterlo al estado en el metodo de action
@@ -486,6 +486,17 @@ export const startGetOneInventory = ( codigo ) => {
                         }));
                 
                     }
+                }
+
+                // Validar si es padre
+                if( responses.codigoPadre !== 0 ) {
+                    dispatch( SetIdTipoArticuloSelectedIntentory( 3 ));
+                    dispatch( SetCodigoPadreSelectedInventory( responses.codigoPadre ) );
+                }
+
+                // Validar si es padre
+                if( responses.esPadre === true ) {
+                    dispatch( SetIdTipoArticuloSelectedIntentory( 2 ));
                 }
 
                 //Call end-point de la Articulos relacionados
@@ -2367,5 +2378,10 @@ export const CleanInputsFormulaArticleInventory = (value) => ({
 
 export const IsOpenSearchModalFormulaInventory = (value) => ({
     type: types.IsOpenSearchModalFormulaInventory,
+    payload: value
+})
+
+export const SetCodigoPadreSelectedInventory = (value) => ({
+    type: types.SetCodigoPadreSelectedInventory,
     payload: value
 })

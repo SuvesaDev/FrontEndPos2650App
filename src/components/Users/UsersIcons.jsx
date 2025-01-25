@@ -96,57 +96,36 @@ export const UsersIcons = () => {
 
         if (activeButtonSave) {
 
-            if (!isEquealsClave) {
+            if( isValidPassword() ) {
 
-                Swal.fire({
-                    icon: 'warning',
-                    title: 'Advertencia',
-                    text: 'La clave de entrada y la clave interna deben ser iguales.',
-                });
+                e.preventDefault();
 
-                return;
+                const newUser = {
+                    id: 0,
+                    idUsuario: idUsuario,
+                    nombre: nombre,
+                    claveEntrada: claveEntrada,
+                    claveInterna: claveInterna,
+                    perfil: parseInt(perfil),
+                    iniciales: iniciales,
+                    cambiarPrecio: cambiarPrecio,
+                    porcPrecio: porcPrecio,
+                    aplicarDesc: aplicarDesc,
+                    porcDesc: porcDesc,
+                    existNegativa: existNegativa,
+                    usuario: usuario,
+                    observaciones: observaciones,
+                    email: email,
+                    activo: true,
+                    cantidadPreventas: maximoVentas,
+                    costaPets: showCostaPets,
+                    agenteCostaPets: (showCostaPets) ? isAgenteCostaPets : null,
+                    administrador: (showCostaPets) ? isAdministradorCostaPets : null,
+                }
+
+                dispatch(startValidatePassword(newUser));
             }
-
-            const regex = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
-
-            if (!regex.test(claveEntrada)) {
-
-                Swal.fire({
-                    icon: 'warning',
-                    title: 'Advertencia',
-                    text: 'La clave externa debe tener un carácter especial (!?$#@...)',
-                });
-
-                return;
-
-            }
-
-            e.preventDefault();
-
-            const newUser = {
-                id: 0,
-                idUsuario: idUsuario,
-                nombre: nombre,
-                claveEntrada: claveEntrada,
-                claveInterna: claveInterna,
-                perfil: parseInt(perfil),
-                iniciales: iniciales,
-                cambiarPrecio: cambiarPrecio,
-                porcPrecio: porcPrecio,
-                aplicarDesc: aplicarDesc,
-                porcDesc: porcDesc,
-                existNegativa: existNegativa,
-                usuario: usuario,
-                observaciones: observaciones,
-                email: email,
-                activo: true,
-                cantidadPreventas: maximoVentas,
-                costaPets: showCostaPets,
-                agenteCostaPets: (showCostaPets) ? isAgenteCostaPets : null,
-                administrador: (showCostaPets) ? isAdministradorCostaPets : null,
-            }
-
-            dispatch(startValidatePassword(newUser));
+            
         }
     }
 
@@ -154,29 +133,35 @@ export const UsersIcons = () => {
 
         if (activeButtonSave) {
 
-            e.preventDefault();
+            if( isValidPassword() ) {
 
-            const editUser = {
-                id: id,
-                idUsuario: idUsuario,
-                nombre: nombre,
-                claveEntrada: claveEntrada,
-                claveInterna: claveInterna,
-                perfil: perfil,
-                iniciales: iniciales,
-                cambiarPrecio: cambiarPrecio,
-                porcPrecio: porcPrecio,
-                aplicarDesc: aplicarDesc,
-                porcDesc: porcDesc,
-                existNegativa: existNegativa,
-                usuario: usuario,
-                observaciones: observaciones,
-                email: email,
-                activo: activo,
-                cantidadPreventas: maximoVentas
-            }
+                e.preventDefault();
 
-            dispatch(startEditUsers(editUser.id, editUser));
+                const editUser = {
+                    id: id,
+                    idUsuario: idUsuario,
+                    nombre: nombre,
+                    claveEntrada: claveEntrada,
+                    claveInterna: claveInterna,
+                    perfil: perfil,
+                    iniciales: iniciales,
+                    cambiarPrecio: cambiarPrecio,
+                    porcPrecio: porcPrecio,
+                    aplicarDesc: aplicarDesc,
+                    porcDesc: porcDesc,
+                    existNegativa: existNegativa,
+                    usuario: usuario,
+                    observaciones: observaciones,
+                    email: email,
+                    activo: activo,
+                    cantidadPreventas: maximoVentas,
+                    costaPets: showCostaPets,
+                    agenteCostaPets: (showCostaPets) ? isAgenteCostaPets : null,
+                    administrador: (showCostaPets) ? isAdministradorCostaPets : null,
+                }
+
+                dispatch(startEditUsers(editUser.id, editUser));
+            }            
         }
     }
 
@@ -232,6 +217,62 @@ export const UsersIcons = () => {
             dispatch(CleanUsers());
 
         }
+
+    }
+
+    const isValidPassword = () => {
+
+        if (!isEquealsClave) {
+
+            Swal.fire({
+                icon: 'warning',
+                title: 'Advertencia',
+                text: 'La clave de entrada y la clave interna deben ser iguales.',
+            });
+
+            return false;
+        }
+
+        const regexMayusculaMiniscula = /^(?=.*[a-z])(?=.*[A-Z]).*$/;
+        if (!regexMayusculaMiniscula.test(claveEntrada)) {
+
+            Swal.fire({
+                icon: 'warning',
+                title: 'Advertencia',
+                text: 'La clave externa debe tener minimo una mayúscula y una minúscula .',
+            });
+
+            return false;
+
+        }
+
+        const regexNumeros = /^(?=.*\d).+$/;
+        if (!regexNumeros.test(claveEntrada)) {
+
+            Swal.fire({
+                icon: 'warning',
+                title: 'Advertencia',
+                text: 'La clave externa debe tener al menos un número.',
+            });
+
+            return false;
+
+        }
+
+        const regexCaracterEspecial = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+        if (!regexCaracterEspecial.test(claveEntrada)) {
+
+            Swal.fire({
+                icon: 'warning',
+                title: 'Advertencia',
+                text: 'La clave externa debe tener un carácter especial (!?$#@...)',
+            });
+
+            return false;
+
+        }
+
+        return true;
 
     }
 

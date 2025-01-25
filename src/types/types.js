@@ -429,6 +429,7 @@ export const types = {
   SetFormulaArticleInventory: '[Inventory] SetFormulaArticleInventory',
   CleanInputsFormulaArticleInventory: '[Inventory] CleanInputsFormulaArticleInventory',
   IsOpenSearchModalFormulaInventory: '[Inventory] isOpenSearchModalFormulaInventory',
+  SetCodigoPadreSelectedInventory: '[Inventory] SetCodigoPadreSelectedInventory',
    
 
   // Customers actions

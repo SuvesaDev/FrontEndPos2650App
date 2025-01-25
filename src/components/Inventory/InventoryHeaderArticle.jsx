@@ -66,7 +66,8 @@ export const InventoryHeaderArticle = () => {
       isShowTabCodigoBarras, 
       tiposArticulos, 
       isEditInventory, 
-      idTipoArticuloSelected 
+      idTipoArticuloSelected,
+      codigoPadreSelected
     } = useSelector(
     (state) => state.inventory
   );
@@ -793,7 +794,7 @@ export const InventoryHeaderArticle = () => {
               className="form-control"
               placeholder="Código Padre"
               disabled={true}
-              value={0}
+              value={ codigoPadreSelected }
             />
             <button
               className={

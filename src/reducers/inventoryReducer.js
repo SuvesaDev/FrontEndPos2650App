@@ -122,6 +122,7 @@ const initialState = {
     isSeletedFormulaArticles: false,
     formulaArticlesInventory: [],
     isOpenSearchModalFormula: false,
+    codigoPadreSelected: 0,
     inventory: {
         codigo: null,
         cod_Articulo: null,
@@ -2129,6 +2130,12 @@ export const InventoryReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isOpenSearchModalFormula: action.payload
+            }
+
+        case types.SetCodigoPadreSelectedInventory:
+            return {
+                ...state,
+                codigoPadreSelected: action.payload
             }
 
         default:
