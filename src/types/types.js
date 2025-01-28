@@ -307,6 +307,7 @@ export const types = {
   SetCodigoIntQVETInventory: '[Inventory] SetCodigoIntQVETInventory',
   SetCodigoProInventory: '[Inventory] SetCodigoProInventory',
   SetDescripcionProInventory: '[Inventory] SetDescripcionProInventory',
+  SetEsPadreInventory: '[Inventory] SetEsPadreInventory',
 
   ActiveButtonNewInventory: '[Inventory] ActiveButtonNewInventory',
   ActiveButtonSearchInventory: '[Inventory] ActiveButtonSearchInventory',
@@ -415,6 +416,21 @@ export const types = {
   SetValorFiltroCodigoCabysInventory: '[Inventory] SetValorFiltroCodigoCabysInventory',
   SetFilterCodigoCabysIntentory: '[Inventory] SetFilterCodigoCabysIntentory',
   CleanStateSearchCodigoCabysInventory: '[Inventory] CleanStateSearchCodigoCabysInventory',
+  SetIdTipoArticuloSelectedIntentory: '[Inventory] SetIdTipoArticuloSelectedIntentory',
+  SetIdBodegaSelectedConvertidorIntentory: '[Inventory] SetIdBodegaSelectedConvertidorIntentory',
+  SetCantidadDisponiblesConvertidorIntentory: '[Inventory] SetCantidadDisponiblesConvertidorIntentory',
+  SetCalculoRealizadoConvertidorIntentory: '[Inventory] SetCalculoRealizadoConvertidorIntentory',
+  SetCantidadConvertirConvertidorIntentory: '[Inventory] SetCantidadConvertirConvertidorIntentory',
+  SetDisableInputBodegaConvertidorIntentory: '[Inventory] SetDisableInputBodegaConvertidorIntentory',
+  SetAllProductsPadreIntentory: '[Inventory] SetAllProductsPadreIntentory',
+  SetCodigoFormulaArticleInventory: '[Inventory] SetCodigoFormulaArticleInventory',
+  SetDescripcionFormulaArticleInventory: '[Inventory] SetDescripcionFormulaArticleInventory',
+  SetCantidadFormulaArticleInventory: '[Inventory] SetCantidadFormulaArticleInventory',
+  SetFormulaArticleInventory: '[Inventory] SetFormulaArticleInventory',
+  CleanInputsFormulaArticleInventory: '[Inventory] CleanInputsFormulaArticleInventory',
+  IsOpenSearchModalFormulaInventory: '[Inventory] isOpenSearchModalFormulaInventory',
+  SetCodigoPadreSelectedInventory: '[Inventory] SetCodigoPadreSelectedInventory',
+   
 
   // Customers actions
   SelectTabCustomers: '[Customers] SelectTabCustomers',
@@ -1488,6 +1504,8 @@ export const types = {
   SetEmailUsers: '[Users] SetEmailUsers',
   SetActivoUsers: '[Users] SetActivoUsers',
   SetMaximoVentasUsers: '[Users] SetMaximoVentasUsers',
+  SetIsAdministradoCostaPetsUsers: '[Users] SetIsAdministradoCostaPetsUsers',
+  SetIsAgenteCostaPetsUsers: '[Users] SetIsAgenteCostaPetsUsers',
 
   SetValorFiltroSearchUsers: '[Users] SetValorFiltroSearchUsers',
   SetIdUsuarioSearchUsers: '[Users] SetIdUsuarioSearchUsers',
@@ -1499,6 +1517,9 @@ export const types = {
   SetIsEqualsClaveUsers: '[Users] SetIsEqualsClaveUsers',
   SetShowInfoMessageUsers: '[Users] SetShowInfoMessageUsers',
 
+  SetShowCostaPetsUsers: '[Users] SetShowCostaPetsUsers',
+  SetPerfilesUsers: '[Users] SetPerfilesUsers',
+  
   CleanUsers: '[Users] CleanUsers',
 
   // Charge Action

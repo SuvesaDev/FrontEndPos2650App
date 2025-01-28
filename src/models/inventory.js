@@ -99,7 +99,8 @@ export class Inventory {
         descripcionPro,
         estado,
         idUsuarioCreacion,
-        idUsuarioModificacion
+        idUsuarioModificacion,
+        esPadre
     ) {
         this.codigo = codigo || 0,
         this.cod_Articulo = cod_Articulo || '',
@@ -113,7 +114,7 @@ export class Inventory {
         this.puntoMedio = puntoMedio || 0,
         this.maxima = maxima || 0,
         this.existencia = existencia || 0,
-        this.subUbicacion = subUbicacion || '',
+        this.subUbicacion = subUbicacion || '0',
         this.observaciones = observaciones || '',
         this.monedaCosto = monedaCosto || 1,
         this.precioBase = precioBase || 0,
@@ -194,11 +195,12 @@ export class Inventory {
         this.categorias = categorias || [],
         this.codigoBarras = codigoBarras || [],
         this.codigoIntQVET = codigoIntQVET || 0,
-        this.codigoPro = codigoPro || 0,
+        this.codigoPro = codigoPro || '',
         this.descripcionPro = descripcionPro || '',
         this.estado = estado || true,
         this.idUsuarioCreacion = idUsuarioCreacion || ''
         this.idUsuarioModificacion = idUsuarioModificacion || ''
+        this.esPadre = esPadre || false
     }
 
     toJson() {
@@ -300,7 +302,8 @@ export class Inventory {
             descripcionProveedor   : this.descripcionPro,
             estado                 : this.estado,
             idUsuarioCreacion      : this.idUsuarioCreacion,
-            idUsuarioModificacion  : this.idUsuarioModificacion
+            idUsuarioModificacion  : this.idUsuarioModificacion,
+            esPadre                : this.esPadre
         }
     }
 

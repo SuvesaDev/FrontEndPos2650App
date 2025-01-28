@@ -187,6 +187,7 @@ export const InventorySearchModal = () => {
             <div className="modal fade" id="modalBuscarArticulo">
                 <div className="modal-dialog modal-xl modal-dialog">
                     <div className="modal-content">
+
                         <div className="modal-header">
                             <h4 className="modal-title text-center">
                                 Buscar Artículo <FaBoxesStacked className="iconSizeBtn" />
@@ -197,6 +198,7 @@ export const InventorySearchModal = () => {
                                 data-bs-dismiss="modal"
                             ></button>
                         </div>
+
                         <div className="modal-body">
                             <div className="row mb-2 text-center" >
                                 <form onSubmit={handleSearch}>
@@ -383,9 +385,11 @@ export const InventorySearchModal = () => {
                                 </div>
                             </div>
                         </div>
+
                         <div className='modal-footer'>
-                            <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Cerrar <TbCircleX className='iconSize' /> </button>
+                            <button type="button" className="btn btn-danger" data-bs-dismiss="modal" onClick={closeModal}>Cerrar <TbCircleX className='iconSize' /> </button>
                         </div>
+
                     </div>
                 </div>
             </div >

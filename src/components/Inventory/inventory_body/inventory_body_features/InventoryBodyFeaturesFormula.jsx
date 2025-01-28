@@ -6,26 +6,31 @@ import { IoAddCircle } from "react-icons/io5";
 import { FaSearch } from "react-icons/fa";
 import { GoNumber } from "react-icons/go";
 import { TbNotes, TbNumber } from "react-icons/tb";
+
 import {
-  CleanInputsRelatedArticleInventory,
+  CleanInputsFormulaArticleInventory,
+  IsOpenSearchModalFormulaInventory,
   IsOpenSearchModalRelacionados,
   OpenSearchModalInventory,
-  SetCantidadRelatedArticleInventory,
-  SetCodigoRelatedArticleInventory,
-  SetDescripcionRelatedArticleInventory,
-  SetRelatedArticleInventory,
+  SetCantidadFormulaArticleInventory,
+  SetCodigoFormulaArticleInventory,
+  SetDescripcionFormulaArticleInventory,
+  SetFormulaArticleInventory,
   startDeleteRelatedArticle,
+  startSaveArticleFormulaInventory,
 } from "../../../../actions/inventory";
 
-import { InventoryBodyFeaturesRelacionadosTable } from "./InventoryBodyFeaturesRelacionadosTable";
+import { InventoryBodyFeaturesFormulaTable } from "./InventoryBodyFeaturesFormulaTable";
+import { RelatedArticles } from "../../../../models/relatedArticles";
 
-export const InventoryBodyFeaturesRelacionados = () => {
+export const InventoryBodyFeaturesFormula = () => {
+
   const dispatch = useDispatch();
 
   const {
     disableInputs,
-    relatedArticles,
-    relatedArticlesInventory,
+    formulaArticles,
+    formulaArticlesInventory,
     inventory,
     isSeletedRelatedArticles,
     seletedrelatedArticles,
@@ -33,8 +38,11 @@ export const InventoryBodyFeaturesRelacionados = () => {
     isInventoryDisable,
   } = useSelector((state) => state.inventory);
 
-  const { codigo, descripcion, cantidad } = relatedArticles;
+  const { auth } = useSelector(state => state.login);
+
+  const { codigo, descripcion, cantidad } = formulaArticles;
   const { cod_Articulo } = inventory;
+
 
   const columns = [
     {
@@ -58,41 +66,51 @@ export const InventoryBodyFeaturesRelacionados = () => {
   const handleSearchArticle = (e) => {
     e.preventDefault();
 
-    dispatch(IsOpenSearchModalRelacionados(true));
+    dispatch(IsOpenSearchModalFormulaInventory(true));
     dispatch(OpenSearchModalInventory());
   };
 
-  const handleSaveRelatedArticle = (e) => {
+  const handleSaveFormulaArticle = (e) => {
+
     e.preventDefault();
 
     if (codigo === "" || descripcion === "" || cantidad === 0) return;
 
-    const existRelatedArticle = relatedArticlesInventory.find(
+    const existFormulaArticle = formulaArticlesInventory.find(
       (value) =>
         value.codigo === codigo &&
         value.descripcion === descripcion &&
         value.cantidad === cantidad
     );
 
-    if (existRelatedArticle === undefined) {
+    if (existFormulaArticle === undefined) {
+
       if (cod_Articulo !== null) {
-        dispatch(
-          SetRelatedArticleInventory({
-            id: 0,
-            codigo,
-            cod_Articulo,
-            descripcion,
-            cantidad,
-            isNewEdit: isEditInventory,
-          })
-        );
-        dispatch(CleanInputsRelatedArticleInventory());
+
+        let formulaArticlesArray = [];
+        formulaArticlesArray.push( new RelatedArticles(
+              0,
+              parseInt(cod_Articulo),
+              parseInt(codigo),
+              `${cod_Articulo}`,
+              descripcion,
+              parseInt(cantidad),
+              true,
+              auth.username,
+              false,
+              true // Es formula
+          ) );
+
+        dispatch( startSaveArticleFormulaInventory( formulaArticlesArray ) );
+
       } else {
+
         Swal.fire({
           icon: "warning",
           title: "Error",
           text: "Primero debe ingresar un Código de Articulo",
         });
+
       }
     }
   };
@@ -100,20 +118,22 @@ export const InventoryBodyFeaturesRelacionados = () => {
   const handleDeleteRelatedArticle = (e) => {
     e.preventDefault();
 
-    if (isSeletedRelatedArticles && isInventoryDisable) {
-      dispatch(
-        startDeleteRelatedArticle(
-          seletedrelatedArticles,
-          seletedrelatedArticles.id != 0 ? true : false
-        )
-      );
-    }
+    // if (isSeletedRelatedArticles && isInventoryDisable) {
+    //   dispatch(
+    //     startDeleteRelatedArticle(
+    //       seletedrelatedArticles,
+    //       seletedrelatedArticles.id != 0 ? true : false
+    //     )
+    //   );
+    // }
   };
 
   return (
     <>
       <div className="container-fluid mt-2">
+
         <div className="row mb-2">
+
           <div className="col-md-6 mb-3">
             <h5>Código</h5>
             <div className="input-group">
@@ -130,7 +150,7 @@ export const InventoryBodyFeaturesRelacionados = () => {
                 onChange={(e) =>
                   handleInputChangeWithDispatch(
                     e,
-                    SetCodigoRelatedArticleInventory
+                    SetCodigoFormulaArticleInventory
                   )
                 }
               />
@@ -164,14 +184,17 @@ export const InventoryBodyFeaturesRelacionados = () => {
                 onChange={(e) =>
                   handleInputChangeWithDispatch(
                     e,
-                    SetCantidadRelatedArticleInventory
+                    SetCantidadFormulaArticleInventory
                   )
                 }
               />
             </div>
           </div>
+
         </div>
+
         <div className="row mb-2">
+
           <div className="col-md-12 mb-2">
             <h5>Descipción</h5>
             <div className="input-group">
@@ -188,12 +211,13 @@ export const InventoryBodyFeaturesRelacionados = () => {
                 onChange={(e) =>
                   handleInputChangeWithDispatch(
                     e,
-                    SetDescripcionRelatedArticleInventory
+                    SetDescripcionFormulaArticleInventory
                   )
                 }
               />
             </div>
           </div>
+
         </div>
 
         <div className="row mb-2">
@@ -205,17 +229,18 @@ export const InventoryBodyFeaturesRelacionados = () => {
                   disableInputs ? "btn btn-success disabled" : "btn btn-success"
                 }
                 disabled={disableInputs}
-                onClick={handleSaveRelatedArticle}
+                onClick={ handleSaveFormulaArticle }
               >
                 Agregar <IoAddCircle className="iconSize" />
               </button>
 
               <button
                 className={
-                  isSeletedRelatedArticles && isInventoryDisable
+                  isSeletedRelatedArticles
                     ? "btn btn-danger"
                     : "btn btn-danger disabled"
                 }
+                disabled
                 onClick={handleDeleteRelatedArticle}
                 type="button"
               >
@@ -225,14 +250,16 @@ export const InventoryBodyFeaturesRelacionados = () => {
             <hr />
           </div>
         </div>
+
         <div className="row mb-3">
           <div className="col-md-12 mb-2">
-            <InventoryBodyFeaturesRelacionadosTable
+            <InventoryBodyFeaturesFormulaTable
               columns={columns}
-              data={relatedArticlesInventory}
+              data={formulaArticlesInventory}
             />
           </div>
         </div>
+
       </div>
     </>
   );

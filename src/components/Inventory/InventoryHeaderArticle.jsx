@@ -8,6 +8,7 @@ import { CgScreen } from "react-icons/cg";
 import { MdNumbers, MdFamilyRestroom } from "react-icons/md";
 import { FaTruckFast, FaMapLocationDot, FaBoxesPacking } from "react-icons/fa6";
 import { IoIosCloseCircle } from "react-icons/io";
+import { MdOutlineProductionQuantityLimits } from "react-icons/md";
 
 // Import action
 import {
@@ -42,6 +43,9 @@ import {
   IsShowTabCodigoBarrasInventory,
   SetServicioInventory,
   SetOpenModalSearchCodigoCabysInventory,
+  SetEsPadreInventory,
+  SetIdTipoArticuloSelectedIntentory,
+  startGetAllProductsPadreInventory
 } from "../../actions/inventory";
 import { startGetAllSubFamilias } from "../../actions/SubFamiliasAction";
 import { startGetAllSubUbicaciones } from "../../actions/SubUbicacionesAction";
@@ -56,7 +60,15 @@ import { startGetAllCategoriasInventory } from "../../actions/CategoriasAction";
 export const InventoryHeaderArticle = () => {
   const dispatch = useDispatch();
 
-  const { inventory, disableInputs, isShowTabCodigoBarras } = useSelector(
+  const { 
+      inventory, 
+      disableInputs, 
+      isShowTabCodigoBarras, 
+      tiposArticulos, 
+      isEditInventory, 
+      idTipoArticuloSelected,
+      codigoPadreSelected
+    } = useSelector(
     (state) => state.inventory
   );
   const { subFamiliasInventory } = useSelector((state) => state.subFamilias);
@@ -73,6 +85,9 @@ export const InventoryHeaderArticle = () => {
   const { bodegasInventory } = useSelector((state) => state.bodegas);
   const { categoriasInventory } = useSelector((state) => state.categorias);
 
+  const { auth } = useSelector((state) => state.login);
+  const { costaPets } = auth;
+  
   const {
     cod_Articulo,
     descripcion,
@@ -92,6 +107,7 @@ export const InventoryHeaderArticle = () => {
     codPresentacion,
     codMarca,
     servicio,
+    esPadre
   } = inventory;
 
   // useEffect(async () => {
@@ -188,9 +204,30 @@ export const InventoryHeaderArticle = () => {
     }
   };
 
+  const handleChangeTipoArticulo = ({ target }) => {
+    
+    if(target.value == 2) {
+      dispatch(SetEsPadreInventory( true ));
+    } else {
+      dispatch(SetEsPadreInventory( false ));
+    }
+
+    dispatch( SetIdTipoArticuloSelectedIntentory(target.value) );
+
+  }
+
+  const handleSearchCodPadre = (e) => {
+    if (!disableInputs) {
+      e.preventDefault();
+      dispatch(startGetAllProductsPadreInventory());
+    }
+  };
+
+
   return (
     <>
       <div className="row mb-3 text-md-center">
+
         <div className="col-md-3 mb-3">
           <h5>Código</h5>
           <div className="input-group">
@@ -302,6 +339,7 @@ export const InventoryHeaderArticle = () => {
       </div>
 
       <div className="row mb-3 text-md-center">
+
         <div className="col-md-3 mb-3">
           <h5>Familia</h5>
           <div className="input-group">
@@ -344,7 +382,7 @@ export const InventoryHeaderArticle = () => {
           </div>
         </div>
 
-        <div className="col-md-3 mb-3">
+        <div className={ !costaPets ? 'col-md-3 mb-3' : 'col-md-3 mb-3 d-none'}>
           <h5>Ubicación</h5>
           <div className="input-group">
             <span className="input-group-text">
@@ -457,10 +495,63 @@ export const InventoryHeaderArticle = () => {
             </button>
           </div>
         </div>
+
+        <div className={ costaPets && isEditInventory ? 'col-md-3 mb-3' : 'col-md-4 mb-3 d-none'}>
+          <h5>Tipo Articulo</h5>
+          <div className="input-group">
+            <span className="input-group-text">
+              <MdOutlineProductionQuantityLimits className="iconSize" />
+            </span>
+            <select
+              name="idTipoArticuloSelected"
+              disabled={disableInputs}
+              value={idTipoArticuloSelected}
+              className="form-select"
+              onChange={(e) => 
+                handleChangeTipoArticulo(e)
+              }
+            >
+              <option value="" selected disabled hidden>
+                {" "}
+                Seleccione...{" "}
+              </option>
+              {tiposArticulos != null ? (
+                tiposArticulos.map((tipo) => {
+                  return (
+                    <option value={tipo.id}> {tipo.nombre} </option>
+                  );
+                })
+              ) : (
+                <option value="">No se cargaron los tipos Articulos</option>
+              )}
+            </select>
+          </div>
+          {/* <div className="form-check">
+              <input
+                id="checkEsPadre"
+                type="checkbox"
+                // name="isShowTabCodigoBarras"
+                class="form-check-input checkP"
+                disabled={disableInputs}
+                checked={esPadre}
+                onChange={(e) =>
+                  handleInputChangeCheckBoxWithDispatch(
+                    e,
+                    SetEsPadreInventory
+                  )
+                }
+              />
+              <h5 className="form-check-label" for="checkVariosCodigoBarras">
+                Es Padre
+              </h5>
+            </div> */}
+        </div>
+
       </div>
 
-      <div className="row mb-3 text-md-center">
+      <div className={ !costaPets ? 'row mb-3 text-md-center' : 'row mb-3 text-md-center d-none'}>
         <div className="col-md-1 mb-0"></div>
+
         <div className="col-md-3 mb-3">
           <div className="form-check">
             <input
@@ -529,8 +620,9 @@ export const InventoryHeaderArticle = () => {
         <div className="col-md-1 mb-0"></div>
       </div>
 
-      <div className="row mb-3 text-md-center">
+      <div className={ !costaPets ? 'row mb-3 text-md-center' : 'row mb-3 text-md-center d-none'}>
         <div className="col-md-1 mb-0"></div>
+
         <div className="col-md-3 mb-3">
           <div className="form-check">
             <input
@@ -550,6 +642,7 @@ export const InventoryHeaderArticle = () => {
           </div>
           <hr />
         </div>
+
         <div className="col-md-4 mb-3">
           <div className="form-check">
             <input
@@ -587,11 +680,13 @@ export const InventoryHeaderArticle = () => {
           </div>
           <hr />
         </div>
+
         <div className="col-md-1 mb-0"></div>
       </div>
 
       <div className="row mb-3 text-md-center">
         <div className="col-md-2 mb-0"></div>
+
         <div className="col-md-4 mb-3">
           <div className="inline-container">
             <h5>Código Barras</h5>
@@ -633,8 +728,10 @@ export const InventoryHeaderArticle = () => {
               />
             </div>
           ) : null}
-        </div>
-        <div className="col-md-4 mb-3">
+        </div>    
+        
+        <div className={ !costaPets ? 'col-md-4 mb-3' : 'col-md-4 mb-3 d-none'}>
+
           <div className="inline-container">
             <h5>Tipo Pantalla</h5>
             <div className="form-check">
@@ -654,6 +751,7 @@ export const InventoryHeaderArticle = () => {
               </h5>
             </div>
           </div>
+
           <div className="input-group">
             <span className="input-group-text">
               <CgScreen className="iconSize" />
@@ -680,7 +778,39 @@ export const InventoryHeaderArticle = () => {
               )}
             </select>
           </div>
+
         </div>
+
+        <div className={ costaPets && idTipoArticuloSelected == 3 ? 'col-md-3 mb-3' : 'col-md-4 mb-3 d-none'}>
+
+          <h5>Código Padre</h5>
+          <div className="input-group">
+            <span className="input-group-text">
+              <GoNumber className="iconSize" />
+            </span>
+            <input
+              type="text"
+              name="codigo"
+              className="form-control"
+              placeholder="Código Padre"
+              disabled={true}
+              value={ codigoPadreSelected }
+            />
+            <button
+              className={
+                disableInputs ? "btn btn-primary disabled" : "btn btn-primary"
+              }
+              type="button"
+              onClick={ handleSearchCodPadre }
+              data-bs-toggle="modal"
+              data-bs-target="#modalCodPadre"
+            >
+              <FaSearch className="iconSize" />
+            </button>
+          </div>
+
+        </div>
+        
         <div className="col-md-2 mb-0"></div>
       </div>
       <hr />

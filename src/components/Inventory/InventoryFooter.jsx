@@ -37,6 +37,7 @@ import {
     IsEditInventory,
     IsInventoryDisable,
     IsNewInventory,
+    IsOpenSearchModalRelacionados,
     IsSelectedRelatedArticleInventory,
     IsShowTabCodigoBarrasInventory,
     OpenSearchModalInventory,
@@ -57,6 +58,7 @@ import { startGetAllMonedas } from '../../actions/MonedasAction';
 import { startGetAllImpuestos } from '../../actions/ImpuestosAction';
 import { startGetAllBodegas } from '../../actions/bodegasAction';
 import { startGetAllCategoriasInventory } from '../../actions/CategoriasAction';
+import { InventorySearchCodPadreModal } from './InventorySearchCodPadreModal';
 
 
 export const InventoryFooter = () => {
@@ -101,12 +103,13 @@ export const InventoryFooter = () => {
                     0,
                     parseInt(inventory.cod_Articulo),
                     parseInt(relatedArticles.codigo),
-                    parseInt(relatedArticles.cod_Articulo),
+                    `${inventory.cod_Articulo}`,
                     relatedArticles.descripcion,
                     parseInt(relatedArticles.cantidad),
                     true,
                     auth.username,
-                    relatedArticles.isNewEdit
+                    relatedArticles.isNewEdit,
+                    false,
                 ));
             });
 
@@ -228,7 +231,8 @@ export const InventoryFooter = () => {
                     inventory.descripcionProveedor,
                     true,
                     auth.username,
-                    auth.username
+                    auth.username,
+                    false, //inventory.esPadre
                 ),
                 relatedArticlesArray
             ));
@@ -276,6 +280,9 @@ export const InventoryFooter = () => {
 
         //False isShowTabCodigoBarras
         dispatch(IsShowTabCodigoBarrasInventory(false));
+
+        //False isShowTabCodigoBarras
+        dispatch(IsOpenSearchModalRelacionados(false));
     }
 
     const handleNewInventory = async (e) => {
@@ -380,14 +387,15 @@ export const InventoryFooter = () => {
             relatedArticlesInventory.forEach(relatedArticles => {
                 relatedArticlesArray.push( new RelatedArticles(
                     0,
-                    parseInt(inventory.cod_Articulo),
+                    parseInt(relatedArticles.cod_Articulo),
                     parseInt(relatedArticles.codigo),
-                    "12", //parseInt(relatedArticles.cod_Articulo),
+                    `${inventory.cod_Articulo}`,
                     relatedArticles.descripcion,
                     parseInt(relatedArticles.cantidad),
                     true,
                     auth.username,
-                    relatedArticles.isNewEdit
+                    relatedArticles.isNewEdit,
+                    false
                 ) );
             });
 
@@ -515,12 +523,14 @@ export const InventoryFooter = () => {
                     inventory.descripcionProveedor,
                     inventory.estado,
                     auth.username,
-                    auth.username
+                    auth.username,
+                    inventory.esPadre
                 ),
                 relatedArticlesArray
             ));
         } 
     }
+    
     const handleDeleteInventory = (e) => {
         e.preventDefault();
 
@@ -614,6 +624,8 @@ export const InventoryFooter = () => {
             <InventoryBodyFeautesCategoriaModal />
 
             <InventorySearchCodigoCabysModal />
+
+            <InventorySearchCodPadreModal />
         </>
     )
 }

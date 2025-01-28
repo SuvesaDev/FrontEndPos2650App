@@ -13,6 +13,8 @@ import { InventoryBodyFeaturesLotes } from "./InventoryBodyFeaturesLotes";
 import { InventoryBodyFeaturesCodigoBarras } from "./InventoryBodyFeaturesCodigoBarras";
 import { InventoryBodyFeaturesRebajaOtroArticulo } from "./InventoryBodyFeaturesRebajaOtroArticulo";
 import { InventoryBodyFeaturesInformacionPost } from "./InventoryBodyFeaturesInformacionPost";
+import { InventoryBodyFeaturesFormula } from "./InventoryBodyFeaturesFormula";
+import { InventoryBodyFeaturesConvertidor } from "./InventoryBodyFeaturesConvertidor";
 
 export const InventoryBodyFeatures = () => {
   const state = useSelector((state) => state.inventory);
@@ -52,6 +54,12 @@ export const InventoryBodyFeatures = () => {
 
       case "CodigoBarras":
         return <InventoryBodyFeaturesCodigoBarras />;
+
+      case "Formula":
+        return <InventoryBodyFeaturesFormula />;
+
+      case "Convertidor":
+        return <InventoryBodyFeaturesConvertidor />;
 
       default:
         break;

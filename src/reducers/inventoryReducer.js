@@ -92,6 +92,37 @@ const initialState = {
     isOpenModalSearchCodigoCabys: false,
     valorfiltroCodigoCabys: '',
     filterCodigoCabysInventory: [],
+    tiposArticulos: [
+        {
+            id: 1,
+            nombre: "Normal",
+        },
+        {
+            id: 2,
+            nombre: "Padre",
+        },
+        {
+            id: 3,
+            nombre: "Hijo",
+        }
+    ],
+    idTipoArticuloSelected: 0,
+    idBodegaSelectedConvertidor: 0,
+    cantidadDisponibleConvertidor: 0,
+    calculoRealizadoConvertidor: false,
+    cantidadConvertirConvertidor: 0,
+    disableInputBodegaConvertidor: false,
+    allProductsPadres: [],
+    formulaArticles: {
+        codigo: '',
+        cod_Articulo: '',
+        descripcion: '',
+        cantidad: 0,
+    },
+    isSeletedFormulaArticles: false,
+    formulaArticlesInventory: [],
+    isOpenSearchModalFormula: false,
+    codigoPadreSelected: 0,
     inventory: {
         codigo: null,
         cod_Articulo: null,
@@ -190,7 +221,9 @@ const initialState = {
         descripcionProveedor: '',
         estado: null,
         idUsuarioCreacion: null,
-        idUsuarioModificacion: null
+        idUsuarioModificacion: null,
+        esPadre: false,
+        codigoPadre: 0
     },
     detalleArticuloBodega: {
         idBodega: 0.00,
@@ -1047,6 +1080,15 @@ export const InventoryReducer = (state = initialState, action) => {
                 }
             }
 
+        case types.SetEsPadreInventory:
+            return {
+                ...state,
+                inventory: {
+                    ...state.inventory,
+                    esPadre: action.payload
+                }
+            }
+
         case types.ActiveButtonNewInventory:
             return {
                 ...state,
@@ -1194,9 +1236,26 @@ export const InventoryReducer = (state = initialState, action) => {
                     descripcionProveedor: '',
                     estado: null,
                     idUsuarioCreacion: null,
-                    idUsuarioModificacion: null
+                    idUsuarioModificacion: null,
+                    esPadre: false,
+                    codigoPadre: 0
                 },
-                isShowTabCodigoBarras : false
+                isShowTabCodigoBarras : false,
+                tiposArticulos: [
+                    {
+                        id: 1,
+                        nombre: "Normal",
+                    },
+                    {
+                        id: 2,
+                        nombre: "Padre",
+                    },
+                    {
+                        id: 3,
+                        nombre: "Hijo",
+                    }
+                ],
+                idTipoArticuloSelected: 1
             }
 
         case types.IsNewInventory:
@@ -1976,6 +2035,107 @@ export const InventoryReducer = (state = initialState, action) => {
                 ...state,
                 valorfiltroCodigoCabys: '',
                 filterCodigoCabysInventory: [],
+            }
+
+        case types.SetIdTipoArticuloSelectedIntentory:
+            return {
+                ...state,
+                idTipoArticuloSelected: action.payload
+            }
+
+        case types.SetIdBodegaSelectedConvertidorIntentory:
+            return {
+                ...state,
+                idBodegaSelectedConvertidor: action.payload
+            }
+
+        case types.SetCantidadDisponiblesConvertidorIntentory:
+            return {
+                ...state,
+                cantidadDisponibleConvertidor: action.payload
+            }
+
+        case types.SetCalculoRealizadoConvertidorIntentory:
+            return {
+                ...state,
+                calculoRealizadoConvertidor: action.payload
+            }
+
+        case types.SetCantidadConvertirConvertidorIntentory:
+            return {
+                ...state,
+                cantidadConvertirConvertidor: action.payload
+            }
+
+        case types.SetDisableInputBodegaConvertidorIntentory:
+            return {
+                ...state,
+                disableInputBodegaConvertidor: action.payload
+            }
+
+        case types.SetAllProductsPadreIntentory:
+            return {
+                ...state,
+                allProductsPadres: action.payload
+            }
+
+        case types.SetCodigoFormulaArticleInventory:
+            return {
+                ...state,
+                formulaArticles: {
+                    ...state.formulaArticles,
+                    codigo: action.payload
+                }
+            }
+
+        case types.SetDescripcionFormulaArticleInventory:
+            return {
+                ...state,
+                formulaArticles: {
+                    ...state.formulaArticles,
+                    descripcion: action.payload
+                }
+            }
+
+        case types.SetCantidadFormulaArticleInventory:
+            return {
+                ...state,
+                formulaArticles: {
+                    ...state.formulaArticles,
+                    cantidad: action.payload,
+                },
+            }
+
+        case types.SetFormulaArticleInventory:
+            return {
+                ...state,
+                formulaArticlesInventory: [
+                    ...state.formulaArticlesInventory,
+                    action.payload
+                ]
+            }
+
+        case types.CleanInputsFormulaArticleInventory:
+            return {
+                ...state,
+                formulaArticles: {
+                    codigo: '',
+                    cod_Articulo: '',
+                    descripcion: '',
+                    cantidad: 0,
+                },
+            }
+
+        case types.IsOpenSearchModalFormulaInventory:
+            return {
+                ...state,
+                isOpenSearchModalFormula: action.payload
+            }
+
+        case types.SetCodigoPadreSelectedInventory:
+            return {
+                ...state,
+                codigoPadreSelected: action.payload
             }
 
         default:

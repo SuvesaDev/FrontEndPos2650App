@@ -7,7 +7,9 @@ import {
     CleanSearchInventory,
     CloseSearchModalInventory,
     SetCodigoDescargaInventory,
+    SetCodigoFormulaArticleInventory,
     SetCodigoRelatedArticleInventory,
+    SetDescripcionFormulaArticleInventory,
     SetDescripcionRebajaOtro,
     SetDescripcionRelatedArticleInventory,
     startGetOneInventory
@@ -33,7 +35,8 @@ export const InventorySearchTable = ({ columns, data }) => {
 
     const {
         isOpenSearchModalRebaja,
-        isOpenSearchModalRelacionados
+        isOpenSearchModalRelacionados,
+        isOpenSearchModalFormula
     } = useSelector(state => state.inventory);
 
     const { dollar } = useSelector(state => state.sidebar);
@@ -82,6 +85,11 @@ export const InventorySearchTable = ({ columns, data }) => {
 
             dispatch(SetCodigoRelatedArticleInventory(cod_Articulo));
             dispatch(SetDescripcionRelatedArticleInventory(descripcion));
+
+        }  else if (isOpenSearchModalFormula) {
+
+            dispatch(SetCodigoFormulaArticleInventory(cod_Articulo));
+            dispatch(SetDescripcionFormulaArticleInventory(descripcion));
 
         } else if (billings[numberScreen] !== undefined) {
 

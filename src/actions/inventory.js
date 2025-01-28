@@ -41,7 +41,7 @@ export const startSaveInventory = ( inventory, relatedArticle ) => {
                     
                     //Quitar el loading
                      Swal.close();
-                    
+                    debugger;
                     if( status === 0) {
 
                         //Clean State
@@ -57,7 +57,7 @@ export const startSaveInventory = ( inventory, relatedArticle ) => {
                         dispatch( CleanArrayStatePricesSellInventory() );
 
                         //Save Articulos Relacionados
-                        if( relatedArticle.lenght > 0 ) {
+                        if( relatedArticle.length > 0 ) {
 
                             relatedArticle.forEach(article => {
                                 if(!article.isNewEdit)
@@ -374,7 +374,7 @@ export const startGetOneInventory = ( codigo ) => {
             //Call end-point 
             const resp = await suvesaApi.post('/inventario/ObtenerUnInventario', { codigo });
             const { status, responses } = resp.data;
-            console.log(responses);
+            
             if( status === 0 ) {
                 
                 //seleccionarlo y meterlo al estado en el metodo de action
@@ -488,9 +488,20 @@ export const startGetOneInventory = ( codigo ) => {
                     }
                 }
 
+                // Validar si es padre
+                if( responses.codigoPadre !== 0 ) {
+                    dispatch( SetIdTipoArticuloSelectedIntentory( 3 ));
+                    dispatch( SetCodigoPadreSelectedInventory( responses.codigoPadre ) );
+                }
+
+                // Validar si es padre
+                if( responses.esPadre === true ) {
+                    dispatch( SetIdTipoArticuloSelectedIntentory( 2 ));
+                }
+
                 //Call end-point de la Articulos relacionados
                 const { data } = await suvesaApi.post('/articulosRelacionados/BuscarArticulosRelacionados', { codigoPrincipal: responses.cod_Articulo } );
-
+                
                 // Cerrar el modal de espera
                 Swal.close();
 
@@ -925,6 +936,365 @@ export const startSearchCodigoCabysInventory = ( codigoCabys ) => {
                     icon: 'error',
                     title: 'Error',
                     text: 'Ocurrio un problema al buscar el codigo cabys',
+                });
+            }
+        }
+    }
+}
+
+export const startCalculateCantidadDisponiblesConvertidorInventory = ( CodArticuloHijo, CodBodega ) => {
+   
+    return async ( dispatch ) => {
+
+        try {
+
+            //Mostrar el loading
+            Swal.fire({
+                title: 'Por favor, espere',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                imageUrl: loadingImage,
+                customClass: 'alert-class-login',
+                imageHeight: 100,
+            });
+    
+            //Call end-point 
+            const { data } = await suvesaApi.get(`/CalculadoraProduccion/CalcularCantidadHijos`, { params: { 
+                CodArticuloHijo,
+                CodBodega
+             } });
+            const { status, responses } = data;
+            
+            // Cerrar modal
+            Swal.close();
+
+            if( status === 0 ) {
+                
+                // Insertar en el state
+                dispatch( SetCantidadDisponiblesConvertidorIntentory( responses ) );
+
+                dispatch( SetCalculoRealizadoConvertidorIntentory(true) );
+
+                dispatch( SetDisableInputBodegaConvertidorIntentory( true ) );
+
+            } else {
+    
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
+                
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
+    
+            }
+
+        } catch (error) {
+            
+            Swal.close();
+            console.log(error);
+            if( error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al obtener las cantidades disponibles',
+                });
+            }
+        }
+    }
+}
+
+export const startConvetirCantidadDisponiblesConvertidorInventory = ( CodArticuloHijo, CodBodega, Cantidad ) => {
+   
+    return async ( dispatch ) => {
+
+        try {
+
+            //Mostrar el loading
+            Swal.fire({
+                title: 'Por favor, espere',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                imageUrl: loadingImage,
+                customClass: 'alert-class-login',
+                imageHeight: 100,
+            });
+    
+            //Call end-point 
+            const { data } = await suvesaApi.post(`/CalculadoraProduccion/ConvertirCantidadHijos`, { 
+                Cantidad,
+                CodArticuloHijo,
+                CodBodega
+            });
+            const { status } = data;
+            
+            // Cerrar modal
+            Swal.close();
+
+            if( status === 0 ) {
+                
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Convertidor',
+                    text: `Se convertido la cantidad ${cantidadConvertir} correctamente.`
+                });
+
+            } else {
+    
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
+                
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
+    
+            }
+
+        } catch (error) {
+            
+            Swal.close();
+            console.log(error);
+            if( error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al obtener las cantidades disponibles',
+                });
+            }
+        }
+    }
+}
+
+export const startGetAllProductsPadreInventory = () => {
+   
+    return async ( dispatch ) => {
+
+        try {
+
+            //Mostrar el loading
+            Swal.fire({
+                title: 'Por favor, espere',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                imageUrl: loadingImage,
+                customClass: 'alert-class-login',
+                imageHeight: 100,
+            });
+    
+            //Call end-point 
+            const { data } = await suvesaApi.get(`/inventario/ObtenerTodosInventariosPadre`);
+            const { status, responses } = data;
+            
+            // Cerrar modal
+            Swal.close();
+
+            if( status === 0 ) {
+                
+                dispatch( SetAllProductsPadreIntentory( responses ) );
+
+            } else {
+    
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
+                
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
+    
+            }
+
+        } catch (error) {
+            
+            Swal.close();
+            console.log(error);
+            if( error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al obtener las cantidades disponibles',
+                });
+            }
+        }
+    }
+}
+
+export const startSetCodPadreInventory = ( CodPadre, codArticulo ) => {
+   
+    return async ( dispatch ) => {
+
+        try {
+
+            //Mostrar el loading
+            Swal.fire({
+                title: 'Por favor, espere',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                imageUrl: loadingImage,
+                customClass: 'alert-class-login',
+                imageHeight: 100,
+            });
+    
+            //Call end-point 
+            const { data } = await suvesaApi.put(`/inventario/putIDInventario?cod_articulo=${codArticulo}&CodPadre=${CodPadre}`);
+            const { status } = data;
+            
+            // Cerrar modal
+            Swal.close();
+
+            if( status === 0 ) {
+
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Codigo Padre',
+                    text: `Se configurado correctamente el codigo padre.`,
+                });
+
+            } else {
+    
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
+                
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
+    
+            }
+
+        } catch (error) {
+            
+            Swal.close();
+            console.log(error);
+            if( error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al obtener las cantidades disponibles',
+                });
+            }
+        }
+    }
+}
+
+export const startSaveArticleFormulaInventory = ( formulaArticle ) => {
+   
+    return async ( dispatch ) => {
+
+        try {
+
+            let formulaArticles = [];
+
+            //Mostrar el loading
+            Swal.fire({
+                title: 'Por favor, espere',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                imageUrl: loadingImage,
+                customClass: 'alert-class-login',
+                imageHeight: 100,
+            });
+
+            formulaArticle.forEach(article => {
+                if(!article.isNewEdit)
+                    formulaArticles.push( article.toJson() );
+            });
+    
+            //Call end-point 
+            const { data } = await suvesaApi.post(`/articulosRelacionados`, formulaArticles );
+            const { status } = data;
+            
+            // Cerrar modal
+            Swal.close();
+
+            if( status === 0 ) {
+
+                dispatch(
+                    SetFormulaArticleInventory({
+                        id: 0,
+                        codigo: formulaArticle[0].codigo,
+                        cod_Articulo : formulaArticle[0].cod_Articulo,
+                        descripcion : formulaArticle[0].descripcion,
+                        cantidad : formulaArticle[0].cantidad,
+                        isNewEdit: false,
+                    })
+                );
+
+                dispatch(CleanInputsFormulaArticleInventory());
+
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Articulo Formula',
+                    text: `Se agrego correctamente el articulo de formula.`,
+                });
+
+            } else {
+    
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
+                
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
+    
+            }
+
+        } catch (error) {
+            
+            Swal.close();
+            console.log(error);
+            if( error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al guardar el articulo formula',
                 });
             }
         }
@@ -1420,6 +1790,11 @@ export const SetCodigoProInventory = ( value ) => ({
 
 export const SetDescripcionProInventory = ( value ) => ({
     type: types.SetDescripcionProInventory,
+    payload: value
+});
+
+export const SetEsPadreInventory = ( value ) => ({
+    type: types.SetEsPadreInventory,
     payload: value
 });
 
@@ -1939,4 +2314,74 @@ export const SetFilterCodigoCabysIntentory = (value) => ({
 
 export const CleanStateSearchCodigoCabysInventory = () => ({
     type: types.CleanStateSearchCodigoCabysInventory
+})
+
+export const SetIdTipoArticuloSelectedIntentory = (value) => ({
+    type: types.SetIdTipoArticuloSelectedIntentory,
+    payload: value
+})
+
+export const SetIdBodegaSelectedConvertidorIntentory = (value) => ({
+    type: types.SetIdBodegaSelectedConvertidorIntentory,
+    payload: value
+})
+
+export const SetCantidadDisponiblesConvertidorIntentory = (value) => ({
+    type: types.SetCantidadDisponiblesConvertidorIntentory,
+    payload: value
+})
+
+export const SetCalculoRealizadoConvertidorIntentory = (value) => ({
+    type: types.SetCalculoRealizadoConvertidorIntentory,
+    payload: value
+})
+
+export const SetCantidadConvertirConvertidorIntentory = (value) => ({
+    type: types.SetCantidadConvertirConvertidorIntentory,
+    payload: value
+})
+
+export const SetDisableInputBodegaConvertidorIntentory = (value) => ({
+    type: types.SetDisableInputBodegaConvertidorIntentory,
+    payload: value
+})
+
+export const SetAllProductsPadreIntentory = (value) => ({
+    type: types.SetAllProductsPadreIntentory,
+    payload: value
+})
+
+export const SetCodigoFormulaArticleInventory = (value) => ({
+    type: types.SetCodigoFormulaArticleInventory,
+    payload: value
+})
+
+export const SetDescripcionFormulaArticleInventory = (value) => ({
+    type: types.SetDescripcionFormulaArticleInventory,
+    payload: value
+})
+
+export const SetCantidadFormulaArticleInventory = (value) => ({
+    type: types.SetCantidadFormulaArticleInventory,
+    payload: value
+})
+
+export const SetFormulaArticleInventory = (value) => ({
+    type: types.SetFormulaArticleInventory,
+    payload: value
+})
+
+export const CleanInputsFormulaArticleInventory = (value) => ({
+    type: types.CleanInputsFormulaArticleInventory,
+    payload: value
+})
+
+export const IsOpenSearchModalFormulaInventory = (value) => ({
+    type: types.IsOpenSearchModalFormulaInventory,
+    payload: value
+})
+
+export const SetCodigoPadreSelectedInventory = (value) => ({
+    type: types.SetCodigoPadreSelectedInventory,
+    payload: value
 })

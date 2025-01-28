@@ -27,10 +27,17 @@ export const startLogin = (auth) => {
 
             const { data } = await suvesaApiAuth.post('/usuario/LoginNuevo', auth.toJson());
             const { status, responses } = data;
-
+            
             if (status === 0) {
-
-                const { token, usuario, expiracion } = responses;
+                
+                const { 
+                    token, 
+                    usuario, 
+                    expiracion, 
+                    administrador, 
+                    agenteCostaPets, 
+                    costaPets 
+                } = responses;
 
                 localStorage.setItem('auth', JSON.stringify({
                     token: token
@@ -74,7 +81,7 @@ export const startLogin = (auth) => {
                             dispatch( SetIdSurcursalLogin(idSurcursal) );
 
                             // Establecer en el state: centro, usuario, token, isAutenticated en true
-                            dispatch(login(centros[i], usuario, token));
+                            dispatch(login(centros[i], usuario, token, costaPets, administrador, agenteCostaPets));
 
                             //Escribe el localStorage
                             localStorage.setItem('auth', JSON.stringify({
@@ -83,7 +90,10 @@ export const startLogin = (auth) => {
                                 username: usuario,
                                 token: token,
                                 expiracion: expiracion,
-                                isAutenticated: true
+                                isAutenticated: true,
+                                costaPets: costaPets,
+                                administrador: administrador,
+                                agenteCostaPets: agenteCostaPets
                             }));
 
                             dispatch(finishLoading());
@@ -346,12 +356,15 @@ export const startValidateClaveInterna = ( password ) => {
 
 
 // Normal Action
-const login = (centro, username, token) => ({
+const login = (centro, username, token, costaPets, administrador, agenteCostaPets ) => ({
     type: types.login,
     payload: {
         centro,
         username,
-        token
+        token,
+        costaPets,
+        administrador,
+        agenteCostaPets
     }
 });
 

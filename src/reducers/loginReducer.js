@@ -6,6 +6,9 @@ const initialState = {
         username: null,
         token: null,
         isAutenticated: false,
+        costaPets: null,
+        administrador: null,
+        agenteCostaPets: null
     },
     loading: false,
     msgErrors: {
@@ -31,6 +34,9 @@ export const loginReducer = ( state = initialState, action ) => {
                     username: action.payload.username,
                     token: action.payload.token,
                     isAutenticated : true,
+                    costaPets: action.payload.costaPets,
+                    administrador: action.payload.administrador,
+                    agenteCostaPets: action.payload.agenteCostaPets
                 }
             }
 
@@ -42,6 +48,9 @@ export const loginReducer = ( state = initialState, action ) => {
                     username: null,
                     token: null,
                     isAutenticated : false,
+                    costaPets: null,
+                    administrador: null,
+                    agenteCostaPets: null
                 },
                 msgErrors: {
                     centro: null,

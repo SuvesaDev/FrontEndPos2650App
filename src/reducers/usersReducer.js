@@ -13,12 +13,14 @@ const initialState = {
     isEditUser: false,
     isEquealsClave: true,
     showInfoMessageClave: false,
+    showCostaPets: false,   
     searchUsers: [],
     optionsSearchUsers: {
         valorFiltro: '',
         idUsuario: true,
         nombre: false
     },
+    perfiles: [],
     user: {
         id: 0,
         idUsuario: '',
@@ -37,7 +39,9 @@ const initialState = {
         observaciones: '',
         email: '',
         maximoVentas: 1,
-        activo: false
+        activo: false,
+        isAdministradorCostaPets: false,
+        isAgenteCostaPets: false,
     }
 };
 
@@ -234,6 +238,7 @@ export const usersReducer = (state = initialState, action) => {
 
         case types.CleanUsers:
             return {
+                ...state,
                 activeButtonNew: true,
                 activeButtonSave: false,
                 activeButtonSearch: true,
@@ -270,7 +275,9 @@ export const usersReducer = (state = initialState, action) => {
                     observaciones: '',
                     email: '',
                     maximoVentas: 1,
-                    activo: false
+                    activo: false,
+                    isAdministradorCostaPets: false,
+                    isAgenteCostaPets: false,
                 }
             }
 
@@ -370,6 +377,36 @@ export const usersReducer = (state = initialState, action) => {
             return {
                 ...state,
                 showInfoMessageClave: action.payload,
+            }
+
+        case types.SetShowCostaPetsUsers:
+            return {
+                ...state,
+                showCostaPets: action.payload,
+            }
+
+        case types.SetIsAdministradoCostaPetsUsers:
+            return {
+                ...state,
+                user: {
+                    ...state.user,
+                    isAdministradorCostaPets: action.payload
+                }
+            }
+
+        case types.SetIsAgenteCostaPetsUsers:
+            return {
+                ...state,
+                user: {
+                    ...state.user,
+                    isAgenteCostaPets: action.payload
+                }
+            }
+
+        case types.SetPerfilesUsers:
+            return {
+                ...state,
+                perfiles: action.payload
             }
 
         default:

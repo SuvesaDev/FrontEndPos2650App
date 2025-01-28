@@ -5,9 +5,15 @@ import { SelectTabInventory } from "../../../../actions/inventory";
 export const InventoryBodyFeaturesTabs = () => {
   const dispatch = useDispatch();
 
-  const { currentTabInventory, isShowTabCodigoBarras } = useSelector(
-    (state) => state.inventory
-  );
+  const { 
+    currentTabInventory, 
+    isShowTabCodigoBarras, 
+    isEditInventory,
+    idTipoArticuloSelected
+  } = useSelector( (state) => state.inventory );
+
+  const { auth } = useSelector((state) => state.login);
+  const { costaPets } = auth;
 
   const handleSelectTabInventory = (nameTab) => {
     dispatch(SelectTabInventory(nameTab));
@@ -16,6 +22,7 @@ export const InventoryBodyFeaturesTabs = () => {
   return (
     <>
         <div className="inline-containerBtns">
+
             <button
             className={
                 currentTabInventory == "UltimoCosto"
@@ -28,33 +35,36 @@ export const InventoryBodyFeaturesTabs = () => {
             </button>
 
             <button
-            className={
-                currentTabInventory == "RebajaOtroArticulo"
-                ? "btn btn-outline-primary activeP"
-                : "btn btn-primary"
-            }
+             className={ 
+                (!costaPets) 
+                    ? currentTabInventory == "RebajaOtroArticulo"
+                        ? "btn btn-outline-primary activeP"
+                        : "btn btn-primary" 
+                    : 'col-md-3 mb-3 d-none'}
             onClick={() => handleSelectTabInventory("RebajaOtroArticulo")}
             >
             Rebaja Otro Articulo
             </button>
 
             <button
-            className={
-                currentTabInventory == "InformacionPost"
-                ? "btn btn-outline-primary activeP"
-                : "btn btn-primary"
-            }
+            className={ 
+                (!costaPets) 
+                    ? currentTabInventory == "InformacionPost"
+                        ? "btn btn-outline-primary activeP"
+                        : "btn btn-primary" 
+                    : 'col-md-3 mb-3 d-none'}
             onClick={() => handleSelectTabInventory("InformacionPost")}
             >
             Información POST
             </button>
 
             <button
-            className={
-                currentTabInventory == "Bodega"
-                ? "btn btn-outline-primary activeP"
-                : "btn btn-primary"
-            }
+            className={ 
+                (!costaPets) 
+                    ? currentTabInventory == "Bodega"
+                        ? "btn btn-outline-primary activeP"
+                        : "btn btn-primary" 
+                    : 'col-md-3 mb-3 d-none'}
             onClick={() => handleSelectTabInventory("Bodega")}
             >
             Bodega
@@ -72,26 +82,62 @@ export const InventoryBodyFeaturesTabs = () => {
             </button>
 
             <button
-            className={
-                currentTabInventory == "Categoria"
-                ? "btn btn-outline-primary activeP"
-                : "btn btn-primary"
-            }
+            className={ 
+                (!costaPets) 
+                    ? currentTabInventory == "Categoria"
+                        ? "btn btn-outline-primary activeP"
+                        : "btn btn-primary" 
+                    : 'col-md-3 mb-3 d-none'}
             onClick={() => handleSelectTabInventory("Categoria")}
             >
             Categoria
             </button>
 
             <button
-            className={
-                currentTabInventory == "Relacionados"
-                ? "btn btn-outline-primary activeP"
-                : "btn btn-primary"
+            className={ 
+                (costaPets) 
+                    ? (idTipoArticuloSelected == 3) 
+                        ? 'col-md-3 mb-3 d-none'
+                        : currentTabInventory == "Relacionados"
+                            ? "btn btn-outline-primary activeP"
+                            : "btn btn-primary" 
+                    : currentTabInventory == "Relacionados"
+                        ? "btn btn-outline-primary activeP"
+                        : "btn btn-primary"
             }
             onClick={() => handleSelectTabInventory("Relacionados")}
             >
             Relacionados
             </button>
+
+            {idTipoArticuloSelected == 3  ? (
+                <button
+                    className={ 
+                        (costaPets && isEditInventory) 
+                            ? currentTabInventory == "Formula"
+                                ? "btn btn-outline-primary activeP"
+                                : "btn btn-primary" 
+                            : 'col-md-3 mb-3 d-none'}
+                    onClick={() => handleSelectTabInventory("Formula")}
+                >
+                Formula
+                </button>
+            ) : null}
+            
+            {idTipoArticuloSelected == 3 ? (
+                <button
+                    className={ 
+                        (costaPets && isEditInventory) 
+                            ? currentTabInventory == "Convertidor"
+                                ? "btn btn-outline-primary activeP"
+                                : "btn btn-primary" 
+                            : 'col-md-3 mb-3 d-none'}
+                    onClick={() => handleSelectTabInventory("Convertidor")}
+                    >
+                    Convertidor
+                    </button>
+            ) : null }
+            
 
             {isShowTabCodigoBarras ? (
             <button
@@ -107,22 +153,24 @@ export const InventoryBodyFeaturesTabs = () => {
             ) : null}
 
             <button
-            className={
-                currentTabInventory == "Serie"
-                ? "btn btn-outline-primary activeP"
-                : "btn btn-primary"
-            }
+            className={ 
+                (!costaPets) 
+                    ? currentTabInventory == "Serie"
+                        ? "btn btn-outline-primary activeP"
+                        : "btn btn-primary" 
+                    : 'col-md-3 mb-3 d-none'}
             onClick={() => handleSelectTabInventory("Serie")}
             >
             Serie
             </button>
 
             <button
-            className={
-                currentTabInventory == "Detalle"
-                ? "btn btn-outline-primary activeP"
-                : "btn btn-primary"
-            }
+            className={ 
+                (!costaPets) 
+                    ? currentTabInventory == "Detalle"
+                        ? "btn btn-outline-primary activeP"
+                        : "btn btn-primary" 
+                    : 'col-md-3 mb-3 d-none'}
             onClick={() => handleSelectTabInventory("Detalle")}
             >
             Detalle Articulos
@@ -138,6 +186,7 @@ export const InventoryBodyFeaturesTabs = () => {
             >
             Lotes
             </button>
+
         </div>
     </>
   );

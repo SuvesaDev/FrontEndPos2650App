@@ -41,7 +41,7 @@ export const startSaveUsers = ( user ) => {
                     
                     //Quitar el loading
                     Swal.close();
-
+                    debugger;
                     if (status === 0) {
                         
                         //Si es correcta entonces mostrar un mensaje de afirmacion
@@ -530,6 +530,75 @@ export const startValidatePassword = ( user ) => {
     }
 }
 
+export const startGetAllPerfiles = () => {
+
+    return async ( dispatch ) => {
+
+        //Mostrar el loading
+        Swal.fire({
+            title: 'Por favor, espere cargando catalogos',
+            allowEscapeKey: false,
+            allowOutsideClick: false,
+            showConfirmButton: false,
+            imageUrl: loadingImage,
+            customClass: 'alert-class-login',
+            imageHeight: 100,
+        });
+          
+        try {
+
+            //Call end-point 
+            const { data } = await suvesaApi.get('/usuario/ObtenerPerfiles');
+            const { status, responses } = data;
+            
+            if( status === 0 ) {
+                // Establece los perfiles en el estado
+                dispatch( SetPerfilesUsers(responses) );
+
+                //Quitar el loading
+                Swal.close();
+                
+            } else {
+
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
+
+                //Quitar el loading
+                Swal.close();
+
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
+                
+            }
+
+        } catch (error) {
+
+            //Quitar el loading
+            Swal.close();
+
+            console.log(error);
+            if( error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Obtener los perfiles Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al obtener los perfiles',
+                });
+            }
+        }
+        
+    }
+}
+
 // Normal Actions
 export const SetActiveButtonNewUsers = (value) => ({
     type: types.SetActiveButtonNewUsers,
@@ -711,5 +780,25 @@ export const SetIsEqualsClaveUsers = (value) => ({
 
 export const SetShowInfoMessageUsers = (value) => ({
     type: types.SetShowInfoMessageUsers,
+    payload: value
+})
+
+export const SetShowCostaPetsUsers = (value) => ({
+    type: types.SetShowCostaPetsUsers,
+    payload: value
+})
+
+export const SetIsAdministradoCostaPetsUsers = (value) => ({
+    type: types.SetIsAdministradoCostaPetsUsers,
+    payload: value
+})
+
+export const SetIsAgenteCostaPetsUsers = (value) => ({
+    type: types.SetIsAgenteCostaPetsUsers,
+    payload: value
+})
+
+export const SetPerfilesUsers = (value) => ({
+    type: types.SetPerfilesUsers,
     payload: value
 })
