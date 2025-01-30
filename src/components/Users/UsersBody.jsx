@@ -222,7 +222,7 @@ export const UsersBody = () => {
                         <BsFillInfoCircleFill className='iconSize espacio' onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} />
                         {
                             (showInfoMessageClave)
-                                ? <p className="fondoPop">La clave debe tener un carácter especial (!?$#@...)</p>
+                                ? <p className="fondoPop">La clave debe tener un carácter especial (!?$#@...), un número, una mayúscula y una minúscula y de 8 caracteres.</p>
                                 : null
                         }</h5>
                     <div className="input-group">

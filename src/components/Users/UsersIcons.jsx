@@ -123,7 +123,7 @@ export const UsersIcons = () => {
                     administrador: (showCostaPets) ? isAdministradorCostaPets : null,
                 }
 
-                dispatch(startValidatePassword(newUser));
+                // dispatch(startValidatePassword(newUser));
             }
             
         }
@@ -270,6 +270,17 @@ export const UsersIcons = () => {
 
             return false;
 
+        }
+
+        if (claveEntrada.length < 8 ) {
+
+            Swal.fire({
+                icon: 'warning',
+                title: 'Advertencia',
+                text: 'La clave de entrada debe tener 8 o más caracteres.',
+            });
+
+            return false;
         }
 
         return true;
