@@ -40,7 +40,9 @@ export const InventoryBodyFeaturesRebajaOtroArticulo = () => {
   return (
     <>
       <div className="container-fluid mt-2">
+
         <div className="row mb-2">
+
           <div className="col-md-6 mb-2">
             <h5>Código</h5>
             <div className="input-group">
@@ -91,6 +93,7 @@ export const InventoryBodyFeaturesRebajaOtroArticulo = () => {
               />
             </div>
           </div>
+
         </div>
 
         <div className="row mb-2">
@@ -156,6 +159,7 @@ export const InventoryBodyFeaturesRebajaOtroArticulo = () => {
             </div>
           </div>
         </div>
+
       </div>
     </>
   );

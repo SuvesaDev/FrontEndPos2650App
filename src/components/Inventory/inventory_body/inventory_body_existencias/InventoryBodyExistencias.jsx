@@ -21,10 +21,13 @@ export const InventoryBodyExistencias = () => {
     <>
       <div className="container-fluid mt-2">
         <div className="card text-center">
+
           <div className="card-header bg-secondary text-white">
             <h5>Datos de Existencias</h5>
           </div>
+
           <div className="card-body">
+
             <div className="row mb-2">
               <div className="col-md-6 mb-2">
                 <h5>Mínima</h5>
@@ -105,6 +108,7 @@ export const InventoryBodyExistencias = () => {
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </div>

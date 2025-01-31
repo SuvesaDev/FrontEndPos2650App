@@ -40,8 +40,8 @@ export const startSaveInventory = ( inventory, relatedArticle ) => {
                     const { status } = data;
                     
                     //Quitar el loading
-                     Swal.close();
-                    debugger;
+                    Swal.close();
+                    
                     if( status === 0) {
 
                         //Clean State
@@ -376,6 +376,9 @@ export const startGetOneInventory = ( codigo ) => {
             const { status, responses } = resp.data;
             
             if( status === 0 ) {
+
+                // Se limpia la tabla de precios
+                dispatch( CleanArrayStatePricesSellInventory() );
                 
                 //seleccionarlo y meterlo al estado en el metodo de action
                 dispatch( SelectedSearchInventory( responses ) );

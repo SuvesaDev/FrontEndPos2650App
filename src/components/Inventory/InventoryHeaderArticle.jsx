@@ -223,7 +223,6 @@ export const InventoryHeaderArticle = () => {
     }
   };
 
-
   return (
     <>
       <div className="row mb-3 text-md-center">
@@ -526,25 +525,6 @@ export const InventoryHeaderArticle = () => {
               )}
             </select>
           </div>
-          {/* <div className="form-check">
-              <input
-                id="checkEsPadre"
-                type="checkbox"
-                // name="isShowTabCodigoBarras"
-                class="form-check-input checkP"
-                disabled={disableInputs}
-                checked={esPadre}
-                onChange={(e) =>
-                  handleInputChangeCheckBoxWithDispatch(
-                    e,
-                    SetEsPadreInventory
-                  )
-                }
-              />
-              <h5 className="form-check-label" for="checkVariosCodigoBarras">
-                Es Padre
-              </h5>
-            </div> */}
         </div>
 
       </div>

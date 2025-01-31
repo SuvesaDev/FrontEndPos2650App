@@ -35,11 +35,15 @@ export const InventoryBodyBodega = () => {
     <>
       <div className="container-fluid mt-2">
         <div className="card text-center">
+
           <div className="card-header bg-secondary text-white">
             <h5>Datos de la Bodega</h5>
           </div>
+
           <div className="card-body">
+
             <div className="row mb-2">
+
               <div className="col-md-6 mb-2">
                 <h5>Bodega</h5>
                 <div className="input-group">
@@ -86,6 +90,7 @@ export const InventoryBodyBodega = () => {
                   </button>
                 </div>
               </div>
+
               <div className="col-md-6 mb-3">
                 <h5>Existencia</h5>
                 <div className="input-group">
@@ -103,6 +108,7 @@ export const InventoryBodyBodega = () => {
                 </div>
               </div>
             </div>
+
             <div className="row mb-2">
               <div className="col-md-12 mb-2">
                 <div className="form-check">
@@ -127,6 +133,7 @@ export const InventoryBodyBodega = () => {
                 <hr />
               </div>
             </div>
+
           </div>
         </div>
       </div>

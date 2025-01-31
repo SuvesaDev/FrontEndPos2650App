@@ -15,6 +15,7 @@ export const InventoryBodyFeaturesSerie = () => {
   return (
     <>
       <div className="container-fluid mt-2">
+
         <div className="row mb-2">
           <div className="col-md-12 mb-3">
             <div className="form-check">
@@ -57,6 +58,7 @@ export const InventoryBodyFeaturesSerie = () => {
             </div>
           </div>
         </div>
+
       </div>
     </>
   );

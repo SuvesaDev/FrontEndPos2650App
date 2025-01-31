@@ -279,6 +279,7 @@ export const InventoryBodyPrecioVenta = () => {
     <>
       <div className="container-fluid mt-2">
         <div className="card text-center">
+
           <div className="card-header bg-secondary text-white">
             <div className="inline-container">
               <div className="col-md-6 mb-1">
@@ -317,6 +318,7 @@ export const InventoryBodyPrecioVenta = () => {
           </div>
 
           <div className="card-body">
+
             <div className="row mb-2">
               <div className="col-md-6 mb-2">
                 <h5>Tipo</h5>
@@ -368,6 +370,7 @@ export const InventoryBodyPrecioVenta = () => {
                 </div>
               </div>
             </div>
+
             <div className="row mb-2">
               <div className="col-md-6 mb-2">
                 <h5>Precio</h5>
@@ -467,6 +470,7 @@ export const InventoryBodyPrecioVenta = () => {
               />
             </div>
           </div>
+
         </div>
       </div>
     </>

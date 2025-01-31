@@ -114,7 +114,9 @@ export const InventoryBodyFeaturesUltimoCosto = () => {
   return (
     <>
       <div className="container-fluid mt-2">
+
         <div className="row mb-2">
+
           <div className="col-md-6 mb-2">
             <h5>Moneda</h5>
             <div className="input-group">
@@ -188,9 +190,11 @@ export const InventoryBodyFeaturesUltimoCosto = () => {
               />
             </div>
           </div>
+
         </div>
 
         <div className="row mb-2">
+
           <div className="col-md-4 mb-2">
             <h5>Base</h5>
             <div className="input-group">
@@ -210,6 +214,7 @@ export const InventoryBodyFeaturesUltimoCosto = () => {
               />
             </div>
           </div>
+
           <div className="col-md-4 mb-2">
             <h5>Fletes</h5>
             <div className="input-group">
@@ -252,9 +257,11 @@ export const InventoryBodyFeaturesUltimoCosto = () => {
               />
             </div>
           </div>
+
         </div>
 
         <div className="row mb-2">
+
           <div className="col-md-6 mb-2">
             <h5>Costo</h5>
             <div className="input-group">
@@ -271,6 +278,7 @@ export const InventoryBodyFeaturesUltimoCosto = () => {
               />
             </div>
           </div>
+
           <div className="col-md-6 mb-2">
             <h5>Costo Real</h5>
             <div className="input-group">
@@ -286,10 +294,12 @@ export const InventoryBodyFeaturesUltimoCosto = () => {
               />
             </div>
           </div>
+
         </div>
 
         <br />
         <div className="row mb-0">
+
           <div className="col-md-12 mb-2">
             <div className="form-check">
               <input
@@ -317,7 +327,9 @@ export const InventoryBodyFeaturesUltimoCosto = () => {
               </label>
             )}
           </div>
+
         </div>
+
       </div>
     </>
   );
