@@ -123,6 +123,8 @@ const initialState = {
     formulaArticlesInventory: [],
     isOpenSearchModalFormula: false,
     codigoPadreSelected: 0,
+    isDisableInputStock: true,
+    lastStockUpdated: 0,
     inventory: {
         codigo: null,
         cod_Articulo: null,
@@ -223,7 +225,8 @@ const initialState = {
         idUsuarioCreacion: null,
         idUsuarioModificacion: null,
         esPadre: false,
-        codigoPadre: 0
+        codigoPadre: 0,
+        stock: 0
     },
     detalleArticuloBodega: {
         idBodega: 0.00,
@@ -1237,7 +1240,8 @@ export const InventoryReducer = (state = initialState, action) => {
                     idUsuarioCreacion: "",
                     idUsuarioModificacion: "",
                     esPadre: false,
-                    codigoPadre: 0
+                    codigoPadre: 0,
+                    stock: 0
                 },
                 isShowTabCodigoBarras : false,
                 tiposArticulos: [
@@ -2135,6 +2139,28 @@ export const InventoryReducer = (state = initialState, action) => {
             return {
                 ...state,
                 codigoPadreSelected: action.payload
+            }
+            
+
+        case types.SetIsDisableInputStockInventory:
+            return {
+                ...state,
+                isDisableInputStock: action.payload
+            }
+
+        case types.SetStockInventory:
+            return {
+                ...state,
+                inventory: {
+                    ...state.inventory,
+                    stock: action.payload
+                }
+            }
+
+        case types.SetLastStockUpdateInventory:
+            return {
+                ...state,
+                lastStockUpdated: action.payload
             }
 
         default:

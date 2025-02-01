@@ -430,7 +430,9 @@ export const types = {
   CleanInputsFormulaArticleInventory: '[Inventory] CleanInputsFormulaArticleInventory',
   IsOpenSearchModalFormulaInventory: '[Inventory] isOpenSearchModalFormulaInventory',
   SetCodigoPadreSelectedInventory: '[Inventory] SetCodigoPadreSelectedInventory',
-   
+  SetIsDisableInputStockInventory: '[Inventory] SetIsDisableInputStockInventory',
+  SetStockInventory: '[Inventory] SetStockInventory',   
+  SetLastStockUpdateInventory: '[Inventory] SetLastStockUpdateInventory',   
 
   // Customers actions
   SelectTabCustomers: '[Customers] SelectTabCustomers',

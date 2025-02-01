@@ -501,6 +501,12 @@ export const startGetOneInventory = ( codigo ) => {
                 if( responses.esPadre === true ) {
                     dispatch( SetIdTipoArticuloSelectedIntentory( 2 ));
                 }
+                
+                // Se activa el campo de stock
+                dispatch( SetIsDisableInputStockInventory( false ) );
+
+                // Se obtiene el stock del articulo
+                await GetStockArticulo(dispatch, responses.codigo);
 
                 //Call end-point de la Articulos relacionados
                 const { data } = await suvesaApi.post('/articulosRelacionados/BuscarArticulosRelacionados', { codigoPrincipal: responses.cod_Articulo } );
@@ -1304,6 +1310,77 @@ export const startSaveArticleFormulaInventory = ( formulaArticle ) => {
     }
 }
 
+export const startSetStockInventory = ( Cantidad, codArticulo , CodBodega) => {
+   
+    return async ( dispatch ) => {
+
+        try {
+
+            //Mostrar el loading
+            Swal.fire({
+                title: 'Por favor, espere',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                imageUrl: loadingImage,
+                customClass: 'alert-class-login',
+                imageHeight: 100,
+            });
+            
+            //Call end-point 
+            const { data } = await suvesaApi.post(`/Stocks/ActualizarExistenciaArticulo?Cantidad=${Cantidad}&CodBodega=${CodBodega}&CodArticulo=${codArticulo}`);
+            const { status } = data;
+            
+            // Cerrar modal
+            Swal.close();
+
+            if( status === 0 ) {
+
+                dispatch( SetLastStockUpdateInventory( Cantidad ) );
+
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Stock',
+                    text: `Se cambio el stock correctamente.`,
+                    timer: 1000,
+                    showConfirmButton: false
+                });
+
+            } else {
+    
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
+                
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
+    
+            }
+
+        } catch (error) {
+            
+            Swal.close();
+            console.log(error);
+            if( error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al actualizar el stock',
+                });
+            }
+        }
+    }
+}
+
 // Functions
 const CalculatePreciosVenta = ( base, flete, otroC, impuesto, pre ) => {
 
@@ -1320,6 +1397,40 @@ const CalculatePreciosVenta = ( base, flete, otroC, impuesto, pre ) => {
             utilidad : parseInt(utilidad),
             precioIV 
         }
+    }
+}
+
+const GetStockArticulo = async ( dispatch, idInventario ) => {
+
+    try {
+
+        //Call end-point
+        const resp = await suvesaApi.post(`/Stocks/ObtenerExistenciaArticulos?id=${idInventario}&tipo=1`);
+        const { status, responses } = resp.data;
+
+        // Verificar la respuesta
+        if( status === 0 ) {
+
+            let stock = 0
+
+            if( responses.length > 0 ) {
+                stock = responses[0].cantidad;
+            }
+
+            // Meter el stock
+            dispatch( SetStockInventory( stock ) );
+
+       } else {
+
+            Swal.fire({
+               icon: 'warning',
+               title: 'Stock del articulo no cargado correctamente',
+               showConfirmButton: true,
+           });
+       }
+
+    } catch(error) {
+        throw error;
     }
 }
 
@@ -2386,5 +2497,20 @@ export const IsOpenSearchModalFormulaInventory = (value) => ({
 
 export const SetCodigoPadreSelectedInventory = (value) => ({
     type: types.SetCodigoPadreSelectedInventory,
+    payload: value
+})
+
+export const SetIsDisableInputStockInventory = (value) => ({
+    type: types.SetIsDisableInputStockInventory,
+    payload: value
+})
+
+export const SetStockInventory = (value) => ({
+    type: types.SetStockInventory,
+    payload: value
+})
+
+export const SetLastStockUpdateInventory = (value) => ({
+    type: types.SetLastStockUpdateInventory,
     payload: value
 })

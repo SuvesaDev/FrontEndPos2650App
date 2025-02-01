@@ -1,17 +1,56 @@
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 import {
   SetMaximaInventory,
   SetMinimaInventory,
   SetPuntoMedioInventory,
+  SetStockInventory,
+  startSetStockInventory,
 } from "../../../../actions/inventory";
 import { TbSortDescendingNumbers } from "react-icons/tb";
 
 export const InventoryBodyExistencias = () => {
+
   const dispatch = useDispatch();
+  const [debouncedQuery, setDebouncedQuery] = useState("");
 
-  const { inventory, disableInputs } = useSelector((state) => state.inventory);
+  const { inventory, disableInputs, isDisableInputStock, lastStockUpdated } = useSelector((state) => state.inventory);
+  const { minima, puntoMedio, maxima, existencia, stock} = inventory;
 
-  const { minima, puntoMedio, maxima, existencia } = inventory;
+  const { auth } = useSelector((state) => state.login);
+  const { costaPets } = auth;
+
+  useEffect(() => {
+
+    const handler = setTimeout(() => {
+      setDebouncedQuery(stock);
+    }, 1000); // Espera 500ms después del último cambio
+
+    return () => clearTimeout(handler); // Limpia el timeout si el usuario sigue escribiendo
+
+  }, [stock]);
+
+  useEffect(() => {
+    if (debouncedQuery) {
+      fetchData(debouncedQuery);
+    }
+  }, [debouncedQuery]);
+
+  const fetchData = async (cantidad) => {
+
+    if( cantidad == 0 ) {
+      return;
+    }
+    
+    if( cantidad == lastStockUpdated ) {
+      return;
+    }
+
+    // TODO: DE DONDE SE SACA LA BODEGA
+    dispatch( startSetStockInventory( cantidad, inventory.codigo, 1 ) );
+
+  };
 
   const handleInputChangeWithDispatch = ({ target }, action) => {
     dispatch(action(target.value));
@@ -28,7 +67,7 @@ export const InventoryBodyExistencias = () => {
 
           <div className="card-body">
 
-            <div className="row mb-2">
+            <div className={( costaPets ) ? 'row mb-2 d-none' : 'row mb-2'}>
               <div className="col-md-6 mb-2">
                 <h5>Mínima</h5>
                 <div className="input-group">
@@ -71,7 +110,8 @@ export const InventoryBodyExistencias = () => {
             </div>
             
             <div className="row mb-2">
-              <div className="col-md-6 mb-2">
+
+              <div className={(costaPets) ? 'col-md-6 mb-2 d-none' : 'col-md-6 mb-2'}>
                 <h5>Máxima</h5>
                 <div className="input-group">
                   <span className="input-group-text">
@@ -99,11 +139,16 @@ export const InventoryBodyExistencias = () => {
                   </span>
                   <input
                     name="actual"
-                    type="text"
+                    type="number"
                     className="form-control"
                     placeholder="Existencia Actual"
-                    disabled={true}
-                    value={existencia}
+                    disabled={( costaPets ) ? isDisableInputStock : true}
+                    onChange={(e) => {
+                      if(costaPets) {
+                        handleInputChangeWithDispatch(e, SetStockInventory)
+                      }
+                    }}
+                    value={ (costaPets) ? stock : existencia}
                   />
                 </div>
               </div>
