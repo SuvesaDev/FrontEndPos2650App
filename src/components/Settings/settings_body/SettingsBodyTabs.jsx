@@ -9,6 +9,9 @@ export const SettingsBodyTabs = () => {
     const state = useSelector(state => state.settings);
     const { currentTabSettings } = state;
 
+    const { auth } = useSelector((state) => state.login);
+    const { costaPets } = auth;
+
     const handleSelectTabSettings = (nameTab) => {
         dispatch(SelectTabSettings(nameTab));
     }
@@ -18,10 +21,12 @@ export const SettingsBodyTabs = () => {
         <>
             <div className="inline-containerBtns">
                 <button
-                    className={
-                        currentTabSettings == "Valores"
-                            ? "btn btn-outline-primary activeP"
-                            : "btn btn-primary"
+                    className={ 
+                        (!costaPets) 
+                            ? currentTabSettings == "Valores"
+                                ? "btn btn-outline-primary activeP"
+                                : "btn btn-primary" 
+                            : 'col-md-3 mb-3 d-none'
                     }
                     onClick={() => handleSelectTabSettings('Valores')}
                 >
@@ -29,10 +34,12 @@ export const SettingsBodyTabs = () => {
                 </button>
 
                 <button
-                    className={
-                        currentTabSettings == "ComunicacionesCorreo"
-                            ? "btn btn-outline-primary activeP"
-                            : "btn btn-primary"
+                    className={ 
+                        (!costaPets) 
+                            ? currentTabSettings == "ComunicacionesCorreo"
+                                ? "btn btn-outline-primary activeP"
+                                : "btn btn-primary" 
+                            : 'col-md-3 mb-3 d-none'
                     }
                     onClick={() => handleSelectTabSettings('ComunicacionesCorreo')}
                 >
@@ -40,14 +47,29 @@ export const SettingsBodyTabs = () => {
                 </button>
 
                 <button
-                    className={
-                        currentTabSettings == "Permiso"
-                            ? "btn btn-outline-primary activeP"
-                            : "btn btn-primary"
+                    className={ 
+                        (!costaPets) 
+                            ? currentTabSettings == "Permiso"
+                                ? "btn btn-outline-primary activeP"
+                                : "btn btn-primary" 
+                            : 'col-md-3 mb-3 d-none'
                     }
                     onClick={() => handleSelectTabSettings('Permiso')}
                 >
                     Permiso
+                </button>
+
+                <button
+                    className={ 
+                        (costaPets) 
+                            ? currentTabSettings == "CostaPets"
+                                ? "btn btn-outline-primary activeP"
+                                : "btn btn-primary" 
+                            : 'col-md-3 mb-3 d-none'
+                    }
+                    onClick={() => handleSelectTabSettings('CostaPets')}
+                >
+                    Costa Pets
                 </button>
             </div>
         </>

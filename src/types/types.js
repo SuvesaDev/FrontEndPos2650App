@@ -517,6 +517,7 @@ export const types = {
 
   // Settings actions
   SelectTabSettings: '[Settings] SelectTabSettings',
+  SetPorcentajeProntoPagoSettings: '[Settings] SetPorcentajeProntoPagoSettings',
 
   // Pays actions
   SelectTabPays: '[Pays] SelectTabPays',

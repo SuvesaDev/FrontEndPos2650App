@@ -1,7 +1,8 @@
 import { types } from '../types/types';
 
 const initialState = {
-    currentTabSettings: 'Valores'
+    currentTabSettings: 'Valores',
+    porcentajeProntoPago: 0
 };
 
 export const SettingsReducer = (state = initialState, action) => {
@@ -12,6 +13,12 @@ export const SettingsReducer = (state = initialState, action) => {
             // TODO: Added new property of state
             return {
                 currentTabSettings : action.payload.nameTab,
+            }
+
+        case types.SetPorcentajeProntoPagoSettings:
+            return {
+                ...state,
+                porcentajeProntoPago: action.payload
             }
     
         default:
