@@ -48,7 +48,7 @@ export const InventoryBodyExistencias = () => {
     }
 
     // TODO: DE DONDE SE SACA LA BODEGA
-    dispatch( startSetStockInventory( cantidad, inventory.codigo, 1 ) );
+    dispatch( startSetStockInventory( cantidad, inventory.codigo, 0 ) );
 
   };
 
