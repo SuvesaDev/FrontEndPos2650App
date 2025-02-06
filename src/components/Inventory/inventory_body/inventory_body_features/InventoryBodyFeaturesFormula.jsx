@@ -40,9 +40,7 @@ export const InventoryBodyFeaturesFormula = () => {
 
   const { auth } = useSelector(state => state.login);
 
-  const { codigo, descripcion, cantidad } = formulaArticles;
-  const { cod_Articulo } = inventory;
-
+  const { codigo, cod_Articulo, descripcion, cantidad } = formulaArticles;
 
   const columns = [
     {
@@ -90,7 +88,7 @@ export const InventoryBodyFeaturesFormula = () => {
         let formulaArticlesArray = [];
         formulaArticlesArray.push( new RelatedArticles(
               0,
-              parseInt(cod_Articulo),
+              parseInt(inventory.codigo),
               parseInt(codigo),
               `${cod_Articulo}`,
               descripcion,

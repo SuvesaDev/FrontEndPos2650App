@@ -38,16 +38,11 @@ export const InventoryBodyExistencias = () => {
   }, [debouncedQuery]);
 
   const fetchData = async (cantidad) => {
-
-    if( cantidad == 0 ) {
-      return;
-    }
     
     if( cantidad == lastStockUpdated ) {
       return;
     }
 
-    // TODO: DE DONDE SE SACA LA BODEGA
     dispatch( startSetStockInventory( cantidad, inventory.codigo, 0 ) );
 
   };

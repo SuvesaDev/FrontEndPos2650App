@@ -196,6 +196,7 @@ export const InventorySearchModal = () => {
                                 type="button"
                                 className="btn-close"
                                 data-bs-dismiss="modal"
+                                onClick={closeModal}
                             ></button>
                         </div>
 

@@ -1545,6 +1545,15 @@ export const InventoryReducer = (state = initialState, action) => {
                 }
             }
 
+        case types.SetCodigoArtRelatedArticleInventory:
+            return {
+                ...state,
+                relatedArticles: {
+                    ...state.relatedArticles,
+                    cod_Articulo: action.payload
+                }
+            }
+
         case types.SetDescripcionRelatedArticleInventory:
             return {
                 ...state,
@@ -2091,6 +2100,15 @@ export const InventoryReducer = (state = initialState, action) => {
                 }
             }
 
+        case types.SetCodigoArtFormulaArticleInventory:
+            return {
+                ...state,
+                formulaArticles: {
+                    ...state.formulaArticles,
+                    cod_Articulo: action.payload
+                }
+            }
+
         case types.SetDescripcionFormulaArticleInventory:
             return {
                 ...state,
@@ -2161,6 +2179,12 @@ export const InventoryReducer = (state = initialState, action) => {
             return {
                 ...state,
                 lastStockUpdated: action.payload
+            }
+
+        case types.SetArrayFormulaArticleInventory:
+            return {
+                ...state,
+                formulaArticlesInventory: action.payload
             }
 
         default:
