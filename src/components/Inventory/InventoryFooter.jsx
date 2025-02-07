@@ -399,7 +399,7 @@ export const InventoryFooter = () => {
                     parseInt(relatedArticles.codigo),
                     `${relatedArticles.cod_Articulo}`,
                     relatedArticles.descripcion,
-                    parseInt(relatedArticles.cantidad),
+                    parseFloat(relatedArticles.cantidad),
                     true,
                     auth.username,
                     relatedArticles.isNewEdit,

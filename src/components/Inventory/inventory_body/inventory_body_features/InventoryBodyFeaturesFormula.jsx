@@ -92,7 +92,7 @@ export const InventoryBodyFeaturesFormula = () => {
               parseInt(codigo),
               `${cod_Articulo}`,
               descripcion,
-              parseInt(cantidad),
+              parseFloat(cantidad),
               true,
               auth.username,
               false,
