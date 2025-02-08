@@ -969,7 +969,7 @@ export const startSearchCodigoCabysInventory = ( codigoCabys ) => {
     }
 }
 
-export const startCalculateCantidadDisponiblesConvertidorInventory = ( CodArticuloHijo, CodBodega ) => {kol
+export const startCalculateCantidadDisponiblesConvertidorInventory = ( CodArticuloHijo, CodBodega ) => {
    
     return async ( dispatch ) => {
 
