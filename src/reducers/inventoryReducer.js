@@ -1258,7 +1258,25 @@ export const InventoryReducer = (state = initialState, action) => {
                         nombre: "Hijo",
                     }
                 ],
-                idTipoArticuloSelected: 1
+                idTipoArticuloSelected: 1,
+                idBodegaSelectedConvertidor: 0,
+                cantidadDisponibleConvertidor: 0,
+                calculoRealizadoConvertidor: false,
+                cantidadConvertirConvertidor: 0,
+                disableInputBodegaConvertidor: false,
+                allProductsPadres: [],
+                formulaArticles: {
+                    codigo: '',
+                    cod_Articulo: '',
+                    descripcion: '',
+                    cantidad: 0,
+                },
+                isSeletedFormulaArticles: false,
+                formulaArticlesInventory: [],
+                isOpenSearchModalFormula: false,
+                codigoPadreSelected: 0,
+                isDisableInputStock: true,
+                lastStockUpdated: 0
             }
 
         case types.IsNewInventory:

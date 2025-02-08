@@ -77,7 +77,7 @@ export const InventoryBodyFeaturesConvertidor = () => {
   };
 
   const handleGetCantidadDisponibles = () => {
-
+    
     if( idBodegaSelectedConvertidor == 0 ) {
       //Se muestra mensaje que no tiene padre
       Swal.fire({
@@ -85,14 +85,25 @@ export const InventoryBodyFeaturesConvertidor = () => {
         title: 'Debe seleccionar un bodega para realizar el calculo.',
         showConfirmButton: true,
       });
+
+      return;
     }
 
-
-    
     dispatch( startCalculateCantidadDisponiblesConvertidorInventory( codigo, idBodegaSelectedConvertidor ) );
   }
 
   const handleConvertirCantidadDisponibles = () => {
+
+    if(  cantidadDisponibleConvertidor == 0) {
+      //Se muestra mensaje que no tiene padre
+      Swal.fire({
+        icon: 'warning',
+        title: 'Debe primero calcular la cantidad disponible.',
+        showConfirmButton: true,
+      });
+
+      return;
+    }
 
     if( idBodegaSelectedConvertidor == 0 ) {
       //Se muestra mensaje que no tiene padre
@@ -110,6 +121,17 @@ export const InventoryBodyFeaturesConvertidor = () => {
       Swal.fire({
         icon: 'warning',
         title: 'Debe ingresar un articulo formula para realizar el calculo',
+        showConfirmButton: true,
+      });
+
+      return;
+    }
+
+    if( cantidadConvertirConvertidor > cantidadDisponibleConvertidor ) {
+      //Se muestra mensaje que no puede ser mayor a cantidad disponible
+      Swal.fire({
+        icon: 'warning',
+        title: 'La cantidad a convertir no puede ser mayor a la cantidad disponible.',
         showConfirmButton: true,
       });
 

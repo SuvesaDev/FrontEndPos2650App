@@ -512,7 +512,7 @@ export const startGetOneInventory = ( codigo ) => {
                 await GetStockArticulo(dispatch, responses.codigo);
 
                 //Call end-point de la Articulos relacionados
-                const { data } = await suvesaApi.post('/articulosRelacionados/BuscarArticulosRelacionados', { codigoPrincipal: responses.cod_Articulo } );
+                const { data } = await suvesaApi.post('/articulosRelacionados/BuscarArticulosRelacionados', { codigoPrincipal: responses.codigo } );
                 
                // Cerrar el modal de espera
                Swal.close();
@@ -1058,22 +1058,20 @@ export const startConvetirCantidadDisponiblesConvertidorInventory = ( CodArticul
             });
     
             //Call end-point 
-            const { data } = await suvesaApi.post(`/CalculadoraProduccion/ConvertirCantidadHijos`, { 
-                Cantidad,
-                CodArticuloHijo,
-                CodBodega
-            });
+            const { data } = await suvesaApi.post(`/CalculadoraProduccion/ConvertirCantidadHijos?CodArticuloHijo=${CodArticuloHijo}&CodBodega=${CodBodega}&Cantidad=${Cantidad}`);
             const { status } = data;
             
             // Cerrar modal
             Swal.close();
-
+            
             if( status === 0 ) {
+
+                await GetStockArticulo(dispatch, CodArticuloHijo);
                 
                 Swal.fire({
                     icon: 'success',
                     title: 'Convertidor',
-                    text: `Se convertido la cantidad ${cantidadConvertir} correctamente.`
+                    text: `Se convertido la cantidad ${Cantidad} correctamente.`
                 });
 
             } else {

@@ -41,6 +41,7 @@ import {
     IsSelectedRelatedArticleInventory,
     IsShowTabCodigoBarrasInventory,
     OpenSearchModalInventory,
+    SelectTabInventory,
     SetDefaultButtonsInventory,
     SetHasRebajaOtroArt,
     startDeleteInventory,
@@ -375,6 +376,7 @@ export const InventoryFooter = () => {
             dispatch(ActiveButtonSaveInventory(true));
             dispatch(ActiveButtonRemoveInventory(true));
             dispatch(DisableInputsInventory(false));
+            dispatch(SelectTabInventory("UltimoCosto"));
 
             // Se cargan los catalogos
             await loadCatalogos();

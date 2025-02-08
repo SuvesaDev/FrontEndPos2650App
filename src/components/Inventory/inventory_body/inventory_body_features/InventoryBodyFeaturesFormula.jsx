@@ -173,7 +173,7 @@ export const InventoryBodyFeaturesFormula = () => {
                 <TbNumber className="iconSize" />
               </span>
               <input
-                type="text"
+                type="number"
                 name="cantidad"
                 className="form-control"
                 placeholder="Cantidad de Producto"
