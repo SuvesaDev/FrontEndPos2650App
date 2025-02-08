@@ -969,7 +969,7 @@ export const startSearchCodigoCabysInventory = ( codigoCabys ) => {
     }
 }
 
-export const startCalculateCantidadDisponiblesConvertidorInventory = ( CodArticuloHijo, CodBodega ) => {
+export const startCalculateCantidadDisponiblesConvertidorInventory = ( CodArticuloHijo, CodBodega ) => {kol
    
     return async ( dispatch ) => {
 
@@ -1197,6 +1197,8 @@ export const startSetCodPadreInventory = ( CodPadre, codArticulo ) => {
             Swal.close();
 
             if( status === 0 ) {
+
+                dispatch( SetCodigoPadreSelectedInventory( codArticulo ) );
 
                 Swal.fire({
                     icon: 'success',
