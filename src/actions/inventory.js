@@ -40,8 +40,8 @@ export const startSaveInventory = ( inventory, relatedArticle ) => {
                     const { status } = data;
                     
                     //Quitar el loading
-                     Swal.close();
-                    debugger;
+                    Swal.close();
+                    
                     if( status === 0) {
 
                         //Clean State
@@ -376,11 +376,17 @@ export const startGetOneInventory = ( codigo ) => {
             const { status, responses } = resp.data;
             
             if( status === 0 ) {
+
+                // Se limpia la tabla de precios
+                dispatch( CleanArrayStatePricesSellInventory() );
                 
                 //seleccionarlo y meterlo al estado en el metodo de action
                 dispatch( SelectedSearchInventory( responses ) );
-
+                
                 const { categorias, codigoBarras, descripcion } = responses;
+                const codArt = responses.cod_Articulo;
+                const costArt = responses.costo;
+                const nombreArt = responses.descripcion;
 
                 //Inserta las categorias 
                 if( categorias != null ) {
@@ -498,12 +504,18 @@ export const startGetOneInventory = ( codigo ) => {
                 if( responses.esPadre === true ) {
                     dispatch( SetIdTipoArticuloSelectedIntentory( 2 ));
                 }
+                
+                // Se activa el campo de stock
+                dispatch( SetIsDisableInputStockInventory( false ) );
+
+                // Se obtiene el stock del articulo
+                await GetStockArticulo(dispatch, responses.codigo);
 
                 //Call end-point de la Articulos relacionados
-                const { data } = await suvesaApi.post('/articulosRelacionados/BuscarArticulosRelacionados', { codigoPrincipal: responses.cod_Articulo } );
+                const { data } = await suvesaApi.post('/articulosRelacionados/BuscarArticulosRelacionados', { codigoPrincipal: responses.codigo } );
                 
-                // Cerrar el modal de espera
-                Swal.close();
+               // Cerrar el modal de espera
+               Swal.close();
 
                 // Si tiene rebajaOtro se activa el checkbox en el metodo de action
                 // if( responses.descargaOtro ) {
@@ -529,8 +541,18 @@ export const startGetOneInventory = ( codigo ) => {
 
                 // Verificar la respuesta de articulos relacionados
                 if( data.status === 0 ) {
-                     // Meter los articulos relacionados en el estado
-                     dispatch( SetArrayRelatedArticleInventory( data.responses ) );
+
+                    // Se obtiene los articulos formula
+                    let articulosFormula = data.responses.filter( art => art.esFormula === true );
+
+                    // Se obtiene los articulos relacionados
+                    let articulosRelacionados = data.responses.filter( art => art.esFormula === false );
+
+                    // Meter los articulos relacionados en el estado
+                    dispatch( SetArrayRelatedArticleInventory( articulosRelacionados ) );
+
+                    // Meter los articulos formula en el estado
+                    dispatch( SetArrayFormulaArticleInventory( articulosFormula ) );
                 } else {
                      //Si es correcta entonces mostrar un mensaje de afirmacion pero con error en carta
                      Swal.fire({
@@ -540,6 +562,11 @@ export const startGetOneInventory = ( codigo ) => {
                     });
                 }
 
+                if( responses.esPadre === false ) {
+                    // Se realiza el tema de costo
+                    await GetCostoArticulo(codArt, costArt, nombreArt);
+                }
+                
             } else {
     
                 //Caso contrario respuesta incorrecto mostrar mensaje de error
@@ -1031,22 +1058,20 @@ export const startConvetirCantidadDisponiblesConvertidorInventory = ( CodArticul
             });
     
             //Call end-point 
-            const { data } = await suvesaApi.post(`/CalculadoraProduccion/ConvertirCantidadHijos`, { 
-                Cantidad,
-                CodArticuloHijo,
-                CodBodega
-            });
+            const { data } = await suvesaApi.post(`/CalculadoraProduccion/ConvertirCantidadHijos?CodArticuloHijo=${CodArticuloHijo}&CodBodega=${CodBodega}&Cantidad=${Cantidad}`);
             const { status } = data;
             
             // Cerrar modal
             Swal.close();
-
+            
             if( status === 0 ) {
+
+                await GetStockArticulo(dispatch, CodArticuloHijo);
                 
                 Swal.fire({
                     icon: 'success',
                     title: 'Convertidor',
-                    text: `Se convertido la cantidad ${cantidadConvertir} correctamente.`
+                    text: `Se convertido la cantidad ${Cantidad} correctamente.`
                 });
 
             } else {
@@ -1172,6 +1197,8 @@ export const startSetCodPadreInventory = ( CodPadre, codArticulo ) => {
             Swal.close();
 
             if( status === 0 ) {
+
+                dispatch( SetCodigoPadreSelectedInventory( codArticulo ) );
 
                 Swal.fire({
                     icon: 'success',
@@ -1301,6 +1328,92 @@ export const startSaveArticleFormulaInventory = ( formulaArticle ) => {
     }
 }
 
+export const startSetStockInventory = ( Cantidad, codArticulo , CodBodega) => {
+   
+    return async ( dispatch ) => {
+
+        //Mostrar un mensaje de confirmacion
+        Swal.fire({
+            title: `¿Desea actualizar el stock del inventario actual?`,
+            showDenyButton: true,
+            showCancelButton: false,
+            confirmButtonText: 'Actualizar',
+            denyButtonText: `Cancelar`,
+        }).then(async (result) => {
+
+            try {
+
+                if (result.isConfirmed) {
+
+                    //Mostrar el loading
+                    Swal.fire({
+                        title: 'Por favor, espere',
+                        allowEscapeKey: false,
+                        allowOutsideClick: false,
+                        showConfirmButton: false,
+                        imageUrl: loadingImage,
+                        customClass: 'alert-class-login',
+                        imageHeight: 100,
+                    });
+                    
+                    //Call end-point 
+                    const { data } = await suvesaApi.post(`/Stocks/ActualizarExistenciaArticulo?Cantidad=${Cantidad}&CodBodega=${CodBodega}&CodArticulo=${codArticulo}`);
+                    const { status } = data;
+                    
+                    // Cerrar modal
+                    Swal.close();
+
+                    if( status === 0 ) {
+
+                        dispatch( SetLastStockUpdateInventory( Cantidad ) );
+
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Stock',
+                            text: `Se cambio el stock correctamente.`,
+                            timer: 1000,
+                            showConfirmButton: false
+                        });
+
+                    } else {
+            
+                        //Caso contrario respuesta incorrecto mostrar mensaje de error
+                        const { currentException } = data;
+                        const msj = currentException.split(',');
+                        
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: (currentException.includes(',')) ? msj[3] : currentException,
+                        });
+            
+                    }
+                }
+
+            } catch (error) {
+        
+                Swal.close();
+                console.log(error);
+                if( error.message === 'Request failed with status code 401') {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Usuario no valido',
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Ocurrio un problema al actualizar el stock',
+                    });
+                }
+            }
+
+        });
+        
+    }
+}
+
 // Functions
 const CalculatePreciosVenta = ( base, flete, otroC, impuesto, pre ) => {
 
@@ -1317,6 +1430,107 @@ const CalculatePreciosVenta = ( base, flete, otroC, impuesto, pre ) => {
             utilidad : parseInt(utilidad),
             precioIV 
         }
+    }
+}
+
+const GetStockArticulo = async ( dispatch, idInventario ) => {
+
+    try {
+
+        //Call end-point
+        const resp = await suvesaApi.post(`/Stocks/ExistenciaArticuloCostaPets?id=${idInventario}&tipo=1`);
+        const { status, responses } = resp.data;
+
+        // Verificar la respuesta
+        if( status === 0 ) {
+
+            // Meter el stock
+            dispatch( SetStockInventory( responses ) );
+
+            dispatch( SetLastStockUpdateInventory( responses ) );
+
+       } else {
+
+            Swal.fire({
+               icon: 'warning',
+               title: 'Stock del articulo no cargado correctamente',
+               showConfirmButton: true,
+           });
+       }
+
+    } catch(error) {
+        throw error;
+    }
+}
+
+const GetCostoArticulo = async ( codArticulo, costoArt, nombreArt ) => {
+
+    try {
+        
+        //Call end-point
+        const resp = await suvesaApi.post(`/articulosRelacionados/getObtenerCostoRelacionados?CodArticulo=${codArticulo}`);
+        const { status, responses } = resp.data;
+
+        // Verificar la respuesta
+        if( status === 0 ) {
+
+            let costoArticulo = parseFloat(costoArt);
+            let costoCalculado = parseFloat(responses);
+
+            if(costoArticulo < costoCalculado) {
+
+                //Mostrar un mensaje de confirmacion
+                Swal.fire({
+                    title: `¿El artículo ${nombreArt} tiene un costo actual de ${costoArt} y el costo calculado es de ${costoCalculado} desea cambiarlo?`,
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Cambiar',
+                    denyButtonText: `Cancelar`,
+                }).then(async (result) => {
+
+                    if( result.isConfirmed ) {
+
+                        //Call end-point
+                        const resp = await suvesaApi.put(`/inventario/putActualizarCosto?CodigoArticulo=${codArticulo}&CostoNuevo=${costoCalculado}`);
+                        const { status, responses } = resp.data;
+
+                        // Verificar la respuesta
+                        if( status === 0 ) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Costo',
+                                text: `Se cambio el costo del artículo ${nombreArt} se cambio correctamente.`,
+                                timer: 1000,
+                                showConfirmButton: false
+                            });
+
+                        } else {
+
+                            Swal.fire({
+                                icon: 'warning',
+                                title: 'Error al cambiar el costo del articulo',
+                                showConfirmButton: true,
+                            });
+
+                        }
+
+                    }
+
+                });
+
+            }
+
+        } else {
+
+            Swal.fire({
+               icon: 'warning',
+               title: 'Error al obtener el costo del articulo',
+               showConfirmButton: true,
+           });
+        }
+
+    } catch(error) {
+        throw error;
     }
 }
 
@@ -1990,6 +2204,11 @@ export const SetCodigoRelatedArticleInventory = ( value ) => ({
     payload: value
 })
 
+export const SetCodigoArtRelatedArticleInventory = ( value ) => ({
+    type: types.SetCodigoArtRelatedArticleInventory,
+    payload: value
+})
+
 export const SetDescripcionRelatedArticleInventory = ( value ) => ({
     type: types.SetDescripcionRelatedArticleInventory,
     payload: value
@@ -2356,6 +2575,11 @@ export const SetCodigoFormulaArticleInventory = (value) => ({
     payload: value
 })
 
+export const SetCodigoArtFormulaArticleInventory = (value) => ({
+    type: types.SetCodigoArtFormulaArticleInventory,
+    payload: value
+})
+
 export const SetDescripcionFormulaArticleInventory = (value) => ({
     type: types.SetDescripcionFormulaArticleInventory,
     payload: value
@@ -2383,5 +2607,25 @@ export const IsOpenSearchModalFormulaInventory = (value) => ({
 
 export const SetCodigoPadreSelectedInventory = (value) => ({
     type: types.SetCodigoPadreSelectedInventory,
+    payload: value
+})
+
+export const SetIsDisableInputStockInventory = (value) => ({
+    type: types.SetIsDisableInputStockInventory,
+    payload: value
+})
+
+export const SetStockInventory = (value) => ({
+    type: types.SetStockInventory,
+    payload: value
+})
+
+export const SetLastStockUpdateInventory = (value) => ({
+    type: types.SetLastStockUpdateInventory,
+    payload: value
+})
+
+export const SetArrayFormulaArticleInventory = (value) => ({
+    type: types.SetArrayFormulaArticleInventory,
     payload: value
 })

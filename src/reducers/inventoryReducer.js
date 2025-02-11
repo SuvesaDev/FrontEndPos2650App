@@ -123,6 +123,8 @@ const initialState = {
     formulaArticlesInventory: [],
     isOpenSearchModalFormula: false,
     codigoPadreSelected: 0,
+    isDisableInputStock: true,
+    lastStockUpdated: 0,
     inventory: {
         codigo: null,
         cod_Articulo: null,
@@ -223,7 +225,8 @@ const initialState = {
         idUsuarioCreacion: null,
         idUsuarioModificacion: null,
         esPadre: false,
-        codigoPadre: 0
+        codigoPadre: 0,
+        stock: 0
     },
     detalleArticuloBodega: {
         idBodega: 0.00,
@@ -1139,55 +1142,54 @@ export const InventoryReducer = (state = initialState, action) => {
             return {
                 ...state,
                 inventory: {
-                    codigo: null,
-                    cod_Articulo: null,
-                    barras: null,
-                    descripcion: null,
-                    presentaCant: null,
-                    codPresentacion: null,
-                    codMarca: null,
-                    subFamilia: null,
-                    minima: null,
-                    puntoMedio: null,
-                    maxima: null,
+                    codigo: "",
+                    cod_Articulo: "",
+                    barras: "",
+                    descripcion: "",
+                    presentaCant: "",
+                    codPresentacion: "",
+                    codMarca: "",
+                    minima: "",
+                    puntoMedio: "",
+                    maxima: "",
                     existencia: 0,
-                    subUbicacion: null,
-                    observaciones: null,
-                    monedaCosto: null,
-                    precioBase: null,
-                    fletes: null,
-                    otrosCargos: null,
+                    subUbicacion: "",
+                    observaciones: "",
+                    monedaCosto: "",
+                    precioBase: "",
+                    fletes: "",
+                    otrosCargos: "",
                     costo: 0,
-                    monedaVenta: null,
-                    iVenta: null,
-                    precio_A: null,
-                    precio_B: null,
-                    precio_C: null,
-                    precio_D: null,
-                    precio_Promo: null,
+                    monedaVenta: "",
+                    iVenta: "",
+                    precio_A: "",
+                    precio_B: "",
+                    precio_C: "",
+                    precio_D: "",
+                    precio_Promo: "",
                     promo_Activa: false,
-                    promo_Inicio: null,
-                    promo_Finaliza: null,
-                    max_Comision: null,
-                    max_Descuento: null,
+                    promo_Inicio: "",
+                    promo_Finaliza: "",
+                    max_Comision: "",
+                    max_Descuento: "",
                     servicio: false,
                     inhabilitado: false,
-                    proveedor: null,
-                    precio_Sugerido: null,
-                    sugeridoIV: null,
+                    proveedor: "",
+                    precio_Sugerido: "",
+                    sugeridoIV: "",
                     preguntaPrecio: false,
                     lote: false,
                     consignacion: false,
-                    id_Bodega: null,
-                    existenciaBodega: null,
-                    maX_Inventario: null,
-                    maX_Bodega: null,
-                    cantidadDescarga: null,
-                    codigoDescarga: null,
+                    id_Bodega: "",
+                    existenciaBodega: "",
+                    maX_Inventario: "",
+                    maX_Bodega: "",
+                    cantidadDescarga: "",
+                    codigoDescarga: "",
                     descargaOtro: false,
-                    cod_PresentOtro: null,
-                    cantidadPresentOtro: null,
-                    existenciaForzada: null,
+                    cod_PresentOtro: "",
+                    cantidadPresentOtro: "",
+                    existenciaForzada: "",
                     bloqueado: false,
                     pantalla: false,
                     clinica: false,
@@ -1195,28 +1197,28 @@ export const InventoryReducer = (state = initialState, action) => {
                     receta: false,
                     peces: false,
                     taller: false,
-                    barras2: null,
-                    barras3: null,
-                    apartado: null,
+                    barras2: "",
+                    barras3: "",
+                    apartado: "",
                     promo3x1: false,
                     orden: false,
                     bonificado: false,
-                    encargado: null,
-                    serie: null,
+                    encargado: "",
+                    serie: "",
                     armamento: false,
                     tienda: false,
-                    prestamo: null,
+                    prestamo: "",
                     maquinaria: false,
                     productos_organicos: false,
-                    rifa: null,
+                    rifa: "",
                     promoCON: false,
                     promoCRE: false,
                     costoReal: 0,
                     validaExistencia: false,
                     actualizado: false,
-                    id_Impuesto: null,
+                    id_Impuesto: "",
                     activarBodega2: false,
-                    existenciaBodega2: null,
+                    existenciaBodega2: "",
                     enToma: false,
                     usaGalon: false,
                     apicarDescuentoTarjeta: false,
@@ -1224,8 +1226,8 @@ export const InventoryReducer = (state = initialState, action) => {
                     soloConExistencia: false,
                     mag: false,
                     sinDecimal: false,
-                    codcabys: null,
-                    codigoPrestamo: null,
+                    codcabys: "",
+                    codigoPrestamo: "",
                     muestra: false,
                     web: false,
                     soloUsoInterno: false,
@@ -1234,11 +1236,12 @@ export const InventoryReducer = (state = initialState, action) => {
                     idCodigoInternoQvet: '',
                     codigoProveedor: '',
                     descripcionProveedor: '',
-                    estado: null,
-                    idUsuarioCreacion: null,
-                    idUsuarioModificacion: null,
+                    estado: "",
+                    idUsuarioCreacion: "",
+                    idUsuarioModificacion: "",
                     esPadre: false,
-                    codigoPadre: 0
+                    codigoPadre: 0,
+                    stock: 0
                 },
                 isShowTabCodigoBarras : false,
                 tiposArticulos: [
@@ -1255,7 +1258,25 @@ export const InventoryReducer = (state = initialState, action) => {
                         nombre: "Hijo",
                     }
                 ],
-                idTipoArticuloSelected: 1
+                idTipoArticuloSelected: 1,
+                idBodegaSelectedConvertidor: 0,
+                cantidadDisponibleConvertidor: 0,
+                calculoRealizadoConvertidor: false,
+                cantidadConvertirConvertidor: 0,
+                disableInputBodegaConvertidor: false,
+                allProductsPadres: [],
+                formulaArticles: {
+                    codigo: '',
+                    cod_Articulo: '',
+                    descripcion: '',
+                    cantidad: 0,
+                },
+                isSeletedFormulaArticles: false,
+                formulaArticlesInventory: [],
+                isOpenSearchModalFormula: false,
+                codigoPadreSelected: 0,
+                isDisableInputStock: true,
+                lastStockUpdated: 0
             }
 
         case types.IsNewInventory:
@@ -1501,7 +1522,7 @@ export const InventoryReducer = (state = initialState, action) => {
             return {
                 ...state,
                 optionsSearchInventory: {
-                    valorfiltro: null,
+                    valorfiltro: "",
                     tipofiltro: 1,
                     descripcion: true,
                     ubicacion: false,
@@ -1539,6 +1560,15 @@ export const InventoryReducer = (state = initialState, action) => {
                 relatedArticles: {
                     ...state.relatedArticles,
                     codigo: action.payload
+                }
+            }
+
+        case types.SetCodigoArtRelatedArticleInventory:
+            return {
+                ...state,
+                relatedArticles: {
+                    ...state.relatedArticles,
+                    cod_Articulo: action.payload
                 }
             }
 
@@ -2088,6 +2118,15 @@ export const InventoryReducer = (state = initialState, action) => {
                 }
             }
 
+        case types.SetCodigoArtFormulaArticleInventory:
+            return {
+                ...state,
+                formulaArticles: {
+                    ...state.formulaArticles,
+                    cod_Articulo: action.payload
+                }
+            }
+
         case types.SetDescripcionFormulaArticleInventory:
             return {
                 ...state,
@@ -2136,6 +2175,34 @@ export const InventoryReducer = (state = initialState, action) => {
             return {
                 ...state,
                 codigoPadreSelected: action.payload
+            }
+            
+
+        case types.SetIsDisableInputStockInventory:
+            return {
+                ...state,
+                isDisableInputStock: action.payload
+            }
+
+        case types.SetStockInventory:
+            return {
+                ...state,
+                inventory: {
+                    ...state.inventory,
+                    stock: action.payload
+                }
+            }
+
+        case types.SetLastStockUpdateInventory:
+            return {
+                ...state,
+                lastStockUpdated: action.payload
+            }
+
+        case types.SetArrayFormulaArticleInventory:
+            return {
+                ...state,
+                formulaArticlesInventory: action.payload
             }
 
         default:

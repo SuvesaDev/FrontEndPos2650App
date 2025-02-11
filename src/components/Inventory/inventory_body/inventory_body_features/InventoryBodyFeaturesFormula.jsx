@@ -40,9 +40,7 @@ export const InventoryBodyFeaturesFormula = () => {
 
   const { auth } = useSelector(state => state.login);
 
-  const { codigo, descripcion, cantidad } = formulaArticles;
-  const { cod_Articulo } = inventory;
-
+  const { codigo, cod_Articulo, descripcion, cantidad } = formulaArticles;
 
   const columns = [
     {
@@ -90,11 +88,11 @@ export const InventoryBodyFeaturesFormula = () => {
         let formulaArticlesArray = [];
         formulaArticlesArray.push( new RelatedArticles(
               0,
-              parseInt(cod_Articulo),
+              parseInt(inventory.codigo),
               parseInt(codigo),
               `${cod_Articulo}`,
               descripcion,
-              parseInt(cantidad),
+              parseFloat(cantidad),
               true,
               auth.username,
               false,
@@ -175,7 +173,7 @@ export const InventoryBodyFeaturesFormula = () => {
                 <TbNumber className="iconSize" />
               </span>
               <input
-                type="text"
+                type="number"
                 name="cantidad"
                 className="form-control"
                 placeholder="Cantidad de Producto"

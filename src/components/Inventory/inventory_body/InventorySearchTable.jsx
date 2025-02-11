@@ -6,6 +6,8 @@ import {
     CleanOptionsSearchModalInventory,
     CleanSearchInventory,
     CloseSearchModalInventory,
+    SetCodigoArtFormulaArticleInventory,
+    SetCodigoArtRelatedArticleInventory,
     SetCodigoDescargaInventory,
     SetCodigoFormulaArticleInventory,
     SetCodigoRelatedArticleInventory,
@@ -83,13 +85,15 @@ export const InventorySearchTable = ({ columns, data }) => {
 
         } else if (isOpenSearchModalRelacionados) {
 
-            dispatch(SetCodigoRelatedArticleInventory(cod_Articulo));
-            dispatch(SetDescripcionRelatedArticleInventory(descripcion));
+            dispatch( SetCodigoRelatedArticleInventory(codigo));
+            dispatch( SetCodigoArtRelatedArticleInventory( cod_Articulo ) )
+            dispatch( SetDescripcionRelatedArticleInventory(descripcion));
 
         }  else if (isOpenSearchModalFormula) {
 
-            dispatch(SetCodigoFormulaArticleInventory(cod_Articulo));
-            dispatch(SetDescripcionFormulaArticleInventory(descripcion));
+            dispatch( SetCodigoFormulaArticleInventory(codigo));
+            dispatch( SetDescripcionFormulaArticleInventory(descripcion));
+            dispatch( SetCodigoArtFormulaArticleInventory( cod_Articulo ) );
 
         } else if (billings[numberScreen] !== undefined) {
 

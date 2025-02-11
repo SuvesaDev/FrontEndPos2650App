@@ -349,6 +349,7 @@ export const types = {
   CleanSearchInventory: '[Inventory] CleanSearchInventory',
   SelectedSearchInventory: '[Inventory] SelectedSearchInventory',
   SetCodigoRelatedArticleInventory: '[Inventory] SetCodigoRelatedArticleInventory',
+  SetCodigoArtRelatedArticleInventory: '[Inventory] SetCodigoArtRelatedArticleInventory',
   SetDescripcionRelatedArticleInventory: '[Inventory] SetDescripcionRelatedArticleInventory',
   SetCantidadRelatedArticleInventory: '[Inventory] SetCantidadRelatedArticleInventory',
   SetRelatedArticleInventory: '[Inventory] SetRelatedArticleInventory',
@@ -424,13 +425,17 @@ export const types = {
   SetDisableInputBodegaConvertidorIntentory: '[Inventory] SetDisableInputBodegaConvertidorIntentory',
   SetAllProductsPadreIntentory: '[Inventory] SetAllProductsPadreIntentory',
   SetCodigoFormulaArticleInventory: '[Inventory] SetCodigoFormulaArticleInventory',
+  SetCodigoArtFormulaArticleInventory: '[Inventory] SetCodigoArtFormulaArticleInventory',
   SetDescripcionFormulaArticleInventory: '[Inventory] SetDescripcionFormulaArticleInventory',
   SetCantidadFormulaArticleInventory: '[Inventory] SetCantidadFormulaArticleInventory',
   SetFormulaArticleInventory: '[Inventory] SetFormulaArticleInventory',
   CleanInputsFormulaArticleInventory: '[Inventory] CleanInputsFormulaArticleInventory',
   IsOpenSearchModalFormulaInventory: '[Inventory] isOpenSearchModalFormulaInventory',
+  SetArrayFormulaArticleInventory: '[Inventory] SetArrayFormulaArticleInventory',
   SetCodigoPadreSelectedInventory: '[Inventory] SetCodigoPadreSelectedInventory',
-   
+  SetIsDisableInputStockInventory: '[Inventory] SetIsDisableInputStockInventory',
+  SetStockInventory: '[Inventory] SetStockInventory',   
+  SetLastStockUpdateInventory: '[Inventory] SetLastStockUpdateInventory',   
 
   // Customers actions
   SelectTabCustomers: '[Customers] SelectTabCustomers',
@@ -515,6 +520,7 @@ export const types = {
 
   // Settings actions
   SelectTabSettings: '[Settings] SelectTabSettings',
+  SetPorcentajeProntoPagoSettings: '[Settings] SetPorcentajeProntoPagoSettings',
 
   // Pays actions
   SelectTabPays: '[Pays] SelectTabPays',

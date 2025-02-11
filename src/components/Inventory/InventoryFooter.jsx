@@ -41,6 +41,7 @@ import {
     IsSelectedRelatedArticleInventory,
     IsShowTabCodigoBarrasInventory,
     OpenSearchModalInventory,
+    SelectTabInventory,
     SetDefaultButtonsInventory,
     SetHasRebajaOtroArt,
     startDeleteInventory,
@@ -101,9 +102,9 @@ export const InventoryFooter = () => {
             relatedArticlesInventory.forEach(relatedArticles => {
                 relatedArticlesArray.push(new RelatedArticles(
                     0,
-                    parseInt(inventory.cod_Articulo),
+                    parseInt(inventory.codigo),
                     parseInt(relatedArticles.codigo),
-                    `${inventory.cod_Articulo}`,
+                    `${relatedArticles.cod_Articulo}`,
                     relatedArticles.descripcion,
                     parseInt(relatedArticles.cantidad),
                     true,
@@ -303,6 +304,14 @@ export const InventoryFooter = () => {
 
     const loadCatalogos = async (e) => {
 
+        if( presentacionesInventory != null && subFamiliasInventory != null && subUbicacionesInventory != null 
+            && proveedoresInventory != null && marcasInventory != null && monedasInventory != null 
+            && impuestosInventory != null && bodegasInventory != null && bodegasInventory != null 
+            && categoriasInventory != null
+        ) {
+            return;
+        }
+
         //Mostrar el loading
         Swal.fire({
             title: 'Por favor, espere cargando catalogos',
@@ -314,41 +323,41 @@ export const InventoryFooter = () => {
             imageHeight: 100,
         });
 
-        // if(presentacionesInventory === null){
-        await dispatch(startGetAllPresentaciones());
-        // }
+        if(presentacionesInventory === null){
+            await dispatch(startGetAllPresentaciones());
+        }
 
-        // if(subFamiliasInventory === null) {
-        await dispatch(startGetAllSubFamilias());
-        // }
+        if(subFamiliasInventory === null) {
+            await dispatch(startGetAllSubFamilias());
+        }
 
-        // if(subUbicacionesInventory === null) {
-        await dispatch(startGetAllSubUbicaciones());
-        // }
+        if(subUbicacionesInventory === null) {
+            await dispatch(startGetAllSubUbicaciones());
+        }
 
-        // if(proveedoresInventory === null) {
-        await dispatch(startGetAllProveedores());
-        // }
+        if(proveedoresInventory === null) {
+            await dispatch(startGetAllProveedores());
+        }
 
-        // if(marcasInventory === null) {
-        await dispatch(startGetAllMarcas());
-        // }
+        if(marcasInventory === null) {
+            await dispatch(startGetAllMarcas());
+        }
 
-        // if(monedasInventory === null){
-        await dispatch(startGetAllMonedas());
-        // }
+        if(monedasInventory === null){
+            await dispatch(startGetAllMonedas());
+        }
 
-        // if(impuestosInventory === null){
-        await dispatch(startGetAllImpuestos());
-        // }
+        if(impuestosInventory === null){
+            await dispatch(startGetAllImpuestos());
+        }
 
-        // if(bodegasInventory === null){
-        await dispatch(startGetAllBodegas());
-        // }
+        if(bodegasInventory === null){
+            await dispatch(startGetAllBodegas());
+        }
 
-        // if(categoriasInventory === null){
-        await dispatch(startGetAllCategoriasInventory());
-        // }
+        if(categoriasInventory === null){
+            await dispatch(startGetAllCategoriasInventory());
+        }
 
         //Quitar el loading
         Swal.close();
@@ -367,6 +376,7 @@ export const InventoryFooter = () => {
             dispatch(ActiveButtonSaveInventory(true));
             dispatch(ActiveButtonRemoveInventory(true));
             dispatch(DisableInputsInventory(false));
+            dispatch(SelectTabInventory("UltimoCosto"));
 
             // Se cargan los catalogos
             await loadCatalogos();
@@ -387,11 +397,11 @@ export const InventoryFooter = () => {
             relatedArticlesInventory.forEach(relatedArticles => {
                 relatedArticlesArray.push( new RelatedArticles(
                     0,
-                    parseInt(relatedArticles.cod_Articulo),
+                    parseInt(inventory.codigo),
                     parseInt(relatedArticles.codigo),
-                    `${inventory.cod_Articulo}`,
+                    `${relatedArticles.cod_Articulo}`,
                     relatedArticles.descripcion,
-                    parseInt(relatedArticles.cantidad),
+                    parseFloat(relatedArticles.cantidad),
                     true,
                     auth.username,
                     relatedArticles.isNewEdit,

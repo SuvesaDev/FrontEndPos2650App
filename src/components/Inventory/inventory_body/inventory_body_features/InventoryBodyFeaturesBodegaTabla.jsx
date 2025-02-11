@@ -52,7 +52,7 @@ export const InventoryBodyFeaturesBodegaTabla = ({ columns, data }) => {
   return (
     <>
       <div className="table-responsive-lg tablaP">
-        <table {...getTableProps()} className="table table-hover text-lg-center">
+        <table {...getTableProps()} className="table table-hover text-lg-center" key={data}>
         <thead className="table-dark">
             {headerGroups.map((headerGroup) => (
               <tr {...headerGroup.getHeaderGroupProps()}>

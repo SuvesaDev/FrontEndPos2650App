@@ -113,7 +113,9 @@ export const InventoryBodyFeaturesRelacionados = () => {
   return (
     <>
       <div className="container-fluid mt-2">
+
         <div className="row mb-2">
+
           <div className="col-md-6 mb-3">
             <h5>Código</h5>
             <div className="input-group">
@@ -170,7 +172,9 @@ export const InventoryBodyFeaturesRelacionados = () => {
               />
             </div>
           </div>
+
         </div>
+
         <div className="row mb-2">
           <div className="col-md-12 mb-2">
             <h5>Descipción</h5>
@@ -225,6 +229,7 @@ export const InventoryBodyFeaturesRelacionados = () => {
             <hr />
           </div>
         </div>
+
         <div className="row mb-3">
           <div className="col-md-12 mb-2">
             <InventoryBodyFeaturesRelacionadosTable

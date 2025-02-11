@@ -38,7 +38,9 @@ export const InventoryBodyFeaturesVarios = () => {
   return (
     <>
       <div className="container-fluid mt-2">
+
         <div className="row mb-2">
+
           <div className="col-md-6 mb-2">
             <h5>Máximo Descuento</h5>
             <div className="input-group">
@@ -112,9 +114,11 @@ export const InventoryBodyFeaturesVarios = () => {
               />
             </div>
           </div>
+
         </div>
 
         <div className="row mb-2">
+
           <div className="col-md-3 mb-2">
             <div className="form-check">
               <input
@@ -217,7 +221,9 @@ export const InventoryBodyFeaturesVarios = () => {
             </div>
             <hr />
           </div>
+
         </div>
+
       </div>
     </>
   );

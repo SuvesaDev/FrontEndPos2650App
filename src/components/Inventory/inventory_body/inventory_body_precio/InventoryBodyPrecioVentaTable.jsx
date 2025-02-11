@@ -44,6 +44,7 @@ export const InventoryBodyPrecioVentaTable = ({ columns, data }) => {
         <table
           {...getTableProps()}
           className="table table-hover text-lg-center"
+          key={data}
         >
           <thead className="table-dark">
             {headerGroups.map((headerGroup) => (

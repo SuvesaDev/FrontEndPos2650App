@@ -134,7 +134,9 @@ export const InventoryBodyFeaturesCodigoBarras = () => {
   return (
     <>
       <div className="container-fluid mt-2">
+
         <div className="row mb-2">
+
           <div className="col-md-5 mb-3">
             <h5>Descipción</h5>
             <div className="input-group">
@@ -206,6 +208,7 @@ export const InventoryBodyFeaturesCodigoBarras = () => {
               </select>
             </div>
           </div>
+
         </div>
 
         <div className="row mb-2">
@@ -253,6 +256,7 @@ export const InventoryBodyFeaturesCodigoBarras = () => {
             <hr />
           </div>
         </div>
+
         <div className="row mb-3">
           <div className="col-md-12 mb-2">
             <InventoryBodyFeaturesCodigoBarrasTable
@@ -261,6 +265,7 @@ export const InventoryBodyFeaturesCodigoBarras = () => {
             />
           </div>
         </div>
+
       </div>
     </>
   );
