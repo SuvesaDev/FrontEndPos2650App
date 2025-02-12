@@ -602,13 +602,13 @@ export const startGetOneInventory = ( codigo ) => {
     }
 }
 
-export const startDeleteRelatedArticle = ( relatedArticle, isRegister ) => {
+export const startDeleteRelatedArticle = ( codigoPrincipal, codigoArticuloRelacionado , Cantidad, Activo ) => {
 
     return async ( dispatch ) => {
 
         //Mostrar un mensaje de confirmacion
         Swal.fire({
-            title: `¿Desea eliminar el Artículo Relacionado con el código ${ relatedArticle.codigo }?`,
+            title: `¿Desea eliminar el Artículo Relacionado?`,
             showDenyButton: true,
             showCancelButton: false,
             confirmButtonText: 'Eliminar',
@@ -630,54 +630,41 @@ export const startDeleteRelatedArticle = ( relatedArticle, isRegister ) => {
                         imageHeight: 100,
                     });
                     
-                    if( isRegister ) {
 
-                        //Call end-point 
-                        const { data } = await suvesaApi.post('/articulosRelacionados/DesactivarArticulosRelacionados', { id: relatedArticle.id } );
-                        const { status } = data;
+                    //Call end-point 
+                    const { data } = await suvesaApi.put(`/articulosRelacionados/putArticuloRelacionado?codigoPrincipal=${codigoPrincipal}&codigoArticuloRelacionado=${codigoArticuloRelacionado}&Cantidad=${Cantidad}&Activo=${Activo}`);
+                    const { status } = data;
 
-                        //Quitar el loading
-                        Swal.close();
-                    
-                        if( status === 0) {
+                    //Quitar el loading
+                    Swal.close();
+                
+                    if( status === 0) {
 
-                            //Delete data in array
-                            dispatch( RemoveRelatedArticleInventory( relatedArticle ) );
-
-                            //Is Seleted related article false
-                            dispatch( IsSelectedRelatedArticleInventory( false ) );
-
-                            //Si es correcta entonces mostrar un mensaje de afirmacion
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Articulo Relacionado eliminado correctamente',
-                                showConfirmButton: false,
-                                timer: 2500
-                            });
-
-                        } else {
-                            //Caso contrario respuesta incorrecto mostrar mensaje de error
-                            const { currentException } = data;
-                            const msj = currentException.split(',');
-                            
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Error',
-                                text: (currentException.includes(',')) ? msj[3] : currentException,
-                            });
-                            
-                        }
-
-                    } else {
-
-                        //Call Action delete data in array
-                        dispatch( RemoveRelatedArticleInventory( relatedArticle ) );
+                        //Delete data in array
+                        dispatch( RemoveRelatedArticleInventory( codigoArticuloRelacionado ) );
 
                         //Is Seleted related article false
                         dispatch( IsSelectedRelatedArticleInventory( false ) );
 
-                        //Quitar el loading
-                        Swal.close();
+                        //Si es correcta entonces mostrar un mensaje de afirmacion
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Articulo Relacionado eliminado correctamente',
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+
+                    } else {
+                        //Caso contrario respuesta incorrecto mostrar mensaje de error
+                        const { currentException } = data;
+                        const msj = currentException.split(',');
+                        
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: (currentException.includes(',')) ? msj[3] : currentException,
+                        });
+                        
                     }
                 
                 }
@@ -1405,6 +1392,98 @@ export const startSetStockInventory = ( Cantidad, codArticulo , CodBodega) => {
                         icon: 'error',
                         title: 'Error',
                         text: 'Ocurrio un problema al actualizar el stock',
+                    });
+                }
+            }
+
+        });
+        
+    }
+}
+
+export const startUpdateArticleRelatedInventory = ( codigoPrincipal, codigoArticuloRelacionado , Cantidad, Activo) => {
+   
+    return async ( dispatch ) => {
+
+        //Mostrar un mensaje de confirmacion
+        Swal.fire({
+            title: `¿Desea actualizar el Artículo relacionado?`,
+            showDenyButton: true,
+            showCancelButton: false,
+            confirmButtonText: 'Actualizar',
+            denyButtonText: `Cancelar`,
+        }).then(async (result) => {
+
+            try {
+
+                if (result.isConfirmed) {
+
+                    //Mostrar el loading
+                    Swal.fire({
+                        title: 'Por favor, espere',
+                        allowEscapeKey: false,
+                        allowOutsideClick: false,
+                        showConfirmButton: false,
+                        imageUrl: loadingImage,
+                        customClass: 'alert-class-login',
+                        imageHeight: 100,
+                    });
+                    
+                    //Call end-point 
+                    const { data } = await suvesaApi.put(`/articulosRelacionados/putArticuloRelacionado?codigoPrincipal=${codigoPrincipal}&codigoArticuloRelacionado=${codigoArticuloRelacionado}&Cantidad=${Cantidad}&Activo=${Activo}`);
+                    const { status } = data;
+                    // debugger;
+                    // Cerrar modal
+                    Swal.close();
+
+                    if( status === 0 ) {
+
+                        dispatch( SetEditRelatedArticleInventory({
+                            codigo: codigoArticuloRelacionado,
+                            cantidad: Cantidad
+                        }));
+
+                        dispatch( IsSelectedRelatedArticleInventory(false) );
+                        dispatch( CleanInputsRelatedArticleInventory() );
+
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Stock',
+                            text: `Se cambio el artículo relacionado correctamente.`,
+                            timer: 1000,
+                            showConfirmButton: false
+                        });
+
+                    } else {
+            
+                        //Caso contrario respuesta incorrecto mostrar mensaje de error
+                        const { currentException } = data;
+                        const msj = currentException.split(',');
+                        
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: (currentException.includes(',')) ? msj[3] : currentException,
+                        });
+            
+                    }
+                }
+
+            } catch (error) {
+        
+                Swal.close();
+                console.log(error);
+                if( error.message === 'Request failed with status code 401') {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Usuario no valido',
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Ocurrio un problema al actualizar el artículo relacionados',
                     });
                 }
             }
@@ -2221,6 +2300,11 @@ export const SetCantidadRelatedArticleInventory = ( value ) => ({
 
 export const SetRelatedArticleInventory = ( value ) => ({
     type: types.SetRelatedArticleInventory,
+    payload: value
+})
+
+export const SetEditRelatedArticleInventory = ( value ) => ({
+    type: types.SetEditRelatedArticleInventory,
     payload: value
 })
 

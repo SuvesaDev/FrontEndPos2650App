@@ -1599,6 +1599,19 @@ export const InventoryReducer = (state = initialState, action) => {
                 ]
             }
 
+        case types.SetEditRelatedArticleInventory:
+            return {
+                ...state,
+                relatedArticlesInventory: state.relatedArticlesInventory.map(
+                    (related, i) => related.codigo == action.payload.codigo
+                        ? {
+                            ...related,
+                            cantidad : action.payload.cantidad
+                        } 
+                        : related
+                )
+            }
+
         case types.CleanInputsRelatedArticleInventory:
             return {
                 ...state,
@@ -1626,9 +1639,7 @@ export const InventoryReducer = (state = initialState, action) => {
             return {
                 ...state,
                 relatedArticlesInventory: state.relatedArticlesInventory.filter(
-                    article => article.codigo !== action.payload.codigo
-                        && article.descripcion !== action.payload.descripcion
-                        && article.cantidad !== action.payload.cantidad)
+                    article => article.codigo !== action.payload)
             }
 
         case types.SetArrayRelatedArticleInventory:

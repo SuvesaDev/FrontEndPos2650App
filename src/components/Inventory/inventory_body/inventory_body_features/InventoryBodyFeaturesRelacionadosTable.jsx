@@ -4,6 +4,10 @@ import { useTable } from "react-table";
 import {
   IsSelectedRelatedArticleInventory,
   SelectedRelatedArticleInventory,
+  SetCantidadRelatedArticleInventory,
+  SetCodigoArtRelatedArticleInventory,
+  SetCodigoRelatedArticleInventory,
+  SetDescripcionRelatedArticleInventory,
 } from "../../../../actions/inventory";
 
 export const InventoryBodyFeaturesRelacionadosTable = ({ columns, data }) => {
@@ -43,8 +47,16 @@ export const InventoryBodyFeaturesRelacionadosTable = ({ columns, data }) => {
       );
 
       if (articleRelated != undefined) {
-        dispatch(IsSelectedRelatedArticleInventory(true));
-        dispatch(SelectedRelatedArticleInventory(articleRelated));
+
+        dispatch( IsSelectedRelatedArticleInventory(true) );
+
+        dispatch( SelectedRelatedArticleInventory(articleRelated) );
+
+        dispatch( SetCodigoRelatedArticleInventory(articleRelated.codigo) );
+        dispatch( SetCodigoArtRelatedArticleInventory(articleRelated.codArticulo) );
+        dispatch( SetDescripcionRelatedArticleInventory(articleRelated.descripcion) );
+        dispatch( SetCantidadRelatedArticleInventory(articleRelated.cantidad) );
+
       }
     }
   };

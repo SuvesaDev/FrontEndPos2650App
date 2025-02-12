@@ -353,6 +353,7 @@ export const types = {
   SetDescripcionRelatedArticleInventory: '[Inventory] SetDescripcionRelatedArticleInventory',
   SetCantidadRelatedArticleInventory: '[Inventory] SetCantidadRelatedArticleInventory',
   SetRelatedArticleInventory: '[Inventory] SetRelatedArticleInventory',
+  SetEditRelatedArticleInventory: '[Inventory] SetEditRelatedArticleInventory',
   CleanInputsRelatedArticleInventory: '[Inventory] CleanInputsRelatedArticleInventory',
   SelectedRelatedArticleInventory: '[Inventory] SelectedRelatedArticleInventory',
   IsSelectedRelatedArticleInventory: '[Inventory] IsSelectedRelatedArticleInventory',

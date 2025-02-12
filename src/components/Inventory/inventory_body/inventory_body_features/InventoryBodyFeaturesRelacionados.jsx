@@ -15,6 +15,7 @@ import {
   SetDescripcionRelatedArticleInventory,
   SetRelatedArticleInventory,
   startDeleteRelatedArticle,
+  startUpdateArticleRelatedInventory,
 } from "../../../../actions/inventory";
 
 import { InventoryBodyFeaturesRelacionadosTable } from "./InventoryBodyFeaturesRelacionadosTable";
@@ -97,17 +98,30 @@ export const InventoryBodyFeaturesRelacionados = () => {
     }
   };
 
-  const handleDeleteRelatedArticle = (e) => {
+  const handleEditRelatedArticle = (e) => {
+
     e.preventDefault();
 
-    if (isSeletedRelatedArticles && isInventoryDisable) {
-      dispatch(
-        startDeleteRelatedArticle(
-          seletedrelatedArticles,
-          seletedrelatedArticles.id != 0 ? true : false
-        )
-      );
-    }
+    if (cantidad === 0) return;
+
+      if (cod_Articulo !== null) {
+
+        dispatch( startUpdateArticleRelatedInventory(inventory.codigo, codigo, cantidad, true) );
+        
+      }
+  };
+
+  const handleRemoveRelatedArticle = (e) => {
+    debugger;
+    e.preventDefault();
+
+    if (cantidad === 0) return;
+
+      if (cod_Articulo !== null) {
+
+        dispatch( startDeleteRelatedArticle(inventory.codigo, codigo, cantidad, false) );
+        
+      }
   };
 
   return (
@@ -127,7 +141,7 @@ export const InventoryBodyFeaturesRelacionados = () => {
                 name="codigo"
                 className="form-control"
                 placeholder="Código Producto"
-                disabled={disableInputs}
+                disabled={ (isSeletedRelatedArticles) ? true : disableInputs}
                 value={codigo}
                 onChange={(e) =>
                   handleInputChangeWithDispatch(
@@ -138,7 +152,7 @@ export const InventoryBodyFeaturesRelacionados = () => {
               />
               <button
                 className={
-                  disableInputs ? "btn btn-primary disabled" : "btn btn-primary"
+                  disableInputs || isSeletedRelatedArticles ? "btn btn-primary disabled" : "btn btn-primary"
                 }
                 type="button"
                 onClick={handleSearchArticle}
@@ -157,7 +171,7 @@ export const InventoryBodyFeaturesRelacionados = () => {
                 <TbNumber className="iconSize" />
               </span>
               <input
-                type="text"
+                type="number"
                 name="cantidad"
                 className="form-control"
                 placeholder="Cantidad de Producto"
@@ -209,18 +223,18 @@ export const InventoryBodyFeaturesRelacionados = () => {
                   disableInputs ? "btn btn-success disabled" : "btn btn-success"
                 }
                 disabled={disableInputs}
-                onClick={handleSaveRelatedArticle}
+                onClick={ isSeletedRelatedArticles ? handleEditRelatedArticle : handleSaveRelatedArticle}
               >
-                Agregar <IoAddCircle className="iconSize" />
+                { isSeletedRelatedArticles ? 'Editar' : 'Agregar' } <IoAddCircle className="iconSize" />
               </button>
 
               <button
                 className={
-                  isSeletedRelatedArticles && isInventoryDisable
+                  isSeletedRelatedArticles && !isInventoryDisable
                     ? "btn btn-danger"
                     : "btn btn-danger disabled"
                 }
-                onClick={handleDeleteRelatedArticle}
+                onClick={handleRemoveRelatedArticle}
                 type="button"
               >
                 <RiDeleteBin2Fill className="iconSize" />
