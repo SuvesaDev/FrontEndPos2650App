@@ -2156,6 +2156,12 @@ export const InventoryReducer = (state = initialState, action) => {
                 },
             }
 
+        case types.SetIsSelectedFormulaArticleInventory:
+            return {
+                ...state,
+                isSeletedFormulaArticles: action.payload
+            }
+
         case types.SetFormulaArticleInventory:
             return {
                 ...state,
@@ -2163,6 +2169,26 @@ export const InventoryReducer = (state = initialState, action) => {
                     ...state.formulaArticlesInventory,
                     action.payload
                 ]
+            }
+
+        case types.SetEditFormulaArticleInventory:
+            return {
+                ...state,
+                formulaArticlesInventory: state.formulaArticlesInventory.map(
+                    (formula, i) => formula.codigo == action.payload.codigo
+                        ? {
+                            ...formula,
+                            cantidad : action.payload.cantidad
+                        } 
+                        : formula
+                )
+            }
+
+        case types.RemoveFormulaArticleInventory:
+            return {
+                ...state,
+                formulaArticlesInventory: state.formulaArticlesInventory.filter(
+                    article => article.codigo != action.payload)
             }
 
         case types.CleanInputsFormulaArticleInventory:

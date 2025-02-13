@@ -1432,7 +1432,7 @@ export const startUpdateArticleRelatedInventory = ( codigoPrincipal, codigoArtic
                     //Call end-point 
                     const { data } = await suvesaApi.put(`/articulosRelacionados/putArticuloRelacionado?codigoPrincipal=${codigoPrincipal}&codigoArticuloRelacionado=${codigoArticuloRelacionado}&Cantidad=${Cantidad}&Activo=${Activo}`);
                     const { status } = data;
-                    // debugger;
+                    
                     // Cerrar modal
                     Swal.close();
 
@@ -1488,6 +1488,189 @@ export const startUpdateArticleRelatedInventory = ( codigoPrincipal, codigoArtic
                 }
             }
 
+        });
+        
+    }
+}
+
+export const startUpdateArticleFormulaInventory = ( codigoPrincipal, codigoArticuloRelacionado , Cantidad, Activo) => {
+   
+    return async ( dispatch ) => {
+
+        //Mostrar un mensaje de confirmacion
+        Swal.fire({
+            title: `¿Desea actualizar el Artículo Formula?`,
+            showDenyButton: true,
+            showCancelButton: false,
+            confirmButtonText: 'Actualizar',
+            denyButtonText: `Cancelar`,
+        }).then(async (result) => {
+
+            try {
+
+                if (result.isConfirmed) {
+
+                    //Mostrar el loading
+                    Swal.fire({
+                        title: 'Por favor, espere',
+                        allowEscapeKey: false,
+                        allowOutsideClick: false,
+                        showConfirmButton: false,
+                        imageUrl: loadingImage,
+                        customClass: 'alert-class-login',
+                        imageHeight: 100,
+                    });
+                    
+                    //Call end-point 
+                    const { data } = await suvesaApi.put(`/articulosRelacionados/putArticuloRelacionadoFormula?codigoPrincipal=${codigoPrincipal}&codigoArticuloRelacionado=${codigoArticuloRelacionado}&Cantidad=${Cantidad}&Activo=${Activo}`);
+                    const { status } = data;
+                    
+                    // Cerrar modal
+                    Swal.close();
+
+                    if( status === 0 ) {
+
+                        dispatch( SetEditFormulaArticleInventory({
+                            codigo: codigoArticuloRelacionado,
+                            cantidad: Cantidad
+                        }));
+
+                        dispatch( SetIsSelectedFormulaArticleInventory(false) );
+                        dispatch( CleanInputsFormulaArticleInventory() );
+
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Stock',
+                            text: `Se cambio el artículo formula correctamente.`,
+                            timer: 1000,
+                            showConfirmButton: false
+                        });
+
+                    } else {
+            
+                        //Caso contrario respuesta incorrecto mostrar mensaje de error
+                        const { currentException } = data;
+                        const msj = currentException.split(',');
+                        
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: (currentException.includes(',')) ? msj[3] : currentException,
+                        });
+            
+                    }
+                }
+
+            } catch (error) {
+        
+                Swal.close();
+                console.log(error);
+                if( error.message === 'Request failed with status code 401') {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Usuario no valido',
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Ocurrio un problema al actualizar el artículo formula',
+                    });
+                }
+            }
+
+        });
+        
+    }
+}
+
+export const startDeleteFormulaArticle = ( codigoPrincipal, codigoArticuloRelacionado , Cantidad, Activo ) => {
+
+    return async ( dispatch ) => {
+
+        //Mostrar un mensaje de confirmacion
+        Swal.fire({
+            title: `¿Desea eliminar el Artículo Formula?`,
+            showDenyButton: true,
+            showCancelButton: false,
+            confirmButtonText: 'Eliminar',
+            denyButtonText: `Cancelar`,
+        }).then(async (result) => {
+            
+            try {
+
+                if (result.isConfirmed) {
+
+                    //Mostrar el loading
+                    Swal.fire({
+                        title: 'Por favor, espere',
+                        allowEscapeKey: false,
+                        allowOutsideClick: false,
+                        showConfirmButton: false,
+                        imageUrl: loadingImage,
+                        customClass: 'alert-class-login',
+                        imageHeight: 100,
+                    });
+                    
+
+                    //Call end-point 
+                    const { data } = await suvesaApi.put(`/articulosRelacionados/putArticuloRelacionadoFormula?codigoPrincipal=${codigoPrincipal}&codigoArticuloRelacionado=${codigoArticuloRelacionado}&Cantidad=${Cantidad}&Activo=${Activo}`);
+                    const { status } = data;
+
+                    //Quitar el loading
+                    Swal.close();
+                
+                    if( status === 0) {
+
+                        //Delete data in array
+                        dispatch( RemoveFormulaArticleInventory( codigoArticuloRelacionado ) );
+
+                        //Is Seleted related article false
+                        dispatch( SetIsSelectedFormulaArticleInventory( false ) );
+
+                        //Si es correcta entonces mostrar un mensaje de afirmacion
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Articulo Formula eliminado correctamente',
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+
+                    } else {
+                        //Caso contrario respuesta incorrecto mostrar mensaje de error
+                        const { currentException } = data;
+                        const msj = currentException.split(',');
+                        
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: (currentException.includes(',')) ? msj[3] : currentException,
+                        });
+                        
+                    }
+                
+                }
+
+            } catch (error) {
+                
+                Swal.close();
+                console.log(error);
+                if( error.message === 'Request failed with status code 401') {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Usuario no valido',
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Ocurrio un problema al eliminar un articulo Formula',
+                    });
+                }
+            }
+                
         });
         
     }
@@ -2674,8 +2857,23 @@ export const SetCantidadFormulaArticleInventory = (value) => ({
     payload: value
 })
 
+export const SetIsSelectedFormulaArticleInventory = (value) => ({
+    type: types.SetIsSelectedFormulaArticleInventory,
+    payload: value
+})
+
 export const SetFormulaArticleInventory = (value) => ({
     type: types.SetFormulaArticleInventory,
+    payload: value
+})
+
+export const SetEditFormulaArticleInventory = (value) => ({
+    type: types.SetEditFormulaArticleInventory,
+    payload: value
+})
+
+export const RemoveFormulaArticleInventory = (value) => ({
+    type: types.RemoveFormulaArticleInventory,
     payload: value
 })
 

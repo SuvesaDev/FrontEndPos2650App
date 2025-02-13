@@ -112,7 +112,7 @@ export const InventoryBodyFeaturesRelacionados = () => {
   };
 
   const handleRemoveRelatedArticle = (e) => {
-    debugger;
+    
     e.preventDefault();
 
     if (cantidad === 0) return;
