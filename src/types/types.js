@@ -439,7 +439,8 @@ export const types = {
   SetCodigoPadreSelectedInventory: '[Inventory] SetCodigoPadreSelectedInventory',
   SetIsDisableInputStockInventory: '[Inventory] SetIsDisableInputStockInventory',
   SetStockInventory: '[Inventory] SetStockInventory',   
-  SetLastStockUpdateInventory: '[Inventory] SetLastStockUpdateInventory',   
+  SetLastStockUpdateInventory: '[Inventory] SetLastStockUpdateInventory',
+  SetIsArticleRelatedInventory: '[Inventory] SetIsArticleRelatedInventory',
 
   // Customers actions
   SelectTabCustomers: '[Customers] SelectTabCustomers',

@@ -15,7 +15,7 @@ export const InventoryBodyExistencias = () => {
   const dispatch = useDispatch();
   const [debouncedQuery, setDebouncedQuery] = useState("");
 
-  const { inventory, disableInputs, isDisableInputStock, lastStockUpdated } = useSelector((state) => state.inventory);
+  const { inventory, disableInputs, isDisableInputStock, lastStockUpdated, isArticleRelated } = useSelector((state) => state.inventory);
   const { minima, puntoMedio, maxima, existencia, stock} = inventory;
 
   const { auth } = useSelector((state) => state.login);
@@ -128,24 +128,30 @@ export const InventoryBodyExistencias = () => {
 
               <div className="col-md-6 mb-2">
                 <h5>Actual</h5>
-                <div className="input-group">
-                  <span className="input-group-text">
-                    <TbSortDescendingNumbers className="iconSize" />
-                  </span>
-                  <input
-                    name="actual"
-                    type="number"
-                    className="form-control"
-                    placeholder="Existencia Actual"
-                    disabled={( costaPets ) ? isDisableInputStock : true}
-                    onChange={(e) => {
-                      if(costaPets) {
-                        handleInputChangeWithDispatch(e, SetStockInventory)
-                      }
-                    }}
-                    value={ (costaPets) ? stock : existencia}
-                  />
-                </div>
+
+                {
+                  (isArticleRelated)
+                    ? <p>Para manejar el stock de esta articulo se debe realizar en tab Lotes.</p>
+                    : <div className="input-group">
+                        <span className="input-group-text">
+                          <TbSortDescendingNumbers className="iconSize" />
+                        </span>
+                          <input
+                            name="actual"
+                            type="number"
+                            className="form-control"
+                            placeholder="Existencia Actual"
+                            disabled={( costaPets ) ? isDisableInputStock : true}
+                            onChange={(e) => {
+                              if(costaPets) {
+                                handleInputChangeWithDispatch(e, SetStockInventory)
+                              }
+                            }}
+                            value={ (costaPets) ? stock : existencia}
+                          />
+                        
+                      </div>
+                }
               </div>
             </div>
 

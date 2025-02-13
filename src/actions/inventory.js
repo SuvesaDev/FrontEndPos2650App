@@ -382,6 +382,9 @@ export const startGetOneInventory = ( codigo ) => {
                 
                 //seleccionarlo y meterlo al estado en el metodo de action
                 dispatch( SelectedSearchInventory( responses ) );
+
+                // Se indica si es articulo relacionado
+                dispatch( SetIsArticleRelatedInventory(responses.esRelacionado) );
                 
                 const { categorias, codigoBarras, descripcion } = responses;
                 const codArt = responses.cod_Articulo;
@@ -1676,6 +1679,71 @@ export const startDeleteFormulaArticle = ( codigoPrincipal, codigoArticuloRelaci
     }
 }
 
+export const startGetStockLotesArticulo = ( codigoPrincipal) => {
+
+    return async ( dispatch ) => {
+    
+        try {
+
+
+            //Mostrar el loading
+            Swal.fire({
+                title: 'Por favor, espere',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                imageUrl: loadingImage,
+                customClass: 'alert-class-login',
+                imageHeight: 100,
+            });
+            
+            
+            //Call end-point 
+            const { data } = await suvesaApi.get(`/StockLote/getStockLotesArticulo?Request=${codigoPrincipal}`);
+            const { status } = data;
+
+            //Quitar el loading
+            Swal.close();
+        
+            if( status === 0) {
+
+                //TODO: Esperar a Beto 
+
+            } else {
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
+                
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
+                
+            }
+            
+        } catch (error) {
+            
+            Swal.close();
+            console.log(error);
+            if( error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al obtener el stock del lote',
+                });
+            }
+        }
+
+    }
+}
+
 // Functions
 const CalculatePreciosVenta = ( base, flete, otroC, impuesto, pre ) => {
 
@@ -2909,5 +2977,10 @@ export const SetLastStockUpdateInventory = (value) => ({
 
 export const SetArrayFormulaArticleInventory = (value) => ({
     type: types.SetArrayFormulaArticleInventory,
+    payload: value
+})
+
+export const SetIsArticleRelatedInventory = (value) => ({
+    type: types.SetIsArticleRelatedInventory,
     payload: value
 })

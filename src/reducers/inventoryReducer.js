@@ -125,6 +125,7 @@ const initialState = {
     codigoPadreSelected: 0,
     isDisableInputStock: true,
     lastStockUpdated: 0,
+    isArticleRelated: false,
     inventory: {
         codigo: null,
         cod_Articulo: null,
@@ -2240,6 +2241,12 @@ export const InventoryReducer = (state = initialState, action) => {
             return {
                 ...state,
                 formulaArticlesInventory: action.payload
+            }
+
+        case types.SetIsArticleRelatedInventory:
+            return {
+                ...state,
+                isArticleRelated: action.payload
             }
 
         default:
