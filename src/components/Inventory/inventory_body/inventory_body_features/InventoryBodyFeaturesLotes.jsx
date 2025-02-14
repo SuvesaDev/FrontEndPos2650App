@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 import { useDispatch, useSelector } from "react-redux";
 
 import { TbNumber } from "react-icons/tb";
@@ -7,12 +8,30 @@ import { IoAddCircle } from "react-icons/io5";
 import { 
   SetExistenciaLotesInventory, 
   SetNumLoteLotesInventory, 
-  SetVencimientoLotesInventory 
+  SetVencimientoLotesInventory, 
+  startSaveLote
 } from "../../../../actions/inventory";
+
+import { InventoryBodyFeaturesLotesTable } from "./InventoryBodyFeaturesLotesTable";
 
 export const InventoryBodyFeaturesLotes = () => {
 
   const dispatch = useDispatch();
+
+  const columns = [
+    {
+      Header: "Num lote",
+      accessor: "lote",
+    },
+    {
+      Header: "Vencimiento",
+      accessor: "vencimiento",
+    },
+    {
+      Header: "Existencia",
+      accessor: "existencia",
+    },
+  ];
 
   const {
       disableInputs,
@@ -29,6 +48,23 @@ export const InventoryBodyFeaturesLotes = () => {
     const handleInputChangeWithDispatch = ({ target }, action) => {
       dispatch(action(target.value));
     };
+
+    const handleSaveLote = () => {
+      
+      if( lote == '' || vencimiento == '' || existencia == 0) {
+
+        Swal.fire({
+          icon: "warning",
+          title: "Error",
+          text: "Debe completar la informacion para crear nuevo lote.",
+        });
+
+        return;
+      }
+
+      dispatch( startSaveLote( lotes, inventory.codigo ) );
+
+    }
 
     return (
       <>
@@ -117,6 +153,7 @@ export const InventoryBodyFeaturesLotes = () => {
                   }
                   disabled={disableInputs}
                   // onClick={ isSeletedRelatedArticles ? handleEditRelatedArticle : handleSaveRelatedArticle}
+                  onClick={ handleSaveLote }
                 >
                   {/* { isSeletedRelatedArticles ? 'Editar' : 'Agregar' } <IoAddCircle className="iconSize" /> */}
                   Agregar <IoAddCircle className="iconSize" />
@@ -140,13 +177,12 @@ export const InventoryBodyFeaturesLotes = () => {
           </div>
 
           <div className="row mb-3">
-            <p>Tabla</p>
-            {/* <div className="col-md-12 mb-2">
-              <InventoryBodyFeaturesRelacionadosTable
+            <div className="col-md-12 mb-2">
+              <InventoryBodyFeaturesLotesTable
                 columns={columns}
-                data={relatedArticlesInventory}
+                data={LotesInventory}
               />
-            </div> */}
+            </div>
           </div>
 
         </div>

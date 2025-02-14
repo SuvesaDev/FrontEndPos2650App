@@ -2300,7 +2300,7 @@ export const InventoryReducer = (state = initialState, action) => {
             return {
                 ...state,
                 LotesInventory: [
-                    ...state.lotes,
+                    ...state.LotesInventory,
                     action.payload
                 ]
             }

@@ -1685,7 +1685,6 @@ export const startGetStockLotesArticulo = ( codigoPrincipal) => {
     
         try {
 
-
             //Mostrar el loading
             Swal.fire({
                 title: 'Por favor, espere',
@@ -1697,17 +1696,24 @@ export const startGetStockLotesArticulo = ( codigoPrincipal) => {
                 imageHeight: 100,
             });
             
-            
             //Call end-point 
             const { data } = await suvesaApi.get(`/StockLote/getStockLotesArticulo?Request=${codigoPrincipal}`);
-            const { status } = data;
+            const { status, responses } = data;
 
             //Quitar el loading
             Swal.close();
         
             if( status === 0) {
 
-                //TODO: Esperar a Beto 
+                const lotes = responses.map( lot => {
+                    return {
+                        lote: lot.lote,
+                        vencimiento: lot.vencimiento,
+                        existencia: lot.existencia
+                    }
+                });
+
+                dispatch( SetArrayLotesInventory(lotes) );
 
             } else {
                 //Caso contrario respuesta incorrecto mostrar mensaje de error
@@ -1749,6 +1755,101 @@ export const startValidarLotesVencidos = () => {
     return async ( dispatch ) => {
         //Call end-point 
         await suvesaApi.put(`/StockLote/ValidarLotesVencidos`);
+    }
+}
+
+export const startSaveLote = ( lote, codArticulo) => {
+
+    return async ( dispatch ) => {
+
+        try {
+
+            //Mostrar el loading
+            Swal.fire({
+                title: 'Por favor, espere',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                imageUrl: loadingImage,
+                customClass: 'alert-class-login',
+                imageHeight: 100,
+            });
+            
+            const jsonLote = {
+                id: 0,
+                lote: lote.lote,
+                vencimiento: lote.vencimiento,
+                activo: true
+            }
+    
+            //Call end-point para crear el lote
+            const { data } = await suvesaApi.post(`/StockLote/InsertLote`, jsonLote );
+            const { status, responses } = data;
+            
+            // Cerrar modal
+            Swal.close();
+
+            if( status === 0 ) {
+
+                const { id } = responses;
+
+                //Call end-point para actualizar el stock del lote
+                const { data } = await suvesaApi.put(`/Stocks/ActualizarExistenciaArticuloLote?Cantidad=${lote.existencia}&CodBodega=6&CodArticulo=${codArticulo}&Lote=${id}` );
+
+                if( data.status === 0 ) {
+
+                    dispatch( SetLotesInventory(lote) );
+                    dispatch( CleanInputsLotesInventory() );
+
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Lotes',
+                        text: `Se agrego correctamente el lote.`,
+                    });
+
+                } else {
+
+                    //Si es correcta entonces mostrar un mensaje de afirmacion pero con error en carta
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Lote ingresado sin actualizar la existencia.',
+                        showConfirmButton: true,
+                    })
+
+                }                
+
+            } else {
+    
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
+                
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
+    
+            }
+
+        } catch (error) {
+            
+            Swal.close();
+            console.log(error);
+            if( error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al crear un nuevo lote.',
+                });
+            }
+        }
     }
 }
 
