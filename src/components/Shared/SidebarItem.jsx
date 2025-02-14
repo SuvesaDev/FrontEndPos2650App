@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+
 import { HideSidebar } from '../../actions/sidebar';
 import { addTab } from '../../actions/tabs';
+import { startValidarLotesVencidos } from '../../actions/inventory';
 
 export const SidebarItem = ({ item, index}) => {
 
@@ -62,9 +64,19 @@ export const SidebarItem = ({ item, index}) => {
     const stateTab = useSelector( state => state.tabs );
     const { currentTab } = stateTab;
 
+    const { auth } = useSelector( state => state.login );
+    const { costaPets } = auth;
+
     const handleAddTab = (subItem) => {
+        
         dispatch( HideSidebar() );
         dispatch( addTab((subItem.title === 'Facturación') ? 'Venta' : subItem.title, subItem.path) );
+
+        if( costaPets ) {
+            if(subItem.title === "Inventarios") {
+                dispatch( startValidarLotesVencidos() );
+            }
+        }
     }
 
     return (

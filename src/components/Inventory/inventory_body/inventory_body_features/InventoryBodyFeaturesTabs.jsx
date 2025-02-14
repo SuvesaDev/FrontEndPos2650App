@@ -10,7 +10,8 @@ export const InventoryBodyFeaturesTabs = () => {
     isShowTabCodigoBarras, 
     isEditInventory,
     idTipoArticuloSelected,
-    isArticleRelated
+    isArticleRelated,
+    inventory
   } = useSelector( (state) => state.inventory );
 
   const { auth } = useSelector((state) => state.login);
@@ -21,9 +22,9 @@ export const InventoryBodyFeaturesTabs = () => {
   };
 
   const handleTabLotes = () => {
-    dispatch(SelectTabInventory("Lotes"));
 
-    dispatch( startGetStockLotesArticulo(1) );
+    dispatch( SelectTabInventory("Lotes") );
+    dispatch( startGetStockLotesArticulo(inventory.codigo) );
   }
 
 

@@ -1744,6 +1744,14 @@ export const startGetStockLotesArticulo = ( codigoPrincipal) => {
     }
 }
 
+export const startValidarLotesVencidos = () => {
+
+    return async ( dispatch ) => {
+        //Call end-point 
+        await suvesaApi.put(`/StockLote/ValidarLotesVencidos`);
+    }
+}
+
 // Functions
 const CalculatePreciosVenta = ( base, flete, otroC, impuesto, pre ) => {
 
