@@ -442,6 +442,16 @@ export const types = {
   SetLastStockUpdateInventory: '[Inventory] SetLastStockUpdateInventory',
   SetIsArticleRelatedInventory: '[Inventory] SetIsArticleRelatedInventory',
 
+  SetNumLoteLotesInventory: '[Inventory] SetNumLoteLotesInventory',
+  SetVencimientoLotesInventory: '[Inventory] SetVencimientoLotesInventory',
+  SetExistenciaLotesInventory: '[Inventory] SetExistenciaLotesInventory',
+  SetIsSelectedLoteInventory: '[Inventory] SetIsSelectedLoteInventory',
+  SetLotesInventory: '[Inventory] SetLotesInventory',
+  SetArrayLotesInventory: '[Inventory] SetArrayLotesInventory',
+  SetEditLotesInventory: '[Inventory] SetEditLotesInventory',
+  RemoveLotesInventory: '[Inventory] RemoveLotesInventory',
+  CleanInputsLotesInventory: '[Inventory] CleanInputsLotesInventory',
+
   // Customers actions
   SelectTabCustomers: '[Customers] SelectTabCustomers',
   SetNombreCustomers: '[Customers] SetNombreCustomers',

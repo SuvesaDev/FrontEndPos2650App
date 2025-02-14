@@ -2992,3 +2992,47 @@ export const SetIsArticleRelatedInventory = (value) => ({
     type: types.SetIsArticleRelatedInventory,
     payload: value
 })
+
+export const SetNumLoteLotesInventory = (value) => ({
+    type: types.SetNumLoteLotesInventory,
+    payload: value
+})
+
+export const SetVencimientoLotesInventory = (value) => ({
+    type: types.SetVencimientoLotesInventory,
+    payload: value
+})
+
+export const SetExistenciaLotesInventory = (value) => ({
+    type: types.SetExistenciaLotesInventory,
+    payload: value
+})
+
+export const SetIsSelectedLoteInventory = (value) => ({
+    type: types.SetIsSelectedLoteInventory,
+    payload: value
+})
+
+export const SetLotesInventory = (value) => ({
+    type: types.SetLotesInventory,
+    payload: value
+})
+
+export const SetArrayLotesInventory = (value) => ({
+    type: types.SetArrayLotesInventory,
+    payload: value
+})
+
+export const SetEditLotesInventory = (value) => ({
+    type: types.SetEditLotesInventory,
+    payload: value
+})
+
+export const RemoveLotesInventory = (value) => ({
+    type: types.RemoveLotesInventory,
+    payload: value
+})
+
+export const CleanInputsLotesInventory = () => ({
+    type: types.CleanInputsLotesInventory
+})

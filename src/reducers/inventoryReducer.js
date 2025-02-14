@@ -126,6 +126,13 @@ const initialState = {
     isDisableInputStock: true,
     lastStockUpdated: 0,
     isArticleRelated: false,
+    lotes: {
+        lote: '',
+        vencimiento: '',
+        existencia: 0
+    },
+    isSeletedLotes: false,
+    LotesInventory: [],
     inventory: {
         codigo: null,
         cod_Articulo: null,
@@ -1277,7 +1284,14 @@ export const InventoryReducer = (state = initialState, action) => {
                 isOpenSearchModalFormula: false,
                 codigoPadreSelected: 0,
                 isDisableInputStock: true,
-                lastStockUpdated: 0
+                lastStockUpdated: 0,
+                lotes: {
+                    lote: '',
+                    vencimiento: '',
+                    existencia: 0
+                },
+                isSeletedLotes: false,
+                LotesInventory: []
             }
 
         case types.IsNewInventory:
@@ -2248,6 +2262,86 @@ export const InventoryReducer = (state = initialState, action) => {
                 ...state,
                 isArticleRelated: action.payload
             }
+
+        case types.SetNumLoteLotesInventory:
+            return {
+                ...state,
+                lotes: {
+                    ...state.lotes,
+                    lote: action.payload
+                },
+            }
+
+        case types.SetVencimientoLotesInventory:
+            return {
+                ...state,
+                lotes: {
+                    ...state.lotes,
+                    vencimiento: action.payload
+                },
+            }
+
+        case types.SetExistenciaLotesInventory:
+            return {
+                ...state,
+                lotes: {
+                    ...state.lotes,
+                    existencia: action.payload
+                },
+            }
+
+        case types.SetIsSelectedLoteInventory:
+            return {
+                ...state,
+                isSeletedLotes: action.payload
+            }
+
+        case types.SetLotesInventory:
+            return {
+                ...state,
+                LotesInventory: [
+                    ...state.lotes,
+                    action.payload
+                ]
+            }
+
+        case types.SetArrayLotesInventory:
+            return {
+                ...state,
+                LotesInventory: action.payload
+            }
+
+        case types.SetEditLotesInventory:
+            return {
+                ...state,
+                LotesInventory: state.LotesInventory.map(
+                    (lote, i) => lote.lote == action.payload.lote
+                        ? {
+                            ...lote,
+                            vencimiento: action.payload.vencimiento,
+                            existencia : action.payload.existencia
+                        } 
+                        : lote
+                )
+            }
+
+        case types.RemoveLotesInventory:
+            return {
+                ...state,
+                LotesInventory: state.LotesInventory.filter(
+                    lote => lote.lote != action.payload)
+            }
+
+        case types.CleanInputsLotesInventory:
+            return {
+                ...state,
+                lotes: {
+                    lote: '',
+                    vencimiento: '',
+                    existencia: 0
+                }
+            }
+            
 
         default:
             return state;
