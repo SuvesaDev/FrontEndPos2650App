@@ -1704,12 +1704,12 @@ export const startGetStockLotesArticulo = ( codigoPrincipal) => {
             Swal.close();
         
             if( status === 0) {
-
+                
                 const lotes = responses.map( lot => {
                     return {
                         lote: lot.lote,
-                        vencimiento: lot.vencimiento,
-                        existencia: lot.existencia
+                        vencimiento: lot.vencimiento.split('T')[0],
+                        existencia: lot.cantidad
                     }
                 });
 
@@ -1779,6 +1779,7 @@ export const startSaveLote = ( lote, codArticulo) => {
                 id: 0,
                 lote: lote.lote,
                 vencimiento: lote.vencimiento,
+                idArticulo : codArticulo,
                 activo: true
             }
     
