@@ -1720,6 +1720,16 @@ export const startGetStockLotesArticulo = ( codigoPrincipal) => {
                 //Caso contrario respuesta incorrecto mostrar mensaje de error
                 const { currentException } = data;
                 const msj = currentException.split(',');
+
+                if( currentException === "No tiene lotes" ) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Lotes',
+                        text: 'Este producto no tiene lotes registrados.'
+                    });
+
+                    return;
+                }
                 
                 Swal.fire({
                     icon: 'error',
@@ -1906,6 +1916,7 @@ export const startEditLote = ( lote, codArticulo) => {
         
                         if( data.status === 0 ) {
         
+                            dispatch( SetIsSelectedLoteInventory(false) );
                             dispatch( SetEditLotesInventory(lote) );
                             dispatch( CleanInputsLotesInventory() );
         
@@ -1956,7 +1967,95 @@ export const startEditLote = ( lote, codArticulo) => {
                     Swal.fire({
                         icon: 'error',
                         title: 'Error',
-                        text: 'Ocurrio un problema al editar un nuevo lote.',
+                        text: 'Ocurrio un problema al editar el lote.',
+                    });
+                }
+            }
+
+        });
+
+    }
+}
+
+export const startDisableLote = ( idlote ) => {
+
+    return async ( dispatch ) => {
+
+        //Mostrar un mensaje de confirmacion
+        Swal.fire({
+            title: `¿Desea desactivar el Lote?`,
+            showDenyButton: true,
+            showCancelButton: false,
+            confirmButtonText: 'Desactivar',
+            denyButtonText: `Cancelar`,
+        }).then(async (result) => {
+
+            try {
+
+                if (result.isConfirmed) {
+
+                    //Mostrar el loading
+                    Swal.fire({
+                        title: 'Por favor, espere',
+                        allowEscapeKey: false,
+                        allowOutsideClick: false,
+                        showConfirmButton: false,
+                        imageUrl: loadingImage,
+                        customClass: 'alert-class-login',
+                        imageHeight: 100,
+                    });
+                    
+                    //Call end-point para editar el lote
+                    const { data } = await suvesaApi.put(`/StockLote/DesactivateLote?idLote=${idlote}`);
+                    const { status } = data;
+                    
+                    // Cerrar modal
+                    Swal.close();
+        
+                    if( status === 0 ) {
+                
+                        dispatch( SetIsSelectedLoteInventory(false) );
+                        dispatch( RemoveLotesInventory(idlote) );
+                        dispatch( CleanInputsLotesInventory() );
+    
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Lotes',
+                            text: `Se desactivo correctamente el lote.`,
+                        });
+                     
+        
+                    } else {
+            
+                        //Caso contrario respuesta incorrecto mostrar mensaje de error
+                        const { currentException } = data;
+                        const msj = currentException.split(',');
+                        
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: (currentException.includes(',')) ? msj[3] : currentException,
+                        });
+            
+                    }
+
+                }
+    
+            } catch (error) {
+                
+                Swal.close();
+                console.log(error);
+                if( error.message === 'Request failed with status code 401') {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Usuario no valido',
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Ocurrio un problema al desactivar el lote.',
                     });
                 }
             }

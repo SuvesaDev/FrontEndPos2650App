@@ -9,6 +9,7 @@ import {
   SetExistenciaLotesInventory, 
   SetNumLoteLotesInventory, 
   SetVencimientoLotesInventory, 
+  startDisableLote, 
   startEditLote, 
   startSaveLote
 } from "../../../../actions/inventory";
@@ -81,6 +82,12 @@ export const InventoryBodyFeaturesLotes = () => {
       }
 
       dispatch( startEditLote( lotes, inventory.codigo ) );
+
+    }
+
+    const handleDisableLote = () => {
+      
+      dispatch( startDisableLote( lotes.id ) );
 
     }
 
@@ -176,13 +183,12 @@ export const InventoryBodyFeaturesLotes = () => {
                 </button>
 
                 <button
-                  className="btn btn-danger"
-                  // className={
-                  //   isSeletedRelatedArticles && !isInventoryDisable
-                  //     ? "btn btn-danger"
-                  //     : "btn btn-danger disabled"
-                  // }
-                  // onClick={handleRemoveRelatedArticle}
+                  className={
+                    isSeletedLotes && !isInventoryDisable
+                      ? "btn btn-danger"
+                      : "btn btn-danger disabled"
+                  }
+                  onClick={handleDisableLote}
                   type="button"
                 >
                   <RiDeleteBin2Fill className="iconSize" />

@@ -2341,7 +2341,7 @@ export const InventoryReducer = (state = initialState, action) => {
             return {
                 ...state,
                 LotesInventory: state.LotesInventory.filter(
-                    lote => lote.lote != action.payload)
+                    lote => lote.id != action.payload)
             }
 
         case types.CleanInputsLotesInventory:
