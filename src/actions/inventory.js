@@ -1707,6 +1707,7 @@ export const startGetStockLotesArticulo = ( codigoPrincipal) => {
                 
                 const lotes = responses.map( lot => {
                     return {
+                        id: lot.id,
                         lote: lot.lote,
                         vencimiento: lot.vencimiento.split('T')[0],
                         existencia: lot.cantidad
@@ -1800,6 +1801,7 @@ export const startSaveLote = ( lote, codArticulo) => {
                 if( data.status === 0 ) {
 
                     dispatch( SetLotesInventory(lote) );
+                    dispatch( SetIdLotesInventory(id) );
                     dispatch( CleanInputsLotesInventory() );
 
                     Swal.fire({
@@ -1851,6 +1853,116 @@ export const startSaveLote = ( lote, codArticulo) => {
                 });
             }
         }
+    }
+}
+
+export const startEditLote = ( lote, codArticulo) => {
+
+    return async ( dispatch ) => {
+
+        //Mostrar un mensaje de confirmacion
+        Swal.fire({
+            title: `¿Desea actualizar el Lote?`,
+            showDenyButton: true,
+            showCancelButton: false,
+            confirmButtonText: 'Actualizar',
+            denyButtonText: `Cancelar`,
+        }).then(async (result) => {
+
+            try {
+
+                if (result.isConfirmed) {
+
+                    //Mostrar el loading
+                    Swal.fire({
+                        title: 'Por favor, espere',
+                        allowEscapeKey: false,
+                        allowOutsideClick: false,
+                        showConfirmButton: false,
+                        imageUrl: loadingImage,
+                        customClass: 'alert-class-login',
+                        imageHeight: 100,
+                    });
+                    
+                    const jsonLote = {
+                        id: lote.id,
+                        lote: lote.lote,
+                        vencimiento: lote.vencimiento,
+                        idArticulo : codArticulo,
+                        activo: true
+                    }
+                    
+                    //Call end-point para editar el lote
+                    const { data } = await suvesaApi.put(`/StockLote/PutLote`, jsonLote );
+                    const { status } = data;
+                    
+                    // Cerrar modal
+                    Swal.close();
+        
+                    if( status === 0 ) {
+                
+                        //Call end-point para actualizar el stock del lote
+                        const { data } = await suvesaApi.put(`/Stocks/ActualizarExistenciaArticuloLote?Cantidad=${lote.existencia}&CodBodega=6&CodArticulo=${codArticulo}&Lote=${lote.id}` );
+        
+                        if( data.status === 0 ) {
+        
+                            dispatch( SetEditLotesInventory(lote) );
+                            dispatch( CleanInputsLotesInventory() );
+        
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Lotes',
+                                text: `Se edito correctamente el lote.`,
+                            });
+        
+                        } else {
+        
+                            //Si es correcta entonces mostrar un mensaje de afirmacion pero con error en carta
+                            Swal.fire({
+                                icon: 'warning',
+                                title: 'Lote editado sin actualizar la existencia.',
+                                showConfirmButton: true,
+                            })
+        
+                        }                
+        
+                    } else {
+            
+                        //Caso contrario respuesta incorrecto mostrar mensaje de error
+                        const { currentException } = data;
+                        const msj = currentException.split(',');
+                        
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: (currentException.includes(',')) ? msj[3] : currentException,
+                        });
+            
+                    }
+
+                }
+    
+            } catch (error) {
+                
+                Swal.close();
+                console.log(error);
+                if( error.message === 'Request failed with status code 401') {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Usuario no valido',
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Ocurrio un problema al editar un nuevo lote.',
+                    });
+                }
+            }
+
+        });
+
     }
 }
 
@@ -3092,6 +3204,11 @@ export const SetArrayFormulaArticleInventory = (value) => ({
 
 export const SetIsArticleRelatedInventory = (value) => ({
     type: types.SetIsArticleRelatedInventory,
+    payload: value
+})
+
+export const SetIdLotesInventory = (value) => ({
+    type: types.SetIdLotesInventory,
     payload: value
 })
 

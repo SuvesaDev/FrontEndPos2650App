@@ -127,6 +127,7 @@ const initialState = {
     lastStockUpdated: 0,
     isArticleRelated: false,
     lotes: {
+        id: 0,
         lote: '',
         vencimiento: '',
         existencia: 0
@@ -1286,6 +1287,7 @@ export const InventoryReducer = (state = initialState, action) => {
                 isDisableInputStock: true,
                 lastStockUpdated: 0,
                 lotes: {
+                    id: 0,
                     lote: '',
                     vencimiento: '',
                     existencia: 0
@@ -2263,6 +2265,15 @@ export const InventoryReducer = (state = initialState, action) => {
                 isArticleRelated: action.payload
             }
 
+        case types.SetIdLotesInventory:
+            return {
+                ...state,
+                lotes: {
+                    ...state.lotes,
+                    id: action.payload
+                },
+            }
+
         case types.SetNumLoteLotesInventory:
             return {
                 ...state,
@@ -2315,9 +2326,10 @@ export const InventoryReducer = (state = initialState, action) => {
             return {
                 ...state,
                 LotesInventory: state.LotesInventory.map(
-                    (lote, i) => lote.lote == action.payload.lote
+                    (lote, i) => lote.id == action.payload.id
                         ? {
                             ...lote,
+                            lote: action.payload.lote,
                             vencimiento: action.payload.vencimiento,
                             existencia : action.payload.existencia
                         } 

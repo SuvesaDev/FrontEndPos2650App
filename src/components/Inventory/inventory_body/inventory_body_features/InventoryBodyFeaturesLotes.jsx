@@ -9,6 +9,7 @@ import {
   SetExistenciaLotesInventory, 
   SetNumLoteLotesInventory, 
   SetVencimientoLotesInventory, 
+  startEditLote, 
   startSaveLote
 } from "../../../../actions/inventory";
 
@@ -63,6 +64,23 @@ export const InventoryBodyFeaturesLotes = () => {
       }
 
       dispatch( startSaveLote( lotes, inventory.codigo ) );
+
+    }
+
+    const handleEditLote = () => {
+      
+      if( lote == '' || vencimiento == '' || existencia == 0) {
+
+        Swal.fire({
+          icon: "warning",
+          title: "Error",
+          text: "Debe completar la informacion para crear nuevo lote.",
+        });
+
+        return;
+      }
+
+      dispatch( startEditLote( lotes, inventory.codigo ) );
 
     }
 
@@ -152,11 +170,9 @@ export const InventoryBodyFeaturesLotes = () => {
                     disableInputs ? "btn btn-success disabled" : "btn btn-success"
                   }
                   disabled={disableInputs}
-                  // onClick={ isSeletedRelatedArticles ? handleEditRelatedArticle : handleSaveRelatedArticle}
-                  onClick={ handleSaveLote }
+                  onClick={ isSeletedLotes ? handleEditLote : handleSaveLote}
                 >
-                  {/* { isSeletedRelatedArticles ? 'Editar' : 'Agregar' } <IoAddCircle className="iconSize" /> */}
-                  Agregar <IoAddCircle className="iconSize" />
+                  { isSeletedLotes ? 'Editar' : 'Agregar' } <IoAddCircle className="iconSize" />
                 </button>
 
                 <button

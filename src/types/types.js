@@ -442,6 +442,7 @@ export const types = {
   SetLastStockUpdateInventory: '[Inventory] SetLastStockUpdateInventory',
   SetIsArticleRelatedInventory: '[Inventory] SetIsArticleRelatedInventory',
 
+  SetIdLotesInventory: '[Inventory] SetIdLotesInventory',
   SetNumLoteLotesInventory: '[Inventory] SetNumLoteLotesInventory',
   SetVencimientoLotesInventory: '[Inventory] SetVencimientoLotesInventory',
   SetExistenciaLotesInventory: '[Inventory] SetExistenciaLotesInventory',

@@ -3,12 +3,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { useTable } from "react-table";
 
 import {
-  IsSelectedRelatedArticleInventory,
-  SelectedRelatedArticleInventory,
-  SetCantidadRelatedArticleInventory,
-  SetCodigoArtRelatedArticleInventory,
-  SetCodigoRelatedArticleInventory,
-  SetDescripcionRelatedArticleInventory,
+  SetExistenciaLotesInventory,
+  SetIdLotesInventory,
+  SetIsSelectedLoteInventory,
+  SetNumLoteLotesInventory,
+  SetVencimientoLotesInventory,
 } from "../../../../actions/inventory";
 
 export const InventoryBodyFeaturesLotesTable = ({ columns, data }) => {
@@ -32,31 +31,31 @@ export const InventoryBodyFeaturesLotesTable = ({ columns, data }) => {
   });
 
   const handleSelectedRow = async (cell) => {
-    // if (!isInventoryDisable) {
-    //   // Obtiene el price seleccionado
-    //   const { codigo, descripcion, cantidad } = cell.row.values;
 
-    //   // Searcha articleRelated
-    //   const articleRelated = relatedArticlesInventory.find(
-    //     (article) =>
-    //       article.codigo === codigo &&
-    //       article.descripcion === descripcion &&
-    //       article.cantidad === cantidad
-    //   );
+    if (!isInventoryDisable) {
 
-    //   if (articleRelated != undefined) {
+      // Obtiene el price seleccionado
+      const { lote, vencimiento, existencia } = cell.row.values;
 
-    //     dispatch( IsSelectedRelatedArticleInventory(true) );
+      // Searcha articleRelated
+      const seletedLote = LotesInventory.find(
+        (lot) =>
+          lot.lote === lote &&
+          lot.vencimiento === vencimiento &&
+          lot.existencia === existencia
+      );
 
-    //     dispatch( SelectedRelatedArticleInventory(articleRelated) );
+      if (seletedLote != undefined) {
 
-    //     dispatch( SetCodigoRelatedArticleInventory(articleRelated.codigo) );
-    //     dispatch( SetCodigoArtRelatedArticleInventory(articleRelated.codArticulo) );
-    //     dispatch( SetDescripcionRelatedArticleInventory(articleRelated.descripcion) );
-    //     dispatch( SetCantidadRelatedArticleInventory(articleRelated.cantidad) );
+        dispatch( SetIsSelectedLoteInventory(true) );
 
-    //   }
-    // }
+        dispatch( SetIdLotesInventory(seletedLote.id) );
+        dispatch( SetNumLoteLotesInventory(seletedLote.lote) );
+        dispatch( SetVencimientoLotesInventory(seletedLote.vencimiento) );
+        dispatch( SetExistenciaLotesInventory(seletedLote.existencia) );
+
+      }
+    }
   };
 
   return (
