@@ -4,11 +4,15 @@ import { useDispatch } from "react-redux";
 import { useTable } from "react-table";
 
 import {
-  IsEditPricesSellInventory,
-  SelectedPricesSellInventory,
+  SetDisableInputsLotesFormulaInventory,
+  SetIdArticuloFormulaLotesInventory,
+  SetIdBodegaFormulaLotesInventory,
+  SetIdLoteFormulaLotesInventory,
+  SetShowButtonConvertirLotesFormulaInventory
 } from "../../../../actions/inventory";
 
 export const InventoryBodyFormulaLotesTable = ({ columns, data }) => {
+
   const dispatch = useDispatch();
 
   const { isInventoryDisable } = useSelector((state) => state.inventory);
@@ -26,15 +30,18 @@ export const InventoryBodyFormulaLotesTable = ({ columns, data }) => {
   });
 
   const handleSelectedRow = async (cell) => {
-    if (!isInventoryDisable) {
-      //Obtiene el price seleccionado
-      const price = cell.row.values;
 
-      //Se establece en el estado y cambia al modo editar
-      if (price != undefined) {
-        dispatch(SelectedPricesSellInventory(price));
-        dispatch(IsEditPricesSellInventory(true));
-      }
+    if (!isInventoryDisable) {
+
+      //Obtiene el seleccionado
+      const { idArticuloFormula, idLote, idBodega } = cell.row.original;
+
+      dispatch( SetIdArticuloFormulaLotesInventory( idArticuloFormula ) );
+      dispatch( SetIdLoteFormulaLotesInventory( idLote ) );
+      dispatch( SetIdBodegaFormulaLotesInventory( idBodega ) );
+      dispatch( SetDisableInputsLotesFormulaInventory( true ) );
+      dispatch( SetShowButtonConvertirLotesFormulaInventory( true ) );
+      
     }
   };
 

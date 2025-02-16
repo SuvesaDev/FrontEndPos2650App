@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 import { useDispatch, useSelector } from "react-redux";
 
 import { RiDeleteBin2Fill } from "react-icons/ri";
@@ -10,9 +11,12 @@ import { VscGitPullRequestCreate } from "react-icons/vsc";
 import { InventoryBodyFormulaLotesTable } from "./InventoryBodyFormulaLotesTable";
 
 import { 
+  CleanInputsFormulaLotesInventory,
   SetIdArticuloFormulaLotesInventory, 
   SetIdBodegaFormulaLotesInventory, 
-  SetIdLoteFormulaLotesInventory
+  SetIdLoteFormulaLotesInventory,
+  SetLotesFormulaInventory,
+  startGetLotesByArticleFormula
 } from "../../../../actions/inventory";
 
 export const InventoryBodyFormulaLotes = () => {
@@ -23,7 +27,11 @@ export const InventoryBodyFormulaLotes = () => {
     inventory,
     formulaLotes,
     formulaArticlesInventory,
-    disableInputs
+    disableInputs,
+    disableInputsLotesFormula,
+    lotesByArticleFormula,
+    lotesFormula,
+    showButtonConvertir
   } = useSelector((state) => state.inventory);
 
   const { bodegasInventory } = useSelector(state => state.bodegas);
@@ -49,6 +57,50 @@ export const InventoryBodyFormulaLotes = () => {
     dispatch(action(parseInt(target.value)));
   };
 
+  const handleChangeInputArticle = ({ target }) => {
+
+    const codigoArticulo = target.value;
+
+    if( codigoArticulo != 0 ) {
+      dispatch( SetIdArticuloFormulaLotesInventory(codigoArticulo) );
+      dispatch( startGetLotesByArticleFormula(codigoArticulo) );
+    }
+
+  }
+
+  const handleAddLotesFormula = () => {
+
+    if( idArticuloFormula == 0 || idLote == 0 || idBodega == 0) {
+
+      Swal.fire({
+        icon: "warning",
+        title: "Error",
+        text: "Debe completar la informacion para agregar lote formula.",
+      });
+
+      return;
+
+    }
+
+    const articuloSeleted = formulaArticlesInventory.find( articulo => articulo.codigo = idArticuloFormula );
+    const loteSeleted = lotesByArticleFormula.find( lot => lot.id = idLote );
+
+    const loteFormula = {
+      idArticuloFormula,
+      idLote,
+      idBodega,
+      articulo: `${articuloSeleted.codigo} - ${articuloSeleted.descripcion}`,
+      stockLote: loteSeleted.existencia,
+      vencimiento: loteSeleted.vencimiento
+    }
+
+    // Se agrega en la tabla
+    dispatch( SetLotesFormulaInventory(loteFormula) );
+
+    dispatch( CleanInputsFormulaLotesInventory() );
+
+  }
+
   return (
     <>
       <div className="container-fluid mt-2">
@@ -71,13 +123,10 @@ export const InventoryBodyFormulaLotes = () => {
                   <select
                     name="tipo"
                     className="form-select"
-                    disabled={disableInputs}
+                    disabled={(disableInputs) ? disableInputs : (showButtonConvertir) ? true : false}
                     value={idArticuloFormula}
                     onChange={(e) =>
-                      handleInputChangeWithDispatch(
-                        e,
-                        SetIdArticuloFormulaLotesInventory
-                      )
+                      handleChangeInputArticle(e)
                     }
                   >
                     <option value={0} selected disabled hidden>
@@ -111,7 +160,7 @@ export const InventoryBodyFormulaLotes = () => {
                   <select
                     name="tipo"
                     className="form-select"
-                    disabled={disableInputs}
+                    disabled={(disableInputs) ? disableInputs : disableInputsLotesFormula}
                     value={idLote}
                     onChange={(e) =>
                       handleInputChangeWithDispatch(
@@ -124,11 +173,15 @@ export const InventoryBodyFormulaLotes = () => {
                       {" "}
                       Seleccione...{" "}
                     </option>
-                    <option value={1}>Tipo A</option>
-                    <option value={2}>Tipo B</option>
-                    <option value={3}>Tipo C</option>
-                    <option value={4}>Tipo D</option>
-                    <option value={5}>Tipo P</option>
+                    {lotesByArticleFormula != [] ? (
+                      lotesByArticleFormula.map((lot) => {
+                        return (
+                          <option value={lot.id}> {lot.lote} {"-"} {lot.vencimiento} {"-"} {lot.existencia} </option>
+                        );
+                      })
+                    ) : (
+                      <option value="">No tiene lotes</option>
+                    )}
                   </select>
                 </div>
               </div>
@@ -146,7 +199,7 @@ export const InventoryBodyFormulaLotes = () => {
                   <select
                     name="tipo"
                     className="form-select"
-                    disabled={disableInputs}
+                    disabled={(disableInputs) ? disableInputs : disableInputsLotesFormula}
                     value={idBodega}
                     onChange={(e) =>
                       handleInputChangeWithDispatch(
@@ -186,7 +239,8 @@ export const InventoryBodyFormulaLotes = () => {
                       //     ? "btn btn-warning"
                       //     : "btn btn-success"
                       // }
-                      disabled={disableInputs}
+                      disabled={(disableInputs) ? disableInputs : disableInputsLotesFormula}
+                      onClick={handleAddLotesFormula}
                       // onClick={
                       //   isEditPriceSell ? handleEditPrecio : handleSavePrecio
                       // }
@@ -222,7 +276,7 @@ export const InventoryBodyFormulaLotes = () => {
                   <div className="col-md-6">
                     <button
                         className={
-                          disableInputs ? "btn btn-primary disabled" : "btn btn-primary"
+                          showButtonConvertir ? "btn btn-primary" : "btn btn-primary d-none"
                         }
                         disabled={disableInputs}
                         // onClick={ handleConvertirCantidadDisponibles }
@@ -240,7 +294,7 @@ export const InventoryBodyFormulaLotes = () => {
             <div className="row mb-2">
               <InventoryBodyFormulaLotesTable
                 columns={columns}
-                data={[]}
+                data={lotesFormula}
               />
             </div>
           </div>

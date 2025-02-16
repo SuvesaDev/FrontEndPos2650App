@@ -2065,6 +2065,96 @@ export const startDisableLote = ( idlote ) => {
     }
 }
 
+export const startGetLotesByArticleFormula = (codigoPrincipal) => {
+
+    return async ( dispatch ) => {
+    
+        try {
+
+            //Mostrar el loading
+            Swal.fire({
+                title: 'Por favor, espere',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                imageUrl: loadingImage,
+                customClass: 'alert-class-login',
+                imageHeight: 100,
+            });
+            
+            //Call end-point 
+            const { data } = await suvesaApi.get(`/StockLote/getStockLotesArticulo?Request=${codigoPrincipal}`);
+            const { status, responses } = data;
+
+            //Quitar el loading
+            Swal.close();
+        
+            if( status === 0) {
+                
+                const lotes = responses.map( lot => {
+                    return {
+                        id: lot.id,
+                        lote: lot.lote,
+                        vencimiento: lot.vencimiento.split('T')[0],
+                        existencia: lot.cantidad
+                    }
+                });
+
+                dispatch( SetIdBodegaFormulaLotesInventory(0) );
+                dispatch( SetLotesByArticleFormulaInventory(lotes) );
+                dispatch( SetDisableInputsLotesFormulaInventory( false ) );
+
+            } else {
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
+
+                if( currentException === "No tiene lotes" ) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Lotes',
+                        text: 'Este producto no tiene lotes registrados.'
+                    });
+
+                    dispatch( SetIdLoteFormulaLotesInventory(0) );
+                    dispatch( SetIdBodegaFormulaLotesInventory(0) );
+                    dispatch( SetLotesByArticleFormulaInventory([]) );
+                    dispatch( SetDisableInputsLotesFormulaInventory( true ) );
+
+                    return;
+                }
+                
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
+                
+            }
+            
+        } catch (error) {
+            
+            Swal.close();
+            console.log(error);
+            if( error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al obtener el stock del lote',
+                });
+            }
+        }
+
+    }
+
+}
+
 // Functions
 const CalculatePreciosVenta = ( base, flete, otroC, impuesto, pre ) => {
 
@@ -3372,4 +3462,24 @@ export const SetIdBodegaFormulaLotesInventory = (value) => ({
 
 export const CleanInputsFormulaLotesInventory = () => ({
     type: types.CleanInputsFormulaLotesInventory
+})
+
+export const SetLotesByArticleFormulaInventory = (value) => ({
+    type: types.SetLotesByArticleFormulaInventory,
+    payload: value
+})
+
+export const SetDisableInputsLotesFormulaInventory = (value) => ({
+    type: types.SetDisableInputsLotesFormulaInventory,
+    payload: value
+})
+
+export const SetLotesFormulaInventory = (value) => ({
+    type: types.SetLotesFormulaInventory,
+    payload: value
+})
+
+export const SetShowButtonConvertirLotesFormulaInventory = (value) => ({
+    type: types.SetShowButtonConvertirLotesFormulaInventory,
+    payload: value
 })

@@ -457,6 +457,10 @@ export const types = {
   SetIdLoteFormulaLotesInventory: '[Inventory] SetIdLoteFormulaLotesInventory',
   SetIdBodegaFormulaLotesInventory: '[Inventory] SetIdBodegaFormulaLotesInventory',
   CleanInputsFormulaLotesInventory: '[Inventory] CleanInputsFormulaLotesInventory',
+  SetLotesByArticleFormulaInventory: '[Inventory] SetLotesByArticleFormulaInventory',
+  SetDisableInputsLotesFormulaInventory: '[Inventory] SetDisableInputsLotesFormulaInventory',
+  SetLotesFormulaInventory: '[Inventory] SetLotesFormulaInventory',
+  SetShowButtonConvertirLotesFormulaInventory: '[Inventory] SetShowButtonConvertirLotesFormulaInventory',
 
   // Customers actions
   SelectTabCustomers: '[Customers] SelectTabCustomers',
