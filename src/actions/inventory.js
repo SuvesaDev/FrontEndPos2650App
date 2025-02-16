@@ -3354,3 +3354,22 @@ export const RemoveLotesInventory = (value) => ({
 export const CleanInputsLotesInventory = () => ({
     type: types.CleanInputsLotesInventory
 })
+
+export const SetIdArticuloFormulaLotesInventory = (value) => ({
+    type: types.SetIdArticuloFormulaLotesInventory,
+    payload: value
+})
+
+export const SetIdLoteFormulaLotesInventory = (value) => ({
+    type: types.SetIdLoteFormulaLotesInventory,
+    payload: value
+})
+
+export const SetIdBodegaFormulaLotesInventory = (value) => ({
+    type: types.SetIdBodegaFormulaLotesInventory,
+    payload: value
+})
+
+export const CleanInputsFormulaLotesInventory = () => ({
+    type: types.CleanInputsFormulaLotesInventory
+})

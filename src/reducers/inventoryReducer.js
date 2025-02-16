@@ -134,6 +134,11 @@ const initialState = {
     },
     isSeletedLotes: false,
     LotesInventory: [],
+    formulaLotes: {
+        idArticuloFormula: 0,
+        idLote: 0,
+        idBodega: 0
+    },
     inventory: {
         codigo: null,
         cod_Articulo: null,
@@ -1293,7 +1298,12 @@ export const InventoryReducer = (state = initialState, action) => {
                     existencia: 0
                 },
                 isSeletedLotes: false,
-                LotesInventory: []
+                LotesInventory: [],
+                formulaLotes: {
+                    idArticuloFormula: 0,
+                    idLote: 0,
+                    idBodega: 0
+                }
             }
 
         case types.IsNewInventory:
@@ -2351,6 +2361,43 @@ export const InventoryReducer = (state = initialState, action) => {
                     lote: '',
                     vencimiento: '',
                     existencia: 0
+                }
+            }
+
+        case types.SetIdArticuloFormulaLotesInventory:
+            return {
+                ...state,
+                formulaLotes: {
+                    ...state.formulaLotes,
+                    idArticuloFormula: action.payload
+                }
+            }
+
+        case types.SetIdLoteFormulaLotesInventory:
+            return {
+                ...state,
+                formulaLotes: {
+                    ...state.formulaLotes,
+                    idLote: action.payload
+                }
+            }
+
+        case types.SetIdBodegaFormulaLotesInventory:
+            return {
+                ...state,
+                formulaLotes: {
+                    ...state.formulaLotes,
+                    idBodega: action.payload
+                }
+            }
+
+        case types.CleanInputsFormulaLotesInventory:
+            return {
+                ...state,
+                formulaLotes: {
+                    idArticuloFormula: 0,
+                    idLote: 0,
+                    idBodega: 0
                 }
             }
             
