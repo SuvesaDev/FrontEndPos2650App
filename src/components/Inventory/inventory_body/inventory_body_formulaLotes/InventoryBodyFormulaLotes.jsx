@@ -6,16 +6,21 @@ import { IoAddCircle } from "react-icons/io5";
 import { FaCartShopping } from "react-icons/fa6";
 import { CiShoppingTag } from "react-icons/ci";
 import { AiFillShop } from "react-icons/ai";
+import { TbNumber } from "react-icons/tb";
+import { FaCalculator } from "react-icons/fa6";
 import { VscGitPullRequestCreate } from "react-icons/vsc";
 
 import { InventoryBodyFormulaLotesTable } from "./InventoryBodyFormulaLotesTable";
 
 import { 
   CleanInputsFormulaLotesInventory,
+  SetCantidadConvertirConvertidorLotesIntentory,
   SetIdArticuloFormulaLotesInventory, 
   SetIdBodegaFormulaLotesInventory, 
   SetIdLoteFormulaLotesInventory,
   SetLotesFormulaInventory,
+  startCalculateCantidadDisponiblesConvertidorLotesInventory,
+  startConvertirCantidadDisponiblesConvertidorLotesInventory,
   startGetLotesByArticleFormula
 } from "../../../../actions/inventory";
 
@@ -31,7 +36,9 @@ export const InventoryBodyFormulaLotes = () => {
     disableInputsLotesFormula,
     lotesByArticleFormula,
     lotesFormula,
-    showButtonConvertir
+    showDivConvertir,
+    cantidadDisponibleConvertidorLotes,
+    cantidadConvertirConvertidorLotes
   } = useSelector((state) => state.inventory);
 
   const { bodegasInventory } = useSelector(state => state.bodegas);
@@ -101,6 +108,60 @@ export const InventoryBodyFormulaLotes = () => {
 
   }
 
+  const handleGetCantidadCalcular = () => {
+
+    const requestCalcular = {
+      idArticuloPrincipal: inventory.codigo,
+      idLote,
+      idArticulo: idArticuloFormula,
+      idBodega,
+      convertirCantidad: false,
+      cantidadConvertir: 0
+    }
+
+    dispatch( startCalculateCantidadDisponiblesConvertidorLotesInventory(requestCalcular) );
+
+  }
+
+  const handleConvetirCantidad = () => {
+
+    if( cantidadDisponibleConvertidorLotes == 0) {
+
+      Swal.fire({
+        icon: "warning",
+        title: "Error",
+        text: "La cantidad disponible a convertir es cero no se puede convertir.",
+      });
+
+      return;
+
+    }
+
+    if( cantidadConvertirConvertidorLotes == 0) {
+
+      Swal.fire({
+        icon: "warning",
+        title: "Error",
+        text: "La cantidad a convertir debe ser mayor a cero.",
+      });
+
+      return;
+
+    }
+
+    const requestConvertir = {
+      idArticuloPrincipal: inventory.codigo,
+      idLote,
+      idArticulo: idArticuloFormula,
+      idBodega,
+      convertirCantidad: true,
+      cantidadConvertir: cantidadConvertirConvertidorLotes
+    }
+
+    dispatch( startConvertirCantidadDisponiblesConvertidorLotesInventory(requestConvertir) );
+
+  }
+
   return (
     <>
       <div className="container-fluid mt-2">
@@ -123,7 +184,7 @@ export const InventoryBodyFormulaLotes = () => {
                   <select
                     name="tipo"
                     className="form-select"
-                    disabled={(disableInputs) ? disableInputs : (showButtonConvertir) ? true : false}
+                    disabled={(disableInputs) ? disableInputs : (showDivConvertir) ? true : false}
                     value={idArticuloFormula}
                     onChange={(e) =>
                       handleChangeInputArticle(e)
@@ -272,23 +333,81 @@ export const InventoryBodyFormulaLotes = () => {
                       <RiDeleteBin2Fill className="iconSize" />
                     </button>
                   </div>
-
-                  <div className="col-md-6">
-                    <button
-                        className={
-                          showButtonConvertir ? "btn btn-primary" : "btn btn-primary d-none"
-                        }
-                        disabled={disableInputs}
-                        // onClick={ handleConvertirCantidadDisponibles }
-                      >
-                        Convertir <VscGitPullRequestCreate className="iconSize" />
-                    </button>
-                  </div>
                   
                 </div>
                 <hr />
 
               </div>
+            </div>
+
+            <div className={ (showDivConvertir) ? 'row mb-2' : 'row mb-2 d-none' }>
+
+              <div className="col-md-3 mb-2">
+                <h5>Disponiles</h5>
+                <div className="input-group">
+                  <span className="input-group-text">
+                    <TbNumber className="iconSize" />
+                  </span>
+                  <input
+                    type="text"
+                    name="cantidad"
+                    className="form-control"
+                    placeholder="Cantidad"
+                    disabled={true}
+                    value={cantidadDisponibleConvertidorLotes}
+                  />
+                </div>
+              </div>
+
+              <div className="col-md-3 mb-2">
+                <div className="w-100 pt-4"></div>
+                <button
+                    className={
+                      disableInputs ? "btn btn-primary disabled" : "btn btn-primary"
+                    }
+                    disabled={disableInputs}
+                    onClick={ handleGetCantidadCalcular }
+                  >
+                    Calcular <FaCalculator className="iconSize" />
+                </button>
+              </div>
+
+              <div className="col-md-3 mb-2">
+                <h5>Convertir</h5>
+                <div className="input-group">
+                  <span className="input-group-text">
+                    <TbNumber className="iconSize" />
+                  </span>
+                  <input
+                    type="number"
+                    name="codigo"
+                    className="form-control"
+                    placeholder="Cantidades a Convertir"
+                    disabled={disableInputs}
+                    value={ cantidadConvertirConvertidorLotes }
+                    onChange={(e) => 
+                      handleInputChangeWithDispatch(
+                        e,
+                        SetCantidadConvertirConvertidorLotesIntentory
+                      )
+                    }
+                  />
+                </div>
+              </div>
+
+              <div className="col-md-3 mb-2">
+                <div className="w-100 pt-4"></div>
+                <button
+                    className={
+                      disableInputs ? "btn btn-success disabled" : "btn btn-success"
+                    }
+                    disabled={disableInputs}
+                    onClick={ handleConvetirCantidad }
+                  >
+                    Convertir <VscGitPullRequestCreate className="iconSize" />
+                </button>
+              </div>
+
             </div>
 
             <div className="row mb-2">

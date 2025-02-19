@@ -8,7 +8,7 @@ import {
   SetIdArticuloFormulaLotesInventory,
   SetIdBodegaFormulaLotesInventory,
   SetIdLoteFormulaLotesInventory,
-  SetShowButtonConvertirLotesFormulaInventory
+  SetShowDivConvertirLotesFormulaInventory
 } from "../../../../actions/inventory";
 
 export const InventoryBodyFormulaLotesTable = ({ columns, data }) => {
@@ -40,7 +40,7 @@ export const InventoryBodyFormulaLotesTable = ({ columns, data }) => {
       dispatch( SetIdLoteFormulaLotesInventory( idLote ) );
       dispatch( SetIdBodegaFormulaLotesInventory( idBodega ) );
       dispatch( SetDisableInputsLotesFormulaInventory( true ) );
-      dispatch( SetShowButtonConvertirLotesFormulaInventory( true ) );
+      dispatch( SetShowDivConvertirLotesFormulaInventory( true ) );
       
     }
   };

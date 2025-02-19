@@ -2155,6 +2155,141 @@ export const startGetLotesByArticleFormula = (codigoPrincipal) => {
 
 }
 
+export const startCalculateCantidadDisponiblesConvertidorLotesInventory = ( requestCalcular ) => {
+   
+    return async ( dispatch ) => {
+
+        try {
+
+            //Mostrar el loading
+            Swal.fire({
+                title: 'Por favor, espere',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                imageUrl: loadingImage,
+                customClass: 'alert-class-login',
+                imageHeight: 100,
+            });
+    
+            //Call end-point 
+            const { data } = await suvesaApi.post(`/CalculadoraProduccionLotes/CalculadoraCantidadesObtenerLote`, requestCalcular);
+            const { status, responses } = data;
+            
+            // Cerrar modal
+            Swal.close();
+
+            if( status === 0 ) {
+                
+                // Insertar en el state
+                dispatch( SetCantidadDisponiblesConvertidorLotesIntentory( responses ) );
+
+
+            } else {
+    
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
+                
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
+    
+            }
+
+        } catch (error) {
+            
+            Swal.close();
+            console.log(error);
+            if( error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al obtener las cantidades disponibles por lotes',
+                });
+            }
+        }
+    }
+}
+
+export const startConvertirCantidadDisponiblesConvertidorLotesInventory = ( requestConvertir ) => {
+   
+    return async ( dispatch ) => {
+
+        try {
+
+            //Mostrar el loading
+            Swal.fire({
+                title: 'Por favor, espere',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                imageUrl: loadingImage,
+                customClass: 'alert-class-login',
+                imageHeight: 100,
+            });
+    
+            //Call end-point 
+            const { data } = await suvesaApi.post(`/CalculadoraProduccionLotes/CalculadoraCantidadesObtenerLote`, requestConvertir);
+            const { status } = data;
+            
+            // Cerrar modal
+            Swal.close();
+
+            if( status === 0 ) {
+                
+                await GetStockArticulo(dispatch, requestConvertir.idArticuloPrincipal);
+                
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Convertidor',
+                    text: `Se convertido la cantidad ${Cantidad} correctamente.`
+                });
+
+
+            } else {
+    
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
+                
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
+    
+            }
+
+        } catch (error) {
+            
+            Swal.close();
+            console.log(error);
+            if( error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al obtener las convertir disponibles por lotes',
+                });
+            }
+        }
+    }
+}
+
 // Functions
 const CalculatePreciosVenta = ( base, flete, otroC, impuesto, pre ) => {
 
@@ -3479,7 +3614,17 @@ export const SetLotesFormulaInventory = (value) => ({
     payload: value
 })
 
-export const SetShowButtonConvertirLotesFormulaInventory = (value) => ({
-    type: types.SetShowButtonConvertirLotesFormulaInventory,
+export const SetShowDivConvertirLotesFormulaInventory = (value) => ({
+    type: types.SetShowDivConvertirLotesFormulaInventory,
+    payload: value
+})
+
+export const SetCantidadDisponiblesConvertidorLotesIntentory = (value) => ({
+    type: types.SetCantidadDisponiblesConvertidorLotesIntentory,
+    payload: value
+})
+
+export const SetCantidadConvertirConvertidorLotesIntentory = (value) => ({
+    type: types.SetCantidadConvertirConvertidorLotesIntentory,
     payload: value
 })

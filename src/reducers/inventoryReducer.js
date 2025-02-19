@@ -142,7 +142,9 @@ const initialState = {
     lotesByArticleFormula: [],
     disableInputsLotesFormula: false,
     lotesFormula: [],
-    showButtonConvertir: false,
+    showDivConvertir: false,
+    cantidadDisponibleConvertidorLotes: 0,
+    cantidadConvertirConvertidorLotes: 0,
     inventory: {
         codigo: null,
         cod_Articulo: null,
@@ -1311,7 +1313,9 @@ export const InventoryReducer = (state = initialState, action) => {
                 lotesByArticleFormula: [],
                 disableInputsLotesFormula: false,
                 lotesFormula: [],
-                showButtonConvertir: false,
+                showDivConvertir: false,
+                cantidadDisponibleConvertidorLotes: 0,
+                cantidadConvertirConvertidorLotes: 0,
             }
 
         case types.IsNewInventory:
@@ -2430,10 +2434,22 @@ export const InventoryReducer = (state = initialState, action) => {
                 ]
             }
 
-        case types.SetShowButtonConvertirLotesFormulaInventory:
+        case types.SetShowDivConvertirLotesFormulaInventory:
             return {
                 ...state,
-                showButtonConvertir: action.payload
+                showDivConvertir: action.payload
+            }
+
+        case types.SetCantidadDisponiblesConvertidorLotesIntentory:
+            return {
+                ...state,
+                cantidadDisponibleConvertidorLotes: action.payload
+            }
+
+        case types.SetCantidadConvertirConvertidorLotesIntentory:
+            return {
+                ...state,
+                cantidadConvertirConvertidorLotes: action.payload
             }
             
 
