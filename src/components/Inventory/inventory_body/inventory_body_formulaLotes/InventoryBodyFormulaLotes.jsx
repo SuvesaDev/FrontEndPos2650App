@@ -19,10 +19,12 @@ import {
   SetIdBodegaFormulaLotesInventory, 
   SetIdLoteFormulaLotesInventory,
   SetLotesFormulaInventory,
+  SetShowDivConvertirLotesFormulaInventory,
   startCalculateCantidadDisponiblesConvertidorLotesInventory,
   startConvertirCantidadDisponiblesConvertidorLotesInventory,
   startGetLotesByArticleFormula
 } from "../../../../actions/inventory";
+import { useEffect } from "react";
 
 export const InventoryBodyFormulaLotes = () => {
 
@@ -41,6 +43,20 @@ export const InventoryBodyFormulaLotes = () => {
     cantidadConvertirConvertidorLotes
   } = useSelector((state) => state.inventory);
 
+  useEffect(() => {
+    
+    if( lotesFormula.length == 0 && formulaArticlesInventory.length == 0 ) {
+      dispatch( SetShowDivConvertirLotesFormulaInventory( false ) );
+      return;
+    }
+
+    if( lotesFormula.length == formulaArticlesInventory.length ){
+      dispatch( SetShowDivConvertirLotesFormulaInventory( true ) );
+    }
+  
+  }, [lotesFormula]);
+  
+
   const { bodegasInventory } = useSelector(state => state.bodegas);
 
   const { idArticuloFormula, idLote, idBodega } = formulaLotes;
@@ -49,10 +65,6 @@ export const InventoryBodyFormulaLotes = () => {
     {
       Header: "Artículo",
       accessor: "articulo",
-    },
-    {
-      Header: "Stock Lote",
-      accessor: "stockLote",
     },
     {
       Header: "Vencimiento",
@@ -76,7 +88,7 @@ export const InventoryBodyFormulaLotes = () => {
   }
 
   const handleAddLotesFormula = () => {
-
+    
     if( idArticuloFormula == 0 || idLote == 0 || idBodega == 0) {
 
       Swal.fire({
@@ -89,7 +101,21 @@ export const InventoryBodyFormulaLotes = () => {
 
     }
 
-    const articuloSeleted = formulaArticlesInventory.find( articulo => articulo.codigo = idArticuloFormula );
+    const articuloSeleted = formulaArticlesInventory.find( articulo => articulo.codigo == idArticuloFormula );
+
+    const existArticle = lotesFormula.find( lotForm => lotForm.idArticuloFormula === idArticuloFormula );
+    if( existArticle != undefined || existArticle != null ){
+      Swal.fire({
+        icon: "warning",
+        title: "Error",
+        text: `El artículo ${articuloSeleted.codigo} - ${articuloSeleted.descripcion} ya se encuentra registrado.`,
+      });
+
+      dispatch( CleanInputsFormulaLotesInventory() );
+
+      return;
+    }
+
     const loteSeleted = lotesByArticleFormula.find( lot => lot.id = idLote );
 
     const loteFormula = {
@@ -112,11 +138,15 @@ export const InventoryBodyFormulaLotes = () => {
 
     const requestCalcular = {
       idArticuloPrincipal: inventory.codigo,
-      idLote,
-      idArticulo: idArticuloFormula,
-      idBodega,
       convertirCantidad: false,
-      cantidadConvertir: 0
+      cantidadConvertir: 0,
+      listaDeLotes: lotesFormula.map( lotFor => {
+        return {
+          idLote: lotFor.idLote,
+          idArticulo: lotFor.idArticuloFormula,
+          idBodega: lotFor.idBodega
+        }
+      })
     }
 
     dispatch( startCalculateCantidadDisponiblesConvertidorLotesInventory(requestCalcular) );
@@ -151,11 +181,15 @@ export const InventoryBodyFormulaLotes = () => {
 
     const requestConvertir = {
       idArticuloPrincipal: inventory.codigo,
-      idLote,
-      idArticulo: idArticuloFormula,
-      idBodega,
       convertirCantidad: true,
-      cantidadConvertir: cantidadConvertirConvertidorLotes
+      cantidadConvertir: cantidadConvertirConvertidorLotes,
+      listaDeLotes: lotesFormula.map( lotFor => {
+        return {
+          idLote: lotFor.idLote,
+          idArticulo: lotFor.idArticuloFormula,
+          idBodega: lotFor.idBodega
+        }
+      })
     }
 
     dispatch( startConvertirCantidadDisponiblesConvertidorLotesInventory(requestConvertir) );
@@ -221,7 +255,7 @@ export const InventoryBodyFormulaLotes = () => {
                   <select
                     name="tipo"
                     className="form-select"
-                    disabled={(disableInputs) ? disableInputs : disableInputsLotesFormula}
+                    disabled={(disableInputs) ? disableInputs : (showDivConvertir) ? true : disableInputsLotesFormula}
                     value={idLote}
                     onChange={(e) =>
                       handleInputChangeWithDispatch(
@@ -260,7 +294,7 @@ export const InventoryBodyFormulaLotes = () => {
                   <select
                     name="tipo"
                     className="form-select"
-                    disabled={(disableInputs) ? disableInputs : disableInputsLotesFormula}
+                    disabled={(disableInputs) ? disableInputs : (showDivConvertir) ? true : disableInputsLotesFormula}
                     value={idBodega}
                     onChange={(e) =>
                       handleInputChangeWithDispatch(
@@ -300,7 +334,7 @@ export const InventoryBodyFormulaLotes = () => {
                       //     ? "btn btn-warning"
                       //     : "btn btn-success"
                       // }
-                      disabled={(disableInputs) ? disableInputs : disableInputsLotesFormula}
+                      disabled={(disableInputs) ? disableInputs : (showDivConvertir) ? true : disableInputsLotesFormula}
                       onClick={handleAddLotesFormula}
                       // onClick={
                       //   isEditPriceSell ? handleEditPrecio : handleSavePrecio

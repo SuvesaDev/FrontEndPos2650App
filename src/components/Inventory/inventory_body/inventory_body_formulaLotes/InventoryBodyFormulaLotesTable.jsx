@@ -31,18 +31,18 @@ export const InventoryBodyFormulaLotesTable = ({ columns, data }) => {
 
   const handleSelectedRow = async (cell) => {
 
-    if (!isInventoryDisable) {
+    // if (!isInventoryDisable) {
 
-      //Obtiene el seleccionado
-      const { idArticuloFormula, idLote, idBodega } = cell.row.original;
+    //   //Obtiene el seleccionado
+    //   const { idArticuloFormula, idLote, idBodega } = cell.row.original;
 
-      dispatch( SetIdArticuloFormulaLotesInventory( idArticuloFormula ) );
-      dispatch( SetIdLoteFormulaLotesInventory( idLote ) );
-      dispatch( SetIdBodegaFormulaLotesInventory( idBodega ) );
-      dispatch( SetDisableInputsLotesFormulaInventory( true ) );
-      dispatch( SetShowDivConvertirLotesFormulaInventory( true ) );
+    //   dispatch( SetIdArticuloFormulaLotesInventory( idArticuloFormula ) );
+    //   dispatch( SetIdLoteFormulaLotesInventory( idLote ) );
+    //   dispatch( SetIdBodegaFormulaLotesInventory( idBodega ) );
+    //   dispatch( SetDisableInputsLotesFormulaInventory( true ) );
+    //   dispatch( SetShowDivConvertirLotesFormulaInventory( true ) );
       
-    }
+    // }
   };
 
   return (

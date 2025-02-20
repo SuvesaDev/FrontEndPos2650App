@@ -2251,7 +2251,7 @@ export const startConvertirCantidadDisponiblesConvertidorLotesInventory = ( requ
                 Swal.fire({
                     icon: 'success',
                     title: 'Convertidor',
-                    text: `Se convertido la cantidad ${Cantidad} correctamente.`
+                    text: `Se convertido la cantidad ${requestConvertir.cantidadConvertir} correctamente.`
                 });
 
 
@@ -2312,7 +2312,7 @@ const CalculatePreciosVenta = ( base, flete, otroC, impuesto, pre ) => {
 const GetStockArticulo = async ( dispatch, idInventario ) => {
 
     try {
-
+        
         //Call end-point
         const resp = await suvesaApi.post(`/Stocks/ExistenciaArticuloCostaPets?id=${idInventario}&tipo=1`);
         const { status, responses } = resp.data;
