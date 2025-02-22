@@ -156,7 +156,7 @@ export const startEditInventory = ( inventory, relatedArticle ) => {
             confirmButtonText: 'Editar',
             denyButtonText: `Cancelar`,
         }).then(async (result) => {
-
+            
             try {
 
                 var resultRelatedArticle = null;
@@ -174,7 +174,7 @@ export const startEditInventory = ( inventory, relatedArticle ) => {
                         customClass: 'alert-class-login',
                         imageHeight: 100,
                     });
-                    console.log(inventory.toJson());
+                    
                     //Call end-point 
                     const { data } = await suvesaApi.post('/inventario/Actualizar', inventory.toJson() );
                     const { status } = data;
@@ -648,6 +648,8 @@ export const startDeleteRelatedArticle = ( codigoPrincipal, codigoArticuloRelaci
 
                         //Is Seleted related article false
                         dispatch( IsSelectedRelatedArticleInventory( false ) );
+
+                        dispatch( CleanInputsRelatedArticleInventory() );
 
                         //Si es correcta entonces mostrar un mensaje de afirmacion
                         Swal.fire({
@@ -1451,7 +1453,7 @@ export const startUpdateArticleRelatedInventory = ( codigoPrincipal, codigoArtic
 
                         Swal.fire({
                             icon: 'success',
-                            title: 'Stock',
+                            title: 'Articulo Relacionado',
                             text: `Se cambio el artículo relacionado correctamente.`,
                             timer: 1000,
                             showConfirmButton: false
@@ -1543,7 +1545,7 @@ export const startUpdateArticleFormulaInventory = ( codigoPrincipal, codigoArtic
 
                         Swal.fire({
                             icon: 'success',
-                            title: 'Stock',
+                            title: 'Articulos Formula',
                             text: `Se cambio el artículo formula correctamente.`,
                             timer: 1000,
                             showConfirmButton: false
@@ -1631,6 +1633,8 @@ export const startDeleteFormulaArticle = ( codigoPrincipal, codigoArticuloRelaci
 
                         //Is Seleted related article false
                         dispatch( SetIsSelectedFormulaArticleInventory( false ) );
+
+                        dispatch( CleanInputsFormulaArticleInventory() );
 
                         //Si es correcta entonces mostrar un mensaje de afirmacion
                         Swal.fire({
@@ -1810,7 +1814,12 @@ export const startSaveLote = ( lote, codArticulo) => {
 
                 if( data.status === 0 ) {
 
-                    dispatch( SetLotesInventory(lote) );
+                    const newLote = {
+                        ...lote,
+                        id
+                    }
+
+                    dispatch( SetLotesInventory(newLote) );
                     dispatch( SetIdLotesInventory(id) );
                     dispatch( CleanInputsLotesInventory() );
 

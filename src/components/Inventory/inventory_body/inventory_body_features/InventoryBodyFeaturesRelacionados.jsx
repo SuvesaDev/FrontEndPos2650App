@@ -9,7 +9,9 @@ import { TbNotes, TbNumber } from "react-icons/tb";
 import {
   CleanInputsRelatedArticleInventory,
   IsOpenSearchModalRelacionados,
+  IsSelectedRelatedArticleInventory,
   OpenSearchModalInventory,
+  RemoveRelatedArticleInventory,
   SetCantidadRelatedArticleInventory,
   SetCodigoRelatedArticleInventory,
   SetDescripcionRelatedArticleInventory,
@@ -104,11 +106,25 @@ export const InventoryBodyFeaturesRelacionados = () => {
 
     if (cantidad === 0) return;
 
-      if (cod_Articulo !== null) {
+    const seletedArticle = relatedArticlesInventory.find( art => art.codigo == codigo );
 
-        dispatch( startUpdateArticleRelatedInventory(inventory.codigo, codigo, cantidad, true) );
-        
+    if( seletedArticle != null ) {
+      if( seletedArticle.id == 0 ) {
+        Swal.fire({
+          icon: "warning",
+          title: "Advertencia",
+          text: "El articulo relacionado aun no se ha registrado en base de datos, por favor guardarlo antes de editar.",
+        });
+
+        return;
       }
+    }
+
+    if (cod_Articulo !== null) {
+
+      dispatch( startUpdateArticleRelatedInventory(inventory.codigo, codigo, cantidad, true) );
+      
+    }
   };
 
   const handleRemoveRelatedArticle = (e) => {
@@ -116,6 +132,22 @@ export const InventoryBodyFeaturesRelacionados = () => {
     e.preventDefault();
 
     if (cantidad === 0) return;
+
+    const seletedArticle = relatedArticlesInventory.find( art => art.codigo == codigo );
+    
+    if( seletedArticle != null ) {
+      if( seletedArticle.id == 0 ) {
+        //Delete data in array
+        dispatch( RemoveRelatedArticleInventory( codigo ) );
+
+        //Is Seleted related article false
+        dispatch( IsSelectedRelatedArticleInventory( false ) );
+
+        dispatch( CleanInputsRelatedArticleInventory() );
+
+        return;
+      }
+    }
 
       if (cod_Articulo !== null) {
 

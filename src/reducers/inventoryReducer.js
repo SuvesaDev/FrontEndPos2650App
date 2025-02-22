@@ -1316,6 +1316,12 @@ export const InventoryReducer = (state = initialState, action) => {
                 showDivConvertir: false,
                 cantidadDisponibleConvertidorLotes: 0,
                 cantidadConvertirConvertidorLotes: 0,
+                relatedArticles: {
+                    codigo: '',
+                    cod_Articulo: '',
+                    descripcion: '',
+                    cantidad: 0,
+                },
             }
 
         case types.IsNewInventory:
