@@ -1171,6 +1171,7 @@ export const InventoryReducer = (state = initialState, action) => {
                     codMarca: "",
                     minima: "",
                     puntoMedio: "",
+                    subFamilia: null,
                     maxima: "",
                     existencia: 0,
                     subUbicacion: "",

@@ -116,6 +116,11 @@ export const InventoryBodyFeaturesRelacionados = () => {
           text: "El articulo relacionado aun no se ha registrado en base de datos, por favor guardarlo antes de editar.",
         });
 
+        //Is Seleted related article false
+        dispatch( IsSelectedRelatedArticleInventory( false ) );
+
+        dispatch( CleanInputsRelatedArticleInventory() );
+
         return;
       }
     }
