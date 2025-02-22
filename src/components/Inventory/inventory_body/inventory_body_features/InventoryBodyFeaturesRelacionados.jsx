@@ -15,6 +15,7 @@ import {
   SetCantidadRelatedArticleInventory,
   SetCodigoRelatedArticleInventory,
   SetDescripcionRelatedArticleInventory,
+  SetEditRelatedArticleInventory,
   SetRelatedArticleInventory,
   startDeleteRelatedArticle,
   startUpdateArticleRelatedInventory,
@@ -110,11 +111,11 @@ export const InventoryBodyFeaturesRelacionados = () => {
 
     if( seletedArticle != null ) {
       if( seletedArticle.id == 0 ) {
-        Swal.fire({
-          icon: "warning",
-          title: "Advertencia",
-          text: "El articulo relacionado aun no se ha registrado en base de datos, por favor guardarlo antes de editar.",
-        });
+
+        dispatch( SetEditRelatedArticleInventory({
+            codigo,
+            cantidad
+        }));
 
         //Is Seleted related article false
         dispatch( IsSelectedRelatedArticleInventory( false ) );
