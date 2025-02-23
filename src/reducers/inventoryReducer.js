@@ -125,6 +125,26 @@ const initialState = {
     codigoPadreSelected: 0,
     isDisableInputStock: true,
     lastStockUpdated: 0,
+    isArticleRelated: false,
+    lotes: {
+        id: 0,
+        lote: '',
+        vencimiento: '',
+        existencia: 0
+    },
+    isSeletedLotes: false,
+    LotesInventory: [],
+    formulaLotes: {
+        idArticuloFormula: 0,
+        idLote: 0,
+        idBodega: 0
+    },
+    lotesByArticleFormula: [],
+    disableInputsLotesFormula: false,
+    lotesFormula: [],
+    showDivConvertir: false,
+    cantidadDisponibleConvertidorLotes: 0,
+    cantidadConvertirConvertidorLotes: 0,
     inventory: {
         codigo: null,
         cod_Articulo: null,
@@ -1151,6 +1171,7 @@ export const InventoryReducer = (state = initialState, action) => {
                     codMarca: "",
                     minima: "",
                     puntoMedio: "",
+                    subFamilia: null,
                     maxima: "",
                     existencia: 0,
                     subUbicacion: "",
@@ -1276,7 +1297,32 @@ export const InventoryReducer = (state = initialState, action) => {
                 isOpenSearchModalFormula: false,
                 codigoPadreSelected: 0,
                 isDisableInputStock: true,
-                lastStockUpdated: 0
+                lastStockUpdated: 0,
+                lotes: {
+                    id: 0,
+                    lote: '',
+                    vencimiento: '',
+                    existencia: 0
+                },
+                isSeletedLotes: false,
+                LotesInventory: [],
+                formulaLotes: {
+                    idArticuloFormula: 0,
+                    idLote: 0,
+                    idBodega: 0
+                },
+                lotesByArticleFormula: [],
+                disableInputsLotesFormula: false,
+                lotesFormula: [],
+                showDivConvertir: false,
+                cantidadDisponibleConvertidorLotes: 0,
+                cantidadConvertirConvertidorLotes: 0,
+                relatedArticles: {
+                    codigo: '',
+                    cod_Articulo: '',
+                    descripcion: '',
+                    cantidad: 0,
+                },
             }
 
         case types.IsNewInventory:
@@ -1599,6 +1645,19 @@ export const InventoryReducer = (state = initialState, action) => {
                 ]
             }
 
+        case types.SetEditRelatedArticleInventory:
+            return {
+                ...state,
+                relatedArticlesInventory: state.relatedArticlesInventory.map(
+                    (related, i) => related.codigo == action.payload.codigo
+                        ? {
+                            ...related,
+                            cantidad : action.payload.cantidad
+                        } 
+                        : related
+                )
+            }
+
         case types.CleanInputsRelatedArticleInventory:
             return {
                 ...state,
@@ -1626,9 +1685,7 @@ export const InventoryReducer = (state = initialState, action) => {
             return {
                 ...state,
                 relatedArticlesInventory: state.relatedArticlesInventory.filter(
-                    article => article.codigo !== action.payload.codigo
-                        && article.descripcion !== action.payload.descripcion
-                        && article.cantidad !== action.payload.cantidad)
+                    article => article.codigo !== action.payload)
             }
 
         case types.SetArrayRelatedArticleInventory:
@@ -2145,6 +2202,12 @@ export const InventoryReducer = (state = initialState, action) => {
                 },
             }
 
+        case types.SetIsSelectedFormulaArticleInventory:
+            return {
+                ...state,
+                isSeletedFormulaArticles: action.payload
+            }
+
         case types.SetFormulaArticleInventory:
             return {
                 ...state,
@@ -2152,6 +2215,26 @@ export const InventoryReducer = (state = initialState, action) => {
                     ...state.formulaArticlesInventory,
                     action.payload
                 ]
+            }
+
+        case types.SetEditFormulaArticleInventory:
+            return {
+                ...state,
+                formulaArticlesInventory: state.formulaArticlesInventory.map(
+                    (formula, i) => formula.codigo == action.payload.codigo
+                        ? {
+                            ...formula,
+                            cantidad : action.payload.cantidad
+                        } 
+                        : formula
+                )
+            }
+
+        case types.RemoveFormulaArticleInventory:
+            return {
+                ...state,
+                formulaArticlesInventory: state.formulaArticlesInventory.filter(
+                    article => article.codigo != action.payload)
             }
 
         case types.CleanInputsFormulaArticleInventory:
@@ -2204,6 +2287,178 @@ export const InventoryReducer = (state = initialState, action) => {
                 ...state,
                 formulaArticlesInventory: action.payload
             }
+
+        case types.SetIsArticleRelatedInventory:
+            return {
+                ...state,
+                isArticleRelated: action.payload
+            }
+
+        case types.SetIdLotesInventory:
+            return {
+                ...state,
+                lotes: {
+                    ...state.lotes,
+                    id: action.payload
+                },
+            }
+
+        case types.SetNumLoteLotesInventory:
+            return {
+                ...state,
+                lotes: {
+                    ...state.lotes,
+                    lote: action.payload
+                },
+            }
+
+        case types.SetVencimientoLotesInventory:
+            return {
+                ...state,
+                lotes: {
+                    ...state.lotes,
+                    vencimiento: action.payload
+                },
+            }
+
+        case types.SetExistenciaLotesInventory:
+            return {
+                ...state,
+                lotes: {
+                    ...state.lotes,
+                    existencia: action.payload
+                },
+            }
+
+        case types.SetIsSelectedLoteInventory:
+            return {
+                ...state,
+                isSeletedLotes: action.payload
+            }
+
+        case types.SetLotesInventory:
+            return {
+                ...state,
+                LotesInventory: [
+                    ...state.LotesInventory,
+                    action.payload
+                ]
+            }
+
+        case types.SetArrayLotesInventory:
+            return {
+                ...state,
+                LotesInventory: action.payload
+            }
+
+        case types.SetEditLotesInventory:
+            return {
+                ...state,
+                LotesInventory: state.LotesInventory.map(
+                    (lote, i) => lote.id == action.payload.id
+                        ? {
+                            ...lote,
+                            lote: action.payload.lote,
+                            vencimiento: action.payload.vencimiento,
+                            existencia : action.payload.existencia
+                        } 
+                        : lote
+                )
+            }
+
+        case types.RemoveLotesInventory:
+            return {
+                ...state,
+                LotesInventory: state.LotesInventory.filter(
+                    lote => lote.id != action.payload)
+            }
+
+        case types.CleanInputsLotesInventory:
+            return {
+                ...state,
+                lotes: {
+                    lote: '',
+                    vencimiento: '',
+                    existencia: 0
+                }
+            }
+
+        case types.SetIdArticuloFormulaLotesInventory:
+            return {
+                ...state,
+                formulaLotes: {
+                    ...state.formulaLotes,
+                    idArticuloFormula: action.payload
+                }
+            }
+
+        case types.SetIdLoteFormulaLotesInventory:
+            return {
+                ...state,
+                formulaLotes: {
+                    ...state.formulaLotes,
+                    idLote: action.payload
+                }
+            }
+
+        case types.SetIdBodegaFormulaLotesInventory:
+            return {
+                ...state,
+                formulaLotes: {
+                    ...state.formulaLotes,
+                    idBodega: action.payload
+                }
+            }
+
+        case types.CleanInputsFormulaLotesInventory:
+            return {
+                ...state,
+                formulaLotes: {
+                    idArticuloFormula: 0,
+                    idLote: 0,
+                    idBodega: 0
+                }
+            }
+
+        case types.SetLotesByArticleFormulaInventory:
+            return {
+                ...state,
+                lotesByArticleFormula: action.payload
+            }
+
+        case types.SetDisableInputsLotesFormulaInventory:
+            return {
+                ...state,
+                disableInputsLotesFormula: action.payload
+            }
+
+        case types.SetLotesFormulaInventory:
+            return {
+                ...state,
+                lotesFormula: [
+                    ...state.lotesFormula,
+                    action.payload
+                ]
+            }
+
+        case types.SetShowDivConvertirLotesFormulaInventory:
+            return {
+                ...state,
+                showDivConvertir: action.payload
+            }
+
+        case types.SetCantidadDisponiblesConvertidorLotesIntentory:
+            return {
+                ...state,
+                cantidadDisponibleConvertidorLotes: action.payload
+            }
+
+        case types.SetCantidadConvertirConvertidorLotesIntentory:
+            return {
+                ...state,
+                cantidadConvertirConvertidorLotes: action.payload
+            }
+            
 
         default:
             return state;

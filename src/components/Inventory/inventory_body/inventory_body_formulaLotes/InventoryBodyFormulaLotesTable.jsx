@@ -1,25 +1,21 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useTable } from "react-table";
+
 import {
-  IsSelectedRelatedArticleInventory,
-  SelectedRelatedArticleInventory,
-  SetCantidadRelatedArticleInventory,
-  SetCodigoArtRelatedArticleInventory,
-  SetCodigoRelatedArticleInventory,
-  SetDescripcionRelatedArticleInventory,
+  SetDisableInputsLotesFormulaInventory,
+  SetIdArticuloFormulaLotesInventory,
+  SetIdBodegaFormulaLotesInventory,
+  SetIdLoteFormulaLotesInventory,
+  SetShowDivConvertirLotesFormulaInventory
 } from "../../../../actions/inventory";
 
-export const InventoryBodyFeaturesRelacionadosTable = ({ columns, data }) => {
+export const InventoryBodyFormulaLotesTable = ({ columns, data }) => {
+
   const dispatch = useDispatch();
 
-  const {
-    relatedArticlesInventory,
-    seletedrelatedArticles,
-    isInventoryDisable,
-  } = useSelector((state) => state.inventory);
-
-  const { codigo, descripcion, cantidad } = seletedrelatedArticles;
+  const { isInventoryDisable } = useSelector((state) => state.inventory);
 
   const {
     getTableProps,
@@ -34,31 +30,19 @@ export const InventoryBodyFeaturesRelacionadosTable = ({ columns, data }) => {
   });
 
   const handleSelectedRow = async (cell) => {
-    if (!isInventoryDisable) {
-      // Obtiene el price seleccionado
-      const { codigo, descripcion, cantidad } = cell.row.values;
 
-      // Searcha articleRelated
-      const articleRelated = relatedArticlesInventory.find(
-        (article) =>
-          article.codigo === codigo &&
-          article.descripcion === descripcion &&
-          article.cantidad === cantidad
-      );
+    // if (!isInventoryDisable) {
 
-      if (articleRelated != undefined) {
+    //   //Obtiene el seleccionado
+    //   const { idArticuloFormula, idLote, idBodega } = cell.row.original;
 
-        dispatch( IsSelectedRelatedArticleInventory(true) );
-
-        dispatch( SelectedRelatedArticleInventory(articleRelated) );
-
-        dispatch( SetCodigoRelatedArticleInventory(articleRelated.codigo) );
-        dispatch( SetCodigoArtRelatedArticleInventory(articleRelated.codArticulo) );
-        dispatch( SetDescripcionRelatedArticleInventory(articleRelated.descripcion) );
-        dispatch( SetCantidadRelatedArticleInventory(articleRelated.cantidad) );
-
-      }
-    }
+    //   dispatch( SetIdArticuloFormulaLotesInventory( idArticuloFormula ) );
+    //   dispatch( SetIdLoteFormulaLotesInventory( idLote ) );
+    //   dispatch( SetIdBodegaFormulaLotesInventory( idBodega ) );
+    //   dispatch( SetDisableInputsLotesFormulaInventory( true ) );
+    //   dispatch( SetShowDivConvertirLotesFormulaInventory( true ) );
+      
+    // }
   };
 
   return (
@@ -85,7 +69,9 @@ export const InventoryBodyFeaturesRelacionadosTable = ({ columns, data }) => {
             {rows.map((row, i) => {
               prepareRow(row);
               return (
-                <tr {...row.getRowProps()}>
+                <tr
+                  {...row.getRowProps()}
+                >
                   {row.cells.map((cell) => {
                     return (
                       <td

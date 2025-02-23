@@ -1,25 +1,22 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useTable } from "react-table";
+
 import {
-  IsSelectedRelatedArticleInventory,
-  SelectedRelatedArticleInventory,
-  SetCantidadRelatedArticleInventory,
-  SetCodigoArtRelatedArticleInventory,
-  SetCodigoRelatedArticleInventory,
-  SetDescripcionRelatedArticleInventory,
+  SetExistenciaLotesInventory,
+  SetIdLotesInventory,
+  SetIsSelectedLoteInventory,
+  SetNumLoteLotesInventory,
+  SetVencimientoLotesInventory,
 } from "../../../../actions/inventory";
 
-export const InventoryBodyFeaturesRelacionadosTable = ({ columns, data }) => {
+export const InventoryBodyFeaturesLotesTable = ({ columns, data }) => {
   const dispatch = useDispatch();
 
   const {
-    relatedArticlesInventory,
-    seletedrelatedArticles,
+    LotesInventory,
     isInventoryDisable,
   } = useSelector((state) => state.inventory);
-
-  const { codigo, descripcion, cantidad } = seletedrelatedArticles;
 
   const {
     getTableProps,
@@ -34,28 +31,28 @@ export const InventoryBodyFeaturesRelacionadosTable = ({ columns, data }) => {
   });
 
   const handleSelectedRow = async (cell) => {
+
     if (!isInventoryDisable) {
+
       // Obtiene el price seleccionado
-      const { codigo, descripcion, cantidad } = cell.row.values;
+      const { lote, vencimiento, existencia } = cell.row.values;
 
       // Searcha articleRelated
-      const articleRelated = relatedArticlesInventory.find(
-        (article) =>
-          article.codigo === codigo &&
-          article.descripcion === descripcion &&
-          article.cantidad === cantidad
+      const seletedLote = LotesInventory.find(
+        (lot) =>
+          lot.lote === lote &&
+          lot.vencimiento === vencimiento &&
+          lot.existencia === existencia
       );
 
-      if (articleRelated != undefined) {
+      if (seletedLote != undefined) {
 
-        dispatch( IsSelectedRelatedArticleInventory(true) );
+        dispatch( SetIsSelectedLoteInventory(true) );
 
-        dispatch( SelectedRelatedArticleInventory(articleRelated) );
-
-        dispatch( SetCodigoRelatedArticleInventory(articleRelated.codigo) );
-        dispatch( SetCodigoArtRelatedArticleInventory(articleRelated.codArticulo) );
-        dispatch( SetDescripcionRelatedArticleInventory(articleRelated.descripcion) );
-        dispatch( SetCantidadRelatedArticleInventory(articleRelated.cantidad) );
+        dispatch( SetIdLotesInventory(seletedLote.id) );
+        dispatch( SetNumLoteLotesInventory(seletedLote.lote) );
+        dispatch( SetVencimientoLotesInventory(seletedLote.vencimiento) );
+        dispatch( SetExistenciaLotesInventory(seletedLote.existencia) );
 
       }
     }

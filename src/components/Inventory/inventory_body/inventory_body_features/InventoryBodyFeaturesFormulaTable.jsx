@@ -3,19 +3,20 @@ import { useSelector, useDispatch } from "react-redux";
 import { useTable } from "react-table";
 import {
   IsSelectedRelatedArticleInventory,
-  SelectedRelatedArticleInventory,
+  SetCantidadFormulaArticleInventory,
+  SetCodigoArtFormulaArticleInventory,
+  SetCodigoFormulaArticleInventory,
+  SetDescripcionFormulaArticleInventory,
+  SetIsSelectedFormulaArticleInventory,
 } from "../../../../actions/inventory";
 
 export const InventoryBodyFeaturesFormulaTable = ({ columns, data }) => {
   const dispatch = useDispatch();
 
   const {
-    relatedArticlesInventory,
-    seletedrelatedArticles,
+    formulaArticlesInventory,
     isInventoryDisable,
   } = useSelector((state) => state.inventory);
-
-  const { codigo, descripcion, cantidad } = seletedrelatedArticles;
 
   const {
     getTableProps,
@@ -30,23 +31,29 @@ export const InventoryBodyFeaturesFormulaTable = ({ columns, data }) => {
   });
 
   const handleSelectedRow = async (cell) => {
-    // if (!isInventoryDisable) {
-    //   // Obtiene el price seleccionado
-    //   const { codigo, descripcion, cantidad } = cell.row.values;
+    if (!isInventoryDisable) {
 
-    //   // Searcha articleRelated
-    //   const articleRelated = relatedArticlesInventory.find(
-    //     (article) =>
-    //       article.codigo === codigo &&
-    //       article.descripcion === descripcion &&
-    //       article.cantidad === cantidad
-    //   );
+      // Obtiene el price seleccionado
+      const { codigo, descripcion, cantidad } = cell.row.values;
 
-    //   if (articleRelated != undefined) {
-    //     dispatch(IsSelectedRelatedArticleInventory(true));
-    //     dispatch(SelectedRelatedArticleInventory(articleRelated));
-    //   }
-    // }
+      // Searcha articleRelated
+      const articleformula = formulaArticlesInventory.find(
+        (article) =>
+          article.codigo === codigo &&
+          article.descripcion === descripcion &&
+          article.cantidad === cantidad
+      );
+
+      if (articleformula != undefined) {
+
+        dispatch( SetIsSelectedFormulaArticleInventory(true) );
+        
+        dispatch( SetCodigoFormulaArticleInventory(articleformula.codigo) );
+        dispatch( SetCodigoArtFormulaArticleInventory(articleformula.codArticulo) );
+        dispatch( SetDescripcionFormulaArticleInventory(articleformula.descripcion) );
+        dispatch( SetCantidadFormulaArticleInventory(articleformula.cantidad) );
+      }
+    }
   };
 
   return (

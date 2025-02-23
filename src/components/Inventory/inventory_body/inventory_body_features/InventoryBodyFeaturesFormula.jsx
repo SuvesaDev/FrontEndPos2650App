@@ -16,8 +16,10 @@ import {
   SetCodigoFormulaArticleInventory,
   SetDescripcionFormulaArticleInventory,
   SetFormulaArticleInventory,
+  startDeleteFormulaArticle,
   startDeleteRelatedArticle,
   startSaveArticleFormulaInventory,
+  startUpdateArticleFormulaInventory,
 } from "../../../../actions/inventory";
 
 import { InventoryBodyFeaturesFormulaTable } from "./InventoryBodyFeaturesFormulaTable";
@@ -32,7 +34,7 @@ export const InventoryBodyFeaturesFormula = () => {
     formulaArticles,
     formulaArticlesInventory,
     inventory,
-    isSeletedRelatedArticles,
+    isSeletedFormulaArticles,
     seletedrelatedArticles,
     isEditInventory,
     isInventoryDisable,
@@ -113,17 +115,29 @@ export const InventoryBodyFeaturesFormula = () => {
     }
   };
 
+  const handleEditRelatedArticle = (e) => {
+  
+      e.preventDefault();
+  
+      if (cantidad === 0) return;
+  
+        if (cod_Articulo !== null) {
+  
+          dispatch( startUpdateArticleFormulaInventory(inventory.codigo, codigo, cantidad, true) );
+          
+        }
+    };
+
   const handleDeleteRelatedArticle = (e) => {
     e.preventDefault();
 
-    // if (isSeletedRelatedArticles && isInventoryDisable) {
-    //   dispatch(
-    //     startDeleteRelatedArticle(
-    //       seletedrelatedArticles,
-    //       seletedrelatedArticles.id != 0 ? true : false
-    //     )
-    //   );
-    // }
+    if (cantidad === 0) return;
+
+      if (cod_Articulo !== null) {
+
+        dispatch( startDeleteFormulaArticle(inventory.codigo, codigo, cantidad, false) );
+        
+      }
   };
 
   return (
@@ -143,7 +157,7 @@ export const InventoryBodyFeaturesFormula = () => {
                 name="codigo"
                 className="form-control"
                 placeholder="Código Producto"
-                disabled={disableInputs}
+                disabled={ (isSeletedFormulaArticles) ? true : disableInputs}
                 value={codigo}
                 onChange={(e) =>
                   handleInputChangeWithDispatch(
@@ -154,7 +168,7 @@ export const InventoryBodyFeaturesFormula = () => {
               />
               <button
                 className={
-                  disableInputs ? "btn btn-primary disabled" : "btn btn-primary"
+                  disableInputs || isSeletedFormulaArticles ? "btn btn-primary disabled" : "btn btn-primary"
                 }
                 type="button"
                 onClick={handleSearchArticle}
@@ -227,18 +241,17 @@ export const InventoryBodyFeaturesFormula = () => {
                   disableInputs ? "btn btn-success disabled" : "btn btn-success"
                 }
                 disabled={disableInputs}
-                onClick={ handleSaveFormulaArticle }
+                onClick={  isSeletedFormulaArticles ? handleEditRelatedArticle : handleSaveFormulaArticle }
               >
-                Agregar <IoAddCircle className="iconSize" />
+                { isSeletedFormulaArticles ? 'Editar' : 'Agregar' } <IoAddCircle className="iconSize" />
               </button>
 
               <button
                 className={
-                  isSeletedRelatedArticles
-                    ? "btn btn-danger"
+                  (isSeletedFormulaArticles)
+                    ? "btn btn-danger "
                     : "btn btn-danger disabled"
                 }
-                disabled
                 onClick={handleDeleteRelatedArticle}
                 type="button"
               >

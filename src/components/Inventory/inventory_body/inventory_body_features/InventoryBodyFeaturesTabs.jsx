@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 
-import { SelectTabInventory } from "../../../../actions/inventory";
+import { SelectTabInventory, startGetStockLotesArticulo } from "../../../../actions/inventory";
 
 export const InventoryBodyFeaturesTabs = () => {
   const dispatch = useDispatch();
@@ -9,7 +9,9 @@ export const InventoryBodyFeaturesTabs = () => {
     currentTabInventory, 
     isShowTabCodigoBarras, 
     isEditInventory,
-    idTipoArticuloSelected
+    idTipoArticuloSelected,
+    isArticleRelated,
+    inventory
   } = useSelector( (state) => state.inventory );
 
   const { auth } = useSelector((state) => state.login);
@@ -18,6 +20,13 @@ export const InventoryBodyFeaturesTabs = () => {
   const handleSelectTabInventory = (nameTab) => {
     dispatch(SelectTabInventory(nameTab));
   };
+
+  const handleTabLotes = () => {
+
+    dispatch( SelectTabInventory("Lotes") );
+    dispatch( startGetStockLotesArticulo(inventory.codigo) );
+  }
+
 
   return (
     <>
@@ -178,11 +187,17 @@ export const InventoryBodyFeaturesTabs = () => {
 
             <button
             className={
-                currentTabInventory == "Lotes"
-                ? "btn btn-outline-primary activeP"
-                : "btn btn-primary"
+                (costaPets)
+                    ? (isArticleRelated)
+                        ? currentTabInventory == "Lotes"
+                            ? "btn btn-outline-primary activeP"
+                            : "btn btn-primary"
+                        : 'col-md-3 mb-3 d-none'
+                    : currentTabInventory == "Lotes"
+                        ? "btn btn-outline-primary activeP"
+                        : "btn btn-primary"
             }
-            onClick={() => handleSelectTabInventory("Lotes")}
+            onClick={handleTabLotes}
             >
             Lotes
             </button>

@@ -156,7 +156,7 @@ export const startEditInventory = ( inventory, relatedArticle ) => {
             confirmButtonText: 'Editar',
             denyButtonText: `Cancelar`,
         }).then(async (result) => {
-
+            
             try {
 
                 var resultRelatedArticle = null;
@@ -174,7 +174,7 @@ export const startEditInventory = ( inventory, relatedArticle ) => {
                         customClass: 'alert-class-login',
                         imageHeight: 100,
                     });
-                    console.log(inventory.toJson());
+                    
                     //Call end-point 
                     const { data } = await suvesaApi.post('/inventario/Actualizar', inventory.toJson() );
                     const { status } = data;
@@ -382,6 +382,9 @@ export const startGetOneInventory = ( codigo ) => {
                 
                 //seleccionarlo y meterlo al estado en el metodo de action
                 dispatch( SelectedSearchInventory( responses ) );
+
+                // Se indica si es articulo relacionado
+                dispatch( SetIsArticleRelatedInventory(responses.esRelacionado) );
                 
                 const { categorias, codigoBarras, descripcion } = responses;
                 const codArt = responses.cod_Articulo;
@@ -602,13 +605,13 @@ export const startGetOneInventory = ( codigo ) => {
     }
 }
 
-export const startDeleteRelatedArticle = ( relatedArticle, isRegister ) => {
+export const startDeleteRelatedArticle = ( codigoPrincipal, codigoArticuloRelacionado , Cantidad, Activo ) => {
 
     return async ( dispatch ) => {
 
         //Mostrar un mensaje de confirmacion
         Swal.fire({
-            title: `¿Desea eliminar el Artículo Relacionado con el código ${ relatedArticle.codigo }?`,
+            title: `¿Desea eliminar el Artículo Relacionado?`,
             showDenyButton: true,
             showCancelButton: false,
             confirmButtonText: 'Eliminar',
@@ -630,54 +633,43 @@ export const startDeleteRelatedArticle = ( relatedArticle, isRegister ) => {
                         imageHeight: 100,
                     });
                     
-                    if( isRegister ) {
 
-                        //Call end-point 
-                        const { data } = await suvesaApi.post('/articulosRelacionados/DesactivarArticulosRelacionados', { id: relatedArticle.id } );
-                        const { status } = data;
+                    //Call end-point 
+                    const { data } = await suvesaApi.put(`/articulosRelacionados/putArticuloRelacionado?codigoPrincipal=${codigoPrincipal}&codigoArticuloRelacionado=${codigoArticuloRelacionado}&Cantidad=${Cantidad}&Activo=${Activo}`);
+                    const { status } = data;
 
-                        //Quitar el loading
-                        Swal.close();
-                    
-                        if( status === 0) {
+                    //Quitar el loading
+                    Swal.close();
+                
+                    if( status === 0) {
 
-                            //Delete data in array
-                            dispatch( RemoveRelatedArticleInventory( relatedArticle ) );
-
-                            //Is Seleted related article false
-                            dispatch( IsSelectedRelatedArticleInventory( false ) );
-
-                            //Si es correcta entonces mostrar un mensaje de afirmacion
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Articulo Relacionado eliminado correctamente',
-                                showConfirmButton: false,
-                                timer: 2500
-                            });
-
-                        } else {
-                            //Caso contrario respuesta incorrecto mostrar mensaje de error
-                            const { currentException } = data;
-                            const msj = currentException.split(',');
-                            
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Error',
-                                text: (currentException.includes(',')) ? msj[3] : currentException,
-                            });
-                            
-                        }
-
-                    } else {
-
-                        //Call Action delete data in array
-                        dispatch( RemoveRelatedArticleInventory( relatedArticle ) );
+                        //Delete data in array
+                        dispatch( RemoveRelatedArticleInventory( codigoArticuloRelacionado ) );
 
                         //Is Seleted related article false
                         dispatch( IsSelectedRelatedArticleInventory( false ) );
 
-                        //Quitar el loading
-                        Swal.close();
+                        dispatch( CleanInputsRelatedArticleInventory() );
+
+                        //Si es correcta entonces mostrar un mensaje de afirmacion
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Articulo Relacionado eliminado correctamente',
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+
+                    } else {
+                        //Caso contrario respuesta incorrecto mostrar mensaje de error
+                        const { currentException } = data;
+                        const msj = currentException.split(',');
+                        
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: (currentException.includes(',')) ? msj[3] : currentException,
+                        });
+                        
                     }
                 
                 }
@@ -1414,6 +1406,899 @@ export const startSetStockInventory = ( Cantidad, codArticulo , CodBodega) => {
     }
 }
 
+export const startUpdateArticleRelatedInventory = ( codigoPrincipal, codigoArticuloRelacionado , Cantidad, Activo) => {
+   
+    return async ( dispatch ) => {
+
+        //Mostrar un mensaje de confirmacion
+        Swal.fire({
+            title: `¿Desea actualizar el Artículo relacionado?`,
+            showDenyButton: true,
+            showCancelButton: false,
+            confirmButtonText: 'Actualizar',
+            denyButtonText: `Cancelar`,
+        }).then(async (result) => {
+
+            try {
+
+                if (result.isConfirmed) {
+
+                    //Mostrar el loading
+                    Swal.fire({
+                        title: 'Por favor, espere',
+                        allowEscapeKey: false,
+                        allowOutsideClick: false,
+                        showConfirmButton: false,
+                        imageUrl: loadingImage,
+                        customClass: 'alert-class-login',
+                        imageHeight: 100,
+                    });
+                    
+                    //Call end-point 
+                    const { data } = await suvesaApi.put(`/articulosRelacionados/putArticuloRelacionado?codigoPrincipal=${codigoPrincipal}&codigoArticuloRelacionado=${codigoArticuloRelacionado}&Cantidad=${Cantidad}&Activo=${Activo}`);
+                    const { status } = data;
+                    
+                    // Cerrar modal
+                    Swal.close();
+
+                    if( status === 0 ) {
+
+                        dispatch( SetEditRelatedArticleInventory({
+                            codigo: codigoArticuloRelacionado,
+                            cantidad: Cantidad
+                        }));
+
+                        dispatch( IsSelectedRelatedArticleInventory(false) );
+                        dispatch( CleanInputsRelatedArticleInventory() );
+
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Articulo Relacionado',
+                            text: `Se cambio el artículo relacionado correctamente.`,
+                            timer: 1000,
+                            showConfirmButton: false
+                        });
+
+                    } else {
+            
+                        //Caso contrario respuesta incorrecto mostrar mensaje de error
+                        const { currentException } = data;
+                        const msj = currentException.split(',');
+                        
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: (currentException.includes(',')) ? msj[3] : currentException,
+                        });
+            
+                    }
+                }
+
+            } catch (error) {
+        
+                Swal.close();
+                console.log(error);
+                if( error.message === 'Request failed with status code 401') {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Usuario no valido',
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Ocurrio un problema al actualizar el artículo relacionados',
+                    });
+                }
+            }
+
+        });
+        
+    }
+}
+
+export const startUpdateArticleFormulaInventory = ( codigoPrincipal, codigoArticuloRelacionado , Cantidad, Activo) => {
+   
+    return async ( dispatch ) => {
+
+        //Mostrar un mensaje de confirmacion
+        Swal.fire({
+            title: `¿Desea actualizar el Artículo Formula?`,
+            showDenyButton: true,
+            showCancelButton: false,
+            confirmButtonText: 'Actualizar',
+            denyButtonText: `Cancelar`,
+        }).then(async (result) => {
+
+            try {
+
+                if (result.isConfirmed) {
+
+                    //Mostrar el loading
+                    Swal.fire({
+                        title: 'Por favor, espere',
+                        allowEscapeKey: false,
+                        allowOutsideClick: false,
+                        showConfirmButton: false,
+                        imageUrl: loadingImage,
+                        customClass: 'alert-class-login',
+                        imageHeight: 100,
+                    });
+                    
+                    //Call end-point 
+                    const { data } = await suvesaApi.put(`/articulosRelacionados/putArticuloRelacionadoFormula?codigoPrincipal=${codigoPrincipal}&codigoArticuloRelacionado=${codigoArticuloRelacionado}&Cantidad=${Cantidad}&Activo=${Activo}`);
+                    const { status } = data;
+                    
+                    // Cerrar modal
+                    Swal.close();
+
+                    if( status === 0 ) {
+
+                        dispatch( SetEditFormulaArticleInventory({
+                            codigo: codigoArticuloRelacionado,
+                            cantidad: Cantidad
+                        }));
+
+                        dispatch( SetIsSelectedFormulaArticleInventory(false) );
+                        dispatch( CleanInputsFormulaArticleInventory() );
+
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Articulos Formula',
+                            text: `Se cambio el artículo formula correctamente.`,
+                            timer: 1000,
+                            showConfirmButton: false
+                        });
+
+                    } else {
+            
+                        //Caso contrario respuesta incorrecto mostrar mensaje de error
+                        const { currentException } = data;
+                        const msj = currentException.split(',');
+                        
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: (currentException.includes(',')) ? msj[3] : currentException,
+                        });
+            
+                    }
+                }
+
+            } catch (error) {
+        
+                Swal.close();
+                console.log(error);
+                if( error.message === 'Request failed with status code 401') {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Usuario no valido',
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Ocurrio un problema al actualizar el artículo formula',
+                    });
+                }
+            }
+
+        });
+        
+    }
+}
+
+export const startDeleteFormulaArticle = ( codigoPrincipal, codigoArticuloRelacionado , Cantidad, Activo ) => {
+
+    return async ( dispatch ) => {
+
+        //Mostrar un mensaje de confirmacion
+        Swal.fire({
+            title: `¿Desea eliminar el Artículo Formula?`,
+            showDenyButton: true,
+            showCancelButton: false,
+            confirmButtonText: 'Eliminar',
+            denyButtonText: `Cancelar`,
+        }).then(async (result) => {
+            
+            try {
+
+                if (result.isConfirmed) {
+
+                    //Mostrar el loading
+                    Swal.fire({
+                        title: 'Por favor, espere',
+                        allowEscapeKey: false,
+                        allowOutsideClick: false,
+                        showConfirmButton: false,
+                        imageUrl: loadingImage,
+                        customClass: 'alert-class-login',
+                        imageHeight: 100,
+                    });
+                    
+
+                    //Call end-point 
+                    const { data } = await suvesaApi.put(`/articulosRelacionados/putArticuloRelacionadoFormula?codigoPrincipal=${codigoPrincipal}&codigoArticuloRelacionado=${codigoArticuloRelacionado}&Cantidad=${Cantidad}&Activo=${Activo}`);
+                    const { status } = data;
+
+                    //Quitar el loading
+                    Swal.close();
+                
+                    if( status === 0) {
+
+                        //Delete data in array
+                        dispatch( RemoveFormulaArticleInventory( codigoArticuloRelacionado ) );
+
+                        //Is Seleted related article false
+                        dispatch( SetIsSelectedFormulaArticleInventory( false ) );
+
+                        dispatch( CleanInputsFormulaArticleInventory() );
+
+                        //Si es correcta entonces mostrar un mensaje de afirmacion
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Articulo Formula eliminado correctamente',
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+
+                    } else {
+                        //Caso contrario respuesta incorrecto mostrar mensaje de error
+                        const { currentException } = data;
+                        const msj = currentException.split(',');
+                        
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: (currentException.includes(',')) ? msj[3] : currentException,
+                        });
+                        
+                    }
+                
+                }
+
+            } catch (error) {
+                
+                Swal.close();
+                console.log(error);
+                if( error.message === 'Request failed with status code 401') {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Usuario no valido',
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Ocurrio un problema al eliminar un articulo Formula',
+                    });
+                }
+            }
+                
+        });
+        
+    }
+}
+
+export const startGetStockLotesArticulo = ( codigoPrincipal) => {
+
+    return async ( dispatch ) => {
+    
+        try {
+
+            //Mostrar el loading
+            Swal.fire({
+                title: 'Por favor, espere',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                imageUrl: loadingImage,
+                customClass: 'alert-class-login',
+                imageHeight: 100,
+            });
+            
+            //Call end-point 
+            const { data } = await suvesaApi.get(`/StockLote/getStockLotesArticulo?Request=${codigoPrincipal}`);
+            const { status, responses } = data;
+
+            //Quitar el loading
+            Swal.close();
+        
+            if( status === 0) {
+                
+                const lotes = responses.map( lot => {
+                    return {
+                        id: lot.id,
+                        lote: lot.lote,
+                        vencimiento: lot.vencimiento.split('T')[0],
+                        existencia: lot.cantidad
+                    }
+                });
+
+                dispatch( SetArrayLotesInventory(lotes) );
+
+            } else {
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
+
+                if( currentException === "No tiene lotes" ) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Lotes',
+                        text: 'Este producto no tiene lotes registrados.'
+                    });
+
+                    return;
+                }
+                
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
+                
+            }
+            
+        } catch (error) {
+            
+            Swal.close();
+            console.log(error);
+            if( error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al obtener el stock del lote',
+                });
+            }
+        }
+
+    }
+}
+
+export const startValidarLotesVencidos = () => {
+
+    return async ( dispatch ) => {
+        //Call end-point 
+        await suvesaApi.put(`/StockLote/ValidarLotesVencidos`);
+    }
+}
+
+export const startSaveLote = ( lote, codArticulo) => {
+
+    return async ( dispatch ) => {
+
+        try {
+
+            //Mostrar el loading
+            Swal.fire({
+                title: 'Por favor, espere',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                imageUrl: loadingImage,
+                customClass: 'alert-class-login',
+                imageHeight: 100,
+            });
+            
+            const jsonLote = {
+                id: 0,
+                lote: lote.lote,
+                vencimiento: lote.vencimiento,
+                idArticulo : codArticulo,
+                activo: true
+            }
+    
+            //Call end-point para crear el lote
+            const { data } = await suvesaApi.post(`/StockLote/InsertLote`, jsonLote );
+            const { status, responses } = data;
+            
+            // Cerrar modal
+            Swal.close();
+
+            if( status === 0 ) {
+
+                const { id } = responses;
+
+                //Call end-point para actualizar el stock del lote
+                const { data } = await suvesaApi.put(`/Stocks/ActualizarExistenciaArticuloLote?Cantidad=${lote.existencia}&CodBodega=6&CodArticulo=${codArticulo}&Lote=${id}` );
+
+                if( data.status === 0 ) {
+
+                    const newLote = {
+                        ...lote,
+                        id
+                    }
+
+                    dispatch( SetLotesInventory(newLote) );
+                    dispatch( SetIdLotesInventory(id) );
+                    dispatch( CleanInputsLotesInventory() );
+
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Lotes',
+                        text: `Se agrego correctamente el lote.`,
+                    });
+
+                } else {
+
+                    //Si es correcta entonces mostrar un mensaje de afirmacion pero con error en carta
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Lote ingresado sin actualizar la existencia.',
+                        showConfirmButton: true,
+                    })
+
+                }                
+
+            } else {
+    
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
+                
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
+    
+            }
+
+        } catch (error) {
+            
+            Swal.close();
+            console.log(error);
+            if( error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al crear un nuevo lote.',
+                });
+            }
+        }
+    }
+}
+
+export const startEditLote = ( lote, codArticulo) => {
+
+    return async ( dispatch ) => {
+
+        //Mostrar un mensaje de confirmacion
+        Swal.fire({
+            title: `¿Desea actualizar el Lote?`,
+            showDenyButton: true,
+            showCancelButton: false,
+            confirmButtonText: 'Actualizar',
+            denyButtonText: `Cancelar`,
+        }).then(async (result) => {
+
+            try {
+
+                if (result.isConfirmed) {
+
+                    //Mostrar el loading
+                    Swal.fire({
+                        title: 'Por favor, espere',
+                        allowEscapeKey: false,
+                        allowOutsideClick: false,
+                        showConfirmButton: false,
+                        imageUrl: loadingImage,
+                        customClass: 'alert-class-login',
+                        imageHeight: 100,
+                    });
+                    
+                    const jsonLote = {
+                        id: lote.id,
+                        lote: lote.lote,
+                        vencimiento: lote.vencimiento,
+                        idArticulo : codArticulo,
+                        activo: true
+                    }
+                    
+                    //Call end-point para editar el lote
+                    const { data } = await suvesaApi.put(`/StockLote/PutLote`, jsonLote );
+                    const { status } = data;
+                    
+                    // Cerrar modal
+                    Swal.close();
+        
+                    if( status === 0 ) {
+                
+                        //Call end-point para actualizar el stock del lote
+                        const { data } = await suvesaApi.put(`/Stocks/ActualizarExistenciaArticuloLote?Cantidad=${lote.existencia}&CodBodega=6&CodArticulo=${codArticulo}&Lote=${lote.id}` );
+        
+                        if( data.status === 0 ) {
+        
+                            dispatch( SetIsSelectedLoteInventory(false) );
+                            dispatch( SetEditLotesInventory(lote) );
+                            dispatch( CleanInputsLotesInventory() );
+        
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Lotes',
+                                text: `Se edito correctamente el lote.`,
+                            });
+        
+                        } else {
+        
+                            //Si es correcta entonces mostrar un mensaje de afirmacion pero con error en carta
+                            Swal.fire({
+                                icon: 'warning',
+                                title: 'Lote editado sin actualizar la existencia.',
+                                showConfirmButton: true,
+                            })
+        
+                        }                
+        
+                    } else {
+            
+                        //Caso contrario respuesta incorrecto mostrar mensaje de error
+                        const { currentException } = data;
+                        const msj = currentException.split(',');
+                        
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: (currentException.includes(',')) ? msj[3] : currentException,
+                        });
+            
+                    }
+
+                }
+    
+            } catch (error) {
+                
+                Swal.close();
+                console.log(error);
+                if( error.message === 'Request failed with status code 401') {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Usuario no valido',
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Ocurrio un problema al editar el lote.',
+                    });
+                }
+            }
+
+        });
+
+    }
+}
+
+export const startDisableLote = ( idlote ) => {
+
+    return async ( dispatch ) => {
+
+        //Mostrar un mensaje de confirmacion
+        Swal.fire({
+            title: `¿Desea desactivar el Lote?`,
+            showDenyButton: true,
+            showCancelButton: false,
+            confirmButtonText: 'Desactivar',
+            denyButtonText: `Cancelar`,
+        }).then(async (result) => {
+
+            try {
+
+                if (result.isConfirmed) {
+
+                    //Mostrar el loading
+                    Swal.fire({
+                        title: 'Por favor, espere',
+                        allowEscapeKey: false,
+                        allowOutsideClick: false,
+                        showConfirmButton: false,
+                        imageUrl: loadingImage,
+                        customClass: 'alert-class-login',
+                        imageHeight: 100,
+                    });
+                    
+                    //Call end-point para editar el lote
+                    const { data } = await suvesaApi.put(`/StockLote/DesactivateLote?idLote=${idlote}`);
+                    const { status } = data;
+                    
+                    // Cerrar modal
+                    Swal.close();
+        
+                    if( status === 0 ) {
+                
+                        dispatch( SetIsSelectedLoteInventory(false) );
+                        dispatch( RemoveLotesInventory(idlote) );
+                        dispatch( CleanInputsLotesInventory() );
+    
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Lotes',
+                            text: `Se desactivo correctamente el lote.`,
+                        });
+                     
+        
+                    } else {
+            
+                        //Caso contrario respuesta incorrecto mostrar mensaje de error
+                        const { currentException } = data;
+                        const msj = currentException.split(',');
+                        
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: (currentException.includes(',')) ? msj[3] : currentException,
+                        });
+            
+                    }
+
+                }
+    
+            } catch (error) {
+                
+                Swal.close();
+                console.log(error);
+                if( error.message === 'Request failed with status code 401') {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Usuario no valido',
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Ocurrio un problema al desactivar el lote.',
+                    });
+                }
+            }
+
+        });
+
+    }
+}
+
+export const startGetLotesByArticleFormula = (codigoPrincipal) => {
+
+    return async ( dispatch ) => {
+    
+        try {
+
+            //Mostrar el loading
+            Swal.fire({
+                title: 'Por favor, espere',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                imageUrl: loadingImage,
+                customClass: 'alert-class-login',
+                imageHeight: 100,
+            });
+            
+            //Call end-point 
+            const { data } = await suvesaApi.get(`/StockLote/getStockLotesArticulo?Request=${codigoPrincipal}`);
+            const { status, responses } = data;
+
+            //Quitar el loading
+            Swal.close();
+        
+            if( status === 0) {
+                
+                const lotes = responses.map( lot => {
+                    return {
+                        id: lot.id,
+                        lote: lot.lote,
+                        vencimiento: lot.vencimiento.split('T')[0],
+                        existencia: lot.cantidad
+                    }
+                });
+
+                dispatch( SetIdBodegaFormulaLotesInventory(0) );
+                dispatch( SetLotesByArticleFormulaInventory(lotes) );
+                dispatch( SetDisableInputsLotesFormulaInventory( false ) );
+
+            } else {
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
+
+                if( currentException === "No tiene lotes" ) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Lotes',
+                        text: 'Este producto no tiene lotes registrados.'
+                    });
+
+                    dispatch( SetIdLoteFormulaLotesInventory(0) );
+                    dispatch( SetIdBodegaFormulaLotesInventory(0) );
+                    dispatch( SetLotesByArticleFormulaInventory([]) );
+                    dispatch( SetDisableInputsLotesFormulaInventory( true ) );
+
+                    return;
+                }
+                
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
+                
+            }
+            
+        } catch (error) {
+            
+            Swal.close();
+            console.log(error);
+            if( error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al obtener el stock del lote',
+                });
+            }
+        }
+
+    }
+
+}
+
+export const startCalculateCantidadDisponiblesConvertidorLotesInventory = ( requestCalcular ) => {
+   
+    return async ( dispatch ) => {
+
+        try {
+
+            //Mostrar el loading
+            Swal.fire({
+                title: 'Por favor, espere',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                imageUrl: loadingImage,
+                customClass: 'alert-class-login',
+                imageHeight: 100,
+            });
+    
+            //Call end-point 
+            const { data } = await suvesaApi.post(`/CalculadoraProduccionLotes/CalculadoraCantidadesObtenerLote`, requestCalcular);
+            const { status, responses } = data;
+            
+            // Cerrar modal
+            Swal.close();
+
+            if( status === 0 ) {
+                
+                // Insertar en el state
+                dispatch( SetCantidadDisponiblesConvertidorLotesIntentory( responses ) );
+
+
+            } else {
+    
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
+                
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
+    
+            }
+
+        } catch (error) {
+            
+            Swal.close();
+            console.log(error);
+            if( error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al obtener las cantidades disponibles por lotes',
+                });
+            }
+        }
+    }
+}
+
+export const startConvertirCantidadDisponiblesConvertidorLotesInventory = ( requestConvertir ) => {
+   
+    return async ( dispatch ) => {
+
+        try {
+
+            //Mostrar el loading
+            Swal.fire({
+                title: 'Por favor, espere',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                imageUrl: loadingImage,
+                customClass: 'alert-class-login',
+                imageHeight: 100,
+            });
+    
+            //Call end-point 
+            const { data } = await suvesaApi.post(`/CalculadoraProduccionLotes/CalculadoraCantidadesObtenerLote`, requestConvertir);
+            const { status } = data;
+            
+            // Cerrar modal
+            Swal.close();
+
+            if( status === 0 ) {
+                
+                await GetStockArticulo(dispatch, requestConvertir.idArticuloPrincipal);
+                
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Convertidor',
+                    text: `Se convertido la cantidad ${requestConvertir.cantidadConvertir} correctamente.`
+                });
+
+
+            } else {
+    
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
+                
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
+    
+            }
+
+        } catch (error) {
+            
+            Swal.close();
+            console.log(error);
+            if( error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al obtener las convertir disponibles por lotes',
+                });
+            }
+        }
+    }
+}
+
 // Functions
 const CalculatePreciosVenta = ( base, flete, otroC, impuesto, pre ) => {
 
@@ -1436,7 +2321,7 @@ const CalculatePreciosVenta = ( base, flete, otroC, impuesto, pre ) => {
 const GetStockArticulo = async ( dispatch, idInventario ) => {
 
     try {
-
+        
         //Call end-point
         const resp = await suvesaApi.post(`/Stocks/ExistenciaArticuloCostaPets?id=${idInventario}&tipo=1`);
         const { status, responses } = resp.data;
@@ -2224,6 +3109,11 @@ export const SetRelatedArticleInventory = ( value ) => ({
     payload: value
 })
 
+export const SetEditRelatedArticleInventory = ( value ) => ({
+    type: types.SetEditRelatedArticleInventory,
+    payload: value
+})
+
 export const CleanInputsRelatedArticleInventory = () => ({
     type: types.CleanInputsRelatedArticleInventory
 })
@@ -2590,8 +3480,23 @@ export const SetCantidadFormulaArticleInventory = (value) => ({
     payload: value
 })
 
+export const SetIsSelectedFormulaArticleInventory = (value) => ({
+    type: types.SetIsSelectedFormulaArticleInventory,
+    payload: value
+})
+
 export const SetFormulaArticleInventory = (value) => ({
     type: types.SetFormulaArticleInventory,
+    payload: value
+})
+
+export const SetEditFormulaArticleInventory = (value) => ({
+    type: types.SetEditFormulaArticleInventory,
+    payload: value
+})
+
+export const RemoveFormulaArticleInventory = (value) => ({
+    type: types.RemoveFormulaArticleInventory,
     payload: value
 })
 
@@ -2627,5 +3532,108 @@ export const SetLastStockUpdateInventory = (value) => ({
 
 export const SetArrayFormulaArticleInventory = (value) => ({
     type: types.SetArrayFormulaArticleInventory,
+    payload: value
+})
+
+export const SetIsArticleRelatedInventory = (value) => ({
+    type: types.SetIsArticleRelatedInventory,
+    payload: value
+})
+
+export const SetIdLotesInventory = (value) => ({
+    type: types.SetIdLotesInventory,
+    payload: value
+})
+
+export const SetNumLoteLotesInventory = (value) => ({
+    type: types.SetNumLoteLotesInventory,
+    payload: value
+})
+
+export const SetVencimientoLotesInventory = (value) => ({
+    type: types.SetVencimientoLotesInventory,
+    payload: value
+})
+
+export const SetExistenciaLotesInventory = (value) => ({
+    type: types.SetExistenciaLotesInventory,
+    payload: value
+})
+
+export const SetIsSelectedLoteInventory = (value) => ({
+    type: types.SetIsSelectedLoteInventory,
+    payload: value
+})
+
+export const SetLotesInventory = (value) => ({
+    type: types.SetLotesInventory,
+    payload: value
+})
+
+export const SetArrayLotesInventory = (value) => ({
+    type: types.SetArrayLotesInventory,
+    payload: value
+})
+
+export const SetEditLotesInventory = (value) => ({
+    type: types.SetEditLotesInventory,
+    payload: value
+})
+
+export const RemoveLotesInventory = (value) => ({
+    type: types.RemoveLotesInventory,
+    payload: value
+})
+
+export const CleanInputsLotesInventory = () => ({
+    type: types.CleanInputsLotesInventory
+})
+
+export const SetIdArticuloFormulaLotesInventory = (value) => ({
+    type: types.SetIdArticuloFormulaLotesInventory,
+    payload: value
+})
+
+export const SetIdLoteFormulaLotesInventory = (value) => ({
+    type: types.SetIdLoteFormulaLotesInventory,
+    payload: value
+})
+
+export const SetIdBodegaFormulaLotesInventory = (value) => ({
+    type: types.SetIdBodegaFormulaLotesInventory,
+    payload: value
+})
+
+export const CleanInputsFormulaLotesInventory = () => ({
+    type: types.CleanInputsFormulaLotesInventory
+})
+
+export const SetLotesByArticleFormulaInventory = (value) => ({
+    type: types.SetLotesByArticleFormulaInventory,
+    payload: value
+})
+
+export const SetDisableInputsLotesFormulaInventory = (value) => ({
+    type: types.SetDisableInputsLotesFormulaInventory,
+    payload: value
+})
+
+export const SetLotesFormulaInventory = (value) => ({
+    type: types.SetLotesFormulaInventory,
+    payload: value
+})
+
+export const SetShowDivConvertirLotesFormulaInventory = (value) => ({
+    type: types.SetShowDivConvertirLotesFormulaInventory,
+    payload: value
+})
+
+export const SetCantidadDisponiblesConvertidorLotesIntentory = (value) => ({
+    type: types.SetCantidadDisponiblesConvertidorLotesIntentory,
+    payload: value
+})
+
+export const SetCantidadConvertirConvertidorLotesIntentory = (value) => ({
+    type: types.SetCantidadConvertirConvertidorLotesIntentory,
     payload: value
 })
