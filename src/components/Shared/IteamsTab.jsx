@@ -44,6 +44,7 @@ import { CleanStateCharge } from '../../actions/ChargeAction';
 import { CleanStateConsultAlbaranes } from '../../actions/consultAlbaranesAction';
 import { SetCleanCompany } from '../../actions/CompanyAction';
 import { CleanCompras } from '../../actions/ComprasAction';
+import { CleanPresentations } from '../../actions/PresentacionesAction';
 
 export const IteamsTab = () => {
 
@@ -180,6 +181,9 @@ export const IteamsTab = () => {
 
             case 'Compra':
                 dispatch( CleanCompras() );
+
+            case 'Presentaciones':
+                dispatch( CleanPresentations() );
 
 
             default:

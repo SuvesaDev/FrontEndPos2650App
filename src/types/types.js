@@ -42,6 +42,10 @@ export const types = {
 
   //Presentaciones Action
   GetAllPresentacionesInventory: '[Presentaciones] GetAllPresentacionesInventory',
+  SetNombrePresentacionPresentations: '[Presentaciones] SetNombrePresentacionPresentations',
+  SetPresentacionesPresentations: '[Presentaciones] SetPresentacionesPresentations',
+  SetAddPresentacionPresentations: '[Presentaciones] SetAddPresentacionPresentations',
+  CleanPresentations: '[Presentaciones] CleanPresentations',
 
   //Proveedores Action
   GetAllProveedoresInventory: '[Proveedores] GetAllProveedoresInventory',
