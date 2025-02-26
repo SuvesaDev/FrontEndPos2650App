@@ -9,11 +9,11 @@ const {
 } = getEnvVariables();
 
 const suvesaApi = axios.create({
-    baseURL: VITE_API_URL_DEV,
+    baseURL: VITE_API_URL_PRD,
 });
 
 const suvesaApiAuth = axios.create({
-    baseURL: VITE_API_URL_DEV,
+    baseURL: VITE_API_URL_PRD,
 });
 
 //TODO: INTERCEPTORES with token
