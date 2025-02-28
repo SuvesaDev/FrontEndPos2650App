@@ -123,7 +123,7 @@ export const UsersIcons = () => {
                     administrador: (showCostaPets) ? isAdministradorCostaPets : null,
                 }
 
-                // dispatch(startValidatePassword(newUser));
+                dispatch(startValidatePassword(newUser));
             }
             
         }
