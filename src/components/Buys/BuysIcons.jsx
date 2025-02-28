@@ -423,6 +423,7 @@ export const BuysIcons = () => {
                         className={(disableInputs) ? 'btn btn-dark espacio disabled' : 'btn btn-dark espacio'}
                         data-bs-toggle="modal"
                         data-bs-target="#modalImportarFactura"
+                        onClick={handleOpenImportarFacturaModal}
                     >
                         Importar Factura Electronica <FaFileImport className='iconSize' />
                     </a>

@@ -35,6 +35,7 @@ const initialState = {
   valorBusquedaInventario: '',
   codigoInventarioSeleccionado: '',
   isOpenModalPrecioImportarFactura: false,
+  isCostaPets: false,
   preciosImportarFactura: {
     nuevoCosto: 0,
     impuestoNeto: 0,
@@ -1390,6 +1391,12 @@ export const comprasReducer = (state = initialState, action) => {
         isOpenModalPrecioImportarFactura: action.payload
       }
 
+    case types.SetIsCostaPetsCompras:
+      return {
+        ...state,
+        isCostaPets: action.payload
+      }
+
     case types.SetNuevoCostoPreciosImportarFacturaCompras:
       return {
         ...state,
@@ -1665,6 +1672,7 @@ export const comprasReducer = (state = initialState, action) => {
         valorBusquedaInventario: '',
         codigoInventarioSeleccionado: '',
         isOpenModalPrecioImportarFactura: false,
+        isCostaPets: false,
         preciosImportarFactura: {
           nuevoCosto: 0,
           impuestoNeto: 0,

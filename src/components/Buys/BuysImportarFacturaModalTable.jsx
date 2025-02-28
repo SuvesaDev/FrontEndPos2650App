@@ -1,10 +1,12 @@
 import React from 'react';
 import Swal from 'sweetalert2';
 import { useTable } from "react-table";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { PiLinkSimpleFill } from 'react-icons/pi';
 import { FaSearch, FaCommentDollar, FaGift, FaSortNumericDownAlt } from 'react-icons/fa';
+import { FaCartShopping } from "react-icons/fa6";
+
 
 import {
     SetAllPrecioPreciosImportarFacturaCompras,
@@ -24,8 +26,10 @@ import {
 import { FaHashtag } from 'react-icons/fa6';
 
 export const BuysImportarFacturaModalTable = ({ columns, data }) => {
-
+    
     const dispatch = useDispatch();
+
+    const { isCostaPets } = useSelector(state => state.compras);
 
     const {
         getTableProps,
@@ -188,6 +192,23 @@ export const BuysImportarFacturaModalTable = ({ columns, data }) => {
 
     }
 
+    const handleOpenModalLotes = (e, cell) => {
+
+        // Se obtiene el codigo seleccionado
+        // const { codigoPro } = cell.row.original;
+
+        // dispatch(SetCodigoInventarioSeleccionadoCompras(codigoPro));
+
+        const iconLotesModal = document.getElementById("iconLotesModalBuys");
+        iconLotesModal.setAttribute("data-bs-toggle", "modal");
+        iconLotesModal.setAttribute("data-bs-target", "#modalLotesBuys");
+        iconLotesModal.click();
+        iconLotesModal.removeAttribute("data-bs-toggle", "modal");
+        iconLotesModal.removeAttribute("data-bs-target", "#modalLotesBuys");
+
+        // dispatch(SetIsOpenModalSearchInventarioModalCompras(true));
+    }
+
     return (
         <>
             <div className="table-responsive-md tablaP">
@@ -290,14 +311,25 @@ export const BuysImportarFacturaModalTable = ({ columns, data }) => {
                                                                     </>
                                                                     : (cell.column.id === 'estado')
                                                                         ? <>
-
-                                                                            <button className={(cell.value) ? 'btn btn-dark disabled' : 'btn btn-dark'}
-                                                                                title='Unir'
-                                                                                onClick={e => handleUnirProducto(e, cell)}>
-                                                                                <FaGift
-                                                                                    className='iconSize'
-                                                                                />
-                                                                            </button>
+                                                                                {
+                                                                                    (isCostaPets)
+                                                                                        ?   <button className={(cell.value) ? 'btn btn-dark disabled' : 'btn btn-dark'}
+                                                                                                title='Lotes'
+                                                                                                id="iconLotesModalBuys"
+                                                                                                onClick={e => handleOpenModalLotes(e, cell)}
+                                                                                            >
+                                                                                                <FaCartShopping
+                                                                                                    className='iconSize'
+                                                                                                />
+                                                                                            </button>
+                                                                                        :   <button className={(cell.value) ? 'btn btn-dark disabled' : 'btn btn-dark'}
+                                                                                                title='Regalia'
+                                                                                                onClick={e => handleUnirProducto(e, cell)}>
+                                                                                                <FaGift
+                                                                                                    className='iconSize'
+                                                                                                />
+                                                                                            </button>
+                                                                                }
                                                                             <hr />
 
                                                                             <button className={(cell.value) ? 'btn btn-primary disabled' : 'btn btn-primary'}
@@ -311,7 +343,7 @@ export const BuysImportarFacturaModalTable = ({ columns, data }) => {
                                                                             <hr />
                                                                             <button
                                                                                 className={'btn btn-success'}
-                                                                                title='Unir'
+                                                                                title='Precio'
                                                                                 id='iconPrecio'
                                                                                 onClick={e => handlePrecioProducto(e, cell)}
                                                                             >

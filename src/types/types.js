@@ -1134,6 +1134,7 @@ export const types = {
   SetUpdateStateInventarioCompras: '[Compras] SetUpdateStateInventarioCompras',
 
   SetIsOpenModalPrecioImportarFacturaCompras: '[Compras] SetIsOpenModalPrecioImportarFacturaCompras',
+  SetIsCostaPetsCompras: '[Compras] SetIsCostaPetsCompras',
   SetCantidadInternoDetalleCompras: '[Compras] SetCantidadInternoDetalleCompras',
   SetNuevoCostoInternoDetalleCompras: '[Compras] SetNuevoCostoInternoDetalleCompras',
 

@@ -318,7 +318,8 @@ export const startValidateClaveInterna = ( password ) => {
                     userName: responses.nombre,
                     idUsuario: responses.idUsuario,
                     administrador : responses.administrador,
-                    message: ''
+                    message: '',
+                    costapets: responses.costaPets
                 };
             } else {
                 return {

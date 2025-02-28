@@ -915,7 +915,7 @@ export const startValidateClaveInternaCompras = (password) => {
 
         try {
 
-            const { status, idUsuario, message } = await dispatch(startValidateClaveInterna(password));
+            const { status, idUsuario, message, costapets } = await dispatch(startValidateClaveInterna(password));
 
             if (status === 1) {
 
@@ -947,7 +947,8 @@ export const startValidateClaveInternaCompras = (password) => {
                 // Ocultar la password
                 dispatch(SetVisiblePasswordCompras(false));
 
-
+                // Se indica si es CostaPets
+                dispatch( SetIsCostaPetsCompras(costapets) );
 
             } else if (status === 0 && message === 'Contraseña Incorrecta') {
 
@@ -1417,6 +1418,7 @@ export const startGetAllEmpresasCompras = () => {
         
     }
 }
+
 const loadCatalogos = async (dispatch) => {
 
     //Mostrar el loading
@@ -2043,6 +2045,11 @@ export const SetUpdateStateInventarioCompras = (value) => ({
 
 export const SetIsOpenModalPrecioImportarFacturaCompras = (value) => ({
     type: types.SetIsOpenModalPrecioImportarFacturaCompras,
+    payload: value
+})
+
+export const SetIsCostaPetsCompras = (value) => ({
+    type: types.SetIsCostaPetsCompras,
     payload: value
 })
 

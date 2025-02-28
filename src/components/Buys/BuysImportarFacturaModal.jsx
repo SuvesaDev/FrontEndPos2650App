@@ -78,7 +78,8 @@ export const BuysImportarFacturaModal = () => {
         hasChargeFactura,
         preciosImportarFactura,
         getAllInventariosFilter,
-        valorBusquedaInventario
+        valorBusquedaInventario,
+        isCostaPets
     } = useSelector(state => state.compras);
 
     const {
@@ -152,6 +153,41 @@ export const BuysImportarFacturaModal = () => {
         {
             Header: "Regalia",
             accessor: "regalia",
+        },
+        {
+            Header: "Acciones",
+            accessor: "estado",
+        }
+    ];
+
+    const columnsCostaPets = [
+        {
+            Header: "ID",
+            accessor: "id",
+        },
+        {
+            Header: "Código Prov.",
+            accessor: "codigoPro",
+        },
+        {
+            Header: "Descripcion Prov.",
+            accessor: "descripcionPro",
+        },
+        {
+            Header: "Código Interno",
+            accessor: "codigoInt",
+        },
+        {
+            Header: "Descripcion Interna",
+            accessor: "descripcionInt",
+        },
+        {
+            Header: "Presentacion",
+            accessor: "presentacion",
+        },
+        {
+            Header: "Cantidad",
+            accessor: "cantidad",
         },
         {
             Header: "Acciones",
@@ -646,6 +682,13 @@ export const BuysImportarFacturaModal = () => {
 
     }
 
+    const closeModalLotes = () => {
+
+        //TODO: Clean el state de lotes
+        // dispatch(CleanStateSearchInventarioCompras());
+
+    }
+
     return (
 
         <>
@@ -802,7 +845,7 @@ export const BuysImportarFacturaModal = () => {
 
                             <div className="row mb-2 text-center">
                                 <div className="col-md-12 mb-2">
-                                    <BuysImportarFacturaModalTable columns={columns} data={detalleServicioTable} />
+                                    <BuysImportarFacturaModalTable columns={( isCostaPets ) ? columnsCostaPets : columns} data={detalleServicioTable} />
                                 </div>
                             </div>
                         </div>
@@ -1083,6 +1126,31 @@ export const BuysImportarFacturaModal = () => {
                                     <BuysSearchInventarioModalTable columns={columnsInventario} data={getAllInventariosFilter} />
                                 </div>
                             </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div className='modal fade' id="modalLotesBuys">
+                <div className="modal-dialog modal-xl modal-dialog">
+                    <div className="modal-content">
+                        
+                        <div className="modal-header">
+                            <h4 className="modal-title">
+                                Lotes <FaShoppingCart className="iconSizeBtn" />
+                            </h4>
+                            <button
+                                type="button"
+                                className="btn-close"
+                                data-bs-toggle="modal"
+                                data-bs-target="#modalImportarFactura"
+                                onClick={closeModalLotes}
+                            ></button>
+                        </div>
+
+                        <div className="modal-body">
+                            <p>Modal de Lotes</p>
                         </div>
 
                     </div>
