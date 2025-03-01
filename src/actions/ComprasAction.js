@@ -2155,3 +2155,28 @@ export const SetNuevosCostosArticuloImportarFacturaCompras = (value) => ({
     type: types.SetNuevosCostosArticuloImportarFacturaCompras,
     payload: value
 })
+
+export const SetLoteLotesImportarFacturaCompras = (value) => ({
+    type: types.SetLoteLotesImportarFacturaCompras,
+    payload: value
+})
+
+export const SetVencimientoLotesImportarFacturaCompras = (value) => ({
+    type: types.SetVencimientoLotesImportarFacturaCompras,
+    payload: value
+})
+
+export const SetExistenciaLotesImportarFacturaCompras = (value) => ({
+    type: types.SetExistenciaLotesImportarFacturaCompras,
+    payload: value
+})
+
+export const SetAddLoteLotesImportarFacturaCompras = (value) => ({
+    type: types.SetAddLoteLotesImportarFacturaCompras,
+    payload: value
+})
+
+export const SetArrayLotesImportarFacturaCompras = (value) => ({
+    type: types.SetArrayLotesImportarFacturaCompras,
+    payload: value
+})

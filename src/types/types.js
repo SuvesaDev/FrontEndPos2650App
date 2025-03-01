@@ -1158,6 +1158,12 @@ export const types = {
   SetNuevosCostosArticuloImportarFacturaCompras: '[Compras] SetNuevosCostosArticuloImportarFacturaCompras',
   SetAllPrecioPreciosImportarFacturaCompras: '[Compras] SetAllPrecioPreciosImportarFacturaCompras',
 
+  SetLoteLotesImportarFacturaCompras: '[Compras] SetLoteLotesImportarFacturaCompras',
+  SetVencimientoLotesImportarFacturaCompras: '[Compras] SetVencimientoLotesImportarFacturaCompras',
+  SetExistenciaLotesImportarFacturaCompras: '[Compras] SetExistenciaLotesImportarFacturaCompras',
+  SetAddLoteLotesImportarFacturaCompras: '[Compras] SetAddLoteLotesImportarFacturaCompras',
+  SetArrayLotesImportarFacturaCompras: '[Compras] SetArrayLotesImportarFacturaCompras',
+
   //Repaymment
   SetCurrentTabRepayment: '[Repaymment] SetCurrentTabRepayment',
   SetDisableInputsRepayment: '[Repaymment] SetDisableInputsRepayment',

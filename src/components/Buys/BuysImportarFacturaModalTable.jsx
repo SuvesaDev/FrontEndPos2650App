@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 import { useTable } from "react-table";
 import { useDispatch, useSelector } from 'react-redux';
@@ -10,6 +10,7 @@ import { FaCartShopping } from "react-icons/fa6";
 
 import {
     SetAllPrecioPreciosImportarFacturaCompras,
+    SetArrayLotesImportarFacturaCompras,
     SetCantidadInternoDetalleCompras,
     SetCodigoInternoDetalleCompras,
     SetCodigoInventarioSeleccionadoCompras,
@@ -26,10 +27,16 @@ import {
 import { FaHashtag } from 'react-icons/fa6';
 
 export const BuysImportarFacturaModalTable = ({ columns, data }) => {
+
+    const [isClickLotes, setisClickLotes] = useState(false);
     
     const dispatch = useDispatch();
 
-    const { isCostaPets } = useSelector(state => state.compras);
+    const { isCostaPets, billingImportXML } = useSelector(state => state.compras);
+
+    const {
+        detalleServicio
+    } = billingImportXML;
 
     const {
         getTableProps,
@@ -195,9 +202,13 @@ export const BuysImportarFacturaModalTable = ({ columns, data }) => {
     const handleOpenModalLotes = (e, cell) => {
 
         // Se obtiene el codigo seleccionado
-        // const { codigoPro } = cell.row.original;
+        const { codigoPro } = cell.row.original;
 
-        // dispatch(SetCodigoInventarioSeleccionadoCompras(codigoPro));
+        dispatch(SetCodigoProSeletedPreciosImportarFacturaCompras(codigoPro));
+
+        const detalle = detalleServicio.find( detalle => detalle.codigoComercial.codigo == codigoPro);
+        const { lotes } = detalle;
+        dispatch( SetArrayLotesImportarFacturaCompras(lotes) );
 
         const iconLotesModal = document.getElementById("iconLotesModalBuys");
         iconLotesModal.setAttribute("data-bs-toggle", "modal");
@@ -205,6 +216,7 @@ export const BuysImportarFacturaModalTable = ({ columns, data }) => {
         iconLotesModal.click();
         iconLotesModal.removeAttribute("data-bs-toggle", "modal");
         iconLotesModal.removeAttribute("data-bs-target", "#modalLotesBuys");
+        
 
         // dispatch(SetIsOpenModalSearchInventarioModalCompras(true));
     }
@@ -316,7 +328,7 @@ export const BuysImportarFacturaModalTable = ({ columns, data }) => {
                                                                                         ?   <button className={(cell.value) ? 'btn btn-dark disabled' : 'btn btn-dark'}
                                                                                                 title='Lotes'
                                                                                                 id="iconLotesModalBuys"
-                                                                                                onClick={e => handleOpenModalLotes(e, cell)}
+                                                                                                onDoubleClick={(e) => handleOpenModalLotes(e, cell)}
                                                                                             >
                                                                                                 <FaCartShopping
                                                                                                     className='iconSize'

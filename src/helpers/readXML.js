@@ -149,13 +149,14 @@ export const parseXML = ( xml ) => {
 
     });
 
-    // Se crea el listado de costos
+    // Se crea el listado de costos y lotes
     xmlUpload = {
         ...xmlUpload,
         detalleServicio: xmlUpload.detalleServicio.map( detalle => {
             return {
                 ...detalle,
-                costos: []
+                costos: [],
+                lotes: []
             }
         })
     };
@@ -179,6 +180,7 @@ export const parseXML = ( xml ) => {
                 precioUnitario: detalle.precioUnitario,
                 impuestoNeto: (detalle.impuestoNeto !== undefined) ? detalle.impuestoNeto : detalle.impuesto.monto,
                 costos: [],
+                lotes: [],
                 estado: false
             }
             

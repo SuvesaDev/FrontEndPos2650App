@@ -1,17 +1,20 @@
 import Swal from 'sweetalert2';
 import moment from 'moment';
 import XMLParser from 'react-xml-parser';
-import { createRef, useEffect } from 'react';
+import { createRef, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Modal from 'react-modal';
 import { customStyles } from '../../helpers/styleModal';
 import { parseXML } from '../../helpers/readXML';
+
 import { FaCalendar, FaFile, FaFileImport, FaHashtag, FaIdCard, FaSortNumericDown, FaPercentage, FaShoppingCart } from 'react-icons/fa';
 import { IoIosCheckboxOutline, IoIosCheckmark, IoIosCloseCircle } from 'react-icons/io';
 import { GiPriceTag } from "react-icons/gi";
 import { FaBuildingUn, FaMoneyBill1, FaDeleteLeft, FaColonSign } from 'react-icons/fa6';
 import { FiType } from "react-icons/fi";
+import { TbNumber } from "react-icons/tb";
+import { RiDeleteBin2Fill } from "react-icons/ri";
 
 import { BuysImportarFacturaModalTable } from './BuysImportarFacturaModalTable';
 
@@ -20,6 +23,7 @@ import {
     CleanPreciosImportarFacturaCompras,
     CleanStatePricesSellPreciosImportarFacturaCompras,
     CleanStateSearchInventarioCompras,
+    SetAddLoteLotesImportarFacturaCompras,
     SetBillingImportXMLCompras,
     SetCedulaProveedorCompras,
     SetChangePrecioIVPreciosImportarFacturaCompras,
@@ -31,6 +35,7 @@ import {
     SetDiasCompras,
     SetDisableInputsDiasCompras,
     SetEditPricesSellPreciosImportarFacturaCompras,
+    SetExistenciaLotesImportarFacturaCompras,
     SetFacturaCompras,
     SetFechaCompras,
     SetHasCatalogosInternos,
@@ -38,6 +43,7 @@ import {
     SetIsEditPriceSellPreciosImportarFacturaCompras,
     SetIsOpenImportarXMLModalCompras,
     SetIsOpenModalPrecioImportarFacturaCompras,
+    SetLoteLotesImportarFacturaCompras,
     SetNameFileReadXMLCompras,
     SetNuevosCostosArticuloImportarFacturaCompras,
     SetOnePrecioPreciosImportarFacturaCompras,
@@ -52,6 +58,7 @@ import {
     SetUtilidadPreciosImportarFacturaCompras,
     SetValorBusquedaInventariosCompras,
     SetVenceCompras,
+    SetVencimientoLotesImportarFacturaCompras,
     startExistProveedorCompras,
     startGetArticulosXMLCompras,
     startGetCatalogosProductosInternos
@@ -60,6 +67,8 @@ import { IoAddCircle } from 'react-icons/io5';
 import { BuysPrecioImportarFacturaModalTable } from './BuysPrecioImportarFacturaModalTable';
 import { BuysSearchInventarioModalTable } from './BuysSearchInventarioModalTable';
 import { TbEditCircle } from 'react-icons/tb';
+import { CiCalendarDate } from "react-icons/ci";
+import { BuysLotesImportarFacturaModalTable } from './BuysLotesImportarFacturaModalTable';
 
 
 Modal.setAppElement('#root');
@@ -79,7 +88,9 @@ export const BuysImportarFacturaModal = () => {
         preciosImportarFactura,
         getAllInventariosFilter,
         valorBusquedaInventario,
-        isCostaPets
+        isCostaPets,
+        lotes,
+        lotesByArticulo
     } = useSelector(state => state.compras);
 
     const {
@@ -120,6 +131,12 @@ export const BuysImportarFacturaModal = () => {
         precio,
         precioIV
     } = priceSell;
+
+    const { 
+        lote,
+        vencimiento,
+        existencia
+    } = lotes;
 
     const columns = [
         {
@@ -233,6 +250,21 @@ export const BuysImportarFacturaModal = () => {
         }
     ];
 
+    const columnsLotes = [
+        {
+            Header: "Número lote",
+            accessor: "lote",
+        },
+        {
+            Header: "Vencimiento",
+            accessor: "vencimiento",
+        },
+        {
+            Header: "Existencia",
+            accessor: "existencia",
+        },
+    ];
+
     useEffect(() => {
 
         if (startReadingXML) {
@@ -248,6 +280,7 @@ export const BuysImportarFacturaModal = () => {
         }
 
     }, [startReadingXML]);
+
 
     const handleInputChangeWithDispatch = ({ target }, action) => {
         dispatch(action(target.value));
@@ -687,6 +720,32 @@ export const BuysImportarFacturaModal = () => {
         //TODO: Clean el state de lotes
         // dispatch(CleanStateSearchInventarioCompras());
 
+    }
+
+    const handleSaveLote = () => {
+          
+        if( lote == '' || vencimiento == '' || existencia == 0) {
+
+            Swal.fire({
+                icon: "warning",
+                title: "Error",
+                text: "Debe completar la informacion para crear nuevo lote.",
+            });
+
+            return;
+        }
+
+        const newLote = {
+            lote,
+            vencimiento,
+            existencia
+        }
+
+        dispatch( SetAddLoteLotesImportarFacturaCompras( {
+            codigoPro: codigoProSeleted,
+            lotes: newLote,
+        } ) );
+    
     }
 
     return (
@@ -1150,7 +1209,113 @@ export const BuysImportarFacturaModal = () => {
                         </div>
 
                         <div className="modal-body">
-                            <p>Modal de Lotes</p>
+
+                            <div className="container-fluid mt-2">
+
+                                <div className="row mb-2">
+
+                                    <div className="col-md-3 mb-3">
+                                        <h5>Lotes</h5>
+                                        <div className="input-group">
+                                            <span className="input-group-text">
+                                                <TbNumber className="iconSize" />
+                                            </span>
+                                            <input
+                                                type="text"
+                                                name="lote"
+                                                className="form-control"
+                                                placeholder="Número lote"
+                                                value={lote}
+                                                onChange={(e) =>
+                                                    handleInputChangeWithDispatch(
+                                                        e,
+                                                        SetLoteLotesImportarFacturaCompras
+                                                    )
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <div className="col-md-3 mb-3">
+                                        <h5>Vencimiento</h5>
+                                        <div className="input-group">
+                                            <span className="input-group-text">
+                                                <CiCalendarDate className="iconSize" />
+                                            </span>
+                                            <input
+                                                type="date"
+                                                name="vencimiento"
+                                                className="form-control"
+                                                placeholder="Número lote"
+                                                value={vencimiento}
+                                                onChange={(e) =>
+                                                    handleInputChangeWithDispatch(
+                                                        e,
+                                                        SetVencimientoLotesImportarFacturaCompras
+                                                    )
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <div className="col-md-3 mb-3">
+                                        <h5>Existencia</h5>
+                                        <div className="input-group">
+                                            <span className="input-group-text">
+                                                <TbNumber className="iconSize" />
+                                            </span>
+                                            <input
+                                                type="number"
+                                                name="existencia"
+                                                className="form-control"
+                                                placeholder="Número lote"
+                                                value={existencia}
+                                                onChange={(e) =>
+                                                    handleInputChangeWithDispatch(
+                                                        e,
+                                                        SetExistenciaLotesImportarFacturaCompras
+                                                    )
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <div className='col-md-2 mb-3'>
+                                        <h5>Opciones</h5>
+                                        <div className="inline-container">
+                                            <button
+                                                className="btn btn-success"
+                                                // onClick={ isSeletedLotes ? handleEditLote : handleSaveLote}
+                                                onClick={handleSaveLote}
+                                            >
+                                            {/* { isSeletedLotes ? 'Editar' : 'Agregar' } <IoAddCircle className="iconSize" /> */}
+                                                Agregar <IoAddCircle className="iconSize" />
+                                            </button>
+                            
+                                            <button
+                                                className="btn btn-danger"
+                                                // onClick={handleDisableLote}
+                                                type="button"
+                                            >
+                                                <RiDeleteBin2Fill className="iconSize" />
+                                            </button>
+                                        </div>
+                                        <hr />
+                                    </div>
+
+                                </div>
+
+                                <div className="row mb-3">
+                                    <div className="col-md-12 mb-2">
+                                        <BuysLotesImportarFacturaModalTable
+                                            columns={columnsLotes}
+                                            data={lotesByArticulo}
+                                        />
+                                    </div>
+                                </div>
+
+                            </div>                           
+
                         </div>
 
                     </div>

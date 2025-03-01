@@ -84,6 +84,12 @@ const initialState = {
     Cabys: '',
     idBodega: 0
   },
+  lotes : {
+    lote: '',
+    vencimiento: '',
+    existencia: 0
+  },
+  lotesByArticulo: [],
   compras: {
     encabezado: {
       Id_Compra: 0.00,
@@ -1635,6 +1641,71 @@ export const comprasReducer = (state = initialState, action) => {
         }
       }
 
+    case types.SetLoteLotesImportarFacturaCompras:
+      return {
+        ...state,
+        lotes: {
+          ...state.lotes,
+          lote: action.payload
+        }
+      }
+
+    case types.SetVencimientoLotesImportarFacturaCompras:
+      return {
+        ...state,
+        lotes: {
+          ...state.lotes,
+          vencimiento: action.payload
+        }
+      }
+
+    case types.SetExistenciaLotesImportarFacturaCompras:
+      return {
+        ...state,
+        lotes: {
+          ...state.lotes,
+          existencia: action.payload
+        }
+      }
+
+    case types.SetArrayLotesImportarFacturaCompras:
+      return {
+        ...state,
+        lotesByArticulo: action.payload
+      }
+
+    case types.SetAddLoteLotesImportarFacturaCompras:
+      return {
+        ...state,
+        lotesByArticulo: [
+          ...state.lotesByArticulo,
+          action.payload.lotes
+        ],
+        billingImportXML: {
+          ...state.billingImportXML,
+          detalleServicio: state.billingImportXML.detalleServicio.map(
+            (detalle, i) => detalle.codigoComercial.codigo == action.payload.codigoPro
+              ? {
+                ...detalle,
+                lotes: [
+                  ...detalle.lotes,
+                  action.payload.lotes
+                ]
+              }
+              : detalle),
+          detalleServicioTable: state.billingImportXML.detalleServicioTable.map(
+            (detalle, i) => detalle.codigoPro == action.payload.codigoPro
+              ? {
+                ...detalle,
+                lotes: [
+                  ...detalle.lotes,
+                  action.payload.lotes
+                ]
+              }
+              : detalle)
+        }
+      }      
+
     case types.CleanCompras:
       return {
         ...state,
@@ -1721,6 +1792,12 @@ export const comprasReducer = (state = initialState, action) => {
           Cabys: '',
           idBodega: 0
         },
+        lotes : {
+          lote: '',
+          vencimiento: '',
+          existencia: 0
+        },
+        lotesByArticulo: [],
         compras: {
           encabezado: {
             Id_Compra: 0.00,
