@@ -906,6 +906,7 @@ export const types = {
   SetShowInfoMessageBilling: '[Billing] SetShowInfoMessageBilling',
   SetNumCajaBilling: '[Billing] SetNumCajaBilling',
   SetNumAperturaBilling: '[Billing] SetNumAperturaBilling',
+  SetIsCostaPetsBilling: '[Billing] SetIsCostaPetsBilling',
 
   // Buys actions
   buysOpenModelImportarF: '[Buys] Open Model Importar Factura',

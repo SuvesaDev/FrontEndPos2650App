@@ -139,6 +139,7 @@ const initialState = {
         estado: null
     },
     HasCartaExoneracionBilling: false,
+    isCostaPets: false,
     factura: {
         encabezado: {
             id: '',
@@ -2738,6 +2739,19 @@ export const BillingReducer = (state = initialState, action) => {
                 numApertura: action.payload
             }
 
+        case types.SetIsCostaPetsBilling:
+            return {
+                ...state,
+                billings: state.billings.map(
+                    (billing, i) => i === action.payload.number
+                        ? {
+                            ...state.billings[action.payload.number],
+                            isCostaPets: action.payload.value
+                        }
+                        : billing
+                )
+            }
+
         case types.CleanBilling:
             return {
                 ...state,
@@ -2879,6 +2893,7 @@ export const BillingReducer = (state = initialState, action) => {
                                 estado: null
                             },
                             HasCartaExoneracionBilling: false,
+                            isCostaPets: false,
                             factura: {
                                 encabezado: {
                                     id: '',

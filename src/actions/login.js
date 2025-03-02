@@ -311,7 +311,7 @@ export const startValidateClaveInterna = ( password ) => {
 
             //Quitar el loading
             Swal.close();
-            console.log(responses)
+            
             if( status === 0 ) {
                 return {
                     status: 1,

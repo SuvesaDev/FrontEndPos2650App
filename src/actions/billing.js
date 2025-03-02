@@ -1639,7 +1639,7 @@ export const startValidateClaveInternaBilling = ( password, number,  catalogos )
           
         try {
             
-            const { status, userName, message, idUsuario }  = await dispatch( startValidateClaveInterna( password ) );
+            const { status, userName, message, idUsuario, costapets }  = await dispatch( startValidateClaveInterna( password ) );
             
             if( status === 1 ) {
 
@@ -1688,9 +1688,12 @@ export const startValidateClaveInternaBilling = ( password, number,  catalogos )
                 // Se inicia el StartOpening
                 dispatch( SetStartOpeningBilling( { value: true, number } ) );
 
-                dispatch( SetNumCajaBilling( userResult.numCaja ) );
+                // dispatch( SetNumCajaBilling( userResult.numCaja ) );
 
-                dispatch( SetNumAperturaBilling( userResult.idApertura ) );
+                // dispatch( SetNumAperturaBilling( userResult.idApertura ) );
+
+                // Se define si es Costa Pets
+                dispatch( SetIsCostaPetsBilling({ value: costapets, number }) );
 
                 // Se obtiene la ficha
                 await dispatch( startGetOneFichaBilling( number ) );
@@ -3205,4 +3208,8 @@ export const SetNumAperturaBilling = (value) => ({
     payload: value
 })
 
+export const SetIsCostaPetsBilling = (value) => ({
+    type: types.SetIsCostaPetsBilling,
+    payload: value
+})
 

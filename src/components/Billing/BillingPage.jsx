@@ -167,6 +167,7 @@ export const BillingPage = () => {
             estado: null
         },
         HasCartaExoneracionBilling: false,
+        isCostaPets: false,
         factura: {
             encabezado: {
                 id: '',
@@ -260,9 +261,7 @@ export const BillingPage = () => {
 
     }, [currentTab])
 
-
     return (
-
 
         <>
             <div className="container-fluid mt-2">
