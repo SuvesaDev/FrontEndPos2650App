@@ -2180,3 +2180,7 @@ export const SetArrayLotesImportarFacturaCompras = (value) => ({
     type: types.SetArrayLotesImportarFacturaCompras,
     payload: value
 })
+
+export const CleanLotesImportarFacturaCompras = () => ({
+    type: types.CleanLotesImportarFacturaCompras
+})

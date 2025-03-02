@@ -1674,6 +1674,16 @@ export const comprasReducer = (state = initialState, action) => {
         lotesByArticulo: action.payload
       }
 
+    case types.CleanLotesImportarFacturaCompras:
+      return {
+        ...state,
+        lotes : {
+          lote: '',
+          vencimiento: '',
+          existencia: 0
+        }
+      }
+
     case types.SetAddLoteLotesImportarFacturaCompras:
       return {
         ...state,

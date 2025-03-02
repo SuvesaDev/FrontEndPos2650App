@@ -20,10 +20,12 @@ import { BuysImportarFacturaModalTable } from './BuysImportarFacturaModalTable';
 
 import {
     CleanFacturaCompras,
+    CleanLotesImportarFacturaCompras,
     CleanPreciosImportarFacturaCompras,
     CleanStatePricesSellPreciosImportarFacturaCompras,
     CleanStateSearchInventarioCompras,
     SetAddLoteLotesImportarFacturaCompras,
+    SetArrayLotesImportarFacturaCompras,
     SetBillingImportXMLCompras,
     SetCedulaProveedorCompras,
     SetChangePrecioIVPreciosImportarFacturaCompras,
@@ -717,8 +719,8 @@ export const BuysImportarFacturaModal = () => {
 
     const closeModalLotes = () => {
 
-        //TODO: Clean el state de lotes
-        // dispatch(CleanStateSearchInventarioCompras());
+        dispatch( CleanLotesImportarFacturaCompras() );
+        dispatch( SetArrayLotesImportarFacturaCompras([]) );
 
     }
 
@@ -745,6 +747,8 @@ export const BuysImportarFacturaModal = () => {
             codigoPro: codigoProSeleted,
             lotes: newLote,
         } ) );
+
+        dispatch( CleanLotesImportarFacturaCompras() );
     
     }
 
@@ -1316,6 +1320,17 @@ export const BuysImportarFacturaModal = () => {
 
                             </div>                           
 
+                        </div>
+
+                        <div className="modal-footer">
+                            <button
+                                className="btn btn-success"
+                                data-bs-toggle="modal"
+                                data-bs-target="#modalImportarFactura"
+                                onClick={closeModalLotes}
+                            >
+                                Aceptar Lotes<IoIosCheckboxOutline className="iconSize" />
+                            </button>
                         </div>
 
                     </div>
