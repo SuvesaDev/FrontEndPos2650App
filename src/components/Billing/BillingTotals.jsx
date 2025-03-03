@@ -221,14 +221,15 @@ export const BillingTotals = () => {
     return (
 
         <>
-
-
             <div className='card'>
+
                 <div className="card-header">
                     <h5>Totales</h5>
                 </div>
+
                 <div className="card-body">
                     <div className="row mb-2">
+
                         <div className="col-md-12 mb-2">
                             <h5>Sub. Gravado</h5>
                             <div className="input-group">
@@ -350,9 +351,15 @@ export const BillingTotals = () => {
                                     disabled
                                 />
                             </div>
+                            { (billings[numberScreen] !== undefined) 
+                                ? (billings[numberScreen].isCostaPets) 
+                                    ? <hr />
+                                    : null
+                                : null
+                            }
                         </div>
 
-                        <div className="col-md-12 mb-2">
+                        <div className={ (billings[numberScreen] !== undefined) ? (billings[numberScreen].isCostaPets) ? "col-md-12 mb-2 d-none" : "col-md-12 mb-2" :  "col-md-12 mb-2"}>
                             <hr />
                             <h5>Monto Cupon</h5>
                             <div className="input-group">
@@ -374,8 +381,7 @@ export const BillingTotals = () => {
 
                         </div>
 
-
-                        <div className="col-md-6 mb-2">
+                        <div className={ (billings[numberScreen] !== undefined) ? (billings[numberScreen].isCostaPets) ? "col-md-6 mb-2 d-none" : "col-md-6 mb-2" :  "col-md-6 mb-2"}>
                             <div className="form-check">
                                 <input
                                     type="checkbox"
@@ -395,7 +401,7 @@ export const BillingTotals = () => {
                             <hr />
                         </div>
 
-                        <div className="col-md-6 mb-2">
+                        <div className={ (billings[numberScreen] !== undefined) ? (billings[numberScreen].isCostaPets) ? "col-md-6 mb-2 d-none" : "col-md-6 mb-2" :  "col-md-6 mb-2"}>
                             <div className="form-check">
                                 <input
                                     type="checkbox"
@@ -425,6 +431,7 @@ export const BillingTotals = () => {
                         </div>
                     </div>
                 </div>
+
             </div>
         </>
 

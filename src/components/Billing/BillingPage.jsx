@@ -1,4 +1,4 @@
-import { createRef, useEffect } from 'react'
+import { createRef, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { BillingConditions } from './BillingConditions'
@@ -13,6 +13,8 @@ import { SetAddArrayStateBilling } from '../../actions/billing'
 export const BillingPage = () => {
 
     const dispatch = useDispatch();
+
+    const [numberScreen, setnumberScreen] = useState(null);
 
     var textInputPrecioUnit = createRef(null);
     var textInputDescuento = createRef(null);
@@ -167,7 +169,7 @@ export const BillingPage = () => {
             estado: null
         },
         HasCartaExoneracionBilling: false,
-        isCostaPets: false,
+        isCostaPets: true,
         factura: {
             encabezado: {
                 id: '',
@@ -261,6 +263,14 @@ export const BillingPage = () => {
 
     }, [currentTab])
 
+    useEffect(() => {
+
+        if (currentTab.name.includes("Venta")) {
+            setnumberScreen(currentTab.routePage.split('/')[3] - 1);
+        }
+
+    }, [billings]);
+
     return (
 
         <>
@@ -271,6 +281,7 @@ export const BillingPage = () => {
                     </div>
 
                     <div className="card-body">
+
                         <div className="row mb-2 text-center" >
                             <div className="col-md-8 mb-1">
                                 <BillingHeaderCustomer />
@@ -281,24 +292,46 @@ export const BillingPage = () => {
                         </div>
 
                         <hr />
-                        <div className="row mb-2 text-center" >
-                            <div className="col-md-9 mb-3">
-                                <div className='billing_items'>
-                                    <BillingItems
-                                        inputRefPrecioUnit={textInputPrecioUnit}
-                                        inputRefDescuento={textInputDescuento}
-                                        inputRefCantidad={textInputCantidad}
-                                        inputRefCodigo={textInputCodigo}
-                                    />
-                                </div>
 
-                            </div>
-                            <div className="col-md-3 mb-1">
-                                <BillingTotals />
-                            </div>
+                        {
+                            (billings[numberScreen] !== undefined) 
+                                ? (!billings[numberScreen].isCostaPets)
+                                    ?   <div className="row mb-2 text-center" >
+                                            <div className="col-md-9 mb-3">
+                                                <div className='billing_items'>
+                                                    <BillingItems
+                                                        inputRefPrecioUnit={textInputPrecioUnit}
+                                                        inputRefDescuento={textInputDescuento}
+                                                        inputRefCantidad={textInputCantidad}
+                                                        inputRefCodigo={textInputCodigo}
+                                                    />
+                                                </div>
+                
+                                            </div>
+                
+                                            <div className="col-md-3 mb-1">
+                                                <BillingTotals />
+                                            </div>
+                
+                                        </div>
+                                    : null
+                                : null
+                        }                        
 
+                        <div className={ (billings[numberScreen] !== undefined) ? (billings[numberScreen].isCostaPets) ? "col-md-12 mb-3 text-center" : "col-md-12 d-none" :  "col-md-12 d-none"}>
+                            <div className='billing_items'>
+                                <BillingItems
+                                    inputRefPrecioUnit={textInputPrecioUnit}
+                                    inputRefDescuento={textInputDescuento}
+                                    inputRefCantidad={textInputCantidad}
+                                    inputRefCodigo={textInputCodigo}
+                                />
+                            </div>
                         </div>
 
+                        <div className={ (billings[numberScreen] !== undefined) ? (billings[numberScreen].isCostaPets) ? "col-md-4 ms-auto mb-1 text-center" : "col-md-12 d-none" :  "col-md-12 d-none"}>
+                            <BillingTotals />
+                        </div>
 
                     </div>
 

@@ -1048,13 +1048,17 @@ export const BillingItems = (props) => {
 
         <>
             <div className='card'>
+
                 <div className="card-header inline-container">
                     <h5>Artículo a Facturar: <strong style={{ color: 'red' }}>{(billings[numberScreen] !== undefined)
                         ? billings[numberScreen].detalleArticuloActual.Descripcion
                         : ''}</strong></h5>
                 </div>
+
                 <div className="card-body">
+
                     <div className="row mb-3">
+
                         <div className="col-md-3 mb-3">
                             <h5>Código</h5>
                             <div className="input-group">
@@ -1161,7 +1165,7 @@ export const BillingItems = (props) => {
                             </div>
                         </div>
 
-                        <div className="col-md-3 mb-3">
+                        <div className={ (billings[numberScreen] !== undefined) ? (billings[numberScreen].isCostaPets) ? "col-md-3 mb-3 d-none" : "col-md-3 mb-3" :  "col-md-3 mb-3"}>
                             <h5>Bodega</h5>
                             <div className="input-group">
                                 <span className="input-group-text">
@@ -1230,9 +1234,101 @@ export const BillingItems = (props) => {
                                 />
                             </div>
                         </div>
+
+                        {
+                            (billings[numberScreen] !== undefined) 
+                                ? (billings[numberScreen].isCostaPets)
+                                    ?   <div className="col-md-2 mb-3">
+                                            <h5>Sub Total</h5>
+                                            <div className="input-group">
+                                                <span className="input-group-text">
+                                                    {
+                                                        (billings[numberScreen] !== undefined)
+                                                            ? (parseFloat(billings[numberScreen].factura.encabezado.Cod_Moneda) === 2)
+                                                                ? <FaDollarSign className="iconSize" />
+                                                                : <FaColonSign className="iconSize" />
+                                                            : <FaColonSign className="iconSize" />
+                                                    }
+                                                </span>
+                                                <input
+                                                    name="SubTotal"
+                                                    autoComplete="off"
+                                                    className="form-control"
+                                                    disabled={true}
+                                                    value={
+                                                        (billings[numberScreen] !== undefined)
+                                                            ?
+                                                            new Intl.NumberFormat('es-CR', { style: 'currency', currency: 'CRC' }).format(billings[numberScreen].detalleArticuloActual.SubTotal)
+                                                            : ''
+                                                    }
+                                                />
+                                            </div>
+                                        </div>
+                                    : null
+                                : null
+                        }
+
+                        {
+                            (billings[numberScreen] !== undefined) 
+                                ? (billings[numberScreen].isCostaPets)
+                                    ?   <div className="col-md-2 mb-3">
+                                            <hr />
+                                            <div className='inline-container'>
+                                                <OverlayTrigger placement="top" overlay={msgInfoBilling}>
+                                                    <button
+                                                        className={
+                                                            (billings[numberScreen] !== undefined)
+                                                                ? (billings[numberScreen].enableItems)
+                                                                    ? 'btn btn-dark'
+                                                                    : 'btn btn-dark disabled'
+                                                                : 'btn btn-dark disabled'
+                                                        }
+                                                    >
+                                                        <FaCircleExclamation className="Iconsize" />
+                                                    </button>
+                                                </OverlayTrigger>
+                
+                                                <button
+                                                    className={
+                                                        (billings[numberScreen] !== undefined)
+                                                            ? (billings[numberScreen].isEditDetalleActual)
+                                                                ? 'btn btn-warning'
+                                                                : 'btn btn-success'
+                                                            : 'btn btn-success'
+                                                    }
+                                                    onClick={handleClickAddProducto}
+                                                    disabled={
+                                                        (billings[numberScreen] !== undefined)
+                                                            ? !billings[numberScreen].enableItems
+                                                            : true
+                                                    }
+                                                >
+                                                    {
+                                                        billings[numberScreen] !== undefined ? (
+                                                            billings[numberScreen].isEditDetalleActual ? (
+                                                                <>
+                                                                    Editar <TbEditCircle className="iconSize" />
+                                                                </>
+                                                            ) : (
+                                                                <>
+                                                                    Agregar <IoAddCircle className="iconSize" />
+                                                                </>
+                                                            )
+                                                        ) : (
+                                                            <>
+                                                                Agregar <IoAddCircle className="iconSize" />
+                                                            </>
+                                                        )
+                                                    }
+                                                </button>
+                                            </div>
+                                        </div>
+                                    : null
+                                : null
+                        }
                     </div>
 
-                    <div className="row mb-3">
+                    <div className={ (billings[numberScreen] !== undefined) ? (billings[numberScreen].isCostaPets) ? "row mb-3 d-none" : "row mb-3" :  "row mb-3"}>
                         <div className="col-md-1 mb-3"></div>
                         <div className="col-md-2 mb-3">
                             <h5>Existencias</h5>
@@ -1389,6 +1485,7 @@ export const BillingItems = (props) => {
                             </div>
                         </div>
                     </div>
+
                     <div className='row mb-3'>
                         <div className='col-md-12 mb-2'>
                             <BillingItemsTable columns={columns} data={
@@ -1400,11 +1497,12 @@ export const BillingItems = (props) => {
                     </div>
 
                 </div>
+
             </div>
+
             <InventorySearchModal />
 
         </>
-
 
     )
 }
