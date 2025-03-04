@@ -169,6 +169,7 @@ export const parseXML = ( xml ) => {
             idDetalleServicioTable++;
             return {
                 id: idDetalleServicioTable,
+                numeroLinea: detalle.numeroLinea,
                 codigoPro : detalle.codigoComercial.codigo,
                 descripcionPro : detalle.detalle,
                 codigoInt : '',

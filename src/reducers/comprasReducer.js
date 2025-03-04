@@ -89,6 +89,7 @@ const initialState = {
     vencimiento: '',
     existencia: 0
   },
+  seletedNumeroLineaLotes: '',
   lotesByArticulo: [],
   compras: {
     encabezado: {
@@ -1047,7 +1048,7 @@ export const comprasReducer = (state = initialState, action) => {
         billingImportXML: {
           ...state.billingImportXML,
           detalleServicioTable: state.billingImportXML.detalleServicioTable.map(
-            (detalle, i) => detalle.codigoPro === action.payload.codigoPro
+            (detalle, i) => detalle.codigoPro === action.payload.codigoPro && detalle.numeroLinea == action.payload.numeroLinea
               ? {
                 ...detalle,
                 cantidad: action.payload.cantidad
@@ -1674,6 +1675,48 @@ export const comprasReducer = (state = initialState, action) => {
         lotesByArticulo: action.payload
       }
 
+    case types.SetNumeroLineaLotesImportarFacturaCompras:
+      return {
+        ...state,
+        seletedNumeroLineaLotes: action.payload
+      }
+
+    case types.SetCantidadLotesImportarFacturaCompras:
+      return {
+        ...state,
+        billingImportXML: {
+          ...state.billingImportXML,
+          detalleServicio: state.billingImportXML.detalleServicio.map(
+            (detalle, i) => detalle.codigoComercial.codigo == action.payload.codigoPro && detalle.numeroLinea == action.payload.numeroLinea
+              ? {
+                ...detalle,
+                lotes: detalle.lotes.map(
+                  (lote, i) => lote.lote == action.payload.lote
+                    ? {
+                      ...lote,
+                      cantidad: action.payload.cantidad
+                    }
+                    : lote
+                )
+              }
+              : detalle),
+          detalleServicioTable: state.billingImportXML.detalleServicioTable.map(
+            (detalle, i) => detalle.codigoPro == action.payload.codigoPro && detalle.numeroLinea == action.payload.numerolinea
+              ? {
+                ...detalle,
+                lotes: detalle.lotes.map(
+                  (lote, i) => lote.lote == action.payload.lote
+                    ? {
+                      ...lote,
+                      cantidad: action.payload.cantidad
+                    }
+                    : lote
+                )
+              }
+              : detalle)
+        }
+      }
+
     case types.CleanLotesImportarFacturaCompras:
       return {
         ...state,
@@ -1694,7 +1737,7 @@ export const comprasReducer = (state = initialState, action) => {
         billingImportXML: {
           ...state.billingImportXML,
           detalleServicio: state.billingImportXML.detalleServicio.map(
-            (detalle, i) => detalle.codigoComercial.codigo == action.payload.codigoPro
+            (detalle, i) => detalle.codigoComercial.codigo == action.payload.codigoPro && detalle.numeroLinea == action.payload.numerolinea
               ? {
                 ...detalle,
                 lotes: [
@@ -1704,7 +1747,7 @@ export const comprasReducer = (state = initialState, action) => {
               }
               : detalle),
           detalleServicioTable: state.billingImportXML.detalleServicioTable.map(
-            (detalle, i) => detalle.codigoPro == action.payload.codigoPro
+            (detalle, i) => detalle.codigoPro == action.payload.codigoPro && detalle.numeroLinea == action.payload.numerolinea
               ? {
                 ...detalle,
                 lotes: [
@@ -1807,6 +1850,7 @@ export const comprasReducer = (state = initialState, action) => {
           vencimiento: '',
           existencia: 0
         },
+        seletedNumeroLineaLotes: '',
         lotesByArticulo: [],
         compras: {
           encabezado: {

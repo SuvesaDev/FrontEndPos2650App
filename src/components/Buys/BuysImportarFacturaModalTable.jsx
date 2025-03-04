@@ -12,6 +12,7 @@ import {
     SetAllPrecioPreciosImportarFacturaCompras,
     SetArrayLotesImportarFacturaCompras,
     SetCantidadInternoDetalleCompras,
+    SetCantidadLotesImportarFacturaCompras,
     SetCodigoInternoDetalleCompras,
     SetCodigoInventarioSeleccionadoCompras,
     SetCodigoProSeletedPreciosImportarFacturaCompras,
@@ -21,14 +22,13 @@ import {
     SetIsOpenModalSearchInventarioModalCompras,
     SetNuevoCostoInternoDetalleCompras,
     SetNuevoCostoPreciosImportarFacturaCompras,
+    SetNumeroLineaLotesImportarFacturaCompras,
     SetRegaliaInternoDetalleCompras,
     startUnirInventariosXMLCompras
 } from '../../actions/ComprasAction';
 import { FaHashtag } from 'react-icons/fa6';
 
 export const BuysImportarFacturaModalTable = ({ columns, data }) => {
-
-    const [isClickLotes, setisClickLotes] = useState(false);
     
     const dispatch = useDispatch();
 
@@ -86,7 +86,21 @@ export const BuysImportarFacturaModalTable = ({ columns, data }) => {
 
         if (cell.column.id !== 'cantidad') return;
 
-        const { codigoPro, precioUnitario } = cell.row.original;
+        const { codigoPro, precioUnitario, numeroLinea } = cell.row.original;
+
+        const existLotes = detalleServicio.find( detalle => detalle.codigoComercial.codigo == codigoPro && detalle.numeroLinea == numeroLinea);
+
+        if( existLotes.lotes.length == 0 ) {
+        
+            Swal.fire({
+                icon: "warning",
+                title: "Lotes",
+                text: "Para modificar la cantidad se debe primero agregar un lote",
+            });
+
+            return;
+
+        }
 
         let newCantidad = parseInt(target.value);
         let precioXML = parseFloat(precioUnitario);
@@ -95,8 +109,17 @@ export const BuysImportarFacturaModalTable = ({ columns, data }) => {
 
             dispatch(SetCantidadInternoDetalleCompras({
                 codigoPro,
+                numeroLinea,
                 cantidad: target.value
             }));
+
+            // Se actualiza la cantidad en el lote
+            dispatch( SetCantidadLotesImportarFacturaCompras({
+                codigoPro,
+                numeroLinea,
+                cantidad: target.value,
+                lote: existLotes.lotes[0].lote
+            }) );
 
             let nuevoCo = precioXML / newCantidad;
 
@@ -200,13 +223,24 @@ export const BuysImportarFacturaModalTable = ({ columns, data }) => {
     }
 
     const handleOpenModalLotes = (e, cell) => {
-
+        
         // Se obtiene el codigo seleccionado
-        const { codigoPro } = cell.row.original;
+        const { codigoPro, codigoInt, numeroLinea } = cell.row.original;
+
+        if( codigoInt == null || codigoInt == undefined || codigoInt == "") {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Advertencia',
+                text: 'No se puede agregar un lote porque no se realizado la union de un producto interno.'
+            });
+            return;
+        }
 
         dispatch(SetCodigoProSeletedPreciosImportarFacturaCompras(codigoPro));
 
-        const detalle = detalleServicio.find( detalle => detalle.codigoComercial.codigo == codigoPro);
+        dispatch( SetNumeroLineaLotesImportarFacturaCompras(numeroLinea) );
+
+        const detalle = detalleServicio.find( detalle => detalle.codigoComercial.codigo == codigoPro && detalle.numeroLinea == numeroLinea );
         const { lotes } = detalle;
         dispatch( SetArrayLotesImportarFacturaCompras(lotes) );
 
@@ -218,7 +252,6 @@ export const BuysImportarFacturaModalTable = ({ columns, data }) => {
         iconLotesModal.removeAttribute("data-bs-target", "#modalLotesBuys");
         
 
-        // dispatch(SetIsOpenModalSearchInventarioModalCompras(true));
     }
 
     return (
@@ -325,7 +358,7 @@ export const BuysImportarFacturaModalTable = ({ columns, data }) => {
                                                                         ? <>
                                                                                 {
                                                                                     (isCostaPets)
-                                                                                        ?   <button className={(cell.value) ? 'btn btn-dark disabled' : 'btn btn-dark'}
+                                                                                        ?   <button className='btn btn-dark'
                                                                                                 title='Lotes'
                                                                                                 id="iconLotesModalBuys"
                                                                                                 onDoubleClick={(e) => handleOpenModalLotes(e, cell)}

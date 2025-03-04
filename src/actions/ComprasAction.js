@@ -916,7 +916,7 @@ export const startValidateClaveInternaCompras = (password) => {
         try {
 
             const { status, idUsuario, message, costapets } = await dispatch(startValidateClaveInterna(password));
-
+            
             if (status === 1) {
 
                 // Se activan los inputs
@@ -2178,6 +2178,16 @@ export const SetAddLoteLotesImportarFacturaCompras = (value) => ({
 
 export const SetArrayLotesImportarFacturaCompras = (value) => ({
     type: types.SetArrayLotesImportarFacturaCompras,
+    payload: value
+})
+
+export const SetNumeroLineaLotesImportarFacturaCompras = (value) => ({
+    type: types.SetNumeroLineaLotesImportarFacturaCompras,
+    payload: value
+})
+
+export const SetCantidadLotesImportarFacturaCompras = (value) => ({
+    type: types.SetCantidadLotesImportarFacturaCompras,
     payload: value
 })
 

@@ -92,6 +92,7 @@ export const BuysImportarFacturaModal = () => {
         valorBusquedaInventario,
         isCostaPets,
         lotes,
+        seletedNumeroLineaLotes,
         lotesByArticulo
     } = useSelector(state => state.compras);
 
@@ -136,8 +137,7 @@ export const BuysImportarFacturaModal = () => {
 
     const { 
         lote,
-        vencimiento,
-        existencia
+        vencimiento
     } = lotes;
 
     const columns = [
@@ -262,8 +262,8 @@ export const BuysImportarFacturaModal = () => {
             accessor: "vencimiento",
         },
         {
-            Header: "Existencia",
-            accessor: "existencia",
+            Header: "Cantidad",
+            accessor: "cantidad",
         },
     ];
 
@@ -461,6 +461,33 @@ export const BuysImportarFacturaModal = () => {
 
                 return;
             }
+
+            // Se verifica que todos los articulos tengan un lote
+            const noProductsLotes = detalleServicioTable.filter((product) => product.lotes.length == 0);
+            if (noProductsLotes.length > 0) {
+
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Advertencia',
+                    text: `Existen ${noProductsLotes.length} ${(noProductsLotes.length === 1) ? 'producto' : 'productos'} que no tiene lotes, por tal motivo no se puede continuar con la importacion.`
+                });
+
+                return;
+            }
+
+            // Se verifica que todos los articulos tengan una cantidad
+            const noProductsCantidad = detalleServicioTable.filter((product) => product.cantidad == 0);
+            if (noProductsCantidad.length > 0) {
+
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Advertencia',
+                    text: `Existen ${noProductsCantidad.length} ${(noProductsCantidad.length === 1) ? 'producto' : 'productos'} que no tiene cantidad, por tal motivo no se puede continuar con la importacion.`
+                });
+
+                return;
+            }
+
 
             // Se valida si existe el proveedors
             dispatch(startExistProveedorCompras(numero));
@@ -725,8 +752,22 @@ export const BuysImportarFacturaModal = () => {
     }
 
     const handleSaveLote = () => {
-          
-        if( lote == '' || vencimiento == '' || existencia == 0) {
+        
+        const existLotes = detalleServicio.find( detalle => detalle.codigoComercial.codigo == codigoProSeleted && detalle.numeroLinea == seletedNumeroLineaLotes);
+
+        if( existLotes.lotes.length > 0 ) {
+
+            Swal.fire({
+                icon: "warning",
+                title: "Lotes",
+                text: "Solamente se puede agregar un lote por articulo",
+            });
+
+            return;
+
+        }
+
+        if( lote == '' || vencimiento == '') {
 
             Swal.fire({
                 icon: "warning",
@@ -739,12 +780,12 @@ export const BuysImportarFacturaModal = () => {
 
         const newLote = {
             lote,
-            vencimiento,
-            existencia
+            vencimiento
         }
 
         dispatch( SetAddLoteLotesImportarFacturaCompras( {
             codigoPro: codigoProSeleted,
+            numerolinea: seletedNumeroLineaLotes,
             lotes: newLote,
         } ) );
 
@@ -1262,7 +1303,7 @@ export const BuysImportarFacturaModal = () => {
                                         </div>
                                     </div>
 
-                                    <div className="col-md-3 mb-3">
+                                    {/* <div className="col-md-3 mb-3">
                                         <h5>Existencia</h5>
                                         <div className="input-group">
                                             <span className="input-group-text">
@@ -1282,7 +1323,7 @@ export const BuysImportarFacturaModal = () => {
                                                 }
                                             />
                                         </div>
-                                    </div>
+                                    </div> */}
 
                                     <div className='col-md-2 mb-3'>
                                         <h5>Opciones</h5>

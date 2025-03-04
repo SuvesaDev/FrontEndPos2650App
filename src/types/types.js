@@ -1164,6 +1164,8 @@ export const types = {
   SetExistenciaLotesImportarFacturaCompras: '[Compras] SetExistenciaLotesImportarFacturaCompras',
   SetAddLoteLotesImportarFacturaCompras: '[Compras] SetAddLoteLotesImportarFacturaCompras',
   SetArrayLotesImportarFacturaCompras: '[Compras] SetArrayLotesImportarFacturaCompras',
+  SetNumeroLineaLotesImportarFacturaCompras: '[Compras] SetNumeroLineaLotesImportarFacturaCompras',
+  SetCantidadLotesImportarFacturaCompras: '[Compras] SetCantidadLotesImportarFacturaCompras',
   CleanLotesImportarFacturaCompras: '[Compras] CleanLotesImportarFacturaCompras',
 
   //Repaymment
