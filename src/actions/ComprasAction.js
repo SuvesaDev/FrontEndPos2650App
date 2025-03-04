@@ -1049,7 +1049,7 @@ export const startGetArticulosXMLCompras = (productos, detalleServicio) => {
     return async (dispatch) => {
 
         try {
-
+            
             //Mostrar el loading
             Swal.fire({
                 title: 'Por favor, espere',
@@ -1153,9 +1153,10 @@ export const startGetArticulosXMLCompras = (productos, detalleServicio) => {
                         Cabys: detalleCurrent.codigo,
                         id_Bodega: product.id_Bodega,
                         nuevosCostos: detalleCurrent.costos,
+                        lotes: detalleCurrent.lotes,
                         isImportXML: true,
                     }
-                    console.log("Llego a la meta");
+                    
                     dispatch(SetAddDetalleCompras(newProduct));
 
                     indexProduct++;
@@ -1203,7 +1204,7 @@ export const startExistProveedorCompras = (cedula) => {
     return async (dispatch) => {
 
         try {
-
+            
             //Call end-point 
             const { data } = await suvesaApi.get(`/proveedor/ExisteProveedorController?cedula=${cedula}`);
             const { status, responses } = data;

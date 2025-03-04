@@ -504,7 +504,7 @@ export const BuysImportarFacturaModal = () => {
                     codProveedor: detalle.codigoPro
                 }
             });
-            console.log(detalleServicio);
+            
             dispatch(startGetArticulosXMLCompras(productos, detalleServicio));
 
             // Se establece el hasChargeFactura

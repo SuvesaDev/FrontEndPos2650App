@@ -31,9 +31,9 @@ export const BuysPage = () => {
     const { CedulaProveedor } = compras.encabezado;
 
     useEffect(() => {
-
+        
         if (!existProveedor && !isOpenImportarXMLModal) {
-            console.log(existProveedor);//TODO: EMPEZAR AQUI A REVISAR
+            
             const {
                 identificacion,
                 nombre,
@@ -42,6 +42,8 @@ export const BuysPage = () => {
                 correoElectronico,
                 ubicacion
             } = billingImportXML.emisor;
+
+            console.log(billingImportXML.emisor)
 
             // Se inserta la cedula del proveedor
             dispatch(SetcedulaProveedorAddCompras(identificacion.numero));
@@ -53,7 +55,9 @@ export const BuysPage = () => {
             dispatch(Settelefono1ProveedorAddCompras(telefono.numTelefono));
 
             // Se inserta fax1 del proveedor
-            dispatch(Setfax1ProveedorAddCompras(fax.numTelefono));
+            if(fax != undefined || fax != null) {
+                dispatch(Setfax1ProveedorAddCompras(fax.numTelefono));
+            }
 
             // Se inserta email del proveedor
             dispatch(SetemailProveedorAddCompras(correoElectronico));
@@ -69,7 +73,9 @@ export const BuysPage = () => {
                 // Se busca el codigo del proveedor 
                 const proveedor = filterProveedorInventory.find(prov => prov.cedula === CedulaProveedor);
 
-                dispatch(SetCodigoProvCompras(proveedor.codigo));
+                if(proveedor != undefined) {
+                    dispatch(SetCodigoProvCompras(proveedor.codigo));
+                }
             }
 
         }
