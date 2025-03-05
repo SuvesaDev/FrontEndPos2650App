@@ -740,11 +740,13 @@ export const startGetOneInventoryBillingByCodArticulo = ( cod_Articulo, parametr
             //Call end-point 
             const { data } = await suvesaApi.post('/inventario/ObtenerUnInventarioCod_Articulo', { cod_Articulo });
             const { status, responses } = data;
-
+            
             //Quitar el loading
             Swal.close();
 
             if (status === 0) {
+
+                const { codigo } = responses;
                 
                 //seleccionarlo y meterlo al estado en el metodo de action                
                 dispatch( SetCodArticuloDetalleActualBilling( { value: responses.cod_Articulo, number } ));
@@ -779,6 +781,8 @@ export const startGetOneInventoryBillingByCodArticulo = ( cod_Articulo, parametr
                 dispatch( SetautoFocusDescBilling( { value: false, number }));
                 dispatch( SetautoFocusCantidadBilling( { value: false, number }));
                 dispatch( SetautoFocusCodigoBilling( { value: false, number }));
+
+                dispatch(startGetLotesByArticle( codigo, number));
 
             } else {
 
@@ -873,6 +877,8 @@ export const startGetOneInventoryBilling = ( codigo, parametros, number ) => {
                 dispatch( SetautoFocusDescBilling( { value: false, number }));
                 dispatch( SetautoFocusCantidadBilling( { value: false, number }));
                 dispatch( SetautoFocusCodigoBilling( { value: false, number }));
+
+                dispatch(startGetLotesByArticle( codigo, number));
 
             } else {
 
@@ -2142,6 +2148,94 @@ export const startDeleteLineDetalleBilling = ( deleteLinea, number ) => {
     };
 }
 
+export const startGetLotesByArticle = (codigoPrincipal, number) => {
+
+    return async ( dispatch ) => {
+    
+        try {
+
+            //Mostrar el loading
+            // Swal.fire({
+            //     title: 'Por favor, espere',
+            //     allowEscapeKey: false,
+            //     allowOutsideClick: false,
+            //     showConfirmButton: false,
+            //     imageUrl: loadingImage,
+            //     customClass: 'alert-class-login',
+            //     imageHeight: 100,
+            // });
+            
+            //Call end-point 
+            const { data } = await suvesaApi.get(`/StockLote/getStockLotesArticulo?Request=${codigoPrincipal}`);
+            const { status, responses } = data;
+
+            //Quitar el loading
+            // Swal.close();
+
+            if( status === 0) {
+                
+                const lotes = responses.map( lot => {
+                    return {
+                        id: lot.id,
+                        lote: lot.lote,
+                        vencimiento: lot.vencimiento.split('T')[0],
+                        existencia: lot.cantidad
+                    }
+                });
+                
+                const loteProximoVencer = obtenerLoteProximoVencer(lotes);
+
+                dispatch( SetLotesByArticuloBilling({ value: lotes, number }) );
+                dispatch( SetIdLoteDetalleActualBilling({ value: loteProximoVencer.id, number }) );
+
+            } else {
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
+
+                if( currentException === "No tiene lotes" ) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Lotes',
+                        text: 'Este producto no tiene lotes registrados.'
+                    });
+
+                    dispatch( SetLotesByArticuloBilling([]) );
+
+                    return;
+                }
+                
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
+                
+            }
+            
+        } catch (error) {
+            
+            Swal.close();
+            console.log(error);
+            if( error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al obtener el stock del lote',
+                });
+            }
+        }
+
+    }
+
+}
+
 // Private methods
 const loadCatalogos = async ( dispatch, catalogos ) => {
     
@@ -2365,6 +2459,23 @@ const calculateTotalsProductCurrent = ( detalleArticuloActual, parametros, numbe
             dispatch( SetSubTotalExcentoDetalleActualBilling( { value: precio * cantidad, number } ));
         }
     }
+}
+
+const obtenerLoteProximoVencer = (lotes) => {
+
+    const fechas = lotes.map( lot => {
+        return lot.vencimiento.split('T')[0]
+    });
+
+    const hoy = new Date();
+    
+    const futuras = fechas
+        .map(fecha => new Date(fecha))
+        .filter(fecha => fecha >= hoy);
+
+    const fechaProximaVencer = futuras.length > 0 ? futuras.reduce((a, b) => a < b ? a : b).toISOString().split('T')[0] : null;
+
+    return lotes.find( lot => lot.vencimiento == fechaProximaVencer);
 }
 
 // Normal Actions
@@ -2938,6 +3049,11 @@ export const SetPrecio_UnitOriginalDetalleActualBilling = (value) => ({
     payload: value
 })
 
+export const SetIdLoteDetalleActualBilling = (value) => ({
+    type: types.SetIdLoteDetalleActualBilling,
+    payload: value
+})
+
 export const SetOpenSearchInventoryBilling = (value) => ({
     type: types.SetOpenSearchInventoryBilling,
     payload: value
@@ -3213,3 +3329,7 @@ export const SetIsCostaPetsBilling = (value) => ({
     payload: value
 })
 
+export const SetLotesByArticuloBilling = (value) => ({
+    type: types.SetLotesByArticuloBilling,
+    payload: value
+})

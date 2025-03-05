@@ -226,6 +226,7 @@ export const BillingPage = () => {
         searchFicha: '',
         isPreventaEdit: false,
         startEditing: false,
+        lotesByArticulo: []
     }
 
     useEffect(() => {

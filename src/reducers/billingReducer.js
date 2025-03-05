@@ -98,7 +98,8 @@ const initialState = {
         ExistenciaBodega: 0.00,
         CantVet: 0.00,
         CantBod: 0.00,
-        Precio_UnitOriginal: 0.00
+        Precio_UnitOriginal: 0.00,
+        idLote: 0
     },
     detalleArticuloDelete: {
         Precio_Unit: 0.00,
@@ -124,7 +125,8 @@ const initialState = {
         Id_Bodega: 0,
         ExistenciaBodega: 0.00,
         CantVet: 0.00,
-        CantBod: 0.00
+        CantBod: 0.00,
+        idLote: 0
     },
     cartaBilling: {
         id: null,
@@ -197,6 +199,7 @@ const initialState = {
     isPreventaEdit: false,
     startEditing: false,
     datosImprimirCredito: [],
+    lotesByArticulo: []
 };
 
 export const BillingReducer = (state = initialState, action) => {
@@ -1992,6 +1995,22 @@ export const BillingReducer = (state = initialState, action) => {
                 )
             }
 
+        case types.SetIdLoteDetalleActualBilling:
+            return {
+                ...state,
+                billings: state.billings.map(
+                    (billing, i) => i === action.payload.number
+                        ? {
+                            ...state.billings[action.payload.number],
+                            detalleArticuloActual: {
+                                ...state.billings[action.payload.number].detalleArticuloActual,
+                                idLote: action.payload.value,
+                            },
+                        }
+                        : billing
+                )
+            }
+
         case types.SetUsuarioDetalleActualBilling:
             return {
                 ...state,
@@ -2752,6 +2771,19 @@ export const BillingReducer = (state = initialState, action) => {
                 )
             }
 
+        case types.SetLotesByArticuloBilling:
+            return {
+                ...state,
+                billings: state.billings.map(
+                    (billing, i) => i === action.payload.number
+                        ? {
+                            ...state.billings[action.payload.number],
+                            lotesByArticulo: action.payload.value
+                        }
+                        : billing
+                )
+            }
+
         case types.CleanBilling:
             return {
                 ...state,
@@ -2852,7 +2884,8 @@ export const BillingReducer = (state = initialState, action) => {
                                 ExistenciaBodega: 0.00,
                                 CantVet: 0.00,
                                 CantBod: 0.00,
-                                Precio_UnitOriginal: 0.00
+                                Precio_UnitOriginal: 0.00,
+                                idLote: 0
                             },
                             detalleArticuloDelete: {
                                 Precio_Unit: 0.00,
@@ -2950,6 +2983,7 @@ export const BillingReducer = (state = initialState, action) => {
                             searchFicha: '',
                             isPreventaEdit: false,
                             startEditing: false,
+                            lotesByArticulo: []
                         }
                         : billing
                 )

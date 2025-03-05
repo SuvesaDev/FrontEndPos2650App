@@ -5,6 +5,7 @@ import { BillingItemsTable } from './BillingItemsTable';
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { FaBoxes, FaCode, FaNewspaper, FaPercentage, FaSearch } from 'react-icons/fa';
 import { MdDeleteForever, MdOutlineInventory } from 'react-icons/md';
+import { MdShoppingCart } from "react-icons/md";
 
 import { OpenSearchModalInventory, SetValorFiltroSearchModalInventory } from '../../actions/inventory';
 import { InventorySearchModal } from '../Inventory/InventorySearchModal';
@@ -1268,10 +1269,49 @@ export const BillingItems = (props) => {
                                 : null
                         }
 
-                        {
-                            (billings[numberScreen] !== undefined) 
-                                ? (billings[numberScreen].isCostaPets)
-                                    ?   <div className="col-md-2 mb-3">
+                    </div>
+
+                    {
+                        (billings[numberScreen] !== undefined) 
+                            ? (billings[numberScreen].isCostaPets)
+                                ?   <div className='row mb-3'>
+
+                                        <div className="col-md-4 mb-3">
+                                            <h5>Lote</h5>
+                                            <div className="input-group">
+                                                <span className="input-group-text">
+                                                    <MdShoppingCart className="iconSize" />
+                                                </span>
+                                                <select
+                                                    name="idTipoCliente"
+                                                    className="form-select"
+                                                    disabled={
+                                                        (billings[numberScreen] !== undefined)
+                                                            ? !billings[numberScreen].enableItems
+                                                            : true
+                                                    }
+                                                    value={
+                                                        (billings[numberScreen] !== undefined)
+                                                            ? billings[numberScreen].detalleArticuloActual.idLote
+                                                            : ''
+                                                    }
+                                                    onChange={e => handleInputChangeWithDispatch(e, SetIdLoteDetalleActualBilling)}
+                                                >
+                                                    <option value={0} selected disabled hidden> Seleccione... </option>
+                                                    {
+                                                        (billings[numberScreen] !== undefined)
+                                                            ?   (billings[numberScreen].lotesByArticulo != [])
+                                                                    ?   billings[numberScreen].lotesByArticulo.map(lote => {
+                                                                            return <option key={lote.id} value={lote.id}> {lote.lote} - {lote.vencimiento} - {lote.existencia} </option>
+                                                                        })
+                                                                    :   <option value=''></option>
+                                                            :   <option value=''></option>
+                                                    }
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div className="col-md-2 mb-3">
                                             <hr />
                                             <div className='inline-container'>
                                                 <OverlayTrigger placement="top" overlay={msgInfoBilling}>
@@ -1323,10 +1363,11 @@ export const BillingItems = (props) => {
                                                 </button>
                                             </div>
                                         </div>
-                                    : null
+
+                                    </div>
                                 : null
-                        }
-                    </div>
+                            : null
+                    }
 
                     <div className={ (billings[numberScreen] !== undefined) ? (billings[numberScreen].isCostaPets) ? "row mb-3 d-none" : "row mb-3" :  "row mb-3"}>
                         <div className="col-md-1 mb-3"></div>
