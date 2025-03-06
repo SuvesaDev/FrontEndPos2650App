@@ -283,7 +283,8 @@ export const BillingFooter = () => {
                         subTotal: detalle.SubTotal,
                         cantVen: detalle.CantVet,
                         cantBod: detalle.CantBod,
-                        idBodega: detalle.Id_Bodega
+                        idBodega: detalle.Id_Bodega,
+                        lote: detalle.idLote
                     }
                 })
             }
@@ -352,7 +353,8 @@ export const BillingFooter = () => {
                     subTotal: detalle.SubTotal,
                     cantVen: detalle.CantVet,
                     cantBod: detalle.CantBod,
-                    idBodega: detalle.Id_Bodega
+                    idBodega: detalle.Id_Bodega,
+                    lote: detalle.idLote
                 }
             })
         }

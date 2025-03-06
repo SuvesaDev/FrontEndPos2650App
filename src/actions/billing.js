@@ -937,6 +937,8 @@ export const startAddDetalleActualBilling = ( detalle, number ) => {
                 dispatch( SetAddDetalleBilling( { value: detalle, number } ));
                 dispatch( CleanDetalleActualBilling( { number } ));
 
+                dispatch( SetLotesByArticuloBilling({ value: [], number }) );
+
                 dispatch( SetautoFocusPrecioUnitBilling( { value: false, number } ));
                 dispatch( SetautoFocusDescBilling( { value: false, number } ));
                 dispatch( SetautoFocusCantidadBilling( { value: false, number } ));
@@ -2172,6 +2174,8 @@ export const startGetLotesByArticle = (codigoPrincipal, number) => {
             //Quitar el loading
             // Swal.close();
 
+            dispatch( SetLotesByArticuloBilling({ value: [], number }) );
+
             if( status === 0) {
                 
                 const lotes = responses.map( lot => {
@@ -2187,6 +2191,7 @@ export const startGetLotesByArticle = (codigoPrincipal, number) => {
 
                 dispatch( SetLotesByArticuloBilling({ value: lotes, number }) );
                 dispatch( SetIdLoteDetalleActualBilling({ value: loteProximoVencer.id, number }) );
+                dispatch( SetNombreLoteDetalleActualBilling({ value: loteProximoVencer.lote, number }) );
 
             } else {
                 //Caso contrario respuesta incorrecto mostrar mensaje de error
@@ -3051,6 +3056,11 @@ export const SetPrecio_UnitOriginalDetalleActualBilling = (value) => ({
 
 export const SetIdLoteDetalleActualBilling = (value) => ({
     type: types.SetIdLoteDetalleActualBilling,
+    payload: value
+})
+
+export const SetNombreLoteDetalleActualBilling = (value) => ({
+    type: types.SetNombreLoteDetalleActualBilling,
     payload: value
 })
 

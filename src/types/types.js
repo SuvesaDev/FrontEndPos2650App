@@ -871,7 +871,7 @@ export const types = {
   SetCantBodDetalleActualBilling: '[Billing] SetCantBodDetalleActualBilling',
   SetPrecio_UnitOriginalDetalleActualBilling: '[Billing] SetPrecio_UnitOriginalDetalleActualBilling',
   SetIdLoteDetalleActualBilling: '[Billing] SetIdLoteDetalleActualBilling',
-
+  SetNombreLoteDetalleActualBilling: '[Billing] SetNombreLoteDetalleActualBilling',
 
   SetIdCartaBilling: '[Billing] SetIdCartaBilling',
   SetCedulaCartaBilling: '[Billing] SetCedulaCartaBilling',

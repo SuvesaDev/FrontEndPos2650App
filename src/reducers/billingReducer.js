@@ -99,7 +99,8 @@ const initialState = {
         CantVet: 0.00,
         CantBod: 0.00,
         Precio_UnitOriginal: 0.00,
-        idLote: 0
+        idLote: 0,
+        nombreLote: ''
     },
     detalleArticuloDelete: {
         Precio_Unit: 0.00,
@@ -126,7 +127,8 @@ const initialState = {
         ExistenciaBodega: 0.00,
         CantVet: 0.00,
         CantBod: 0.00,
-        idLote: 0
+        idLote: 0,
+        nombreLote: ''
     },
     cartaBilling: {
         id: null,
@@ -2011,6 +2013,22 @@ export const BillingReducer = (state = initialState, action) => {
                 )
             }
 
+        case types.SetNombreLoteDetalleActualBilling:
+            return {
+                ...state,
+                billings: state.billings.map(
+                    (billing, i) => i === action.payload.number
+                        ? {
+                            ...state.billings[action.payload.number],
+                            detalleArticuloActual: {
+                                ...state.billings[action.payload.number].detalleArticuloActual,
+                                nombreLote: action.payload.value,
+                            },
+                        }
+                        : billing
+                )
+            }
+
         case types.SetUsuarioDetalleActualBilling:
             return {
                 ...state,
@@ -2465,6 +2483,8 @@ export const BillingReducer = (state = initialState, action) => {
                                 ExistenciaBodega: 0.00,
                                 CantVet: 0.00,
                                 CantBod: 0.00,
+                                idLote: 0,
+                                nombreLote: ''
                             },
                         }
                         : billing
@@ -2885,7 +2905,8 @@ export const BillingReducer = (state = initialState, action) => {
                                 CantVet: 0.00,
                                 CantBod: 0.00,
                                 Precio_UnitOriginal: 0.00,
-                                idLote: 0
+                                idLote: 0,
+                                nombreLote: ''
                             },
                             detalleArticuloDelete: {
                                 Precio_Unit: 0.00,
@@ -2911,7 +2932,9 @@ export const BillingReducer = (state = initialState, action) => {
                                 Id_Bodega: 0,
                                 ExistenciaBodega: 0.00,
                                 CantVet: 0.00,
-                                CantBod: 0.00
+                                CantBod: 0.00,
+                                idLote: 0,
+                                nombreLote: ''
                             },
                             cartaBilling: {
                                 id: null,

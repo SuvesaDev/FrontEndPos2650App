@@ -46,7 +46,8 @@ import {
     startGetOneInventoryBillingByCodArticulo,
     SetStartEditingBilling,
     SetId_BodegaDetalleActualBilling,
-    SetShowInfoMessageBilling
+    SetShowInfoMessageBilling,
+    SetNombreLoteDetalleActualBilling
 } from '../../actions/billing';
 import { FaBarcode, FaBoxesPacking, FaCircleExclamation, FaColonSign, FaDollarSign } from 'react-icons/fa6';
 import { TbEditCircle } from 'react-icons/tb';
@@ -108,6 +109,54 @@ export const BillingItems = (props) => {
             Header: "SubTotal",
             accessor: "SubTotal",
             Cell: ({ value }) => new Intl.NumberFormat('es-CR', { style: 'currency', currency: 'CRC' }).format(value),
+        },
+        {
+            Header: "Acciones",
+            accessor: "icon",
+            Cell: () => (
+                <button className='btn btn-danger'>
+                    <MdDeleteForever className='iconSizeBtn' />
+                </button>
+            ),
+
+        },
+    ];
+
+    const columnsCostaPets = [
+        {
+            Header: "Código",
+            accessor: "CodArticulo",
+        },
+        {
+            Header: "Descripcion",
+            accessor: "Descripcion",
+        },
+        {
+            Header: "Cantidad",
+            accessor: "Cantidad",
+        },
+        {
+            Header: "Precio Uni.",
+            accessor: "Precio_Unit",
+            Cell: ({ value }) => new Intl.NumberFormat('es-CR', { style: 'currency', currency: 'CRC' }).format(value),
+        },
+        {
+            Header: "Desc.%",
+            accessor: "Descuento",
+        },
+        {
+            Header: "IV.%",
+            accessor: "Monto_Impuesto",
+            Cell: ({ value }) => new Intl.NumberFormat('es-CR', { style: 'currency', currency: 'CRC' }).format(value),
+        },
+        {
+            Header: "SubTotal",
+            accessor: "SubTotal",
+            Cell: ({ value }) => new Intl.NumberFormat('es-CR', { style: 'currency', currency: 'CRC' }).format(value),
+        },
+        {
+            Header: "Lote",
+            accessor: "nombreLote",
         },
         {
             Header: "Acciones",
@@ -596,6 +645,17 @@ export const BillingItems = (props) => {
         });
     }
 
+    const handleChangeLote = ({ target }) => {
+
+        if (billings[numberScreen] === undefined || !billings[numberScreen].enableItems) return;
+
+        const idLote = target.value;
+        const loteSeleted = billings[numberScreen].lotesByArticulo.find( lot => lot.id == idLote );
+
+        dispatch( SetIdLoteDetalleActualBilling({ value: idLote, number: numberScreen }));
+        dispatch( SetNombreLoteDetalleActualBilling({ value: loteSeleted.lote, number: numberScreen }) );
+    }
+
     const handleClickDownPrecioUnit = (e) => {
 
         if (billings[numberScreen] === undefined || !billings[numberScreen].enableItems) return;
@@ -762,8 +822,19 @@ export const BillingItems = (props) => {
     }
 
     const handleClickAddProducto = (e) => {
-
+        
         if (billings[numberScreen] === undefined || !billings[numberScreen].enableItems) return;
+        
+        if( billings[numberScreen].lotesByArticulo.length == 0 ) {
+            
+            Swal.fire({
+                icon: 'error',
+                title: 'No se puede procesar la informacion',
+                text: 'El producto no tiene lotes'
+            });
+
+            return;
+        }
 
         //   e.preventDefault();
 
@@ -785,7 +856,8 @@ export const BillingItems = (props) => {
             //Validacion de campo numerico
             if (isNumeric(billings[numberScreen].detalleArticuloActual.Precio_Unit, 0.10)
                 && isNumeric(billings[numberScreen].detalleArticuloActual.Descuento, 0)
-                && isNumeric(billings[numberScreen].detalleArticuloActual.Cantidad, 1)) {
+                && isNumeric(billings[numberScreen].detalleArticuloActual.Cantidad, 1)
+                && billings[numberScreen].detalleArticuloActual.idLote != 0) {
 
                 // Se desactiva el startEditing
                 dispatch(SetStartEditingBilling({ value: false, number: numberScreen }));
@@ -1295,7 +1367,7 @@ export const BillingItems = (props) => {
                                                             ? billings[numberScreen].detalleArticuloActual.idLote
                                                             : ''
                                                     }
-                                                    onChange={e => handleInputChangeWithDispatch(e, SetIdLoteDetalleActualBilling)}
+                                                    onChange={e => handleChangeLote(e)}
                                                 >
                                                     <option value={0} selected disabled hidden> Seleccione... </option>
                                                     {
@@ -1529,7 +1601,13 @@ export const BillingItems = (props) => {
 
                     <div className='row mb-3'>
                         <div className='col-md-12 mb-2'>
-                            <BillingItemsTable columns={columns} data={
+                            <BillingItemsTable columns={
+                                (billings[numberScreen] !== undefined)
+                                    ? (billings[numberScreen].isCostaPets)
+                                        ? columnsCostaPets
+                                        : columns
+                                    : columns
+                            } data={
                                 (billings[numberScreen] !== undefined)
                                     ? billings[numberScreen].factura.detalle
                                     : []

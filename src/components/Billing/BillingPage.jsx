@@ -128,7 +128,9 @@ export const BillingPage = () => {
             ExistenciaBodega: 0.00,
             CantVet: 0.00,
             CantBod: 0.00,
-            Precio_UnitOriginal: 0.00
+            Precio_UnitOriginal: 0.00,
+            idLote: 0,
+            nombreLote: ''
         },
         detalleArticuloDelete: {
             Precio_Unit: 0.00,
@@ -154,7 +156,9 @@ export const BillingPage = () => {
             Id_Bodega: 0,
             ExistenciaBodega: 0.00,
             CantVet: 0.00,
-            CantBod: 0.00
+            CantBod: 0.00,
+            idLote: 0,
+            nombreLote: ''
         },
         cartaBilling: {
             id: null,
