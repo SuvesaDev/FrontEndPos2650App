@@ -1,5 +1,5 @@
 import Swal from 'sweetalert2';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BillingItemsTable } from './BillingItemsTable';
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
@@ -61,6 +61,7 @@ export const BillingItems = (props) => {
     const dispatch = useDispatch();
 
     const [numberScreen, setnumberScreen] = useState(null);
+    const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 768);
 
     const { currentTab } = useSelector(state => state.tabs);
     const { dollar } = useSelector(state => state.sidebar);
@@ -78,97 +79,113 @@ export const BillingItems = (props) => {
     } = optionsSearchInventory;
 
 
-    const columns = [
-        {
-            Header: "Código",
-            accessor: "CodArticulo",
-        },
-        {
-            Header: "Descripcion",
-            accessor: "Descripcion",
-        },
-        {
-            Header: "Cantidad",
-            accessor: "Cantidad",
-        },
-        {
-            Header: "Precio Uni.",
-            accessor: "Precio_Unit",
-            Cell: ({ value }) => new Intl.NumberFormat('es-CR', { style: 'currency', currency: 'CRC' }).format(value),
-        },
-        {
-            Header: "Desc.%",
-            accessor: "Descuento",
-        },
-        {
-            Header: "IV.%",
-            accessor: "Monto_Impuesto",
-            Cell: ({ value }) => new Intl.NumberFormat('es-CR', { style: 'currency', currency: 'CRC' }).format(value),
-        },
-        {
-            Header: "SubTotal",
-            accessor: "SubTotal",
-            Cell: ({ value }) => new Intl.NumberFormat('es-CR', { style: 'currency', currency: 'CRC' }).format(value),
-        },
-        {
-            Header: "Acciones",
-            accessor: "icon",
-            Cell: () => (
-                <button className='btn btn-danger'>
-                    <MdDeleteForever className='iconSizeBtn' />
-                </button>
-            ),
+    const columns = useMemo(
+        () => [
+            {
+                Header: "Código",
+                accessor: "CodArticulo",
+            },
+            {
+                Header: "Descripcion",
+                accessor: "Descripcion",
+            },
+            {
+                Header: "Cantidad",
+                accessor: "Cantidad",
+            },
+            ...( isSmallScreen
+                    ? []
+                    : [
+                        {
+                            Header: "Precio Uni.",
+                            accessor: "Precio_Unit",
+                            Cell: ({ value }) => new Intl.NumberFormat('es-CR', { style: 'currency', currency: 'CRC' }).format(value),
+                        },
+                        {
+                            Header: "Desc.%",
+                            accessor: "Descuento",
+                        },
+                        {
+                            Header: "IV.%",
+                            accessor: "Monto_Impuesto",
+                            Cell: ({ value }) => new Intl.NumberFormat('es-CR', { style: 'currency', currency: 'CRC' }).format(value),
+                        },
+                    ]
+                ),
+            {
+                Header: "SubTotal",
+                accessor: "SubTotal",
+                Cell: ({ value }) => new Intl.NumberFormat('es-CR', { style: 'currency', currency: 'CRC' }).format(value),
+            },
+            {
+                Header: "Acciones",
+                accessor: "icon",
+                Cell: () => (
+                    <button className='btn btn-danger'>
+                        <MdDeleteForever className='iconSizeBtn' />
+                    </button>
+                ),
+    
+            },
+        ],
+        [isSmallScreen]
+    );
 
-        },
-    ];
-
-    const columnsCostaPets = [
-        {
-            Header: "Código",
-            accessor: "CodArticulo",
-        },
-        {
-            Header: "Descripcion",
-            accessor: "Descripcion",
-        },
-        {
-            Header: "Cantidad",
-            accessor: "Cantidad",
-        },
-        {
-            Header: "Precio Uni.",
-            accessor: "Precio_Unit",
-            Cell: ({ value }) => new Intl.NumberFormat('es-CR', { style: 'currency', currency: 'CRC' }).format(value),
-        },
-        {
-            Header: "Desc.%",
-            accessor: "Descuento",
-        },
-        {
-            Header: "IV.%",
-            accessor: "Monto_Impuesto",
-            Cell: ({ value }) => new Intl.NumberFormat('es-CR', { style: 'currency', currency: 'CRC' }).format(value),
-        },
-        {
-            Header: "SubTotal",
-            accessor: "SubTotal",
-            Cell: ({ value }) => new Intl.NumberFormat('es-CR', { style: 'currency', currency: 'CRC' }).format(value),
-        },
-        {
-            Header: "Lote",
-            accessor: "nombreLote",
-        },
-        {
-            Header: "Acciones",
-            accessor: "icon",
-            Cell: () => (
-                <button className='btn btn-danger'>
-                    <MdDeleteForever className='iconSizeBtn' />
-                </button>
-            ),
-
-        },
-    ];
+    const columnsCostaPets = useMemo(
+        () => [
+            {
+                Header: "Código",
+                accessor: "CodArticulo",
+            },
+            {
+                Header: "Descripcion",
+                accessor: "Descripcion",
+            },
+            {
+                Header: "Cantidad",
+                accessor: "Cantidad",
+            },
+            ...( isSmallScreen
+                    ? []
+                    : [
+                        {
+                            Header: "Precio Uni.",
+                            accessor: "Precio_Unit",
+                            Cell: ({ value }) => new Intl.NumberFormat('es-CR', { style: 'currency', currency: 'CRC' }).format(value),
+                        },
+                        {
+                            Header: "Desc.%",
+                            accessor: "Descuento",
+                        },
+                        {
+                            Header: "IV.%",
+                            accessor: "Monto_Impuesto",
+                            Cell: ({ value }) => new Intl.NumberFormat('es-CR', { style: 'currency', currency: 'CRC' }).format(value),
+                        },
+                        {
+                            Header: "Lote",
+                            accessor: "nombreLote",
+                        },
+                    ]
+                ),
+            {
+                Header: "SubTotal",
+                accessor: "SubTotal",
+                Cell: ({ value }) => new Intl.NumberFormat('es-CR', { style: 'currency', currency: 'CRC' }).format(value),
+            },
+            {
+                Header: "Acciones",
+                accessor: "icon",
+                Cell: () => (
+                    <button className='btn btn-danger'>
+                        <MdDeleteForever className='iconSizeBtn' />
+                    </button>
+                ),
+    
+            },
+        ],
+        [isSmallScreen]
+    );
 
     useEffect(() => {
 
@@ -177,6 +194,15 @@ export const BillingItems = (props) => {
         }
 
     }, [billings]);
+
+    useEffect(() => {
+        const handleResize = () => {
+          setIsSmallScreen(window.innerWidth < 768);
+        };
+    
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+      }, []);
 
     // Hacer cuando se agrega un producto, modifica
     //calculos de totales generales
