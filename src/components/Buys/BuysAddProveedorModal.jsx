@@ -68,7 +68,7 @@ export const BuysAddProveedorModal = () => {
             contacto,
             telefonoCont,
             estado: true,
-            fechaCreacion: moment(new Date()),
+            fechaCreacion: moment(new Date()).format('DD/MM/YYYY'),
             idUsuarioCreacion: auth.username,
             cuentasBancariasProveedors: []
         }

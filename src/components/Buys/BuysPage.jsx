@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { BuysHeader } from './BuysHeader';
@@ -7,6 +7,7 @@ import { BuysIcons } from './BuysIcons';
 
 import {
     SetCodigoProvCompras,
+    SetOpenModalSearchProveedorCompras,
     SetcedulaProveedorAddCompras,
     SetdireccionProveedorAddCompras,
     SetemailProveedorAddCompras,
@@ -17,6 +18,8 @@ import {
 } from '../../actions/ComprasAction';
 
 export const BuysPage = () => {
+
+    const botonRef = useRef(null);
 
     const dispatch = useDispatch();
 
@@ -43,8 +46,6 @@ export const BuysPage = () => {
                 ubicacion
             } = billingImportXML.emisor;
 
-            console.log(billingImportXML.emisor)
-
             // Se inserta la cedula del proveedor
             dispatch(SetcedulaProveedorAddCompras(identificacion.numero));
 
@@ -67,7 +68,7 @@ export const BuysPage = () => {
 
             dispatch(isOpenModalAddProveedorCompras(true));
         } else {
-
+            
             if (CedulaProveedor !== '') {
 
                 // Se busca el codigo del proveedor 
@@ -75,6 +76,13 @@ export const BuysPage = () => {
 
                 if(proveedor != undefined) {
                     dispatch(SetCodigoProvCompras(proveedor.codigo));
+                } else {
+
+                    if (botonRef.current) {
+                        botonRef.current.click(); // Simula un clic en el botón con data-bs-toggle
+                        dispatch(SetOpenModalSearchProveedorCompras(true));
+                    }
+
                 }
             }
 
@@ -101,6 +109,14 @@ export const BuysPage = () => {
                         <BuysIcons />
                     </div>
                 </div>
+
+
+                <button
+                    ref={botonRef}
+                    className="d-none"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modalCrearProveedor"
+                ></button>
             </div>
             <br />
         </>
