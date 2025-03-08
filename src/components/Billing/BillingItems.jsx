@@ -765,7 +765,6 @@ export const BillingItems = (props) => {
         }
     }
 
-
     const handleClickDownCantidad = (e) => {
 
         if (billings[numberScreen] === undefined || !billings[numberScreen].enableItems) return;
@@ -1406,6 +1405,41 @@ export const BillingItems = (props) => {
                                                             :   <option value=''></option>
                                                     }
                                                 </select>
+                                            </div>
+                                        </div>
+
+                                        <div className="col-md-2 mb-3">
+                                            <h5>Cantidad</h5>
+                                            <div className="input-group">
+                                                <span className="input-group-text">
+                                                    <AiOutlineFieldNumber className="iconSize" />
+                                                </span>
+                                                <input
+                                                    className={
+                                                        (billings[numberScreen] !== undefined)
+                                                            ? (isNumeric(billings[numberScreen].detalleArticuloActual.Cantidad, 0))
+                                                                ? 'form-control'
+                                                                : 'form-control textRed'
+                                                            : 'form-control'
+                                                    }
+                                                    name="Cantidad"
+                                                    autoComplete="off"
+                                                    type='number'
+                                                    min="0"
+                                                    ref={props.inputRefCantidad}
+                                                    disabled={
+                                                        (billings[numberScreen] !== undefined)
+                                                            ? !billings[numberScreen].enableItems
+                                                            : true
+                                                    }
+                                                    value={
+                                                        (billings[numberScreen] !== undefined)
+                                                            ? billings[numberScreen].detalleArticuloActual.Cantidad
+                                                            : ''
+                                                    }
+                                                    onKeyDown={handleClickDownCantidad}
+                                                    onChange={e => handleChangeCantidad(e)}
+                                                />
                                             </div>
                                         </div>
 
