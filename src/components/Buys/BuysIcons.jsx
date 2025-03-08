@@ -95,6 +95,26 @@ export const BuysIcons = () => {
 
     const handleCreateCompras = () => {
 
+        if( idEmpresa == 0 ) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Advertencia',
+                text: 'Selecciona una empresa.'
+            });
+
+            return;
+        }
+
+        if( idBodega == 0 ) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Advertencia',
+                text: 'Selecciona un bodega.'
+            });
+
+            return;
+        }
+
         if (!activeButtonSave) return;
 
         const newCompra = {
@@ -176,7 +196,7 @@ export const BuysIcons = () => {
                         id: 0,
                         lote: detalle.lotes[0].lote,
                         vencimiento: detalle.lotes[0].vencimiento,
-                        idArticulo: parseInt(detalle.CodArticulo),
+                        idArticulo: parseInt(detalle.codFxArticulo),
                         activo: true,
                         cantidad: parseFloat(detalle.lotes[0].cantidad),
                     }

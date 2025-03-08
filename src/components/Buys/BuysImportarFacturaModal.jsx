@@ -500,6 +500,7 @@ export const BuysImportarFacturaModal = () => {
 
             const productos = detalleServicioTable.map(detalle => {
                 return {
+                    numeroLinea: detalle.numeroLinea,
                     codArticulo: detalle.codigoInt,
                     codProveedor: detalle.codigoPro
                 }

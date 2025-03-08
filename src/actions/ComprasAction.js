@@ -1073,60 +1073,20 @@ export const startGetArticulosXMLCompras = (productos, detalleServicio) => {
 
             if (status === 0) {
 
-                let indexProduct = 0;
+                let indexProduct = 1;
 
                 // Se insertan los detalle en la tabla
                 responses.forEach(product => {
-
+                    debugger;
                     // Se obtiene el detalle actual
-                    const productCurrent = onlyProducts.find(p => p.codArticulo === product.codArticulo);
+                    const productCurrent = onlyProducts.find(p => p.numeroLinea == indexProduct);
                     const detalleCurrent = detalleServicio.find(detalle => detalle.codigoComercial.codigo === productCurrent.codProveedor);
 
                     // Se obtiene el porcentaje de impuesto
                     let impuesto = detalleCurrent.impuesto.tarifa;
-                    // console.log(detalleCurrent)
-                    // switch (detalleCurrent.impuesto.codigoTarifa) {
 
-                    //     case "01":
-                    //         impuesto = 0;
-                    //         break;
-
-                    //     case "02":
-                    //         impuesto = 1;
-                    //         break;
-
-                    //     case "03":
-                    //         impuesto = 2;
-                    //         break;
-
-                    //     case "04":
-                    //         impuesto = 4;
-                    //         break;
-
-                    //     case "05":
-                    //         impuesto = 0;
-                    //         break;
-
-                    //     case "06":
-                    //         impuesto = 4;
-                    //         break;
-
-                    //     case "07":
-                    //         impuesto = 8;
-                    //         break;
-
-                    //     case "08":
-                    //         impuesto = 13;
-                    //         break;
-
-                    //     case "09":
-                    //         impuesto = 0.5;
-                    //         break;
-
-                    //     default:
-                    //         break;
-                    // }
-
+                    const lotes = detalleServicio.find(detalle => detalle.numeroLinea == indexProduct);
+                    
                     const newProduct = {
                         idArticuloComprados: indexProduct,
                         CodArticulo: product.codArticulo,
@@ -1153,7 +1113,7 @@ export const startGetArticulosXMLCompras = (productos, detalleServicio) => {
                         Cabys: detalleCurrent.codigo,
                         id_Bodega: product.id_Bodega,
                         nuevosCostos: detalleCurrent.costos,
-                        lotes: detalleCurrent.lotes,
+                        lotes: lotes.lotes,
                         isImportXML: true,
                     }
                     
