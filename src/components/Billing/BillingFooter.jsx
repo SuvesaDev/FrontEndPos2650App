@@ -271,7 +271,7 @@ export const BillingFooter = () => {
                 total: billings[numberScreen].factura.encabezado.Total,
                 ficha: billings[numberScreen].factura.encabezado.ficha,
                 idSucursal: idSucursal,
-                idEmpresa: ( billings[numberScreen].isCostaPets ) ? "0" : billings[numberScreen].factura.encabezado.empresa,
+                idEmpresa: ( billings[numberScreen].isCostaPets ) ? "1" : billings[numberScreen].factura.encabezado.empresa,
                 preventa: billings[numberScreen].factura.encabezado.preventa,
                 detalle: billings[numberScreen].factura.detalle.map(detalle => {
                     return {
@@ -339,7 +339,7 @@ export const BillingFooter = () => {
             total: billings[numberScreen].factura.encabezado.Total,
             ficha: billings[numberScreen].factura.encabezado.ficha,
             idSucursal: idSucursal,
-            idEmpresa: ( billings[numberScreen].isCostaPets ) ? "0" : billings[numberScreen].factura.encabezado.empresa,
+            idEmpresa: ( billings[numberScreen].isCostaPets ) ? "1" : billings[numberScreen].factura.encabezado.empresa,
             preventa: billings[numberScreen].factura.encabezado.preventa,
             detalle: billings[numberScreen].factura.detalle.map(detalle => {
                 return {

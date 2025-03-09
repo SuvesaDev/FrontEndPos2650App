@@ -47,7 +47,8 @@ import {
     SetStartEditingBilling,
     SetId_BodegaDetalleActualBilling,
     SetShowInfoMessageBilling,
-    SetNombreLoteDetalleActualBilling
+    SetNombreLoteDetalleActualBilling,
+    SetIdLoteDetalleActualBilling
 } from '../../actions/billing';
 import { FaBarcode, FaBoxesPacking, FaCircleExclamation, FaColonSign, FaDollarSign } from 'react-icons/fa6';
 import { TbEditCircle } from 'react-icons/tb';
@@ -672,7 +673,7 @@ export const BillingItems = (props) => {
     }
 
     const handleChangeLote = ({ target }) => {
-
+        
         if (billings[numberScreen] === undefined || !billings[numberScreen].enableItems) return;
 
         const idLote = target.value;

@@ -2150,29 +2150,33 @@ export const startDeleteLineDetalleBilling = ( deleteLinea, number ) => {
     };
 }
 
-export const startGetLotesByArticle = (codigoPrincipal, number) => {
+export const startGetLotesByArticle = (codigoPrincipal, number, activeLoading = false) => {
 
     return async ( dispatch ) => {
     
         try {
 
-            //Mostrar el loading
-            // Swal.fire({
-            //     title: 'Por favor, espere',
-            //     allowEscapeKey: false,
-            //     allowOutsideClick: false,
-            //     showConfirmButton: false,
-            //     imageUrl: loadingImage,
-            //     customClass: 'alert-class-login',
-            //     imageHeight: 100,
-            // });
-            
+            if( activeLoading ) {
+                //Mostrar el loading
+                Swal.fire({
+                    title: 'Por favor, espere',
+                    allowEscapeKey: false,
+                    allowOutsideClick: false,
+                    showConfirmButton: false,
+                    imageUrl: loadingImage,
+                    customClass: 'alert-class-login',
+                    imageHeight: 100,
+                });
+            }
+                        
             //Call end-point 
             const { data } = await suvesaApi.get(`/StockLote/getStockLotesArticulo?Request=${codigoPrincipal}`);
             const { status, responses } = data;
 
-            //Quitar el loading
-            // Swal.close();
+            if( activeLoading ) {
+                //Quitar el loading
+                Swal.close();
+            }
 
             dispatch( SetLotesByArticuloBilling({ value: [], number }) );
 
