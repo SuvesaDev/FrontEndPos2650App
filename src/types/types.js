@@ -870,7 +870,8 @@ export const types = {
   SetCantVetDetalleActualBilling: '[Billing] SetCantVetDetalleActualBilling',
   SetCantBodDetalleActualBilling: '[Billing] SetCantBodDetalleActualBilling',
   SetPrecio_UnitOriginalDetalleActualBilling: '[Billing] SetPrecio_UnitOriginalDetalleActualBilling',
-
+  SetIdLoteDetalleActualBilling: '[Billing] SetIdLoteDetalleActualBilling',
+  SetNombreLoteDetalleActualBilling: '[Billing] SetNombreLoteDetalleActualBilling',
 
   SetIdCartaBilling: '[Billing] SetIdCartaBilling',
   SetCedulaCartaBilling: '[Billing] SetCedulaCartaBilling',
@@ -906,6 +907,8 @@ export const types = {
   SetShowInfoMessageBilling: '[Billing] SetShowInfoMessageBilling',
   SetNumCajaBilling: '[Billing] SetNumCajaBilling',
   SetNumAperturaBilling: '[Billing] SetNumAperturaBilling',
+  SetIsCostaPetsBilling: '[Billing] SetIsCostaPetsBilling',
+  SetLotesByArticuloBilling: '[Billing] SetLotesByArticuloBilling',
 
   // Buys actions
   buysOpenModelImportarF: '[Buys] Open Model Importar Factura',
@@ -1134,6 +1137,7 @@ export const types = {
   SetUpdateStateInventarioCompras: '[Compras] SetUpdateStateInventarioCompras',
 
   SetIsOpenModalPrecioImportarFacturaCompras: '[Compras] SetIsOpenModalPrecioImportarFacturaCompras',
+  SetIsCostaPetsCompras: '[Compras] SetIsCostaPetsCompras',
   SetCantidadInternoDetalleCompras: '[Compras] SetCantidadInternoDetalleCompras',
   SetNuevoCostoInternoDetalleCompras: '[Compras] SetNuevoCostoInternoDetalleCompras',
 
@@ -1156,6 +1160,15 @@ export const types = {
   SetRemovePricesSellPreciosImportarFacturaCompras: '[Compras] SetRemovePricesSellPreciosImportarFacturaCompras',
   SetNuevosCostosArticuloImportarFacturaCompras: '[Compras] SetNuevosCostosArticuloImportarFacturaCompras',
   SetAllPrecioPreciosImportarFacturaCompras: '[Compras] SetAllPrecioPreciosImportarFacturaCompras',
+
+  SetLoteLotesImportarFacturaCompras: '[Compras] SetLoteLotesImportarFacturaCompras',
+  SetVencimientoLotesImportarFacturaCompras: '[Compras] SetVencimientoLotesImportarFacturaCompras',
+  SetExistenciaLotesImportarFacturaCompras: '[Compras] SetExistenciaLotesImportarFacturaCompras',
+  SetAddLoteLotesImportarFacturaCompras: '[Compras] SetAddLoteLotesImportarFacturaCompras',
+  SetArrayLotesImportarFacturaCompras: '[Compras] SetArrayLotesImportarFacturaCompras',
+  SetNumeroLineaLotesImportarFacturaCompras: '[Compras] SetNumeroLineaLotesImportarFacturaCompras',
+  SetCantidadLotesImportarFacturaCompras: '[Compras] SetCantidadLotesImportarFacturaCompras',
+  CleanLotesImportarFacturaCompras: '[Compras] CleanLotesImportarFacturaCompras',
 
   //Repaymment
   SetCurrentTabRepayment: '[Repaymment] SetCurrentTabRepayment',

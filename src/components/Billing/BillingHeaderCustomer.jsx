@@ -118,9 +118,6 @@ export const BillingHeaderCustomer = () => {
 
     }
 
-    
-
-
     const handleClickDown = (e) => {
 
         if (billings[numberScreen] === undefined) return;
@@ -272,7 +269,7 @@ export const BillingHeaderCustomer = () => {
                 <div className="col-md-3 mb-3">
                     <hr />
                     <div className="inline-container" role="toolbar">
-                        <div className="btn-group mb-2">
+                        <div className={ (billings[numberScreen] !== undefined) ? (billings[numberScreen].isCostaPets) ? "btn-group mb-2 d-none" : "btn-group mb-2" :  "btn-group mb-2"}>
                             <button
                                 className={
                                     (billings[numberScreen] !== undefined)
@@ -302,7 +299,7 @@ export const BillingHeaderCustomer = () => {
                             </button>
                         </div>
 
-                        <div className="btn-group mb-2">
+                        <div className={ (billings[numberScreen] !== undefined) ? (billings[numberScreen].isCostaPets) ? "btn-group mb-2 d-none" : "btn-group mb-2" :  "btn-group mb-2"}>
                             <button
                                 className={
                                     (billings[numberScreen] !== undefined)
@@ -322,7 +319,7 @@ export const BillingHeaderCustomer = () => {
 
                         </div>
 
-                        <div className="btn-group mb-2">
+                        <div className={ (billings[numberScreen] !== undefined) ? (billings[numberScreen].isCostaPets) ? "btn-group mb-2 d-none" : "btn-group mb-2" :  "btn-group mb-2"}>
                             <button
                                 className={
                                     (billings[numberScreen] !== undefined)
@@ -340,7 +337,7 @@ export const BillingHeaderCustomer = () => {
                 </div>
             </div>
 
-            <div className="row mb-2">
+            <div className={ (billings[numberScreen] !== undefined) ? (billings[numberScreen].isCostaPets) ? "row mb-2 d-none" : "row mb-2" :  "row mb-2"}>
                 <div className="col-md-4 mb-3">
                     <h5>Teléfono</h5>
                     <div className="input-group">
@@ -423,7 +420,7 @@ export const BillingHeaderCustomer = () => {
             </div>
 
             <div className="row mb-2">
-                <div className="col-md-6 mb-3">
+                <div className={ (billings[numberScreen] !== undefined) ? (billings[numberScreen].isCostaPets) ? "col-md-6 mb-3 d-none" : "col-md-6 mb-3" :  "col-md-6 mb-3"}>
                     <h5>Dirección</h5>
                     <div className="input-group">
                         <span className="input-group-text">

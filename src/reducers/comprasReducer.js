@@ -35,6 +35,7 @@ const initialState = {
   valorBusquedaInventario: '',
   codigoInventarioSeleccionado: '',
   isOpenModalPrecioImportarFactura: false,
+  isCostaPets: false,
   preciosImportarFactura: {
     nuevoCosto: 0,
     impuestoNeto: 0,
@@ -83,6 +84,13 @@ const initialState = {
     Cabys: '',
     idBodega: 0
   },
+  lotes : {
+    lote: '',
+    vencimiento: '',
+    existencia: 0
+  },
+  seletedNumeroLineaLotes: '',
+  lotesByArticulo: [],
   compras: {
     encabezado: {
       Id_Compra: 0.00,
@@ -1040,7 +1048,7 @@ export const comprasReducer = (state = initialState, action) => {
         billingImportXML: {
           ...state.billingImportXML,
           detalleServicioTable: state.billingImportXML.detalleServicioTable.map(
-            (detalle, i) => detalle.codigoPro === action.payload.codigoPro
+            (detalle, i) => detalle.codigoPro === action.payload.codigoPro && detalle.numeroLinea == action.payload.numeroLinea
               ? {
                 ...detalle,
                 cantidad: action.payload.cantidad
@@ -1261,8 +1269,13 @@ export const comprasReducer = (state = initialState, action) => {
             Fecha: '',
             Dias: 0,
             Vence: '',
+            precio_A: 0.00,
+            precio_B: 0.00,
+            precio_C: 0.00,
+            precio_D: 0.00,
             Compra: true,
             TipoCompra: '',
+            idBodega: 0,
             Cod_MonedaCompra: 0,
             FacturaCancelado: false,
             TipoCambio: 0.00,
@@ -1388,6 +1401,12 @@ export const comprasReducer = (state = initialState, action) => {
       return {
         ...state,
         isOpenModalPrecioImportarFactura: action.payload
+      }
+
+    case types.SetIsCostaPetsCompras:
+      return {
+        ...state,
+        isCostaPets: action.payload
       }
 
     case types.SetNuevoCostoPreciosImportarFacturaCompras:
@@ -1628,6 +1647,123 @@ export const comprasReducer = (state = initialState, action) => {
         }
       }
 
+    case types.SetLoteLotesImportarFacturaCompras:
+      return {
+        ...state,
+        lotes: {
+          ...state.lotes,
+          lote: action.payload
+        }
+      }
+
+    case types.SetVencimientoLotesImportarFacturaCompras:
+      return {
+        ...state,
+        lotes: {
+          ...state.lotes,
+          vencimiento: action.payload
+        }
+      }
+
+    case types.SetExistenciaLotesImportarFacturaCompras:
+      return {
+        ...state,
+        lotes: {
+          ...state.lotes,
+          existencia: action.payload
+        }
+      }
+
+    case types.SetArrayLotesImportarFacturaCompras:
+      return {
+        ...state,
+        lotesByArticulo: action.payload
+      }
+
+    case types.SetNumeroLineaLotesImportarFacturaCompras:
+      return {
+        ...state,
+        seletedNumeroLineaLotes: action.payload
+      }
+
+    case types.SetCantidadLotesImportarFacturaCompras:
+      return {
+        ...state,
+        billingImportXML: {
+          ...state.billingImportXML,
+          detalleServicio: state.billingImportXML.detalleServicio.map(
+            (detalle, i) => detalle.codigoComercial.codigo == action.payload.codigoPro && detalle.numeroLinea == action.payload.numeroLinea
+              ? {
+                ...detalle,
+                lotes: detalle.lotes.map(
+                  (lote, i) => lote.lote == action.payload.lote
+                    ? {
+                      ...lote,
+                      cantidad: action.payload.cantidad
+                    }
+                    : lote
+                )
+              }
+              : detalle),
+          detalleServicioTable: state.billingImportXML.detalleServicioTable.map(
+            (detalle, i) => detalle.codigoPro == action.payload.codigoPro && detalle.numeroLinea == action.payload.numerolinea
+              ? {
+                ...detalle,
+                lotes: detalle.lotes.map(
+                  (lote, i) => lote.lote == action.payload.lote
+                    ? {
+                      ...lote,
+                      cantidad: action.payload.cantidad
+                    }
+                    : lote
+                )
+              }
+              : detalle)
+        }
+      }
+
+    case types.CleanLotesImportarFacturaCompras:
+      return {
+        ...state,
+        lotes : {
+          lote: '',
+          vencimiento: '',
+          existencia: 0
+        }
+      }
+
+    case types.SetAddLoteLotesImportarFacturaCompras:
+      return {
+        ...state,
+        lotesByArticulo: [
+          ...state.lotesByArticulo,
+          action.payload.lotes
+        ],
+        billingImportXML: {
+          ...state.billingImportXML,
+          detalleServicio: state.billingImportXML.detalleServicio.map(
+            (detalle, i) => detalle.codigoComercial.codigo == action.payload.codigoPro && detalle.numeroLinea == action.payload.numerolinea
+              ? {
+                ...detalle,
+                lotes: [
+                  ...detalle.lotes,
+                  action.payload.lotes
+                ]
+              }
+              : detalle),
+          detalleServicioTable: state.billingImportXML.detalleServicioTable.map(
+            (detalle, i) => detalle.codigoPro == action.payload.codigoPro && detalle.numeroLinea == action.payload.numerolinea
+              ? {
+                ...detalle,
+                lotes: [
+                  ...detalle.lotes,
+                  action.payload.lotes
+                ]
+              }
+              : detalle)
+        }
+      }      
+
     case types.CleanCompras:
       return {
         ...state,
@@ -1665,6 +1801,7 @@ export const comprasReducer = (state = initialState, action) => {
         valorBusquedaInventario: '',
         codigoInventarioSeleccionado: '',
         isOpenModalPrecioImportarFactura: false,
+        isCostaPets: false,
         preciosImportarFactura: {
           nuevoCosto: 0,
           impuestoNeto: 0,
@@ -1713,6 +1850,13 @@ export const comprasReducer = (state = initialState, action) => {
           Cabys: '',
           idBodega: 0
         },
+        lotes : {
+          lote: '',
+          vencimiento: '',
+          existencia: 0
+        },
+        seletedNumeroLineaLotes: '',
+        lotesByArticulo: [],
         compras: {
           encabezado: {
             Id_Compra: 0.00,

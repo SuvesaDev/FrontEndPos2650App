@@ -1,11 +1,13 @@
 import Swal from 'sweetalert2';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { OverlayTrigger, Tooltip } from 'react-bootstrap';
-import { FaHashtag, FaPercentage, FaSearch, FaWallet } from 'react-icons/fa';
-import { BsFillInfoCircleFill, BsSortNumericDown, BsSortNumericDownAlt } from 'react-icons/bs';
 
-import { OpenSearchModalInventory } from '../../actions/inventory';
+import { FaHashtag, FaPercentage, FaSearch } from 'react-icons/fa';
+import { BsFillInfoCircleFill, BsSortNumericDown } from 'react-icons/bs';
+import { TbEditCircle, TbNotes } from 'react-icons/tb';
+import { FaCirclePlus, FaColonSign, FaGift, FaMoneyBill, FaTruckFast } from 'react-icons/fa6';
+import { MdRebaseEdit } from 'react-icons/md';
+
 import {
     CleanDetalleActualCompras,
     SetBaseDetalleActualCompras,
@@ -35,10 +37,6 @@ import {
     startEditDetalleActualCompras,
     startGetOneInventoryCompras
 } from '../../actions/ComprasAction';
-import { TbEditCircle, TbNotes } from 'react-icons/tb';
-import { FaCircleExclamation, FaCirclePlus, FaColonSign, FaGift, FaMoneyBill, FaTruckFast } from 'react-icons/fa6';
-import { MdRebaseEdit } from 'react-icons/md';
-import { IoAddCircle } from 'react-icons/io5';
 
 export const BuysArticulosHeader = () => {
 
@@ -51,7 +49,8 @@ export const BuysArticulosHeader = () => {
         disableInputs,
         disableInputsDetalle,
         showMessageHelp,
-        isDetalleActualEdit
+        isDetalleActualEdit,
+        isCostaPets
     } = useSelector(state => state.compras);
 
     const { encabezado, detalle } = compras;
@@ -138,7 +137,7 @@ export const BuysArticulosHeader = () => {
     }, [Base, Flete, Otros, Cantidad, Descuento, Monto_Descuento, Impuesto]);
 
     const handleSearchArticleBilling = (e) => {
-        debugger;
+        
         if (!disableInputs) {
             dispatch(SetOpenSearchInventoryCompras(true));
             dispatch(CleanDetalleActualCompras());
@@ -261,6 +260,7 @@ export const BuysArticulosHeader = () => {
             dispatch(startEditDetalleActualCompras(detalleArticuloActual, parseFloat(PosicionActual)));
         }
     }
+
     return (
         <>
             <div className="row mb-2 text-center">
@@ -348,7 +348,7 @@ export const BuysArticulosHeader = () => {
                     </div>
                 </div>
 
-                <div className="col-md-2 mb-3">
+                <div className={ (isCostaPets) ? 'col-md-2 mb-3 d-none' : 'col-md-2 mb-3' }>
                     <h5>Regalías</h5>
                     <div className="input-group">
                         <span className="input-group-text">
@@ -390,7 +390,7 @@ export const BuysArticulosHeader = () => {
                     </div>
                 </div>
 
-                <div className="col-md-2 mb-3">
+                <div className={ (isCostaPets) ? 'col-md-2 mb-3 d-none' : 'col-md-2 mb-3' }>
                     <h5>Fletes</h5>
                     <div className="input-group">
                         <span className="input-group-text">
@@ -415,7 +415,7 @@ export const BuysArticulosHeader = () => {
                     </div>
                 </div>
 
-                <div className="col-md-2 mb-3">
+                <div className={ (isCostaPets) ? 'col-md-2 mb-3 d-none' : 'col-md-2 mb-3' }>
                     <h5>Otros</h5>
                     <div className="input-group">
                         <span className="input-group-text">

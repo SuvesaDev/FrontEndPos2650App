@@ -915,8 +915,8 @@ export const startValidateClaveInternaCompras = (password) => {
 
         try {
 
-            const { status, idUsuario, message } = await dispatch(startValidateClaveInterna(password));
-
+            const { status, idUsuario, message, costapets } = await dispatch(startValidateClaveInterna(password));
+            
             if (status === 1) {
 
                 // Se activan los inputs
@@ -947,7 +947,8 @@ export const startValidateClaveInternaCompras = (password) => {
                 // Ocultar la password
                 dispatch(SetVisiblePasswordCompras(false));
 
-
+                // Se indica si es CostaPets
+                dispatch( SetIsCostaPetsCompras(costapets) );
 
             } else if (status === 0 && message === 'Contraseña Incorrecta') {
 
@@ -1048,7 +1049,7 @@ export const startGetArticulosXMLCompras = (productos, detalleServicio) => {
     return async (dispatch) => {
 
         try {
-
+            
             //Mostrar el loading
             Swal.fire({
                 title: 'Por favor, espere',
@@ -1072,60 +1073,20 @@ export const startGetArticulosXMLCompras = (productos, detalleServicio) => {
 
             if (status === 0) {
 
-                let indexProduct = 0;
+                let indexProduct = 1;
 
                 // Se insertan los detalle en la tabla
                 responses.forEach(product => {
-
+                    debugger;
                     // Se obtiene el detalle actual
-                    const productCurrent = onlyProducts.find(p => p.codArticulo === product.codArticulo);
+                    const productCurrent = onlyProducts.find(p => p.numeroLinea == indexProduct);
                     const detalleCurrent = detalleServicio.find(detalle => detalle.codigoComercial.codigo === productCurrent.codProveedor);
 
                     // Se obtiene el porcentaje de impuesto
                     let impuesto = detalleCurrent.impuesto.tarifa;
-                    // console.log(detalleCurrent)
-                    // switch (detalleCurrent.impuesto.codigoTarifa) {
 
-                    //     case "01":
-                    //         impuesto = 0;
-                    //         break;
-
-                    //     case "02":
-                    //         impuesto = 1;
-                    //         break;
-
-                    //     case "03":
-                    //         impuesto = 2;
-                    //         break;
-
-                    //     case "04":
-                    //         impuesto = 4;
-                    //         break;
-
-                    //     case "05":
-                    //         impuesto = 0;
-                    //         break;
-
-                    //     case "06":
-                    //         impuesto = 4;
-                    //         break;
-
-                    //     case "07":
-                    //         impuesto = 8;
-                    //         break;
-
-                    //     case "08":
-                    //         impuesto = 13;
-                    //         break;
-
-                    //     case "09":
-                    //         impuesto = 0.5;
-                    //         break;
-
-                    //     default:
-                    //         break;
-                    // }
-
+                    const lotes = detalleServicio.find(detalle => detalle.numeroLinea == indexProduct);
+                    
                     const newProduct = {
                         idArticuloComprados: indexProduct,
                         CodArticulo: product.codArticulo,
@@ -1152,9 +1113,10 @@ export const startGetArticulosXMLCompras = (productos, detalleServicio) => {
                         Cabys: detalleCurrent.codigo,
                         id_Bodega: product.id_Bodega,
                         nuevosCostos: detalleCurrent.costos,
+                        lotes: lotes.lotes,
                         isImportXML: true,
                     }
-                    console.log("Llego a la meta");
+                    
                     dispatch(SetAddDetalleCompras(newProduct));
 
                     indexProduct++;
@@ -1202,7 +1164,7 @@ export const startExistProveedorCompras = (cedula) => {
     return async (dispatch) => {
 
         try {
-
+            
             //Call end-point 
             const { data } = await suvesaApi.get(`/proveedor/ExisteProveedorController?cedula=${cedula}`);
             const { status, responses } = data;
@@ -1417,6 +1379,7 @@ export const startGetAllEmpresasCompras = () => {
         
     }
 }
+
 const loadCatalogos = async (dispatch) => {
 
     //Mostrar el loading
@@ -2046,6 +2009,11 @@ export const SetIsOpenModalPrecioImportarFacturaCompras = (value) => ({
     payload: value
 })
 
+export const SetIsCostaPetsCompras = (value) => ({
+    type: types.SetIsCostaPetsCompras,
+    payload: value
+})
+
 export const SetCantidadInternoDetalleCompras = (value) => ({
     type: types.SetCantidadInternoDetalleCompras,
     payload: value
@@ -2147,4 +2115,43 @@ export const SetRemovePricesSellPreciosImportarFacturaCompras = (value) => ({
 export const SetNuevosCostosArticuloImportarFacturaCompras = (value) => ({
     type: types.SetNuevosCostosArticuloImportarFacturaCompras,
     payload: value
+})
+
+export const SetLoteLotesImportarFacturaCompras = (value) => ({
+    type: types.SetLoteLotesImportarFacturaCompras,
+    payload: value
+})
+
+export const SetVencimientoLotesImportarFacturaCompras = (value) => ({
+    type: types.SetVencimientoLotesImportarFacturaCompras,
+    payload: value
+})
+
+export const SetExistenciaLotesImportarFacturaCompras = (value) => ({
+    type: types.SetExistenciaLotesImportarFacturaCompras,
+    payload: value
+})
+
+export const SetAddLoteLotesImportarFacturaCompras = (value) => ({
+    type: types.SetAddLoteLotesImportarFacturaCompras,
+    payload: value
+})
+
+export const SetArrayLotesImportarFacturaCompras = (value) => ({
+    type: types.SetArrayLotesImportarFacturaCompras,
+    payload: value
+})
+
+export const SetNumeroLineaLotesImportarFacturaCompras = (value) => ({
+    type: types.SetNumeroLineaLotesImportarFacturaCompras,
+    payload: value
+})
+
+export const SetCantidadLotesImportarFacturaCompras = (value) => ({
+    type: types.SetCantidadLotesImportarFacturaCompras,
+    payload: value
+})
+
+export const CleanLotesImportarFacturaCompras = () => ({
+    type: types.CleanLotesImportarFacturaCompras
 })

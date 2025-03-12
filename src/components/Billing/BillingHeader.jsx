@@ -81,7 +81,8 @@ export const BillingHeader = () => {
     <>
 
       <div className="row mb-2">
-        <div className="col-md-3 mb-2">
+
+        <div className={ (billings[numberScreen] !== undefined) ? (billings[numberScreen].isCostaPets) ? "col-md-3 mb-2 d-none" : "col-md-3 mb-2" :  "col-md-3 mb-2"}>
           <hr />
 
           <h4>Número de Ficha: {
@@ -138,9 +139,7 @@ export const BillingHeader = () => {
           </div>
         </div>
 
-
-
-        <div className="col-md-3 mb-2">
+        <div className={ (billings[numberScreen] !== undefined) ? (billings[numberScreen].isCostaPets) ? "col-md-3 mb-2 d-none" : "col-md-3 mb-2" :  "col-md-3 mb-2"}>
           <h5>Buscar Preventa</h5>
           <div className="input-group">
             <span className="input-group-text">
@@ -168,7 +167,7 @@ export const BillingHeader = () => {
           </div>
         </div>
 
-        <div className="col-md-3 mb-2">
+        <div className={ (billings[numberScreen] !== undefined) ? (billings[numberScreen].isCostaPets) ? "col-md-3 mb-2 d-none" : "col-md-3 mb-2" :  "col-md-3 mb-2"}>
           <hr />
           <button
             className={
@@ -181,6 +180,7 @@ export const BillingHeader = () => {
             Buscar <FaMagnifyingGlass className="iconSize" />
           </button>
         </div>
+
       </div>
 
     </>

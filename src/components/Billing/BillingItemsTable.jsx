@@ -17,7 +17,8 @@ import {
     SetDescuentoBilling,
     SetImp_VentaBilling,
     SetTotalBilling,
-    SetAplicaDescuento
+    SetAplicaDescuento,
+    startGetLotesByArticle
 } from '../../actions/billing';
 
 
@@ -91,10 +92,10 @@ export const BillingItemsTable = ({ columns, data }) => {
     const handleSelectedRow = async (cell) => {
 
         if (billings[numberScreen] === undefined || !billings[numberScreen].enableItems) return;
-
+        
         //Obtener el CodArticulo de articulo seleccionado
-        const { CodArticulo } = cell.row.values;
-
+        const { CodArticulo, codFxArticulo } = cell.row.original;
+        
         if (CodArticulo !== null) {
 
             const detalleActual = billings[numberScreen].factura.detalle[cell.row.id];
@@ -108,6 +109,9 @@ export const BillingItemsTable = ({ columns, data }) => {
             dispatch(SetAddDetalleActualBilling({ value: detalleActual, number: numberScreen }));
 
             dispatch(SetIsEditDetalleActualBilling({ value: true, number: numberScreen }));
+
+            // Se vuelven a traer los lotes
+            dispatch(startGetLotesByArticle( codFxArticulo, numberScreen, true));
 
         }
 

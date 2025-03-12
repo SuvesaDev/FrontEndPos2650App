@@ -59,11 +59,15 @@ export const BillingConditions = () => {
   return (
     <>
       <div className='card'>
+
         <div className="card-header">
           <h5>Condiciones de Factura</h5>
         </div>
+        
         <div className="card-body">
+
           <div className="row mb-3">
+
             <div className="col-md-6 mb-2">
               <h5>Moneda</h5>
               <div className="input-group">
@@ -99,7 +103,8 @@ export const BillingConditions = () => {
               </div>
 
             </div>
-            <div className="col-md-6 mb-2">
+
+            <div className={ (billings[numberScreen] !== undefined) ? (billings[numberScreen].isCostaPets) ? "col-md-6 mb-2 d-none" : "col-md-6 mb-2" :  "col-md-6 mb-2"}>
               <div className="inline-container">
                 <h5>Agente</h5>
                 <div className="form-check">
@@ -160,11 +165,12 @@ export const BillingConditions = () => {
               </div>
 
             </div>
+
           </div>
 
           <div className="row mb-2">
             <hr />
-            <div className="col-md-6 mb-3">
+            <div className="col-md-8 mb-3">
               <div className="input-group inline-container">
                 <h5 className='espacio'>Orden de Compra</h5>
                 <span className="input-group-text">
@@ -189,7 +195,7 @@ export const BillingConditions = () => {
               </div>
             </div>
 
-            <div className="col-md-6 mb-0">
+            <div className={ (billings[numberScreen] !== undefined) ? (billings[numberScreen].isCostaPets) ? "col-md-4 mb-0 d-none" : "col-md-4 mb-0" :  "col-md-4 mb-0"}>
               <div className="form-check">
                 <input
                   id="checkPD"
@@ -214,9 +220,10 @@ export const BillingConditions = () => {
               <hr />
             </div>
           </div>
-        </div>
-      </div>
 
+        </div>
+
+      </div>
 
     </>
 

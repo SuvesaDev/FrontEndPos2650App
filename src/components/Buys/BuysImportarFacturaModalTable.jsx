@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 import { useTable } from "react-table";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { PiLinkSimpleFill } from 'react-icons/pi';
 import { FaSearch, FaCommentDollar, FaGift, FaSortNumericDownAlt } from 'react-icons/fa';
+import { FaCartShopping } from "react-icons/fa6";
+
 
 import {
     SetAllPrecioPreciosImportarFacturaCompras,
+    SetArrayLotesImportarFacturaCompras,
     SetCantidadInternoDetalleCompras,
+    SetCantidadLotesImportarFacturaCompras,
     SetCodigoInternoDetalleCompras,
     SetCodigoInventarioSeleccionadoCompras,
     SetCodigoProSeletedPreciosImportarFacturaCompras,
@@ -18,14 +22,21 @@ import {
     SetIsOpenModalSearchInventarioModalCompras,
     SetNuevoCostoInternoDetalleCompras,
     SetNuevoCostoPreciosImportarFacturaCompras,
+    SetNumeroLineaLotesImportarFacturaCompras,
     SetRegaliaInternoDetalleCompras,
     startUnirInventariosXMLCompras
 } from '../../actions/ComprasAction';
 import { FaHashtag } from 'react-icons/fa6';
 
 export const BuysImportarFacturaModalTable = ({ columns, data }) => {
-
+    
     const dispatch = useDispatch();
+
+    const { isCostaPets, billingImportXML } = useSelector(state => state.compras);
+
+    const {
+        detalleServicio
+    } = billingImportXML;
 
     const {
         getTableProps,
@@ -75,7 +86,21 @@ export const BuysImportarFacturaModalTable = ({ columns, data }) => {
 
         if (cell.column.id !== 'cantidad') return;
 
-        const { codigoPro, precioUnitario } = cell.row.original;
+        const { codigoPro, precioUnitario, numeroLinea } = cell.row.original;
+
+        const existLotes = detalleServicio.find( detalle => detalle.codigoComercial.codigo == codigoPro && detalle.numeroLinea == numeroLinea);
+
+        if( existLotes.lotes.length == 0 ) {
+        
+            Swal.fire({
+                icon: "warning",
+                title: "Lotes",
+                text: "Para modificar la cantidad se debe primero agregar un lote",
+            });
+
+            return;
+
+        }
 
         let newCantidad = parseInt(target.value);
         let precioXML = parseFloat(precioUnitario);
@@ -84,8 +109,17 @@ export const BuysImportarFacturaModalTable = ({ columns, data }) => {
 
             dispatch(SetCantidadInternoDetalleCompras({
                 codigoPro,
+                numeroLinea,
                 cantidad: target.value
             }));
+
+            // Se actualiza la cantidad en el lote
+            dispatch( SetCantidadLotesImportarFacturaCompras({
+                codigoPro,
+                numeroLinea,
+                cantidad: target.value,
+                lote: existLotes.lotes[0].lote
+            }) );
 
             let nuevoCo = precioXML / newCantidad;
 
@@ -185,6 +219,38 @@ export const BuysImportarFacturaModalTable = ({ columns, data }) => {
                 text: 'Indique la cantidad para el calculo del nuevo costo.'
             });
         }
+
+    }
+
+    const handleOpenModalLotes = (e, cell) => {
+        
+        // Se obtiene el codigo seleccionado
+        const { codigoPro, codigoInt, numeroLinea } = cell.row.original;
+
+        if( codigoInt == null || codigoInt == undefined || codigoInt == "") {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Advertencia',
+                text: 'No se puede agregar un lote porque no se realizado la union de un producto interno.'
+            });
+            return;
+        }
+
+        dispatch(SetCodigoProSeletedPreciosImportarFacturaCompras(codigoPro));
+
+        dispatch( SetNumeroLineaLotesImportarFacturaCompras(numeroLinea) );
+
+        const detalle = detalleServicio.find( detalle => detalle.codigoComercial.codigo == codigoPro && detalle.numeroLinea == numeroLinea );
+        const { lotes } = detalle;
+        dispatch( SetArrayLotesImportarFacturaCompras(lotes) );
+
+        const iconLotesModal = document.getElementById("iconLotesModalBuys");
+        iconLotesModal.setAttribute("data-bs-toggle", "modal");
+        iconLotesModal.setAttribute("data-bs-target", "#modalLotesBuys");
+        iconLotesModal.click();
+        iconLotesModal.removeAttribute("data-bs-toggle", "modal");
+        iconLotesModal.removeAttribute("data-bs-target", "#modalLotesBuys");
+        
 
     }
 
@@ -290,14 +356,25 @@ export const BuysImportarFacturaModalTable = ({ columns, data }) => {
                                                                     </>
                                                                     : (cell.column.id === 'estado')
                                                                         ? <>
-
-                                                                            <button className={(cell.value) ? 'btn btn-dark disabled' : 'btn btn-dark'}
-                                                                                title='Unir'
-                                                                                onClick={e => handleUnirProducto(e, cell)}>
-                                                                                <FaGift
-                                                                                    className='iconSize'
-                                                                                />
-                                                                            </button>
+                                                                                {
+                                                                                    (isCostaPets)
+                                                                                        ?   <button className='btn btn-dark'
+                                                                                                title='Lotes'
+                                                                                                id="iconLotesModalBuys"
+                                                                                                onDoubleClick={(e) => handleOpenModalLotes(e, cell)}
+                                                                                            >
+                                                                                                <FaCartShopping
+                                                                                                    className='iconSize'
+                                                                                                />
+                                                                                            </button>
+                                                                                        :   <button className={(cell.value) ? 'btn btn-dark disabled' : 'btn btn-dark'}
+                                                                                                title='Regalia'
+                                                                                                onClick={e => handleUnirProducto(e, cell)}>
+                                                                                                <FaGift
+                                                                                                    className='iconSize'
+                                                                                                />
+                                                                                            </button>
+                                                                                }
                                                                             <hr />
 
                                                                             <button className={(cell.value) ? 'btn btn-primary disabled' : 'btn btn-primary'}
@@ -311,7 +388,7 @@ export const BuysImportarFacturaModalTable = ({ columns, data }) => {
                                                                             <hr />
                                                                             <button
                                                                                 className={'btn btn-success'}
-                                                                                title='Unir'
+                                                                                title='Precio'
                                                                                 id='iconPrecio'
                                                                                 onClick={e => handlePrecioProducto(e, cell)}
                                                                             >

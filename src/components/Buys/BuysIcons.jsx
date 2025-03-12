@@ -95,6 +95,26 @@ export const BuysIcons = () => {
 
     const handleCreateCompras = () => {
 
+        if( idEmpresa == 0 ) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Advertencia',
+                text: 'Selecciona una empresa.'
+            });
+
+            return;
+        }
+
+        if( idBodega == 0 ) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Advertencia',
+                text: 'Selecciona un bodega.'
+            });
+
+            return;
+        }
+
         if (!activeButtonSave) return;
 
         const newCompra = {
@@ -135,7 +155,7 @@ export const BuysIcons = () => {
             numTrans: '',
             prepagada: false,
             preAbono: 0,
-            idEmpresa: idEmpresa,
+            idEmpresa: `${idEmpresa}`,
             detalle: compras.detalle.map(detalle => {
                 return {
                     idArticuloComprados: detalle.idArticuloComprados,
@@ -171,11 +191,19 @@ export const BuysIcons = () => {
                     codArticuloBonificacion: '',
                     codCabys: detalle.Cabys,
                     idBodega: idBodega,
-                    estadoLinea: detalle.idArticuloComprados > 0 ? 2 : 1
+                    estadoLinea: detalle.idArticuloComprados > 0 ? 2 : 1,
+                    loteArticulo: {
+                        id: 0,
+                        lote: detalle.lotes[0].lote,
+                        vencimiento: detalle.lotes[0].vencimiento,
+                        idArticulo: parseInt(detalle.codFxArticulo),
+                        activo: true,
+                        cantidad: parseFloat(detalle.lotes[0].cantidad),
+                    }
                 }
             })
         }
-
+        
         const newPrice = compras.detalle.map(detalle => {
             const transformedDetalle = {
                 idArticulo: `${detalle.CodArticulo}`,
@@ -188,9 +216,8 @@ export const BuysIcons = () => {
             };
             return transformedDetalle;
         });
-
-       dispatch(startSaveCompras(newCompra, 0, newPrice));
-        console.log(newCompra)
+        
+        dispatch(startSaveCompras(newCompra, 0, newPrice));
     }
 
     const handleEditCompras = () => {
@@ -423,6 +450,7 @@ export const BuysIcons = () => {
                         className={(disableInputs) ? 'btn btn-dark espacio disabled' : 'btn btn-dark espacio'}
                         data-bs-toggle="modal"
                         data-bs-target="#modalImportarFactura"
+                        onClick={handleOpenImportarFacturaModal}
                     >
                         Importar Factura Electronica <FaFileImport className='iconSize' />
                     </a>

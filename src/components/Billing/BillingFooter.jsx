@@ -78,13 +78,15 @@ export const BillingFooter = () => {
         }
 
         // Validacion de Empresa
-        if (billings[numberScreen].factura.encabezado.empresa == '') {
-            Swal.fire({
-                icon: 'error',
-                title: 'Empresa',
-                text: 'Por favor seleccione una empresa para registrar la facturacion.'
-            });
-            return '';
+        if( !billings[numberScreen].isCostaPets ) {
+            if (billings[numberScreen].factura.encabezado.empresa == '') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Empresa',
+                    text: 'Por favor seleccione una empresa para registrar la facturacion.'
+                });
+                return '';
+            }
         }
 
         // Validacion de Tipo Factura
@@ -117,14 +119,16 @@ export const BillingFooter = () => {
             return '';
         }
 
-        // Validacion de Agente
-        if (billings[numberScreen].factura.encabezado.agente === false && billings[numberScreen].factura.encabezado.cod_agente === 0) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Agentes',
-                text: 'Por favor seleccione un agente o marque la casilla Sin Agente para registrar la facturacion.'
-            });
-            return '';
+        if( !billings[numberScreen].isCostaPets ) {
+            // Validacion de Agente
+            if (billings[numberScreen].factura.encabezado.agente === false && billings[numberScreen].factura.encabezado.cod_agente === 0) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Agentes',
+                    text: 'Por favor seleccione un agente o marque la casilla Sin Agente para registrar la facturacion.'
+                });
+                return '';
+            }
         }
 
         //si el cliente esta marcado como moroso
@@ -237,12 +241,14 @@ export const BillingFooter = () => {
         respuestaValidacionesProductos = await ValidacionesProductos();
 
         if (respuestaValidacionesClientes === 'ok' && respuestaValidacionesProductos === 'ok') {
-
+            
             const date = new Date();
             const isoDateTime = new Date(date.getTime() - (date.getTimezoneOffset() * 60000)).toISOString().split('T');
 
             const idSucursal = surcursales.find(surcursal => surcursal.alias === centro).id;
 
+            const idBodegaCostaPets = bodegasInventory.find(bodega => bodega.nombreBodega == "COSTAPETS");
+            
             const newBilling = {
                 tipo: billings[numberScreen].factura.encabezado.tipo,
                 numCaja: String(numCaja), //TODO: Validar
@@ -265,7 +271,7 @@ export const BillingFooter = () => {
                 total: billings[numberScreen].factura.encabezado.Total,
                 ficha: billings[numberScreen].factura.encabezado.ficha,
                 idSucursal: idSucursal,
-                idEmpresa: billings[numberScreen].factura.encabezado.empresa,
+                idEmpresa: ( billings[numberScreen].isCostaPets ) ? "1" : billings[numberScreen].factura.encabezado.empresa,
                 preventa: billings[numberScreen].factura.encabezado.preventa,
                 detalle: billings[numberScreen].factura.detalle.map(detalle => {
                     return {
@@ -283,7 +289,8 @@ export const BillingFooter = () => {
                         subTotal: detalle.SubTotal,
                         cantVen: detalle.CantVet,
                         cantBod: detalle.CantBod,
-                        idBodega: detalle.Id_Bodega
+                        idBodega: ( billings[numberScreen].isCostaPets ) ? idBodegaCostaPets.idBodega : detalle.Id_Bodega,
+                        lote: detalle.idLote
                     }
                 })
             }
@@ -298,7 +305,6 @@ export const BillingFooter = () => {
         }
 
     }
-
 
     const handleEditBilling = async (e) => {
 
@@ -333,7 +339,7 @@ export const BillingFooter = () => {
             total: billings[numberScreen].factura.encabezado.Total,
             ficha: billings[numberScreen].factura.encabezado.ficha,
             idSucursal: idSucursal,
-            idEmpresa: billings[numberScreen].factura.encabezado.empresa,
+            idEmpresa: ( billings[numberScreen].isCostaPets ) ? "1" : billings[numberScreen].factura.encabezado.empresa,
             preventa: billings[numberScreen].factura.encabezado.preventa,
             detalle: billings[numberScreen].factura.detalle.map(detalle => {
                 return {
@@ -352,7 +358,8 @@ export const BillingFooter = () => {
                     subTotal: detalle.SubTotal,
                     cantVen: detalle.CantVet,
                     cantBod: detalle.CantBod,
-                    idBodega: detalle.Id_Bodega
+                    idBodega: ( billings[numberScreen].isCostaPets ) ? idBodegaCostaPets.idBodega : detalle.Id_Bodega,
+                    lote: detalle.idLote
                 }
             })
         }

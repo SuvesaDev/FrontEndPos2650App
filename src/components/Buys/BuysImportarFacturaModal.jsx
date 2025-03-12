@@ -1,25 +1,31 @@
 import Swal from 'sweetalert2';
 import moment from 'moment';
 import XMLParser from 'react-xml-parser';
-import { createRef, useEffect } from 'react';
+import { createRef, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Modal from 'react-modal';
 import { customStyles } from '../../helpers/styleModal';
 import { parseXML } from '../../helpers/readXML';
+
 import { FaCalendar, FaFile, FaFileImport, FaHashtag, FaIdCard, FaSortNumericDown, FaPercentage, FaShoppingCart } from 'react-icons/fa';
 import { IoIosCheckboxOutline, IoIosCheckmark, IoIosCloseCircle } from 'react-icons/io';
 import { GiPriceTag } from "react-icons/gi";
 import { FaBuildingUn, FaMoneyBill1, FaDeleteLeft, FaColonSign } from 'react-icons/fa6';
 import { FiType } from "react-icons/fi";
+import { TbNumber } from "react-icons/tb";
+import { RiDeleteBin2Fill } from "react-icons/ri";
 
 import { BuysImportarFacturaModalTable } from './BuysImportarFacturaModalTable';
 
 import {
     CleanFacturaCompras,
+    CleanLotesImportarFacturaCompras,
     CleanPreciosImportarFacturaCompras,
     CleanStatePricesSellPreciosImportarFacturaCompras,
     CleanStateSearchInventarioCompras,
+    SetAddLoteLotesImportarFacturaCompras,
+    SetArrayLotesImportarFacturaCompras,
     SetBillingImportXMLCompras,
     SetCedulaProveedorCompras,
     SetChangePrecioIVPreciosImportarFacturaCompras,
@@ -31,6 +37,7 @@ import {
     SetDiasCompras,
     SetDisableInputsDiasCompras,
     SetEditPricesSellPreciosImportarFacturaCompras,
+    SetExistenciaLotesImportarFacturaCompras,
     SetFacturaCompras,
     SetFechaCompras,
     SetHasCatalogosInternos,
@@ -38,6 +45,7 @@ import {
     SetIsEditPriceSellPreciosImportarFacturaCompras,
     SetIsOpenImportarXMLModalCompras,
     SetIsOpenModalPrecioImportarFacturaCompras,
+    SetLoteLotesImportarFacturaCompras,
     SetNameFileReadXMLCompras,
     SetNuevosCostosArticuloImportarFacturaCompras,
     SetOnePrecioPreciosImportarFacturaCompras,
@@ -52,6 +60,7 @@ import {
     SetUtilidadPreciosImportarFacturaCompras,
     SetValorBusquedaInventariosCompras,
     SetVenceCompras,
+    SetVencimientoLotesImportarFacturaCompras,
     startExistProveedorCompras,
     startGetArticulosXMLCompras,
     startGetCatalogosProductosInternos
@@ -60,6 +69,8 @@ import { IoAddCircle } from 'react-icons/io5';
 import { BuysPrecioImportarFacturaModalTable } from './BuysPrecioImportarFacturaModalTable';
 import { BuysSearchInventarioModalTable } from './BuysSearchInventarioModalTable';
 import { TbEditCircle } from 'react-icons/tb';
+import { CiCalendarDate } from "react-icons/ci";
+import { BuysLotesImportarFacturaModalTable } from './BuysLotesImportarFacturaModalTable';
 
 
 Modal.setAppElement('#root');
@@ -78,7 +89,11 @@ export const BuysImportarFacturaModal = () => {
         hasChargeFactura,
         preciosImportarFactura,
         getAllInventariosFilter,
-        valorBusquedaInventario
+        valorBusquedaInventario,
+        isCostaPets,
+        lotes,
+        seletedNumeroLineaLotes,
+        lotesByArticulo
     } = useSelector(state => state.compras);
 
     const {
@@ -120,6 +135,11 @@ export const BuysImportarFacturaModal = () => {
         precioIV
     } = priceSell;
 
+    const { 
+        lote,
+        vencimiento
+    } = lotes;
+
     const columns = [
         {
             Header: "ID",
@@ -152,6 +172,41 @@ export const BuysImportarFacturaModal = () => {
         {
             Header: "Regalia",
             accessor: "regalia",
+        },
+        {
+            Header: "Acciones",
+            accessor: "estado",
+        }
+    ];
+
+    const columnsCostaPets = [
+        {
+            Header: "ID",
+            accessor: "id",
+        },
+        {
+            Header: "Código Prov.",
+            accessor: "codigoPro",
+        },
+        {
+            Header: "Descripcion Prov.",
+            accessor: "descripcionPro",
+        },
+        {
+            Header: "Código Interno",
+            accessor: "codigoInt",
+        },
+        {
+            Header: "Descripcion Interna",
+            accessor: "descripcionInt",
+        },
+        {
+            Header: "Presentacion",
+            accessor: "presentacion",
+        },
+        {
+            Header: "Cantidad",
+            accessor: "cantidad",
         },
         {
             Header: "Acciones",
@@ -197,6 +252,21 @@ export const BuysImportarFacturaModal = () => {
         }
     ];
 
+    const columnsLotes = [
+        {
+            Header: "Número lote",
+            accessor: "lote",
+        },
+        {
+            Header: "Vencimiento",
+            accessor: "vencimiento",
+        },
+        {
+            Header: "Cantidad",
+            accessor: "cantidad",
+        },
+    ];
+
     useEffect(() => {
 
         if (startReadingXML) {
@@ -212,6 +282,7 @@ export const BuysImportarFacturaModal = () => {
         }
 
     }, [startReadingXML]);
+
 
     const handleInputChangeWithDispatch = ({ target }, action) => {
         dispatch(action(target.value));
@@ -391,6 +462,33 @@ export const BuysImportarFacturaModal = () => {
                 return;
             }
 
+            // Se verifica que todos los articulos tengan un lote
+            const noProductsLotes = detalleServicioTable.filter((product) => product.lotes.length == 0);
+            if (noProductsLotes.length > 0) {
+
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Advertencia',
+                    text: `Existen ${noProductsLotes.length} ${(noProductsLotes.length === 1) ? 'producto' : 'productos'} que no tiene lotes, por tal motivo no se puede continuar con la importacion.`
+                });
+
+                return;
+            }
+
+            // Se verifica que todos los articulos tengan una cantidad
+            const noProductsCantidad = detalleServicioTable.filter((product) => product.cantidad == 0);
+            if (noProductsCantidad.length > 0) {
+
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Advertencia',
+                    text: `Existen ${noProductsCantidad.length} ${(noProductsCantidad.length === 1) ? 'producto' : 'productos'} que no tiene cantidad, por tal motivo no se puede continuar con la importacion.`
+                });
+
+                return;
+            }
+
+
             // Se valida si existe el proveedors
             dispatch(startExistProveedorCompras(numero));
 
@@ -402,11 +500,12 @@ export const BuysImportarFacturaModal = () => {
 
             const productos = detalleServicioTable.map(detalle => {
                 return {
+                    numeroLinea: detalle.numeroLinea,
                     codArticulo: detalle.codigoInt,
                     codProveedor: detalle.codigoPro
                 }
             });
-            console.log(detalleServicio);
+            
             dispatch(startGetArticulosXMLCompras(productos, detalleServicio));
 
             // Se establece el hasChargeFactura
@@ -646,6 +745,55 @@ export const BuysImportarFacturaModal = () => {
 
     }
 
+    const closeModalLotes = () => {
+
+        dispatch( CleanLotesImportarFacturaCompras() );
+        dispatch( SetArrayLotesImportarFacturaCompras([]) );
+
+    }
+
+    const handleSaveLote = () => {
+        
+        const existLotes = detalleServicio.find( detalle => detalle.codigoComercial.codigo == codigoProSeleted && detalle.numeroLinea == seletedNumeroLineaLotes);
+
+        if( existLotes.lotes.length > 0 ) {
+
+            Swal.fire({
+                icon: "warning",
+                title: "Lotes",
+                text: "Solamente se puede agregar un lote por articulo",
+            });
+
+            return;
+
+        }
+
+        if( lote == '' || vencimiento == '') {
+
+            Swal.fire({
+                icon: "warning",
+                title: "Error",
+                text: "Debe completar la informacion para crear nuevo lote.",
+            });
+
+            return;
+        }
+
+        const newLote = {
+            lote,
+            vencimiento
+        }
+
+        dispatch( SetAddLoteLotesImportarFacturaCompras( {
+            codigoPro: codigoProSeleted,
+            numerolinea: seletedNumeroLineaLotes,
+            lotes: newLote,
+        } ) );
+
+        dispatch( CleanLotesImportarFacturaCompras() );
+    
+    }
+
     return (
 
         <>
@@ -802,7 +950,7 @@ export const BuysImportarFacturaModal = () => {
 
                             <div className="row mb-2 text-center">
                                 <div className="col-md-12 mb-2">
-                                    <BuysImportarFacturaModalTable columns={columns} data={detalleServicioTable} />
+                                    <BuysImportarFacturaModalTable columns={( isCostaPets ) ? columnsCostaPets : columns} data={detalleServicioTable} />
                                 </div>
                             </div>
                         </div>
@@ -1083,6 +1231,148 @@ export const BuysImportarFacturaModal = () => {
                                     <BuysSearchInventarioModalTable columns={columnsInventario} data={getAllInventariosFilter} />
                                 </div>
                             </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div className='modal fade' id="modalLotesBuys">
+                <div className="modal-dialog modal-xl modal-dialog">
+                    <div className="modal-content">
+                        
+                        <div className="modal-header">
+                            <h4 className="modal-title">
+                                Lotes <FaShoppingCart className="iconSizeBtn" />
+                            </h4>
+                            <button
+                                type="button"
+                                className="btn-close"
+                                data-bs-toggle="modal"
+                                data-bs-target="#modalImportarFactura"
+                                onClick={closeModalLotes}
+                            ></button>
+                        </div>
+
+                        <div className="modal-body">
+
+                            <div className="container-fluid mt-2">
+
+                                <div className="row mb-2">
+
+                                    <div className="col-md-3 mb-3">
+                                        <h5>Lotes</h5>
+                                        <div className="input-group">
+                                            <span className="input-group-text">
+                                                <TbNumber className="iconSize" />
+                                            </span>
+                                            <input
+                                                type="text"
+                                                name="lote"
+                                                className="form-control"
+                                                placeholder="Número lote"
+                                                value={lote}
+                                                onChange={(e) =>
+                                                    handleInputChangeWithDispatch(
+                                                        e,
+                                                        SetLoteLotesImportarFacturaCompras
+                                                    )
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <div className="col-md-3 mb-3">
+                                        <h5>Vencimiento</h5>
+                                        <div className="input-group">
+                                            <span className="input-group-text">
+                                                <CiCalendarDate className="iconSize" />
+                                            </span>
+                                            <input
+                                                type="date"
+                                                name="vencimiento"
+                                                className="form-control"
+                                                placeholder="Número lote"
+                                                value={vencimiento}
+                                                onChange={(e) =>
+                                                    handleInputChangeWithDispatch(
+                                                        e,
+                                                        SetVencimientoLotesImportarFacturaCompras
+                                                    )
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+
+                                    {/* <div className="col-md-3 mb-3">
+                                        <h5>Existencia</h5>
+                                        <div className="input-group">
+                                            <span className="input-group-text">
+                                                <TbNumber className="iconSize" />
+                                            </span>
+                                            <input
+                                                type="number"
+                                                name="existencia"
+                                                className="form-control"
+                                                placeholder="Número lote"
+                                                value={existencia}
+                                                onChange={(e) =>
+                                                    handleInputChangeWithDispatch(
+                                                        e,
+                                                        SetExistenciaLotesImportarFacturaCompras
+                                                    )
+                                                }
+                                            />
+                                        </div>
+                                    </div> */}
+
+                                    <div className='col-md-2 mb-3'>
+                                        <h5>Opciones</h5>
+                                        <div className="inline-container">
+                                            <button
+                                                className="btn btn-success"
+                                                // onClick={ isSeletedLotes ? handleEditLote : handleSaveLote}
+                                                onClick={handleSaveLote}
+                                            >
+                                            {/* { isSeletedLotes ? 'Editar' : 'Agregar' } <IoAddCircle className="iconSize" /> */}
+                                                Agregar <IoAddCircle className="iconSize" />
+                                            </button>
+                            
+                                            <button
+                                                className="btn btn-danger"
+                                                // onClick={handleDisableLote}
+                                                type="button"
+                                            >
+                                                <RiDeleteBin2Fill className="iconSize" />
+                                            </button>
+                                        </div>
+                                        <hr />
+                                    </div>
+
+                                </div>
+
+                                <div className="row mb-3">
+                                    <div className="col-md-12 mb-2">
+                                        <BuysLotesImportarFacturaModalTable
+                                            columns={columnsLotes}
+                                            data={lotesByArticulo}
+                                        />
+                                    </div>
+                                </div>
+
+                            </div>                           
+
+                        </div>
+
+                        <div className="modal-footer">
+                            <button
+                                className="btn btn-success"
+                                data-bs-toggle="modal"
+                                data-bs-target="#modalImportarFactura"
+                                onClick={closeModalLotes}
+                            >
+                                Aceptar Lotes<IoIosCheckboxOutline className="iconSize" />
+                            </button>
                         </div>
 
                     </div>

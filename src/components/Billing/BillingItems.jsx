@@ -1,10 +1,11 @@
 import Swal from 'sweetalert2';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BillingItemsTable } from './BillingItemsTable';
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { FaBoxes, FaCode, FaNewspaper, FaPercentage, FaSearch } from 'react-icons/fa';
 import { MdDeleteForever, MdOutlineInventory } from 'react-icons/md';
+import { MdShoppingCart } from "react-icons/md";
 
 import { OpenSearchModalInventory, SetValorFiltroSearchModalInventory } from '../../actions/inventory';
 import { InventorySearchModal } from '../Inventory/InventorySearchModal';
@@ -45,7 +46,9 @@ import {
     startGetOneInventoryBillingByCodArticulo,
     SetStartEditingBilling,
     SetId_BodegaDetalleActualBilling,
-    SetShowInfoMessageBilling
+    SetShowInfoMessageBilling,
+    SetNombreLoteDetalleActualBilling,
+    SetIdLoteDetalleActualBilling
 } from '../../actions/billing';
 import { FaBarcode, FaBoxesPacking, FaCircleExclamation, FaColonSign, FaDollarSign } from 'react-icons/fa6';
 import { TbEditCircle } from 'react-icons/tb';
@@ -59,6 +62,7 @@ export const BillingItems = (props) => {
     const dispatch = useDispatch();
 
     const [numberScreen, setnumberScreen] = useState(null);
+    const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 768);
 
     const { currentTab } = useSelector(state => state.tabs);
     const { dollar } = useSelector(state => state.sidebar);
@@ -76,49 +80,113 @@ export const BillingItems = (props) => {
     } = optionsSearchInventory;
 
 
-    const columns = [
-        {
-            Header: "Código",
-            accessor: "CodArticulo",
-        },
-        {
-            Header: "Descripcion",
-            accessor: "Descripcion",
-        },
-        {
-            Header: "Cantidad",
-            accessor: "Cantidad",
-        },
-        {
-            Header: "Precio Uni.",
-            accessor: "Precio_Unit",
-            Cell: ({ value }) => new Intl.NumberFormat('es-CR', { style: 'currency', currency: 'CRC' }).format(value),
-        },
-        {
-            Header: "Desc.%",
-            accessor: "Descuento",
-        },
-        {
-            Header: "IV.%",
-            accessor: "Monto_Impuesto",
-            Cell: ({ value }) => new Intl.NumberFormat('es-CR', { style: 'currency', currency: 'CRC' }).format(value),
-        },
-        {
-            Header: "SubTotal",
-            accessor: "SubTotal",
-            Cell: ({ value }) => new Intl.NumberFormat('es-CR', { style: 'currency', currency: 'CRC' }).format(value),
-        },
-        {
-            Header: "Acciones",
-            accessor: "icon",
-            Cell: () => (
-                <button className='btn btn-danger'>
-                    <MdDeleteForever className='iconSizeBtn' />
-                </button>
-            ),
+    const columns = useMemo(
+        () => [
+            {
+                Header: "Código",
+                accessor: "CodArticulo",
+            },
+            {
+                Header: "Descripcion",
+                accessor: "Descripcion",
+            },
+            {
+                Header: "Cantidad",
+                accessor: "Cantidad",
+            },
+            ...( isSmallScreen
+                    ? []
+                    : [
+                        {
+                            Header: "Precio Uni.",
+                            accessor: "Precio_Unit",
+                            Cell: ({ value }) => new Intl.NumberFormat('es-CR', { style: 'currency', currency: 'CRC' }).format(value),
+                        },
+                        {
+                            Header: "Desc.%",
+                            accessor: "Descuento",
+                        },
+                        {
+                            Header: "IV.%",
+                            accessor: "Monto_Impuesto",
+                            Cell: ({ value }) => new Intl.NumberFormat('es-CR', { style: 'currency', currency: 'CRC' }).format(value),
+                        },
+                    ]
+                ),
+            {
+                Header: "SubTotal",
+                accessor: "SubTotal",
+                Cell: ({ value }) => new Intl.NumberFormat('es-CR', { style: 'currency', currency: 'CRC' }).format(value),
+            },
+            {
+                Header: "Acciones",
+                accessor: "icon",
+                Cell: () => (
+                    <button className='btn btn-danger'>
+                        <MdDeleteForever className='iconSizeBtn' />
+                    </button>
+                ),
+    
+            },
+        ],
+        [isSmallScreen]
+    );
 
-        },
-    ];
+    const columnsCostaPets = useMemo(
+        () => [
+            {
+                Header: "Código",
+                accessor: "CodArticulo",
+            },
+            {
+                Header: "Descripcion",
+                accessor: "Descripcion",
+            },
+            {
+                Header: "Cantidad",
+                accessor: "Cantidad",
+            },
+            ...( isSmallScreen
+                    ? []
+                    : [
+                        {
+                            Header: "Precio Uni.",
+                            accessor: "Precio_Unit",
+                            Cell: ({ value }) => new Intl.NumberFormat('es-CR', { style: 'currency', currency: 'CRC' }).format(value),
+                        },
+                        {
+                            Header: "Desc.%",
+                            accessor: "Descuento",
+                        },
+                        {
+                            Header: "IV.%",
+                            accessor: "Monto_Impuesto",
+                            Cell: ({ value }) => new Intl.NumberFormat('es-CR', { style: 'currency', currency: 'CRC' }).format(value),
+                        },
+                        {
+                            Header: "Lote",
+                            accessor: "nombreLote",
+                        },
+                    ]
+                ),
+            {
+                Header: "SubTotal",
+                accessor: "SubTotal",
+                Cell: ({ value }) => new Intl.NumberFormat('es-CR', { style: 'currency', currency: 'CRC' }).format(value),
+            },
+            {
+                Header: "Acciones",
+                accessor: "icon",
+                Cell: () => (
+                    <button className='btn btn-danger'>
+                        <MdDeleteForever className='iconSizeBtn' />
+                    </button>
+                ),
+    
+            },
+        ],
+        [isSmallScreen]
+    );
 
     useEffect(() => {
 
@@ -127,6 +195,15 @@ export const BillingItems = (props) => {
         }
 
     }, [billings]);
+
+    useEffect(() => {
+        const handleResize = () => {
+          setIsSmallScreen(window.innerWidth < 768);
+        };
+    
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+      }, []);
 
     // Hacer cuando se agrega un producto, modifica
     //calculos de totales generales
@@ -595,6 +672,17 @@ export const BillingItems = (props) => {
         });
     }
 
+    const handleChangeLote = ({ target }) => {
+        
+        if (billings[numberScreen] === undefined || !billings[numberScreen].enableItems) return;
+
+        const idLote = target.value;
+        const loteSeleted = billings[numberScreen].lotesByArticulo.find( lot => lot.id == idLote );
+
+        dispatch( SetIdLoteDetalleActualBilling({ value: idLote, number: numberScreen }));
+        dispatch( SetNombreLoteDetalleActualBilling({ value: loteSeleted.lote, number: numberScreen }) );
+    }
+
     const handleClickDownPrecioUnit = (e) => {
 
         if (billings[numberScreen] === undefined || !billings[numberScreen].enableItems) return;
@@ -678,7 +766,6 @@ export const BillingItems = (props) => {
         }
     }
 
-
     const handleClickDownCantidad = (e) => {
 
         if (billings[numberScreen] === undefined || !billings[numberScreen].enableItems) return;
@@ -761,8 +848,19 @@ export const BillingItems = (props) => {
     }
 
     const handleClickAddProducto = (e) => {
-
+        
         if (billings[numberScreen] === undefined || !billings[numberScreen].enableItems) return;
+        
+        if( billings[numberScreen].lotesByArticulo.length == 0 ) {
+            
+            Swal.fire({
+                icon: 'error',
+                title: 'No se puede procesar la informacion',
+                text: 'El producto no tiene lotes'
+            });
+
+            return;
+        }
 
         //   e.preventDefault();
 
@@ -784,7 +882,8 @@ export const BillingItems = (props) => {
             //Validacion de campo numerico
             if (isNumeric(billings[numberScreen].detalleArticuloActual.Precio_Unit, 0.10)
                 && isNumeric(billings[numberScreen].detalleArticuloActual.Descuento, 0)
-                && isNumeric(billings[numberScreen].detalleArticuloActual.Cantidad, 1)) {
+                && isNumeric(billings[numberScreen].detalleArticuloActual.Cantidad, 1)
+                && billings[numberScreen].detalleArticuloActual.idLote != 0) {
 
                 // Se desactiva el startEditing
                 dispatch(SetStartEditingBilling({ value: false, number: numberScreen }));
@@ -1048,13 +1147,17 @@ export const BillingItems = (props) => {
 
         <>
             <div className='card'>
+
                 <div className="card-header inline-container">
                     <h5>Artículo a Facturar: <strong style={{ color: 'red' }}>{(billings[numberScreen] !== undefined)
                         ? billings[numberScreen].detalleArticuloActual.Descripcion
                         : ''}</strong></h5>
                 </div>
+
                 <div className="card-body">
+
                     <div className="row mb-3">
+
                         <div className="col-md-3 mb-3">
                             <h5>Código</h5>
                             <div className="input-group">
@@ -1161,7 +1264,7 @@ export const BillingItems = (props) => {
                             </div>
                         </div>
 
-                        <div className="col-md-3 mb-3">
+                        <div className={ (billings[numberScreen] !== undefined) ? (billings[numberScreen].isCostaPets) ? "col-md-3 mb-3 d-none" : "col-md-3 mb-3" :  "col-md-3 mb-3"}>
                             <h5>Bodega</h5>
                             <div className="input-group">
                                 <span className="input-group-text">
@@ -1230,9 +1333,176 @@ export const BillingItems = (props) => {
                                 />
                             </div>
                         </div>
+
+                        {
+                            (billings[numberScreen] !== undefined) 
+                                ? (billings[numberScreen].isCostaPets)
+                                    ?   <div className="col-md-2 mb-3">
+                                            <h5>Sub Total</h5>
+                                            <div className="input-group">
+                                                <span className="input-group-text">
+                                                    {
+                                                        (billings[numberScreen] !== undefined)
+                                                            ? (parseFloat(billings[numberScreen].factura.encabezado.Cod_Moneda) === 2)
+                                                                ? <FaDollarSign className="iconSize" />
+                                                                : <FaColonSign className="iconSize" />
+                                                            : <FaColonSign className="iconSize" />
+                                                    }
+                                                </span>
+                                                <input
+                                                    name="SubTotal"
+                                                    autoComplete="off"
+                                                    className="form-control"
+                                                    disabled={true}
+                                                    value={
+                                                        (billings[numberScreen] !== undefined)
+                                                            ?
+                                                            new Intl.NumberFormat('es-CR', { style: 'currency', currency: 'CRC' }).format(billings[numberScreen].detalleArticuloActual.SubTotal)
+                                                            : ''
+                                                    }
+                                                />
+                                            </div>
+                                        </div>
+                                    : null
+                                : null
+                        }
+
                     </div>
 
-                    <div className="row mb-3">
+                    {
+                        (billings[numberScreen] !== undefined) 
+                            ? (billings[numberScreen].isCostaPets)
+                                ?   <div className='row mb-3'>
+
+                                        <div className="col-md-4 mb-3">
+                                            <h5>Lote</h5>
+                                            <div className="input-group">
+                                                <span className="input-group-text">
+                                                    <MdShoppingCart className="iconSize" />
+                                                </span>
+                                                <select
+                                                    name="idTipoCliente"
+                                                    className="form-select"
+                                                    disabled={
+                                                        (billings[numberScreen] !== undefined)
+                                                            ? !billings[numberScreen].enableItems
+                                                            : true
+                                                    }
+                                                    value={
+                                                        (billings[numberScreen] !== undefined)
+                                                            ? billings[numberScreen].detalleArticuloActual.idLote
+                                                            : ''
+                                                    }
+                                                    onChange={e => handleChangeLote(e)}
+                                                >
+                                                    <option value={0} selected disabled hidden> Seleccione... </option>
+                                                    {
+                                                        (billings[numberScreen] !== undefined)
+                                                            ?   (billings[numberScreen].lotesByArticulo != [])
+                                                                    ?   billings[numberScreen].lotesByArticulo.map(lote => {
+                                                                            return <option key={lote.id} value={lote.id}> {lote.lote} - {lote.vencimiento} - {lote.existencia} </option>
+                                                                        })
+                                                                    :   <option value=''></option>
+                                                            :   <option value=''></option>
+                                                    }
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div className="col-md-2 mb-3">
+                                            <h5>Cantidad</h5>
+                                            <div className="input-group">
+                                                <span className="input-group-text">
+                                                    <AiOutlineFieldNumber className="iconSize" />
+                                                </span>
+                                                <input
+                                                    className={
+                                                        (billings[numberScreen] !== undefined)
+                                                            ? (isNumeric(billings[numberScreen].detalleArticuloActual.Cantidad, 0))
+                                                                ? 'form-control'
+                                                                : 'form-control textRed'
+                                                            : 'form-control'
+                                                    }
+                                                    name="Cantidad"
+                                                    autoComplete="off"
+                                                    type='number'
+                                                    min="0"
+                                                    ref={props.inputRefCantidad}
+                                                    disabled={
+                                                        (billings[numberScreen] !== undefined)
+                                                            ? !billings[numberScreen].enableItems
+                                                            : true
+                                                    }
+                                                    value={
+                                                        (billings[numberScreen] !== undefined)
+                                                            ? billings[numberScreen].detalleArticuloActual.Cantidad
+                                                            : ''
+                                                    }
+                                                    onKeyDown={handleClickDownCantidad}
+                                                    onChange={e => handleChangeCantidad(e)}
+                                                />
+                                            </div>
+                                        </div>
+
+                                        <div className="col-md-2 mb-3">
+                                            <hr />
+                                            <div className='inline-container'>
+                                                <OverlayTrigger placement="top" overlay={msgInfoBilling}>
+                                                    <button
+                                                        className={
+                                                            (billings[numberScreen] !== undefined)
+                                                                ? (billings[numberScreen].enableItems)
+                                                                    ? 'btn btn-dark'
+                                                                    : 'btn btn-dark disabled'
+                                                                : 'btn btn-dark disabled'
+                                                        }
+                                                    >
+                                                        <FaCircleExclamation className="Iconsize" />
+                                                    </button>
+                                                </OverlayTrigger>
+                
+                                                <button
+                                                    className={
+                                                        (billings[numberScreen] !== undefined)
+                                                            ? (billings[numberScreen].isEditDetalleActual)
+                                                                ? 'btn btn-warning'
+                                                                : 'btn btn-success'
+                                                            : 'btn btn-success'
+                                                    }
+                                                    onClick={handleClickAddProducto}
+                                                    disabled={
+                                                        (billings[numberScreen] !== undefined)
+                                                            ? !billings[numberScreen].enableItems
+                                                            : true
+                                                    }
+                                                >
+                                                    {
+                                                        billings[numberScreen] !== undefined ? (
+                                                            billings[numberScreen].isEditDetalleActual ? (
+                                                                <>
+                                                                    Editar <TbEditCircle className="iconSize" />
+                                                                </>
+                                                            ) : (
+                                                                <>
+                                                                    Agregar <IoAddCircle className="iconSize" />
+                                                                </>
+                                                            )
+                                                        ) : (
+                                                            <>
+                                                                Agregar <IoAddCircle className="iconSize" />
+                                                            </>
+                                                        )
+                                                    }
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                : null
+                            : null
+                    }
+
+                    <div className={ (billings[numberScreen] !== undefined) ? (billings[numberScreen].isCostaPets) ? "row mb-3 d-none" : "row mb-3" :  "row mb-3"}>
                         <div className="col-md-1 mb-3"></div>
                         <div className="col-md-2 mb-3">
                             <h5>Existencias</h5>
@@ -1389,9 +1659,16 @@ export const BillingItems = (props) => {
                             </div>
                         </div>
                     </div>
+
                     <div className='row mb-3'>
                         <div className='col-md-12 mb-2'>
-                            <BillingItemsTable columns={columns} data={
+                            <BillingItemsTable columns={
+                                (billings[numberScreen] !== undefined)
+                                    ? (billings[numberScreen].isCostaPets)
+                                        ? columnsCostaPets
+                                        : columns
+                                    : columns
+                            } data={
                                 (billings[numberScreen] !== undefined)
                                     ? billings[numberScreen].factura.detalle
                                     : []
@@ -1400,11 +1677,12 @@ export const BillingItems = (props) => {
                     </div>
 
                 </div>
+
             </div>
+
             <InventorySearchModal />
 
         </>
-
 
     )
 }

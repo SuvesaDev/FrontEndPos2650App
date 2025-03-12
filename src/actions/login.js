@@ -311,14 +311,15 @@ export const startValidateClaveInterna = ( password ) => {
 
             //Quitar el loading
             Swal.close();
-            console.log(responses)
+            
             if( status === 0 ) {
                 return {
                     status: 1,
                     userName: responses.nombre,
                     idUsuario: responses.idUsuario,
                     administrador : responses.administrador,
-                    message: ''
+                    message: '',
+                    costapets: responses.costaPets
                 };
             } else {
                 return {

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { BuysHeader } from './BuysHeader';
@@ -7,6 +7,7 @@ import { BuysIcons } from './BuysIcons';
 
 import {
     SetCodigoProvCompras,
+    SetOpenModalSearchProveedorCompras,
     SetcedulaProveedorAddCompras,
     SetdireccionProveedorAddCompras,
     SetemailProveedorAddCompras,
@@ -17,6 +18,8 @@ import {
 } from '../../actions/ComprasAction';
 
 export const BuysPage = () => {
+
+    const botonRef = useRef(null);
 
     const dispatch = useDispatch();
 
@@ -31,9 +34,9 @@ export const BuysPage = () => {
     const { CedulaProveedor } = compras.encabezado;
 
     useEffect(() => {
-
+        
         if (!existProveedor && !isOpenImportarXMLModal) {
-            console.log(existProveedor);//TODO: EMPEZAR AQUI A REVISAR
+            
             const {
                 identificacion,
                 nombre,
@@ -53,7 +56,9 @@ export const BuysPage = () => {
             dispatch(Settelefono1ProveedorAddCompras(telefono.numTelefono));
 
             // Se inserta fax1 del proveedor
-            dispatch(Setfax1ProveedorAddCompras(fax.numTelefono));
+            if(fax != undefined || fax != null) {
+                dispatch(Setfax1ProveedorAddCompras(fax.numTelefono));
+            }
 
             // Se inserta email del proveedor
             dispatch(SetemailProveedorAddCompras(correoElectronico));
@@ -63,13 +68,22 @@ export const BuysPage = () => {
 
             dispatch(isOpenModalAddProveedorCompras(true));
         } else {
-
+            
             if (CedulaProveedor !== '') {
 
                 // Se busca el codigo del proveedor 
                 const proveedor = filterProveedorInventory.find(prov => prov.cedula === CedulaProveedor);
 
-                dispatch(SetCodigoProvCompras(proveedor.codigo));
+                if(proveedor != undefined) {
+                    dispatch(SetCodigoProvCompras(proveedor.codigo));
+                } else {
+
+                    if (botonRef.current) {
+                        botonRef.current.click(); // Simula un clic en el botón con data-bs-toggle
+                        dispatch(SetOpenModalSearchProveedorCompras(true));
+                    }
+
+                }
             }
 
         }
@@ -95,6 +109,14 @@ export const BuysPage = () => {
                         <BuysIcons />
                     </div>
                 </div>
+
+
+                <button
+                    ref={botonRef}
+                    className="d-none"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modalCrearProveedor"
+                ></button>
             </div>
             <br />
         </>
