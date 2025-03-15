@@ -16,6 +16,7 @@ import { CustomersBodyTabs } from "./customersBody/CustomersBodyTabs";
 import { CustomersBodyCreditoDescuento } from "./customersBody/CustomersBodyCreditoDescuento";
 import { CustomersBodyDatosGenerales } from "./customersBody/CustomersBodyDatosGenerales";
 import { CustomersBodyCartaExoneracion } from "./customersBody/CustomersBodyCartaExoneracion";
+import { CustomersBodyAdjuntos } from "./customersBody/CustomersBodyAdjuntos";
 
 export const CustomersBody = () => {
 
@@ -37,6 +38,9 @@ export const CustomersBody = () => {
 
       case "CartaExoneracion":
         return <CustomersBodyCartaExoneracion />;
+
+      case "Adjuntos":
+        return <CustomersBodyAdjuntos />;
 
       default:
         break;

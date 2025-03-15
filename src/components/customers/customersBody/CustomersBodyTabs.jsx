@@ -59,6 +59,19 @@ export const CustomersBodyTabs = () => {
         </button>
       </div>
 
+      <div className={ costaPets ? 'col-md-2 mb-2' : 'col-md-2 mb-2 d-none' }>
+        <button
+          className={
+            currentTabCustomers == "Adjuntos"
+              ? "btn btn-primary"
+              : "btn btn-outline-primary"
+          }
+          onClick={() => handleSelectTabCustomers("Adjuntos")}
+        >
+          Adjuntos
+        </button>
+      </div>
+
       <div className="col-md-3 mb-2"></div>
 
     </>
