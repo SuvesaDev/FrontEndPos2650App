@@ -53,7 +53,10 @@ export const CustomersIcons = () => {
   const { agentesBilling } = useSelector((state) => state.agenteVentas);
   const { provincias } = useSelector((state) => state.provincias);
 
+  const { costaPets } = auth;
+
   const handleCreateCustomers = async (e) => {
+
     e.preventDefault();
 
     if (activeButtonSave) {
@@ -67,6 +70,7 @@ export const CustomersIcons = () => {
                 new Customer(
                   customer.identificacion,
                   customer.nombre,
+                  customer.nombreFantasia,
                   customer.tipoCliente,
                   customer.cedula,
                   customer.observaciones,
@@ -108,7 +112,8 @@ export const CustomersIcons = () => {
                   carta.porcentajeCompra,
                   carta.impuesto,
                   carta.nota
-                )
+                ),
+                costaPets
               )
             );
           }
@@ -178,12 +183,10 @@ export const CustomersIcons = () => {
     });
 
     if (agentesBilling === null) {
-      console.log("Cargo Agentes");
       await dispatch(startGetAllAgentesVenta());
     }
 
     if (provincias.length === 0) {
-      console.log("Cargo Provincias");
       await dispatch(startGetAllProvincias());
     }
 
@@ -200,6 +203,7 @@ export const CustomersIcons = () => {
           new Customer(
             customer.identificacion,
             customer.nombre,
+            customer.nombreFantasia,
             customer.tipoCliente,
             customer.cedula,
             customer.observaciones,
@@ -270,6 +274,7 @@ export const CustomersIcons = () => {
 
   return (
     <>
+
       <div className="btn-toolbar" role="toolbar">
         <div className="btn-group mb-2">
           <button
@@ -338,6 +343,7 @@ export const CustomersIcons = () => {
           </button>
         </div>
       </div>
+
       <CustomerSearchModal />
     </>
   );

@@ -256,6 +256,7 @@ export const CustomerSearchTable = ({ columns, data }) => {
             const searchCustomer = {
                 identificacion: customer.identificacion,
                 nombre: customer.nombre,
+                nombreFantasia: customer.nombreFantasia,
                 cedula: customer.cedula,
                 observaciones: customer.observaciones,
                 telefono: customer.telefono_01,

@@ -471,6 +471,7 @@ export const types = {
   // Customers actions
   SelectTabCustomers: '[Customers] SelectTabCustomers',
   SetNombreCustomers: '[Customers] SetNombreCustomers',
+  SetNombreFantasiaCustomers: '[Customers] SetNombreFantasiaCustomers',
   SetCedulaCustomers: '[Customers] SetCedulaCustomers',
   SetObservacionesCustomers: '[Customers] SetObservacionesCustomers',
   SetTelefonoCustomers: '[Customers] SetTelefonoCustomers',

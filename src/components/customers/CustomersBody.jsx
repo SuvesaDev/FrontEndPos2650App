@@ -1,11 +1,15 @@
 import Swal from "sweetalert2";
-import { TbSearch, TbSearchOff, TbNotes } from "react-icons/tb";
-import { FaIdCard, FaUser } from "react-icons/fa6";
 import { useDispatch, useSelector } from "react-redux";
+
+import { TbSearch, TbSearchOff, TbNotes } from "react-icons/tb";
+import { FaIdCard, FaUser, FaPersonCircleQuestion, } from "react-icons/fa6";
+
 import {
   SetCedulaCustomers,
   SetNombreCustomers,
+  SetNombreFantasiaCustomers,
   SetObservacionesCustomers,
+  SetTipoClienteCustomers,
   startSearchCustomerHacienda,
 } from "../../actions/customers";
 import { CustomersBodyTabs } from "./customersBody/CustomersBodyTabs";
@@ -14,12 +18,14 @@ import { CustomersBodyDatosGenerales } from "./customersBody/CustomersBodyDatosG
 import { CustomersBodyCartaExoneracion } from "./customersBody/CustomersBodyCartaExoneracion";
 
 export const CustomersBody = () => {
-  const dispatch = useDispatch();
-  const { customer, disableInputs } = useSelector((state) => state.customers);
-  const { nombre, cedula, observaciones } = customer;
 
-  const state = useSelector((state) => state.customers);
-  const { currentTabCustomers } = state;
+  const dispatch = useDispatch();
+
+  const { customer, disableInputs, currentTabCustomers } = useSelector((state) => state.customers);
+  const { nombre, cedula, observaciones, tipoCliente, nombreFantasia} = customer;
+
+  const { auth } = useSelector((state) => state.login);
+  const { costaPets } = auth;
 
   const redirectComponent = () => {
     switch (currentTabCustomers) {
@@ -78,6 +84,7 @@ export const CustomersBody = () => {
   return (
     <>
           <div className="row mb-3 text-md-center">
+
             <div className="col-md-3 mb-3">
               <h5>Nombre</h5>
               <div className="input-group">
@@ -130,7 +137,61 @@ export const CustomersBody = () => {
               </div>
             </div>
 
-            <div className="col-md-6 mb-3">
+            {
+              costaPets
+                ? <div className="col-md-3 mb-3">
+                    <h5>Tipo Cliente</h5>
+                    <div className="input-group">
+                        <span className="input-group-text">
+                        <FaPersonCircleQuestion  className="iconSize" />
+                        </span>
+                        <select
+                        name="tipo"
+                        disabled={disableInputs}
+                        value={tipoCliente}
+                        className="form-select"
+                        onChange={(e) =>
+                            handleInputChangeWithDispatch(e, SetTipoClienteCustomers)
+                        }
+                        >
+                        <option value="" selected disabled hidden>
+                            {" "}
+                            Seleccione...{" "}
+                        </option>
+                        <option value="2">Fisico</option>
+                        <option value="3">Juridico</option>
+                        <option value="4">DIMEX</option>
+                        </select>
+                    </div>
+                </div>
+              : null
+            }
+
+            {
+              costaPets
+                ? <div className="col-md-3 mb-3">
+                  <h5>Nombre Fantasía</h5>
+                  <div className="input-group">
+                    <span className="input-group-text">
+                      <FaUser className="iconSize" />
+                    </span>
+                    <input
+                      type="text"
+                      name="nombre"
+                      className="form-control"
+                      disabled={disableInputs}
+                      value={nombreFantasia}
+                      placeholder="Nombre del Cliente Fantasía"
+                      onChange={(e) =>
+                        handleInputChangeWithDispatch(e, SetNombreFantasiaCustomers)
+                      }
+                    />
+                  </div>
+                </div>
+              : null
+            }
+
+            <div className={ (costaPets) ? 'col-md-6 mb-3 d-none' : 'col-md-6 mb-3'}>
               <h5>Observaciones</h5>
               <div className="input-group">
                 <span className="input-group-text">
@@ -148,6 +209,7 @@ export const CustomersBody = () => {
                 ></textarea>
               </div>
             </div>
+
           </div>
           <hr />
 

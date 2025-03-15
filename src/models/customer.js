@@ -4,6 +4,7 @@ export class Customer {
     constructor(
         identificacion,
         nombre, 
+        nombreFantasia,
         tipoCliente,
         cedula, 
         observaciones, 
@@ -38,6 +39,7 @@ export class Customer {
       ) {
         this.identificacion = identificacion || 0,
         this.nombre = nombre;
+        this.nombreFantasia = nombreFantasia;
         this.tipoCliente = tipoCliente || 2,
         this.cedula = cedula;
         this.observaciones = observaciones || null;
@@ -77,6 +79,7 @@ export class Customer {
         cedula                : this.cedula,
         idTipoIdentificacion  : this.tipoCliente,
         nombre                : this.nombre,
+        nombreFantasia        : this.nombreFantasia,
         observaciones         : this.observaciones,
         telefono01            : this.telefono,
         eMail                 : this.correocuentas,

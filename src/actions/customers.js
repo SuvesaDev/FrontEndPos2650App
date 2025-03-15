@@ -12,7 +12,7 @@ import {
 } from './CartaExoneracionAction';
 
 //Action with call API
-export const startSaveCustomer = ( customer, carta ) => {
+export const startSaveCustomer = ( customer, carta, isCostaPets ) => {
 
     return async ( dispatch ) => {
         
@@ -50,6 +50,18 @@ export const startSaveCustomer = ( customer, carta ) => {
 
                         //Clean State Customers
                         dispatch( CleanStateCustomers() );
+
+                        if( isCostaPets ) {
+                            //Si es correcta entonces mostrar un mensaje de afirmacion
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Cliente ingresado correctamente',
+                                showConfirmButton: false,
+                                timer: 2500
+                            })
+
+                            return;
+                        }
 
                         // Clean State Carta Exoneracion
                         dispatch( CleanStateCartaExoneracion());
@@ -293,7 +305,7 @@ export const startSearchCustomer = ( value1, value2, tipo ) => {
             
             const { status, responses } = resp.data;
             Swal.close();
-    
+            console.log(responses)
             if( status === 0 ) {
                 dispatch(SetSearchCustomers( responses ));
             } else {
@@ -797,6 +809,12 @@ export const SetNombreCustomers = ( value ) => ({
     type: types.SetNombreCustomers,
     payload: value
 });
+
+export const SetNombreFantasiaCustomers = ( value ) => ({
+    type: types.SetNombreFantasiaCustomers,
+    payload: value
+});
+
 
 export const SetCedulaCustomers = ( value ) => ({
     type: types.SetCedulaCustomers,

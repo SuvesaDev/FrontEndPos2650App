@@ -17,7 +17,9 @@ import { FaCalendarDays, FaColonSign } from "react-icons/fa6";
 import { TbAdjustmentsDollar } from "react-icons/tb";
 
 export const CustomersBodyCreditoDescuento = () => {
+
     const dispatch = useDispatch();
+
     const { activeCredito, customer, disableInputs } = useSelector(
         (state) => state.customers
     );
@@ -33,6 +35,9 @@ export const CustomersBodyCreditoDescuento = () => {
         clienteMoroso,
         ordenCompra,
     } = customer;
+
+    const { auth } = useSelector((state) => state.login);
+    const { costaPets } = auth;
 
     const handleActiveCredito = (e) => {
         dispatch(ActiveCredito(!activeCredito));
@@ -50,9 +55,12 @@ export const CustomersBodyCreditoDescuento = () => {
         <>
             <div className="card">
                 <div className="card-body">
+
                     <div className="row mb-0">
+
                         <div className="col-md-4 mb-0"></div>
-                        <div className="col-md-4 mb-2">
+
+                        <div className={costaPets ? 'col-md-4 mb-2 d-none' : 'col-md-4 mb-2'}>
                             <div className="form-check">
                                 <input
                                     type="checkbox"
@@ -69,10 +77,13 @@ export const CustomersBodyCreditoDescuento = () => {
                             </div>
                             <hr />
                         </div>
+
                         <div className="col-md-4 mb-0"></div>
+
                     </div>
 
                     <div className="row mb-3">
+
                         <div className="col-md-2 mb-3">
                             <h5>Crédito</h5>
                             <div className="input-group">
@@ -82,7 +93,7 @@ export const CustomersBodyCreditoDescuento = () => {
                                 <select
                                     name="abierto"
                                     className="form-select"
-                                    disabled={!activeCredito}
+                                    disabled={ (costaPets) ? disableInputs : !activeCredito}
                                     value={abierto ? "1" : "0"}
                                     onChange={(e) =>
                                         handleInputChangeWithDispatch(e, SetAbiertoCustomers)
@@ -94,7 +105,7 @@ export const CustomersBodyCreditoDescuento = () => {
                             </div>
                         </div>
 
-                        <div className="col-md-2 mb-3">
+                        <div className={ costaPets ? 'col-md-2 mb-3 d-none' : 'col-md-2 mb-3' }>
                             <h5>Mondeda Crédito</h5>
                             <div className="input-group">
                                 <span className="input-group-text">
@@ -115,6 +126,7 @@ export const CustomersBodyCreditoDescuento = () => {
                             </div>
 
                         </div>
+
                         <div className="col-md-2 mb-3">
                             <h5>Plazo Crédito (Días)</h5>
                             <div className="input-group">
@@ -126,7 +138,7 @@ export const CustomersBodyCreditoDescuento = () => {
                                     name="plazoCredito"
                                     className="form-control"
                                     placeholder="Cantidad de Días"
-                                    disabled={!activeCredito}
+                                    disabled={ (costaPets) ? disableInputs : !activeCredito}
                                     value={plazoCredito}
                                     onChange={(e) =>
                                         handleInputChangeWithDispatch(e, SetPlazoCreditoCustomers)
@@ -134,6 +146,7 @@ export const CustomersBodyCreditoDescuento = () => {
                                 />
                             </div>
                         </div>
+
                         <div className="col-md-4 mb-3">
                             <h5>Límite de Crédito</h5>
                             <div className="input-group">
@@ -145,7 +158,7 @@ export const CustomersBodyCreditoDescuento = () => {
                                     name="maxCredito"
                                     className="form-control"
                                     placeholder="Crédito Máximo"
-                                    disabled={!activeCredito}
+                                    disabled={ (costaPets) ? disableInputs : !activeCredito}
                                     value={maxCredito}
                                     onChange={(e) =>
                                         handleInputChangeWithDispatch(e, SetMaxCreditoCustomers)
@@ -184,6 +197,7 @@ export const CustomersBodyCreditoDescuento = () => {
 
                             </div>
                         </div>
+
                         <div className="col-md-2 mb-3">
                             <h5>Límite Descuento %</h5>
                             <div className="input-group">
@@ -195,7 +209,7 @@ export const CustomersBodyCreditoDescuento = () => {
                                     name="descuento"
                                     className="form-control"
                                     placeholder="Descuento Máximo"
-                                    disabled={!activeCredito}
+                                    disabled={ (costaPets) ? disableInputs : !activeCredito}
                                     value={descuento}
                                     onChange={(e) =>
                                         handleInputChangeWithDispatch(e, SetDescuentoCustomers)
@@ -203,11 +217,12 @@ export const CustomersBodyCreditoDescuento = () => {
                                 />
                             </div>
                         </div>
+
                     </div>
 
                     <div className="row mb-2">
                         <div className="col-md-2 mb-0"></div>
-                        <div className="col-md-4 mb-3">
+                        <div className={ costaPets ? 'col-md-4 mb-3 d-none' : 'col-md-4 mb-3' }>
                             <div className="form-check">
                                 <input
                                     type="checkbox"
@@ -235,7 +250,7 @@ export const CustomersBodyCreditoDescuento = () => {
                                     id="checkPermitirCustomersB"
                                     name="sinrestriccion"
                                     class="form-check-input checkP"
-                                    disabled={!activeCredito}
+                                    disabled={ (costaPets) ? disableInputs : !activeCredito}
                                     checked={sinrestriccion}
                                     onChange={(e) =>
                                         handleInputChangeCheckBoxWithDispatch(
@@ -251,7 +266,7 @@ export const CustomersBodyCreditoDescuento = () => {
                         <div className="col-md-2 mb-0"></div>
                     </div>
 
-                    <div className="row mb-0">
+                    <div className={ costaPets ? 'row mb-0 d-none' : 'row mb-0' }>
                         <div className="col-md-2 mb-3"></div>
                         <div className="col-md-4 mb-3">
                             <div className="form-check">
@@ -297,6 +312,7 @@ export const CustomersBodyCreditoDescuento = () => {
                         </div>
                         <div className="col-md-2 mb-3"></div>
                     </div>
+
                 </div>
             </div>
 
