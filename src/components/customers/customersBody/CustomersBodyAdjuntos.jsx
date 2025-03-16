@@ -86,19 +86,22 @@ export const CustomersBodyAdjuntos = () => {
 
                     <div className="row mb-3">
 
-                        <div className="col-md-10 mb-3">
+                        <div className="col-md-3 mb-3 ms-3">
                             <h5 className='text-start'>Por seleccione un archivo a cargar</h5>
                             <div className="input-group">
 
-                                <span className="input-group-text">
-                                    <FaFile className="iconSize" />
-                                </span>
+                                <label 
+                                    for="txtFile" 
+                                    class="btn btn-primary"
+                                >
+                                    Seleccionar archivo
+                                </label>
                                 <input
                                     type="file"
                                     id='txtFile'
                                     ref={fileInputRef}
                                     onChange={handleUploadFile}
-                                    className='form-control'
+                                    className='d-none'
                                     disabled={disableInputs}
                                 />
 
