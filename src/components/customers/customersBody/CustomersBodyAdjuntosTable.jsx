@@ -1,6 +1,12 @@
 import React from "react";
+import Swal from 'sweetalert2';
+
 import { useSelector, useDispatch } from "react-redux";
 import { useTable } from "react-table";
+
+import { FaEye } from 'react-icons/fa';
+import { MdDeleteForever } from 'react-icons/md';
+import { SetDeleteAdjuntoCustomers } from "../../../actions/customers";
 
 export const CustomersBodyAdjuntosTable = ({ columns, data }) => {
 
@@ -18,30 +24,55 @@ export const CustomersBodyAdjuntosTable = ({ columns, data }) => {
     data,
   });
 
-  const handleRow = async (cell) => {
-    // if (!isInventoryDisable) {
+  const handleOpenFile = async (cell) => {
 
-    //   // Obtiene el price seleccionado
-    //   const { codigo, descripcion, cantidad } = cell.row.values;
+    // Obtiene el file seleccionado
+    const { base64 } = cell.row.original;
+    
+    if (base64) {
 
-    //   // Searcha articleRelated
-    //   const articleformula = formulaArticlesInventory.find(
-    //     (article) =>
-    //       article.codigo === codigo &&
-    //       article.descripcion === descripcion &&
-    //       article.cantidad === cantidad
-    //   );
+      const newTab = window.open();
+      newTab.document.write(`<iframe src="${base64}" width="100%" height="100%"></iframe>`);
 
-    //   if (articleformula != undefined) {
+    } else {
 
-    //     dispatch( SetIsSelectedFormulaArticleInventory(true) );
-        
-    //     dispatch( SetCodigoFormulaArticleInventory(articleformula.codigo) );
-    //     dispatch( SetCodigoArtFormulaArticleInventory(articleformula.codArticulo) );
-    //     dispatch( SetDescripcionFormulaArticleInventory(articleformula.descripcion) );
-    //     dispatch( SetCantidadFormulaArticleInventory(articleformula.cantidad) );
-    //   }
-    // }
+      Swal.fire({
+          icon: 'warning',
+          title: 'Advertencia',
+          text: 'No se puede abrir el archivo en este momento. Intento más tarde por favor.'
+      });
+
+    }
+    
+
+  };
+
+  const handleDeleteFile = async (cell) => {
+
+    // Obtiene el file seleccionado
+    const { codigo, nombre } = cell.row.original;
+
+    if (codigo != undefined) {
+      
+      //Mostrar un mensaje de confirmacion
+      Swal.fire({
+          title: `¿Desea eliminar el adjunto ${nombre}?`,
+          showDenyButton: true,
+          showCancelButton: false,
+          confirmButtonText: 'Eliminar',
+          denyButtonText: `Cancelar`,
+      }).then(async (result) => {
+
+        if (result.isConfirmed) {
+
+          dispatch(SetDeleteAdjuntoCustomers( codigo ));
+
+        }
+
+      });
+
+    }
+
   };
 
   return (
@@ -73,10 +104,32 @@ export const CustomersBodyAdjuntosTable = ({ columns, data }) => {
                     return (
                       <td
                         {...cell.getCellProps({
-                          onClick: () => handleSelectedRow(cell),
+                          // onClick: () => handleSelectedRow(cell),
                         })}
                       >
-                        {cell.render("Cell")}
+                        {
+                            (cell.column.id === 'icon')
+                                ? <>
+                                  <div class="container">
+
+                                      <div class="row d-flex justify-content-center">
+                                        <div class="col-auto">
+                                          <button className='btn btn-primary' onClick={ () => handleOpenFile(cell)}>
+                                            <FaEye className='iconSizeBtn' />
+                                          </button>
+                                        </div>
+
+                                        <div class="col-auto">
+                                          <button className='btn btn-danger' onClick={ () => handleDeleteFile(cell)}>
+                                            <MdDeleteForever className='iconSizeBtn' />
+                                          </button>
+                                        </div>
+                                      </div>
+
+                                    </div>
+                                </>
+                                : cell.render("Cell")
+                        }
                       </td>
                     );
                   })}

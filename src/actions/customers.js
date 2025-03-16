@@ -1075,3 +1075,8 @@ export const SetAddAdjuntoCustomers = ( value ) => ({
     type: types.SetAddAdjuntoCustomers,
     payload: value
 });
+
+export const SetDeleteAdjuntoCustomers = ( value ) => ({
+    type: types.SetDeleteAdjuntoCustomers,
+    payload: value
+});

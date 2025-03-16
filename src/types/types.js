@@ -526,6 +526,7 @@ export const types = {
   SetStartOpeningCustomers: '[Customers] SetStartOpeningCustomers',
 
   SetAddAdjuntoCustomers: '[Customers] SetAddAdjuntoCustomers',
+  SetDeleteAdjuntoCustomers: '[Customers] SetDeleteAdjuntoCustomers',
 
   // Carta Exoneracion Actions
   SetMotivoCartaExoneracion: '[CartaExoneracion] SetMotivoCartaExoneracion',

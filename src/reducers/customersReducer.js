@@ -569,6 +569,14 @@ export const CustomersReducer = (state = initialState, action) => {
                     action.payload
                 ]
             }
+
+        case types.SetDeleteAdjuntoCustomers:
+            return {
+                ...state,
+                adjuntos: state.adjuntos.filter( 
+                    adjunto => adjunto.codigo !== action.payload
+                )
+            }
     
         default:
             return state;

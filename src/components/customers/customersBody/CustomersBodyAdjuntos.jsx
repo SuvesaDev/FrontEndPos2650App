@@ -1,9 +1,8 @@
 import Swal from 'sweetalert2';
-import { useState } from 'react';
+import { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { FaFile, FaSave, FaEye } from 'react-icons/fa';
-import { MdDeleteForever } from 'react-icons/md';
+import { FaFile, FaSave } from 'react-icons/fa';
 
 import { CustomersBodyAdjuntosTable } from './CustomersBodyAdjuntosTable';
 
@@ -11,6 +10,7 @@ import { SetAddAdjuntoCustomers } from '../../../actions/customers';
 
 export const CustomersBodyAdjuntos = () => {
 
+    const fileInputRef = useRef(null); 
     const dispatch = useDispatch();
 
     const { adjuntos } = useSelector((state) => state.customers);
@@ -26,29 +26,7 @@ export const CustomersBodyAdjuntos = () => {
         },
         {
             Header: "Acciones",
-            accessor: "icon",
-            Cell: () => (
-                <div class="container">
-                    <div className='row mb-3 align-items-center'>
-
-                        <div className="col-md-2 mb-3">
-                            <button className='btn btn-primary'>
-                                <FaEye className='iconSizeBtn' />
-                            </button>
-                        </div>
-
-                        <div className="col-md-2 mb-3">
-                            <button className='btn btn-danger'>
-                                <MdDeleteForever className='iconSizeBtn' />
-                            </button>
-                        </div>                  
-
-                    </div>
-                </div>
-                
-                
-            ),
-
+            accessor: "icon"
         },
     ];
 
@@ -61,6 +39,7 @@ export const CustomersBodyAdjuntos = () => {
                 title: 'Advertencia',
                 text: 'Archivo no tiene una extencion Valida. Por favor intentelo de nuevo con archivos con extensiones: (pdf, docx, doc, jpg, jpeg, png, gif, webp).'
             });
+            fileInputRef.current.value = "";
             return;
         }
 
@@ -78,7 +57,7 @@ export const CustomersBodyAdjuntos = () => {
             }
 
             dispatch( SetAddAdjuntoCustomers( newFile ) );
-
+            fileInputRef.current.value = "";
         }
 
         fileReader.onerror = () => {
@@ -94,9 +73,7 @@ export const CustomersBodyAdjuntos = () => {
 
     const hasExtension = (fileName, exts) => {
         return (new RegExp('(' + exts.join('|').replace(/\./g, '\\.') + ')$')).test(fileName);
-    }
-
-    
+    }  
 
     const { 
         disableInputs
@@ -119,7 +96,7 @@ export const CustomersBodyAdjuntos = () => {
                                 <input
                                     type="file"
                                     id='txtFile'
-                                    // ref={inputFile}
+                                    ref={fileInputRef}
                                     onChange={handleUploadFile}
                                     className='form-control'
                                     disabled={disableInputs}
@@ -137,15 +114,9 @@ export const CustomersBodyAdjuntos = () => {
                                 disabled={disableInputs}
                                 // onClick={ handleConvertirCantidadDisponibles }
                                 >
-                                Guardar Documentos<FaSave className="iconSize" />
+                                <FaSave className="iconSize" /> Guardar Documentos
                             </button>
                         </div>
-
-                        {/* {base64 && (
-                            <button onClick={openInNewTab} style={{ marginTop: "10px" }}>
-                            Abrir en nueva pestaña
-                            </button>
-                        )} */}
 
                     </div>
 
