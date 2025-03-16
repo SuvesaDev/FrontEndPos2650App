@@ -1,8 +1,7 @@
 import Swal from 'sweetalert2';
-import { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { FaFile, FaSave } from 'react-icons/fa';
+import { FaSave } from 'react-icons/fa';
 
 import { CustomersBodyAdjuntosTable } from './CustomersBodyAdjuntosTable';
 
@@ -10,7 +9,6 @@ import { SetAddAdjuntoCustomers } from '../../../actions/customers';
 
 export const CustomersBodyAdjuntos = () => {
 
-    const fileInputRef = useRef(null); 
     const dispatch = useDispatch();
 
     const { adjuntos } = useSelector((state) => state.customers);
@@ -39,7 +37,6 @@ export const CustomersBodyAdjuntos = () => {
                 title: 'Advertencia',
                 text: 'Archivo no tiene una extencion Valida. Por favor intentelo de nuevo con archivos con extensiones: (pdf, docx, doc, jpg, jpeg, png, gif, webp).'
             });
-            fileInputRef.current.value = "";
             return;
         }
 
@@ -57,7 +54,6 @@ export const CustomersBodyAdjuntos = () => {
             }
 
             dispatch( SetAddAdjuntoCustomers( newFile ) );
-            fileInputRef.current.value = "";
         }
 
         fileReader.onerror = () => {
@@ -99,7 +95,6 @@ export const CustomersBodyAdjuntos = () => {
                                 <input
                                     type="file"
                                     id='txtFile'
-                                    ref={fileInputRef}
                                     onChange={handleUploadFile}
                                     className='d-none'
                                     disabled={disableInputs}
