@@ -1070,3 +1070,8 @@ export const SetStartOpeningCustomers = ( value ) => ({
     type: types.SetStartOpeningCustomers,
     payload: value
 });
+
+export const SetAddAdjuntoCustomers = ( value ) => ({
+    type: types.SetAddAdjuntoCustomers,
+    payload: value
+});

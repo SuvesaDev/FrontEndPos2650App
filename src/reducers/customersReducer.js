@@ -54,7 +54,8 @@ const initialState = {
     disableCantones: true,
     disableDistritos: true,
     sinAgente: false,
-    startOpening: false
+    startOpening: false,
+    adjuntos: []
 };
 
 export const CustomersReducer = (state = initialState, action) => {
@@ -407,7 +408,8 @@ export const CustomersReducer = (state = initialState, action) => {
                 disableCantones: true,
                 disableDistritos: true,
                 sinAgente: false,
-                startOpening: false
+                startOpening: false,
+                adjuntos: []
             }
 
         case types.ActiveButtonNewCustomers:
@@ -557,6 +559,15 @@ export const CustomersReducer = (state = initialState, action) => {
             return {
                 ...state,
                 startOpening: action.payload
+            }
+
+        case types.SetAddAdjuntoCustomers:
+            return {
+                ...state,
+                adjuntos: [
+                    ...state.adjuntos,
+                    action.payload
+                ]
             }
     
         default:

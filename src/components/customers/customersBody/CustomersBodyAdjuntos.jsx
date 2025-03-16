@@ -1,14 +1,56 @@
 import Swal from 'sweetalert2';
-import { createRef } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { FaFile, FaSave } from 'react-icons/fa';
+import { FaFile, FaSave, FaEye } from 'react-icons/fa';
+import { MdDeleteForever } from 'react-icons/md';
+
+import { CustomersBodyAdjuntosTable } from './CustomersBodyAdjuntosTable';
+
+import { SetAddAdjuntoCustomers } from '../../../actions/customers';
 
 export const CustomersBodyAdjuntos = () => {
 
-    // var inputFile = createRef(null);
-
     const dispatch = useDispatch();
+
+    const { adjuntos } = useSelector((state) => state.customers);
+
+    const columns = [
+        {
+          Header: "Codigo",
+          accessor: "codigo",
+        },
+        {
+          Header: "Nombre",
+          accessor: "nombre",
+        },
+        {
+            Header: "Acciones",
+            accessor: "icon",
+            Cell: () => (
+                <div class="container">
+                    <div className='row mb-3 align-items-center'>
+
+                        <div className="col-md-2 mb-3">
+                            <button className='btn btn-primary'>
+                                <FaEye className='iconSizeBtn' />
+                            </button>
+                        </div>
+
+                        <div className="col-md-2 mb-3">
+                            <button className='btn btn-danger'>
+                                <MdDeleteForever className='iconSizeBtn' />
+                            </button>
+                        </div>                  
+
+                    </div>
+                </div>
+                
+                
+            ),
+
+        },
+    ];
 
     const handleUploadFile = (e) => {
         
@@ -22,60 +64,39 @@ export const CustomersBodyAdjuntos = () => {
             return;
         }
 
-        // // StartReadingXML en true
-        // dispatch(SetStartReadingXMLCompras(false));
+        const file = e.target.files[0];
+        const fileReader = new FileReader();
 
-        // // Se limpia los campos actuales
-        // dispatch(CleanFacturaCompras());
+        fileReader.readAsDataURL(file); // Convierte el archivo a Base64
+        
+        fileReader.onload = () => {
 
-        // // Se establece el hasChargeFactura
-        // dispatch(SetHasChargeFacturaCompras(false));
+            const newFile = {
+                codigo: adjuntos.length + 1,
+                nombre: file.name,
+                base64: fileReader.result
+            }
 
-        // // Se establece el catalogo interno en false
-        // dispatch(SetHasCatalogosInternos(false));
+            dispatch( SetAddAdjuntoCustomers( newFile ) );
 
-        // // Establecer el nombre del archivo
-        // dispatch(SetNameFileReadXMLCompras(e.target.files[0].name));
+        }
 
-        // // Read XML
-        // const file = e.target.files[0];
-        // const fileReader = new FileReader();
+        fileReader.onerror = () => {
 
-        // fileReader.readAsText(file);
-
-        // fileReader.onload = () => {
-
-        //     // Se parse el XML
-        //     const xmlreaded = parseXML(new XMLParser().parseFromString(fileReader.result));
-        //     console.log(xmlreaded)
-        //     // Se establece en state
-        //     dispatch(SetBillingImportXMLCompras(xmlreaded));
-
-        //     // StartReadingXML en true
-        //     dispatch(SetStartReadingXMLCompras(true));
-        // }
-
-        // fileReader.onerror = () => {
-
-        //     // Se muestra mensaje
-        //     Swal.fire({
-        //         icon: 'warning',
-        //         title: 'Advertencia',
-        //         text: 'Ocurrio un error cargando el archivo XML, por favor intentelo de nuevo.'
-        //     });
-
-        //     // Se limpia el nombre del archivo
-        //     dispatch(SetNameFileReadXMLCompras(''));
-
-        //     // StartReadingXML en false
-        //     dispatch(SetStartReadingXMLCompras(false));
-        // }
+            // Se muestra mensaje
+            Swal.fire({
+                icon: 'warning',
+                title: 'Advertencia',
+                text: 'Ocurrio un error cargando el archivo, por favor intentelo de nuevo.'
+            });
+        }
     }
 
     const hasExtension = (fileName, exts) => {
         return (new RegExp('(' + exts.join('|').replace(/\./g, '\\.') + ')$')).test(fileName);
     }
 
+    
 
     const { 
         disableInputs
@@ -120,12 +141,21 @@ export const CustomersBodyAdjuntos = () => {
                             </button>
                         </div>
 
+                        {/* {base64 && (
+                            <button onClick={openInNewTab} style={{ marginTop: "10px" }}>
+                            Abrir en nueva pestaña
+                            </button>
+                        )} */}
+
                     </div>
 
                     <div className='row mb-0'>
 
                         <div className="col-md-12 mb-3">
-                            <p>Table</p>
+                            <CustomersBodyAdjuntosTable 
+                                columns={columns}
+                                data={adjuntos}
+                            />
                         </div>
 
                     </div>
