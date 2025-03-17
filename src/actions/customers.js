@@ -305,7 +305,7 @@ export const startSearchCustomer = ( value1, value2, tipo ) => {
             
             const { status, responses } = resp.data;
             Swal.close();
-            console.log(responses)
+            
             if( status === 0 ) {
                 dispatch(SetSearchCustomers( responses ));
             } else {
@@ -611,68 +611,6 @@ export const startDeleteCustomer = ( cedula, nombre, usuario, tipo) => {
     }
 }
 
-// export const startGetAllProvincias = () => {
-
-//     return async ( dispatch ) => {
-
-//         try {
-
-//             //Mostrar el loading
-//             Swal.fire({
-//                 title: 'Por favor, espere',
-//                 allowEscapeKey: false,
-//                 allowOutsideClick: false,
-//                 showConfirmButton: false,
-//                 imageUrl: loadingImage,
-//                 customClass: 'alert-class-login',
-//                 imageHeight: 100,
-//             });
-    
-//             //Call end-point 
-//             const { data } = await suvesaApi.post('/Geografia/getProvincias');
-            
-//             const { status, responses } = data;
-//             Swal.close();
-    
-//             if( status === 0 ) {
-//                 // Se ingresan al estado las provincias
-//                 dispatch( SetProvinciasCustomers( responses ) );
-                
-//             } else {
-    
-//                 //Caso contrario respuesta incorrecto mostrar mensaje de error
-//                 const { currentException } = data;
-//                 const msj = currentException.split(',');
-                
-//                 Swal.fire({
-//                     icon: 'error',
-//                     title: 'Error',
-//                     text: (currentException.includes(',')) ? msj[3] : currentException,
-//                 });
-    
-//             }
-
-//         } catch (error) {
-            
-//             Swal.close();
-//             console.log(error);
-//             if( error.message === 'Request failed with status code 401') {
-//                 Swal.fire({
-//                     icon: 'error',
-//                     title: 'Error',
-//                     text: 'Usuario no valido',
-//                 });
-//             } else {
-//                 Swal.fire({
-//                     icon: 'error',
-//                     title: 'Error',
-//                     text: 'Ocurrio un problema al obtener las provincias',
-//                 });
-//             }
-//         }
-//     }
-// }
-
 export const startGetAllCantones = ( idProvincia ) => {
 
     return async ( dispatch ) => {
@@ -761,6 +699,158 @@ export const startGetAllDistritos = ( idCanton ) => {
             if( status === 0 ) {
                 // Se ingresan al estado los distritos
                 dispatch( SetDistritosCustomers( responses ) );
+                
+            } else {
+    
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
+                
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
+    
+            }
+
+        } catch (error) {
+            
+            Swal.close();
+            console.log(error);
+            if( error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al obtener los cantones',
+                });
+            }
+        }
+    }
+}
+
+export const startSaveFilesCustomer = ( files ) => {
+
+    return async ( dispatch ) => {
+        
+        //Mostrar un mensaje de confirmacion
+        Swal.fire({
+            title: '¿Desea guardar los adjuntos?',
+            showDenyButton: true,
+            showCancelButton: false,
+            confirmButtonText: 'Guardar',
+            denyButtonText: `Cancelar`,
+        }).then(async (result) => {
+            
+            try {
+
+                if (result.isConfirmed) {
+
+                    //Mostrar el loading
+                    Swal.fire({
+                        title: 'Por favor, espere',
+                        allowEscapeKey: false,
+                        allowOutsideClick: false,
+                        showConfirmButton: false,
+                        imageUrl: loadingImage,
+                        customClass: 'alert-class-login',
+                        imageHeight: 100,
+                    });
+
+                    //Call end-point 
+                    const { data } = await suvesaApi.post('/cliente/InsertarAdjuntosCliente', files );
+                    const { status } = data;
+                    
+                    if( status === 0) {
+
+                        //Si es correcta entonces mostrar un mensaje de afirmacion
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Ajuntos guardados correctamente',
+                            showConfirmButton: false,
+                            timer: 2500
+                        })
+
+                    } else {
+                        //Caso contrario respuesta incorrecto mostrar mensaje de error
+                        const { currentException } = data;
+                        const msj = currentException.split(',');
+                        
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: (currentException.includes(',')) ? msj[3] : currentException,
+                        });
+                        
+                    }
+
+                }
+
+            } catch (error) {
+                
+                Swal.close();
+                console.log(error);
+                if( error.message === 'Request failed with status code 401') {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Usuario no valido',
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Ocurrio un problema al guardar adjuntos del cliente',
+                    });
+                }
+            }
+                
+        });
+        
+    }
+}
+
+export const startGetAdjuntosCustomer = ( identificacion ) => {
+
+    return async ( dispatch ) => {
+
+        try {
+
+            //Mostrar el loading
+            Swal.fire({
+                title: 'Por favor, espere',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                imageUrl: loadingImage,
+                customClass: 'alert-class-login',
+                imageHeight: 100,
+            });
+    
+            //Call end-point 
+            const { data } = await suvesaApi.post(`/cliente/ObtenerAdjuntosCliente?idCliente=${identificacion}`);
+            
+            const { status, responses } = data;
+            Swal.close();
+    
+            if( status === 0 ) {
+
+                const newFiles = responses.map( file => {
+                    return {
+                        codigo: file.id,
+                        base64: file.archivo
+                        // TODO: Me falta nombre
+                    }
+                });
+
+                // Se ingresan al estado los cantones
+                dispatch( SetAdjuntoCustomers( newFiles ) );
                 
             } else {
     
@@ -1078,5 +1168,10 @@ export const SetAddAdjuntoCustomers = ( value ) => ({
 
 export const SetDeleteAdjuntoCustomers = ( value ) => ({
     type: types.SetDeleteAdjuntoCustomers,
+    payload: value
+});
+
+export const SetAdjuntoCustomers = ( value ) => ({
+    type: types.SetAdjuntoCustomers,
     payload: value
 });

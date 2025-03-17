@@ -5,13 +5,14 @@ import { FaSave } from 'react-icons/fa';
 
 import { CustomersBodyAdjuntosTable } from './CustomersBodyAdjuntosTable';
 
-import { SetAddAdjuntoCustomers } from '../../../actions/customers';
+import { SetAddAdjuntoCustomers, startSaveFilesCustomer } from '../../../actions/customers';
 
 export const CustomersBodyAdjuntos = () => {
 
     const dispatch = useDispatch();
 
-    const { adjuntos } = useSelector((state) => state.customers);
+    const { adjuntos, disableInputs, customer } = useSelector((state) => state.customers);
+    const { identificacion } = customer;
 
     const columns = [
         {
@@ -71,9 +72,38 @@ export const CustomersBodyAdjuntos = () => {
         return (new RegExp('(' + exts.join('|').replace(/\./g, '\\.') + ')$')).test(fileName);
     }  
 
-    const { 
-        disableInputs
-    } = useSelector( state => state.customers );
+    const handleSaveFiles = () => {
+
+        if( adjuntos.length == 0 ) {
+
+            Swal.fire({
+                icon: 'warning',
+                title: 'Advertencia',
+                text: 'Debe adjuntar al menos un archivo para guardar.'
+            });
+
+            return;
+        }
+
+        const newFiles = adjuntos.map( adjunto => {
+            return {
+                id: 0,
+                idCliente: identificacion, // Puede ser que no tenga nada porque es nuevo
+                archivo: adjunto.base64,
+                tipo: "", // Preguntarle a Beto
+                extencion: obtenerExtension(adjunto.nombre)
+            }
+        })
+
+        console.log(newFiles);
+
+        // dispatch( startSaveFilesCustomer(newFiles) );
+
+    }
+
+    const obtenerExtension = (nameFile) => {
+        return nameFile.slice((nameFile.lastIndexOf(".") - 1 >>> 0) + 2);
+    }
     
     return (
         <>
@@ -110,7 +140,7 @@ export const CustomersBodyAdjuntos = () => {
                                     disableInputs ? "btn btn-success disabled" : "btn btn-success"
                                 }
                                 disabled={disableInputs}
-                                // onClick={ handleConvertirCantidadDisponibles }
+                                onClick={ handleSaveFiles }
                                 >
                                 <FaSave className="iconSize" /> Guardar Documentos
                             </button>

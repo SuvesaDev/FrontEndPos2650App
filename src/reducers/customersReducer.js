@@ -577,6 +577,12 @@ export const CustomersReducer = (state = initialState, action) => {
                     adjunto => adjunto.codigo !== action.payload
                 )
             }
+
+        case types.SetAdjuntoCustomers:
+            return {
+                ...state,
+                adjuntos: action.payload
+            }
     
         default:
             return state;
