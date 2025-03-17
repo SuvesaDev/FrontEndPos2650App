@@ -514,6 +514,9 @@ export const BuysImportarFacturaModal = () => {
             // Se cierre el modal de importar
             dispatch(SetIsOpenImportarXMLModalCompras(false));
 
+            // Se cierre el modal por element
+            const btnCloseModal = document.getElementById("btnClose");
+            btnCloseModal.click();
         }
 
     }
@@ -958,11 +961,16 @@ export const BuysImportarFacturaModal = () => {
                         <div className="modal-footer">
                             <button
                                 className={(hasCatalogosInternos) ? 'btn btn-success' : 'btn btn-success disabled'}
-                                data-bs-dismiss="modal"
                                 onClick={handleImportarXML}
                             >
                                 Aceptar <IoIosCheckboxOutline className="iconSize" />
                             </button>
+
+                            <button
+                                className='d-none'
+                                data-bs-dismiss="modal"
+                                id='btnClose'
+                            ></button>
 
                             <button
                                 type="button"

@@ -96,7 +96,7 @@ export const CustomersBodyAdjuntos = () => {
         })
 
         console.log(newFiles);
-
+        
         // dispatch( startSaveFilesCustomer(newFiles) );
 
     }
