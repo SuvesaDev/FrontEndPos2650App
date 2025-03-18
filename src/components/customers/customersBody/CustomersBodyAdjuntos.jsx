@@ -88,15 +88,15 @@ export const CustomersBodyAdjuntos = () => {
         const newFiles = adjuntos.map( adjunto => {
             return {
                 id: 0,
-                idCliente: identificacion, // Puede ser que no tenga nada porque es nuevo
+                idCliente: identificacion, // TODO: Puede ser que no tenga nada porque es nuevo
                 archivo: adjunto.base64,
-                tipo: "", // Preguntarle a Beto
+                tipo: "", // TODO: Preguntarle a Beto
                 extencion: obtenerExtension(adjunto.nombre)
             }
         })
 
         console.log(newFiles);
-        
+
         // dispatch( startSaveFilesCustomer(newFiles) );
 
     }

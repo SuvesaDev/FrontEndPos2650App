@@ -36,6 +36,7 @@ import {
     SetDefaultSearchInventarioCompras,
     SetDiasCompras,
     SetDisableInputsDiasCompras,
+    SetEditLoteLotesImportarFacturaCompras,
     SetEditPricesSellPreciosImportarFacturaCompras,
     SetExistenciaLotesImportarFacturaCompras,
     SetFacturaCompras,
@@ -43,6 +44,7 @@ import {
     SetHasCatalogosInternos,
     SetHasChargeFacturaCompras,
     SetIsEditPriceSellPreciosImportarFacturaCompras,
+    SetIsLoteEditImportarFacturaCompras,
     SetIsOpenImportarXMLModalCompras,
     SetIsOpenModalPrecioImportarFacturaCompras,
     SetLoteLotesImportarFacturaCompras,
@@ -93,7 +95,8 @@ export const BuysImportarFacturaModal = () => {
         isCostaPets,
         lotes,
         seletedNumeroLineaLotes,
-        lotesByArticulo
+        lotesByArticulo,
+        isLoteEdit
     } = useSelector(state => state.compras);
 
     const {
@@ -797,6 +800,35 @@ export const BuysImportarFacturaModal = () => {
     
     }
 
+    const handleEditLote = () => {
+        
+        if( lote == '' || vencimiento == '') {
+
+            Swal.fire({
+                icon: "warning",
+                title: "Error",
+                text: "Debe completar la informacion para crear nuevo lote.",
+            });
+
+            return;
+        }
+
+        const newLote = {
+            lote,
+            vencimiento
+        }
+
+        dispatch( SetEditLoteLotesImportarFacturaCompras( {
+            codigoPro: codigoProSeleted,
+            numerolinea: seletedNumeroLineaLotes,
+            lotes: newLote,
+        } ) );
+
+        dispatch( CleanLotesImportarFacturaCompras() );
+        dispatch( SetIsLoteEditImportarFacturaCompras( false ) );
+    
+    }
+
     return (
 
         <>
@@ -1339,11 +1371,9 @@ export const BuysImportarFacturaModal = () => {
                                         <div className="inline-container">
                                             <button
                                                 className="btn btn-success"
-                                                // onClick={ isSeletedLotes ? handleEditLote : handleSaveLote}
-                                                onClick={handleSaveLote}
+                                                onClick={ isLoteEdit ? handleEditLote : handleSaveLote}
                                             >
-                                            {/* { isSeletedLotes ? 'Editar' : 'Agregar' } <IoAddCircle className="iconSize" /> */}
-                                                Agregar <IoAddCircle className="iconSize" />
+                                                { isLoteEdit ? 'Editar' : 'Agregar' } <IoAddCircle className="iconSize" />
                                             </button>
                             
                                             <button

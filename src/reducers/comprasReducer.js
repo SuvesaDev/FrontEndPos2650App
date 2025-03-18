@@ -89,6 +89,7 @@ const initialState = {
     vencimiento: '',
     existencia: 0
   },
+  isLoteEdit: false,
   seletedNumeroLineaLotes: '',
   lotesByArticulo: [],
   compras: {
@@ -1762,7 +1763,42 @@ export const comprasReducer = (state = initialState, action) => {
               }
               : detalle)
         }
-      }      
+      }    
+
+    case types.SetEditLoteLotesImportarFacturaCompras:
+      return {
+        ...state,
+        lotesByArticulo: [
+          action.payload.lotes
+        ],
+        billingImportXML: {
+          ...state.billingImportXML,
+          detalleServicio: state.billingImportXML.detalleServicio.map(
+            (detalle, i) => detalle.codigoComercial.codigo == action.payload.codigoPro && detalle.numeroLinea == action.payload.numerolinea
+              ? {
+                ...detalle,
+                lotes: [
+                  action.payload.lotes
+                ]
+              }
+              : detalle),
+          detalleServicioTable: state.billingImportXML.detalleServicioTable.map(
+            (detalle, i) => detalle.codigoPro == action.payload.codigoPro && detalle.numeroLinea == action.payload.numerolinea
+              ? {
+                ...detalle,
+                lotes: [
+                  action.payload.lotes
+                ]
+              }
+              : detalle)
+        }
+      }    
+      
+    case types.SetIsLoteEditImportarFacturaCompras:
+      return {
+        ...state,
+        isLoteEdit: action.payload
+      }
 
     case types.CleanCompras:
       return {
@@ -1855,6 +1891,7 @@ export const comprasReducer = (state = initialState, action) => {
           vencimiento: '',
           existencia: 0
         },
+        isLoteEdit: false,
         seletedNumeroLineaLotes: '',
         lotesByArticulo: [],
         compras: {

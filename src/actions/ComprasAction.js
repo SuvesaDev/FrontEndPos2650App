@@ -1077,7 +1077,7 @@ export const startGetArticulosXMLCompras = (productos, detalleServicio) => {
 
                 // Se insertan los detalle en la tabla
                 responses.forEach(product => {
-                    debugger;
+                    
                     // Se obtiene el detalle actual
                     const productCurrent = onlyProducts.find(p => p.numeroLinea == indexProduct);
                     const detalleCurrent = detalleServicio.find(detalle => detalle.codigoComercial.codigo === productCurrent.codProveedor);
@@ -2137,6 +2137,11 @@ export const SetAddLoteLotesImportarFacturaCompras = (value) => ({
     payload: value
 })
 
+export const SetEditLoteLotesImportarFacturaCompras = (value) => ({
+    type: types.SetEditLoteLotesImportarFacturaCompras,
+    payload: value
+})
+
 export const SetArrayLotesImportarFacturaCompras = (value) => ({
     type: types.SetArrayLotesImportarFacturaCompras,
     payload: value
@@ -2149,6 +2154,11 @@ export const SetNumeroLineaLotesImportarFacturaCompras = (value) => ({
 
 export const SetCantidadLotesImportarFacturaCompras = (value) => ({
     type: types.SetCantidadLotesImportarFacturaCompras,
+    payload: value
+})
+
+export const SetIsLoteEditImportarFacturaCompras = (value) => ({
+    type: types.SetIsLoteEditImportarFacturaCompras,
     payload: value
 })
 
