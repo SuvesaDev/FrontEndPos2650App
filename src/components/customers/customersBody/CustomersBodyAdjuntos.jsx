@@ -1,4 +1,5 @@
 import Swal from 'sweetalert2';
+import { createRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { FaSave } from 'react-icons/fa';
@@ -9,6 +10,7 @@ import { SetAddAdjuntoCustomers, startSaveFilesCustomer } from '../../../actions
 
 export const CustomersBodyAdjuntos = () => {
 
+    const inputFile = createRef(null);
     const dispatch = useDispatch();
 
     const { adjuntos, disableInputs, customer } = useSelector((state) => state.customers);
@@ -46,7 +48,21 @@ export const CustomersBodyAdjuntos = () => {
 
         fileReader.readAsDataURL(file); // Convierte el archivo a Base64
         
+        if (inputFile.current) {
+            inputFile.current.value = "";
+        }
         fileReader.onload = () => {
+
+            if( valideImageExists(fileReader.result) ) {
+
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Advertencia',
+                    text: 'Archivo ya se encuentra cargado. Por favor agregar un distinto archivo.'
+                });
+                return;
+
+            }
 
             const newFile = {
                 codigo: adjuntos.length + 1,
@@ -55,6 +71,7 @@ export const CustomersBodyAdjuntos = () => {
             }
 
             dispatch( SetAddAdjuntoCustomers( newFile ) );
+            
         }
 
         fileReader.onerror = () => {
@@ -66,6 +83,10 @@ export const CustomersBodyAdjuntos = () => {
                 text: 'Ocurrio un error cargando el archivo, por favor intentelo de nuevo.'
             });
         }
+
+        // fileReader.onloadend = () => {
+        //     inputFile.current.value = "";
+        // }
     }
 
     const hasExtension = (fileName, exts) => {
@@ -102,6 +123,12 @@ export const CustomersBodyAdjuntos = () => {
     const obtenerExtension = (nameFile) => {
         return nameFile.slice((nameFile.lastIndexOf(".") - 1 >>> 0) + 2);
     }
+
+    const valideImageExists = (newImage) => {
+        
+        const existsImage = adjuntos.find( adjunto => adjunto.base64 === newImage );
+        return existsImage != null
+    }
     
     return (
         <>
@@ -124,6 +151,7 @@ export const CustomersBodyAdjuntos = () => {
                                     type="file"
                                     id='txtFile'
                                     onChange={handleUploadFile}
+                                    ref={inputFile}
                                     className='d-none'
                                     disabled={disableInputs}
                                 />
