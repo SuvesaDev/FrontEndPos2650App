@@ -844,8 +844,8 @@ export const startGetAdjuntosCustomer = ( identificacion ) => {
                 const newFiles = responses.map( file => {
                     return {
                         codigo: file.id,
-                        base64: file.archivo
-                        // TODO: Me falta nombre
+                        base64: file.archivo,
+                        nombre: file.extension
                     }
                 });
 

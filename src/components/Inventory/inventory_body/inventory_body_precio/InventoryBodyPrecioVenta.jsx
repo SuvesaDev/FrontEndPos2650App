@@ -52,6 +52,9 @@ export const InventoryBodyPrecioVenta = () => {
 
   const [disableInputsP, setDisableInputsP] = useState(disableInputs);
 
+  const { auth } = useSelector((state) => state.login);
+  const { costaPets } = auth;
+
   // UseEffect disableInputs
   useEffect(() => {
     setDisableInputsP(disableInputs);
@@ -59,11 +62,9 @@ export const InventoryBodyPrecioVenta = () => {
 
   // UseEffect Utilidad, Precio y PrecioIV
   useEffect(() => {
-    if (
-      hasChangeUtilidadPriceSell &&
-      !hasChangePrecioPriceSell &&
-      !hasChangePrecioIVPriceSell
-    ) {
+
+    if( costaPets ) {
+
       //Utilidad
       let base = parseFloat(precioBase);
       let flete = parseFloat(fletes);
@@ -76,59 +77,88 @@ export const InventoryBodyPrecioVenta = () => {
 
         if (isNaN(otroC)) otroC = 0;
 
-        const precio = base * (util / 100) + flete + otroC + base;
+        const precio = base / ( 1 - (util / 100) );
         const precioIV = precio * (impuesto / 100) + precio;
 
         dispatch(SetPrecioPricesSellInventory(precio));
         dispatch(SetPrecioIVPricesSellInventory(precioIV));
       }
-    } else if (
-      hasChangePrecioPriceSell &&
-      !hasChangeUtilidadPriceSell &&
-      !hasChangePrecioIVPriceSell
-    ) {
-      //Precio
-      let base = parseFloat(precioBase);
-      let flete = parseFloat(fletes);
-      let otroC = parseFloat(otrosCargos);
-      let impuesto = parseFloat(iVenta);
-      let pre = parseFloat(precio);
 
-      if (!isNaN(base) && !isNaN(impuesto) && !isNaN(pre)) {
-        if (isNaN(flete)) flete = 0;
+    } else  {
 
-        if (isNaN(otroC)) otroC = 0;
-
-        const utilidad = ((pre - flete - otroC) / base - 1) * 100;
-        const precioIV = pre * (impuesto / 100) + pre;
-
-        dispatch(SetUtilidadPricesSellInventory(parseInt(utilidad)));
-        dispatch(SetPrecioIVPricesSellInventory(precioIV));
+      if (
+        hasChangeUtilidadPriceSell &&
+        !hasChangePrecioPriceSell &&
+        !hasChangePrecioIVPriceSell
+      ) {
+        //Utilidad
+        let base = parseFloat(precioBase);
+        let flete = parseFloat(fletes);
+        let otroC = parseFloat(otrosCargos);
+        let impuesto = parseFloat(iVenta);
+        let util = parseFloat(utilidad);
+  
+        if (!isNaN(base) && !isNaN(impuesto) && !isNaN(util)) {
+          if (isNaN(flete)) flete = 0;
+  
+          if (isNaN(otroC)) otroC = 0;
+  
+          const precio = base * (util / 100) + flete + otroC + base;
+          const precioIV = precio * (impuesto / 100) + precio;
+  
+          dispatch(SetPrecioPricesSellInventory(precio));
+          dispatch(SetPrecioIVPricesSellInventory(precioIV));
+        }
+      } else if (
+        hasChangePrecioPriceSell &&
+        !hasChangeUtilidadPriceSell &&
+        !hasChangePrecioIVPriceSell
+      ) {
+        //Precio
+        let base = parseFloat(precioBase);
+        let flete = parseFloat(fletes);
+        let otroC = parseFloat(otrosCargos);
+        let impuesto = parseFloat(iVenta);
+        let pre = parseFloat(precio);
+  
+        if (!isNaN(base) && !isNaN(impuesto) && !isNaN(pre)) {
+          if (isNaN(flete)) flete = 0;
+  
+          if (isNaN(otroC)) otroC = 0;
+  
+          const utilidad = ((pre - flete - otroC) / base - 1) * 100;
+          const precioIV = pre * (impuesto / 100) + pre;
+  
+          dispatch(SetUtilidadPricesSellInventory(parseInt(utilidad)));
+          dispatch(SetPrecioIVPricesSellInventory(precioIV));
+        }
+      } else if (
+        hasChangePrecioIVPriceSell &&
+        !hasChangeUtilidadPriceSell &&
+        !hasChangePrecioPriceSell
+      ) {
+        //Precio IV
+        let base = parseFloat(precioBase);
+        let flete = parseFloat(fletes);
+        let otroC = parseFloat(otrosCargos);
+        let impuesto = parseFloat(iVenta);
+        let preIV = parseFloat(precioIV);
+  
+        if (!isNaN(base) && !isNaN(impuesto) && !isNaN(preIV)) {
+          if (isNaN(flete)) flete = 0;
+  
+          if (isNaN(otroC)) otroC = 0;
+  
+          const precio = preIV / (1 + impuesto / 100);
+          const utilidad = ((precio - flete - otroC) / base - 1) * 100;
+  
+          dispatch(SetUtilidadPricesSellInventory(parseInt(utilidad)));
+          dispatch(SetPrecioPricesSellInventory(precio));
+        }
       }
-    } else if (
-      hasChangePrecioIVPriceSell &&
-      !hasChangeUtilidadPriceSell &&
-      !hasChangePrecioPriceSell
-    ) {
-      //Precio IV
-      let base = parseFloat(precioBase);
-      let flete = parseFloat(fletes);
-      let otroC = parseFloat(otrosCargos);
-      let impuesto = parseFloat(iVenta);
-      let preIV = parseFloat(precioIV);
 
-      if (!isNaN(base) && !isNaN(impuesto) && !isNaN(preIV)) {
-        if (isNaN(flete)) flete = 0;
-
-        if (isNaN(otroC)) otroC = 0;
-
-        const precio = preIV / (1 + impuesto / 100);
-        const utilidad = ((precio - flete - otroC) / base - 1) * 100;
-
-        dispatch(SetUtilidadPricesSellInventory(parseInt(utilidad)));
-        dispatch(SetPrecioPricesSellInventory(precio));
-      }
     }
+
   }, [utilidad, precio, precioIV]);
 
   const columns = [
