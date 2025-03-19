@@ -460,11 +460,13 @@ export const types = {
   SetIdArticuloFormulaLotesInventory: '[Inventory] SetIdArticuloFormulaLotesInventory',
   SetIdLoteFormulaLotesInventory: '[Inventory] SetIdLoteFormulaLotesInventory',
   SetIdBodegaFormulaLotesInventory: '[Inventory] SetIdBodegaFormulaLotesInventory',
+  SetCantidadFormulaLotesInventory: '[Inventory] SetCantidadFormulaLotesInventory',
   CleanInputsFormulaLotesInventory: '[Inventory] CleanInputsFormulaLotesInventory',
   SetLotesByArticleFormulaInventory: '[Inventory] SetLotesByArticleFormulaInventory',
   SetDisableInputsLotesFormulaInventory: '[Inventory] SetDisableInputsLotesFormulaInventory',
   SetLotesFormulaInventory: '[Inventory] SetLotesFormulaInventory',
   SetShowDivConvertirLotesFormulaInventory: '[Inventory] SetShowDivConvertirLotesFormulaInventory',
+  SetIsEditLotesFormulaInventory: '[Inventory] SetIsEditLotesFormulaInventory',
   SetCantidadDisponiblesConvertidorLotesIntentory : '[Inventory] SetCantidadDisponiblesConvertidorLotesIntentory',
   SetCantidadConvertirConvertidorLotesIntentory: '[Inventory] SetCantidadConvertirConvertidorLotesIntentory',
 

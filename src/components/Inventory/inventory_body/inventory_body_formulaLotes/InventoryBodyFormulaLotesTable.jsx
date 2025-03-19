@@ -4,11 +4,14 @@ import { useDispatch } from "react-redux";
 import { useTable } from "react-table";
 
 import {
+  SetCantidadFormulaLotesInventory,
   SetDisableInputsLotesFormulaInventory,
   SetIdArticuloFormulaLotesInventory,
   SetIdBodegaFormulaLotesInventory,
   SetIdLoteFormulaLotesInventory,
-  SetShowDivConvertirLotesFormulaInventory
+  SetIsEditLotesFormulaInventory,
+  SetShowDivConvertirLotesFormulaInventory,
+  startGetLotesByArticleFormula
 } from "../../../../actions/inventory";
 
 export const InventoryBodyFormulaLotesTable = ({ columns, data }) => {
@@ -31,18 +34,22 @@ export const InventoryBodyFormulaLotesTable = ({ columns, data }) => {
 
   const handleSelectedRow = async (cell) => {
 
-    // if (!isInventoryDisable) {
+    if (!isInventoryDisable) {
 
-    //   //Obtiene el seleccionado
-    //   const { idArticuloFormula, idLote, idBodega } = cell.row.original;
-
-    //   dispatch( SetIdArticuloFormulaLotesInventory( idArticuloFormula ) );
-    //   dispatch( SetIdLoteFormulaLotesInventory( idLote ) );
-    //   dispatch( SetIdBodegaFormulaLotesInventory( idBodega ) );
-    //   dispatch( SetDisableInputsLotesFormulaInventory( true ) );
-    //   dispatch( SetShowDivConvertirLotesFormulaInventory( true ) );
+      //Obtiene el seleccionado
+      const { idArticuloFormula, idLote, idBodega, cantidad } = cell.row.original;
       
-    // }
+      dispatch( startGetLotesByArticleFormula(idArticuloFormula, true) );
+
+      dispatch( SetIdArticuloFormulaLotesInventory( idArticuloFormula ) );
+      dispatch( SetIdLoteFormulaLotesInventory( idLote ) );
+      dispatch( SetIdBodegaFormulaLotesInventory( idBodega ) );
+      dispatch( SetCantidadFormulaLotesInventory( cantidad ) );
+      dispatch( SetDisableInputsLotesFormulaInventory( true ) );
+      dispatch( SetShowDivConvertirLotesFormulaInventory( false ) );
+      dispatch( SetIsEditLotesFormulaInventory( true ) )
+      
+    }
   };
 
   return (

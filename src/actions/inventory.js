@@ -2074,7 +2074,7 @@ export const startDisableLote = ( idlote ) => {
     }
 }
 
-export const startGetLotesByArticleFormula = (codigoPrincipal) => {
+export const startGetLotesByArticleFormula = (codigoPrincipal, isEdit) => {
 
     return async ( dispatch ) => {
     
@@ -2109,7 +2109,9 @@ export const startGetLotesByArticleFormula = (codigoPrincipal) => {
                     }
                 });
 
-                dispatch( SetIdBodegaFormulaLotesInventory(0) );
+                if(!isEdit) {
+                    dispatch( SetIdBodegaFormulaLotesInventory(0) );
+                }
                 dispatch( SetLotesByArticleFormulaInventory(lotes) );
                 dispatch( SetDisableInputsLotesFormulaInventory( false ) );
 
@@ -3604,6 +3606,11 @@ export const SetIdBodegaFormulaLotesInventory = (value) => ({
     payload: value
 })
 
+export const SetCantidadFormulaLotesInventory = (value) => ({
+    type: types.SetCantidadFormulaLotesInventory,
+    payload: value
+})
+
 export const CleanInputsFormulaLotesInventory = () => ({
     type: types.CleanInputsFormulaLotesInventory
 })
@@ -3625,6 +3632,11 @@ export const SetLotesFormulaInventory = (value) => ({
 
 export const SetShowDivConvertirLotesFormulaInventory = (value) => ({
     type: types.SetShowDivConvertirLotesFormulaInventory,
+    payload: value
+})
+
+export const SetIsEditLotesFormulaInventory = (value) => ({
+    type: types.SetIsEditLotesFormulaInventory,
     payload: value
 })
 

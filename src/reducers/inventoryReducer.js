@@ -137,12 +137,14 @@ const initialState = {
     formulaLotes: {
         idArticuloFormula: 0,
         idLote: 0,
-        idBodega: 0
+        idBodega: 0,
+        cantidad: 0
     },
     lotesByArticleFormula: [],
     disableInputsLotesFormula: false,
     lotesFormula: [],
     showDivConvertir: false,
+    isLoteFormulaEdit: false,
     cantidadDisponibleConvertidorLotes: 0,
     cantidadConvertirConvertidorLotes: 0,
     inventory: {
@@ -1309,12 +1311,14 @@ export const InventoryReducer = (state = initialState, action) => {
                 formulaLotes: {
                     idArticuloFormula: 0,
                     idLote: 0,
-                    idBodega: 0
+                    idBodega: 0,
+                    cantidad: 0
                 },
                 lotesByArticleFormula: [],
                 disableInputsLotesFormula: false,
                 lotesFormula: [],
                 showDivConvertir: false,
+                isLoteFormulaEdit: false,
                 cantidadDisponibleConvertidorLotes: 0,
                 cantidadConvertirConvertidorLotes: 0,
                 relatedArticles: {
@@ -2410,14 +2414,24 @@ export const InventoryReducer = (state = initialState, action) => {
                 }
             }
 
+        case types.SetCantidadFormulaLotesInventory:
+            return {
+                ...state,
+                formulaLotes: {
+                    ...state.formulaLotes,
+                    cantidad: action.payload
+                }
+            }
+
         case types.CleanInputsFormulaLotesInventory:
             return {
                 ...state,
                 formulaLotes: {
                     idArticuloFormula: 0,
                     idLote: 0,
-                    idBodega: 0
-                }
+                    idBodega: 0,
+                    cantidad: 0
+                },
             }
 
         case types.SetLotesByArticleFormulaInventory:
@@ -2445,6 +2459,12 @@ export const InventoryReducer = (state = initialState, action) => {
             return {
                 ...state,
                 showDivConvertir: action.payload
+            }
+
+        case types.SetIsEditLotesFormulaInventory:
+            return {
+                ...state,
+                isLoteFormulaEdit: action.payload
             }
 
         case types.SetCantidadDisponiblesConvertidorLotesIntentory:

@@ -6,7 +6,7 @@ import { IoAddCircle } from "react-icons/io5";
 import { FaCartShopping } from "react-icons/fa6";
 import { CiShoppingTag } from "react-icons/ci";
 import { AiFillShop } from "react-icons/ai";
-import { TbNumber } from "react-icons/tb";
+import { TbNumber, TbNumbers, TbEditCircle } from "react-icons/tb";
 import { FaCalculator } from "react-icons/fa6";
 import { VscGitPullRequestCreate } from "react-icons/vsc";
 
@@ -15,9 +15,11 @@ import { InventoryBodyFormulaLotesTable } from "./InventoryBodyFormulaLotesTable
 import { 
   CleanInputsFormulaLotesInventory,
   SetCantidadConvertirConvertidorLotesIntentory,
+  SetCantidadFormulaLotesInventory,
   SetIdArticuloFormulaLotesInventory, 
   SetIdBodegaFormulaLotesInventory, 
   SetIdLoteFormulaLotesInventory,
+  SetLotesByArticleFormulaInventory,
   SetLotesFormulaInventory,
   SetShowDivConvertirLotesFormulaInventory,
   startCalculateCantidadDisponiblesConvertidorLotesInventory,
@@ -40,7 +42,8 @@ export const InventoryBodyFormulaLotes = () => {
     lotesFormula,
     showDivConvertir,
     cantidadDisponibleConvertidorLotes,
-    cantidadConvertirConvertidorLotes
+    cantidadConvertirConvertidorLotes,
+    isLoteFormulaEdit
   } = useSelector((state) => state.inventory);
 
   useEffect(() => {
@@ -50,16 +53,15 @@ export const InventoryBodyFormulaLotes = () => {
       return;
     }
 
-    if( lotesFormula.length == formulaArticlesInventory.length ){
+    if( validarListaArticulosFormula() ){
       dispatch( SetShowDivConvertirLotesFormulaInventory( true ) );
     }
   
   }, [lotesFormula]);
-  
 
   const { bodegasInventory } = useSelector(state => state.bodegas);
 
-  const { idArticuloFormula, idLote, idBodega } = formulaLotes;
+  const { idArticuloFormula, idLote, idBodega, cantidad } = formulaLotes;
 
   const columns = [
     {
@@ -69,6 +71,10 @@ export const InventoryBodyFormulaLotes = () => {
     {
       Header: "Vencimiento",
       accessor: "vencimiento",
+    },
+    {
+      Header: "Cantidad",
+      accessor: "cantidad",
     }
   ];
 
@@ -89,7 +95,7 @@ export const InventoryBodyFormulaLotes = () => {
 
   const handleAddLotesFormula = () => {
     
-    if( idArticuloFormula == 0 || idLote == 0 || idBodega == 0) {
+    if( idArticuloFormula == 0 || idLote == 0 || idBodega == 0 || cantidad == 0 ) {
 
       Swal.fire({
         icon: "warning",
@@ -102,26 +108,26 @@ export const InventoryBodyFormulaLotes = () => {
     }
 
     const articuloSeleted = formulaArticlesInventory.find( articulo => articulo.codigo == idArticuloFormula );
-
-    const existArticle = lotesFormula.find( lotForm => lotForm.idArticuloFormula === idArticuloFormula );
+    const loteSeleted = lotesByArticleFormula.find( lot => lot.id == idLote );
+    
+    const existArticle = lotesFormula.find( lotForm => lotForm.idArticuloFormula === idArticuloFormula && lotForm.idLote === idLote );
     if( existArticle != undefined || existArticle != null ){
       Swal.fire({
         icon: "warning",
         title: "Error",
-        text: `El artículo ${articuloSeleted.codigo} - ${articuloSeleted.descripcion} ya se encuentra registrado.`,
+        text: `El artículo ${articuloSeleted.codigo} - ${articuloSeleted.descripcion} con el lote ${loteSeleted.lote} ya se encuentra registrado.`,
       });
 
       dispatch( CleanInputsFormulaLotesInventory() );
 
       return;
-    }
-
-    const loteSeleted = lotesByArticleFormula.find( lot => lot.id = idLote );
+    }    
 
     const loteFormula = {
       idArticuloFormula,
       idLote,
       idBodega,
+      cantidad,
       articulo: `${articuloSeleted.codigo} - ${articuloSeleted.descripcion}`,
       stockLote: loteSeleted.existencia,
       vencimiento: loteSeleted.vencimiento
@@ -129,7 +135,7 @@ export const InventoryBodyFormulaLotes = () => {
 
     // Se agrega en la tabla
     dispatch( SetLotesFormulaInventory(loteFormula) );
-
+    dispatch( SetLotesByArticleFormulaInventory([]) );
     dispatch( CleanInputsFormulaLotesInventory() );
 
   }
@@ -194,6 +200,28 @@ export const InventoryBodyFormulaLotes = () => {
 
     dispatch( startConvertirCantidadDisponiblesConvertidorLotesInventory(requestConvertir) );
 
+  }
+
+  const validarListaArticulosFormula = () => {
+
+    const codArticulosFormula = formulaArticlesInventory.map( formulaArt => {
+      return formulaArt.codigo
+    });
+
+    const codLoteFormula = lotesFormula.map( lotFor => {
+      return parseInt(lotFor.idArticuloFormula)
+    });
+
+    const requeridos = new Set(codArticulosFormula); 
+    const listaSet = new Set(codLoteFormula);
+  
+    for (let num of requeridos) {
+      if (!listaSet.has(num)) {
+        return false; 
+      }
+    }
+
+    return true;
   }
 
   return (
@@ -285,7 +313,7 @@ export const InventoryBodyFormulaLotes = () => {
 
             <div className="row mb-2">
 
-              <div className="col-md-6 mb-2">
+              <div className="col-md-4 mb-2">
                 <h5>Bodegas</h5>
                 <div className="input-group">
                   <span className="input-group-text">
@@ -320,28 +348,47 @@ export const InventoryBodyFormulaLotes = () => {
                 </div>
               </div>
 
-              <div className="col-md-6 mb-2">
+              <div className="col-md-4 mb-2">
+                <h5>Cantidad</h5>
+                <div className="input-group">
+                  <span className="input-group-text">
+                    <TbNumbers className="iconSize" />
+                  </span>
+                  <input
+                    type="number"
+                    name="cantidad"
+                    className="form-control"
+                    placeholder="Cantidad"
+                    disabled={(disableInputs) ? disableInputs : (showDivConvertir) ? true : disableInputsLotesFormula}
+                    value={cantidad}
+                    onChange={(e) =>
+                      handleInputChangeWithDispatch(
+                        e,
+                        SetCantidadFormulaLotesInventory
+                      )
+                    }
+                  />
+                </div>
+              </div>
+
+              <div className="col-md-4 mb-2">
 
                 <div className="row mt-4">
                   
-                  <div className="col-md-4">
+                  <div className="col-md-6">
                     <button
-                      className="btn btn-success"
-                      // className={
-                      //   disableInputsP
-                      //     ? "btn btn-secondary disabled"
-                      //     : isEditPriceSell
-                      //     ? "btn btn-warning"
-                      //     : "btn btn-success"
-                      // }
+                      className={
+                        isLoteFormulaEdit
+                          ? "btn btn-warning"
+                          : "btn btn-success"
+                      }
                       disabled={(disableInputs) ? disableInputs : (showDivConvertir) ? true : disableInputsLotesFormula}
                       onClick={handleAddLotesFormula}
                       // onClick={
                       //   isEditPriceSell ? handleEditPrecio : handleSavePrecio
                       // }
                     >
-                      Agregar <IoAddCircle className="iconSize" />
-                      {/* {isEditPriceSell ? (
+                      {isLoteFormulaEdit ? (
                         <>
                           Editar <TbEditCircle className="iconSize" />
                         </>
@@ -349,11 +396,11 @@ export const InventoryBodyFormulaLotes = () => {
                         <>
                           Agregar <IoAddCircle className="iconSize" />
                         </>
-                      )} */}
+                      )}
                     </button>
                   </div>
                   
-                  <div className="col-md-2">
+                  <div className="col-md-6">
                     <button
                       className="btn btn-danger"
                       // className={
@@ -372,6 +419,7 @@ export const InventoryBodyFormulaLotes = () => {
                 <hr />
 
               </div>
+
             </div>
 
             <div className={ (showDivConvertir) ? 'row mb-2' : 'row mb-2 d-none' }>
