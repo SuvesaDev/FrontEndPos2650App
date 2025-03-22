@@ -65,7 +65,7 @@ export const CustomersBodyAdjuntos = () => {
             }
 
             const newFile = {
-                codigo: adjuntos.length + 1,
+                codigo: 0,
                 nombre: file.name,
                 base64: fileReader.result
             }
@@ -83,10 +83,6 @@ export const CustomersBodyAdjuntos = () => {
                 text: 'Ocurrio un error cargando el archivo, por favor intentelo de nuevo.'
             });
         }
-
-        // fileReader.onloadend = () => {
-        //     inputFile.current.value = "";
-        // }
     }
 
     const hasExtension = (fileName, exts) => {
@@ -108,7 +104,7 @@ export const CustomersBodyAdjuntos = () => {
 
         const newFiles = adjuntos.map( adjunto => {
             return {
-                id: 0,
+                id: adjunto.codigo,
                 idCliente: identificacion,
                 archivo: adjunto.base64,
                 tipo: obtenerExtension(adjunto.nombre),
@@ -116,7 +112,7 @@ export const CustomersBodyAdjuntos = () => {
             }
         })
 
-        dispatch( startSaveFilesCustomer(newFiles) );
+        dispatch( startSaveFilesCustomer(newFiles, identificacion) );
 
     }
 

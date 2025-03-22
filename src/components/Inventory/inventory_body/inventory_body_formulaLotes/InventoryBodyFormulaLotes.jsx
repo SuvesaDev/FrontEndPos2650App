@@ -16,9 +16,13 @@ import {
   CleanInputsFormulaLotesInventory,
   SetCantidadConvertirConvertidorLotesIntentory,
   SetCantidadFormulaLotesInventory,
+  SetDeleteLotesFormulaInventory,
+  SetEditArrayLotesFormulaInventory,
+  SetEditLotesFormulaInventory,
   SetIdArticuloFormulaLotesInventory, 
   SetIdBodegaFormulaLotesInventory, 
   SetIdLoteFormulaLotesInventory,
+  SetIsEditLotesFormulaInventory,
   SetLotesByArticleFormulaInventory,
   SetLotesFormulaInventory,
   SetShowDivConvertirLotesFormulaInventory,
@@ -43,7 +47,8 @@ export const InventoryBodyFormulaLotes = () => {
     showDivConvertir,
     cantidadDisponibleConvertidorLotes,
     cantidadConvertirConvertidorLotes,
-    isLoteFormulaEdit
+    isLoteFormulaEdit,
+    loteFormulaEdit
   } = useSelector((state) => state.inventory);
 
   useEffect(() => {
@@ -123,7 +128,8 @@ export const InventoryBodyFormulaLotes = () => {
       return;
     }    
 
-    const loteFormula = {
+    const newloteFormula = {
+      id: lotesFormula.length + 1,
       idArticuloFormula,
       idLote,
       idBodega,
@@ -134,9 +140,48 @@ export const InventoryBodyFormulaLotes = () => {
     }
 
     // Se agrega en la tabla
-    dispatch( SetLotesFormulaInventory(loteFormula) );
+    dispatch( SetLotesFormulaInventory(newloteFormula) );
     dispatch( SetLotesByArticleFormulaInventory([]) );
     dispatch( CleanInputsFormulaLotesInventory() );
+
+  }
+
+  const handleEditLotesFormula = () => {
+    
+    if( idArticuloFormula == 0 || idLote == 0 || idBodega == 0 || cantidad == 0 ) {
+
+      Swal.fire({
+        icon: "warning",
+        title: "Error",
+        text: "Debe completar la informacion para agregar lote formula.",
+      });
+
+      return;
+
+    }
+
+    const articuloSeleted = formulaArticlesInventory.find( articulo => articulo.codigo == idArticuloFormula );
+    const loteSeleted = lotesByArticleFormula.find( lot => lot.id == idLote );
+    
+
+    const editloteFormula = {
+      id: loteFormulaEdit.id,
+      idArticuloFormula: idArticuloFormula,
+      idLote: idLote,
+      idBodega: idBodega,
+      cantidad: cantidad,
+      articulo: `${articuloSeleted.codigo} - ${articuloSeleted.descripcion}`,
+      stockLote: loteSeleted.existencia,
+      vencimiento: loteSeleted.vencimiento
+    }
+    console.log(editloteFormula)
+    dispatch( SetEditArrayLotesFormulaInventory( editloteFormula ) );
+
+    dispatch( SetLotesByArticleFormulaInventory([]) );
+    dispatch( CleanInputsFormulaLotesInventory() );
+
+    dispatch( SetIsEditLotesFormulaInventory( false ) );
+    dispatch( SetEditLotesFormulaInventory( {} ) );
 
   }
 
@@ -246,7 +291,7 @@ export const InventoryBodyFormulaLotes = () => {
                   <select
                     name="tipo"
                     className="form-select"
-                    disabled={(disableInputs) ? disableInputs : (showDivConvertir) ? true : false}
+                    disabled={disableInputs}
                     value={idArticuloFormula}
                     onChange={(e) =>
                       handleChangeInputArticle(e)
@@ -283,7 +328,7 @@ export const InventoryBodyFormulaLotes = () => {
                   <select
                     name="tipo"
                     className="form-select"
-                    disabled={(disableInputs) ? disableInputs : (showDivConvertir) ? true : disableInputsLotesFormula}
+                    disabled={disableInputs}
                     value={idLote}
                     onChange={(e) =>
                       handleInputChangeWithDispatch(
@@ -322,7 +367,7 @@ export const InventoryBodyFormulaLotes = () => {
                   <select
                     name="tipo"
                     className="form-select"
-                    disabled={(disableInputs) ? disableInputs : (showDivConvertir) ? true : disableInputsLotesFormula}
+                    disabled={disableInputs}
                     value={idBodega}
                     onChange={(e) =>
                       handleInputChangeWithDispatch(
@@ -359,7 +404,7 @@ export const InventoryBodyFormulaLotes = () => {
                     name="cantidad"
                     className="form-control"
                     placeholder="Cantidad"
-                    disabled={(disableInputs) ? disableInputs : (showDivConvertir) ? true : disableInputsLotesFormula}
+                    disabled={disableInputs}
                     value={cantidad}
                     onChange={(e) =>
                       handleInputChangeWithDispatch(
@@ -382,11 +427,11 @@ export const InventoryBodyFormulaLotes = () => {
                           ? "btn btn-warning"
                           : "btn btn-success"
                       }
-                      disabled={(disableInputs) ? disableInputs : (showDivConvertir) ? true : disableInputsLotesFormula}
-                      onClick={handleAddLotesFormula}
-                      // onClick={
-                      //   isEditPriceSell ? handleEditPrecio : handleSavePrecio
-                      // }
+                      disabled={disableInputs}
+                      // onClick={handleAddLotesFormula}
+                      onClick={
+                        isLoteFormulaEdit ? handleEditLotesFormula : handleAddLotesFormula
+                      }
                     >
                       {isLoteFormulaEdit ? (
                         <>

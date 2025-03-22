@@ -3630,6 +3630,16 @@ export const SetLotesFormulaInventory = (value) => ({
     payload: value
 })
 
+export const SetEditArrayLotesFormulaInventory = (value) => ({
+    type: types.SetEditArrayLotesFormulaInventory,
+    payload: value
+})
+
+export const SetDeleteLotesFormulaInventory = (value) => ({
+    type: types.SetDeleteLotesFormulaInventory,
+    payload: value
+})
+
 export const SetShowDivConvertirLotesFormulaInventory = (value) => ({
     type: types.SetShowDivConvertirLotesFormulaInventory,
     payload: value
@@ -3637,6 +3647,11 @@ export const SetShowDivConvertirLotesFormulaInventory = (value) => ({
 
 export const SetIsEditLotesFormulaInventory = (value) => ({
     type: types.SetIsEditLotesFormulaInventory,
+    payload: value
+})
+
+export const SetEditLotesFormulaInventory = (value) => ({
+    type: types.SetEditLotesFormulaInventory,
     payload: value
 })
 

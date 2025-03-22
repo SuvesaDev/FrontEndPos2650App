@@ -735,7 +735,7 @@ export const startGetAllDistritos = ( idCanton ) => {
     }
 }
 
-export const startSaveFilesCustomer = ( files ) => {
+export const startSaveFilesCustomer = ( files, identificacion) => {
 
     return async ( dispatch ) => {
         
@@ -775,7 +775,9 @@ export const startSaveFilesCustomer = ( files ) => {
                             title: 'Ajuntos guardados correctamente',
                             showConfirmButton: false,
                             timer: 2500
-                        })
+                        });
+
+                        dispatch( startGetAdjuntosCustomer( identificacion ) );
 
                     } else {
                         //Caso contrario respuesta incorrecto mostrar mensaje de error
@@ -834,7 +836,7 @@ export const startGetAdjuntosCustomer = ( identificacion ) => {
             });
     
             //Call end-point 
-            const { data } = await suvesaApi.post(`/cliente/ObtenerAdjuntosCliente?idCliente=${identificacion}`);
+            const { data } = await suvesaApi.get(`/cliente/ObtenerAdjuntosCliente?idCliente=${identificacion}`);
             
             const { status, responses } = data;
             Swal.close();
@@ -845,7 +847,7 @@ export const startGetAdjuntosCustomer = ( identificacion ) => {
                     return {
                         codigo: file.id,
                         base64: file.archivo,
-                        nombre: file.extension
+                        nombre: file.extencion
                     }
                 });
 
@@ -884,6 +886,144 @@ export const startGetAdjuntosCustomer = ( identificacion ) => {
                 });
             }
         }
+    }
+}
+
+export const startSaveOneFileCustomer = ( file, identificacion ) => {
+
+    return async ( dispatch ) => {
+        
+        try {
+
+            //Mostrar el loading
+            Swal.fire({
+                title: 'Por favor, espere',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                imageUrl: loadingImage,
+                customClass: 'alert-class-login',
+                imageHeight: 100,
+            });
+
+            //Call end-point 
+            const { data } = await suvesaApi.post('/cliente/InsertarAdjuntosClienteIndividual', file );
+            const { status } = data;
+            
+            if( status === 0) {
+
+                //Si es correcta entonces mostrar un mensaje de afirmacion
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Archivo guardado correctamente',
+                    showConfirmButton: false,
+                    timer: 2500
+                })
+
+                dispatch( startGetAdjuntosCustomer( identificacion ) );
+
+            } else {
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
+                
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
+                
+            }
+
+        } catch (error) {
+            
+            Swal.close();
+            console.log(error);
+            if( error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al guardar adjuntos del cliente',
+                });
+            }
+        }
+                
+        
+        
+    }
+}
+
+export const startDeleteOneFileCustomer = ( idfile, identificacion ) => {
+
+    return async ( dispatch ) => {
+        
+        try {
+
+            //Mostrar el loading
+            Swal.fire({
+                title: 'Por favor, espere',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                imageUrl: loadingImage,
+                customClass: 'alert-class-login',
+                imageHeight: 100,
+            });
+
+            //Call end-point 
+            const { data } = await suvesaApi.delete(`/cliente/EliminarAdjuntosCliente?idFile=${idfile}` );
+            const { status } = data;
+            
+            if( status === 0) {
+
+                //Si es correcta entonces mostrar un mensaje de afirmacion
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Archivo eliminado correctamente',
+                    showConfirmButton: false,
+                    timer: 2500
+                })
+
+                dispatch( startGetAdjuntosCustomer( identificacion ) );
+
+            } else {
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
+                
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
+                
+            }
+
+        } catch (error) {
+            
+            Swal.close();
+            console.log(error);
+            if( error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al eliminar el archivo del cliente',
+                });
+            }
+        }
+                
     }
 }
 

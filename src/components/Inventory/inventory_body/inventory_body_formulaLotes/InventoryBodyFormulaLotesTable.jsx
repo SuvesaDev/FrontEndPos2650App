@@ -6,6 +6,7 @@ import { useTable } from "react-table";
 import {
   SetCantidadFormulaLotesInventory,
   SetDisableInputsLotesFormulaInventory,
+  SetEditLotesFormulaInventory,
   SetIdArticuloFormulaLotesInventory,
   SetIdBodegaFormulaLotesInventory,
   SetIdLoteFormulaLotesInventory,
@@ -35,7 +36,7 @@ export const InventoryBodyFormulaLotesTable = ({ columns, data }) => {
   const handleSelectedRow = async (cell) => {
 
     if (!isInventoryDisable) {
-
+      
       //Obtiene el seleccionado
       const { idArticuloFormula, idLote, idBodega, cantidad } = cell.row.original;
       
@@ -48,6 +49,8 @@ export const InventoryBodyFormulaLotesTable = ({ columns, data }) => {
       dispatch( SetDisableInputsLotesFormulaInventory( true ) );
       dispatch( SetShowDivConvertirLotesFormulaInventory( false ) );
       dispatch( SetIsEditLotesFormulaInventory( true ) )
+
+      dispatch( SetEditLotesFormulaInventory( cell.row.original ));
       
     }
   };
