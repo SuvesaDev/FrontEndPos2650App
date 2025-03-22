@@ -2460,17 +2460,18 @@ export const InventoryReducer = (state = initialState, action) => {
         case types.SetEditArrayLotesFormulaInventory:
             return {
                 ...state,
+                
                 lotesFormula: state.lotesFormula.map(
                     (lote, i) => lote.id === action.payload.id
                         ? {
                             ...lote,
-                            idArticuloFormula : action.paylod.idArticuloFormula,
-                            idLote : action.paylod.idLote,
-                            idBodega : action.paylod.idBodega,
-                            cantidad : action.paylod.cantidad,
-                            articulo : action.paylod.articulo,
-                            stockLote : action.paylod.stockLote,
-                            vencimiento : action.paylod.vencimiento,
+                            idArticuloFormula : action.payload.idArticuloFormula,
+                            idLote : action.payload.idLote,
+                            idBodega : action.payload.idBodega,
+                            cantidad : action.payload.cantidad,
+                            articulo : action.payload.articulo,
+                            stockLote : action.payload.stockLote,
+                            vencimiento : action.payload.vencimiento,
                         }
                         : lote)
             }

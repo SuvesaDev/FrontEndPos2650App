@@ -163,19 +163,18 @@ export const InventoryBodyFormulaLotes = () => {
     const articuloSeleted = formulaArticlesInventory.find( articulo => articulo.codigo == idArticuloFormula );
     const loteSeleted = lotesByArticleFormula.find( lot => lot.id == idLote );
     
-
-    const editloteFormula = {
+    dispatch( SetEditArrayLotesFormulaInventory( {
       id: loteFormulaEdit.id,
       idArticuloFormula: idArticuloFormula,
       idLote: idLote,
-      idBodega: idBodega,
-      cantidad: cantidad,
-      articulo: `${articuloSeleted.codigo} - ${articuloSeleted.descripcion}`,
-      stockLote: loteSeleted.existencia,
-      vencimiento: loteSeleted.vencimiento
-    }
-    console.log(editloteFormula)
-    dispatch( SetEditArrayLotesFormulaInventory( editloteFormula ) );
+        idBodega: idBodega,
+        cantidad: cantidad,
+        articulo: `${articuloSeleted.codigo} - ${articuloSeleted.descripcion}`,
+        stockLote: loteSeleted.existencia,
+        vencimiento: loteSeleted.vencimiento
+      // }
+      
+    } ) );
 
     dispatch( SetLotesByArticleFormulaInventory([]) );
     dispatch( CleanInputsFormulaLotesInventory() );
