@@ -114,7 +114,21 @@ export const InventoryBodyFormulaLotes = () => {
 
     const articuloSeleted = formulaArticlesInventory.find( articulo => articulo.codigo == idArticuloFormula );
     const loteSeleted = lotesByArticleFormula.find( lot => lot.id == idLote );
+    const { existencia } = loteSeleted;
     
+    if( cantidad > existencia ) {
+
+      Swal.fire({
+        icon: "warning",
+        title: "Error",
+        text: "Debe digitar una cantidad igual o menor del stock del lote.",
+      });
+
+      return;
+
+    }
+
+
     const existArticle = lotesFormula.find( lotForm => lotForm.idArticuloFormula === idArticuloFormula && lotForm.idLote === idLote );
     if( existArticle != undefined || existArticle != null ){
       Swal.fire({
@@ -126,7 +140,7 @@ export const InventoryBodyFormulaLotes = () => {
       dispatch( CleanInputsFormulaLotesInventory() );
 
       return;
-    }    
+    }
 
     const newloteFormula = {
       id: lotesFormula.length + 1,
@@ -162,6 +176,20 @@ export const InventoryBodyFormulaLotes = () => {
 
     const articuloSeleted = formulaArticlesInventory.find( articulo => articulo.codigo == idArticuloFormula );
     const loteSeleted = lotesByArticleFormula.find( lot => lot.id == idLote );
+
+    const { existencia } = loteSeleted;
+    
+    if( cantidad > existencia ) {
+
+      Swal.fire({
+        icon: "warning",
+        title: "Error",
+        text: "Debe digitar una cantidad igual o menor del stock del lote.",
+      });
+
+      return;
+
+    }
     
     dispatch( SetEditArrayLotesFormulaInventory( {
       id: loteFormulaEdit.id,
@@ -184,6 +212,33 @@ export const InventoryBodyFormulaLotes = () => {
 
   }
 
+  const handleRemoveLoteFormula = () => {
+
+    //Mostrar un mensaje de confirmacion
+    Swal.fire({
+        title: `¿Desea eliminar el Lote Formula?`,
+        showDenyButton: true,
+        showCancelButton: false,
+        confirmButtonText: 'Eliminar',
+        denyButtonText: `Cancelar`,
+    }).then(async (result) => {
+
+      if (result.isConfirmed) {
+
+        dispatch( SetDeleteLotesFormulaInventory( loteFormulaEdit.id ) );
+
+        dispatch( SetLotesByArticleFormulaInventory([]) );
+        dispatch( CleanInputsFormulaLotesInventory() );
+
+        dispatch( SetIsEditLotesFormulaInventory( false ) );
+        dispatch( SetEditLotesFormulaInventory( {} ) );
+
+      }
+
+    });   
+
+  }
+
   const handleGetCantidadCalcular = () => {
 
     const requestCalcular = {
@@ -194,11 +249,12 @@ export const InventoryBodyFormulaLotes = () => {
         return {
           idLote: lotFor.idLote,
           idArticulo: lotFor.idArticuloFormula,
-          idBodega: lotFor.idBodega
+          idBodega: lotFor.idBodega,
+          cantidad: lotFor.cantidad
         }
       })
     }
-
+    
     dispatch( startCalculateCantidadDisponiblesConvertidorLotesInventory(requestCalcular) );
 
   }
@@ -237,7 +293,8 @@ export const InventoryBodyFormulaLotes = () => {
         return {
           idLote: lotFor.idLote,
           idArticulo: lotFor.idArticuloFormula,
-          idBodega: lotFor.idBodega
+          idBodega: lotFor.idBodega,
+          cantidad: lotFor.cantidad
         }
       })
     }
@@ -427,7 +484,6 @@ export const InventoryBodyFormulaLotes = () => {
                           : "btn btn-success"
                       }
                       disabled={disableInputs}
-                      // onClick={handleAddLotesFormula}
                       onClick={
                         isLoteFormulaEdit ? handleEditLotesFormula : handleAddLotesFormula
                       }
@@ -446,14 +502,13 @@ export const InventoryBodyFormulaLotes = () => {
                   
                   <div className="col-md-6">
                     <button
-                      className="btn btn-danger"
-                      // className={
-                      //   isEditPriceSell && isInventoryDisable
-                      //     ? "btn btn-danger"
-                      //     : "btn btn-danger disabled"
-                      // }
+                      className={
+                        isLoteFormulaEdit
+                          ? "btn btn-danger"
+                          : "btn btn-danger disabled"
+                      }
                       type="button"
-                      // onClick={handleRemovePrecio}
+                      onClick={handleRemoveLoteFormula}
                     >
                       <RiDeleteBin2Fill className="iconSize" />
                     </button>

@@ -2265,6 +2265,18 @@ export const startConvertirCantidadDisponiblesConvertidorLotesInventory = ( requ
                     text: `Se convertido la cantidad ${requestConvertir.cantidadConvertir} correctamente.`
                 });
 
+                dispatch( SetLotesByArticleFormulaInventory([]) );
+                dispatch( CleanInputsFormulaLotesInventory() );
+
+                dispatch( SetIsEditLotesFormulaInventory( false ) );
+                dispatch( SetEditLotesFormulaInventory( {} ) );
+
+                dispatch( CleanLotesFormulaInventory() );
+                dispatch( SetShowDivConvertirLotesFormulaInventory( false ) );
+
+                dispatch( SetCantidadConvertirConvertidorLotesIntentory(0) );
+                dispatch( SetCantidadDisponiblesConvertidorLotesIntentory(0) );
+
 
             } else {
     
@@ -3628,6 +3640,10 @@ export const SetDisableInputsLotesFormulaInventory = (value) => ({
 export const SetLotesFormulaInventory = (value) => ({
     type: types.SetLotesFormulaInventory,
     payload: value
+})
+
+export const CleanLotesFormulaInventory = () => ({
+    type: types.CleanLotesFormulaInventory
 })
 
 export const SetEditArrayLotesFormulaInventory = (value) => ({

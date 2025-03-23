@@ -2457,6 +2457,12 @@ export const InventoryReducer = (state = initialState, action) => {
                 ]
             }
 
+        case types.CleanLotesFormulaInventory:
+            return {
+                ...state,
+                lotesFormula: []
+            }
+
         case types.SetEditArrayLotesFormulaInventory:
             return {
                 ...state,
@@ -2480,8 +2486,7 @@ export const InventoryReducer = (state = initialState, action) => {
             return {
                 ...state,
                 lotesFormula: state.lotesFormula.filter(
-                    lotes => lotes.idArticuloFormula != action.payload.idArticuloFormula
-                        && lotes.idLote != action.payload.idLote)
+                    lotes => lotes.id != action.payload)
             }
 
         case types.SetShowDivConvertirLotesFormulaInventory:

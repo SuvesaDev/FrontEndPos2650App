@@ -465,6 +465,7 @@ export const types = {
   SetLotesByArticleFormulaInventory: '[Inventory] SetLotesByArticleFormulaInventory',
   SetDisableInputsLotesFormulaInventory: '[Inventory] SetDisableInputsLotesFormulaInventory',
   SetLotesFormulaInventory: '[Inventory] SetLotesFormulaInventory',
+  CleanLotesFormulaInventory: '[Inventory] CleanLotesFormulaInventory',
   SetEditArrayLotesFormulaInventory: '[Inventory] SetEditArrayLotesFormulaInventory',
   SetDeleteLotesFormulaInventory: '[Inventory] SetDeleteLotesFormulaInventory',
   SetShowDivConvertirLotesFormulaInventory: '[Inventory] SetShowDivConvertirLotesFormulaInventory',
