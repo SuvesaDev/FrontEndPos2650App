@@ -75,7 +75,7 @@ export const CustomersBodyAdjuntosTable = ({ columns, data }) => {
 
           if( codigo == 0 ) {
 
-            dispatch( SetDeleteAdjuntoCustomers( codigo ) );
+            dispatch( SetDeleteAdjuntoCustomers( cell.row.index ) );
 
           } else {
 
@@ -158,7 +158,6 @@ export const CustomersBodyAdjuntosTable = ({ columns, data }) => {
               return (
                 <tr {...row.getRowProps()}>
                   {row.cells.map((cell) => {
-                    console.log(cell)
                     return (
                       <td
                         {...cell.getCellProps({

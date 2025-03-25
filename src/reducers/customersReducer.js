@@ -574,7 +574,7 @@ export const CustomersReducer = (state = initialState, action) => {
             return {
                 ...state,
                 adjuntos: state.adjuntos.filter( 
-                    adjunto => adjunto.codigo !== action.payload
+                    (adjunto, i) => i !== action.payload
                 )
             }
 
