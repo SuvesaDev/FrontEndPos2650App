@@ -244,12 +244,12 @@ export const BuysImportarFacturaModalTable = ({ columns, data }) => {
         const { lotes } = detalle;
         dispatch( SetArrayLotesImportarFacturaCompras(lotes) );
 
-        const iconLotesModal = document.getElementById("iconLotesModalBuys");
-        iconLotesModal.setAttribute("data-bs-toggle", "modal");
-        iconLotesModal.setAttribute("data-bs-target", "#modalLotesBuys");
-        iconLotesModal.click();
-        iconLotesModal.removeAttribute("data-bs-toggle", "modal");
-        iconLotesModal.removeAttribute("data-bs-target", "#modalLotesBuys");
+        // const iconLotesModal = document.getElementById("iconLotesModalBuys");
+        // iconLotesModal.setAttribute("data-bs-toggle", "modal");
+        // iconLotesModal.setAttribute("data-bs-target", "#modalLotesBuys");
+        // iconLotesModal.click();
+        // iconLotesModal.removeAttribute("data-bs-toggle", "modal");
+        // iconLotesModal.removeAttribute("data-bs-target", "#modalLotesBuys");
         
 
     }
@@ -361,7 +361,9 @@ export const BuysImportarFacturaModalTable = ({ columns, data }) => {
                                                                                         ?   <button className='btn btn-dark'
                                                                                                 title='Lotes'
                                                                                                 id="iconLotesModalBuys"
-                                                                                                onDoubleClick={(e) => handleOpenModalLotes(e, cell)}
+                                                                                                data-bs-toggle="modal"
+                                                                                                data-bs-target="#modalLotesBuys"
+                                                                                                onClick={(e) => handleOpenModalLotes(e, cell)}
                                                                                             >
                                                                                                 <FaCartShopping
                                                                                                     className='iconSize'

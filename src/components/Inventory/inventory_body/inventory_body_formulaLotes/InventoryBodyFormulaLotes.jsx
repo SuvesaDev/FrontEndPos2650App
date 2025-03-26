@@ -6,7 +6,7 @@ import { IoAddCircle } from "react-icons/io5";
 import { FaCartShopping } from "react-icons/fa6";
 import { CiShoppingTag } from "react-icons/ci";
 import { AiFillShop } from "react-icons/ai";
-import { TbNumber } from "react-icons/tb";
+import { TbNumber, TbNumbers, TbEditCircle } from "react-icons/tb";
 import { FaCalculator } from "react-icons/fa6";
 import { VscGitPullRequestCreate } from "react-icons/vsc";
 
@@ -15,9 +15,15 @@ import { InventoryBodyFormulaLotesTable } from "./InventoryBodyFormulaLotesTable
 import { 
   CleanInputsFormulaLotesInventory,
   SetCantidadConvertirConvertidorLotesIntentory,
+  SetCantidadFormulaLotesInventory,
+  SetDeleteLotesFormulaInventory,
+  SetEditArrayLotesFormulaInventory,
+  SetEditLotesFormulaInventory,
   SetIdArticuloFormulaLotesInventory, 
   SetIdBodegaFormulaLotesInventory, 
   SetIdLoteFormulaLotesInventory,
+  SetIsEditLotesFormulaInventory,
+  SetLotesByArticleFormulaInventory,
   SetLotesFormulaInventory,
   SetShowDivConvertirLotesFormulaInventory,
   startCalculateCantidadDisponiblesConvertidorLotesInventory,
@@ -40,7 +46,9 @@ export const InventoryBodyFormulaLotes = () => {
     lotesFormula,
     showDivConvertir,
     cantidadDisponibleConvertidorLotes,
-    cantidadConvertirConvertidorLotes
+    cantidadConvertirConvertidorLotes,
+    isLoteFormulaEdit,
+    loteFormulaEdit
   } = useSelector((state) => state.inventory);
 
   useEffect(() => {
@@ -50,16 +58,15 @@ export const InventoryBodyFormulaLotes = () => {
       return;
     }
 
-    if( lotesFormula.length == formulaArticlesInventory.length ){
+    if( validarListaArticulosFormula() ){
       dispatch( SetShowDivConvertirLotesFormulaInventory( true ) );
     }
   
   }, [lotesFormula]);
-  
 
   const { bodegasInventory } = useSelector(state => state.bodegas);
 
-  const { idArticuloFormula, idLote, idBodega } = formulaLotes;
+  const { idArticuloFormula, idLote, idBodega, cantidad } = formulaLotes;
 
   const columns = [
     {
@@ -69,6 +76,10 @@ export const InventoryBodyFormulaLotes = () => {
     {
       Header: "Vencimiento",
       accessor: "vencimiento",
+    },
+    {
+      Header: "Cantidad",
+      accessor: "cantidad",
     }
   ];
 
@@ -89,7 +100,7 @@ export const InventoryBodyFormulaLotes = () => {
 
   const handleAddLotesFormula = () => {
     
-    if( idArticuloFormula == 0 || idLote == 0 || idBodega == 0) {
+    if( idArticuloFormula == 0 || idLote == 0 || idBodega == 0 || cantidad == 0 ) {
 
       Swal.fire({
         icon: "warning",
@@ -102,13 +113,28 @@ export const InventoryBodyFormulaLotes = () => {
     }
 
     const articuloSeleted = formulaArticlesInventory.find( articulo => articulo.codigo == idArticuloFormula );
+    const loteSeleted = lotesByArticleFormula.find( lot => lot.id == idLote );
+    const { existencia } = loteSeleted;
+    
+    if( cantidad > existencia ) {
 
-    const existArticle = lotesFormula.find( lotForm => lotForm.idArticuloFormula === idArticuloFormula );
+      Swal.fire({
+        icon: "warning",
+        title: "Error",
+        text: "Debe digitar una cantidad igual o menor del stock del lote.",
+      });
+
+      return;
+
+    }
+
+
+    const existArticle = lotesFormula.find( lotForm => lotForm.idArticuloFormula === idArticuloFormula && lotForm.idLote === idLote );
     if( existArticle != undefined || existArticle != null ){
       Swal.fire({
         icon: "warning",
         title: "Error",
-        text: `El artículo ${articuloSeleted.codigo} - ${articuloSeleted.descripcion} ya se encuentra registrado.`,
+        text: `El artículo ${articuloSeleted.codigo} - ${articuloSeleted.descripcion} con el lote ${loteSeleted.lote} ya se encuentra registrado.`,
       });
 
       dispatch( CleanInputsFormulaLotesInventory() );
@@ -116,21 +142,100 @@ export const InventoryBodyFormulaLotes = () => {
       return;
     }
 
-    const loteSeleted = lotesByArticleFormula.find( lot => lot.id = idLote );
-
-    const loteFormula = {
+    const newloteFormula = {
+      id: lotesFormula.length + 1,
       idArticuloFormula,
       idLote,
       idBodega,
+      cantidad,
       articulo: `${articuloSeleted.codigo} - ${articuloSeleted.descripcion}`,
       stockLote: loteSeleted.existencia,
       vencimiento: loteSeleted.vencimiento
     }
 
     // Se agrega en la tabla
-    dispatch( SetLotesFormulaInventory(loteFormula) );
-
+    dispatch( SetLotesFormulaInventory(newloteFormula) );
+    dispatch( SetLotesByArticleFormulaInventory([]) );
     dispatch( CleanInputsFormulaLotesInventory() );
+
+  }
+
+  const handleEditLotesFormula = () => {
+    
+    if( idArticuloFormula == 0 || idLote == 0 || idBodega == 0 || cantidad == 0 ) {
+
+      Swal.fire({
+        icon: "warning",
+        title: "Error",
+        text: "Debe completar la informacion para agregar lote formula.",
+      });
+
+      return;
+
+    }
+
+    const articuloSeleted = formulaArticlesInventory.find( articulo => articulo.codigo == idArticuloFormula );
+    const loteSeleted = lotesByArticleFormula.find( lot => lot.id == idLote );
+
+    const { existencia } = loteSeleted;
+    
+    if( cantidad > existencia ) {
+
+      Swal.fire({
+        icon: "warning",
+        title: "Error",
+        text: "Debe digitar una cantidad igual o menor del stock del lote.",
+      });
+
+      return;
+
+    }
+    
+    dispatch( SetEditArrayLotesFormulaInventory( {
+      id: loteFormulaEdit.id,
+      idArticuloFormula: idArticuloFormula,
+      idLote: idLote,
+        idBodega: idBodega,
+        cantidad: cantidad,
+        articulo: `${articuloSeleted.codigo} - ${articuloSeleted.descripcion}`,
+        stockLote: loteSeleted.existencia,
+        vencimiento: loteSeleted.vencimiento
+      // }
+      
+    } ) );
+
+    dispatch( SetLotesByArticleFormulaInventory([]) );
+    dispatch( CleanInputsFormulaLotesInventory() );
+
+    dispatch( SetIsEditLotesFormulaInventory( false ) );
+    dispatch( SetEditLotesFormulaInventory( {} ) );
+
+  }
+
+  const handleRemoveLoteFormula = () => {
+
+    //Mostrar un mensaje de confirmacion
+    Swal.fire({
+        title: `¿Desea eliminar el Lote Formula?`,
+        showDenyButton: true,
+        showCancelButton: false,
+        confirmButtonText: 'Eliminar',
+        denyButtonText: `Cancelar`,
+    }).then(async (result) => {
+
+      if (result.isConfirmed) {
+
+        dispatch( SetDeleteLotesFormulaInventory( loteFormulaEdit.id ) );
+
+        dispatch( SetLotesByArticleFormulaInventory([]) );
+        dispatch( CleanInputsFormulaLotesInventory() );
+
+        dispatch( SetIsEditLotesFormulaInventory( false ) );
+        dispatch( SetEditLotesFormulaInventory( {} ) );
+
+      }
+
+    });   
 
   }
 
@@ -144,11 +249,12 @@ export const InventoryBodyFormulaLotes = () => {
         return {
           idLote: lotFor.idLote,
           idArticulo: lotFor.idArticuloFormula,
-          idBodega: lotFor.idBodega
+          idBodega: lotFor.idBodega,
+          cantidad: lotFor.cantidad
         }
       })
     }
-
+    
     dispatch( startCalculateCantidadDisponiblesConvertidorLotesInventory(requestCalcular) );
 
   }
@@ -187,13 +293,36 @@ export const InventoryBodyFormulaLotes = () => {
         return {
           idLote: lotFor.idLote,
           idArticulo: lotFor.idArticuloFormula,
-          idBodega: lotFor.idBodega
+          idBodega: lotFor.idBodega,
+          cantidad: lotFor.cantidad
         }
       })
     }
 
     dispatch( startConvertirCantidadDisponiblesConvertidorLotesInventory(requestConvertir) );
 
+  }
+
+  const validarListaArticulosFormula = () => {
+
+    const codArticulosFormula = formulaArticlesInventory.map( formulaArt => {
+      return formulaArt.codigo
+    });
+
+    const codLoteFormula = lotesFormula.map( lotFor => {
+      return parseInt(lotFor.idArticuloFormula)
+    });
+
+    const requeridos = new Set(codArticulosFormula); 
+    const listaSet = new Set(codLoteFormula);
+  
+    for (let num of requeridos) {
+      if (!listaSet.has(num)) {
+        return false; 
+      }
+    }
+
+    return true;
   }
 
   return (
@@ -218,7 +347,7 @@ export const InventoryBodyFormulaLotes = () => {
                   <select
                     name="tipo"
                     className="form-select"
-                    disabled={(disableInputs) ? disableInputs : (showDivConvertir) ? true : false}
+                    disabled={disableInputs}
                     value={idArticuloFormula}
                     onChange={(e) =>
                       handleChangeInputArticle(e)
@@ -255,7 +384,7 @@ export const InventoryBodyFormulaLotes = () => {
                   <select
                     name="tipo"
                     className="form-select"
-                    disabled={(disableInputs) ? disableInputs : (showDivConvertir) ? true : disableInputsLotesFormula}
+                    disabled={disableInputs}
                     value={idLote}
                     onChange={(e) =>
                       handleInputChangeWithDispatch(
@@ -285,7 +414,7 @@ export const InventoryBodyFormulaLotes = () => {
 
             <div className="row mb-2">
 
-              <div className="col-md-6 mb-2">
+              <div className="col-md-4 mb-2">
                 <h5>Bodegas</h5>
                 <div className="input-group">
                   <span className="input-group-text">
@@ -294,7 +423,7 @@ export const InventoryBodyFormulaLotes = () => {
                   <select
                     name="tipo"
                     className="form-select"
-                    disabled={(disableInputs) ? disableInputs : (showDivConvertir) ? true : disableInputsLotesFormula}
+                    disabled={disableInputs}
                     value={idBodega}
                     onChange={(e) =>
                       handleInputChangeWithDispatch(
@@ -320,28 +449,46 @@ export const InventoryBodyFormulaLotes = () => {
                 </div>
               </div>
 
-              <div className="col-md-6 mb-2">
+              <div className="col-md-4 mb-2">
+                <h5>Cantidad</h5>
+                <div className="input-group">
+                  <span className="input-group-text">
+                    <TbNumbers className="iconSize" />
+                  </span>
+                  <input
+                    type="number"
+                    name="cantidad"
+                    className="form-control"
+                    placeholder="Cantidad"
+                    disabled={disableInputs}
+                    value={cantidad}
+                    onChange={(e) =>
+                      handleInputChangeWithDispatch(
+                        e,
+                        SetCantidadFormulaLotesInventory
+                      )
+                    }
+                  />
+                </div>
+              </div>
+
+              <div className="col-md-4 mb-2">
 
                 <div className="row mt-4">
                   
-                  <div className="col-md-4">
+                  <div className="col-md-6">
                     <button
-                      className="btn btn-success"
-                      // className={
-                      //   disableInputsP
-                      //     ? "btn btn-secondary disabled"
-                      //     : isEditPriceSell
-                      //     ? "btn btn-warning"
-                      //     : "btn btn-success"
-                      // }
-                      disabled={(disableInputs) ? disableInputs : (showDivConvertir) ? true : disableInputsLotesFormula}
-                      onClick={handleAddLotesFormula}
-                      // onClick={
-                      //   isEditPriceSell ? handleEditPrecio : handleSavePrecio
-                      // }
+                      className={
+                        isLoteFormulaEdit
+                          ? "btn btn-warning"
+                          : "btn btn-success"
+                      }
+                      disabled={disableInputs}
+                      onClick={
+                        isLoteFormulaEdit ? handleEditLotesFormula : handleAddLotesFormula
+                      }
                     >
-                      Agregar <IoAddCircle className="iconSize" />
-                      {/* {isEditPriceSell ? (
+                      {isLoteFormulaEdit ? (
                         <>
                           Editar <TbEditCircle className="iconSize" />
                         </>
@@ -349,20 +496,19 @@ export const InventoryBodyFormulaLotes = () => {
                         <>
                           Agregar <IoAddCircle className="iconSize" />
                         </>
-                      )} */}
+                      )}
                     </button>
                   </div>
                   
-                  <div className="col-md-2">
+                  <div className="col-md-6">
                     <button
-                      className="btn btn-danger"
-                      // className={
-                      //   isEditPriceSell && isInventoryDisable
-                      //     ? "btn btn-danger"
-                      //     : "btn btn-danger disabled"
-                      // }
+                      className={
+                        isLoteFormulaEdit
+                          ? "btn btn-danger"
+                          : "btn btn-danger disabled"
+                      }
                       type="button"
-                      // onClick={handleRemovePrecio}
+                      onClick={handleRemoveLoteFormula}
                     >
                       <RiDeleteBin2Fill className="iconSize" />
                     </button>
@@ -372,6 +518,7 @@ export const InventoryBodyFormulaLotes = () => {
                 <hr />
 
               </div>
+
             </div>
 
             <div className={ (showDivConvertir) ? 'row mb-2' : 'row mb-2 d-none' }>

@@ -2074,7 +2074,7 @@ export const startDisableLote = ( idlote ) => {
     }
 }
 
-export const startGetLotesByArticleFormula = (codigoPrincipal) => {
+export const startGetLotesByArticleFormula = (codigoPrincipal, isEdit) => {
 
     return async ( dispatch ) => {
     
@@ -2109,7 +2109,9 @@ export const startGetLotesByArticleFormula = (codigoPrincipal) => {
                     }
                 });
 
-                dispatch( SetIdBodegaFormulaLotesInventory(0) );
+                if(!isEdit) {
+                    dispatch( SetIdBodegaFormulaLotesInventory(0) );
+                }
                 dispatch( SetLotesByArticleFormulaInventory(lotes) );
                 dispatch( SetDisableInputsLotesFormulaInventory( false ) );
 
@@ -2262,6 +2264,18 @@ export const startConvertirCantidadDisponiblesConvertidorLotesInventory = ( requ
                     title: 'Convertidor',
                     text: `Se convertido la cantidad ${requestConvertir.cantidadConvertir} correctamente.`
                 });
+
+                dispatch( SetLotesByArticleFormulaInventory([]) );
+                dispatch( CleanInputsFormulaLotesInventory() );
+
+                dispatch( SetIsEditLotesFormulaInventory( false ) );
+                dispatch( SetEditLotesFormulaInventory( {} ) );
+
+                dispatch( CleanLotesFormulaInventory() );
+                dispatch( SetShowDivConvertirLotesFormulaInventory( false ) );
+
+                dispatch( SetCantidadConvertirConvertidorLotesIntentory(0) );
+                dispatch( SetCantidadDisponiblesConvertidorLotesIntentory(0) );
 
 
             } else {
@@ -3604,6 +3618,11 @@ export const SetIdBodegaFormulaLotesInventory = (value) => ({
     payload: value
 })
 
+export const SetCantidadFormulaLotesInventory = (value) => ({
+    type: types.SetCantidadFormulaLotesInventory,
+    payload: value
+})
+
 export const CleanInputsFormulaLotesInventory = () => ({
     type: types.CleanInputsFormulaLotesInventory
 })
@@ -3623,8 +3642,32 @@ export const SetLotesFormulaInventory = (value) => ({
     payload: value
 })
 
+export const CleanLotesFormulaInventory = () => ({
+    type: types.CleanLotesFormulaInventory
+})
+
+export const SetEditArrayLotesFormulaInventory = (value) => ({
+    type: types.SetEditArrayLotesFormulaInventory,
+    payload: value
+})
+
+export const SetDeleteLotesFormulaInventory = (value) => ({
+    type: types.SetDeleteLotesFormulaInventory,
+    payload: value
+})
+
 export const SetShowDivConvertirLotesFormulaInventory = (value) => ({
     type: types.SetShowDivConvertirLotesFormulaInventory,
+    payload: value
+})
+
+export const SetIsEditLotesFormulaInventory = (value) => ({
+    type: types.SetIsEditLotesFormulaInventory,
+    payload: value
+})
+
+export const SetEditLotesFormulaInventory = (value) => ({
+    type: types.SetEditLotesFormulaInventory,
     payload: value
 })
 

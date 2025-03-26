@@ -17,6 +17,7 @@ import {
     SetDisableCantonesCustomers,
     SetDisableDistritosCustomers,
     SetStartOpeningCustomers,
+    startGetAdjuntosCustomer,
     startGetAllCantones,
     startGetAllDistritos
 } from '../../actions/customers';
@@ -256,6 +257,7 @@ export const CustomerSearchTable = ({ columns, data }) => {
             const searchCustomer = {
                 identificacion: customer.identificacion,
                 nombre: customer.nombre,
+                nombreFantasia: customer.nombreFantasia,
                 cedula: customer.cedula,
                 observaciones: customer.observaciones,
                 telefono: customer.telefono_01,
@@ -287,6 +289,10 @@ export const CustomerSearchTable = ({ columns, data }) => {
                 ordenCompra: customer.ordenCompra,
                 estado: customer.estado
             };
+
+            // Se obtiene los adjuntos del cliente
+            dispatch( startGetAdjuntosCustomer( customer.identificacion ) );
+
             //seleccionarlo y meterlo al estado
             dispatch(SelectedSearchCustomers(searchCustomer));
 

@@ -2,17 +2,15 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useTable } from "react-table";
 
-// import {
-//   SetExistenciaLotesInventory,
-//   SetIdLotesInventory,
-//   SetIsSelectedLoteInventory,
-//   SetNumLoteLotesInventory,
-//   SetVencimientoLotesInventory,
-// } from "../../../../actions/inventory";
+import { 
+  SetIsLoteEditImportarFacturaCompras,
+  SetLoteLotesImportarFacturaCompras, 
+  SetVencimientoLotesImportarFacturaCompras 
+} from "../../actions/ComprasAction";
 
 export const BuysLotesImportarFacturaModalTable = ({ columns, data }) => {
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   // const {
   //   LotesInventory,
@@ -33,30 +31,14 @@ export const BuysLotesImportarFacturaModalTable = ({ columns, data }) => {
 
   const handleSelectedRow = async (cell) => {
 
-    // if (!isInventoryDisable) {
+    // Obtiene el lote seleccionado
+    const { lote, vencimiento } = cell.row.original;
 
-    //   // Obtiene el price seleccionado
-    //   const { lote, vencimiento, existencia } = cell.row.values;
+    dispatch( SetLoteLotesImportarFacturaCompras( lote ) );
+    dispatch( SetVencimientoLotesImportarFacturaCompras( vencimiento ) );
 
-    //   // Searcha articleRelated
-    //   const seletedLote = LotesInventory.find(
-    //     (lot) =>
-    //       lot.lote === lote &&
-    //       lot.vencimiento === vencimiento &&
-    //       lot.existencia === existencia
-    //   );
+    dispatch( SetIsLoteEditImportarFacturaCompras( true ) );
 
-    //   if (seletedLote != undefined) {
-
-    //     dispatch( SetIsSelectedLoteInventory(true) );
-
-    //     dispatch( SetIdLotesInventory(seletedLote.id) );
-    //     dispatch( SetNumLoteLotesInventory(seletedLote.lote) );
-    //     dispatch( SetVencimientoLotesInventory(seletedLote.vencimiento) );
-    //     dispatch( SetExistenciaLotesInventory(seletedLote.existencia) );
-
-    //   }
-    // }
   };
 
   return (

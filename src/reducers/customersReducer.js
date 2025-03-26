@@ -9,33 +9,34 @@ const initialState = {
     activeButtonRemove : false,
     disableInputs: true,
     customer: {
-        identificacion    : '',
-        nombre            : '',
-        cedula            : '',
-        observaciones     : '',
-        telefono          : '',
-        fax               : '',
-        provincia         : '',
-        canton            : '',
-        distrito          : '',
-        direccion         : '',
-        correocuentas     : '',
-        correoFacturacion : '',
-        tipoCliente       : '',
-        agente            : '',
+        identificacion    : null,
+        nombre            : null,
+        nombreFantasia    : null,
+        cedula            : null,
+        observaciones     : null,
+        telefono          : null,
+        fax               : null,
+        provincia         : null,
+        canton            : null,
+        distrito          : null,
+        direccion         : null,
+        correocuentas     : null,
+        correoFacturacion : null,
+        tipoCliente       : null,
+        agente            : null,
         actualizado       : false,
         fallecido         : false,
         enviaRecibo       : false,
-        correoRecibo      : '',
-        tipoPrecio        : '',
-        descuentoEspcial  : '',
+        correoRecibo      : null,
+        tipoPrecio        : null,
+        descuentoEspcial  : null,
         inactivo          : false,
         mag               : false,
         abierto           : false,
         codMonedaCredito  : 0,
-        plazoCredito      : '',
-        maxCredito        : '',
-        descuento         : '',
+        plazoCredito      : null,
+        maxCredito        : null,
+        descuento         : null,
         empresa           : false,
         sinrestriccion    : false,
         clienteMoroso     : false,
@@ -53,7 +54,8 @@ const initialState = {
     disableCantones: true,
     disableDistritos: true,
     sinAgente: false,
-    startOpening: false
+    startOpening: false,
+    adjuntos: []
 };
 
 export const CustomersReducer = (state = initialState, action) => {
@@ -72,6 +74,15 @@ export const CustomersReducer = (state = initialState, action) => {
                 customer: {
                     ...state.customer,
                     nombre : action.payload
+                }
+            }
+
+        case types.SetNombreFantasiaCustomers:
+            return {
+                ...state,
+                customer: {
+                    ...state.customer,
+                    nombreFantasia : action.payload
                 }
             }
 
@@ -352,33 +363,34 @@ export const CustomersReducer = (state = initialState, action) => {
                 activeButtonRemove : false,
                 disableInputs: true,
                 customer: {
-                    identificacion    : '',
-                    nombre            : '',
-                    cedula            : '',
-                    observaciones     : '',
-                    telefono          : '',
-                    fax               : '',
-                    provincia         : '',
-                    canton            : '',
-                    distrito          : '',
-                    direccion         : '',
-                    correocuentas     : '',
-                    correoFacturacion : '',
-                    tipoCliente       : '',
-                    agente            : '',
+                    identificacion    : "",
+                    nombre            : "",
+                    nombreFantasia    : "",
+                    cedula            : "",
+                    observaciones     : "",
+                    telefono          : "",
+                    fax               : "",
+                    provincia         : "",
+                    canton            : "",
+                    distrito          : "",
+                    direccion         : "",
+                    correocuentas     : "",
+                    correoFacturacion : "",
+                    tipoCliente       : "",
+                    agente            : "",
                     actualizado       : false,
                     fallecido         : false,
                     enviaRecibo       : false,
-                    correoRecibo      : '',
-                    tipoPrecio        : '',
-                    descuentoEspcial  : '',
+                    correoRecibo      : "",
+                    tipoPrecio        : "",
+                    descuentoEspcial  : "",
                     inactivo          : false,
                     mag               : false,
                     abierto           : false,
                     codMonedaCredito  : 0,
-                    plazoCredito      : '',
-                    maxCredito        : '',
-                    descuento         : '',
+                    plazoCredito      : "",
+                    maxCredito        : "",
+                    descuento         : "",
                     empresa           : false,
                     sinrestriccion    : false,
                     clienteMoroso     : false,
@@ -396,7 +408,8 @@ export const CustomersReducer = (state = initialState, action) => {
                 disableCantones: true,
                 disableDistritos: true,
                 sinAgente: false,
-                startOpening: false
+                startOpening: false,
+                adjuntos: []
             }
 
         case types.ActiveButtonNewCustomers:
@@ -546,6 +559,29 @@ export const CustomersReducer = (state = initialState, action) => {
             return {
                 ...state,
                 startOpening: action.payload
+            }
+
+        case types.SetAddAdjuntoCustomers:
+            return {
+                ...state,
+                adjuntos: [
+                    ...state.adjuntos,
+                    action.payload
+                ]
+            }
+
+        case types.SetDeleteAdjuntoCustomers:
+            return {
+                ...state,
+                adjuntos: state.adjuntos.filter( 
+                    (adjunto, i) => i !== action.payload
+                )
+            }
+
+        case types.SetAdjuntoCustomers:
+            return {
+                ...state,
+                adjuntos: action.payload
             }
     
         default:

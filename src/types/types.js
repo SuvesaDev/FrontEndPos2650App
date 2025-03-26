@@ -460,17 +460,24 @@ export const types = {
   SetIdArticuloFormulaLotesInventory: '[Inventory] SetIdArticuloFormulaLotesInventory',
   SetIdLoteFormulaLotesInventory: '[Inventory] SetIdLoteFormulaLotesInventory',
   SetIdBodegaFormulaLotesInventory: '[Inventory] SetIdBodegaFormulaLotesInventory',
+  SetCantidadFormulaLotesInventory: '[Inventory] SetCantidadFormulaLotesInventory',
   CleanInputsFormulaLotesInventory: '[Inventory] CleanInputsFormulaLotesInventory',
   SetLotesByArticleFormulaInventory: '[Inventory] SetLotesByArticleFormulaInventory',
   SetDisableInputsLotesFormulaInventory: '[Inventory] SetDisableInputsLotesFormulaInventory',
   SetLotesFormulaInventory: '[Inventory] SetLotesFormulaInventory',
+  CleanLotesFormulaInventory: '[Inventory] CleanLotesFormulaInventory',
+  SetEditArrayLotesFormulaInventory: '[Inventory] SetEditArrayLotesFormulaInventory',
+  SetDeleteLotesFormulaInventory: '[Inventory] SetDeleteLotesFormulaInventory',
   SetShowDivConvertirLotesFormulaInventory: '[Inventory] SetShowDivConvertirLotesFormulaInventory',
+  SetIsEditLotesFormulaInventory: '[Inventory] SetIsEditLotesFormulaInventory',
+  SetEditLotesFormulaInventory: '[Inventory] SetEditLotesFormulaInventory',
   SetCantidadDisponiblesConvertidorLotesIntentory : '[Inventory] SetCantidadDisponiblesConvertidorLotesIntentory',
   SetCantidadConvertirConvertidorLotesIntentory: '[Inventory] SetCantidadConvertirConvertidorLotesIntentory',
 
   // Customers actions
   SelectTabCustomers: '[Customers] SelectTabCustomers',
   SetNombreCustomers: '[Customers] SetNombreCustomers',
+  SetNombreFantasiaCustomers: '[Customers] SetNombreFantasiaCustomers',
   SetCedulaCustomers: '[Customers] SetCedulaCustomers',
   SetObservacionesCustomers: '[Customers] SetObservacionesCustomers',
   SetTelefonoCustomers: '[Customers] SetTelefonoCustomers',
@@ -523,6 +530,10 @@ export const types = {
   SetDisableDistritosCustomers: '[Customers] SetDisableDistritosCustomers',
   SetSinAgenteCustomers: '[Customers] SetSinAgenteCustomers',
   SetStartOpeningCustomers: '[Customers] SetStartOpeningCustomers',
+
+  SetAddAdjuntoCustomers: '[Customers] SetAddAdjuntoCustomers',
+  SetDeleteAdjuntoCustomers: '[Customers] SetDeleteAdjuntoCustomers',
+  SetAdjuntoCustomers: '[Customers] SetAdjuntoCustomers',
 
   // Carta Exoneracion Actions
   SetMotivoCartaExoneracion: '[CartaExoneracion] SetMotivoCartaExoneracion',
@@ -1165,9 +1176,11 @@ export const types = {
   SetVencimientoLotesImportarFacturaCompras: '[Compras] SetVencimientoLotesImportarFacturaCompras',
   SetExistenciaLotesImportarFacturaCompras: '[Compras] SetExistenciaLotesImportarFacturaCompras',
   SetAddLoteLotesImportarFacturaCompras: '[Compras] SetAddLoteLotesImportarFacturaCompras',
+  SetEditLoteLotesImportarFacturaCompras: '[Compras] SetEditLoteLotesImportarFacturaCompras',
   SetArrayLotesImportarFacturaCompras: '[Compras] SetArrayLotesImportarFacturaCompras',
   SetNumeroLineaLotesImportarFacturaCompras: '[Compras] SetNumeroLineaLotesImportarFacturaCompras',
   SetCantidadLotesImportarFacturaCompras: '[Compras] SetCantidadLotesImportarFacturaCompras',
+  SetIsLoteEditImportarFacturaCompras: '[Compras] SetIsLoteEditImportarFacturaCompras',
   CleanLotesImportarFacturaCompras: '[Compras] CleanLotesImportarFacturaCompras',
 
   //Repaymment

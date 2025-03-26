@@ -137,12 +137,15 @@ const initialState = {
     formulaLotes: {
         idArticuloFormula: 0,
         idLote: 0,
-        idBodega: 0
+        idBodega: 0,
+        cantidad: 0
     },
     lotesByArticleFormula: [],
     disableInputsLotesFormula: false,
     lotesFormula: [],
     showDivConvertir: false,
+    isLoteFormulaEdit: false,
+    loteFormulaEdit: {},
     cantidadDisponibleConvertidorLotes: 0,
     cantidadConvertirConvertidorLotes: 0,
     inventory: {
@@ -1309,12 +1312,15 @@ export const InventoryReducer = (state = initialState, action) => {
                 formulaLotes: {
                     idArticuloFormula: 0,
                     idLote: 0,
-                    idBodega: 0
+                    idBodega: 0,
+                    cantidad: 0
                 },
                 lotesByArticleFormula: [],
                 disableInputsLotesFormula: false,
                 lotesFormula: [],
                 showDivConvertir: false,
+                isLoteFormulaEdit: false,
+                loteFormulaEdit: {},
                 cantidadDisponibleConvertidorLotes: 0,
                 cantidadConvertirConvertidorLotes: 0,
                 relatedArticles: {
@@ -2410,14 +2416,24 @@ export const InventoryReducer = (state = initialState, action) => {
                 }
             }
 
+        case types.SetCantidadFormulaLotesInventory:
+            return {
+                ...state,
+                formulaLotes: {
+                    ...state.formulaLotes,
+                    cantidad: action.payload
+                }
+            }
+
         case types.CleanInputsFormulaLotesInventory:
             return {
                 ...state,
                 formulaLotes: {
                     idArticuloFormula: 0,
                     idLote: 0,
-                    idBodega: 0
-                }
+                    idBodega: 0,
+                    cantidad: 0
+                },
             }
 
         case types.SetLotesByArticleFormulaInventory:
@@ -2441,10 +2457,54 @@ export const InventoryReducer = (state = initialState, action) => {
                 ]
             }
 
+        case types.CleanLotesFormulaInventory:
+            return {
+                ...state,
+                lotesFormula: []
+            }
+
+        case types.SetEditArrayLotesFormulaInventory:
+            return {
+                ...state,
+                
+                lotesFormula: state.lotesFormula.map(
+                    (lote, i) => lote.id === action.payload.id
+                        ? {
+                            ...lote,
+                            idArticuloFormula : action.payload.idArticuloFormula,
+                            idLote : action.payload.idLote,
+                            idBodega : action.payload.idBodega,
+                            cantidad : action.payload.cantidad,
+                            articulo : action.payload.articulo,
+                            stockLote : action.payload.stockLote,
+                            vencimiento : action.payload.vencimiento,
+                        }
+                        : lote)
+            }
+
+        case types.SetDeleteLotesFormulaInventory:
+            return {
+                ...state,
+                lotesFormula: state.lotesFormula.filter(
+                    lotes => lotes.id != action.payload)
+            }
+
         case types.SetShowDivConvertirLotesFormulaInventory:
             return {
                 ...state,
                 showDivConvertir: action.payload
+            }
+
+        case types.SetIsEditLotesFormulaInventory:
+            return {
+                ...state,
+                isLoteFormulaEdit: action.payload
+            }
+
+        case types.SetEditLotesFormulaInventory:
+            return {
+                ...state,
+                loteFormulaEdit: action.payload
             }
 
         case types.SetCantidadDisponiblesConvertidorLotesIntentory:

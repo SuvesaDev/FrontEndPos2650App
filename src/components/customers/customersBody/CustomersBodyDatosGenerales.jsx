@@ -52,6 +52,9 @@ export const CustomersBodyDatosGenerales = () => {
     sinAgente,
   } = useSelector((state) => state.customers);
 
+  const { auth } = useSelector((state) => state.login);
+  const { costaPets } = auth;
+
   const {
     telefono,
     fax,
@@ -127,6 +130,7 @@ export const CustomersBodyDatosGenerales = () => {
 <>
     <div className="card">
         <div className="card-body">
+
             <div className="row mb-3">
                 <div className="col-md-3 mb-3">
                     <h5>Teléfono</h5>
@@ -368,7 +372,8 @@ export const CustomersBodyDatosGenerales = () => {
                 </div>
             </div>
 
-            <div className="row mb-3">
+            <div className={ costaPets ? 'row mb-3 d-none' : 'row mb-3' }>
+                
                 <div className="col-md-3 mb-3">
                     <h5>Tipo Cliente</h5>
                     <div className="input-group">
@@ -504,7 +509,7 @@ export const CustomersBodyDatosGenerales = () => {
                 </div>
             </div>
 
-            <div className="row mb-0">
+            <div className={ costaPets ? 'row mb-0 d-none' : 'row mb-0' }>
                 <div className="col-md-3 mb-3">
                     <div className="inline-container">
                         <div className="form-check">
