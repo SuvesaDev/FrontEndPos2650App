@@ -9,6 +9,7 @@ import { MdDeleteForever } from 'react-icons/md';
 
 import { 
   SetDeleteAdjuntoCustomers, 
+  SetSeletedAdjuntoCustomers, 
   startDeleteOneFileCustomer, 
   startSaveOneFileCustomer 
 } from "../../../actions/customers";
@@ -35,12 +36,19 @@ export const CustomersBodyAdjuntosTable = ({ columns, data }) => {
   const handleOpenFile = async (cell) => {
 
     // Obtiene el file seleccionado
-    const { base64 } = cell.row.original;
+    const { base64, nombre } = cell.row.original;
     
     if (base64) {
 
-      const newTab = window.open();
-      newTab.document.write(`<iframe src="${base64}" width="100%" height="100%"></iframe>`);
+      const extensionFile = obtenerExtension(nombre);
+
+      const seletedAdjunto = {
+        nombre,
+        type: ( extensionFile == 'pdf' ) ? 'pdf' :( extensionFile == 'docx' || extensionFile == 'doc') ? 'word' :'image',
+        base64
+      }
+
+      dispatch( SetSeletedAdjuntoCustomers( seletedAdjunto ) );
 
     } else {
 
@@ -172,7 +180,12 @@ export const CustomersBodyAdjuntosTable = ({ columns, data }) => {
                                       <div class="row d-flex justify-content-center">
 
                                         <div class="col-auto">
-                                          <button className='btn btn-primary' onClick={ () => handleOpenFile(cell)}>
+                                          <button 
+                                            className='btn btn-primary' 
+                                            onClick={ () => handleOpenFile(cell)}
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#modalVerAdjuntoCliente"
+                                          >
                                             <FaEye className='iconSizeBtn' />
                                           </button>
                                         </div>

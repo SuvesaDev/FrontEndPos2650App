@@ -55,7 +55,12 @@ const initialState = {
     disableDistritos: true,
     sinAgente: false,
     startOpening: false,
-    adjuntos: []
+    adjuntos: [],
+    selectedAdjunto: {
+        nombre: '',
+        type: '',
+        base64: ''
+    }
 };
 
 export const CustomersReducer = (state = initialState, action) => {
@@ -582,6 +587,12 @@ export const CustomersReducer = (state = initialState, action) => {
             return {
                 ...state,
                 adjuntos: action.payload
+            }
+
+        case types.SetSeletedAdjuntoCustomers:
+            return {
+                ...state,
+                selectedAdjunto: action.payload
             }
     
         default:

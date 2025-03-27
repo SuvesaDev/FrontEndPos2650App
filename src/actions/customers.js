@@ -1316,3 +1316,8 @@ export const SetAdjuntoCustomers = ( value ) => ({
     type: types.SetAdjuntoCustomers,
     payload: value
 });
+
+export const SetSeletedAdjuntoCustomers = ( value ) => ({
+    type: types.SetSeletedAdjuntoCustomers,
+    payload: value
+});
