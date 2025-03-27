@@ -1376,13 +1376,6 @@ export const BuysImportarFacturaModal = () => {
                                                 { isLoteEdit ? 'Editar' : 'Agregar' } <IoAddCircle className="iconSize" />
                                             </button>
                             
-                                            <button
-                                                className="btn btn-danger"
-                                                // onClick={handleDisableLote}
-                                                type="button"
-                                            >
-                                                <RiDeleteBin2Fill className="iconSize" />
-                                            </button>
                                         </div>
                                         <hr />
                                     </div>

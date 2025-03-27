@@ -26,6 +26,7 @@ export const startSaveCustomer = ( customer, carta, isCostaPets ) => {
         }).then(async (result) => {
             
             try {
+                debugger;
                 var resultCarta = null;
 
                 if (result.isConfirmed) {
@@ -43,7 +44,7 @@ export const startSaveCustomer = ( customer, carta, isCostaPets ) => {
                     // console.log(customer.toJson());
 
                     //Call end-point 
-                    const { data } = await suvesaApi.post('/cliente', customer.toJson() );
+                    const { data } = await suvesaApi.post('/cliente/NewRegistrar', customer.toJson() );
                     const { status } = data;
                     
                     if( status === 0) {
