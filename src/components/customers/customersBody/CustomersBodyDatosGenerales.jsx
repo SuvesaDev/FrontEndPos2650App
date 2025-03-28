@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
+
 import {
   FaPhone,
   FaLocationDot,
@@ -6,11 +7,13 @@ import {
   FaLocationArrow,
   FaMapLocationDot,
   FaPersonCircleQuestion,
-  FaPercent  
+  FaPercent,
+  FaUser
 } from "react-icons/fa6";
 import { TbMailDollar } from "react-icons/tb"; 
 import { MdAttachEmail, MdPriceChange, MdMarkEmailUnread, MdOutlineChangeCircle  } from "react-icons/md";
 import { BsPersonLinesFill } from "react-icons/bs";
+
 import {
   SetActualizadoCustomers,
   SetAgenteCustomers,
@@ -28,11 +31,13 @@ import {
   SetFaxCustomers,
   SetInactivoCustomers,
   SetMagCustomers,
+  SetNombreFantasiaCustomers,
   SetProvinciaCustomers,
   SetSinAgenteCustomers,
   SetTelefonoCustomers,
   SetTipoClienteCustomers,
   SetTipoPrecioCustomers,
+  SetVariasSurcursalesCustomers,
   startGetAllCantones,
   startGetAllDistritos,
 } from "../../../actions/customers";
@@ -50,6 +55,7 @@ export const CustomersBodyDatosGenerales = () => {
     disableCantones,
     disableDistritos,
     sinAgente,
+    variasSurcursales
   } = useSelector((state) => state.customers);
 
   const { auth } = useSelector((state) => state.login);
@@ -74,6 +80,7 @@ export const CustomersBodyDatosGenerales = () => {
     descuentoEspcial,
     inactivo,
     mag,
+    nombreFantasia
   } = customer;
 
   const handleInputChangeWithDispatch = ({ target }, action) => {
@@ -265,7 +272,8 @@ export const CustomersBodyDatosGenerales = () => {
             </div>
 
             <div className="row mb-3">
-                <div className="col-md-12 mb-3">
+
+                <div className="col-md-9 mb-3">
                     <h5>Dirección</h5>
                     <div className="input-group">
                         <span className="input-group-text">
@@ -283,6 +291,46 @@ export const CustomersBodyDatosGenerales = () => {
                             }
                         />
                     </div>
+                </div>
+
+                <div className="col-md-3 mb-3">
+                    <div className="form-check">
+                        <input
+                            type="checkbox"
+                            id="checkVariasSurcursales"
+                            name="variasSurcursales"
+                            class="form-check-input checkP"
+                            disabled={disableInputs}
+                            checked={variasSurcursales}
+                            onChange={(e) =>
+                                handleInputChangeCheckBoxWithDispatch(
+                                    e,
+                                    SetVariasSurcursalesCustomers
+                                )
+                            }
+                        />
+                        <h5 className="form-check-label" for="checkVariasSurcursales">Varias Surcursales</h5>
+                    </div>
+                    { (!variasSurcursales) 
+                        ?   <div className="input-group">
+                                <span className="input-group-text">
+                                    <FaUser className="iconSize" />
+                                </span>
+                                <input
+                                    type="text"
+                                    name="nombre"
+                                    className="form-control"
+                                    disabled={disableInputs}
+                                    value={nombreFantasia}
+                                    placeholder="Nombre del Cliente Fantasía"
+                                    onChange={(e) =>
+                                        handleInputChangeWithDispatch(e, SetNombreFantasiaCustomers)
+                                    }
+                                />
+                            </div>
+                        : null
+                    }
+                    
                 </div>
             </div>
             

@@ -1321,3 +1321,42 @@ export const SetSeletedAdjuntoCustomers = ( value ) => ({
     type: types.SetSeletedAdjuntoCustomers,
     payload: value
 });
+
+export const SetVariasSurcursalesCustomers = ( value ) => ({
+    type: types.SetVariasSurcursalesCustomers,
+    payload: value
+});
+
+export const SetSucursalDatosFacturacionCustomers = ( value ) => ({
+    type: types.SetSucursalDatosFacturacionCustomers,
+    payload: value
+});
+
+export const SetnombreFantasiaDatosFacturacionCustomers = ( value ) => ({
+    type: types.SetnombreFantasiaDatosFacturacionCustomers,
+    payload: value
+});
+
+export const SetTelefonoDatosFacturacionCustomers = ( value ) => ({
+    type: types.SetTelefonoDatosFacturacionCustomers,
+    payload: value
+});
+
+export const SetCorreoDatosFacturacionCustomers = ( value ) => ({
+    type: types.SetCorreoDatosFacturacionCustomers,
+    payload: value
+});
+
+export const SetContactoDatosFacturacionCustomers = ( value ) => ({
+    type: types.SetContactoDatosFacturacionCustomers,
+    payload: value
+});
+
+export const SetAddDatosFacturacionCustomers = ( value ) => ({
+    type: types.SetAddDatosFacturacionCustomers,
+    payload: value
+});
+
+export const CleanDatosFacturacionCustomers = () => ({
+    type: types.CleanDatosFacturacionCustomers
+});

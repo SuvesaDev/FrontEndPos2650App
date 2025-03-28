@@ -60,7 +60,16 @@ const initialState = {
         nombre: '',
         type: '',
         base64: ''
-    }
+    },
+    variasSurcursales: false,
+    datosFacturacion : {
+        sucursal: '',
+        nombreFantasia: '',
+        telefono: '',
+        correo: '',
+        contacto: ''
+    },
+    allDatosFacturacion: []
 };
 
 export const CustomersReducer = (state = initialState, action) => {
@@ -414,7 +423,16 @@ export const CustomersReducer = (state = initialState, action) => {
                 disableDistritos: true,
                 sinAgente: false,
                 startOpening: false,
-                adjuntos: []
+                adjuntos: [],
+                variasSurcursales: false,
+                datosFacturacion : {
+                    sucursal: '',
+                    nombreFantasia: '',
+                    telefono: '',
+                    correo: '',
+                    contacto: ''
+                },
+                allDatosFacturacion: []
             }
 
         case types.ActiveButtonNewCustomers:
@@ -593,6 +611,78 @@ export const CustomersReducer = (state = initialState, action) => {
             return {
                 ...state,
                 selectedAdjunto: action.payload
+            }
+
+        case types.SetVariasSurcursalesCustomers:
+            return {
+                ...state,
+                variasSurcursales: action.payload
+            }
+
+        case types.SetSucursalDatosFacturacionCustomers:
+            return {
+                ...state,
+                datosFacturacion: {
+                    ...state.datosFacturacion,
+                    sucursal: action.payload
+                }
+            }
+
+        case types.SetnombreFantasiaDatosFacturacionCustomers:
+            return {
+                ...state,
+                datosFacturacion: {
+                    ...state.datosFacturacion,
+                    nombreFantasia: action.payload
+                }
+            }
+
+        case types.SetTelefonoDatosFacturacionCustomers:
+            return {
+                ...state,
+                datosFacturacion: {
+                    ...state.datosFacturacion,
+                    telefono: action.payload
+                }
+            }
+
+        case types.SetCorreoDatosFacturacionCustomers:
+            return {
+                ...state,
+                datosFacturacion: {
+                    ...state.datosFacturacion,
+                    correo: action.payload
+                }
+            }
+
+        case types.SetContactoDatosFacturacionCustomers:
+            return {
+                ...state,
+                datosFacturacion: {
+                    ...state.datosFacturacion,
+                    contacto: action.payload
+                }
+            }
+
+        case types.SetAddDatosFacturacionCustomers:
+            return {
+                ...state,
+                allDatosFacturacion: [
+                    ...state.allDatosFacturacion,
+                    action.payload
+                ]
+            }
+
+        case types.CleanDatosFacturacionCustomers:
+            return {
+                ...state,
+                datosFacturacion : {
+                    sucursal: '',
+                    nombreFantasia: '',
+                    telefono: '',
+                    correo: '',
+                    contacto: ''
+                }
             }
     
         default:

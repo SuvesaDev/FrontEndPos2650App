@@ -536,6 +536,15 @@ export const types = {
   SetAdjuntoCustomers: '[Customers] SetAdjuntoCustomers',
   SetSeletedAdjuntoCustomers: '[Customers] SetSeletedAdjuntoCustomers',
 
+  SetVariasSurcursalesCustomers: '[Customers] SetVariasSurcursalesCustomers',
+  SetSucursalDatosFacturacionCustomers: '[Customers] SetSucursalDatosFacturacionCustomers',
+  SetnombreFantasiaDatosFacturacionCustomers: '[Customers] SetnombreFantasiaDatosFacturacionCustomers',
+  SetTelefonoDatosFacturacionCustomers: '[Customers] SetTelefonoDatosFacturacionCustomers',
+  SetCorreoDatosFacturacionCustomers: '[Customers] SetCorreoDatosFacturacionCustomers',
+  SetContactoDatosFacturacionCustomers: '[Customers] SetContactoDatosFacturacionCustomers',
+  SetAddDatosFacturacionCustomers: '[Customers] SetAddDatosFacturacionCustomers',
+  CleanDatosFacturacionCustomers: '[Customers] CleanDatosFacturacionCustomers',
+
   // Carta Exoneracion Actions
   SetMotivoCartaExoneracion: '[CartaExoneracion] SetMotivoCartaExoneracion',
   SetNumeroDocumentoCartaExoneracion: '[CartaExoneracion] SetNumeroDocumentoCartaExoneracion',

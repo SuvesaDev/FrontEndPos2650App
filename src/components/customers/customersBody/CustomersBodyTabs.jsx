@@ -7,7 +7,7 @@ export const CustomersBodyTabs = () => {
   const dispatch = useDispatch();
 
   const state = useSelector((state) => state.customers);
-  const { currentTabCustomers, isCustomerEdit } = state;
+  const { currentTabCustomers, isCustomerEdit, variasSurcursales } = state;
 
   const { auth } = useSelector((state) => state.login);
   const { costaPets } = auth;
@@ -69,6 +69,19 @@ export const CustomersBodyTabs = () => {
           onClick={() => handleSelectTabCustomers("Adjuntos")}
         >
           Adjuntos
+        </button>
+      </div>
+
+      <div className={ (costaPets && variasSurcursales) ? 'col-md-2 mb-2' : 'col-md-2 mb-2 d-none' }>
+        <button
+          className={
+            currentTabCustomers == "DatosFacturacion"
+              ? "btn btn-primary"
+              : "btn btn-outline-primary"
+          }
+          onClick={() => handleSelectTabCustomers("DatosFacturacion")}
+        >
+          Datos Facturacion
         </button>
       </div>
 
