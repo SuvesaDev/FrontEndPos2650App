@@ -1360,3 +1360,23 @@ export const SetAddDatosFacturacionCustomers = ( value ) => ({
 export const CleanDatosFacturacionCustomers = () => ({
     type: types.CleanDatosFacturacionCustomers
 });
+
+export const SetIsEditDatosFacturacionCustomers = ( value ) => ({
+    type: types.SetIsEditDatosFacturacionCustomers,
+    payload: value
+});
+
+export const SetIdEditDatosFacturacionCustomers = ( value ) => ({
+    type: types.SetIdEditDatosFacturacionCustomers,
+    payload: value
+});
+
+export const SetEditDatosFacturacionCustomers = ( value ) => ({
+    type: types.SetEditDatosFacturacionCustomers,
+    payload: value
+});
+
+export const SetDeleteDatosFacturacionCustomers = ( value ) => ({
+    type: types.SetDeleteDatosFacturacionCustomers,
+    payload: value
+});

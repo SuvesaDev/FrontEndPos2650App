@@ -11,16 +11,28 @@ import {
     SetAddDatosFacturacionCustomers,
     SetContactoDatosFacturacionCustomers,
     SetCorreoDatosFacturacionCustomers,
+    SetEditDatosFacturacionCustomers,
+    SetIdEditDatosFacturacionCustomers,
+    SetIsEditDatosFacturacionCustomers,
     SetnombreFantasiaDatosFacturacionCustomers, 
     SetSucursalDatosFacturacionCustomers, 
     SetTelefonoDatosFacturacionCustomers
 } from '../../../actions/customers';
 import { CustomersBodyDatosFacturacionTable } from './CustomersBodyDatosFacturacionTable';
+import { id } from "date-fns/locale";
 
 export const CustomersBodyDatosFacturacion = () => {
 
     const dispatch = useDispatch();
-    const { disableInputs, datosFacturacion, allDatosFacturacion } = useSelector( state => state.customers );
+
+    const { 
+        disableInputs, 
+        datosFacturacion, 
+        allDatosFacturacion,
+        isEditDatosFacturacion,
+        idDatoFacturacionEdit
+    } = useSelector( state => state.customers );
+
     const { 
         sucursal,
         nombreFantasia,
@@ -49,6 +61,10 @@ export const CustomersBodyDatosFacturacion = () => {
         {
             Header: "Correo",
             accessor: "correo",
+        },
+        {
+            Header: "Acciones",
+            accessor: "icon"
         }
     ];
         
@@ -69,6 +85,7 @@ export const CustomersBodyDatosFacturacion = () => {
         }
 
         const newDato = {
+            id: allDatosFacturacion.length + 1,
             sucursal,
             nombreFantasia,
             telefono,
@@ -77,6 +94,34 @@ export const CustomersBodyDatosFacturacion = () => {
         }
 
         dispatch( SetAddDatosFacturacionCustomers( newDato ) );
+        dispatch( CleanDatosFacturacionCustomers() );
+
+    }
+
+    const handleEditDatosFacturacion = () => {
+
+        if( sucursal == '' || nombreFantasia == '' || telefono == '' || contacto == '' || correo == '' ) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Advertencia',
+                text: 'Favor completar todos los datos.'
+            });
+
+            return;
+        }
+
+        const editDato = {
+            id: idDatoFacturacionEdit,
+            sucursal,
+            nombreFantasia,
+            telefono,
+            contacto,
+            correo
+        }
+
+        dispatch( SetEditDatosFacturacionCustomers( editDato ) );
+        dispatch( SetIdEditDatosFacturacionCustomers( 0 ) );
+        dispatch( SetIsEditDatosFacturacionCustomers( false ) );
         dispatch( CleanDatosFacturacionCustomers() );
 
     }
@@ -191,11 +236,11 @@ export const CustomersBodyDatosFacturacion = () => {
                         <div className="col-md-2 mb-3">
                             <div className="w-100 pt-4"></div>
                             <button
-                                className="btn btn-success"
+                                className={ isEditDatosFacturacion ? 'btn btn-warning' : 'btn btn-success' }
                                 type="button"
-                                onClick={ handleAddDatosFacturacion }
+                                onClick={ ( isEditDatosFacturacion ) ? handleEditDatosFacturacion : handleAddDatosFacturacion }
                             >
-                                <IoMdPersonAdd className="iconSize" /> Agregar
+                                <IoMdPersonAdd className="iconSize" /> { isEditDatosFacturacion ? 'Editar' : 'Agregar' }
                             </button>
                         </div>
 

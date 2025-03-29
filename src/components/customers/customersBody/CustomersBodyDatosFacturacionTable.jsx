@@ -1,8 +1,21 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import Swal from 'sweetalert2';
+
 import { useDispatch } from "react-redux";
 import { useTable } from "react-table";
 
+import { MdDeleteForever } from 'react-icons/md';
+
+import { 
+  SetContactoDatosFacturacionCustomers,
+  SetCorreoDatosFacturacionCustomers,
+  SetDeleteDatosFacturacionCustomers,
+  SetIdEditDatosFacturacionCustomers,
+  SetIsEditDatosFacturacionCustomers,
+  SetnombreFantasiaDatosFacturacionCustomers,
+  SetSucursalDatosFacturacionCustomers,
+  SetTelefonoDatosFacturacionCustomers
+} from "../../../actions/customers";
 
 export const CustomersBodyDatosFacturacionTable = ({ columns, data }) => {
 
@@ -22,8 +35,50 @@ export const CustomersBodyDatosFacturacionTable = ({ columns, data }) => {
 
   const handleSelectedRow = async (cell) => {
 
-    
+    if( cell.column.id == 'icon' ) {
+      return;
+    }
+
+    const { id, sucursal, nombreFantasia, telefono, correo, contacto } = cell.row.original;
+
+    dispatch( SetSucursalDatosFacturacionCustomers(sucursal) );
+    dispatch( SetnombreFantasiaDatosFacturacionCustomers(nombreFantasia) );
+    dispatch( SetTelefonoDatosFacturacionCustomers(telefono) );
+    dispatch( SetCorreoDatosFacturacionCustomers(correo) );
+    dispatch( SetContactoDatosFacturacionCustomers(contacto) );
+
+    dispatch( SetIdEditDatosFacturacionCustomers( id ) );
+    dispatch( SetIsEditDatosFacturacionCustomers( true ) );
+
   };
+
+  const handleDeleteFile = async (cell) => {
+  
+      // Obtiene el file seleccionado
+      const { id } = cell.row.original;
+  
+      if (id != undefined) {
+        
+        //Mostrar un mensaje de confirmacion
+        Swal.fire({
+            title: `¿Desea eliminar el registro?`,
+            showDenyButton: true,
+            showCancelButton: false,
+            confirmButtonText: 'Eliminar',
+            denyButtonText: `Cancelar`,
+        }).then(async (result) => {
+  
+          if (result.isConfirmed) {
+    
+            dispatch( SetDeleteDatosFacturacionCustomers( id ) ); 
+  
+          }
+  
+        });
+  
+      }
+  
+    };
 
   return (
     <>
@@ -59,7 +114,17 @@ export const CustomersBodyDatosFacturacionTable = ({ columns, data }) => {
                           onClick: () => handleSelectedRow(cell),
                         })}
                       >
-                        {cell.render("Cell")}
+                        {
+                            (cell.column.id === 'icon')
+                                ? <>                                   
+                                    <div class="col-auto">
+                                      <button className='btn btn-danger' onClick={ () => handleDeleteFile(cell)}>
+                                        <MdDeleteForever className='iconSizeBtn' />
+                                      </button>
+                                    </div>
+                                </>
+                                : cell.render("Cell")
+                        }
                       </td>
                     );
                   })}

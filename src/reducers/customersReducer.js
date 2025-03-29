@@ -69,7 +69,9 @@ const initialState = {
         correo: '',
         contacto: ''
     },
-    allDatosFacturacion: []
+    allDatosFacturacion: [],
+    isEditDatosFacturacion: false,
+    idDatoFacturacionEdit: 0
 };
 
 export const CustomersReducer = (state = initialState, action) => {
@@ -432,7 +434,9 @@ export const CustomersReducer = (state = initialState, action) => {
                     correo: '',
                     contacto: ''
                 },
-                allDatosFacturacion: []
+                allDatosFacturacion: [],
+                isEditDatosFacturacion: false,
+                idDatoFacturacionEdit: 0
             }
 
         case types.ActiveButtonNewCustomers:
@@ -683,6 +687,42 @@ export const CustomersReducer = (state = initialState, action) => {
                     correo: '',
                     contacto: ''
                 }
+            }
+
+        case types.SetIsEditDatosFacturacionCustomers:
+            return {
+                ...state,
+                isEditDatosFacturacion: action.payload
+            }
+
+        case types.SetIdEditDatosFacturacionCustomers:
+            return {
+                ...state,
+                idDatoFacturacionEdit: action.payload
+            }
+
+        case types.SetEditDatosFacturacionCustomers:
+            return {
+                ...state,
+                allDatosFacturacion: state.allDatosFacturacion.map(
+                    (dato, i) => dato.id === action.payload.id
+                        ? {
+                            ...dato,
+                            sucursal : action.payload.sucursal,
+                            nombreFantasia : action.payload.nombreFantasia,
+                            telefono : action.payload.telefono,
+                            correo : action.payload.correo,
+                            contacto : action.payload.contacto,
+                        }
+                        : dato)
+            }
+
+        case types.SetDeleteDatosFacturacionCustomers:
+            return {
+                ...state,
+                allDatosFacturacion: state.allDatosFacturacion.filter( 
+                    (dato, i) => dato.id !== action.payload
+                )
             }
     
         default:
