@@ -51,7 +51,7 @@ export const CustomerSearchModal = () => {
         },
         {
             Header: "Télefono",
-            accessor: "telefono_01",
+            accessor: "telefono",
         }
     ];
 
@@ -68,13 +68,14 @@ export const CustomerSearchModal = () => {
             });
         } else {
 
-            if (cedula != null && (nombre == null || nombre === '')) {
-                dispatch(startSearchCustomer(cedula, null, 'cedula'));
-            } else if (nombre != null && (cedula == null || cedula === '')) {
-                dispatch(startSearchCustomer(nombre, null, 'nombre'));
-            } else {
-                dispatch(startSearchCustomer(cedula, nombre, 'filtro'));
-            }
+            dispatch( startSearchCustomer( { cedula, nombre } ) );
+            // if (cedula != null && (nombre == null || nombre === '')) {
+            //     dispatch(startSearchCustomer(cedula, null, 'cedula'));
+            // } else if (nombre != null && (cedula == null || cedula === '')) {
+            //     dispatch(startSearchCustomer(nombre, null, 'nombre'));
+            // } else {
+            //     dispatch(startSearchCustomer(cedula, nombre, 'filtro'));
+            // }
         }
     }
 

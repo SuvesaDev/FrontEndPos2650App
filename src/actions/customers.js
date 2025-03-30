@@ -10,6 +10,7 @@ import {
     startRemoveCartaExoneracion, 
     startSaveCartaExoneracion 
 } from './CartaExoneracionAction';
+import { startGetAllProvincias } from './ProvinciasAction';
 
 //Action with call API
 export const startSaveCustomer = ( customer, carta, isCostaPets ) => {
@@ -306,13 +307,11 @@ export const startCustomerExist = ( cedula ) => {
     }
 }
 
-export const startSearchCustomer = ( value1, value2, tipo ) => {
+export const startSearchCustomer = ( cliente ) => {
 
     return async ( dispatch ) => {
 
         try {
-
-            var resp;
 
             //Mostrar el loading
             Swal.fire({
@@ -326,19 +325,166 @@ export const startSearchCustomer = ( value1, value2, tipo ) => {
             });
     
             //Call end-point 
-            if( tipo === 'cedula' ) {
-                resp = await suvesaApi.post('/cliente/BuscarCedula', { 'cedula' : value1 });
-            } else if( tipo === 'nombre' ) {
-                resp = await suvesaApi.post('/cliente/BuscarNombre', { 'nombre' : value1 });
-            } else if (tipo === 'filtro') {
-                resp = await suvesaApi.post('/cliente/Buscar', { 'cedula' : value1, 'nombre' : value2});
-            }
-            
-            const { status, responses } = resp.data;
+            const { data } = await suvesaApi.post('/cliente/NewBuscar', cliente);
+            const { status, responses } = data;
             Swal.close();
             
             if( status === 0 ) {
-                dispatch(SetSearchCustomers( responses ));
+                
+                const clients = responses.map( client => {
+                    return {
+                        ...client,
+                        telefono: client.telefono01
+                    }
+                });
+                
+                dispatch(SetSearchCustomers( clients ));
+
+            } else {
+    
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
+
+                console.log(currentException);
+                
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
+    
+            }
+
+        } catch (error) {
+            
+            Swal.close();
+            console.log(error);
+            if( error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al buscar clientes',
+                });
+            }
+        }
+    }
+}
+
+export const startGetOneCustomer = ( idCliente ) => {
+
+    return async ( dispatch ) => {
+
+        try {
+
+            //Mostrar el loading
+            Swal.fire({
+                title: 'Por favor, espere',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                imageUrl: loadingImage,
+                customClass: 'alert-class-login',
+                imageHeight: 100,
+            });
+    
+            //Call end-point 
+            const { data } = await suvesaApi.get(`/cliente/ObtenerClientePorID?idCliente=${idCliente}`);
+            const { status, responses } = data;
+            Swal.close();
+            
+            if( status === 0 ) {
+
+                // Transforma el objeto JSON
+                const searchCustomer = {
+                    identificacion: responses.identificacion,
+                    nombre: responses.nombre,
+                    nombreFantasia: responses.nombreFantasia,
+                    cedula: responses.cedula,
+                    observaciones: responses.observaciones,
+                    telefono: responses.telefono01,
+                    fax: responses.fax01,
+                    provincia: responses.idProvincia,
+                    canton: responses.idCanton,
+                    distrito: responses.idDistrito,
+                    direccion: responses.direccion,
+                    correocuentas: responses.eMail,
+                    correoFacturacion: responses.correoComprobante,
+                    tipoCliente: responses.idTipoIdentificacion,
+                    agente: responses.agente,
+                    actualizado: responses.actualizado,
+                    fallecido: responses.fallecido,
+                    enviaRecibo: responses.enviarRecibo,
+                    correoRecibo: responses.correoRecibo,
+                    tipoPrecio: responses.tipoprecio,
+                    descuentoEspcial: responses.descuentoEspecial,
+                    inactivo: responses.anulado,
+                    mag: responses.mag,
+                    abierto: responses.abierto,
+                    codMonedaCredito: responses.codMonedaCredito,
+                    plazoCredito: responses.plazoCredito,
+                    maxCredito: responses.maxCredito,
+                    descuento: responses.descuento,
+                    empresa: responses.empresa,
+                    sinrestriccion: responses.sinrestriccion,
+                    clienteMoroso: responses.clienteMoroso,
+                    ordenCompra: responses.ordenCompra,
+                    estado: responses.estado
+                };
+                console.log(searchCustomer)
+                // Se ingresa el cliente
+                dispatch(SelectedSearchCustomers( searchCustomer ));
+
+                // Se obtiene los adjuntos del cliente
+                dispatch( startGetAdjuntosCustomer( responses.identificacion ) );
+
+                // Si tiene credito se activa el checkbox
+                if (responses.codMonedaCredito != null || responses.plazo_Credito != null
+                    || responses.max_Credito != null || responses.descuento != null) {
+                    dispatch(ActiveCredito(true));
+                }
+
+                //Habilitar los inputs
+                dispatch(DisableInputsCustomers((responses.estado) ? false : true));
+
+                //Modificar los botones
+                dispatch(ActiveButtonSearchCustomers(true));
+                dispatch(ActiveButtonSaveCustomers((responses.estado) ? true : false));
+                dispatch(ActiveButtonNewCustomers(false));
+                dispatch(ActiveButtonRemoveCustomers(true));
+
+                //Si cliente esta disable se indica
+                if (!responses.estado) {
+                    dispatch(IsCustomerDisable(true))
+                }
+
+                //Indicar que es usuario para editar
+                dispatch(IsCustomerEditCustomers((responses.estado) ? true : false));
+
+                //Set Start Opening
+                dispatch(SetStartOpeningCustomers(true));
+
+                // Se obtiene las provincias
+                dispatch(startGetAllProvincias());
+
+                //Se activa el combo de cantones
+                dispatch(SetDisableCantonesCustomers(false));
+
+                //Se obtiene los cantones de esa provincia
+                dispatch(startGetAllCantones(searchCustomer.provincia));
+
+                //Se activa el combo de distritos
+                dispatch(SetDisableDistritosCustomers(false));
+
+                // Se obtiene los distritos
+                dispatch(startGetAllDistritos(searchCustomer.canton));
+
             } else {
     
                 //Caso contrario respuesta incorrecto mostrar mensaje de error

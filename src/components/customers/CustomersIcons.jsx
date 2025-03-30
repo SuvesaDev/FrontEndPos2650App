@@ -75,7 +75,6 @@ export const CustomersIcons = () => {
             const datosSucursal = allDatosFacturacion.map( dato => {
               return {
                 id: 0,
-                idCliente: customer.identificacion,
                 sucursal: dato.sucursal,
                 nombreComercial: dato.nombreFantasia,
                 telefono: dato.telefono,
