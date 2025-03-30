@@ -35,7 +35,8 @@ export class Customer {
         idCanton,
         idDistrito,
         usuarioCreacion,
-        usuarioModificacion
+        usuarioModificacion,
+        datosSucursal
       ) {
         this.identificacion = identificacion || 0,
         this.nombre = nombre;
@@ -70,7 +71,8 @@ export class Customer {
         this.idCanton = idCanton || 0,
         this.idDistrito = idDistrito || 0,
         this.usuarioCreacion = usuarioCreacion || '',
-        this.usuarioModificacion = usuarioModificacion || ''
+        this.usuarioModificacion = usuarioModificacion || '',
+        this.datosSucursal = datosSucursal || []
     }
 
     toJson() {
@@ -111,7 +113,8 @@ export class Customer {
         idCanton              : this.idCanton,
         idDistrito            : this.idDistrito,
         idUsuarioCreacion     : this.usuarioCreacion,
-        idUsuarioModificacion : this.usuarioModificacion
+        idUsuarioModificacion : this.usuarioModificacion,
+        datosSucursal         : this.datosSucursal
       }
     }
 }

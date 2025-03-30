@@ -26,7 +26,7 @@ export const startSaveCustomer = ( customer, carta, isCostaPets ) => {
         }).then(async (result) => {
             
             try {
-                debugger;
+                
                 var resultCarta = null;
 
                 if (result.isConfirmed) {
@@ -47,68 +47,98 @@ export const startSaveCustomer = ( customer, carta, isCostaPets ) => {
                     const { data } = await suvesaApi.post('/cliente/NewRegistrar', customer.toJson() );
                     const { status } = data;
                     
+                    switch (status) {
+
+                        case 0:
+
+                            //Clean State Customers
+                            dispatch( CleanStateCustomers() );
+
+                            if( isCostaPets ) {
+                                //Si es correcta entonces mostrar un mensaje de afirmacion
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Cliente ingresado correctamente',
+                                    showConfirmButton: false,
+                                    timer: 2500
+                                })
+
+                                return;
+                            }
+
+                            // Clean State Carta Exoneracion
+                            dispatch( CleanStateCartaExoneracion());
+
+                            //Save CartaExoneracion
+                            if( carta.cedula != undefined || carta.motivo != undefined 
+                                || carta.numeroDocumento != undefined || carta.fechaEmision != undefined 
+                                || carta.fechaVence != undefined || carta.porcentajeCompra != 0 
+                                || carta.impuesto != 0 || carta.nota != undefined ) {
+
+                                resultCarta = await dispatch( startSaveCartaExoneracion( carta ));
+                            }
+
+                            //Quitar el loading
+                            Swal.close();
+                        
+                            if(resultCarta === 'ok' ) {
+                            
+                                //Si es correcta entonces mostrar un mensaje de afirmacion
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Cliente ingresado correctamente',
+                                    showConfirmButton: false,
+                                    timer: 2500
+                                })
+                                
+                            } else {
+
+                                //Si es correcta entonces mostrar un mensaje de afirmacion pero con error en carta
+                                Swal.fire({
+                                    icon: 'warning',
+                                    title: 'Cliente ingresado sin carta de exoneracion',
+                                    showConfirmButton: true,
+                                })
+                            }
+                            break;
+
+                        case 1:
+                            //Caso contrario respuesta incorrecto mostrar mensaje de error
+                            const { currentException } = data;
+                            const msj = currentException.split(',');
+                            
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: (currentException.includes(',')) ? msj[3] : currentException,
+                            });
+                            break;
+
+                        case 2:
+                            //Caso contrario respuesta incorrecto mostrar mensaje de error
+                            const { validationErrors } = data;
+
+                            const resp = validationErrors.map(error => {
+                                return error;
+                            });
+
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Validacion de campos',
+                                text: `En los campos favor revisar cada dato: ${resp.join(" ")}`,
+                            });
+                            break;
+                    
+                        default:
+                            break;
+                    }
+
                     if( status === 0) {
 
-                        //Clean State Customers
-                        dispatch( CleanStateCustomers() );
-
-                        if( isCostaPets ) {
-                            //Si es correcta entonces mostrar un mensaje de afirmacion
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Cliente ingresado correctamente',
-                                showConfirmButton: false,
-                                timer: 2500
-                            })
-
-                            return;
-                        }
-
-                        // Clean State Carta Exoneracion
-                        dispatch( CleanStateCartaExoneracion());
-
-                        //Save CartaExoneracion
-                        if( carta.cedula != undefined || carta.motivo != undefined 
-                            || carta.numeroDocumento != undefined || carta.fechaEmision != undefined 
-                            || carta.fechaVence != undefined || carta.porcentajeCompra != 0 
-                            || carta.impuesto != 0 || carta.nota != undefined ) {
-
-                            resultCarta = await dispatch( startSaveCartaExoneracion( carta ));
-                        }
-
-                        //Quitar el loading
-                        Swal.close();
-                    
-                        if(resultCarta === 'ok' ) {
                         
-                            //Si es correcta entonces mostrar un mensaje de afirmacion
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Cliente ingresado correctamente',
-                                showConfirmButton: false,
-                                timer: 2500
-                            })
-                            
-                        } else {
-
-                            //Si es correcta entonces mostrar un mensaje de afirmacion pero con error en carta
-                            Swal.fire({
-                                icon: 'warning',
-                                title: 'Cliente ingresado sin carta de exoneracion',
-                                showConfirmButton: true,
-                            })
-                        }
 
                     } else {
-                        //Caso contrario respuesta incorrecto mostrar mensaje de error
-                        const { currentException } = data;
-                        const msj = currentException.split(',');
                         
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Error',
-                            text: (currentException.includes(',')) ? msj[3] : currentException,
-                        });
                         
                     }
 
@@ -375,104 +405,115 @@ export const startEditCustomer = ( customer, hasCarta, carta) => {
                         customClass: 'alert-class-login',
                         imageHeight: 100,
                     });
-                    console.log(customer);
+                    
                     //Call end-point 
-                    const { data } = await suvesaApi.post('/cliente/Actualizar', customer.toJson() );
+                    const { data } = await suvesaApi.post('/cliente/NewActualizar', customer.toJson() );
                     const { status } = data;
+
+                    switch (status) {
+
+                        case 0:
+
+                            if( hasCarta === true ) {
+
+                                //TODO: Edit Carta
+                                if( carta.motivo != undefined || carta.numeroDocumento != undefined || carta.fechaEmision != undefined 
+                                    || carta.fechaVence != undefined || carta.porcentajeCompra != undefined
+                                    || carta.impuesto != undefined || carta.nota != undefined ) {
+        
+                                    resultCarta = await dispatch( startEditCartaExoneracion( carta ) );
+                                }  
     
-                    if( status === 0 ) {
-
-                        // if( carta.motivo != undefined || carta.numeroDocumento != undefined || carta.fechaEmision != undefined 
-                        //     || carta.fechaVence != undefined || carta.porcentajeCompra != undefined 
-                        //     || carta.impuesto != undefined || carta.nota != undefined ) {
-
-                        //     resultCarta = await dispatch( startSaveCartaExoneracion( carta ));
-                        // } else {
-                        //     insertedCarta = false;
-                        // }
-
-                        if( hasCarta === true ) {
-
-                            //TODO: Edit Carta
-                            if( carta.motivo != undefined || carta.numeroDocumento != undefined || carta.fechaEmision != undefined 
-                                || carta.fechaVence != undefined || carta.porcentajeCompra != undefined
-                                || carta.impuesto != undefined || carta.nota != undefined ) {
+                            } else if( hasCarta === false ) {
     
-                                resultCarta = await dispatch( startEditCartaExoneracion( carta ) );
-                            }  
-
-                        } else if( hasCarta === false ) {
-
-                            //TODO: Save a new carta if has data
-                            if( carta.motivo != undefined || carta.numeroDocumento != undefined || carta.fechaEmision != undefined 
-                                || carta.fechaVence != undefined || carta.porcentajeCompra != undefined
-                                || carta.impuesto != undefined || carta.nota != undefined ) {
+                                //TODO: Save a new carta if has data
+                                if( carta.motivo != undefined || carta.numeroDocumento != undefined || carta.fechaEmision != undefined 
+                                    || carta.fechaVence != undefined || carta.porcentajeCompra != undefined
+                                    || carta.impuesto != undefined || carta.nota != undefined ) {
+        
+                                    resultCarta = await dispatch( startSaveCartaExoneracion( carta ));
+                                }  
     
-                                resultCarta = await dispatch( startSaveCartaExoneracion( carta ));
-                            }  
-
-                        } 
-
-                        //Quitar el loading
-                        Swal.close();
-
-                        // dispatch( IsCustomerEditCustomers( false ));
-                        // dispatch( IsCustomerDisable( false ));
-                        // dispatch( SetDefautlButtonsCustomers() );
-                        // dispatch( DisableInputsCustomers( true ) );
-
-                        // Clean State Customers
-                        dispatch( CleanStateCustomers() );
-
-                        // Clean State Carta Exoneracion
-                        dispatch( CleanStateCartaExoneracion());
-                        
-                        if( resultCarta === 'ok' && hasCarta ) {
-
-                            //Si es correcta entonces mostrar un mensaje de afirmacion
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Cliente y Carta Exoneración editados correctamente',
-                                showConfirmButton: false,
-                                timer: 2500
-                            });
-                            
-                        } else {
-
-                            if ( resultCarta === 'ok' && hasCarta === false) {
-                                
-                                //Si es correcta entonces mostrar un mensaje de afirmacion pero con error en carta
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: 'Cliente editado y Carta Exoneración creado correctamente',
-                                    showConfirmButton: false,
-                                    timer: 2500
-                                })
-                            } else if( hasCarta === null || resultCarta != 'ok') {
-
-                                //Si es correcta entonces mostrar un mensaje de afirmacion pero con error en carta
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: 'Cliente editado correctamente',
-                                    showConfirmButton: false,
-                                    timer: 2500
-                                })
-
                             } 
-                        }
+    
+                            //Quitar el loading
+                            Swal.close();
+    
+                            // dispatch( IsCustomerEditCustomers( false ));
+                            // dispatch( IsCustomerDisable( false ));
+                            // dispatch( SetDefautlButtonsCustomers() );
+                            // dispatch( DisableInputsCustomers( true ) );
+    
+                            // Clean State Customers
+                            dispatch( CleanStateCustomers() );
+    
+                            // Clean State Carta Exoneracion
+                            dispatch( CleanStateCartaExoneracion());
+                            
+                            if( resultCarta === 'ok' && hasCarta ) {
+    
+                                //Si es correcta entonces mostrar un mensaje de afirmacion
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Cliente y Carta Exoneración editados correctamente',
+                                    showConfirmButton: false,
+                                    timer: 2500
+                                });
+                                
+                            } else {
+    
+                                if ( resultCarta === 'ok' && hasCarta === false) {
+                                    
+                                    //Si es correcta entonces mostrar un mensaje de afirmacion pero con error en carta
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Cliente editado y Carta Exoneración creado correctamente',
+                                        showConfirmButton: false,
+                                        timer: 2500
+                                    })
+                                } else if( hasCarta === null || resultCarta != 'ok') {
+    
+                                    //Si es correcta entonces mostrar un mensaje de afirmacion pero con error en carta
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Cliente editado correctamente',
+                                        showConfirmButton: false,
+                                        timer: 2500
+                                    })
+    
+                                } 
+                            }
+                            break;
 
-                    } else {
-            
-                        //Caso contrario respuesta incorrecto mostrar mensaje de error
-                        const { currentException } = data;
-                        const msj = currentException.split(',');
-                        
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Error',
-                            text: (currentException.includes(',')) ? msj[3] : currentException,
-                        });
-            
+                        case 1:
+                            //Caso contrario respuesta incorrecto mostrar mensaje de error
+                            const { currentException } = data;
+                            const msj = currentException.split(',');
+                            
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: (currentException.includes(',')) ? msj[3] : currentException,
+                            });
+                            break;
+
+                        case 2:
+                            //Caso contrario respuesta incorrecto mostrar mensaje de error
+                            const { validationErrors } = data;
+
+                            const resp = validationErrors.map(error => {
+                                return error;
+                            });
+
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Validacion de campos',
+                                text: `En los campos favor revisar cada dato: ${resp.join(" ")}`,
+                            });
+                            break;
+                    
+                        default:
+                            break;
                     }
 
                 }

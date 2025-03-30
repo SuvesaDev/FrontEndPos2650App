@@ -426,6 +426,11 @@ export const CustomersReducer = (state = initialState, action) => {
                 sinAgente: false,
                 startOpening: false,
                 adjuntos: [],
+                selectedAdjunto: {
+                    nombre: '',
+                    type: '',
+                    base64: ''
+                },
                 variasSurcursales: false,
                 datosFacturacion : {
                     sucursal: '',

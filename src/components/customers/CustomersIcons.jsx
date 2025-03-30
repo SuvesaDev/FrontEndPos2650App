@@ -47,7 +47,10 @@ export const CustomersIcons = () => {
     isCustomerDisable,
     hasCartaExoneracion,
     startOpening,
+    allDatosFacturacion,
+    variasSurcursales
   } = useSelector((state) => state.customers);
+
   const { carta } = useSelector((state) => state.cartaExoneracion);
   const { auth } = useSelector((state) => state.login);
   const { currentTab } = useSelector((state) => state.tabs);
@@ -64,8 +67,23 @@ export const CustomersIcons = () => {
       const resp = await dispatch(startCustomerExist(customer.cedula));
 
       if (resp) {
+
         if (activeButtonSave) {
+
           if (customer.nombre != undefined || customer.cedula != undefined) {
+
+            const datosSucursal = allDatosFacturacion.map( dato => {
+              return {
+                id: 0,
+                idCliente: customer.identificacion,
+                sucursal: dato.sucursal,
+                nombreComercial: dato.nombreFantasia,
+                telefono: dato.telefono,
+                email: dato.correo,
+                contacto: dato.contacto
+              }
+            });
+
             dispatch(
               startSaveCustomer(
                 new Customer(
@@ -102,7 +120,8 @@ export const CustomersIcons = () => {
                   customer.canton,
                   customer.distrito,
                   auth.username,
-                  auth.username
+                  auth.username,
+                  (variasSurcursales) ? datosSucursal : []
                 ),
                 new CartaExoneracion(
                   customer.cedula,
@@ -199,6 +218,20 @@ export const CustomersIcons = () => {
     e.preventDefault();
 
     if (activeButtonSave) {
+
+      const datosSucursal = allDatosFacturacion.map( dato => {
+        return {
+          id: 0,
+          idCliente: customer.identificacion,
+          sucursal: dato.sucursal,
+          nombreComercial: dato.nombreFantasia,
+          telefono: dato.telefono,
+          email: dato.correo,
+          contacto: dato.contacto
+        }
+      });
+
+
       dispatch(
         startEditCustomer(
           new Customer(
@@ -235,7 +268,8 @@ export const CustomersIcons = () => {
             customer.canton,
             customer.distrito,
             auth.username,
-            auth.username
+            auth.username,
+            (variasSurcursales) ? datosSucursal : []
           ),
           hasCartaExoneracion,
           new CartaExoneracion(
