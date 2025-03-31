@@ -1,9 +1,14 @@
+import { useDispatch, useSelector } from 'react-redux';
 
 import { MdNoteAdd } from 'react-icons/md';
 
 import { FamilyFamiliaTable } from './FamilyFamiliaTable';
 
 export const FamilyFamilia = () => {
+
+    const dispatch = useDispatch();
+    
+    const { familias } = useSelector((state) => state.familias);
 
     const columns = [
         {
@@ -49,17 +54,7 @@ export const FamilyFamilia = () => {
                                 <div className="col-md-12 mb-3">
                                     <FamilyFamiliaTable
                                         columns={columns}
-                                        data={ [
-                                            {
-                                                descripcion: 'Familia #1'
-                                            },
-                                            {
-                                                descripcion: 'Familia #2'
-                                            },
-                                            {
-                                                descripcion: 'Familia #3'
-                                            },
-                                        ] }
+                                        data={ familias }
                                     />
                                 </div>
 

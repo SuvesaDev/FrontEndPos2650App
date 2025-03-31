@@ -2082,5 +2082,10 @@ export const types = {
   SetDisablePasswordFarmacy: "[Farmacy] SetDisablePasswordFarmacy",
   //---------------------------------------------->FIN Farmacia Page
 
+  // Familias Action
+  SetAllFamiliasFamily: "[Family] SetAllFamiliasFamily",
+
+  CleanFamiliasFamily: "[Family] CleanFamiliasFamily",
+
 
 }

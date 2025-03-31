@@ -1,10 +1,25 @@
+import { useSelector, useDispatch } from 'react-redux';
 
 import { FaWindowClose } from 'react-icons/fa';
-import { RiDeleteBin2Fill } from 'react-icons/ri';
-import { MdNoteAdd } from 'react-icons/md';
-import { FaFloppyDisk, FaMagnifyingGlass } from 'react-icons/fa6';
+import { DeleteTab } from '../../actions/tabs';
+
+import { CleanFamiliasFamily } from '../../actions/FamiliasAction';
 
 export const FamilyIcons = () => {
+
+    const dispatch = useDispatch();
+
+    const { currentTab } = useSelector((state) => state.tabs);
+
+    const handleCloseWindow = (e) => {
+
+        e.preventDefault();
+
+        dispatch(DeleteTab(currentTab.name, currentTab.routePage));
+        dispatch(CleanFamiliasFamily());
+        
+    };
+
     return (
         <>
             <div className="btn-toolbar" role="toolbar">
@@ -43,6 +58,7 @@ export const FamilyIcons = () => {
                 <div className="btn-group mb-2">
                     <button
                         className="btn btn-warning espacio"
+                        onClick={handleCloseWindow}
                     >
                         Cerrar <FaWindowClose className="iconSize" />
                     </button>

@@ -1,21 +1,26 @@
 import { types } from "../types/types";
 
 const initialState = {
-    familias: []
-  };
+    familias: [],
+};
 
-  export const familiasReducer = ( state = initialState, action ) => {
+export const familiasReducer = (state = initialState, action) => {
+    
+    switch (action.type) {
 
-    switch ( action.type ) {
-      case types.familiasAddNew:
-  
-        return {
-          ...state,
-          familias: [ ...state.familias, action.payload ]
-        };
-  
-      default:
-        return state;
+        case types.SetAllFamiliasFamily:
+            return {
+                ...state,
+                familias : action.payload
+            }
+
+        case types.CleanFamiliasFamily:
+            
+            return {
+                familias: [],
+            }
+
+        default:
+            return state;
     }
-  
-  };
+};
