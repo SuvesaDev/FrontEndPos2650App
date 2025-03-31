@@ -8,7 +8,8 @@ export const FamilyIcons = () => {
     return (
         <>
             <div className="btn-toolbar" role="toolbar">
-                <div className="btn-group mb-2">
+                
+                {/* <div className="btn-group mb-2">
                     <button
                         className="btn btn-success espacio"
                     >
@@ -37,8 +38,7 @@ export const FamilyIcons = () => {
                     >
                         Eliminar <RiDeleteBin2Fill className="iconSize" />
                     </button>
-                </div>
-
+                </div> */}
 
                 <div className="btn-group mb-2">
                     <button
