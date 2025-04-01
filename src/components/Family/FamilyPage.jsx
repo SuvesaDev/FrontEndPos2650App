@@ -6,6 +6,8 @@ import { FamilyIcons } from './FamilyIcons';
 import { FamilySubFamilia } from './FamilySubFamilia';
 import { startGetAllFamilias } from '../../actions/FamiliasAction';
 
+import { FamilyFamiliaModal } from './FamilyFamiliaModal';
+
 export const FamilyPage = () => {
 
     const dispatch = useDispatch();
@@ -43,6 +45,8 @@ export const FamilyPage = () => {
                 </div>
             </div>
             <br />
+
+            <FamilyFamiliaModal />
         </>
     )
 }

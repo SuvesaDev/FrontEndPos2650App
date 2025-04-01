@@ -2084,6 +2084,11 @@ export const types = {
 
   // Familias Action
   SetAllFamiliasFamily: "[Family] SetAllFamiliasFamily",
+  SetCodigoFamiliaFamiliasFamily: "[Family] SetCodigoFamiliaFamiliasFamily",
+  SetDescripcionFamiliaFamiliasFamily: "[Family] SetDescripcionFamiliaFamiliasFamily",
+  SetObservacionesFamiliaFamiliasFamily: "[Family] SetObservacionesFamiliaFamiliasFamily",
+  SetClosingModalFamiliasFamily: "[Family] SetClosingModalFamiliasFamily",
+  CleanFamiliaFamiliasFamily: "[Family] CleanFamiliaFamiliasFamily",
 
   CleanFamiliasFamily: "[Family] CleanFamiliasFamily",
 
