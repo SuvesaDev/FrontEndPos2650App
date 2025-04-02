@@ -9,6 +9,9 @@ const initialState = {
     },
     isCreateFamilia: true,
     closingModalFamilia: false,
+    subFamilias: [],
+    isSeletedFamilia: false,
+    codigoFamiliasSeleted: 0
 };
 
 export const familiasReducer = (state = initialState, action) => {
@@ -69,6 +72,24 @@ export const familiasReducer = (state = initialState, action) => {
                     observaciones: ''
                 }
             }
+
+        case types.SetSubFamiliasFamiliasFamily:
+            return {
+                ...state,
+                subFamilias: action.payload
+            }
+
+        case types.SetIsSeletedFamiliasFamily:
+            return {
+                ...state,
+                isSeletedFamilia: action.payload
+            }
+
+        case types.SetCodigoSeletedFamiliasFamily:
+            return {
+                ...state,
+                codigoFamiliasSeleted: action.payload
+            }
             
         case types.CleanFamiliasFamily:
             
@@ -78,7 +99,12 @@ export const familiasReducer = (state = initialState, action) => {
                     codigo: '',
                     descripcion: '',
                     observaciones: ''
-                }
+                },
+                isCreateFamilia: true,
+                closingModalFamilia: false,
+                subFamilias: [],
+                isSeletedFamilia: false,
+                codigoFamiliasSeleted: 0
             }
 
         default:

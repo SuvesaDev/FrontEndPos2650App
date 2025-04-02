@@ -312,6 +312,79 @@ export const startDeleteFamilias = ( idFamilia, descripcion ) => {
     };
 }
 
+export const startGetSubFamiliasByFamilia = ( idFamilia ) => {
+
+    return async (dispatch) => {
+
+        try {
+
+            //Mostrar el loading
+            Swal.fire({
+                title: 'Por favor, espere',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                imageUrl: loadingImage,
+                customClass: 'alert-class-login',
+                imageHeight: 100,
+            });
+            
+            //Call end-point 
+            const { data } = await suvesaApi.get(`/subFamilias/getSubFamiliasToFamilias?familiaId=${idFamilia}`);
+            const { status, responses } = data;
+            
+            //Quitar el loading
+            Swal.close();
+            
+            if (status === 0) {
+                
+                if( responses.length == 0 ) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Advertencia',
+                        text: 'No existen Sub Familias.'
+                    });
+                }
+                console.log(responses);
+                dispatch( SetSubFamiliasFamiliasFamily(responses) );
+                dispatch( SetIsSeletedFamiliasFamily(true) );
+                dispatch( SetCodigoSeletedFamiliasFamily(idFamilia) );
+
+            } else {
+
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
+
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
+
+            }                
+
+        } catch (error) {
+
+            Swal.close();
+            console.log(error);
+            if (error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema a la guardar el banco',
+                });
+            }
+        }
+    };
+}
+
 // Normal Actions
 export const SetAllFamiliasFamily = (value) => ({
     type: types.SetAllFamiliasFamily,
@@ -348,5 +421,20 @@ export const SetIsCreateFamiliasFamily = (value) => ({
 
 export const SetClosingModalFamiliasFamily = (value) => ({
     type: types.SetClosingModalFamiliasFamily,
+    payload: value
+})
+
+export const SetSubFamiliasFamiliasFamily = (value) => ({
+    type: types.SetSubFamiliasFamiliasFamily,
+    payload: value
+})
+
+export const SetIsSeletedFamiliasFamily = (value) => ({
+    type: types.SetIsSeletedFamiliasFamily,
+    payload: value
+})
+
+export const SetCodigoSeletedFamiliasFamily = (value) => ({
+    type: types.SetCodigoSeletedFamiliasFamily,
     payload: value
 })

@@ -2091,6 +2091,10 @@ export const types = {
   SetClosingModalFamiliasFamily: "[Family] SetClosingModalFamiliasFamily",
   CleanFamiliaFamiliasFamily: "[Family] CleanFamiliaFamiliasFamily",
 
+  SetSubFamiliasFamiliasFamily: "[Family] SetSubFamiliasFamiliasFamily",
+  SetIsSeletedFamiliasFamily: "[Family] SetIsSeletedFamiliasFamily",
+  SetCodigoSeletedFamiliasFamily: "[Family] SetCodigoSeletedFamiliasFamily",
+
   CleanFamiliasFamily: "[Family] CleanFamiliasFamily",
 
 

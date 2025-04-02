@@ -13,7 +13,8 @@ import {
   SetDescripcionFamiliaFamiliasFamily, 
   SetIsCreateFamiliasFamily, 
   SetObservacionesFamiliaFamiliasFamily, 
-  startDeleteFamilias
+  startDeleteFamilias,
+  startGetSubFamiliasByFamilia
 } from "../../actions/FamiliasAction";
 
 export const FamilyFamiliaTable = ({ columns, data }) => {
@@ -34,55 +35,45 @@ export const FamilyFamiliaTable = ({ columns, data }) => {
 
   const handleSelectedRow = async (cell) => {
 
-    // Obtiene el file seleccionado
-    // const { base64, nombre } = cell.row.original;
-    
-    // if (base64) {
+    if( cell.column.id != 'icon') {
 
-    //   const extensionFile = obtenerExtension(nombre);
+      // Obtiene el familia seleccionada
+      const { codigo } = cell.row.original;
 
-    //   const seletedAdjunto = {
-    //     nombre,
-    //     type: ( extensionFile == 'pdf' ) ? 'pdf' :( extensionFile == 'docx' || extensionFile == 'doc') ? 'word' :'image',
-    //     base64
-    //   }
+      dispatch( startGetSubFamiliasByFamilia(codigo) );
 
-    //   dispatch( SetSeletedAdjuntoCustomers( seletedAdjunto ) );
-
-    // } else {
-
-    //   Swal.fire({
-    //       icon: 'warning',
-    //       title: 'Advertencia',
-    //       text: 'No se puede abrir el archivo en este momento. Intento más tarde por favor.'
-    //   });
-
-    // }
-    
+    }   
 
   };
 
   const handleEditFamily = async (cell) => {
-
-    // Obtiene la familia seleccionada
-    const { codigo, descripcion, observaciones } = cell.row.original;
     
-    dispatch( SetCodigoFamiliaFamiliasFamily(codigo) );
-    dispatch( SetDescripcionFamiliaFamiliasFamily(descripcion) );
-    dispatch( SetObservacionesFamiliaFamiliasFamily(observaciones) );
+    if( cell.column.id == 'icon') {
 
-    dispatch( SetIsCreateFamiliasFamily( false ) );
-    dispatch( SetClosingModalFamiliasFamily(false) );
+      // Obtiene la familia seleccionada
+      const { codigo, descripcion, observaciones } = cell.row.original;
+      
+      dispatch( SetCodigoFamiliaFamiliasFamily(codigo) );
+      dispatch( SetDescripcionFamiliaFamiliasFamily(descripcion) );
+      dispatch( SetObservacionesFamiliaFamiliasFamily(observaciones) );
+
+      dispatch( SetIsCreateFamiliasFamily( false ) );
+      dispatch( SetClosingModalFamiliasFamily(false) );
+
+    }
+    
 
   };
 
   const handleDeleteFamily = async (cell) => {
-
-    // Obtiene la familia seleccionada
-    const { codigo, descripcion } = cell.row.original;
     
-    dispatch( startDeleteFamilias( codigo, descripcion ) );
-
+    if( cell.column.id == 'icon') {
+      // Obtiene la familia seleccionada
+      const { codigo, descripcion } = cell.row.original;
+    
+      dispatch( startDeleteFamilias( codigo, descripcion ) );
+    }
+    
   };
 
   return (
@@ -114,7 +105,7 @@ export const FamilyFamiliaTable = ({ columns, data }) => {
                     return (
                       <td
                         {...cell.getCellProps({
-                          // onClick: () => handleSelectedRow(cell),
+                          onClick: () => handleSelectedRow(cell),
                         })}
                       >
                         {

@@ -1,3 +1,4 @@
+import { useDispatch, useSelector } from 'react-redux';
 
 import { MdNoteAdd } from 'react-icons/md';
 
@@ -5,10 +6,14 @@ import { FamilySubFamiliaTable } from './FamilySubFamiliaTable';
 
 export const FamilySubFamilia = () => {
 
+    const dispatch = useDispatch();
+        
+    const { subFamilias, isSeletedFamilia } = useSelector((state) => state.familias);
+
     const columns = [
         {
-          Header: "Codigo",
-          accessor: "codigo",
+          Header: "Codigo SubFamilia",
+          accessor: "subCodigo",
         },
         {
             Header: "Descripcion",
@@ -41,6 +46,7 @@ export const FamilySubFamilia = () => {
                                 <div className="col-md-3 mb-3 d-flex">
                                     <button 
                                         className='btn btn-primary ms-auto'
+                                        disabled={!isSeletedFamilia}
                                     >
                                         Nueva SubFamilia <MdNoteAdd className='iconSize' />
                                     </button>
@@ -52,20 +58,7 @@ export const FamilySubFamilia = () => {
                                 <div className="col-md-12 mb-0">
                                     <FamilySubFamiliaTable 
                                         columns={columns}
-                                        data={ [
-                                            {
-                                                codigo: '1',
-                                                descripcion: 'SubFamilia #1'
-                                            },
-                                            {
-                                                codigo: '2',
-                                                descripcion: 'SubFamilia #2'
-                                            },
-                                            {
-                                                codigo: '3',
-                                                descripcion: 'SubFamilia #3'
-                                            },
-                                        ] }
+                                        data={ subFamilias }
                                     />
                                 </div>
                             </div>
