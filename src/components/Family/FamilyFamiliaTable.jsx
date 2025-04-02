@@ -12,7 +12,8 @@ import {
   SetCodigoFamiliaFamiliasFamily, 
   SetDescripcionFamiliaFamiliasFamily, 
   SetIsCreateFamiliasFamily, 
-  SetObservacionesFamiliaFamiliasFamily 
+  SetObservacionesFamiliaFamiliasFamily, 
+  startDeleteFamilias
 } from "../../actions/FamiliasAction";
 
 export const FamilyFamiliaTable = ({ columns, data }) => {
@@ -75,6 +76,15 @@ export const FamilyFamiliaTable = ({ columns, data }) => {
 
   };
 
+  const handleDeleteFamily = async (cell) => {
+
+    // Obtiene la familia seleccionada
+    const { codigo, descripcion } = cell.row.original;
+    
+    dispatch( startDeleteFamilias( codigo, descripcion ) );
+
+  };
+
   return (
     <>
       <div style={{ overflowX: "auto", maxHeight: "200px" }} className="table-responsive-lg tablaP">
@@ -128,7 +138,7 @@ export const FamilyFamiliaTable = ({ columns, data }) => {
                                         <div class="col-auto">
                                           <button 
                                             className='btn btn-danger' 
-                                            // onClick={ () => handleDeleteFile(cell)}
+                                            onClick={ () => handleDeleteFamily(cell)}
                                           >
                                             <MdDeleteForever className='iconSizeBtn' />
                                           </button>
