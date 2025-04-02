@@ -4,7 +4,10 @@ import { MdNoteAdd } from 'react-icons/md';
 
 import { FamilyFamiliaTable } from './FamilyFamiliaTable';
 
-import { SetClosingModalFamiliasFamily } from '../../actions/FamiliasAction';
+import { 
+    SetClosingModalFamiliasFamily, 
+    SetIsCreateFamiliasFamily 
+} from '../../actions/FamiliasAction';
 
 export const FamilyFamilia = () => {
 
@@ -25,6 +28,7 @@ export const FamilyFamilia = () => {
 
     const openModalFamilias = () => {
         dispatch( SetClosingModalFamiliasFamily(false) );
+        dispatch( SetIsCreateFamiliasFamily(true) );
     }
 
     return (

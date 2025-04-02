@@ -9,7 +9,6 @@ import { IoMdAddCircle } from "react-icons/io";
 
 import { 
     CleanFamiliaFamiliasFamily,
-    SetClosingModalFamiliasFamily,
     SetCodigoFamiliaFamiliasFamily, 
     SetDescripcionFamiliaFamiliasFamily,
     SetObservacionesFamiliaFamiliasFamily,
@@ -25,7 +24,7 @@ export const FamilyFamiliaModal = () => {
 
     const { auth } = useSelector(state => state.login);
 
-    const { familia, closingModalFamilia } = useSelector((state) => state.familias);
+    const { familia, closingModalFamilia, isCreateFamilia } = useSelector((state) => state.familias);
     const { codigo, descripcion, observaciones } = familia;
 
     useEffect(() => {
@@ -50,7 +49,7 @@ export const FamilyFamiliaModal = () => {
 
     const handleSaveFamily = async () => {
 
-        if( codigo == '' || descripcion == '' || observaciones == '' ) {
+        if( descripcion == '' || observaciones == '' ) {
             Swal.fire({
                 icon: 'warning',
                 title: 'Advertencia',
@@ -61,7 +60,6 @@ export const FamilyFamiliaModal = () => {
         }
 
         const newFamily = {
-            codigo,
             descripcion,
             observaciones,
             cuentaGra: '',
@@ -121,6 +119,7 @@ export const FamilyFamiliaModal = () => {
                                             name='codigo'
                                             className='form-control'
                                             placeholder='Codigo'
+                                            disabled={isCreateFamilia}
                                             value={ codigo }
                                             onChange={ e => handleInputChangeWithDispatch(e, SetCodigoFamiliaFamiliasFamily) }
                                         />

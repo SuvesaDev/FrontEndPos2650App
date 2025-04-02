@@ -7,6 +7,7 @@ const initialState = {
         descripcion: '',
         observaciones: ''
     },
+    isCreateFamilia: true,
     closingModalFamilia: false,
 };
 
@@ -51,6 +52,12 @@ export const familiasReducer = (state = initialState, action) => {
             return {
                 ...state,
                 closingModalFamilia: action.payload
+            }
+
+        case types.SetIsCreateFamiliasFamily:
+            return {
+                ...state,
+                isCreateFamilia: action.payload
             }
 
         case types.CleanFamiliaFamiliasFamily:

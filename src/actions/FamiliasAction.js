@@ -181,6 +181,11 @@ export const CleanFamiliaFamiliasFamily = () => ({
     type: types.CleanFamiliaFamiliasFamily
 })
 
+export const SetIsCreateFamiliasFamily = (value) => ({
+    type: types.SetIsCreateFamiliasFamily,
+    payload: value
+})
+
 export const SetClosingModalFamiliasFamily = (value) => ({
     type: types.SetClosingModalFamiliasFamily,
     payload: value

@@ -2087,6 +2087,7 @@ export const types = {
   SetCodigoFamiliaFamiliasFamily: "[Family] SetCodigoFamiliaFamiliasFamily",
   SetDescripcionFamiliaFamiliasFamily: "[Family] SetDescripcionFamiliaFamiliasFamily",
   SetObservacionesFamiliaFamiliasFamily: "[Family] SetObservacionesFamiliaFamiliasFamily",
+  SetIsCreateFamiliasFamily: "[Family] SetIsCreateFamiliasFamily",
   SetClosingModalFamiliasFamily: "[Family] SetClosingModalFamiliasFamily",
   CleanFamiliaFamiliasFamily: "[Family] CleanFamiliaFamiliasFamily",
 
