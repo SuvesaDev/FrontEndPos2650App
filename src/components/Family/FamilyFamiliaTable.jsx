@@ -7,6 +7,14 @@ import { useTable } from "react-table";
 import { FaEdit } from 'react-icons/fa';
 import { MdDeleteForever } from 'react-icons/md';
 
+import { 
+  SetClosingModalFamiliasFamily,
+  SetCodigoFamiliaFamiliasFamily, 
+  SetDescripcionFamiliaFamiliasFamily, 
+  SetIsCreateFamiliasFamily, 
+  SetObservacionesFamiliaFamiliasFamily 
+} from "../../actions/FamiliasAction";
+
 export const FamilyFamiliaTable = ({ columns, data }) => {
 
   const dispatch = useDispatch();
@@ -53,6 +61,20 @@ export const FamilyFamiliaTable = ({ columns, data }) => {
 
   };
 
+  const handleEditFamily = async (cell) => {
+
+    // Obtiene la familia seleccionada
+    const { codigo, descripcion, observaciones } = cell.row.original;
+    
+    dispatch( SetCodigoFamiliaFamiliasFamily(codigo) );
+    dispatch( SetDescripcionFamiliaFamiliasFamily(descripcion) );
+    dispatch( SetObservacionesFamiliaFamiliasFamily(observaciones) );
+
+    dispatch( SetIsCreateFamiliasFamily( false ) );
+    dispatch( SetClosingModalFamiliasFamily(false) );
+
+  };
+
   return (
     <>
       <div style={{ overflowX: "auto", maxHeight: "200px" }} className="table-responsive-lg tablaP">
@@ -95,7 +117,9 @@ export const FamilyFamiliaTable = ({ columns, data }) => {
                                         <div class="col-auto">
                                           <button 
                                             className='btn btn-success' 
-                                            // onClick={ () => handleOpenFile(cell)}
+                                            onClick={ () => handleEditFamily(cell)}
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#modalFamilia"
                                           >
                                             <FaEdit className='iconSizeBtn' />
                                           </button>

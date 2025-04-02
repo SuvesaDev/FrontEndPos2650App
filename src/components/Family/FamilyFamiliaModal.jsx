@@ -12,6 +12,7 @@ import {
     SetCodigoFamiliaFamiliasFamily, 
     SetDescripcionFamiliaFamiliasFamily,
     SetObservacionesFamiliaFamiliasFamily,
+    startEditFamilias,
     startSaveFamilias
 } from '../../actions/FamiliasAction';
 import { useEffect } from 'react';
@@ -76,6 +77,37 @@ export const FamilyFamiliaModal = () => {
         
 
     }
+
+    const handleEditFamily = async () => {
+
+        if( descripcion == '' || observaciones == '' ) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Advertencia',
+                text: 'Favor completar todos los datos.'
+            });
+
+            return;
+        }
+
+        const editFamily = {
+            codigo,
+            descripcion,
+            observaciones,
+            cuentaGra: '',
+            descripcionGra: '',
+            cuentaExe: '',
+            descripcionExe: '',
+            cuentaCosto: '',
+            descripcionCosto: '',
+            estado: true,
+            idUsuarioCreacion: auth.username
+        }
+        
+        await dispatch( startEditFamilias(editFamily) );
+        
+
+    }
     
     return (
         <>
@@ -119,7 +151,7 @@ export const FamilyFamiliaModal = () => {
                                             name='codigo'
                                             className='form-control'
                                             placeholder='Codigo'
-                                            disabled={isCreateFamilia}
+                                            disabled={true}
                                             value={ codigo }
                                             onChange={ e => handleInputChangeWithDispatch(e, SetCodigoFamiliaFamiliasFamily) }
                                         />
@@ -152,10 +184,10 @@ export const FamilyFamiliaModal = () => {
 
                                         <div className='col-md-6'>
                                             <button 
-                                                className='btn btn-success'
-                                                onClick={handleSaveFamily}
+                                                className={ isCreateFamilia ? 'btn btn-success' : 'btn btn-warning' }
+                                                onClick={ isCreateFamilia ? handleSaveFamily : handleEditFamily}
                                             >
-                                               <IoMdAddCircle className='iconSize' /> Guardar
+                                               <IoMdAddCircle className='iconSize' /> { isCreateFamilia ? 'Guardar' : 'Editar' }
                                             </button>
                                         </div>
 
