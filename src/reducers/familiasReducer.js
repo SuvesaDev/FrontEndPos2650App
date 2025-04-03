@@ -11,7 +11,14 @@ const initialState = {
     closingModalFamilia: false,
     subFamilias: [],
     isSeletedFamilia: false,
-    codigoFamiliasSeleted: 0
+    codigoFamiliasSeleted: 0,
+    subfamilia: {
+        codigo: '',
+        descripcion: '',
+        observaciones: ''
+    },
+    isCreateSubFamilia: true,
+    closingModalSubFamilia: false,
 };
 
 export const familiasReducer = (state = initialState, action) => {
@@ -90,6 +97,55 @@ export const familiasReducer = (state = initialState, action) => {
                 ...state,
                 codigoFamiliasSeleted: action.payload
             }
+
+        case types.SetCodigoSubFamiliaFamiliasFamily:
+            return {
+                ...state,
+                subfamilia : {
+                    ...state.subfamilia,
+                    codigo: action.payload
+                }
+            }
+
+        case types.SetDescripcionSubFamiliaFamiliasFamily:
+            return {
+                ...state,
+                subfamilia : {
+                    ...state.subfamilia,
+                    descripcion: action.payload
+                }
+            }
+
+        case types.SetObservacionesSubFamiliaFamiliasFamily:
+            return {
+                ...state,
+                subfamilia : {
+                    ...state.subfamilia,
+                    observaciones: action.payload
+                }
+            }
+
+        case types.SetIsCreateSubFamiliasFamily:
+            return {
+                ...state,
+                isCreateSubFamilia: action.payload
+            }
+
+        case types.SetClosingModalSubFamiliasFamily:
+            return {
+                ...state,
+                closingModalSubFamilia: action.payload
+            }
+
+        case types.CleanSubFamiliaFamiliasFamily:
+            return {
+                ...state,
+                subfamilia: {
+                    codigo: '',
+                    descripcion: '',
+                    observaciones: ''
+                }
+            }            
             
         case types.CleanFamiliasFamily:
             
@@ -104,7 +160,13 @@ export const familiasReducer = (state = initialState, action) => {
                 closingModalFamilia: false,
                 subFamilias: [],
                 isSeletedFamilia: false,
-                codigoFamiliasSeleted: 0
+                codigoFamiliasSeleted: 0,
+                subfamilia: {
+                    codigo: '',
+                    descripcion: '',
+                    observaciones: ''
+                },
+                isCreateSubFamilia: true,
             }
 
         default:

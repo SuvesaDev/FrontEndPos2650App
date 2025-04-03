@@ -4,6 +4,11 @@ import { MdNoteAdd } from 'react-icons/md';
 
 import { FamilySubFamiliaTable } from './FamilySubFamiliaTable';
 
+import { 
+    SetClosingModalSubFamiliasFamily, 
+    SetIsCreateSubFamiliasFamily 
+} from '../../actions/FamiliasAction';
+
 export const FamilySubFamilia = () => {
 
     const dispatch = useDispatch();
@@ -24,6 +29,11 @@ export const FamilySubFamilia = () => {
             accessor: "icon"
         }
     ];
+
+    const openModalSubFamilias = () => {
+        dispatch( SetClosingModalSubFamiliasFamily(false) );
+        dispatch( SetIsCreateSubFamiliasFamily(true) );
+    }
 
     return (
         <>
@@ -46,7 +56,10 @@ export const FamilySubFamilia = () => {
                                 <div className="col-md-3 mb-3 d-flex">
                                     <button 
                                         className='btn btn-primary ms-auto'
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#modalSubFamilia"
                                         disabled={!isSeletedFamilia}
+                                        onClick={openModalSubFamilias}
                                     >
                                         Nueva SubFamilia <MdNoteAdd className='iconSize' />
                                     </button>

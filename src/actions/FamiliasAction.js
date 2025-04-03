@@ -345,7 +345,7 @@ export const startGetSubFamiliasByFamilia = ( idFamilia ) => {
                         text: 'No existen Sub Familias.'
                     });
                 }
-                console.log(responses);
+                
                 dispatch( SetSubFamiliasFamiliasFamily(responses) );
                 dispatch( SetIsSeletedFamiliasFamily(true) );
                 dispatch( SetCodigoSeletedFamiliasFamily(idFamilia) );
@@ -363,6 +363,86 @@ export const startGetSubFamiliasByFamilia = ( idFamilia ) => {
                 });
 
             }                
+
+        } catch (error) {
+
+            Swal.close();
+            console.log(error);
+            if (error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema a la guardar el banco',
+                });
+            }
+        }
+    };
+}
+
+export const startSaveSubFamilias = ( Subfamilia, idFamilia ) => {
+
+    return async (dispatch) => {
+
+        try {
+
+            //Mostrar un mensaje de confirmacion
+            Swal.fire({
+                title: '¿Desea agregar un nueva Subfamilia?',
+                showDenyButton: true,
+                showCancelButton: false,
+                confirmButtonText: 'Guardar',
+                denyButtonText: `Cancelar`,
+            }).then(async (result) => {
+
+                if (result.isConfirmed) {
+
+                    //Mostrar el loading
+                    Swal.fire({
+                        title: 'Por favor, espere',
+                        allowEscapeKey: false,
+                        allowOutsideClick: false,
+                        showConfirmButton: false,
+                        imageUrl: loadingImage,
+                        customClass: 'alert-class-login',
+                        imageHeight: 100,
+                    });
+                    
+                    //Call end-point 
+                    const { data } = await suvesaApi.post('/subFamilias/postCreateSubFamilia', Subfamilia);
+                    const { status } = data;
+                    
+                    //Quitar el loading
+                    Swal.close();
+                    
+                    if (status === 0) {
+                        
+                        dispatch( startGetSubFamiliasByFamilia(idFamilia) );
+                        dispatch( SetClosingModalSubFamiliasFamily(true) );
+                        dispatch( CleanSubFamiliaFamiliasFamily() );
+
+                    } else {
+
+                        //Caso contrario respuesta incorrecto mostrar mensaje de error
+                        const { currentException } = data;
+                        const msj = currentException.split(',');
+
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: (currentException.includes(',')) ? msj[3] : currentException,
+                        });
+
+                    }
+
+                }
+
+            });
 
         } catch (error) {
 
@@ -437,4 +517,33 @@ export const SetIsSeletedFamiliasFamily = (value) => ({
 export const SetCodigoSeletedFamiliasFamily = (value) => ({
     type: types.SetCodigoSeletedFamiliasFamily,
     payload: value
+})
+
+export const SetCodigoSubFamiliaFamiliasFamily = (value) => ({
+    type: types.SetCodigoSubFamiliaFamiliasFamily,
+    payload: value
+})
+
+export const SetDescripcionSubFamiliaFamiliasFamily = (value) => ({
+    type: types.SetDescripcionSubFamiliaFamiliasFamily,
+    payload: value
+})
+
+export const SetObservacionesSubFamiliaFamiliasFamily = (value) => ({
+    type: types.SetObservacionesSubFamiliaFamiliasFamily,
+    payload: value
+})
+
+export const SetIsCreateSubFamiliasFamily = (value) => ({
+    type: types.SetIsCreateSubFamiliasFamily,
+    payload: value
+})
+
+export const SetClosingModalSubFamiliasFamily = (value) => ({
+    type: types.SetClosingModalSubFamiliasFamily,
+    payload: value
+})
+
+export const CleanSubFamiliaFamiliasFamily = () => ({
+    type: types.CleanSubFamiliaFamiliasFamily
 })

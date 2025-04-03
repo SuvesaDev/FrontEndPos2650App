@@ -7,6 +7,7 @@ import { FamilySubFamilia } from './FamilySubFamilia';
 import { startGetAllFamilias } from '../../actions/FamiliasAction';
 
 import { FamilyFamiliaModal } from './FamilyFamiliaModal';
+import { SubFamilyFamiliaModal } from './SubFamilyFamiliaModal';
 
 export const FamilyPage = () => {
 
@@ -47,6 +48,8 @@ export const FamilyPage = () => {
             <br />
 
             <FamilyFamiliaModal />
+
+            <SubFamilyFamiliaModal />
         </>
     )
 }
