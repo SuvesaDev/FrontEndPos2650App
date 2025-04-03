@@ -7,6 +7,15 @@ import { useTable } from "react-table";
 import { FaEdit } from 'react-icons/fa';
 import { MdDeleteForever } from 'react-icons/md';
 
+import { 
+  SetClosingModalSubFamiliasFamily,
+  SetCodigoSubFamiliaFamiliasFamily,
+  SetDescripcionSubFamiliaFamiliasFamily,
+  SetIdSubFamiliasSeletedFamily,
+  SetIsCreateSubFamiliasFamily,
+  SetObservacionesSubFamiliaFamiliasFamily
+} from "../../actions/FamiliasAction";
+
 export const FamilySubFamiliaTable = ({ columns, data }) => {
 
   const dispatch = useDispatch();
@@ -53,6 +62,26 @@ export const FamilySubFamiliaTable = ({ columns, data }) => {
 
   };
 
+  const handleEditSubFamily = async (cell) => {
+      
+      if( cell.column.id == 'icon') {
+        
+        // Obtiene la subfamilia seleccionada
+        const { codigo, subCodigo, descripcion, observaciones } = cell.row.original;
+        
+        dispatch( SetIdSubFamiliasSeletedFamily(codigo) );
+        dispatch( SetCodigoSubFamiliaFamiliasFamily(subCodigo) );
+        dispatch( SetDescripcionSubFamiliaFamiliasFamily(descripcion) );
+        dispatch( SetObservacionesSubFamiliaFamiliasFamily(observaciones) );
+  
+        dispatch( SetIsCreateSubFamiliasFamily( false ) );
+        dispatch( SetClosingModalSubFamiliasFamily(false) );
+  
+      }
+      
+  
+    };
+
   return (
     <>
       <div style={{ overflowX: "auto", maxHeight: "200px" }} className="table-responsive-lg tablaP">
@@ -95,7 +124,9 @@ export const FamilySubFamiliaTable = ({ columns, data }) => {
                                         <div class="col-auto">
                                           <button 
                                             className='btn btn-success' 
-                                            // onClick={ () => handleOpenFile(cell)}
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#modalSubFamilia"
+                                            onClick={ () => handleEditSubFamily(cell)}
                                           >
                                             <FaEdit className='iconSizeBtn' />
                                           </button>

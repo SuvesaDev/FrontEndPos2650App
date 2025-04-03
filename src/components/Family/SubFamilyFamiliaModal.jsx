@@ -12,7 +12,9 @@ import {
     CleanSubFamiliaFamiliasFamily,
     SetCodigoSubFamiliaFamiliasFamily, 
     SetDescripcionSubFamiliaFamiliasFamily,
+    SetIdSubFamiliasSeletedFamily,
     SetObservacionesSubFamiliaFamiliasFamily,
+    startEditSubFamilias,
     startSaveSubFamilias
 } from '../../actions/FamiliasAction';
 
@@ -24,11 +26,17 @@ export const SubFamilyFamiliaModal = () => {
 
     const { auth } = useSelector(state => state.login);
 
-    const { subfamilia, closingModalSubFamilia, isCreateSubFamilia, codigoFamiliasSeleted } = useSelector((state) => state.familias);
+    const { 
+        subfamilia, 
+        closingModalSubFamilia, 
+        isCreateSubFamilia, 
+        codigoFamiliasSeleted,
+        idSubFamiliaSeleted
+    } = useSelector((state) => state.familias);
     const { codigo, descripcion, observaciones } = subfamilia;
 
     useEffect(() => {
-        debugger;
+        
         if( closingModalSubFamilia ) {
             const btnCloseModal = document.getElementById('btnCloseModalSubFamilia');
             btnCloseModal.click();
@@ -45,6 +53,7 @@ export const SubFamilyFamiliaModal = () => {
 
     const closeModal = () => {
         dispatch( CleanSubFamiliaFamiliasFamily() );
+        dispatch( SetIdSubFamiliasSeletedFamily(0) );
     }
 
     const handleSaveSubFamily = async () => {
@@ -73,33 +82,29 @@ export const SubFamilyFamiliaModal = () => {
 
     }
 
-    const handleEditFamily = async () => {
+    const handleEditSubFamily = async () => {
 
-        // if( descripcion == '' || observaciones == '' ) {
-        //     Swal.fire({
-        //         icon: 'warning',
-        //         title: 'Advertencia',
-        //         text: 'Favor completar todos los datos.'
-        //     });
+        if(  codigo == ''|| descripcion == '' || observaciones == '' ) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Advertencia',
+                text: 'Favor completar todos los datos.'
+            });
 
-        //     return;
-        // }
+            return;
+        }
 
-        // const editFamily = {
-        //     codigo,
-        //     descripcion,
-        //     observaciones,
-        //     cuentaGra: '',
-        //     descripcionGra: '',
-        //     cuentaExe: '',
-        //     descripcionExe: '',
-        //     cuentaCosto: '',
-        //     descripcionCosto: '',
-        //     estado: true,
-        //     idUsuarioCreacion: auth.username
-        // }
+        const editSubFamily = {
+            codigo: idSubFamiliaSeleted,
+            codigoFamilia: codigoFamiliasSeleted,
+            subCodigo: codigo,
+            descripcion,
+            observaciones,
+            estado: true,
+            idUsuarioCreacion: auth.username,
+        }
         
-        // await dispatch( startEditFamilias(editFamily) );
+        await dispatch( startEditSubFamilias(editSubFamily, codigoFamiliasSeleted) );
         
 
     }
@@ -179,7 +184,7 @@ export const SubFamilyFamiliaModal = () => {
                                         <div className='col-md-6'>
                                             <button 
                                                 className={ isCreateSubFamilia ? 'btn btn-success' : 'btn btn-warning' }
-                                                onClick={ isCreateSubFamilia ? handleSaveSubFamily : handleEditFamily}
+                                                onClick={ isCreateSubFamilia ? handleSaveSubFamily : handleEditSubFamily}
                                             >
                                                <IoMdAddCircle className='iconSize' /> { isCreateSubFamilia ? 'Guardar' : 'Editar' }
                                             </button>

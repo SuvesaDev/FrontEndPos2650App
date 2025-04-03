@@ -465,6 +465,88 @@ export const startSaveSubFamilias = ( Subfamilia, idFamilia ) => {
     };
 }
 
+export const startEditSubFamilias = ( Subfamilia, idFamilia) => {
+
+    return async (dispatch) => {
+
+        try {
+
+            //Mostrar un mensaje de confirmacion
+            Swal.fire({
+                title: `¿Desea editar la Subfamilia?`,
+                showDenyButton: true,
+                showCancelButton: false,
+                confirmButtonText: 'Editar',
+                denyButtonText: `Cancelar`,
+            }).then(async (result) => {
+
+                if (result.isConfirmed) {
+
+                    //Mostrar el loading
+                    Swal.fire({
+                        title: 'Por favor, espere',
+                        allowEscapeKey: false,
+                        allowOutsideClick: false,
+                        showConfirmButton: false,
+                        imageUrl: loadingImage,
+                        customClass: 'alert-class-login',
+                        imageHeight: 100,
+                    });
+                    
+                    //Call end-point 
+                    const { data } = await suvesaApi.put('/subFamilias/putSubFamilia', Subfamilia);
+                    const { status } = data;
+                    
+                    //Quitar el loading
+                    Swal.close();
+                    
+                    if (status === 0) {
+                        
+                        // Se ingresa nuevo banco a la tabla
+                        dispatch( startGetSubFamiliasByFamilia(idFamilia) );
+                        dispatch( SetClosingModalSubFamiliasFamily(true) );
+                        dispatch( CleanSubFamiliaFamiliasFamily() );
+                        dispatch( SetIdSubFamiliasSeletedFamily(0) );
+
+                    } else {
+
+                        //Caso contrario respuesta incorrecto mostrar mensaje de error
+                        const { currentException } = data;
+                        const msj = currentException.split(',');
+
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: (currentException.includes(',')) ? msj[3] : currentException,
+                        });
+
+                    }
+
+                }
+
+            });
+
+        } catch (error) {
+
+            Swal.close();
+            console.log(error);
+            if (error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema a la guardar el banco',
+                });
+            }
+        }
+    };
+}
+
 // Normal Actions
 export const SetAllFamiliasFamily = (value) => ({
     type: types.SetAllFamiliasFamily,
@@ -546,4 +628,9 @@ export const SetClosingModalSubFamiliasFamily = (value) => ({
 
 export const CleanSubFamiliaFamiliasFamily = () => ({
     type: types.CleanSubFamiliaFamiliasFamily
+})
+
+export const SetIdSubFamiliasSeletedFamily = (value) => ({
+    type: types.SetIdSubFamiliasSeletedFamily,
+    payload: value
 })

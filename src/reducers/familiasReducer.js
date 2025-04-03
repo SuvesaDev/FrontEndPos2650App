@@ -19,6 +19,7 @@ const initialState = {
     },
     isCreateSubFamilia: true,
     closingModalSubFamilia: false,
+    idSubFamiliaSeleted: 0
 };
 
 export const familiasReducer = (state = initialState, action) => {
@@ -135,6 +136,12 @@ export const familiasReducer = (state = initialState, action) => {
             return {
                 ...state,
                 closingModalSubFamilia: action.payload
+            }
+
+        case types.SetIdSubFamiliasSeletedFamily:
+            return {
+                ...state,
+                idSubFamiliaSeleted: action.payload
             }
 
         case types.CleanSubFamiliaFamiliasFamily:
