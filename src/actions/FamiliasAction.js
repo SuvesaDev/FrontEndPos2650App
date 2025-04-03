@@ -547,6 +547,85 @@ export const startEditSubFamilias = ( Subfamilia, idFamilia) => {
     };
 }
 
+export const startDeleteSubFamilias = ( idSubFamilia, descripcion, idFamilia ) => {
+
+    return async (dispatch) => {
+
+        try {
+
+            //Mostrar un mensaje de confirmacion
+            Swal.fire({
+                title: `¿Desea eliminar la Subfamilia ${descripcion}?`,
+                showDenyButton: true,
+                showCancelButton: false,
+                confirmButtonText: 'Eliminar',
+                denyButtonText: `Cancelar`,
+            }).then(async (result) => {
+
+                if (result.isConfirmed) {
+
+                    //Mostrar el loading
+                    Swal.fire({
+                        title: 'Por favor, espere',
+                        allowEscapeKey: false,
+                        allowOutsideClick: false,
+                        showConfirmButton: false,
+                        imageUrl: loadingImage,
+                        customClass: 'alert-class-login',
+                        imageHeight: 100,
+                    });
+                    
+                    //Call end-point 
+                    const { data } = await suvesaApi.delete(`/subFamilias/deleteSubFamilia?idSubFamilia=${idSubFamilia}`);
+                    const { status } = data;
+                    
+                    //Quitar el loading
+                    Swal.close();
+                    
+                    if (status === 0) {
+                        
+                        // Se ingresa nuevo banco a la tabla
+                        dispatch( startGetSubFamiliasByFamilia(idFamilia) );
+
+                    } else {
+
+                        //Caso contrario respuesta incorrecto mostrar mensaje de error
+                        const { currentException } = data;
+                        const msj = currentException.split(',');
+
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: (currentException.includes(',')) ? msj[3] : currentException,
+                        });
+
+                    }
+
+                }
+
+            });
+
+        } catch (error) {
+
+            Swal.close();
+            console.log(error);
+            if (error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema a la guardar el banco',
+                });
+            }
+        }
+    };
+}
+
 // Normal Actions
 export const SetAllFamiliasFamily = (value) => ({
     type: types.SetAllFamiliasFamily,

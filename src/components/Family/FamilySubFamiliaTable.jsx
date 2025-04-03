@@ -13,12 +13,15 @@ import {
   SetDescripcionSubFamiliaFamiliasFamily,
   SetIdSubFamiliasSeletedFamily,
   SetIsCreateSubFamiliasFamily,
-  SetObservacionesSubFamiliaFamiliasFamily
+  SetObservacionesSubFamiliaFamiliasFamily,
+  startDeleteSubFamilias
 } from "../../actions/FamiliasAction";
 
 export const FamilySubFamiliaTable = ({ columns, data }) => {
 
   const dispatch = useDispatch();
+
+  const { codigoFamiliasSeleted } = useSelector((state) => state.familias);
 
   const {
     getTableProps,
@@ -32,55 +35,35 @@ export const FamilySubFamiliaTable = ({ columns, data }) => {
     data,
   });
 
-  const handleSelectedRow = async (cell) => {
-
-    // Obtiene el file seleccionado
-    // const { base64, nombre } = cell.row.original;
-    
-    // if (base64) {
-
-    //   const extensionFile = obtenerExtension(nombre);
-
-    //   const seletedAdjunto = {
-    //     nombre,
-    //     type: ( extensionFile == 'pdf' ) ? 'pdf' :( extensionFile == 'docx' || extensionFile == 'doc') ? 'word' :'image',
-    //     base64
-    //   }
-
-    //   dispatch( SetSeletedAdjuntoCustomers( seletedAdjunto ) );
-
-    // } else {
-
-    //   Swal.fire({
-    //       icon: 'warning',
-    //       title: 'Advertencia',
-    //       text: 'No se puede abrir el archivo en este momento. Intento más tarde por favor.'
-    //   });
-
-    // }
-    
-
-  };
-
   const handleEditSubFamily = async (cell) => {
       
-      if( cell.column.id == 'icon') {
-        
-        // Obtiene la subfamilia seleccionada
-        const { codigo, subCodigo, descripcion, observaciones } = cell.row.original;
-        
-        dispatch( SetIdSubFamiliasSeletedFamily(codigo) );
-        dispatch( SetCodigoSubFamiliaFamiliasFamily(subCodigo) );
-        dispatch( SetDescripcionSubFamiliaFamiliasFamily(descripcion) );
-        dispatch( SetObservacionesSubFamiliaFamiliasFamily(observaciones) );
-  
-        dispatch( SetIsCreateSubFamiliasFamily( false ) );
-        dispatch( SetClosingModalSubFamiliasFamily(false) );
-  
-      }
+    if( cell.column.id == 'icon') {
       
+      // Obtiene la subfamilia seleccionada
+      const { codigo, subCodigo, descripcion, observaciones } = cell.row.original;
+      
+      dispatch( SetIdSubFamiliasSeletedFamily(codigo) );
+      dispatch( SetCodigoSubFamiliaFamiliasFamily(subCodigo) );
+      dispatch( SetDescripcionSubFamiliaFamiliasFamily(descripcion) );
+      dispatch( SetObservacionesSubFamiliaFamiliasFamily(observaciones) );
+
+      dispatch( SetIsCreateSubFamiliasFamily( false ) );
+      dispatch( SetClosingModalSubFamiliasFamily(false) );
+
+    }
   
-    };
+  };
+
+  const handleDeleteSubFamily = async (cell) => {
+      
+    if( cell.column.id == 'icon') {
+      // Obtiene la Subfamilia seleccionada
+      const { codigo, descripcion } = cell.row.original;
+    
+      dispatch( startDeleteSubFamilias( codigo, descripcion, codigoFamiliasSeleted ) );
+    }
+      
+  };
 
   return (
     <>
@@ -135,7 +118,7 @@ export const FamilySubFamiliaTable = ({ columns, data }) => {
                                         <div class="col-auto">
                                           <button 
                                             className='btn btn-danger' 
-                                            // onClick={ () => handleDeleteFile(cell)}
+                                            onClick={ () => handleDeleteSubFamily(cell)}
                                           >
                                             <MdDeleteForever className='iconSizeBtn' />
                                           </button>
