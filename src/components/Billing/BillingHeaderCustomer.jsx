@@ -471,13 +471,16 @@ export const BillingHeaderCustomer = () => {
                         >
                             <option value={0} selected disabled hidden> Seleccione... </option>
                             {
-                                (tiposIdentificacion != null)
-                                    ? (tiposIdentificacion.length === 0)
-                                        ? <option value=''></option>
-                                        : tiposIdentificacion.map(tipoD => {
-                                            return <option key={tipoD.codigoFe} value={tipoD.codigoFe}> {tipoD.descripcion} </option>
-                                        })
+                                (billings[numberScreen] !== undefined)
+                                    ? (billings[numberScreen].datosFacturacionByCliente != null)
+                                        ? (billings[numberScreen].datosFacturacionByCliente.length === 0)
+                                            ? <option value=''></option>
+                                            : billings[numberScreen].datosFacturacionByCliente.map(datoFacturacion => {
+                                                return <option key={datoFacturacion.id} value={datoFacturacion.Id}> {datoFacturacion.sucursal} - {datoFacturacion.nombreComercial} </option>
+                                            })
+                                        : <option value=''></option>
                                     : <option value=''></option>
+                                
                             }
                         </select>
                     </div>

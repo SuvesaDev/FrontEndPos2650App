@@ -213,7 +213,8 @@ export const BillingPage = () => {
                 sinrestriccion: false,
                 ficha: 0,
                 preventa: true,
-                usuario: ''
+                usuario: '',
+                idDatoFacturacion: 0
             },
             detalle: []
         },

@@ -18,7 +18,7 @@ export const startSearchCustomerFacturacion = ( cedula, number, hasCoin = false 
     return async (dispatch) => {
 
         try {
-            debugger;
+            
             let searchCedula = cedula;
 
             if (cedula == "0" || cedula == "") {
@@ -2115,15 +2115,6 @@ export const startGetDatosFacturacionByCliente = (idCliente, number,) => {
 
             if( status === 0) {
                 
-                // const lotes = responses.map( lot => {
-                //     return {
-                //         id: lot.id,
-                //         lote: lot.lote,
-                //         vencimiento: lot.vencimiento.split('T')[0],
-                //         existencia: lot.cantidad
-                //     }
-                // });
-                console.log(responses)
                 dispatch( SetDatosFacturacionByClienteBilling({ value: responses, number }) );
 
             } else {
