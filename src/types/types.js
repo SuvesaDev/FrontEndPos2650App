@@ -833,6 +833,7 @@ export const types = {
   SetFichaBilling: '[Billing] SetFichaBilling',
   SetPreventaBilling: '[Billing] SetPreventaBilling',
   SetUsuarioBilling: '[Billing] SetUsuarioBilling',
+  SetDatoFacturacionBilling: '[Billing] SetDatoFacturacionBilling',
   SetDatosImprimirCreditoBilling: '[Billing] SetDatosImprimirCreditoBilling',
   SetMagBilling: '[Billing] SetMagBilling',
   SetFallecidoBilling: '[Billing] SetFallecidoBilling',
@@ -934,6 +935,7 @@ export const types = {
   SetNumAperturaBilling: '[Billing] SetNumAperturaBilling',
   SetIsCostaPetsBilling: '[Billing] SetIsCostaPetsBilling',
   SetLotesByArticuloBilling: '[Billing] SetLotesByArticuloBilling',
+  SetDatosFacturacionByClienteBilling: '[Billing] SetDatosFacturacionByClienteBilling',
 
   // Buys actions
   buysOpenModelImportarF: '[Buys] Open Model Importar Factura',
