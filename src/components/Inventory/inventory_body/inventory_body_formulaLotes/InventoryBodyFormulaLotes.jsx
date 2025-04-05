@@ -48,7 +48,8 @@ export const InventoryBodyFormulaLotes = () => {
     cantidadDisponibleConvertidorLotes,
     cantidadConvertirConvertidorLotes,
     isLoteFormulaEdit,
-    loteFormulaEdit
+    loteFormulaEdit,
+    listaArticulosDisponiblesConvertidor
   } = useSelector((state) => state.inventory);
 
   useEffect(() => {
@@ -284,6 +285,8 @@ export const InventoryBodyFormulaLotes = () => {
       return;
 
     }
+
+    //TODO: Validar que la cantidad de lote seleccionado no supere al permitido    
 
     const requestConvertir = {
       idArticuloPrincipal: inventory.codigo,

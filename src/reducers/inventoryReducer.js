@@ -148,6 +148,7 @@ const initialState = {
     loteFormulaEdit: {},
     cantidadDisponibleConvertidorLotes: 0,
     cantidadConvertirConvertidorLotes: 0,
+    listaArticulosDisponiblesConvertidor: [],
     inventory: {
         codigo: null,
         cod_Articulo: null,
@@ -1323,6 +1324,7 @@ export const InventoryReducer = (state = initialState, action) => {
                 loteFormulaEdit: {},
                 cantidadDisponibleConvertidorLotes: 0,
                 cantidadConvertirConvertidorLotes: 0,
+                listaArticulosDisponiblesConvertidor: [],
                 relatedArticles: {
                     codigo: '',
                     cod_Articulo: '',
@@ -2517,6 +2519,12 @@ export const InventoryReducer = (state = initialState, action) => {
             return {
                 ...state,
                 cantidadConvertirConvertidorLotes: action.payload
+            }
+
+        case types.SetListaArticulosDisponiblesConvertidorLotesIntentory:
+            return {
+                ...state,
+                listaArticulosDisponiblesConvertidor: action.payload
             }
             
 

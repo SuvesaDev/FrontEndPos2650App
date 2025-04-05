@@ -2184,7 +2184,8 @@ export const startCalculateCantidadDisponiblesConvertidorLotesInventory = ( requ
             });
     
             //Call end-point 
-            const { data } = await suvesaApi.post(`/CalculadoraProduccionLotes/CalculadoraCantidadesObtenerLote`, requestCalcular);
+            // const { data } = await suvesaApi.post(`/CalculadoraProduccionLotes/CalculadoraCantidadesObtenerLote`, requestCalcular);
+            const { data } = await suvesaApi.post(`/CalculadoraProduccionLotes/NuevoCalculadoraCantidadesObtenerLote`, requestCalcular);
             const { status, responses } = data;
             
             // Cerrar modal
@@ -2192,9 +2193,11 @@ export const startCalculateCantidadDisponiblesConvertidorLotesInventory = ( requ
 
             if( status === 0 ) {
                 
-                // Insertar en el state
-                dispatch( SetCantidadDisponiblesConvertidorLotesIntentory( responses ) );
+                const { cantidad, articulosDisponibles } = responses;
 
+                // Insertar en el state
+                dispatch( SetCantidadDisponiblesConvertidorLotesIntentory( cantidad ) );
+                dispatch( SetListaArticulosDisponiblesConvertidorLotesIntentory( articulosDisponibles ) );
 
             } else {
     
@@ -3678,5 +3681,10 @@ export const SetCantidadDisponiblesConvertidorLotesIntentory = (value) => ({
 
 export const SetCantidadConvertirConvertidorLotesIntentory = (value) => ({
     type: types.SetCantidadConvertirConvertidorLotesIntentory,
+    payload: value
+})
+
+export const SetListaArticulosDisponiblesConvertidorLotesIntentory = (value) => ({
+    type: types.SetListaArticulosDisponiblesConvertidorLotesIntentory,
     payload: value
 })
