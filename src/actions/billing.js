@@ -1999,7 +1999,7 @@ export const startGetLotesByArticle = (codigoPrincipal, number, activeLoading = 
     return async ( dispatch ) => {
     
         try {
-
+            
             if( activeLoading ) {
                 //Mostrar el loading
                 Swal.fire({
@@ -2037,9 +2037,11 @@ export const startGetLotesByArticle = (codigoPrincipal, number, activeLoading = 
                 
                 const loteProximoVencer = obtenerLoteProximoVencer(lotes);
 
-                dispatch( SetLotesByArticuloBilling({ value: lotes, number }) );
-                dispatch( SetIdLoteDetalleActualBilling({ value: loteProximoVencer.id, number }) );
-                dispatch( SetNombreLoteDetalleActualBilling({ value: loteProximoVencer.lote, number }) );
+                if( loteProximoVencer != null ) {
+                    dispatch( SetLotesByArticuloBilling({ value: lotes, number }) );
+                    dispatch( SetIdLoteDetalleActualBilling({ value: loteProximoVencer.id, number }) );
+                    dispatch( SetNombreLoteDetalleActualBilling({ value: loteProximoVencer.lote, number }) );
+                }                
 
             } else {
                 //Caso contrario respuesta incorrecto mostrar mensaje de error
@@ -2390,6 +2392,16 @@ const obtenerLoteProximoVencer = (lotes) => {
         .map(fecha => new Date(fecha))
         .filter(fecha => fecha >= hoy);
 
+    if( futuras.length == 0 ) {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Advertencia',
+            text: 'No existen lotes activos para este articulo'
+        });
+
+        return null;
+    }
+    
     const fechaProximaVencer = futuras.length > 0 ? futuras.reduce((a, b) => a < b ? a : b).toISOString().split('T')[0] : null;
 
     return lotes.find( lot => lot.vencimiento == fechaProximaVencer);

@@ -476,7 +476,7 @@ export const BillingHeaderCustomer = () => {
                                         ? (billings[numberScreen].datosFacturacionByCliente.length === 0)
                                             ? <option value=''></option>
                                             : billings[numberScreen].datosFacturacionByCliente.map(datoFacturacion => {
-                                                return <option key={datoFacturacion.id} value={datoFacturacion.Id}> {datoFacturacion.sucursal} - {datoFacturacion.nombreComercial} </option>
+                                                return <option key={datoFacturacion.id} value={datoFacturacion.id}> {datoFacturacion.sucursal} - {datoFacturacion.nombreComercial} </option>
                                             })
                                         : <option value=''></option>
                                     : <option value=''></option>
