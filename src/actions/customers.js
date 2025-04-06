@@ -437,7 +437,7 @@ export const startGetOneCustomer = ( idCliente ) => {
                     ordenCompra: responses.ordenCompra,
                     estado: responses.estado
                 };
-                console.log(searchCustomer)
+                
                 // Se ingresa el cliente
                 dispatch(SelectedSearchCustomers( searchCustomer ));
 

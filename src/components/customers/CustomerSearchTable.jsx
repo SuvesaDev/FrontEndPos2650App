@@ -44,6 +44,7 @@ import {
     SetSinRestriccionBilling,
     SetTelefonoBilling,
     startSearchCartaExoneracion,
+    startSearchCustomerFacturacion,
 } from '../../actions/billing';
 
 import {
@@ -134,89 +135,13 @@ export const CustomerSearchTable = ({ columns, data }) => {
             }
 
             //Buscar cliente desde Facturacion
-            // Se obtiene el cliente seleccionado
-            const {
-                identificacion,
-                nombre,
-                cedula,
-                observaciones,
-                telefono_01,
-                direccion,
-                correoComprobante,
-                idTipoIdentificacion,
-                agente,
-                e_Mail,
-                actualizado,
-                fallecido,
-                enviarRecibo,
-                correoRecibo,
-                tipoprecio,
-                descuentoEspecial,
-                mag,
-                anulado,
-                abierto,
-                cliente_Moroso,
-                ordenCompra,
-                sinrestriccion
-            } = customer;
+            dispatch( startSearchCustomerFacturacion(cedula, numberScreen) );
 
-            const customerEditBilling = {
-                identificacion: identificacion,
-                idTipoCliente: idTipoIdentificacion,
-                telefono: telefono_01,
-                direccion: direccion,
-                correocuentas: e_Mail,
-                correoFacturacion: correoComprobante,
-                agente: agente,
-                actualizado: actualizado,
-                fallecido: fallecido,
-                enviaRecibo: enviarRecibo,
-                correoRecibo: correoRecibo,
-                tipoPrecio: tipoprecio,
-                descuentoEspcial: descuentoEspecial,
-                inactivo: anulado,
-                mag: mag,
-                abierto: abierto
-            }
+            //Cerrar el modal
+            dispatch(CloseSearchModalCustomers());
 
-            await dispatch(startSearchCartaExoneracion(cedula, numberScreen));
-
-            // Se establece la cedula, tipoCliente y nombre del cliente
-            dispatch(SetCedulaUsuarioBilling({ value: cedula, number: numberScreen }));
-            dispatch(SetIdTipoClienteBilling({ value: idTipoIdentificacion, number: numberScreen }));
-            dispatch(SetNombreClienteBilling({ value: nombre, number: numberScreen }));
-
-            // Se establece el telefono, direccion, correo comprobantes
-            dispatch(SetTelefonoBilling({ value: telefono_01, number: numberScreen }));
-            dispatch(SetDireccionBilling({ value: direccion, number: numberScreen }));
-            dispatch(SetCorreoComprobantesBilling({ value: correoComprobante, number: numberScreen }));
-
-            // Se establece el MAG, Fallecido, Actualizado
-            dispatch(SetMagBilling({ value: mag, number: numberScreen }));
-            dispatch(SetFallecidoBilling({ value: fallecido, number: numberScreen }));
-            dispatch(SetActualizadoBilling({ value: actualizado, number: numberScreen }));
-
-            // Se establece Cliente Moroso, ObligaOrdenCompra, SinRestriccion
-            dispatch(SetClienteMorosoBilling({ value: cliente_Moroso, number: numberScreen }));
-            dispatch(SetObligaOrdenCompraBilling({ value: ordenCompra, number: numberScreen }));
-            dispatch(SetSinRestriccionBilling({ value: sinrestriccion, number: numberScreen }));
-
-            // Se establece el customer Edit , HasCustomerBilling
-            dispatch(SetCustomerEditBilling({ value: customerEditBilling, number: numberScreen }));
-            dispatch(hasCustomerBilling({ value: true, number: numberScreen }));
-
-            // Se establece el CodCliente
-            dispatch(SetCodClienteBilling({ value: identificacion, number: numberScreen }));
-
-            // Se establece HasHeader, OpenSearchCustomerBilling y IsEnableActiveCredito
-            dispatch(hasHeader({ value: true, number: numberScreen }));
-            dispatch(OpenSearchCustomerBilling({ value: false, number: numberScreen }));
-            dispatch(SetIsEnableActiveCreditoBilling({ value: abierto, number: numberScreen }));
-
-           //Cerrar el modal
-           dispatch(CloseSearchModalCustomers());
-           //Clean el state de busqueda
-           dispatch(CleanSearchCustomers());
+            //Clean el state de busqueda
+            dispatch(CleanSearchCustomers());
 
         } else if (openSearchCustomerModalDE) {
 
