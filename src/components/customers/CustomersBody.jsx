@@ -7,23 +7,24 @@ import { FaIdCard, FaUser, FaPersonCircleQuestion, } from "react-icons/fa6";
 import {
   SetCedulaCustomers,
   SetNombreCustomers,
-  SetNombreFantasiaCustomers,
   SetObservacionesCustomers,
   SetTipoClienteCustomers,
   startSearchCustomerHacienda,
 } from "../../actions/customers";
+
 import { CustomersBodyTabs } from "./customersBody/CustomersBodyTabs";
 import { CustomersBodyCreditoDescuento } from "./customersBody/CustomersBodyCreditoDescuento";
 import { CustomersBodyDatosGenerales } from "./customersBody/CustomersBodyDatosGenerales";
 import { CustomersBodyCartaExoneracion } from "./customersBody/CustomersBodyCartaExoneracion";
 import { CustomersBodyAdjuntos } from "./customersBody/CustomersBodyAdjuntos";
+import { CustomersBodyDatosFacturacion } from "./customersBody/CustomersBodyDatosFacturacion";
 
 export const CustomersBody = () => {
 
   const dispatch = useDispatch();
 
   const { customer, disableInputs, currentTabCustomers } = useSelector((state) => state.customers);
-  const { nombre, cedula, observaciones, tipoCliente, nombreFantasia} = customer;
+  const { nombre, cedula, observaciones, tipoCliente} = customer;
 
   const { auth } = useSelector((state) => state.login);
   const { costaPets } = auth;
@@ -41,6 +42,9 @@ export const CustomersBody = () => {
 
       case "Adjuntos":
         return <CustomersBodyAdjuntos />;
+
+      case "DatosFacturacion":
+        return <CustomersBodyDatosFacturacion />;
 
       default:
         break;
@@ -167,30 +171,6 @@ export const CustomersBody = () => {
                         <option value="4">DIMEX</option>
                         </select>
                     </div>
-                </div>
-              : null
-            }
-
-            {
-              costaPets
-                ? <div className="col-md-3 mb-3">
-                  <h5>Nombre Fantasía</h5>
-                  <div className="input-group">
-                    <span className="input-group-text">
-                      <FaUser className="iconSize" />
-                    </span>
-                    <input
-                      type="text"
-                      name="nombre"
-                      className="form-control"
-                      disabled={disableInputs}
-                      value={nombreFantasia}
-                      placeholder="Nombre del Cliente Fantasía"
-                      onChange={(e) =>
-                        handleInputChangeWithDispatch(e, SetNombreFantasiaCustomers)
-                      }
-                    />
-                  </div>
                 </div>
               : null
             }

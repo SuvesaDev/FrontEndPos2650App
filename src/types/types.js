@@ -473,6 +473,7 @@ export const types = {
   SetEditLotesFormulaInventory: '[Inventory] SetEditLotesFormulaInventory',
   SetCantidadDisponiblesConvertidorLotesIntentory : '[Inventory] SetCantidadDisponiblesConvertidorLotesIntentory',
   SetCantidadConvertirConvertidorLotesIntentory: '[Inventory] SetCantidadConvertirConvertidorLotesIntentory',
+  SetListaArticulosDisponiblesConvertidorLotesIntentory: '[Inventory] SetListaArticulosDisponiblesConvertidorLotesIntentory',
 
   // Customers actions
   SelectTabCustomers: '[Customers] SelectTabCustomers',
@@ -534,6 +535,20 @@ export const types = {
   SetAddAdjuntoCustomers: '[Customers] SetAddAdjuntoCustomers',
   SetDeleteAdjuntoCustomers: '[Customers] SetDeleteAdjuntoCustomers',
   SetAdjuntoCustomers: '[Customers] SetAdjuntoCustomers',
+  SetSeletedAdjuntoCustomers: '[Customers] SetSeletedAdjuntoCustomers',
+
+  SetVariasSurcursalesCustomers: '[Customers] SetVariasSurcursalesCustomers',
+  SetSucursalDatosFacturacionCustomers: '[Customers] SetSucursalDatosFacturacionCustomers',
+  SetnombreFantasiaDatosFacturacionCustomers: '[Customers] SetnombreFantasiaDatosFacturacionCustomers',
+  SetTelefonoDatosFacturacionCustomers: '[Customers] SetTelefonoDatosFacturacionCustomers',
+  SetCorreoDatosFacturacionCustomers: '[Customers] SetCorreoDatosFacturacionCustomers',
+  SetContactoDatosFacturacionCustomers: '[Customers] SetContactoDatosFacturacionCustomers',
+  SetAddDatosFacturacionCustomers: '[Customers] SetAddDatosFacturacionCustomers',
+  CleanDatosFacturacionCustomers: '[Customers] CleanDatosFacturacionCustomers',
+  SetIsEditDatosFacturacionCustomers: '[Customers] SetIsEditDatosFacturacionCustomers',
+  SetIdEditDatosFacturacionCustomers: '[Customers] SetIdEditDatosFacturacionCustomers',
+  SetEditDatosFacturacionCustomers: '[Customers] SetEditDatosFacturacionCustomers',
+  SetDeleteDatosFacturacionCustomers: '[Customers] SetDeleteDatosFacturacionCustomers',
 
   // Carta Exoneracion Actions
   SetMotivoCartaExoneracion: '[CartaExoneracion] SetMotivoCartaExoneracion',
@@ -819,6 +834,7 @@ export const types = {
   SetFichaBilling: '[Billing] SetFichaBilling',
   SetPreventaBilling: '[Billing] SetPreventaBilling',
   SetUsuarioBilling: '[Billing] SetUsuarioBilling',
+  SetDatoFacturacionBilling: '[Billing] SetDatoFacturacionBilling',
   SetDatosImprimirCreditoBilling: '[Billing] SetDatosImprimirCreditoBilling',
   SetMagBilling: '[Billing] SetMagBilling',
   SetFallecidoBilling: '[Billing] SetFallecidoBilling',
@@ -920,6 +936,7 @@ export const types = {
   SetNumAperturaBilling: '[Billing] SetNumAperturaBilling',
   SetIsCostaPetsBilling: '[Billing] SetIsCostaPetsBilling',
   SetLotesByArticuloBilling: '[Billing] SetLotesByArticuloBilling',
+  SetDatosFacturacionByClienteBilling: '[Billing] SetDatosFacturacionByClienteBilling',
 
   // Buys actions
   buysOpenModelImportarF: '[Buys] Open Model Importar Factura',
@@ -2067,6 +2084,28 @@ export const types = {
   SetNameUserFarmacy: "[Farmacy] SetNameUserFarmacy",
   SetDisablePasswordFarmacy: "[Farmacy] SetDisablePasswordFarmacy",
   //---------------------------------------------->FIN Farmacia Page
+
+  // Familias Action
+  SetAllFamiliasFamily: "[Family] SetAllFamiliasFamily",
+  SetCodigoFamiliaFamiliasFamily: "[Family] SetCodigoFamiliaFamiliasFamily",
+  SetDescripcionFamiliaFamiliasFamily: "[Family] SetDescripcionFamiliaFamiliasFamily",
+  SetObservacionesFamiliaFamiliasFamily: "[Family] SetObservacionesFamiliaFamiliasFamily",
+  SetIsCreateFamiliasFamily: "[Family] SetIsCreateFamiliasFamily",
+  SetClosingModalFamiliasFamily: "[Family] SetClosingModalFamiliasFamily",
+  CleanFamiliaFamiliasFamily: "[Family] CleanFamiliaFamiliasFamily",
+
+  SetSubFamiliasFamiliasFamily: "[Family] SetSubFamiliasFamiliasFamily",
+  SetIsSeletedFamiliasFamily: "[Family] SetIsSeletedFamiliasFamily",
+  SetCodigoSeletedFamiliasFamily: "[Family] SetCodigoSeletedFamiliasFamily",
+  SetCodigoSubFamiliaFamiliasFamily: "[Family] SetCodigoSubFamiliaFamiliasFamily",
+  SetDescripcionSubFamiliaFamiliasFamily: "[Family] SetDescripcionSubFamiliaFamiliasFamily",
+  SetObservacionesSubFamiliaFamiliasFamily: "[Family] SetObservacionesSubFamiliaFamiliasFamily",
+  SetIsCreateSubFamiliasFamily: "[Family] SetIsCreateSubFamiliasFamily",
+  SetClosingModalSubFamiliasFamily: "[Family] SetClosingModalSubFamiliasFamily",
+  SetIdSubFamiliasSeletedFamily: "[Family] SetIdSubFamiliasSeletedFamily",
+  CleanSubFamiliaFamiliasFamily: "[Family] CleanSubFamiliaFamiliasFamily",
+
+  CleanFamiliasFamily: "[Family] CleanFamiliasFamily",
 
 
 }

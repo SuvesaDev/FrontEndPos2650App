@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { SiHappycow } from 'react-icons/si';
 import { AiFillFileAdd, AiFillEdit } from 'react-icons/ai';
 import { RiFileEditFill, RiMailAddFill } from 'react-icons/ri';
-import { FaEnvelope, FaSearch, FaUser } from 'react-icons/fa';
+import { FaEnvelope, FaSearch, FaUser, FaStoreAlt } from 'react-icons/fa';
 import { FaBuilding, FaI, FaIdCard, FaLocationDot, FaMapLocationDot, FaPhone } from "react-icons/fa6";
 
 import {
@@ -27,7 +27,8 @@ import {
     startGetCorreosComprobanteFacturacion,
     startSearchCustomerFacturacion,
     startSearchCustomerMAG,
-    SetEmpresaBilling
+    SetEmpresaBilling,
+    SetDatoFacturacionBilling
 } from '../../actions/billing';
 
 import { BillingAddCustomerModal } from './BillingAddCustomerModal';
@@ -444,6 +445,44 @@ export const BillingHeaderCustomer = () => {
                             }
                             onChange={e => handleInputChangeWithDispatch(e, SetDireccionBilling)}
                         />
+                    </div>
+                </div>
+
+                <div className={ (billings[numberScreen] !== undefined) ? (billings[numberScreen].isCostaPets) ? "col-md-4 mb-3" : "col-md-4 mb-3 d-none" :  "col-md-4 mb-3 d-none"}>
+                    <h5>Datos Facturacion</h5>
+                    <div className="input-group">
+                        <span className="input-group-text">
+                            <FaStoreAlt className="iconSize" />
+                        </span>
+                        <select
+                            name="idDatosFacturacion"
+                            className="form-select"
+                            disabled={
+                                (billings[numberScreen] !== undefined)
+                                    ? billings[numberScreen].disableInputsHeader
+                                    : true
+                            }
+                            value={
+                                (billings[numberScreen] !== undefined)
+                                    ? billings[numberScreen].factura.encabezado.idDatoFacturacion
+                                    : ''
+                            }
+                            onChange={e => handleInputChangeWithDispatch(e, SetDatoFacturacionBilling)}
+                        >
+                            <option value={0} selected disabled hidden> Seleccione... </option>
+                            {
+                                (billings[numberScreen] !== undefined)
+                                    ? (billings[numberScreen].datosFacturacionByCliente != null)
+                                        ? (billings[numberScreen].datosFacturacionByCliente.length === 0)
+                                            ? <option value=''></option>
+                                            : billings[numberScreen].datosFacturacionByCliente.map(datoFacturacion => {
+                                                return <option key={datoFacturacion.id} value={datoFacturacion.id}> {datoFacturacion.sucursal} - {datoFacturacion.nombreComercial} </option>
+                                            })
+                                        : <option value=''></option>
+                                    : <option value=''></option>
+                                
+                            }
+                        </select>
                     </div>
                 </div>
 

@@ -1,8 +1,29 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
 import { FamilyFamilia } from './FamilyFamilia';
 import { FamilyIcons } from './FamilyIcons';
 import { FamilySubFamilia } from './FamilySubFamilia';
+import { startGetAllFamilias } from '../../actions/FamiliasAction';
+
+import { FamilyFamiliaModal } from './FamilyFamiliaModal';
+import { SubFamilyFamiliaModal } from './SubFamilyFamiliaModal';
 
 export const FamilyPage = () => {
+
+    const dispatch = useDispatch();
+
+    const { familias } = useSelector((state) => state.familias);
+
+    useEffect(() => {
+        
+        if( familias.length == 0 ) {
+            dispatch( startGetAllFamilias() );
+        }
+      
+        return () => {};
+    }, []);
+
     return (
         <>
             <div className="container-fluid mt-2 text-center">
@@ -25,6 +46,10 @@ export const FamilyPage = () => {
                 </div>
             </div>
             <br />
+
+            <FamilyFamiliaModal />
+
+            <SubFamilyFamiliaModal />
         </>
     )
 }

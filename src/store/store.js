@@ -54,6 +54,7 @@ import { reportsReducer } from '../reducers/reportsReducer';
 import { farmacyReducer } from '../reducers/farmacyReducer';
 import { countswihoutpayReducer } from '../reducers/countswihoutpayReducer';
 import { budgetsReducer } from '../reducers/budgetsReducer';
+import { familiasReducer } from '../reducers/familiasReducer';
 
 const reducers = combineReducers({
     tabs: tabsReducer,
@@ -110,6 +111,7 @@ const reducers = combineReducers({
     collect: CollectReducer,
     reports: reportsReducer,
     farmacy: farmacyReducer,
+    familias: familiasReducer
 });
 
 const composeEnhancers = (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;

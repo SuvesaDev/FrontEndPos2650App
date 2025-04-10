@@ -55,7 +55,23 @@ const initialState = {
     disableDistritos: true,
     sinAgente: false,
     startOpening: false,
-    adjuntos: []
+    adjuntos: [],
+    selectedAdjunto: {
+        nombre: '',
+        type: '',
+        base64: ''
+    },
+    variasSurcursales: false,
+    datosFacturacion : {
+        sucursal: '',
+        nombreFantasia: '',
+        telefono: '',
+        correo: '',
+        contacto: ''
+    },
+    allDatosFacturacion: [],
+    isEditDatosFacturacion: false,
+    idDatoFacturacionEdit: 0
 };
 
 export const CustomersReducer = (state = initialState, action) => {
@@ -409,7 +425,23 @@ export const CustomersReducer = (state = initialState, action) => {
                 disableDistritos: true,
                 sinAgente: false,
                 startOpening: false,
-                adjuntos: []
+                adjuntos: [],
+                selectedAdjunto: {
+                    nombre: '',
+                    type: '',
+                    base64: ''
+                },
+                variasSurcursales: false,
+                datosFacturacion : {
+                    sucursal: '',
+                    nombreFantasia: '',
+                    telefono: '',
+                    correo: '',
+                    contacto: ''
+                },
+                allDatosFacturacion: [],
+                isEditDatosFacturacion: false,
+                idDatoFacturacionEdit: 0
             }
 
         case types.ActiveButtonNewCustomers:
@@ -582,6 +614,120 @@ export const CustomersReducer = (state = initialState, action) => {
             return {
                 ...state,
                 adjuntos: action.payload
+            }
+
+        case types.SetSeletedAdjuntoCustomers:
+            return {
+                ...state,
+                selectedAdjunto: action.payload
+            }
+
+        case types.SetVariasSurcursalesCustomers:
+            return {
+                ...state,
+                variasSurcursales: action.payload
+            }
+
+        case types.SetSucursalDatosFacturacionCustomers:
+            return {
+                ...state,
+                datosFacturacion: {
+                    ...state.datosFacturacion,
+                    sucursal: action.payload
+                }
+            }
+
+        case types.SetnombreFantasiaDatosFacturacionCustomers:
+            return {
+                ...state,
+                datosFacturacion: {
+                    ...state.datosFacturacion,
+                    nombreFantasia: action.payload
+                }
+            }
+
+        case types.SetTelefonoDatosFacturacionCustomers:
+            return {
+                ...state,
+                datosFacturacion: {
+                    ...state.datosFacturacion,
+                    telefono: action.payload
+                }
+            }
+
+        case types.SetCorreoDatosFacturacionCustomers:
+            return {
+                ...state,
+                datosFacturacion: {
+                    ...state.datosFacturacion,
+                    correo: action.payload
+                }
+            }
+
+        case types.SetContactoDatosFacturacionCustomers:
+            return {
+                ...state,
+                datosFacturacion: {
+                    ...state.datosFacturacion,
+                    contacto: action.payload
+                }
+            }
+
+        case types.SetAddDatosFacturacionCustomers:
+            return {
+                ...state,
+                allDatosFacturacion: [
+                    ...state.allDatosFacturacion,
+                    action.payload
+                ]
+            }
+
+        case types.CleanDatosFacturacionCustomers:
+            return {
+                ...state,
+                datosFacturacion : {
+                    sucursal: '',
+                    nombreFantasia: '',
+                    telefono: '',
+                    correo: '',
+                    contacto: ''
+                }
+            }
+
+        case types.SetIsEditDatosFacturacionCustomers:
+            return {
+                ...state,
+                isEditDatosFacturacion: action.payload
+            }
+
+        case types.SetIdEditDatosFacturacionCustomers:
+            return {
+                ...state,
+                idDatoFacturacionEdit: action.payload
+            }
+
+        case types.SetEditDatosFacturacionCustomers:
+            return {
+                ...state,
+                allDatosFacturacion: state.allDatosFacturacion.map(
+                    (dato, i) => dato.id === action.payload.id
+                        ? {
+                            ...dato,
+                            sucursal : action.payload.sucursal,
+                            nombreFantasia : action.payload.nombreFantasia,
+                            telefono : action.payload.telefono,
+                            correo : action.payload.correo,
+                            contacto : action.payload.contacto,
+                        }
+                        : dato)
+            }
+
+        case types.SetDeleteDatosFacturacionCustomers:
+            return {
+                ...state,
+                allDatosFacturacion: state.allDatosFacturacion.filter( 
+                    (dato, i) => dato.id !== action.payload
+                )
             }
     
         default:

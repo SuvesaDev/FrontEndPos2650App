@@ -48,7 +48,8 @@ export const InventoryBodyFormulaLotes = () => {
     cantidadDisponibleConvertidorLotes,
     cantidadConvertirConvertidorLotes,
     isLoteFormulaEdit,
-    loteFormulaEdit
+    loteFormulaEdit,
+    listaArticulosDisponiblesConvertidor
   } = useSelector((state) => state.inventory);
 
   useEffect(() => {
@@ -285,6 +286,23 @@ export const InventoryBodyFormulaLotes = () => {
 
     }
 
+    //TODO: Validar que la cantidad de lote seleccionado no supere al permitido   
+    lotesFormula.forEach(loteFormula => {
+
+      if(!isValidCantidadArticulosFormula(loteFormula.idArticuloFormula)) {
+
+        Swal.fire({
+          icon: "warning",
+          title: "Error",
+          text: `La cantidad selecciona del articulo ${loteFormula.articulo} supera la permitida.`,
+        });
+  
+        return;
+      }
+      
+    });
+
+
     const requestConvertir = {
       idArticuloPrincipal: inventory.codigo,
       convertirCantidad: true,
@@ -323,6 +341,28 @@ export const InventoryBodyFormulaLotes = () => {
     }
 
     return true;
+  }
+
+  const isValidCantidadArticulosFormula = (idArticulo) => {
+
+    let cantidadSeleted = 0;
+
+    // Sacar la cantidad permitidos 
+    const cantidadPermitida = listaArticulosDisponiblesConvertidor.find( articulo => articulo.idArticulo == idArticulo ).cantidad;
+    
+    // Se obtiene la cantidad ingresada
+    lotesFormula.forEach(loteFormula => {
+      if(loteFormula.idArticuloFormula == idArticulo) {
+        cantidadSeleted += loteFormula.cantidad;
+      }
+    });
+
+    if( cantidadSeleted > cantidadPermitida ) {
+      return false;
+    }
+
+    return true;
+
   }
 
   return (

@@ -183,7 +183,8 @@ const initialState = {
             sinrestriccion: false,
             ficha: 0,
             preventa: true,
-            usuario: ''
+            usuario: '',
+            idDatoFacturacion: 0
         },
         detalle: []
     },
@@ -201,7 +202,8 @@ const initialState = {
     isPreventaEdit: false,
     startEditing: false,
     datosImprimirCredito: [],
-    lotesByArticulo: []
+    lotesByArticulo: [],
+    datosFacturacionByCliente: []
 };
 
 export const BillingReducer = (state = initialState, action) => {
@@ -1462,6 +1464,25 @@ export const BillingReducer = (state = initialState, action) => {
                                 encabezado: {
                                     ...state.billings[action.payload.number].factura.encabezado,
                                     usuario: action.payload.value
+                                }
+                            }
+                        }
+                        : billing
+                )
+            }
+
+        case types.SetDatoFacturacionBilling:
+            return {
+                ...state,
+                billings: state.billings.map(
+                    (billing, i) => i === action.payload.number
+                        ? {
+                            ...state.billings[action.payload.number],
+                            factura: {
+                                ...state.billings[action.payload.number].factura,
+                                encabezado: {
+                                    ...state.billings[action.payload.number].factura.encabezado,
+                                    idDatoFacturacion: action.payload.value
                                 }
                             }
                         }
@@ -2804,6 +2825,19 @@ export const BillingReducer = (state = initialState, action) => {
                 )
             }
 
+        case types.SetDatosFacturacionByClienteBilling:
+            return {
+                ...state,
+                billings: state.billings.map(
+                    (billing, i) => i === action.payload.number
+                        ? {
+                            ...state.billings[action.payload.number],
+                            datosFacturacionByCliente: action.payload.value
+                        }
+                        : billing
+                )
+            }
+
         case types.CleanBilling:
             return {
                 ...state,
@@ -2989,7 +3023,8 @@ export const BillingReducer = (state = initialState, action) => {
                                     sinrestriccion: false,
                                     ficha: 0,
                                     preventa: true,
-                                    usuario: ''
+                                    usuario: '',
+                                    idDatoFacturacion: 0
                                 },
                                 detalle: []
                             },
@@ -3006,7 +3041,8 @@ export const BillingReducer = (state = initialState, action) => {
                             searchFicha: '',
                             isPreventaEdit: false,
                             startEditing: false,
-                            lotesByArticulo: []
+                            lotesByArticulo: [],
+                            datosFacturacionByCliente: []
                         }
                         : billing
                 )

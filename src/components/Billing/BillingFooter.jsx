@@ -273,6 +273,7 @@ export const BillingFooter = () => {
                 idSucursal: idSucursal,
                 idEmpresa: ( billings[numberScreen].isCostaPets ) ? "1" : billings[numberScreen].factura.encabezado.empresa,
                 preventa: billings[numberScreen].factura.encabezado.preventa,
+                idClienteSucursal: billings[numberScreen].factura.encabezado.idDatoFacturacion,
                 detalle: billings[numberScreen].factura.detalle.map(detalle => {
                     return {
                         codArticulo: detalle.CodArticulo,
@@ -341,6 +342,7 @@ export const BillingFooter = () => {
             idSucursal: idSucursal,
             idEmpresa: ( billings[numberScreen].isCostaPets ) ? "1" : billings[numberScreen].factura.encabezado.empresa,
             preventa: billings[numberScreen].factura.encabezado.preventa,
+            idClienteSucursal: billings[numberScreen].factura.encabezado.idDatoFacturacion,
             detalle: billings[numberScreen].factura.detalle.map(detalle => {
                 return {
                     idVentaDetalle: (detalle.idVentaDetalle === undefined) ? 0 : detalle.idVentaDetalle,

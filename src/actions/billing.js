@@ -18,10 +18,12 @@ export const startSearchCustomerFacturacion = ( cedula, number, hasCoin = false 
     return async (dispatch) => {
 
         try {
+            
+            let searchCedula = cedula;
 
             if (cedula == "0" || cedula == "") {
-               let cedula = "000000000"
-
+               searchCedula = "000000000"
+            }
             //Mostrar el loading
             Swal.fire({
                 title: 'Por favor, espere buscando cliente',
@@ -33,7 +35,7 @@ export const startSearchCustomerFacturacion = ( cedula, number, hasCoin = false 
                 imageHeight: 100,
             });
             //Call end-point 
-            const { data } = await suvesaApi.post('/cliente/ExisteClienteFacturacion', { cedula });
+            const { data } = await suvesaApi.post('/cliente/ExisteClienteFacturacion', { cedula : searchCedula });
             const { status, responses } = data;
 
             //Quitar el loading
@@ -90,10 +92,14 @@ export const startSearchCustomerFacturacion = ( cedula, number, hasCoin = false 
                         abierto: abierto
                     }
                     
-                    await dispatch( startSearchCartaExoneracion( cedula, number ) );
+                    // Se cargar las cartas de exoneracion
+                    await dispatch( startSearchCartaExoneracion( searchCedula, number ) );
+
+                    // Se cargan los datos de facturacion
+                    await dispatch( startGetDatosFacturacionByCliente( identificacion, number ) );
 
                     // Se establece la cedula, tipoCliente y nombre del cliente
-                    dispatch( SetCedulaUsuarioBilling( { value: cedula, number } ) );
+                    dispatch( SetCedulaUsuarioBilling( { value: searchCedula, number } ) );
                     dispatch( SetIdTipoClienteBilling( { value: idTipoIdentificacion, number } ));
                     dispatch( SetNombreClienteBilling( { value: nombre, number } ));
 
@@ -116,7 +122,7 @@ export const startSearchCustomerFacturacion = ( cedula, number, hasCoin = false 
                     dispatch( SetCustomerEditBilling( { value: customerEditBilling, number } ));
 
                     // Se establece el HasCustomerBilling
-                    if (cedula == "000000000") {
+                    if (searchCedula == "000000000") {
                         dispatch( hasCustomerBilling( { value: true, number } ) );
                     } else {
                         
@@ -179,168 +185,6 @@ export const startSearchCustomerFacturacion = ( cedula, number, hasCoin = false 
                 });
 
             }
-
-        }else{
-
-      //Mostrar el loading
-            Swal.fire({
-                title: 'Por favor, espere buscando cliente',
-                allowEscapeKey: false,
-                allowOutsideClick: false,
-                showConfirmButton: false,
-                imageUrl: loadingImage,
-                customClass: 'alert-class-login',
-                imageHeight: 100,
-            });
-            //Call end-point 
-            const { data } = await suvesaApi.post('/cliente/ExisteClienteFacturacion', { cedula });
-            const { status, responses } = data;
-
-            //Quitar el loading
-            Swal.close();
-
-            if (status === 0) {
-
-                const { nombre, mensaje } = responses;
-
-                if (mensaje === null) {
-
-                    // Se obtiene la data del Usuario
-                    const {
-                        identificacion,
-                        cedula,
-                        idTipoIdentificacion,
-                        observaciones,
-                        telefono01,
-                        direccion,
-                        correoComprobante,
-                        e_Mail,
-                        anulado,
-                        agente,
-                        fallecido,
-                        enviarRecibo,
-                        correoRecibo,
-                        tipoprecio,
-                        descuentoEspecial,
-                        mag,
-                        actualizado,
-                        abierto,
-                        cliente_Moroso,
-                        ordenCompra,
-                        sinrestriccion
-                    } = responses;
-
-                    // Se crea el objeto de Customer
-                    const customerEditBilling = {
-                        identificacion: identificacion,
-                        idTipoCliente: idTipoIdentificacion,
-                        telefono: telefono01,
-                        direccion: direccion,
-                        correocuentas: e_Mail,
-                        correoFacturacion: correoComprobante,
-                        agente: agente,
-                        actualizado: actualizado,
-                        fallecido: fallecido,
-                        enviaRecibo: enviarRecibo,
-                        correoRecibo: correoRecibo,
-                        tipoPrecio: tipoprecio,
-                        descuentoEspcial: descuentoEspecial,
-                        inactivo: anulado,
-                        mag: mag,
-                        abierto: abierto
-                    }
-                    
-                    await dispatch( startSearchCartaExoneracion( cedula, number ) );
-
-                    // Se establece la cedula, tipoCliente y nombre del cliente
-                    dispatch( SetCedulaUsuarioBilling( { value: cedula, number } ) );
-                    dispatch( SetIdTipoClienteBilling( { value: idTipoIdentificacion, number } ));
-                    dispatch( SetNombreClienteBilling( { value: nombre, number } ));
-
-                    // Se establece el telefono, direccion, correo comprobantes
-                    dispatch( SetTelefonoBilling( { value: telefono01, number } ));
-                    dispatch( SetDireccionBilling( { value: direccion, number } ));
-                    dispatch( SetCorreoComprobantesBilling( { value: correoComprobante, number } ));
-
-                    // Se establece el MAG, Fallecido, Actualizado
-                    dispatch( SetMagBilling( { value: mag, number } ));
-                    dispatch( SetFallecidoBilling( { value: fallecido, number } ));
-                    dispatch( SetActualizadoBilling( { value: actualizado, number } ));
-
-                    // Se establece Cliente Moroso, ObligaOrdenCompra, SinRestriccion
-                    dispatch( SetClienteMorosoBilling( { value: cliente_Moroso, number } ));
-                    dispatch( SetObligaOrdenCompraBilling( { value: ordenCompra, number } ));
-                    dispatch( SetSinRestriccionBilling( { value: sinrestriccion, number } ));
-
-                    // Se establece el customer Edit
-                    dispatch( SetCustomerEditBilling( { value: customerEditBilling, number } ));
-
-                    // Se establece el HasCustomerBilling
-                    if (cedula == "000000000") {
-                        dispatch( hasCustomerBilling( { value: true, number } ) );
-                    } else {
-                        
-                        dispatch( hasCustomerBilling( { value: true, number } ) );
-
-                        if( hasCoin ) {
-                            dispatch( SetEnableItemsBilling( { value: true, number } ) );
-                        }
-                    }
-
-                    // Se establece el CodCliente
-                    dispatch( SetCodClienteBilling( { value: identificacion, number } ));
-
-                    // Se establece HasHeader, OpenSearchCustomerBilling y IsEnableActiveCredito
-                    dispatch( hasHeader( { value: true, number } ));
-                    dispatch( OpenSearchCustomerBilling( { value: false, number } ));
-                    dispatch( SetIsEnableActiveCreditoBilling( { value: abierto, number } ));
-
-                } else {
-                    
-                    //Mostrar un mensaje de confirmacion
-                    Swal.fire({
-                        title: `El cliente ${nombre} no esta registrado. ¿Desea agregar el cliente?`,
-                        showDenyButton: true,
-                        showCancelButton: false,
-                        confirmButtonText: 'Agregar',
-                        denyButtonText: `Cancelar`,
-                    }).then(async (result) => {
-
-                        if (result.isConfirmed) {
-
-                            const {
-                                cedula,
-                                idTipoIdentificacion,
-                                nombre
-                            } = responses;
-
-                            // Se levanta el modal
-                            dispatch( OpenModalAddCustomer( { number } ));
-
-                            // Se establece datos de cliente
-                            dispatch( SetIdTipoClienteClienteFacturacionBilling( { value: idTipoIdentificacion, number } ));
-                            dispatch( SetCedulaClienteFacturacionBilling( { value: cedula, number } ));
-                            dispatch( SetNombreClienteFacturacionBilling( { value: nombre, number } ));
-                        }
-
-                    });
-
-                }
-
-            } else {
-                //Caso contrario respuesta incorrecto mostrar mensaje de error
-                const { currentException } = data;
-                const msj = currentException.split(',');
-
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: (currentException.includes(',')) ? msj[3] : currentException,
-                });
-
-            }
-
-        }
 
 
         } catch (error) {
@@ -2155,7 +1999,7 @@ export const startGetLotesByArticle = (codigoPrincipal, number, activeLoading = 
     return async ( dispatch ) => {
     
         try {
-
+            
             if( activeLoading ) {
                 //Mostrar el loading
                 Swal.fire({
@@ -2193,9 +2037,11 @@ export const startGetLotesByArticle = (codigoPrincipal, number, activeLoading = 
                 
                 const loteProximoVencer = obtenerLoteProximoVencer(lotes);
 
-                dispatch( SetLotesByArticuloBilling({ value: lotes, number }) );
-                dispatch( SetIdLoteDetalleActualBilling({ value: loteProximoVencer.id, number }) );
-                dispatch( SetNombreLoteDetalleActualBilling({ value: loteProximoVencer.lote, number }) );
+                if( loteProximoVencer != null ) {
+                    dispatch( SetLotesByArticuloBilling({ value: lotes, number }) );
+                    dispatch( SetIdLoteDetalleActualBilling({ value: loteProximoVencer.id, number }) );
+                    dispatch( SetNombreLoteDetalleActualBilling({ value: loteProximoVencer.lote, number }) );
+                }                
 
             } else {
                 //Caso contrario respuesta incorrecto mostrar mensaje de error
@@ -2237,6 +2083,70 @@ export const startGetLotesByArticle = (codigoPrincipal, number, activeLoading = 
                     icon: 'error',
                     title: 'Error',
                     text: 'Ocurrio un problema al obtener el stock del lote',
+                });
+            }
+        }
+
+    }
+
+}
+
+export const startGetDatosFacturacionByCliente = (idCliente, number,) => {
+
+    return async ( dispatch ) => {
+    
+        try {
+
+            //Mostrar el loading
+            Swal.fire({
+                title: 'Por favor, espere',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                imageUrl: loadingImage,
+                customClass: 'alert-class-login',
+                imageHeight: 100,
+            });
+                    
+            //Call end-point 
+            const { data } = await suvesaApi.get(`/cliente/ObtenerDatosFacturacionCliente?idCliente=${idCliente}`);
+            const { status, responses } = data;
+
+            //Quitar el loading
+            Swal.close();
+
+            if( status === 0) {
+                
+                dispatch( SetDatosFacturacionByClienteBilling({ value: responses, number }) );
+
+            } else {
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
+                
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
+                
+            }
+            
+        } catch (error) {
+            
+            Swal.close();
+            console.log(error);
+            if( error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al obtener los datos facturacion del cliente',
                 });
             }
         }
@@ -2482,6 +2392,16 @@ const obtenerLoteProximoVencer = (lotes) => {
         .map(fecha => new Date(fecha))
         .filter(fecha => fecha >= hoy);
 
+    if( futuras.length == 0 ) {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Advertencia',
+            text: 'No existen lotes activos para este articulo'
+        });
+
+        return null;
+    }
+    
     const fechaProximaVencer = futuras.length > 0 ? futuras.reduce((a, b) => a < b ? a : b).toISOString().split('T')[0] : null;
 
     return lotes.find( lot => lot.vencimiento == fechaProximaVencer);
@@ -2885,6 +2805,11 @@ export const SetPreventaBilling = (value) => ({
 
 export const SetUsuarioBilling = (value) => ({
     type: types.SetUsuarioBilling,
+    payload: value
+})
+
+export const SetDatoFacturacionBilling = (value) => ({
+    type: types.SetDatoFacturacionBilling,
     payload: value
 })
 
@@ -3345,5 +3270,10 @@ export const SetIsCostaPetsBilling = (value) => ({
 
 export const SetLotesByArticuloBilling = (value) => ({
     type: types.SetLotesByArticuloBilling,
+    payload: value
+})
+
+export const SetDatosFacturacionByClienteBilling = (value) => ({
+    type: types.SetDatosFacturacionByClienteBilling,
     payload: value
 })

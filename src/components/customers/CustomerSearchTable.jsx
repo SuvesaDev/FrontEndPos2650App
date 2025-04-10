@@ -19,7 +19,8 @@ import {
     SetStartOpeningCustomers,
     startGetAdjuntosCustomer,
     startGetAllCantones,
-    startGetAllDistritos
+    startGetAllDistritos,
+    startGetOneCustomer
 } from '../../actions/customers';
 
 import {
@@ -43,6 +44,7 @@ import {
     SetSinRestriccionBilling,
     SetTelefonoBilling,
     startSearchCartaExoneracion,
+    startSearchCustomerFacturacion,
 } from '../../actions/billing';
 
 import {
@@ -122,7 +124,8 @@ export const CustomerSearchTable = ({ columns, data }) => {
     const handleSelectedRow = async (cell) => {
 
         //Buscar en el listado obtener el cliente
-        const { cedula, nombre, telefono_01 } = cell.row.values;
+        
+        const { identificacion, cedula, nombre, telefono_01 } = cell.row.original;
         const customer = data.find(customer => customer.cedula === cedula && customer.nombre === nombre && customer.telefono_01 === telefono_01);
 
         if (billings[numberScreen] !== undefined) {
@@ -132,89 +135,13 @@ export const CustomerSearchTable = ({ columns, data }) => {
             }
 
             //Buscar cliente desde Facturacion
-            // Se obtiene el cliente seleccionado
-            const {
-                identificacion,
-                nombre,
-                cedula,
-                observaciones,
-                telefono_01,
-                direccion,
-                correoComprobante,
-                idTipoIdentificacion,
-                agente,
-                e_Mail,
-                actualizado,
-                fallecido,
-                enviarRecibo,
-                correoRecibo,
-                tipoprecio,
-                descuentoEspecial,
-                mag,
-                anulado,
-                abierto,
-                cliente_Moroso,
-                ordenCompra,
-                sinrestriccion
-            } = customer;
+            dispatch( startSearchCustomerFacturacion(cedula, numberScreen) );
 
-            const customerEditBilling = {
-                identificacion: identificacion,
-                idTipoCliente: idTipoIdentificacion,
-                telefono: telefono_01,
-                direccion: direccion,
-                correocuentas: e_Mail,
-                correoFacturacion: correoComprobante,
-                agente: agente,
-                actualizado: actualizado,
-                fallecido: fallecido,
-                enviaRecibo: enviarRecibo,
-                correoRecibo: correoRecibo,
-                tipoPrecio: tipoprecio,
-                descuentoEspcial: descuentoEspecial,
-                inactivo: anulado,
-                mag: mag,
-                abierto: abierto
-            }
+            //Cerrar el modal
+            dispatch(CloseSearchModalCustomers());
 
-            await dispatch(startSearchCartaExoneracion(cedula, numberScreen));
-
-            // Se establece la cedula, tipoCliente y nombre del cliente
-            dispatch(SetCedulaUsuarioBilling({ value: cedula, number: numberScreen }));
-            dispatch(SetIdTipoClienteBilling({ value: idTipoIdentificacion, number: numberScreen }));
-            dispatch(SetNombreClienteBilling({ value: nombre, number: numberScreen }));
-
-            // Se establece el telefono, direccion, correo comprobantes
-            dispatch(SetTelefonoBilling({ value: telefono_01, number: numberScreen }));
-            dispatch(SetDireccionBilling({ value: direccion, number: numberScreen }));
-            dispatch(SetCorreoComprobantesBilling({ value: correoComprobante, number: numberScreen }));
-
-            // Se establece el MAG, Fallecido, Actualizado
-            dispatch(SetMagBilling({ value: mag, number: numberScreen }));
-            dispatch(SetFallecidoBilling({ value: fallecido, number: numberScreen }));
-            dispatch(SetActualizadoBilling({ value: actualizado, number: numberScreen }));
-
-            // Se establece Cliente Moroso, ObligaOrdenCompra, SinRestriccion
-            dispatch(SetClienteMorosoBilling({ value: cliente_Moroso, number: numberScreen }));
-            dispatch(SetObligaOrdenCompraBilling({ value: ordenCompra, number: numberScreen }));
-            dispatch(SetSinRestriccionBilling({ value: sinrestriccion, number: numberScreen }));
-
-            // Se establece el customer Edit , HasCustomerBilling
-            dispatch(SetCustomerEditBilling({ value: customerEditBilling, number: numberScreen }));
-            dispatch(hasCustomerBilling({ value: true, number: numberScreen }));
-
-            // Se establece el CodCliente
-            dispatch(SetCodClienteBilling({ value: identificacion, number: numberScreen }));
-
-            // Se establece HasHeader, OpenSearchCustomerBilling y IsEnableActiveCredito
-            dispatch(hasHeader({ value: true, number: numberScreen }));
-            dispatch(OpenSearchCustomerBilling({ value: false, number: numberScreen }));
-            dispatch(SetIsEnableActiveCreditoBilling({ value: abierto, number: numberScreen }));
-
-           //Cerrar el modal
-           dispatch(CloseSearchModalCustomers());
-           //Clean el state de busqueda
-           dispatch(CleanSearchCustomers());
+            //Clean el state de busqueda
+            dispatch(CleanSearchCustomers());
 
         } else if (openSearchCustomerModalDE) {
 
@@ -252,90 +179,91 @@ export const CustomerSearchTable = ({ columns, data }) => {
         } else {
 
             // Busca cliente desde la pantalla de clientes
-
+            dispatch( startGetOneCustomer( identificacion ) );
+            
             // Transforma el objeto JSON
-            const searchCustomer = {
-                identificacion: customer.identificacion,
-                nombre: customer.nombre,
-                nombreFantasia: customer.nombreFantasia,
-                cedula: customer.cedula,
-                observaciones: customer.observaciones,
-                telefono: customer.telefono_01,
-                fax: customer.fax_01,
-                provincia: customer.idProvincia,
-                canton: customer.idCanton,
-                distrito: customer.idDistrito,
-                direccion: customer.direccion,
-                correocuentas: customer.e_Mail,
-                correoFacturacion: customer.correoComprobante,
-                tipoCliente: customer.idTipoIdentificacion,
-                agente: customer.agente,
-                actualizado: customer.actualizado,
-                fallecido: customer.fallecido,
-                enviaRecibo: customer.enviarRecibo,
-                correoRecibo: customer.correoRecibo,
-                tipoPrecio: customer.tipoprecio,
-                descuentoEspcial: customer.descuentoEspecial,
-                inactivo: customer.anulado,
-                mag: customer.mag,
-                abierto: customer.abierto,
-                codMonedaCredito: customer.codMonedaCredito,
-                plazoCredito: customer.plazo_Credito,
-                maxCredito: customer.max_Credito,
-                descuento: customer.descuento,
-                empresa: customer.empresa,
-                sinrestriccion: customer.sinrestriccion,
-                clienteMoroso: customer.cliente_Moroso,
-                ordenCompra: customer.ordenCompra,
-                estado: customer.estado
-            };
+            // const searchCustomer = {
+            //     identificacion: customer.identificacion,
+            //     nombre: customer.nombre,
+            //     nombreFantasia: customer.nombreFantasia,
+            //     cedula: customer.cedula,
+            //     observaciones: customer.observaciones,
+            //     telefono: customer.telefono_01,
+            //     fax: customer.fax_01,
+            //     provincia: customer.idProvincia,
+            //     canton: customer.idCanton,
+            //     distrito: customer.idDistrito,
+            //     direccion: customer.direccion,
+            //     correocuentas: customer.e_Mail,
+            //     correoFacturacion: customer.correoComprobante,
+            //     tipoCliente: customer.idTipoIdentificacion,
+            //     agente: customer.agente,
+            //     actualizado: customer.actualizado,
+            //     fallecido: customer.fallecido,
+            //     enviaRecibo: customer.enviarRecibo,
+            //     correoRecibo: customer.correoRecibo,
+            //     tipoPrecio: customer.tipoprecio,
+            //     descuentoEspcial: customer.descuentoEspecial,
+            //     inactivo: customer.anulado,
+            //     mag: customer.mag,
+            //     abierto: customer.abierto,
+            //     codMonedaCredito: customer.codMonedaCredito,
+            //     plazoCredito: customer.plazo_Credito,
+            //     maxCredito: customer.max_Credito,
+            //     descuento: customer.descuento,
+            //     empresa: customer.empresa,
+            //     sinrestriccion: customer.sinrestriccion,
+            //     clienteMoroso: customer.cliente_Moroso,
+            //     ordenCompra: customer.ordenCompra,
+            //     estado: customer.estado
+            // };
 
-            // Se obtiene los adjuntos del cliente
-            dispatch( startGetAdjuntosCustomer( customer.identificacion ) );
+            // // Se obtiene los adjuntos del cliente
+            // dispatch( startGetAdjuntosCustomer( customer.identificacion ) );
 
-            //seleccionarlo y meterlo al estado
-            dispatch(SelectedSearchCustomers(searchCustomer));
+            // //seleccionarlo y meterlo al estado
+            // dispatch(SelectedSearchCustomers(searchCustomer));
 
-            // Si tiene credito se activa el checkbox
-            if (customer.codMonedaCredito != null || customer.plazo_Credito != null
-                || customer.max_Credito != null || customer.descuento != null) {
-                dispatch(ActiveCredito(true));
-            }
+            // // Si tiene credito se activa el checkbox
+            // if (customer.codMonedaCredito != null || customer.plazo_Credito != null
+            //     || customer.max_Credito != null || customer.descuento != null) {
+            //     dispatch(ActiveCredito(true));
+            // }
 
-            //Habilitar los inputs
-            dispatch(DisableInputsCustomers((customer.estado) ? false : true));
+            // //Habilitar los inputs
+            // dispatch(DisableInputsCustomers((customer.estado) ? false : true));
 
-            //Modificar los botones
-            dispatch(ActiveButtonSearchCustomers(true));
-            dispatch(ActiveButtonSaveCustomers((customer.estado) ? true : false));
-            dispatch(ActiveButtonNewCustomers(false));
-            dispatch(ActiveButtonRemoveCustomers(true));
+            // //Modificar los botones
+            // dispatch(ActiveButtonSearchCustomers(true));
+            // dispatch(ActiveButtonSaveCustomers((customer.estado) ? true : false));
+            // dispatch(ActiveButtonNewCustomers(false));
+            // dispatch(ActiveButtonRemoveCustomers(true));
 
-            //Si cliente esta disable se indica
-            if (!customer.estado) {
-                dispatch(IsCustomerDisable(true))
-            }
+            // //Si cliente esta disable se indica
+            // if (!customer.estado) {
+            //     dispatch(IsCustomerDisable(true))
+            // }
 
-            //Indicar que es usuario para editar
-            dispatch(IsCustomerEditCustomers((customer.estado) ? true : false));
+            // //Indicar que es usuario para editar
+            // dispatch(IsCustomerEditCustomers((customer.estado) ? true : false));
 
-            //Set Start Opening
-            dispatch(SetStartOpeningCustomers(true));
+            // //Set Start Opening
+            // dispatch(SetStartOpeningCustomers(true));
 
-            // Se obtiene las provincias
-            dispatch(startGetAllProvincias());
+            // // Se obtiene las provincias
+            // dispatch(startGetAllProvincias());
 
-            //Se activa el combo de cantones
-            dispatch(SetDisableCantonesCustomers(false));
+            // //Se activa el combo de cantones
+            // dispatch(SetDisableCantonesCustomers(false));
 
-            //Se obtiene los cantones de esa provincia
-            dispatch(startGetAllCantones(searchCustomer.provincia));
+            // //Se obtiene los cantones de esa provincia
+            // dispatch(startGetAllCantones(searchCustomer.provincia));
 
-            //Se activa el combo de distritos
-            dispatch(SetDisableDistritosCustomers(false));
+            // //Se activa el combo de distritos
+            // dispatch(SetDisableDistritosCustomers(false));
 
-            // Se obtiene los distritos
-            dispatch(startGetAllDistritos(searchCustomer.canton));
+            // // Se obtiene los distritos
+            // dispatch(startGetAllDistritos(searchCustomer.canton));
         }
 
         //Cerrar el modal
