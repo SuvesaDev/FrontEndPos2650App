@@ -17,8 +17,8 @@ export const FamilySubFamilia = () => {
 
     const columns = [
         {
-          Header: "Codigo SubFamilia",
-          accessor: "subCodigo",
+          Header: "Codigo",
+          accessor: "codigo",
         },
         {
             Header: "Descripcion",
