@@ -2108,5 +2108,12 @@ export const types = {
 
   CleanFamiliasFamily: "[Family] CleanFamiliasFamily",
 
+  // Orden Compra Action
+  SetActiveButtonNewOrdenCompra: '[OrdenCompra] SetActiveButtonNewOrdenCompra',
+  SetActiveButtonSearchOrdenCompra: '[OrdenCompra] SetActiveButtonSearchOrdenCompra',
+  SetActiveButtonSaveOrdenCompra: '[OrdenCompra] SetActiveButtonSaveOrdenCompra',
+  SetActiveButtonDisableOrdenCompra: '[OrdenCompra] SetActiveButtonDisableOrdenCompra',
+  SetDisableInputsOrdenCompra: '[OrdenCompra] SetDisableInputsOrdenCompra',
+
 
 }

@@ -14,20 +14,7 @@ export const PurchaseOrderBody = () => {
                         </div>
                         <div className="card-body">
                             <div className="row">
-                                <div className="col-md-3 mb-3">
-                                    <h5>Código</h5>
-                                    <div className="input-group">
-                                        <span className="input-group-text">
-                                            <FaHashtag className="iconSize" />
-                                        </span>
-                                        <input
-                                            type='text'
-                                            className='form-control'
-                                            placeholder='Código del Proveedor'
-                                        />
-                                    </div>
-                                </div>
-
+                                
                                 <div className="col-md-3 mb-3">
                                     <h5>Nombre Proveedor</h5>
                                     <div className="input-group">
@@ -145,7 +132,6 @@ export const PurchaseOrderBody = () => {
                 </div>
             </div>
 
-
             <div className="row mb-3 text-center">
                 <div className="col-md-12 mb-3">
                     <div className="card">
@@ -212,20 +198,7 @@ export const PurchaseOrderBody = () => {
                             </div>
 
                             <div className="row mb-3 text-center">
-                                <div className="col-md-2 mb-3">
-                                    <h5>Otros</h5>
-                                    <div className="input-group">
-                                        <span className="input-group-text">
-                                            <TbNotes className="iconSize" />
-                                        </span>
-                                        <input
-                                            type='text'
-                                            className='form-control'
-                                            placeholder='Otras Anotaciones'
-                                        />
-                                    </div>
-                                </div>
-
+                                
                                 <div className="col-md-2 mb-3">
                                     <h5>Costo</h5>
                                     <div className="input-group">
