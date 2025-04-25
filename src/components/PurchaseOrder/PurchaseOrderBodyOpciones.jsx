@@ -1,6 +1,12 @@
+import { useDispatch, useSelector } from "react-redux";
+
 import { FaCalendarDay, FaCoins, FaUser } from "react-icons/fa"
 
 export const PurchaseOrderBodyOpciones = () => {
+
+    const dispatch = useDispatch();
+    
+    const { DisableInputs } = useSelector((state) => state.ordenCompra);
 
     return (
         <>
@@ -29,6 +35,7 @@ export const PurchaseOrderBodyOpciones = () => {
                                             type='number'
                                             className='form-control'
                                             placeholder='Cantidad de Días'
+                                            disabled={DisableInputs}
                                         />
                                     </div>
                                 </div>
@@ -43,6 +50,7 @@ export const PurchaseOrderBodyOpciones = () => {
                                             type='number'
                                             className='form-control'
                                             placeholder='Nombre de Persona a Entregar'
+                                            disabled={DisableInputs}
                                         />
                                     </div>
                                 </div>
@@ -55,7 +63,9 @@ export const PurchaseOrderBodyOpciones = () => {
                                         </span>
                                         <select
                                             name='monedaPurchaseOrden'
-                                            className="form-select">
+                                            className="form-select"
+                                            disabled={DisableInputs}
+                                        >
                                             <option value="COLON">COLON</option>
                                             <option value="DOLAR">DOLAR</option>
                                         </select>
@@ -70,6 +80,7 @@ export const PurchaseOrderBodyOpciones = () => {
                                                 type="radio"
                                                 id="radioContado"
                                                 class="form-check-input checkP"
+                                                disabled={DisableInputs}
                                             />
                                             <h5 className="form-check-label" for="radioContado">Contado</h5>
                                         </div>
@@ -79,6 +90,7 @@ export const PurchaseOrderBodyOpciones = () => {
                                                 type="radio"
                                                 id="radioCrédito"
                                                 class="form-check-input checkP"
+                                                disabled={DisableInputs}
                                             />
                                             <h5 className="form-check-label" for="radioCrédito">Crédito</h5>
                                         </div>
@@ -99,6 +111,7 @@ export const PurchaseOrderBodyOpciones = () => {
                                             type='number'
                                             className='form-control'
                                             placeholder='Cantidad de Días'
+                                            disabled={DisableInputs}
                                         />
                                     </div>
                                 </div>

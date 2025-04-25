@@ -1,6 +1,11 @@
 import { FaBuildingUn } from "react-icons/fa6"
+import { useDispatch, useSelector } from "react-redux"
 
 export const PurchaseOrderBodyProveedor = () => {
+
+    const dispatch = useDispatch();
+
+    const { DisableInputs } = useSelector((state) => state.ordenCompra);
 
     return (
         <>
@@ -27,6 +32,7 @@ export const PurchaseOrderBodyProveedor = () => {
                                             type='text'
                                             className='form-control'
                                             placeholder='Nombre del Proveedor'
+                                            disabled={DisableInputs}
                                         />
                                     </div>
                                 </div>

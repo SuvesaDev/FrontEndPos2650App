@@ -24,6 +24,7 @@ export const PurchaseOrderBodyTotales = () => {
                                             type='text'
                                             className='form-control'
                                             placeholder='Sob-Total Gravado'
+                                            disabled={true}
                                         />
                                     </div>
                                 </div>
@@ -38,6 +39,7 @@ export const PurchaseOrderBodyTotales = () => {
                                             type='text'
                                             className='form-control'
                                             placeholder='Sob-Total Exento'
+                                            disabled={true}
                                         />
                                     </div>
                                 </div>
@@ -52,6 +54,7 @@ export const PurchaseOrderBodyTotales = () => {
                                             type='text'
                                             className='form-control'
                                             placeholder='Sob-Total Final'
+                                            disabled={true}
                                         />
                                     </div>
                                 </div>
@@ -66,6 +69,7 @@ export const PurchaseOrderBodyTotales = () => {
                                             type='text'
                                             className='form-control'
                                             placeholder='Descuento Final'
+                                            disabled={true}
                                         />
                                     </div>
                                 </div>
@@ -80,6 +84,7 @@ export const PurchaseOrderBodyTotales = () => {
                                             type='text'
                                             className='form-control'
                                             placeholder='Impuesto Final'
+                                            disabled={true}
                                         />
                                     </div>
                                 </div>
@@ -94,13 +99,14 @@ export const PurchaseOrderBodyTotales = () => {
                                             type='text'
                                             className='form-control'
                                             placeholder='Total Final'
+                                            disabled={true}
                                         />
                                     </div>
                                 </div>
 
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>

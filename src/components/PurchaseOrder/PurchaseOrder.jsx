@@ -1,10 +1,15 @@
 
 
+import { useSelector } from 'react-redux';
+
 import { FaHashtag } from 'react-icons/fa';
 import { PurchaseOrderBody } from './PurchaseOrderBody';
 import { PurchaseOrderIcons } from './PurchaseOrderIcons';
 
 export const PurchaseOrder = () => {
+    
+    const { DisableInputs } = useSelector((state) => state.ordenCompra);
+
     return (
         <>
             <div className="container-fluid mt-2">
@@ -22,6 +27,7 @@ export const PurchaseOrder = () => {
                                         type="text"
                                         className="form-control"
                                         placeholder="Número de Orden"
+                                        disabled={DisableInputs}
                                     />
                                 </div>
                             </div>

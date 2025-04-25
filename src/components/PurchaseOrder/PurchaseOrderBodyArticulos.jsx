@@ -1,10 +1,17 @@
-import { BsSortNumericDown } from "react-icons/bs"
-import { FaCalendarDay, FaCoins, FaMoneyBill, FaPercentage, FaUser } from "react-icons/fa"
-import { FaBuildingUn, FaColonSign, FaHashtag, FaTruckFast } from "react-icons/fa6"
-import { TbNotes } from "react-icons/tb"
-import { PurchaseOrderBodyArticulosTable } from "./PurchaseOrderBodyArticulosTable"
+import { useDispatch, useSelector } from "react-redux";
+
+import { BsSortNumericDown } from "react-icons/bs";
+import { FaPercentage } from "react-icons/fa";
+import { FaColonSign, FaHashtag, FaTruckFast } from "react-icons/fa6";
+import { TbNotes } from "react-icons/tb";
+
+import { PurchaseOrderBodyArticulosTable } from "./PurchaseOrderBodyArticulosTable";
 
 export const PurchaseOrderBodyArticulos = () => {
+
+    const dispatch = useDispatch();
+        
+    const { DisableInputs } = useSelector((state) => state.ordenCompra);
 
     const columns = [
         {
@@ -67,6 +74,7 @@ export const PurchaseOrderBodyArticulos = () => {
                                             type='number'
                                             className='form-control'
                                             placeholder='Código del Artículo'
+                                            disabled={DisableInputs}
                                         />
                                     </div>
                                 </div>
@@ -81,6 +89,7 @@ export const PurchaseOrderBodyArticulos = () => {
                                             type='text'
                                             className='form-control'
                                             placeholder='Descripción del Artículo'
+                                            disabled={DisableInputs}
                                         />
                                     </div>
                                 </div>
@@ -95,6 +104,7 @@ export const PurchaseOrderBodyArticulos = () => {
                                             type='text'
                                             className='form-control'
                                             placeholder='Precio del Artículo'
+                                            disabled={DisableInputs}
                                         />
                                     </div>
                                 </div>
@@ -109,6 +119,7 @@ export const PurchaseOrderBodyArticulos = () => {
                                             type='text'
                                             className='form-control'
                                             placeholder='Fletes del Artículo'
+                                            disabled={DisableInputs}
                                         />
                                     </div>
                                 </div>
@@ -126,6 +137,7 @@ export const PurchaseOrderBodyArticulos = () => {
                                             type='text'
                                             className='form-control'
                                             placeholder='Costo Total'
+                                            disabled={DisableInputs}
                                         />
                                     </div>
                                 </div>
@@ -140,6 +152,7 @@ export const PurchaseOrderBodyArticulos = () => {
                                             type='text'
                                             className='form-control'
                                             placeholder='Descuento Total'
+                                            disabled={DisableInputs}
                                         />
                                     </div>
                                 </div>
@@ -154,6 +167,7 @@ export const PurchaseOrderBodyArticulos = () => {
                                             type='text'
                                             className='form-control'
                                             placeholder='Impuesto Total'
+                                            disabled={DisableInputs}
                                         />
                                     </div>
                                 </div>
@@ -168,6 +182,7 @@ export const PurchaseOrderBodyArticulos = () => {
                                             type='text'
                                             className='form-control'
                                             placeholder='Cantidad Total'
+                                            disabled={DisableInputs}
                                         />
                                     </div>
                                 </div>
@@ -182,6 +197,7 @@ export const PurchaseOrderBodyArticulos = () => {
                                             type='text'
                                             className='form-control'
                                             placeholder='Sob-Total Final'
+                                            disabled={DisableInputs}
                                         />
                                     </div>
                                 </div>
@@ -199,6 +215,7 @@ export const PurchaseOrderBodyArticulos = () => {
                                             type='text'
                                             className='form-control'
                                             placeholder='Observaciones Extras'
+                                            disabled={DisableInputs}
                                         />
                                     </div>
                                 </div>
@@ -223,7 +240,7 @@ export const PurchaseOrderBodyArticulos = () => {
                             </div>
 
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
