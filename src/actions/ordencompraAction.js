@@ -128,12 +128,12 @@ export const SetMonedaOrdenCompra = (value) => ({
 })
 
 export const SetFormaPagoContadoOrdenCompra = (value) => ({
-    type: types.SetFormaPagoOrdenCompra,
+    type: types.SetFormaPagoContadoOrdenCompra,
     payload: value
 })
 
 export const SetFormaPagoCreditoOrdenCompra = (value) => ({
-    type: types.SetFormaPagoOrdenCompra,
+    type: types.SetFormaPagoCreditoOrdenCompra,
     payload: value
 })
 
