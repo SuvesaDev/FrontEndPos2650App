@@ -231,3 +231,7 @@ export const SetObservacionesArticuloOrdenCompra = (value) => ({
     type: types.SetObservacionesArticuloOrdenCompra,
     payload: value
 })
+
+export const CleanStateOrdenCompra = () => ({
+    type: types.CleanStateOrdenCompra
+})

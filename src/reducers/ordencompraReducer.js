@@ -312,6 +312,46 @@ export const OrdenCompraReducer = (state = initialState, action) => {
                 }
             }
 
+        case types.CleanStateOrdenCompra:
+            return {
+                ActiveButtonNew: true,
+                ActiveButtonSearch: true,
+                ActiveButtonSave: false,
+                ActiveButtonDisable: false,
+                DisableInputs: true,
+                ordenCompra: {
+                    numeroOrdenCompra: 0,
+                    idProveedor: 0,
+                    nombreProveedor: '',
+                    fechaEntrega: '',
+                    nombreEntrega: '',
+                    moneda: 0,
+                    formaPagoContado: false,
+                    formaPagoCredito: false,
+                    cantidadDias: 0,
+                    articulos: [],
+                    totalSubGravado: 0,
+                    totalSubExento: 0,
+                    totalSubTotal: 0,
+                    totalDescuento: 0,
+                    totalImpuestos: 0,
+                    totalFinal: 0
+                },
+                articulo: {
+                    idArticulo: 0,
+                    codigo: '',
+                    descripcion: '',
+                    precioUnitario: 0,
+                    fletes: 0,
+                    costo: 0,
+                    descuento: 0,
+                    impuesto: 0,
+                    cantidad: 0,
+                    subtotal: 0,
+                    observaciones: ''
+                }
+            }
+
         default:
             return state;
     }

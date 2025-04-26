@@ -13,6 +13,7 @@ export const PurchaseOrderBodyOpciones = () => {
 
     const dispatch = useDispatch();
     
+    const { monedasInventory } = useSelector(state => state.monedas);
     const { DisableInputs, ordenCompra } = useSelector((state) => state.ordenCompra);
     const { 
         fechaEntrega,
@@ -97,8 +98,16 @@ export const PurchaseOrderBodyOpciones = () => {
                                                 handleInputChangeWithDispatch(e, SetMonedaOrdenCompra)
                                             }
                                         >
-                                            <option value="COLON">COLON</option>
-                                            <option value="DOLAR">DOLAR</option>
+                                            <option value={0} selected disabled hidden> Seleccione... </option>
+                                            {
+                                                (monedasInventory != null)
+                                                ? (monedasInventory.length === 0)
+                                                    ? <option value=''>No Monedas</option>
+                                                    : monedasInventory.map(moneda => {
+                                                        return <option key={moneda.codMoneda} value={moneda.codMoneda}> {moneda.monedaNombre} </option>
+                                                    })
+                                                : <option value=''>No Monedas</option>
+                                            }
                                         </select>
                                     </div>
                                 </div>
