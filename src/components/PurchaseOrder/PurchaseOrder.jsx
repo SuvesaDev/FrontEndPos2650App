@@ -8,7 +8,8 @@ import { PurchaseOrderIcons } from './PurchaseOrderIcons';
 
 export const PurchaseOrder = () => {
     
-    const { DisableInputs } = useSelector((state) => state.ordenCompra);
+    const { ordenCompra } = useSelector((state) => state.ordenCompra);
+    const { numeroOrdenCompra } = ordenCompra;
 
     return (
         <>
@@ -27,7 +28,8 @@ export const PurchaseOrder = () => {
                                         type="text"
                                         className="form-control"
                                         placeholder="Número de Orden"
-                                        disabled={DisableInputs}
+                                        disabled={true}
+                                        value={numeroOrdenCompra}
                                     />
                                 </div>
                             </div>

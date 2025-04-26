@@ -96,3 +96,138 @@ export const SetDisableInputsOrdenCompra = (value) => ({
     type: types.SetDisableInputsOrdenCompra,
     payload: value
 })
+
+export const SetNumeroOrdenCompra = (value) => ({
+    type: types.SetNumeroOrdenCompra,
+    payload: value
+})
+
+export const SetIdProveedorOrdenCompra = (value) => ({
+    type: types.SetIdProveedorOrdenCompra,
+    payload: value
+})
+
+export const SetNombreProveedorOrdenCompra = (value) => ({
+    type: types.SetNombreProveedorOrdenCompra,
+    payload: value
+})
+
+export const SetFechaEntregaOrdenCompra = (value) => ({
+    type: types.SetFechaEntregaOrdenCompra,
+    payload: value
+})
+
+export const SetNombreEntregaOrdenCompra = (value) => ({
+    type: types.SetNombreEntregaOrdenCompra,
+    payload: value
+})
+
+export const SetMonedaOrdenCompra = (value) => ({
+    type: types.SetMonedaOrdenCompra,
+    payload: value
+})
+
+export const SetFormaPagoContadoOrdenCompra = (value) => ({
+    type: types.SetFormaPagoOrdenCompra,
+    payload: value
+})
+
+export const SetFormaPagoCreditoOrdenCompra = (value) => ({
+    type: types.SetFormaPagoOrdenCompra,
+    payload: value
+})
+
+export const SetCantidadDiasOrdenCompra = (value) => ({
+    type: types.SetCantidadDiasOrdenCompra,
+    payload: value
+})
+
+export const SetArticulosOrdenCompra = (value) => ({
+    type: types.SetArticulosOrdenCompra,
+    payload: value
+})
+
+export const SetTotalSubGravadoOrdenCompra = (value) => ({
+    type: types.SetTotalSubGravadoOrdenCompra,
+    payload: value
+})
+
+export const SetTotalSubExentoOrdenCompra = (value) => ({
+    type: types.SetTotalSubExentoOrdenCompra,
+    payload: value
+})
+
+export const SetTotalSubTotalOrdenCompra = (value) => ({
+    type: types.SetTotalSubTotalOrdenCompra,
+    payload: value
+})
+
+export const SetTotalDescuentoOrdenCompra = (value) => ({
+    type: types.SetTotalDescuentoOrdenCompra,
+    payload: value
+})
+
+export const SetTotalImpuestosOrdenCompra = (value) => ({
+    type: types.SetTotalImpuestosOrdenCompra,
+    payload: value
+})
+
+export const SetTotalFinalOrdenCompra = (value) => ({
+    type: types.SetTotalFinalOrdenCompra,
+    payload: value
+})
+
+export const SetIdArticuloArticuloOrdenCompra = (value) => ({
+    type: types.SetIdArticuloArticuloOrdenCompra,
+    payload: value
+})
+
+export const SetCodigoArticuloOrdenCompra = (value) => ({
+    type: types.SetCodigoArticuloOrdenCompra,
+    payload: value
+})
+
+export const SetDescripcionArticuloOrdenCompra = (value) => ({
+    type: types.SetDescripcionArticuloOrdenCompra,
+    payload: value
+})
+
+export const SetPrecioUnitarioArticuloOrdenCompra = (value) => ({
+    type: types.SetPrecioUnitarioArticuloOrdenCompra,
+    payload: value
+})
+
+export const SetFletesArticuloOrdenCompra = (value) => ({
+    type: types.SetFletesArticuloOrdenCompra,
+    payload: value
+})
+
+export const SetCostoArticuloOrdenCompra = (value) => ({
+    type: types.SetCostoArticuloOrdenCompra,
+    payload: value
+})
+
+export const SetDescuentoArticuloOrdenCompra = (value) => ({
+    type: types.SetDescuentoArticuloOrdenCompra,
+    payload: value
+})
+
+export const SetImpuestoArticuloOrdenCompra = (value) => ({
+    type: types.SetImpuestoArticuloOrdenCompra,
+    payload: value
+})
+
+export const SetCantidadArticuloOrdenCompra = (value) => ({
+    type: types.SetCantidadArticuloOrdenCompra,
+    payload: value
+})
+
+export const SetSubtotalArticuloOrdenCompra = (value) => ({
+    type: types.SetSubtotalArticuloOrdenCompra,
+    payload: value
+})
+
+export const SetObservacionesArticuloOrdenCompra = (value) => ({
+    type: types.SetObservacionesArticuloOrdenCompra,
+    payload: value
+})

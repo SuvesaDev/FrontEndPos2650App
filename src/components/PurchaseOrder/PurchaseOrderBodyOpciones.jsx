@@ -1,12 +1,31 @@
 import { useDispatch, useSelector } from "react-redux";
 
-import { FaCalendarDay, FaCoins, FaUser } from "react-icons/fa"
+import { FaCalendarDay, FaCoins, FaUser } from "react-icons/fa";
+
+import { 
+    SetCantidadDiasOrdenCompra,
+    SetFechaEntregaOrdenCompra, 
+    SetMonedaOrdenCompra, 
+    SetNombreEntregaOrdenCompra 
+} from "../../actions/ordenCompraAction";
 
 export const PurchaseOrderBodyOpciones = () => {
 
     const dispatch = useDispatch();
     
-    const { DisableInputs } = useSelector((state) => state.ordenCompra);
+    const { DisableInputs, ordenCompra } = useSelector((state) => state.ordenCompra);
+    const { 
+        fechaEntrega,
+        nombreEntrega,
+        moneda,
+        formaPagoContado,
+        formaPagoCredito,
+        cantidadDias 
+    } = ordenCompra;
+
+    const handleInputChangeWithDispatch = ({ target }, action) => {
+        dispatch(action(target.value));
+    };
 
     return (
         <>
@@ -26,16 +45,20 @@ export const PurchaseOrderBodyOpciones = () => {
                             <div className="row">
 
                                 <div className="col-md-3 mb-3">
-                                    <h5>Entrega</h5>
+                                    <h5>Fecha Entrega</h5>
                                     <div className="input-group">
                                         <span className="input-group-text">
                                             <FaCalendarDay className="iconSize" />
                                         </span>
                                         <input
-                                            type='number'
+                                            type='date'
                                             className='form-control'
                                             placeholder='Cantidad de Días'
                                             disabled={DisableInputs}
+                                            value={fechaEntrega}
+                                            onChange={(e) =>
+                                                handleInputChangeWithDispatch(e, SetFechaEntregaOrdenCompra)
+                                            }
                                         />
                                     </div>
                                 </div>
@@ -51,6 +74,10 @@ export const PurchaseOrderBodyOpciones = () => {
                                             className='form-control'
                                             placeholder='Nombre de Persona a Entregar'
                                             disabled={DisableInputs}
+                                            value={nombreEntrega}
+                                            onChange={(e) =>
+                                                handleInputChangeWithDispatch(e, SetNombreEntregaOrdenCompra)
+                                            }
                                         />
                                     </div>
                                 </div>
@@ -65,6 +92,10 @@ export const PurchaseOrderBodyOpciones = () => {
                                             name='monedaPurchaseOrden'
                                             className="form-select"
                                             disabled={DisableInputs}
+                                            value={moneda}
+                                            onChange={(e) =>
+                                                handleInputChangeWithDispatch(e, SetMonedaOrdenCompra)
+                                            }
                                         >
                                             <option value="COLON">COLON</option>
                                             <option value="DOLAR">DOLAR</option>
@@ -74,6 +105,7 @@ export const PurchaseOrderBodyOpciones = () => {
 
                                 <div className="col-md-3 mb-3">
                                     <h5>Forma de Pago</h5>
+
                                     <div className="inline-containerCenter">
                                         <div className="form-check">
                                             <input
@@ -81,6 +113,7 @@ export const PurchaseOrderBodyOpciones = () => {
                                                 id="radioContado"
                                                 class="form-check-input checkP"
                                                 disabled={DisableInputs}
+                                                checked={formaPagoContado}
                                             />
                                             <h5 className="form-check-label" for="radioContado">Contado</h5>
                                         </div>
@@ -91,6 +124,7 @@ export const PurchaseOrderBodyOpciones = () => {
                                                 id="radioCrédito"
                                                 class="form-check-input checkP"
                                                 disabled={DisableInputs}
+                                                checked={formaPagoCredito}
                                             />
                                             <h5 className="form-check-label" for="radioCrédito">Crédito</h5>
                                         </div>
@@ -112,6 +146,10 @@ export const PurchaseOrderBodyOpciones = () => {
                                             className='form-control'
                                             placeholder='Cantidad de Días'
                                             disabled={DisableInputs}
+                                            value={cantidadDias}
+                                            onChange={(e) =>
+                                                handleInputChangeWithDispatch(e, SetCantidadDiasOrdenCompra)
+                                            }
                                         />
                                     </div>
                                 </div>
@@ -120,6 +158,7 @@ export const PurchaseOrderBodyOpciones = () => {
                         </div>
 
                     </div>
+
                 </div>
             </div>
         </>

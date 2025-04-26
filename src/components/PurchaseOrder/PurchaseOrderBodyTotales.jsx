@@ -1,7 +1,19 @@
-import { FaPercentage } from "react-icons/fa"
-import { FaColonSign } from "react-icons/fa6"
+import { useSelector } from "react-redux";
+
+import { FaPercentage } from "react-icons/fa";
+import { FaColonSign } from "react-icons/fa6";
 
 export const PurchaseOrderBodyTotales = () => {
+
+    const { ordenCompra } = useSelector((state) => state.ordenCompra);
+    const { 
+        totalSubGravado,
+        totalSubExento,
+        totalSubTotal,
+        totalDescuento,
+        totalImpuestos,
+        totalFinal 
+    } = ordenCompra;
 
     return (
         <>
@@ -25,6 +37,7 @@ export const PurchaseOrderBodyTotales = () => {
                                             className='form-control'
                                             placeholder='Sob-Total Gravado'
                                             disabled={true}
+                                            value={totalSubGravado}
                                         />
                                     </div>
                                 </div>
@@ -40,6 +53,7 @@ export const PurchaseOrderBodyTotales = () => {
                                             className='form-control'
                                             placeholder='Sob-Total Exento'
                                             disabled={true}
+                                            value={totalSubExento}
                                         />
                                     </div>
                                 </div>
@@ -55,6 +69,7 @@ export const PurchaseOrderBodyTotales = () => {
                                             className='form-control'
                                             placeholder='Sob-Total Final'
                                             disabled={true}
+                                            value={totalSubTotal}
                                         />
                                     </div>
                                 </div>
@@ -70,6 +85,7 @@ export const PurchaseOrderBodyTotales = () => {
                                             className='form-control'
                                             placeholder='Descuento Final'
                                             disabled={true}
+                                            value={totalDescuento}
                                         />
                                     </div>
                                 </div>
@@ -85,6 +101,7 @@ export const PurchaseOrderBodyTotales = () => {
                                             className='form-control'
                                             placeholder='Impuesto Final'
                                             disabled={true}
+                                            value={totalImpuestos}
                                         />
                                     </div>
                                 </div>
@@ -100,6 +117,7 @@ export const PurchaseOrderBodyTotales = () => {
                                             className='form-control'
                                             placeholder='Total Final'
                                             disabled={true}
+                                            value={totalFinal}
                                         />
                                     </div>
                                 </div>

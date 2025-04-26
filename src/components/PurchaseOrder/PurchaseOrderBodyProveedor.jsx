@@ -5,7 +5,8 @@ export const PurchaseOrderBodyProveedor = () => {
 
     const dispatch = useDispatch();
 
-    const { DisableInputs } = useSelector((state) => state.ordenCompra);
+    const { DisableInputs, ordenCompra } = useSelector((state) => state.ordenCompra);
+    const { nombreProveedor } = ordenCompra;
 
     return (
         <>
@@ -33,6 +34,7 @@ export const PurchaseOrderBodyProveedor = () => {
                                             className='form-control'
                                             placeholder='Nombre del Proveedor'
                                             disabled={DisableInputs}
+                                            value={nombreProveedor}
                                         />
                                     </div>
                                 </div>
