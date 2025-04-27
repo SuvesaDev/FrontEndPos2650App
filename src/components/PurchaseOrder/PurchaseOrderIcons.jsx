@@ -19,6 +19,8 @@ import {
 } from '../../actions/ordenCompraAction';
 import { DeleteTab } from '../../actions/tabs';
 
+import { PurchaseOrderBodyProveedorModal } from './PurchaseOrderBodyProveedorModal';
+
 export const PurchaseOrderIcons = () => {
 
     const dispatch = useDispatch();
@@ -185,6 +187,8 @@ export const PurchaseOrderIcons = () => {
                 </div>
 
             </div>
+
+            <PurchaseOrderBodyProveedorModal />
         </>
 
     )

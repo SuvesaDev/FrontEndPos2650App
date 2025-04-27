@@ -1,5 +1,7 @@
-import { FaBuildingUn } from "react-icons/fa6"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux";
+
+import { FaBuildingUn } from "react-icons/fa6";
+import { FaSearch } from 'react-icons/fa';
 
 export const PurchaseOrderBodyProveedor = () => {
 
@@ -36,6 +38,15 @@ export const PurchaseOrderBodyProveedor = () => {
                                             disabled={DisableInputs}
                                             value={nombreProveedor}
                                         />
+                                        <button
+                                            type="button"
+                                            className={ DisableInputs ? 'btn btn-primary disabled' : 'btn btn-primary' }
+                                            // onClick={handleSearchClientBilling}
+                                            data-bs-toggle='modal'
+                                            data-bs-target='#modalProveedorOrdenCompra'
+                                        >
+                                            <FaSearch className="iconSize" />
+                                        </button>
                                     </div>
                                 </div>
 

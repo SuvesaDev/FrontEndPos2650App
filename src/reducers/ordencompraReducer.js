@@ -6,6 +6,7 @@ const initialState = {
   ActiveButtonSave: false,
   ActiveButtonDisable: false,
   DisableInputs: true,
+  filterProveedores: [],
   ordenCompra: {
     numeroOrdenCompra: 0,
     idProveedor: 0,
@@ -77,6 +78,7 @@ export const OrdenCompraReducer = (state = initialState, action) => {
             return {
                 ...state,
                 ordenCompra: {
+                    ...state.ordenCompra,
                     numeroOrdenCompra: action.payload
                 }
             }
@@ -85,6 +87,7 @@ export const OrdenCompraReducer = (state = initialState, action) => {
             return {
                 ...state,
                 ordenCompra: {
+                    ...state.ordenCompra,
                     idProveedor: action.payload
                 }
             }
@@ -93,6 +96,7 @@ export const OrdenCompraReducer = (state = initialState, action) => {
             return {
                 ...state,
                 ordenCompra: {
+                    ...state.ordenCompra,
                     nombreProveedor: action.payload
                 }
             }
@@ -101,6 +105,7 @@ export const OrdenCompraReducer = (state = initialState, action) => {
             return {
                 ...state,
                 ordenCompra: {
+                    ...state.ordenCompra,
                     fechaEntrega: action.payload
                 }
             }
@@ -310,6 +315,12 @@ export const OrdenCompraReducer = (state = initialState, action) => {
                     ...state.articulo,
                     observaciones: action.payload
                 }
+            }
+
+        case types.SetFilterProveedoresOrdenCompra:
+            return {
+                ...state,
+                filterProveedores: action.payload
             }
 
         case types.CleanStateOrdenCompra:

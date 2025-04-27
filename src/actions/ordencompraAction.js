@@ -235,3 +235,8 @@ export const SetObservacionesArticuloOrdenCompra = (value) => ({
 export const CleanStateOrdenCompra = () => ({
     type: types.CleanStateOrdenCompra
 })
+
+export const SetFilterProveedoresOrdenCompra = (value) => ({
+    type: types.SetFilterProveedoresOrdenCompra,
+    payload: value
+})
