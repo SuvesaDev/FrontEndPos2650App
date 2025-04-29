@@ -6,7 +6,7 @@ const initialState = {
   ActiveButtonSave: false,
   ActiveButtonDisable: false,
   DisableInputs: true,
-  filterProveedores: [],
+  isOpenModalSearchInventoryOrdenCompra: false,
   ordenCompra: {
     numeroOrdenCompra: 0,
     idProveedor: 0,
@@ -317,10 +317,10 @@ export const OrdenCompraReducer = (state = initialState, action) => {
                 }
             }
 
-        case types.SetFilterProveedoresOrdenCompra:
+        case types.SetIsOpenModalSearchInventoryOrdenCompra:
             return {
                 ...state,
-                filterProveedores: action.payload
+                isOpenModalSearchInventoryOrdenCompra: action.payload
             }
 
         case types.CleanStateOrdenCompra:
@@ -330,6 +330,7 @@ export const OrdenCompraReducer = (state = initialState, action) => {
                 ActiveButtonSave: false,
                 ActiveButtonDisable: false,
                 DisableInputs: true,
+                isOpenModalSearchInventoryOrdenCompra: false,
                 ordenCompra: {
                     numeroOrdenCompra: 0,
                     idProveedor: 0,

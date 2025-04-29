@@ -2144,7 +2144,7 @@ export const types = {
   SetSubtotalArticuloOrdenCompra: '[OrdenCompra] SetSubtotalArticuloOrdenCompra',
   SetObservacionesArticuloOrdenCompra: '[OrdenCompra] SetObservacionesArticuloOrdenCompra',
 
-  SetFilterProveedoresOrdenCompra: '[OrdenCompra] SetFilterProveedoresOrdenCompra',
+  SetIsOpenModalSearchInventoryOrdenCompra: '[OrdenCompra] SetIsOpenModalSearchInventoryOrdenCompra',
 
   CleanStateOrdenCompra: '[OrdenCompra] CleanStateOrdenCompra',
 

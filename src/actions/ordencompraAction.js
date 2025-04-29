@@ -71,6 +71,81 @@ import loadingImage from '../assets/loading_snipiner.gif';
 //     };
 // }
 
+export const startGetOneInventoryOrdenCompra = (codigo) => {
+
+    return async (dispatch) => {
+
+        try {
+
+            //Mostrar el loading
+            Swal.fire({
+                title: 'Por favor, espere',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                imageUrl: loadingImage,
+                customClass: 'alert-class-login',
+                imageHeight: 100,
+            });
+
+            //Call end-point 
+            const resp = await suvesaApi.post('/inventario/ObtenerUnInventario', { codigo });
+            const { status, responses } = resp.data;
+
+            //Quitar el loading
+            Swal.close();
+
+            if (status === 0) {
+                
+                const { codigo, cod_Articulo, descripcion, iVenta, precio_A } = responses;
+
+                let precio = parseFloat(precio_A);
+                let montoImpuesto = precio * (parseFloat(iVenta) / 100);
+                const total = precio + montoImpuesto;
+                
+                // Seleccinarlo y meterlo en el estado
+                dispatch( SetIdArticuloArticuloOrdenCompra(codigo) );
+                dispatch( SetCodigoArticuloOrdenCompra(cod_Articulo) );
+                dispatch( SetDescripcionArticuloOrdenCompra(descripcion) );
+                dispatch( SetPrecioUnitarioArticuloOrdenCompra(precio_A) );
+                dispatch( SetCostoArticuloOrdenCompra(total) );
+                dispatch( SetImpuestoArticuloOrdenCompra(parseFloat(iVenta)) );
+
+            } else {
+
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
+
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
+
+            }
+
+        } catch (error) {
+
+            Swal.close();
+            console.log(error);
+            if (error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al obtener un inventario',
+                });
+            }
+        }
+    }
+}
+
 // Normal Actions
 export const SetActiveButtonNewOrdenCompra = (value) => ({
     type: types.SetActiveButtonNewOrdenCompra,
@@ -236,7 +311,7 @@ export const CleanStateOrdenCompra = () => ({
     type: types.CleanStateOrdenCompra
 })
 
-export const SetFilterProveedoresOrdenCompra = (value) => ({
-    type: types.SetFilterProveedoresOrdenCompra,
+export const SetIsOpenModalSearchInventoryOrdenCompra = (value) => ({
+    type: types.SetIsOpenModalSearchInventoryOrdenCompra,
     payload: value
 })

@@ -1,9 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 
 import { BsSortNumericDown } from "react-icons/bs";
-import { FaPercentage } from "react-icons/fa";
+import { FaPercentage, FaSearch } from "react-icons/fa";
 import { FaColonSign, FaHashtag, FaTruckFast } from "react-icons/fa6";
 import { TbNotes } from "react-icons/tb";
+import { MdNoteAdd } from 'react-icons/md';
 
 import { PurchaseOrderBodyArticulosTable } from "./PurchaseOrderBodyArticulosTable";
 
@@ -15,9 +16,11 @@ import {
     SetDescuentoArticuloOrdenCompra, 
     SetFletesArticuloOrdenCompra, 
     SetImpuestoArticuloOrdenCompra, 
+    SetIsOpenModalSearchInventoryOrdenCompra, 
     SetObservacionesArticuloOrdenCompra, 
     SetPrecioUnitarioArticuloOrdenCompra,
-    SetSubtotalArticuloOrdenCompra
+    SetSubtotalArticuloOrdenCompra,
+    startGetOneInventoryOrdenCompra
 } from "../../actions/ordenCompraAction";
 
 export const PurchaseOrderBodyArticulos = () => {
@@ -79,6 +82,17 @@ export const PurchaseOrderBodyArticulos = () => {
         dispatch(action(target.value));
     };
 
+    const handleSearchInventory = () => {
+        dispatch( SetIsOpenModalSearchInventoryOrdenCompra(true) )
+    }
+
+    const handleClickDownCodigo = async (e) => {
+    
+        if (e.key === 'Enter') {
+            dispatch(startGetOneInventoryOrdenCompra( e.target.defaultValue ));
+        }
+    }
+
     return (
         <>
 
@@ -111,7 +125,17 @@ export const PurchaseOrderBodyArticulos = () => {
                                             onChange={(e) =>
                                                 handleInputChangeWithDispatch(e, SetCodigoArticuloOrdenCompra)
                                             }
+                                            onKeyDown={handleClickDownCodigo}
                                         />
+                                        <button
+                                            type="button"
+                                            className={ DisableInputs ? 'btn btn-primary disabled' : 'btn btn-primary' }
+                                            onClick={handleSearchInventory}
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#modalBuscarArticulo"
+                                        >
+                                            <FaSearch className="iconSize" />
+                                        </button>
                                     </div>
                                 </div>
 
@@ -291,7 +315,14 @@ export const PurchaseOrderBodyArticulos = () => {
                                         />
                                     </div>
                                 </div>
-                                <div className="col-md-3 mb-3"> </div>
+                                <div className="col-md-3 mb-3">
+                                    <button 
+                                        className='btn btn-success ms-auto'
+                                        // onClick={openModalFamilias}
+                                    >
+                                        <MdNoteAdd className='iconSize' /> Agregar
+                                    </button>
+                                </div>
                             </div>
 
                             <div className="row mb-3 text-center">

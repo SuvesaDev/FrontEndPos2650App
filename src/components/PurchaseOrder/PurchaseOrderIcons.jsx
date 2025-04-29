@@ -20,6 +20,7 @@ import {
 import { DeleteTab } from '../../actions/tabs';
 
 import { PurchaseOrderBodyProveedorModal } from './PurchaseOrderBodyProveedorModal';
+import { InventorySearchModal } from '../Inventory/InventorySearchModal';
 
 export const PurchaseOrderIcons = () => {
 
@@ -189,6 +190,8 @@ export const PurchaseOrderIcons = () => {
             </div>
 
             <PurchaseOrderBodyProveedorModal />
+
+            <InventorySearchModal />
         </>
 
     )
