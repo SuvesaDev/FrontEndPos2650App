@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2';
 import { useDispatch, useSelector } from "react-redux";
 
 import { BsSortNumericDown } from "react-icons/bs";
@@ -9,6 +10,8 @@ import { MdNoteAdd } from 'react-icons/md';
 import { PurchaseOrderBodyArticulosTable } from "./PurchaseOrderBodyArticulosTable";
 
 import { 
+    CleanStateArticuloOrdenCompra,
+    SetAddOneArticulosOrdenCompra,
     SetCantidadArticuloOrdenCompra,
     SetCodigoArticuloOrdenCompra,
     SetDescripcionArticuloOrdenCompra, 
@@ -18,6 +21,7 @@ import {
     SetObservacionesArticuloOrdenCompra, 
     SetPrecioUnitarioArticuloOrdenCompra,
     SetSubtotalArticuloOrdenCompra,
+    SetTotalArticuloOrdenCompra,
     startGetOneInventoryOrdenCompra
 } from "../../actions/ordenCompraAction";
 
@@ -29,6 +33,7 @@ export const PurchaseOrderBodyArticulos = () => {
 
     const { articulos } = ordenCompra;
     const { 
+        idArticulo,
         codigo,
         descripcion,
         precioUnitario,
@@ -36,7 +41,8 @@ export const PurchaseOrderBodyArticulos = () => {
         impuesto,
         cantidad,
         subtotal,
-        observaciones 
+        total,
+        observaciones
     } = articulo;
 
     const columns = [
@@ -87,6 +93,91 @@ export const PurchaseOrderBodyArticulos = () => {
         if (e.key === 'Enter') {
             dispatch(startGetOneInventoryOrdenCompra( e.target.defaultValue ));
         }
+    }
+
+    const handleChangeCantidad = ({ target }) => {
+
+        let cantidad = parseInt(target.value);
+        let subTotal = parseFloat(precioUnitario) * cantidad;
+
+        if( parseInt(descuento) != 0 ) {
+            let montoDescuento = (subTotal * descuento) / 100;
+            subTotal = subTotal - montoDescuento;
+        }
+
+        let montoImpuesto = (subTotal * impuesto) / 100;
+        let total = subTotal + montoImpuesto;
+
+        dispatch( SetCantidadArticuloOrdenCompra(cantidad) );
+        dispatch( SetSubtotalArticuloOrdenCompra(subTotal.toFixed(2)) );
+        dispatch( SetTotalArticuloOrdenCompra(parseFloat(total).toFixed(2)) );
+
+    }
+
+    const handleChangeDescuento = ({ target }) => {
+
+        let descuento = parseInt(target.value);
+        let subTotal = parseFloat(precioUnitario) * cantidad;
+
+        let montoDescuento = (subTotal * descuento) / 100;
+        let nuevoSubtotal = subTotal - montoDescuento;
+
+        let montoImpuesto = (nuevoSubtotal * impuesto) / 100;
+        let total = nuevoSubtotal + montoImpuesto;
+
+        dispatch( SetDescuentoArticuloOrdenCompra(descuento) );
+        dispatch( SetSubtotalArticuloOrdenCompra(nuevoSubtotal.toFixed(2)) );
+        dispatch( SetTotalArticuloOrdenCompra(parseFloat(total).toFixed(2)) );
+
+    }
+
+    const handleChangeImpuesto = ({ target }) => {
+
+        let nuevoImpuesto = parseInt(target.value);
+        let subTotal = parseFloat(precioUnitario) * cantidad;
+
+        if( parseInt(descuento) != 0 ) {
+            let montoDescuento = (subTotal * descuento) / 100;
+            subTotal = subTotal - montoDescuento;
+        }
+
+        let montoImpuesto = (subTotal * nuevoImpuesto) / 100;
+        let total = subTotal + montoImpuesto;
+
+        dispatch( SetImpuestoArticuloOrdenCompra(nuevoImpuesto) );
+        dispatch( SetSubtotalArticuloOrdenCompra(subTotal.toFixed(2)) );
+        dispatch( SetTotalArticuloOrdenCompra(parseFloat(total).toFixed(2)) );
+
+    }
+
+    const handleAddArticulo = () => {
+
+        if( codigo == '' ) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Advertencia',
+                text: 'Por favor, seleccione un producto para agregar.'
+            });
+
+            return;
+        }
+
+        const newArticle = {
+            idArticulo,
+            codigo,
+            descripcion,
+            precioUnitario,
+            descuento,
+            impuesto,
+            cantidad,
+            subtotal,
+            total,
+            observaciones
+        }
+
+        dispatch( SetAddOneArticulosOrdenCompra(newArticle) );
+        dispatch( CleanStateArticuloOrdenCompra() );
+
     }
 
     return (
@@ -161,7 +252,7 @@ export const PurchaseOrderBodyArticulos = () => {
                                             <FaColonSign className="iconSize" />
                                         </span>
                                         <input
-                                            type='text'
+                                            type='number'
                                             className='form-control'
                                             placeholder='Precio del Artículo'
                                             disabled={DisableInputs}
@@ -180,13 +271,14 @@ export const PurchaseOrderBodyArticulos = () => {
                                             <FaPercentage className="iconSize" />
                                         </span>
                                         <input
-                                            type='text'
+                                            type='number'
+                                            min="0" 
                                             className='form-control'
                                             placeholder='Descuento Total'
                                             disabled={DisableInputs}
                                             value={descuento}
                                             onChange={(e) =>
-                                                handleInputChangeWithDispatch(e, SetDescuentoArticuloOrdenCompra)
+                                                handleChangeDescuento(e, SetDescuentoArticuloOrdenCompra)
                                             }
                                         />
                                     </div>
@@ -199,61 +291,22 @@ export const PurchaseOrderBodyArticulos = () => {
                                             <FaPercentage className="iconSize" />
                                         </span>
                                         <input
-                                            type='text'
+                                            type='number'
+                                            min="0"
                                             className='form-control'
                                             placeholder='Impuesto Total'
                                             disabled={DisableInputs}
                                             value={impuesto}
-                                            onChange={(e) =>
-                                                handleInputChangeWithDispatch(e, SetImpuestoArticuloOrdenCompra)
-                                            }
+                                            onChange={(e) => handleChangeImpuesto(e) }
                                         />
                                     </div>
                                 </div>
 
                             </div>
 
-                            <div className="row mb-3 text-center">                           
+                            <div className="row mb-3 text-center">  
 
-                                <div className="col-md-2 mb-3">
-                                    <h5>Cantidad</h5>
-                                    <div className="input-group">
-                                        <span className="input-group-text">
-                                            <BsSortNumericDown className="iconSize" />
-                                        </span>
-                                        <input
-                                            type='text'
-                                            className='form-control'
-                                            placeholder='Cantidad Total'
-                                            disabled={DisableInputs}
-                                            value={cantidad}
-                                            onChange={(e) =>
-                                                handleInputChangeWithDispatch(e, SetCantidadArticuloOrdenCompra)
-                                            }
-                                        />
-                                    </div>
-                                </div>
-
-                                <div className="col-md-2 mb-3">
-                                    <h5>SubTotal</h5>
-                                    <div className="input-group">
-                                        <span className="input-group-text">
-                                            <FaColonSign className="iconSize" />
-                                        </span>
-                                        <input
-                                            type='text'
-                                            className='form-control'
-                                            placeholder='Sob-Total Final'
-                                            disabled={DisableInputs}
-                                            value={subtotal}
-                                            onChange={(e) =>
-                                                handleInputChangeWithDispatch(e, SetSubtotalArticuloOrdenCompra)
-                                            }
-                                        />
-                                    </div>
-                                </div>
-
-                                <div className="col-md-6 mb-3">
+                                <div className="col-md-4 mb-3">
                                     <h5>Observaciones</h5>
                                     <div className="input-group">
                                         <span className="input-group-text">
@@ -270,12 +323,68 @@ export const PurchaseOrderBodyArticulos = () => {
                                             }
                                         />
                                     </div>
+                                </div>                         
+
+                                <div className="col-md-2 mb-3">
+                                    <h5>Cantidad</h5>
+                                    <div className="input-group">
+                                        <span className="input-group-text">
+                                            <BsSortNumericDown className="iconSize" />
+                                        </span>
+                                        <input
+                                            type='number'
+                                            min="1"
+                                            className='form-control'
+                                            placeholder='Cantidad Total'
+                                            disabled={DisableInputs}
+                                            value={cantidad}
+                                            onChange={(e) => handleChangeCantidad(e)}
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="col-md-2 mb-3">
+                                    <h5>SubTotal</h5>
+                                    <div className="input-group">
+                                        <span className="input-group-text">
+                                            <FaColonSign className="iconSize" />
+                                        </span>
+                                        <input
+                                            type='text'
+                                            className='form-control'
+                                            placeholder='Sob-Total Final'
+                                            disabled={true}
+                                            value={subtotal}
+                                            onChange={(e) =>
+                                                handleInputChangeWithDispatch(e, SetSubtotalArticuloOrdenCompra)
+                                            }
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="col-md-2 mb-3">
+                                    <h5>Total</h5>
+                                    <div className="input-group">
+                                        <span className="input-group-text">
+                                            <FaColonSign className="iconSize" />
+                                        </span>
+                                        <input
+                                            type='text'
+                                            className='form-control'
+                                            placeholder='Sob-Total Final'
+                                            disabled={true}
+                                            value={total}
+                                            onChange={(e) =>
+                                                handleInputChangeWithDispatch(e, SetSubtotalArticuloOrdenCompra)
+                                            }
+                                        />
+                                    </div>
                                 </div>
 
                                 <div className="col-md-2 mb-3 flex-column justify-content-end">
                                     <button 
                                         className='btn btn-success ms-auto'
-                                        // onClick={openModalFamilias}
+                                        onClick={handleAddArticulo}
                                     >
                                         <MdNoteAdd className='iconSize' /> Agregar
                                     </button>

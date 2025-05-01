@@ -35,8 +35,9 @@ const initialState = {
     costo: 0,
     descuento: 0,
     impuesto: 0,
-    cantidad: 0,
+    cantidad: 1,
     subtotal: 0,
+    total: 0,
     observaciones: ''
   }
 };
@@ -156,12 +157,15 @@ export const OrdenCompraReducer = (state = initialState, action) => {
                 }
             }
 
-        case types.SetArticulosOrdenCompra:
+        case types.SetAddOneArticulosOrdenCompra:
             return {
                 ...state,
                 ordenCompra: {
                     ...state.ordenCompra,
-                    articulos: action.payload
+                    articulos: [
+                        ...state.ordenCompra.articulos,
+                        action.payload
+                    ]
                 }
             }
 
@@ -291,6 +295,15 @@ export const OrdenCompraReducer = (state = initialState, action) => {
                 }
             }
 
+        case types.SetTotalArticuloOrdenCompra:
+            return {
+                ...state,
+                articulo: {
+                    ...state.articulo,
+                    total: action.payload
+                }
+            }
+
         case types.SetObservacionesArticuloOrdenCompra:
             return {
                 ...state,
@@ -322,6 +335,25 @@ export const OrdenCompraReducer = (state = initialState, action) => {
             return {
                 ...state,
                 disableInputsUser: action.payload
+            }
+
+        case types.CleanStateArticuloOrdenCompra:
+            return {
+                ...state,
+                articulo: {
+                    idArticulo: 0,
+                    codigo: '',
+                    descripcion: '',
+                    precioUnitario: 0,
+                    fletes: 0,
+                    costo: 0,
+                    descuento: 0,
+                    impuesto: 0,
+                    cantidad: 1,
+                    subtotal: 0,
+                    total: 0,
+                    observaciones: ''
+                }
             }
 
         case types.CleanStateOrdenCompra:
@@ -362,8 +394,9 @@ export const OrdenCompraReducer = (state = initialState, action) => {
                     costo: 0,
                     descuento: 0,
                     impuesto: 0,
-                    cantidad: 0,
+                    cantidad: 1,
                     subtotal: 0,
+                    total: 0,
                     observaciones: ''
                 }
             }

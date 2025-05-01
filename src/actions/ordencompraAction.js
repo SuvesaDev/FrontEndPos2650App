@@ -145,19 +145,20 @@ export const startGetOneInventoryOrdenCompra = (codigo) => {
 
             if (status === 0) {
                 
-                const { codigo, cod_Articulo, descripcion, iVenta, precio_A } = responses;
-
-                let precio = parseFloat(precio_A);
-                let montoImpuesto = precio * (parseFloat(iVenta) / 100);
-                const total = precio + montoImpuesto;
+                const { codigo, cod_Articulo, descripcion, iVenta, costo } = responses;
+                let precio = parseFloat(costo);
+                let subTotal = precio * 1;
+                let montoImpuesto = (subTotal * iVenta) / 100;
+                let total = subTotal + montoImpuesto;
                 
                 // Seleccinarlo y meterlo en el estado
                 dispatch( SetIdArticuloArticuloOrdenCompra(codigo) );
                 dispatch( SetCodigoArticuloOrdenCompra(cod_Articulo) );
                 dispatch( SetDescripcionArticuloOrdenCompra(descripcion) );
-                dispatch( SetPrecioUnitarioArticuloOrdenCompra(precio_A) );
-                dispatch( SetCostoArticuloOrdenCompra(total) );
+                dispatch( SetPrecioUnitarioArticuloOrdenCompra(precio) );
                 dispatch( SetImpuestoArticuloOrdenCompra(parseFloat(iVenta)) );
+                dispatch( SetSubtotalArticuloOrdenCompra(parseFloat(subTotal).toFixed(2)) );
+                dispatch( SetTotalArticuloOrdenCompra(parseFloat(total).toFixed(2)) );
 
             } else {
 
@@ -265,8 +266,8 @@ export const SetCantidadDiasOrdenCompra = (value) => ({
     payload: value
 })
 
-export const SetArticulosOrdenCompra = (value) => ({
-    type: types.SetArticulosOrdenCompra,
+export const SetAddOneArticulosOrdenCompra = (value) => ({
+    type: types.SetAddOneArticulosOrdenCompra,
     payload: value
 })
 
@@ -340,6 +341,11 @@ export const SetSubtotalArticuloOrdenCompra = (value) => ({
     payload: value
 })
 
+export const SetTotalArticuloOrdenCompra = (value) => ({
+    type: types.SetTotalArticuloOrdenCompra,
+    payload: value
+})
+
 export const SetObservacionesArticuloOrdenCompra = (value) => ({
     type: types.SetObservacionesArticuloOrdenCompra,
     payload: value
@@ -367,4 +373,8 @@ export const SetVisibleClaveInternaOrdenCompra = (value) => ({
 export const SetDisableInputsUserOrdenCompra = (value) => ({
     type: types.SetDisableInputsUserOrdenCompra,
     payload: value
+})
+
+export const CleanStateArticuloOrdenCompra = () => ({
+    type: types.CleanStateArticuloOrdenCompra
 })
