@@ -1,12 +1,15 @@
 import { types } from '../types/types';
 
 const initialState = {
-  ActiveButtonNew: true,
-  ActiveButtonSearch: true,
+  ActiveButtonNew: false,
+  ActiveButtonSearch: false,
   ActiveButtonSave: false,
   ActiveButtonDisable: false,
   DisableInputs: true,
   isOpenModalSearchInventoryOrdenCompra: false,
+  claveInterna: '',
+  visibleClaveInterna: false,
+  disableInputsUser: false,
   ordenCompra: {
     numeroOrdenCompra: 0,
     idProveedor: 0,
@@ -303,6 +306,24 @@ export const OrdenCompraReducer = (state = initialState, action) => {
                 isOpenModalSearchInventoryOrdenCompra: action.payload
             }
 
+        case types.SetClaveInternaOrdenCompra:
+            return {
+                ...state,
+                claveInterna: action.payload
+            }
+
+        case types.SetVisibleClaveInternaOrdenCompra:
+            return {
+                ...state,
+                visibleClaveInterna: action.payload
+            }
+
+        case types.SetDisableInputsUserOrdenCompra:
+            return {
+                ...state,
+                disableInputsUser: action.payload
+            }
+
         case types.CleanStateOrdenCompra:
             return {
                 ActiveButtonNew: true,
@@ -311,6 +332,9 @@ export const OrdenCompraReducer = (state = initialState, action) => {
                 ActiveButtonDisable: false,
                 DisableInputs: true,
                 isOpenModalSearchInventoryOrdenCompra: false,
+                claveInterna: '',
+                visibleClaveInterna: false,
+                disableInputsUser: false,
                 ordenCompra: {
                     numeroOrdenCompra: 0,
                     idProveedor: 0,

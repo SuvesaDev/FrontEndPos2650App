@@ -6,6 +6,8 @@ import { types } from "../types/types";
 
 import loadingImage from '../assets/loading_snipiner.gif';
 
+import { startValidateClaveInterna } from './login';
+
 // API Actions
 // export const startGetAllFamilias = () => {
 
@@ -70,6 +72,52 @@ import loadingImage from '../assets/loading_snipiner.gif';
 //         }
 //     };
 // }
+
+export const startValidateClaveInternaOrdenCompra = ( password ) => {
+
+    return async ( dispatch ) => {
+          
+        try {
+            
+            const { status, userName, message }  = await dispatch( startValidateClaveInterna( password ) );
+            
+            if( status === 1 ) {
+
+                dispatch( SetActiveButtonNewOrdenCompra(true) );
+                dispatch( SetActiveButtonSearchOrdenCompra(true) );
+                dispatch( SetNombreEntregaOrdenCompra(userName) );
+                dispatch( SetVisibleClaveInternaOrdenCompra(false) );
+                dispatch( SetDisableInputsUserOrdenCompra(true) );
+
+            } else if ( status === 0 && message === 'Contraseña Incorrecta' ) {
+                
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Advertencia',
+                    text: message
+                });
+                
+            } else {
+
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: message,
+                });
+
+            }
+
+        } catch (error) {
+            console.log(error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Ocurrio un problema al validar usuario',
+            });
+        }
+        
+    }
+}
 
 export const startGetOneInventoryOrdenCompra = (codigo) => {
 
@@ -303,5 +351,20 @@ export const CleanStateOrdenCompra = () => ({
 
 export const SetIsOpenModalSearchInventoryOrdenCompra = (value) => ({
     type: types.SetIsOpenModalSearchInventoryOrdenCompra,
+    payload: value
+})
+
+export const SetClaveInternaOrdenCompra = (value) => ({
+    type: types.SetClaveInternaOrdenCompra,
+    payload: value
+})
+
+export const SetVisibleClaveInternaOrdenCompra = (value) => ({
+    type: types.SetVisibleClaveInternaOrdenCompra,
+    payload: value
+})
+
+export const SetDisableInputsUserOrdenCompra = (value) => ({
+    type: types.SetDisableInputsUserOrdenCompra,
     payload: value
 })

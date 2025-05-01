@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RiDeleteBin2Fill } from 'react-icons/ri';
 import { MdNoteAdd } from 'react-icons/md';
 import { FaMagnifyingGlass } from 'react-icons/fa6';
-import { FaRegSave, FaWindowClose } from 'react-icons/fa';
+import { FaRegSave, FaWindowClose, FaEyeSlash, FaEye } from 'react-icons/fa';
+import { PiKeyFill } from "react-icons/pi";
 
 import { startGetAllProveedores } from '../../actions/ProveedoresAction';
 import { startGetAllMonedas } from '../../actions/MonedasAction';
@@ -15,7 +16,10 @@ import {
     SetActiveButtonNewOrdenCompra, 
     SetActiveButtonSaveOrdenCompra, 
     SetActiveButtonSearchOrdenCompra, 
-    SetDisableInputsOrdenCompra
+    SetClaveInternaOrdenCompra, 
+    SetDisableInputsOrdenCompra,
+    SetVisibleClaveInternaOrdenCompra,
+    startValidateClaveInternaOrdenCompra
 } from '../../actions/ordenCompraAction';
 import { DeleteTab } from '../../actions/tabs';
 
@@ -34,8 +38,16 @@ export const PurchaseOrderIcons = () => {
         ActiveButtonNew,
         ActiveButtonSearch,
         ActiveButtonSave,
-        ActiveButtonDisable 
+        ActiveButtonDisable,
+        claveInterna,
+        DisableInputs,
+        visibleClaveInterna,
+        disableInputsUser
     } = useSelector((state) => state.ordenCompra);
+
+    const handleInputChangeWithDispatch = ({ target }, action) => {
+        dispatch(action(target.value));
+    };
 
     const handleNewOrdenCompra = async (e) => {
     
@@ -127,6 +139,38 @@ export const PurchaseOrderIcons = () => {
         
     }
 
+    const handleVisibleClave = (e) => {
+
+        if (!disableInputsUser) {
+            e.preventDefault();
+            dispatch(SetVisibleClaveInternaOrdenCompra(!visibleClaveInterna));
+        }
+    }
+
+    const handleOnKeyDownUser = async (e) => {
+    
+        if( disableInputsUser ) return;
+
+        if (e.key === 'Enter') {
+
+            e.preventDefault();
+
+            if (claveInterna == '') {
+
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Advertencia',
+                    text: 'Escriba su contraseña.'
+                });
+
+                return;
+            }
+
+            dispatch( startValidateClaveInternaOrdenCompra(claveInterna));
+        }
+    
+    }
+
     return (
 
         <>
@@ -185,6 +229,37 @@ export const PurchaseOrderIcons = () => {
                     >
                         Cerrar <FaWindowClose className="iconSizeBtn" />
                     </button>
+                </div>
+
+                <div className="col-md-2 mt-1 ms-3">
+                    <div className="input-group">
+
+                        <span className="input-group-text">
+                            <PiKeyFill className="iconSize" />
+                        </span>
+
+                        <input
+                            type={ (visibleClaveInterna) ? 'text' : 'password' }
+                            name="claveInterna"
+                            className="form-control"
+                            placeholder="Clave Interna"
+                            disabled={disableInputsUser}
+                            value={claveInterna}
+                            onKeyDown={handleOnKeyDownUser}
+                            onChange={e => handleInputChangeWithDispatch(e, SetClaveInternaOrdenCompra)}
+                        />
+                        <span
+                            className="input-group-text"
+                            onClick={handleVisibleClave}
+                            style={{ cursor: "pointer" }}
+                        >
+                            {
+                                (visibleClaveInterna)
+                                    ? <FaEyeSlash />
+                                    : <FaEye />
+                            }
+                        </span>
+                    </div>
                 </div>
 
             </div>

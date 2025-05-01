@@ -2143,6 +2143,9 @@ export const types = {
   SetObservacionesArticuloOrdenCompra: '[OrdenCompra] SetObservacionesArticuloOrdenCompra',
 
   SetIsOpenModalSearchInventoryOrdenCompra: '[OrdenCompra] SetIsOpenModalSearchInventoryOrdenCompra',
+  SetClaveInternaOrdenCompra: '[OrdenCompra] SetClaveInternaOrdenCompra',
+  SetVisibleClaveInternaOrdenCompra: '[OrdenCompra] SetVisibleClaveInternaOrdenCompra',
+  SetDisableInputsUserOrdenCompra: '[OrdenCompra] SetDisableInputsUserOrdenCompra',
 
   CleanStateOrdenCompra: '[OrdenCompra] CleanStateOrdenCompra',
 
