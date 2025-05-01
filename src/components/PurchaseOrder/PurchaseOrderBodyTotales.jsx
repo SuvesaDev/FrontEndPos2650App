@@ -6,9 +6,7 @@ import { FaColonSign } from "react-icons/fa6";
 export const PurchaseOrderBodyTotales = () => {
 
     const { ordenCompra } = useSelector((state) => state.ordenCompra);
-    const { 
-        totalSubGravado,
-        totalSubExento,
+    const {
         totalSubTotal,
         totalDescuento,
         totalImpuestos,
@@ -24,39 +22,7 @@ export const PurchaseOrderBodyTotales = () => {
                     <div className="card">
 
                         <div className="card-footer bg-primary">
-                            <div className='row'>
-
-                                <div className="col-md-2 mb-3">
-                                    <h5 className="text-white">Sub. Gravado</h5>
-                                    <div className="input-group">
-                                        <span className="input-group-text">
-                                            <FaColonSign className="iconSize" />
-                                        </span>
-                                        <input
-                                            type='text'
-                                            className='form-control'
-                                            placeholder='Sob-Total Gravado'
-                                            disabled={true}
-                                            value={totalSubGravado}
-                                        />
-                                    </div>
-                                </div>
-
-                                <div className="col-md-2 mb-3">
-                                    <h5 className="text-white">Sub. Exento</h5>
-                                    <div className="input-group">
-                                        <span className="input-group-text">
-                                            <FaColonSign className="iconSize" />
-                                        </span>
-                                        <input
-                                            type='text'
-                                            className='form-control'
-                                            placeholder='Sob-Total Exento'
-                                            disabled={true}
-                                            value={totalSubExento}
-                                        />
-                                    </div>
-                                </div>
+                            <div className='row justify-content-end'>
 
                                 <div className="col-md-2 mb-3">
                                     <h5 className="text-white">Sub Total</h5>

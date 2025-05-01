@@ -187,8 +187,8 @@ export const SetNombreProveedorOrdenCompra = (value) => ({
     payload: value
 })
 
-export const SetFechaEntregaOrdenCompra = (value) => ({
-    type: types.SetFechaEntregaOrdenCompra,
+export const SetFechaEmisionOrdenCompra = (value) => ({
+    type: types.SetFechaEmisionOrdenCompra,
     payload: value
 })
 
@@ -219,16 +219,6 @@ export const SetCantidadDiasOrdenCompra = (value) => ({
 
 export const SetArticulosOrdenCompra = (value) => ({
     type: types.SetArticulosOrdenCompra,
-    payload: value
-})
-
-export const SetTotalSubGravadoOrdenCompra = (value) => ({
-    type: types.SetTotalSubGravadoOrdenCompra,
-    payload: value
-})
-
-export const SetTotalSubExentoOrdenCompra = (value) => ({
-    type: types.SetTotalSubExentoOrdenCompra,
     payload: value
 })
 

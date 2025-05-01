@@ -11,15 +11,13 @@ const initialState = {
     numeroOrdenCompra: 0,
     idProveedor: 0,
     nombreProveedor: '',
-    fechaEntrega: '',
+    fechaEmision: '',
     nombreEntrega: '',
     moneda: 0,
     formaPagoContado: false,
     formaPagoCredito: false,
     cantidadDias: 0,
     articulos: [],
-    totalSubGravado: 0,
-    totalSubExento: 0,
     totalSubTotal: 0,
     totalDescuento: 0,
     totalImpuestos: 0,
@@ -101,12 +99,12 @@ export const OrdenCompraReducer = (state = initialState, action) => {
                 }
             }
 
-        case types.SetFechaEntregaOrdenCompra:
+        case types.SetFechaEmisionOrdenCompra:
             return {
                 ...state,
                 ordenCompra: {
                     ...state.ordenCompra,
-                    fechaEntrega: action.payload
+                    fechaEmision: action.payload
                 }
             }
 
@@ -161,24 +159,6 @@ export const OrdenCompraReducer = (state = initialState, action) => {
                 ordenCompra: {
                     ...state.ordenCompra,
                     articulos: action.payload
-                }
-            }
-
-        case types.SetTotalSubGravadoOrdenCompra:
-            return {
-                ...state,
-                ordenCompra: {
-                    ...state.ordenCompra,
-                    totalSubGravado: action.payload
-                }
-            }
-
-        case types.SetTotalSubExentoOrdenCompra:
-            return {
-                ...state,
-                ordenCompra: {
-                    ...state.ordenCompra,
-                    totalSubExento: action.payload
                 }
             }
 
@@ -335,7 +315,7 @@ export const OrdenCompraReducer = (state = initialState, action) => {
                     numeroOrdenCompra: 0,
                     idProveedor: 0,
                     nombreProveedor: '',
-                    fechaEntrega: '',
+                    fechaEmision: '',
                     nombreEntrega: '',
                     moneda: 0,
                     formaPagoContado: false,

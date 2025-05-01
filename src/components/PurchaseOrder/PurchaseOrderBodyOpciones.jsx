@@ -4,7 +4,7 @@ import { FaCalendarDay, FaCoins, FaUser } from "react-icons/fa";
 
 import { 
     SetCantidadDiasOrdenCompra,
-    SetFechaEntregaOrdenCompra, 
+    SetFechaEmisionOrdenCompra,
     SetFormaPagoContadoOrdenCompra, 
     SetFormaPagoCreditoOrdenCompra, 
     SetMonedaOrdenCompra, 
@@ -18,7 +18,7 @@ export const PurchaseOrderBodyOpciones = () => {
     const { monedasInventory } = useSelector(state => state.monedas);
     const { DisableInputs, ordenCompra } = useSelector((state) => state.ordenCompra);
     const { 
-        fechaEntrega,
+        fechaEmision,
         nombreEntrega,
         moneda,
         formaPagoContado,
@@ -58,7 +58,7 @@ export const PurchaseOrderBodyOpciones = () => {
                             <div className="row">
 
                                 <div className="col-md-3 mb-3">
-                                    <h5>Fecha Entrega</h5>
+                                    <h5>Fecha Emision</h5>
                                     <div className="input-group">
                                         <span className="input-group-text">
                                             <FaCalendarDay className="iconSize" />
@@ -68,9 +68,9 @@ export const PurchaseOrderBodyOpciones = () => {
                                             className='form-control'
                                             placeholder='Cantidad de Días'
                                             disabled={DisableInputs}
-                                            value={fechaEntrega}
+                                            value={fechaEmision}
                                             onChange={(e) =>
-                                                handleInputChangeWithDispatch(e, SetFechaEntregaOrdenCompra)
+                                                handleInputChangeWithDispatch(e, SetFechaEmisionOrdenCompra)
                                             }
                                         />
                                     </div>
@@ -83,10 +83,10 @@ export const PurchaseOrderBodyOpciones = () => {
                                             <FaUser className="iconSize" />
                                         </span>
                                         <input
-                                            type='number'
+                                            type='text'
                                             className='form-control'
                                             placeholder='Nombre de Persona a Entregar'
-                                            disabled={DisableInputs}
+                                            disabled={true}
                                             value={nombreEntrega}
                                             onChange={(e) =>
                                                 handleInputChangeWithDispatch(e, SetNombreEntregaOrdenCompra)

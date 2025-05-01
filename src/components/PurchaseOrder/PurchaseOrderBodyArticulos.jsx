@@ -10,11 +10,9 @@ import { PurchaseOrderBodyArticulosTable } from "./PurchaseOrderBodyArticulosTab
 
 import { 
     SetCantidadArticuloOrdenCompra,
-    SetCodigoArticuloOrdenCompra, 
-    SetCostoArticuloOrdenCompra, 
+    SetCodigoArticuloOrdenCompra,
     SetDescripcionArticuloOrdenCompra, 
-    SetDescuentoArticuloOrdenCompra, 
-    SetFletesArticuloOrdenCompra, 
+    SetDescuentoArticuloOrdenCompra,
     SetImpuestoArticuloOrdenCompra, 
     SetIsOpenModalSearchInventoryOrdenCompra, 
     SetObservacionesArticuloOrdenCompra, 
@@ -34,8 +32,6 @@ export const PurchaseOrderBodyArticulos = () => {
         codigo,
         descripcion,
         precioUnitario,
-        fletes,
-        costo,
         descuento,
         impuesto,
         cantidad,
@@ -69,8 +65,8 @@ export const PurchaseOrderBodyArticulos = () => {
             accessor: "descuento",
         },
         {
-            Header: "Gravado",
-            accessor: "gravado",
+            Header: "Total",
+            accessor: "total",
         },
         {
             Header: "Acciones",
@@ -158,7 +154,7 @@ export const PurchaseOrderBodyArticulos = () => {
                                     </div>
                                 </div>
 
-                                <div className="col-md-3 mb-3">
+                                <div className="col-md-2 mb-3">
                                     <h5>Precio Unitario</h5>
                                     <div className="input-group">
                                         <span className="input-group-text">
@@ -172,47 +168,6 @@ export const PurchaseOrderBodyArticulos = () => {
                                             value={precioUnitario}
                                             onChange={(e) =>
                                                 handleInputChangeWithDispatch(e, SetPrecioUnitarioArticuloOrdenCompra)
-                                            }
-                                        />
-                                    </div>
-                                </div>
-
-                                <div className="col-md-3 mb-3">
-                                    <h5>Fletes</h5>
-                                    <div className="input-group">
-                                        <span className="input-group-text">
-                                            <FaTruckFast className="iconSize" />
-                                        </span>
-                                        <input
-                                            type='text'
-                                            className='form-control'
-                                            placeholder='Fletes del Artículo'
-                                            disabled={DisableInputs}
-                                            value={fletes}
-                                            onChange={(e) =>
-                                                handleInputChangeWithDispatch(e, SetFletesArticuloOrdenCompra)
-                                            }
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="row mb-3 text-center">
-                                
-                                <div className="col-md-2 mb-3">
-                                    <h5>Costo</h5>
-                                    <div className="input-group">
-                                        <span className="input-group-text">
-                                            <FaColonSign className="iconSize" />
-                                        </span>
-                                        <input
-                                            type='text'
-                                            className='form-control'
-                                            placeholder='Costo Total'
-                                            disabled={DisableInputs}
-                                            value={costo}
-                                            onChange={(e) =>
-                                                handleInputChangeWithDispatch(e, SetCostoArticuloOrdenCompra)
                                             }
                                         />
                                     </div>
@@ -256,6 +211,10 @@ export const PurchaseOrderBodyArticulos = () => {
                                     </div>
                                 </div>
 
+                            </div>
+
+                            <div className="row mb-3 text-center">                           
+
                                 <div className="col-md-2 mb-3">
                                     <h5>Cantidad</h5>
                                     <div className="input-group">
@@ -293,10 +252,7 @@ export const PurchaseOrderBodyArticulos = () => {
                                         />
                                     </div>
                                 </div>
-                            </div>
 
-                            <div className="row mb-3 text-center">
-                                <div className="col-md-3 mb-3"> </div>
                                 <div className="col-md-6 mb-3">
                                     <h5>Observaciones</h5>
                                     <div className="input-group">
@@ -315,7 +271,8 @@ export const PurchaseOrderBodyArticulos = () => {
                                         />
                                     </div>
                                 </div>
-                                <div className="col-md-3 mb-3">
+
+                                <div className="col-md-2 mb-3 flex-column justify-content-end">
                                     <button 
                                         className='btn btn-success ms-auto'
                                         // onClick={openModalFamilias}
@@ -323,6 +280,7 @@ export const PurchaseOrderBodyArticulos = () => {
                                         <MdNoteAdd className='iconSize' /> Agregar
                                     </button>
                                 </div>
+
                             </div>
 
                             <div className="row mb-3 text-center">
