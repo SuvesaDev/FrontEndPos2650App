@@ -380,6 +380,11 @@ export const SetDisableInputsArticuloOrdenCompra = (value) => ({
     payload: value
 })
 
+export const SetIsEditArticuloOrdenCompra = (value) => ({
+    type: types.SetIsEditArticuloOrdenCompra,
+    payload: value
+})
+
 export const CleanStateArticuloOrdenCompra = () => ({
     type: types.CleanStateArticuloOrdenCompra
 })

@@ -3,8 +3,8 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 
 import { BsSortNumericDown } from "react-icons/bs";
-import { FaPercentage, FaSearch } from "react-icons/fa";
-import { FaColonSign, FaHashtag, FaTruckFast } from "react-icons/fa6";
+import { FaPercentage, FaSearch, FaEdit } from "react-icons/fa";
+import { FaColonSign, FaHashtag } from "react-icons/fa6";
 import { TbNotes } from "react-icons/tb";
 import { MdNoteAdd } from 'react-icons/md';
 
@@ -34,7 +34,7 @@ export const PurchaseOrderBodyArticulos = () => {
 
     const dispatch = useDispatch();
         
-    const { disableInputsArticulo, ordenCompra, articulo } = useSelector((state) => state.ordenCompra);
+    const { disableInputsArticulo, ordenCompra, articulo, isEditArticulo } = useSelector((state) => state.ordenCompra);
 
     const { articulos } = ordenCompra;
     const { 
@@ -217,6 +217,41 @@ export const PurchaseOrderBodyArticulos = () => {
 
         dispatch( SetAddOneArticulosOrdenCompra(newArticle) );
         dispatch( CleanStateArticuloOrdenCompra() );
+
+    }
+
+    const handleEditArticulo = () => {
+        console.log('Edit');
+        // if( codigo == '' ) {
+        //     Swal.fire({
+        //         icon: 'warning',
+        //         title: 'Advertencia',
+        //         text: 'Por favor, seleccione un producto para agregar.'
+        //     });
+
+        //     return;
+        // }
+
+        // let montoDescuento = (subtotal * descuento) / 100;
+        // let montoImpuesto = (subtotal * impuesto) / 100;
+
+        // const newArticle = {
+        //     idArticulo,
+        //     codigo,
+        //     descripcion,
+        //     precioUnitario,
+        //     descuento,
+        //     impuesto,
+        //     cantidad,
+        //     subtotal,
+        //     total,
+        //     observaciones,
+        //     montoDescuento,
+        //     montoImpuesto
+        // }
+
+        // dispatch( SetAddOneArticulosOrdenCompra(newArticle) );
+        // dispatch( CleanStateArticuloOrdenCompra() );
 
     }
 
@@ -423,10 +458,25 @@ export const PurchaseOrderBodyArticulos = () => {
 
                                 <div className="col-md-2 mb-3 flex-column justify-content-end">
                                     <button 
-                                        className={ disableInputsArticulo ? 'btn btn-success ms-auto disabled' : 'btn btn-success ms-auto' }
-                                        onClick={handleAddArticulo}
+                                        className={ 
+                                            (isEditArticulo)
+                                                ? (disableInputsArticulo) 
+                                                    ? 'btn btn-warning ms-auto disabled' 
+                                                    : 'btn btn-warning ms-auto' 
+                                                : (disableInputsArticulo) 
+                                                    ? 'btn btn-success ms-auto disabled' 
+                                                    : 'btn btn-success ms-auto' 
+                                        }
+                                        onClick={ (isEditArticulo) ? handleEditArticulo : handleAddArticulo}
                                     >
-                                        <MdNoteAdd className='iconSize' /> Agregar
+                                        { (isEditArticulo)
+                                            ? <div>
+                                                <FaEdit className='iconSize' /> Editar
+                                            </div>
+                                            : <div>
+                                                <MdNoteAdd className='iconSize' /> Agregar
+                                            </div> 
+                                        }
                                     </button>
                                 </div>
 

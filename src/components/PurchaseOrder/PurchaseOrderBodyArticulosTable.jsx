@@ -1,17 +1,29 @@
 import React from "react";
 import Swal from 'sweetalert2';
-
-import { useSelector, useDispatch } from "react-redux";
 import { useTable } from "react-table";
+
+import { useDispatch } from "react-redux";
 
 import { FaEdit } from 'react-icons/fa';
 import { MdDeleteForever } from 'react-icons/md';
 
+import { 
+  SetCantidadArticuloOrdenCompra,
+  SetCodigoArticuloOrdenCompra,
+  SetDescripcionArticuloOrdenCompra,
+  SetDescuentoArticuloOrdenCompra,
+  SetIdArticuloArticuloOrdenCompra, 
+  SetImpuestoArticuloOrdenCompra, 
+  SetIsEditArticuloOrdenCompra, 
+  SetObservacionesArticuloOrdenCompra, 
+  SetPrecioUnitarioArticuloOrdenCompra,
+  SetSubtotalArticuloOrdenCompra,
+  SetTotalArticuloOrdenCompra
+} from "../../actions/ordenCompraAction";
+
 export const PurchaseOrderBodyArticulosTable = ({ columns, data }) => {
 
   const dispatch = useDispatch();
-
-  const { codigoFamiliasSeleted } = useSelector((state) => state.familias);
 
   const {
     getTableProps,
@@ -25,22 +37,38 @@ export const PurchaseOrderBodyArticulosTable = ({ columns, data }) => {
     data,
   });
 
-  const handleEditSubFamily = async (cell) => {
+  const handleEditArticulo = async (cell) => {
       
-    // if( cell.column.id == 'icon') {
-      
-    //   // Obtiene la subfamilia seleccionada
-    //   const { codigo, subCodigo, descripcion, observaciones } = cell.row.original;
-      
-    //   dispatch( SetIdSubFamiliasSeletedFamily(codigo) );
-    //   dispatch( SetCodigoSubFamiliaFamiliasFamily(codigo) );
-    //   dispatch( SetDescripcionSubFamiliaFamiliasFamily(descripcion) );
-    //   dispatch( SetObservacionesSubFamiliaFamiliasFamily(observaciones) );
+      if( cell.column.id == 'icon') {
+        
+        // Obtiene el articulo seleccionado
+        const { 
+          idArticulo,
+          codigo, 
+          descripcion, 
+          precioUnitario,
+          descuento,
+          impuesto,
+          cantidad, 
+          subtotal,
+          total,
+          observaciones 
+        } = cell.row.original;
 
-    //   dispatch( SetIsCreateSubFamiliasFamily( false ) );
-    //   dispatch( SetClosingModalSubFamiliasFamily(false) );
+        dispatch( SetIdArticuloArticuloOrdenCompra(idArticulo) );
+        dispatch( SetCodigoArticuloOrdenCompra(codigo) );
+        dispatch( SetDescripcionArticuloOrdenCompra(descripcion) );
+        dispatch( SetPrecioUnitarioArticuloOrdenCompra(precioUnitario) );
+        dispatch( SetDescuentoArticuloOrdenCompra(descuento) );
+        dispatch( SetImpuestoArticuloOrdenCompra(impuesto) );
+        dispatch( SetCantidadArticuloOrdenCompra(cantidad) );
+        dispatch( SetSubtotalArticuloOrdenCompra(subtotal) );
+        dispatch( SetTotalArticuloOrdenCompra(total) );
+        dispatch( SetObservacionesArticuloOrdenCompra(observaciones) );
 
-    // }
+        dispatch( SetIsEditArticuloOrdenCompra(true) );
+        
+      }
   
   };
 
@@ -96,10 +124,8 @@ export const PurchaseOrderBodyArticulosTable = ({ columns, data }) => {
 
                                         <div class="col-auto">
                                           <button 
-                                            className='btn btn-success' 
-                                            data-bs-toggle="modal"
-                                            data-bs-target="#modalSubFamilia"
-                                            onClick={ () => handleEditSubFamily(cell)}
+                                            className='btn btn-success'
+                                            onClick={ () => handleEditArticulo(cell)}
                                           >
                                             <FaEdit className='iconSizeBtn' />
                                           </button>
