@@ -10,6 +10,7 @@ const initialState = {
   claveInterna: '',
   visibleClaveInterna: false,
   disableInputsUser: false,
+  disableInputsArticulo: true,
   ordenCompra: {
     numeroOrdenCompra: 0,
     idProveedor: 0,
@@ -337,6 +338,12 @@ export const OrdenCompraReducer = (state = initialState, action) => {
                 disableInputsUser: action.payload
             }
 
+        case types.SetDisableInputsArticuloOrdenCompra:
+            return {
+                ...state,
+                disableInputsArticulo: action.payload
+            }
+
         case types.CleanStateArticuloOrdenCompra:
             return {
                 ...state,
@@ -367,6 +374,7 @@ export const OrdenCompraReducer = (state = initialState, action) => {
                 claveInterna: '',
                 visibleClaveInterna: false,
                 disableInputsUser: false,
+                disableInputsArticulo: true,
                 ordenCompra: {
                     numeroOrdenCompra: 0,
                     idProveedor: 0,

@@ -1,9 +1,11 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { FaCalendarDay, FaCoins, FaUser } from "react-icons/fa";
 
 import { 
     SetCantidadDiasOrdenCompra,
+    SetDisableInputsArticuloOrdenCompra,
     SetFechaEmisionOrdenCompra,
     SetFormaPagoContadoOrdenCompra, 
     SetFormaPagoCreditoOrdenCompra, 
@@ -23,8 +25,21 @@ export const PurchaseOrderBodyOpciones = () => {
         moneda,
         formaPagoContado,
         formaPagoCredito,
-        cantidadDias 
+        cantidadDias,
+        idProveedor
     } = ordenCompra;
+
+    useEffect(() => {
+      
+        if( idProveedor != 0 && fechaEmision != '' && moneda != 0 
+            && (formaPagoContado != false || formaPagoCredito != false ) ) {
+            dispatch( SetDisableInputsArticuloOrdenCompra(false) );
+        }
+    
+        return () => {}
+
+    }, [idProveedor, fechaEmision, moneda, formaPagoContado, formaPagoCredito])
+    
 
     const handleInputChangeWithDispatch = ({ target }, action) => {
         dispatch(action(target.value));

@@ -1,4 +1,5 @@
 import Swal from 'sweetalert2';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 
 import { BsSortNumericDown } from "react-icons/bs";
@@ -22,6 +23,10 @@ import {
     SetPrecioUnitarioArticuloOrdenCompra,
     SetSubtotalArticuloOrdenCompra,
     SetTotalArticuloOrdenCompra,
+    SetTotalDescuentoOrdenCompra,
+    SetTotalFinalOrdenCompra,
+    SetTotalImpuestosOrdenCompra,
+    SetTotalSubTotalOrdenCompra,
     startGetOneInventoryOrdenCompra
 } from "../../actions/ordenCompraAction";
 
@@ -29,7 +34,7 @@ export const PurchaseOrderBodyArticulos = () => {
 
     const dispatch = useDispatch();
         
-    const { DisableInputs, ordenCompra, articulo } = useSelector((state) => state.ordenCompra);
+    const { disableInputsArticulo, ordenCompra, articulo } = useSelector((state) => state.ordenCompra);
 
     const { articulos } = ordenCompra;
     const { 
@@ -79,6 +84,36 @@ export const PurchaseOrderBodyArticulos = () => {
             accessor: "icon"
         }
     ];
+
+    useEffect(() => {
+        
+        let totalSubTotal = 0;
+        let totalDescuento = 0;
+        let totalImpuesto = 0;
+        let total = 0;
+
+        if( articulos.length > 0 ) {
+
+            articulos.forEach(articulo => {
+
+                totalSubTotal += parseFloat(articulo.subtotal);
+                totalDescuento += parseFloat(articulo.montoDescuento);
+                totalImpuesto += parseFloat(articulo.montoImpuesto);
+                total += parseFloat(articulo.total);
+
+            });
+
+            dispatch( SetTotalSubTotalOrdenCompra(parseFloat(totalSubTotal).toFixed(2)) );
+            dispatch( SetTotalDescuentoOrdenCompra(parseFloat(totalDescuento).toFixed(2)) );
+            dispatch( SetTotalImpuestosOrdenCompra(parseFloat(totalImpuesto).toFixed(2)) );
+            dispatch( SetTotalFinalOrdenCompra(parseFloat(total).toFixed(2)) );
+
+        }
+    
+        return () => {}
+
+    }, [articulos]);
+    
 
     const handleInputChangeWithDispatch = ({ target }, action) => {
         dispatch(action(target.value));
@@ -162,6 +197,9 @@ export const PurchaseOrderBodyArticulos = () => {
             return;
         }
 
+        let montoDescuento = (subtotal * descuento) / 100;
+        let montoImpuesto = (subtotal * impuesto) / 100;
+
         const newArticle = {
             idArticulo,
             codigo,
@@ -172,7 +210,9 @@ export const PurchaseOrderBodyArticulos = () => {
             cantidad,
             subtotal,
             total,
-            observaciones
+            observaciones,
+            montoDescuento,
+            montoImpuesto
         }
 
         dispatch( SetAddOneArticulosOrdenCompra(newArticle) );
@@ -207,7 +247,7 @@ export const PurchaseOrderBodyArticulos = () => {
                                             type='number'
                                             className='form-control'
                                             placeholder='Código del Artículo'
-                                            disabled={DisableInputs}
+                                            disabled={disableInputsArticulo}
                                             value={codigo}
                                             onChange={(e) =>
                                                 handleInputChangeWithDispatch(e, SetCodigoArticuloOrdenCompra)
@@ -216,7 +256,7 @@ export const PurchaseOrderBodyArticulos = () => {
                                         />
                                         <button
                                             type="button"
-                                            className={ DisableInputs ? 'btn btn-primary disabled' : 'btn btn-primary' }
+                                            className={ disableInputsArticulo ? 'btn btn-primary disabled' : 'btn btn-primary' }
                                             onClick={handleSearchInventory}
                                             data-bs-toggle="modal"
                                             data-bs-target="#modalBuscarArticulo"
@@ -236,7 +276,7 @@ export const PurchaseOrderBodyArticulos = () => {
                                             type='text'
                                             className='form-control'
                                             placeholder='Descripción del Artículo'
-                                            disabled={DisableInputs}
+                                            disabled={disableInputsArticulo}
                                             value={descripcion}
                                             onChange={(e) =>
                                                 handleInputChangeWithDispatch(e, SetDescripcionArticuloOrdenCompra)
@@ -255,7 +295,7 @@ export const PurchaseOrderBodyArticulos = () => {
                                             type='number'
                                             className='form-control'
                                             placeholder='Precio del Artículo'
-                                            disabled={DisableInputs}
+                                            disabled={disableInputsArticulo}
                                             value={precioUnitario}
                                             onChange={(e) =>
                                                 handleInputChangeWithDispatch(e, SetPrecioUnitarioArticuloOrdenCompra)
@@ -275,7 +315,7 @@ export const PurchaseOrderBodyArticulos = () => {
                                             min="0" 
                                             className='form-control'
                                             placeholder='Descuento Total'
-                                            disabled={DisableInputs}
+                                            disabled={disableInputsArticulo}
                                             value={descuento}
                                             onChange={(e) =>
                                                 handleChangeDescuento(e, SetDescuentoArticuloOrdenCompra)
@@ -295,7 +335,7 @@ export const PurchaseOrderBodyArticulos = () => {
                                             min="0"
                                             className='form-control'
                                             placeholder='Impuesto Total'
-                                            disabled={DisableInputs}
+                                            disabled={disableInputsArticulo}
                                             value={impuesto}
                                             onChange={(e) => handleChangeImpuesto(e) }
                                         />
@@ -316,7 +356,7 @@ export const PurchaseOrderBodyArticulos = () => {
                                             type='text'
                                             className='form-control'
                                             placeholder='Observaciones Extras'
-                                            disabled={DisableInputs}
+                                            disabled={disableInputsArticulo}
                                             value={observaciones}
                                             onChange={(e) =>
                                                 handleInputChangeWithDispatch(e, SetObservacionesArticuloOrdenCompra)
@@ -336,7 +376,7 @@ export const PurchaseOrderBodyArticulos = () => {
                                             min="1"
                                             className='form-control'
                                             placeholder='Cantidad Total'
-                                            disabled={DisableInputs}
+                                            disabled={disableInputsArticulo}
                                             value={cantidad}
                                             onChange={(e) => handleChangeCantidad(e)}
                                         />
@@ -383,7 +423,7 @@ export const PurchaseOrderBodyArticulos = () => {
 
                                 <div className="col-md-2 mb-3 flex-column justify-content-end">
                                     <button 
-                                        className='btn btn-success ms-auto'
+                                        className={ disableInputsArticulo ? 'btn btn-success ms-auto disabled' : 'btn btn-success ms-auto' }
                                         onClick={handleAddArticulo}
                                     >
                                         <MdNoteAdd className='iconSize' /> Agregar

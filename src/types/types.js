@@ -2147,6 +2147,7 @@ export const types = {
   SetClaveInternaOrdenCompra: '[OrdenCompra] SetClaveInternaOrdenCompra',
   SetVisibleClaveInternaOrdenCompra: '[OrdenCompra] SetVisibleClaveInternaOrdenCompra',
   SetDisableInputsUserOrdenCompra: '[OrdenCompra] SetDisableInputsUserOrdenCompra',
+  SetDisableInputsArticuloOrdenCompra: '[OrdenCompra] SetDisableInputsArticuloOrdenCompra',
 
   CleanStateArticuloOrdenCompra: '[OrdenCompra] CleanStateArticuloOrdenCompra',
   CleanStateOrdenCompra: '[OrdenCompra] CleanStateOrdenCompra',
