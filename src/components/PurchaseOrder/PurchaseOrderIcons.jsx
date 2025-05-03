@@ -19,6 +19,7 @@ import {
     SetClaveInternaOrdenCompra, 
     SetDisableInputsOrdenCompra,
     SetVisibleClaveInternaOrdenCompra,
+    startSaveOrdenCompra,
     startValidateClaveInternaOrdenCompra
 } from '../../actions/ordenCompraAction';
 import { DeleteTab } from '../../actions/tabs';
@@ -40,10 +41,27 @@ export const PurchaseOrderIcons = () => {
         ActiveButtonSave,
         ActiveButtonDisable,
         claveInterna,
-        DisableInputs,
         visibleClaveInterna,
-        disableInputsUser
+        disableInputsUser,
+        ordenCompra
     } = useSelector((state) => state.ordenCompra);
+
+    const {
+        numeroOrdenCompra,
+        idProveedor,
+        nombreProveedor,
+        fechaEmision,
+        nombreEntrega,
+        moneda,
+        formaPagoContado,
+        formaPagoCredito,
+        cantidadDias,
+        articulos,
+        totalSubTotal,
+        totalDescuento,
+        totalImpuestos,
+        totalFinal
+    } = ordenCompra;
 
     const handleInputChangeWithDispatch = ({ target }, action) => {
         dispatch(action(target.value));
@@ -171,6 +189,60 @@ export const PurchaseOrderIcons = () => {
     
     }
 
+    const handleSaveOrdenCompra = () => {
+
+        const newOrdenCompra = {
+            orden: numeroOrdenCompra,
+            proveedor: idProveedor,
+            fecha: fechaEmision,
+            contado: formaPagoContado,
+            credito: formaPagoCredito,
+            diascredito: cantidadDias,
+            plazo: 0,
+            descuento: totalDescuento,
+            impuesto: totalImpuestos,
+            total: totalFinal,
+            observaciones: "",
+            usuario: nombreEntrega,
+            nombreUsuario: nombreEntrega,
+            entregar: "", //TODO: Validar
+            codMoneda: moneda,
+            subTotalGravado: 0,
+            subTotalExento: 0,
+            subTotal: totalSubTotal,
+            anulado: false,
+            idSucursal: 0, //TODO: Validar
+            usuarioModificacion: null,
+            nombreUsuarioModificacion: null,
+            fechaModificacion: null,
+            detalleOrdenCompra: articulos.map( article => {
+                return {
+                    id: article.idArticulo,
+                    orden: numeroOrdenCompra,
+                    codigo: article.codigo,
+                    descripcion: article.descripcion,
+                    costoUnitario: 0,
+                    cantidad: article.cantidad,
+                    totalCompra: article.total,
+                    porcDescuento: article.descuento,
+                    descuento: article.montoDescuento,
+                    porcImpuesto: article.impuesto,
+                    impuesto: article.montoImpuesto,
+                    otrosCargos: 0,
+                    montoFlete: 0,
+                    costo: 0,
+                    gravado: 0,
+                    exento: 0,
+                    vendidos: 0,
+                    existActual: 0
+                }
+            })
+        }
+
+        dispatch( startSaveOrdenCompra(newOrdenCompra) );
+
+    }
+
     return (
 
         <>
@@ -205,7 +277,7 @@ export const PurchaseOrderIcons = () => {
                         className={
                             (ActiveButtonSave ? "btn btn-dark espacio" : "btn btn-dark espacio disabled")
                         }
-                        disabled={!ActiveButtonSave}
+                        onClick={handleSaveOrdenCompra}
                     >
                         Registrar <FaRegSave className="iconSizeBtn" />
                     </button>

@@ -9,69 +9,83 @@ import loadingImage from '../assets/loading_snipiner.gif';
 import { startValidateClaveInterna } from './login';
 
 // API Actions
-// export const startGetAllFamilias = () => {
+export const startSaveOrdenCompra = ( ordenCompra ) => {
 
-//     return async (dispatch) => {
+    return async (dispatch) => {
 
-//         try {
+        try {
 
-//             //Mostrar el loading
-//             Swal.fire({
-//                 title: 'Por favor, espere',
-//                 allowEscapeKey: false,
-//                 allowOutsideClick: false,
-//                 showConfirmButton: false,
-//                 imageUrl: loadingImage,
-//                 customClass: 'alert-class-login',
-//                 imageHeight: 100,
-//             });
-            
-//             //Call end-point 
-//             const { data } = await suvesaApi.get('/Familias/getFamilias');
-//             const { status, responses } = data;
-            
-//             //Quitar el loading
-//             Swal.close();
+            //Mostrar un mensaje de confirmacion
+            Swal.fire({
+                title: '¿Desea agregar un nueva orden compra?',
+                showDenyButton: true,
+                showCancelButton: false,
+                confirmButtonText: 'Guardar',
+                denyButtonText: `Cancelar`,
+            }).then(async (result) => {
 
-//             if (status === 0) {
+                if (result.isConfirmed) {
 
-//                 // Se ingresa nuevo banco a la tabla
-//                 dispatch( SetAllFamiliasFamily( responses ) );
+                    //Mostrar el loading
+                    Swal.fire({
+                        title: 'Por favor, espere',
+                        allowEscapeKey: false,
+                        allowOutsideClick: false,
+                        showConfirmButton: false,
+                        imageUrl: loadingImage,
+                        customClass: 'alert-class-login',
+                        imageHeight: 100,
+                    });
+                    
+                    //Call end-point 
+                    const { data } = await suvesaApi.post('/OrdenCompra/CreateOrdenCompra', ordenCompra);
+                    const { status } = data;
+                    
+                    //Quitar el loading
+                    Swal.close();
+                    
+                    if (status === 0) {
+                        
+                        dispatch( CleanStateArticuloOrdenCompra() );
 
-//             } else {
+                    } else {
 
-//                 //Caso contrario respuesta incorrecto mostrar mensaje de error
-//                 const { currentException } = data;
-//                 const msj = currentException.split(',');
+                        //Caso contrario respuesta incorrecto mostrar mensaje de error
+                        const { currentException } = data;
+                        const msj = currentException.split(',');
 
-//                 Swal.fire({
-//                     icon: 'error',
-//                     title: 'Error',
-//                     text: (currentException.includes(',')) ? msj[3] : currentException,
-//                 });
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: (currentException.includes(',')) ? msj[3] : currentException,
+                        });
 
-//             }
+                    }
 
-//         } catch (error) {
+                }
 
-//             Swal.close();
-//             console.log(error);
-//             if (error.message === 'Request failed with status code 401') {
-//                 Swal.fire({
-//                     icon: 'error',
-//                     title: 'Error',
-//                     text: 'Usuario no valido',
-//                 });
-//             } else {
-//                 Swal.fire({
-//                     icon: 'error',
-//                     title: 'Error',
-//                     text: 'Ocurrio un problema a la guardar el banco',
-//                 });
-//             }
-//         }
-//     };
-// }
+            });
+
+        } catch (error) {
+
+            Swal.close();
+            console.log(error);
+            if (error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema a la guardar el banco',
+                });
+            }
+        }
+    };
+}
 
 export const startValidateClaveInternaOrdenCompra = ( password ) => {
 
