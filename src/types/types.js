@@ -2149,6 +2149,9 @@ export const types = {
   SetDisableInputsUserOrdenCompra: '[OrdenCompra] SetDisableInputsUserOrdenCompra',
   SetDisableInputsArticuloOrdenCompra: '[OrdenCompra] SetDisableInputsArticuloOrdenCompra',
   SetIsEditArticuloOrdenCompra: '[OrdenCompra] SetIsEditArticuloOrdenCompra',
+  SetIndexArticuloSeletedOrdenCompra: '[OrdenCompra] SetIndexArticuloSeletedOrdenCompra',
+  SetEditArticuloOrdenCompra: '[OrdenCompra] SetEditArticuloOrdenCompra',
+  SetDeleteArticuloOrdenCompra: '[OrdenCompra] SetDeleteArticuloOrdenCompra',
 
   CleanStateArticuloOrdenCompra: '[OrdenCompra] CleanStateArticuloOrdenCompra',
   CleanStateOrdenCompra: '[OrdenCompra] CleanStateOrdenCompra',

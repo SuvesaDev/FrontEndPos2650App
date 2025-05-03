@@ -10,10 +10,12 @@ import { MdDeleteForever } from 'react-icons/md';
 import { 
   SetCantidadArticuloOrdenCompra,
   SetCodigoArticuloOrdenCompra,
+  SetDeleteArticuloOrdenCompra,
   SetDescripcionArticuloOrdenCompra,
   SetDescuentoArticuloOrdenCompra,
   SetIdArticuloArticuloOrdenCompra, 
   SetImpuestoArticuloOrdenCompra, 
+  SetIndexArticuloSeletedOrdenCompra, 
   SetIsEditArticuloOrdenCompra, 
   SetObservacionesArticuloOrdenCompra, 
   SetPrecioUnitarioArticuloOrdenCompra,
@@ -55,6 +57,8 @@ export const PurchaseOrderBodyArticulosTable = ({ columns, data }) => {
           observaciones 
         } = cell.row.original;
 
+        const { index } = cell.row;
+
         dispatch( SetIdArticuloArticuloOrdenCompra(idArticulo) );
         dispatch( SetCodigoArticuloOrdenCompra(codigo) );
         dispatch( SetDescripcionArticuloOrdenCompra(descripcion) );
@@ -66,20 +70,39 @@ export const PurchaseOrderBodyArticulosTable = ({ columns, data }) => {
         dispatch( SetTotalArticuloOrdenCompra(total) );
         dispatch( SetObservacionesArticuloOrdenCompra(observaciones) );
 
+        dispatch( SetIndexArticuloSeletedOrdenCompra(index) );
+
         dispatch( SetIsEditArticuloOrdenCompra(true) );
         
       }
   
   };
 
-  const handleDeleteSubFamily = async (cell) => {
+  const handleDeleteArticulo = async (cell) => {
       
-    // if( cell.column.id == 'icon') {
-    //   // Obtiene la Subfamilia seleccionada
-    //   const { codigo, descripcion } = cell.row.original;
+    if( cell.column.id == 'icon') {
+
+      // Obtiene la Subfamilia seleccionada
+      const { codigo, descripcion } = cell.row.original;
+      const { index } = cell.row;
+
+      //Mostrar un mensaje de confirmacion
+      Swal.fire({
+          title: `¿Desea eliminar el Articulo ${codigo} - ${descripcion}?`,
+          showDenyButton: true,
+          showCancelButton: false,
+          confirmButtonText: 'Eliminar',
+          denyButtonText: `Cancelar`,
+      }).then(async (result) => {
+      
+          if (result.isConfirmed) {                            
+              // Se ingresa nuevo banco a la tabla
+              dispatch( SetDeleteArticuloOrdenCompra(index) );
+          }
+
+      });
     
-    //   dispatch( startDeleteSubFamilias( codigo, descripcion, codigoFamiliasSeleted ) );
-    // }
+    }
       
   };
 
@@ -134,7 +157,7 @@ export const PurchaseOrderBodyArticulosTable = ({ columns, data }) => {
                                         <div class="col-auto">
                                           <button 
                                             className='btn btn-danger' 
-                                            onClick={ () => handleDeleteSubFamily(cell)}
+                                            onClick={ () => handleDeleteArticulo(cell)}
                                           >
                                             <MdDeleteForever className='iconSizeBtn' />
                                           </button>

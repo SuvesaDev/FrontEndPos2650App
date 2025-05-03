@@ -17,7 +17,9 @@ import {
     SetCodigoArticuloOrdenCompra,
     SetDescripcionArticuloOrdenCompra, 
     SetDescuentoArticuloOrdenCompra,
+    SetEditArticuloOrdenCompra,
     SetImpuestoArticuloOrdenCompra, 
+    SetIsEditArticuloOrdenCompra, 
     SetIsOpenModalSearchInventoryOrdenCompra, 
     SetObservacionesArticuloOrdenCompra, 
     SetPrecioUnitarioArticuloOrdenCompra,
@@ -34,7 +36,7 @@ export const PurchaseOrderBodyArticulos = () => {
 
     const dispatch = useDispatch();
         
-    const { disableInputsArticulo, ordenCompra, articulo, isEditArticulo } = useSelector((state) => state.ordenCompra);
+    const { disableInputsArticulo, ordenCompra, articulo, isEditArticulo, indexArticuloSeleted } = useSelector((state) => state.ordenCompra);
 
     const { articulos } = ordenCompra;
     const { 
@@ -108,6 +110,11 @@ export const PurchaseOrderBodyArticulos = () => {
             dispatch( SetTotalImpuestosOrdenCompra(parseFloat(totalImpuesto).toFixed(2)) );
             dispatch( SetTotalFinalOrdenCompra(parseFloat(total).toFixed(2)) );
 
+        } else {
+            dispatch( SetTotalSubTotalOrdenCompra(0) );
+            dispatch( SetTotalDescuentoOrdenCompra(0) );
+            dispatch( SetTotalImpuestosOrdenCompra(0) );
+            dispatch( SetTotalFinalOrdenCompra(0) );
         }
     
         return () => {}
@@ -221,37 +228,38 @@ export const PurchaseOrderBodyArticulos = () => {
     }
 
     const handleEditArticulo = () => {
-        console.log('Edit');
-        // if( codigo == '' ) {
-        //     Swal.fire({
-        //         icon: 'warning',
-        //         title: 'Advertencia',
-        //         text: 'Por favor, seleccione un producto para agregar.'
-        //     });
+        
+        if( codigo == '' ) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Advertencia',
+                text: 'Por favor, seleccione un producto para editar.'
+            });
 
-        //     return;
-        // }
+            return;
+        }
 
-        // let montoDescuento = (subtotal * descuento) / 100;
-        // let montoImpuesto = (subtotal * impuesto) / 100;
+        let montoDescuento = (subtotal * descuento) / 100;
+        let montoImpuesto = (subtotal * impuesto) / 100;
 
-        // const newArticle = {
-        //     idArticulo,
-        //     codigo,
-        //     descripcion,
-        //     precioUnitario,
-        //     descuento,
-        //     impuesto,
-        //     cantidad,
-        //     subtotal,
-        //     total,
-        //     observaciones,
-        //     montoDescuento,
-        //     montoImpuesto
-        // }
+        const editArticle = {
+            idArticulo,
+            codigo,
+            descripcion,
+            precioUnitario,
+            descuento,
+            impuesto,
+            cantidad,
+            subtotal,
+            total,
+            observaciones,
+            montoDescuento,
+            montoImpuesto
+        }
 
-        // dispatch( SetAddOneArticulosOrdenCompra(newArticle) );
-        // dispatch( CleanStateArticuloOrdenCompra() );
+        dispatch( SetEditArticuloOrdenCompra({ index: indexArticuloSeleted, article: editArticle }) );
+        dispatch( SetIsEditArticuloOrdenCompra(false) );
+        dispatch( CleanStateArticuloOrdenCompra() );
 
     }
 

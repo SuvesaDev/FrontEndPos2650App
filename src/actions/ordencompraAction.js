@@ -385,6 +385,21 @@ export const SetIsEditArticuloOrdenCompra = (value) => ({
     payload: value
 })
 
+export const SetIndexArticuloSeletedOrdenCompra = (value) => ({
+    type: types.SetIndexArticuloSeletedOrdenCompra,
+    payload: value
+})
+
+export const SetEditArticuloOrdenCompra = (value) => ({
+    type: types.SetEditArticuloOrdenCompra,
+    payload: value
+})
+
+export const SetDeleteArticuloOrdenCompra = (value) => ({
+    type: types.SetDeleteArticuloOrdenCompra,
+    payload: value
+})
+
 export const CleanStateArticuloOrdenCompra = () => ({
     type: types.CleanStateArticuloOrdenCompra
 })

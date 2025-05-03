@@ -12,6 +12,7 @@ const initialState = {
   disableInputsUser: false,
   disableInputsArticulo: true,
   isEditArticulo: false,
+  indexArticuloSeleted: 0,
   ordenCompra: {
     numeroOrdenCompra: 0,
     idProveedor: 0,
@@ -351,6 +352,50 @@ export const OrdenCompraReducer = (state = initialState, action) => {
                 isEditArticulo: action.payload
             }
 
+        case types.SetIndexArticuloSeletedOrdenCompra:
+            return {
+                ...state,
+                indexArticuloSeleted: action.payload
+            }
+
+        case types.SetEditArticuloOrdenCompra:
+            return {
+                ...state,
+                ordenCompra: {
+                    ...state.ordenCompra,
+                    articulos: state.ordenCompra.articulos.map(
+                        (article, i) => i == action.payload.index
+                            ? {
+                                ...article,
+                                idArticulo : action.payload.article.idArticulo,
+                                codigo : action.payload.article.codigo,
+                                descripcion : action.payload.article.descripcion,
+                                precioUnitario : action.payload.article.precioUnitario,
+                                descuento : action.payload.article.descuento,
+                                impuesto : action.payload.article.impuesto,
+                                cantidad : action.payload.article.cantidad,
+                                subtotal : action.payload.article.subtotal,
+                                total : action.payload.article.total,
+                                observaciones : action.payload.article.observaciones,
+                                montoDescuento : action.payload.article.montoDescuento,
+                                montoImpuesto : action.payload.article.montoImpuesto
+                            } 
+                            : article
+                    )
+                }
+            }
+
+        case types.SetDeleteArticuloOrdenCompra:
+            return {
+                ...state,
+                ordenCompra: {
+                    ...state.ordenCompra,
+                    articulos: state.ordenCompra.articulos.filter(
+                        (article, i) => i != action.payload
+                    )
+                }
+            }
+
         case types.CleanStateArticuloOrdenCompra:
             return {
                 ...state,
@@ -383,6 +428,7 @@ export const OrdenCompraReducer = (state = initialState, action) => {
                 disableInputsUser: false,
                 disableInputsArticulo: true,
                 isEditArticulo: false,
+                indexArticuloSeleted: 0,
                 ordenCompra: {
                     numeroOrdenCompra: 0,
                     idProveedor: 0,
