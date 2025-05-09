@@ -26,6 +26,7 @@ import { DeleteTab } from '../../actions/tabs';
 
 import { PurchaseOrderBodyProveedorModal } from './PurchaseOrderBodyProveedorModal';
 import { InventorySearchModal } from '../Inventory/InventorySearchModal';
+import { PurchaseOrderBodySearchModal } from './PurchaseOrderBodySearchModal';
 
 export const PurchaseOrderIcons = () => {
 
@@ -205,21 +206,21 @@ export const PurchaseOrderIcons = () => {
             observaciones: "",
             usuario: nombreEntrega,
             nombreUsuario: nombreEntrega,
-            entregar: "", //TODO: Validar
+            entregar: "", 
             codMoneda: moneda,
             subTotalGravado: 0,
             subTotalExento: 0,
             subTotal: totalSubTotal,
             anulado: false,
-            idSucursal: 0, //TODO: Validar
+            idSucursal: 0, 
             usuarioModificacion: null,
             nombreUsuarioModificacion: null,
             fechaModificacion: null,
             detalleOrdenCompra: articulos.map( article => {
                 return {
-                    id: article.idArticulo,
+                    id: null,
                     orden: numeroOrdenCompra,
-                    codigo: article.codigo,
+                    codigo: article.idArticulo,
                     descripcion: article.descripcion,
                     costoUnitario: 0,
                     cantidad: article.cantidad,
@@ -267,6 +268,8 @@ export const PurchaseOrderIcons = () => {
                         }
                         disabled={!ActiveButtonSearch}
                         onClick={handleSearchOrdenCompra}
+                        data-bs-toggle='modal'
+                        data-bs-target='#modalSearchOrdenCompra'
                     >
                         Buscar <FaMagnifyingGlass className="iconSizeBtn" />
                     </button>
@@ -339,6 +342,8 @@ export const PurchaseOrderIcons = () => {
             <PurchaseOrderBodyProveedorModal />
 
             <InventorySearchModal />
+
+            <PurchaseOrderBodySearchModal />
         </>
 
     )

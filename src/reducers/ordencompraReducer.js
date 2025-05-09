@@ -13,6 +13,10 @@ const initialState = {
   disableInputsArticulo: true,
   isEditArticulo: false,
   indexArticuloSeleted: 0,
+  checkSearchByProveedor: true,
+  checkSearchByOrdenCompra: false,
+  searchOrdenCompra: '',
+  idProveedorSearch: 0,
   ordenCompra: {
     numeroOrdenCompra: 0,
     idProveedor: 0,
@@ -396,6 +400,30 @@ export const OrdenCompraReducer = (state = initialState, action) => {
                 }
             }
 
+        case types.SetCheckSearchByProveedorOrdenCompra:
+            return {
+                ...state,
+                checkSearchByProveedor: action.payload
+            }
+
+        case types.SetCheckSearchByOrdenCompra:
+            return {
+                ...state,
+                checkSearchByOrdenCompra: action.payload
+            }
+
+        case types.SetTextSearchOrdenCompra:
+            return {
+                ...state,
+                searchOrdenCompra: action.payload
+            }
+
+        case types.SetIdProveedorSearchOrdenCompra:
+            return {
+                ...state,
+                idProveedorSearch: action.payload
+            }
+
         case types.CleanStateArticuloOrdenCompra:
             return {
                 ...state,
@@ -429,6 +457,10 @@ export const OrdenCompraReducer = (state = initialState, action) => {
                 disableInputsArticulo: true,
                 isEditArticulo: false,
                 indexArticuloSeleted: 0,
+                checkSearchByProveedor: true,
+                checkSearchByOrdenCompra: false,
+                searchOrdenCompra: '',
+                idProveedorSearch: 0,
                 ordenCompra: {
                     numeroOrdenCompra: 0,
                     idProveedor: 0,

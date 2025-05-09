@@ -414,6 +414,26 @@ export const SetDeleteArticuloOrdenCompra = (value) => ({
     payload: value
 })
 
+export const SetCheckSearchByProveedorOrdenCompra = (value) => ({
+    type: types.SetCheckSearchByProveedorOrdenCompra,
+    payload: value
+})
+
+export const SetCheckSearchByOrdenCompra = (value) => ({
+    type: types.SetCheckSearchByOrdenCompra,
+    payload: value
+})
+
+export const SetTextSearchOrdenCompra = (value) => ({
+    type: types.SetTextSearchOrdenCompra,
+    payload: value
+})
+
+export const SetIdProveedorSearchOrdenCompra = (value) => ({
+    type: types.SetIdProveedorSearchOrdenCompra,
+    payload: value
+})
+
 export const CleanStateArticuloOrdenCompra = () => ({
     type: types.CleanStateArticuloOrdenCompra
 })

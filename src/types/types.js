@@ -2153,6 +2153,11 @@ export const types = {
   SetEditArticuloOrdenCompra: '[OrdenCompra] SetEditArticuloOrdenCompra',
   SetDeleteArticuloOrdenCompra: '[OrdenCompra] SetDeleteArticuloOrdenCompra',
 
+  SetCheckSearchByProveedorOrdenCompra: '[OrdenCompra] SetCheckSearchByProveedorOrdenCompra',
+  SetCheckSearchByOrdenCompra: '[OrdenCompra] SetCheckSearchByOrdenCompra',
+  SetTextSearchOrdenCompra: '[OrdenCompra] SetTextSearchOrdenCompra',
+  SetIdProveedorSearchOrdenCompra: '[OrdenCompra] SetIdProveedorSearchOrdenCompra',
+
   CleanStateArticuloOrdenCompra: '[OrdenCompra] CleanStateArticuloOrdenCompra',
   CleanStateOrdenCompra: '[OrdenCompra] CleanStateOrdenCompra',
 
