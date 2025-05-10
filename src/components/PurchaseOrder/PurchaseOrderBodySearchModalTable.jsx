@@ -1,28 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import { useTable, useGlobalFilter } from "react-table";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { AiFillExclamationCircle } from "react-icons/ai";
-import { FaSearch } from "react-icons/fa";
 
-import { 
-  SetIdProveedorOrdenCompra, 
-  SetNombreProveedorOrdenCompra 
-} from "../../actions/ordenCompraAction";
+import { startGetOneOrdenCompra } from "../../actions/ordenCompraAction";
 
 export const PurchaseOrderBodySearchModalTable = ({ columns, data }) => {
 
   const dispatch = useDispatch();
-  const [filtro, setFiltro] = useState("");
+  const { proveedoresInventory } = useSelector((state) => state.proveedores);
 
   const {
     getTableProps,
     getTableBodyProps,
     headerGroups,
     rows,
-    prepareRow,
-    setGlobalFilter,
-    state: { globalFilter },
+    prepareRow
   } = useTable(
     {
       columns,
@@ -31,22 +25,13 @@ export const PurchaseOrderBodySearchModalTable = ({ columns, data }) => {
     useGlobalFilter
   );
 
-  const handleFilterChange = (e) => {
-    const value = e.target.value.toLowerCase();
-    setFiltro(value);
-    setGlobalFilter(value);
-  };
-
   const handleSelectedRow = async (cell) => {
 
     //Obtener el id de presentacion seleccionado
-    const { codigo, descripcion } = cell.row.original;
+    const { orden } = cell.row.original;
 
-    if (codigo !== null) {
-
-      dispatch(SetIdProveedorOrdenCompra(codigo));
-      dispatch(SetNombreProveedorOrdenCompra(descripcion));
-
+    if (orden !== null) {
+      dispatch(startGetOneOrdenCompra(orden, proveedoresInventory));
     }
   }
 

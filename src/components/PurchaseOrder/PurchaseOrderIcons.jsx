@@ -18,6 +18,7 @@ import {
     SetActiveButtonSearchOrdenCompra, 
     SetClaveInternaOrdenCompra, 
     SetDisableInputsOrdenCompra,
+    SetNombreEntregaOrdenCompra,
     SetVisibleClaveInternaOrdenCompra,
     startSaveOrdenCompra,
     startValidateClaveInternaOrdenCompra
@@ -44,7 +45,7 @@ export const PurchaseOrderIcons = () => {
         claveInterna,
         visibleClaveInterna,
         disableInputsUser,
-        ordenCompra
+        ordenCompra,
     } = useSelector((state) => state.ordenCompra);
 
     const {
@@ -91,12 +92,13 @@ export const PurchaseOrderIcons = () => {
 
         if (ActiveButtonSearch) {
 
+            const currentName = nombreEntrega;
+
             dispatch(CleanStateOrdenCompra());
             dispatch(SetActiveButtonNewOrdenCompra(true));
             dispatch(SetActiveButtonSearchOrdenCompra(true));
-            // dispatch(SetActiveButtonSaveOrdenCompra(true));
-            // dispatch(SetActiveButtonDisableOrdenCompra(true));
             dispatch(SetDisableInputsOrdenCompra(false));
+            dispatch(SetNombreEntregaOrdenCompra(currentName));
 
             // Se cargan los catalogos
             await loadCatalogos();
@@ -220,7 +222,7 @@ export const PurchaseOrderIcons = () => {
                     orden: numeroOrdenCompra,
                     codigo: article.idArticulo,
                     descripcion: article.descripcion,
-                    costoUnitario: 0,
+                    costoUnitario: article.precioUnitario,
                     cantidad: article.cantidad,
                     totalCompra: article.total,
                     porcDescuento: article.descuento,

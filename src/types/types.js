@@ -2125,10 +2125,12 @@ export const types = {
   SetFormaPagoCreditoOrdenCompra: '[OrdenCompra] SetFormaPagoCreditoOrdenCompra',
   SetCantidadDiasOrdenCompra: '[OrdenCompra] SetCantidadDiasOrdenCompra',
   SetAddOneArticulosOrdenCompra: '[OrdenCompra] SetAddOneArticulosOrdenCompra',
+  SetAddAllArticulosOrdenCompra: '[OrdenCompra] SetAddAllArticulosOrdenCompra',
   SetTotalSubTotalOrdenCompra: '[OrdenCompra] SetTotalSubTotalOrdenCompra',
   SetTotalDescuentoOrdenCompra: '[OrdenCompra] SetTotalDescuentoOrdenCompra',
   SetTotalImpuestosOrdenCompra: '[OrdenCompra] SetTotalImpuestosOrdenCompra',
   SetTotalFinalOrdenCompra: '[OrdenCompra] SetTotalFinalOrdenCompra',
+  SetAnuladoOrdenCompra: '[OrdenCompra] SetAnuladoOrdenCompra',
 
   SetIdArticuloArticuloOrdenCompra: '[OrdenCompra] SetIdArticuloArticuloOrdenCompra',
   SetCodigoArticuloOrdenCompra: '[OrdenCompra] SetCodigoArticuloOrdenCompra',

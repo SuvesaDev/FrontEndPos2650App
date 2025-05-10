@@ -291,6 +291,113 @@ export const startSearchOrdenCompra = ( value, type ) => {
     };
 }
 
+export const startGetOneOrdenCompra = ( idOrdenCompra, proveedores ) => {
+
+    return async (dispatch) => {
+
+        try {
+
+            //Mostrar el loading
+            Swal.fire({
+                title: 'Por favor, espere',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                imageUrl: loadingImage,
+                customClass: 'alert-class-login',
+                imageHeight: 100,
+            });
+            
+            //Call end-point 
+            const { data } = await suvesaApi.get(`/OrdenCompra/GetOrdenCompra?idOrdenCompra=${idOrdenCompra}`);
+            const { status, responses } = data;
+            
+            //Quitar el loading
+            Swal.close();
+            
+            if (status === 0) {
+                
+                const {
+                    orden,
+                    proveedor,
+                    fecha,                   
+                    codMoneda,
+                    contado,
+                    credito,
+                    diascredito,
+                    anulado,
+                    detalleOrdenCompra
+                } = responses;
+                console.log(responses);
+                const nameProveedor = proveedores.find( prov => prov.codigo == proveedor );
+                
+                dispatch( SetNumeroOrdenCompra(orden) );
+                dispatch( SetIdProveedorOrdenCompra(proveedor) );
+                dispatch( SetNombreProveedorOrdenCompra(( nameProveedor != null) ? nameProveedor.descripcion : '') );
+                dispatch( SetFechaEmisionOrdenCompra(fecha.split('T')[0]) );
+                dispatch( SetMonedaOrdenCompra(codMoneda) );
+                dispatch( SetFormaPagoContadoOrdenCompra(contado) );
+                dispatch( SetFormaPagoCreditoOrdenCompra(credito) );
+                dispatch( SetCantidadDiasOrdenCompra(diascredito) );
+                dispatch( SetAnuladoOrdenCompra(anulado) );
+
+                const articulos = detalleOrdenCompra.map( detalle => {
+
+                    let subTotal = parseFloat(detalle.costoUnitario) * parseInt(detalle.cantidad);
+
+                    return {
+                        idArticulo : detalle.codigo,
+                        codigo : '', //TODO: No lo tengo
+                        descripcion : detalle.descripcion,
+                        precioUnitario : detalle.costoUnitario,
+                        descuento : detalle.porcDescuento,
+                        impuesto : detalle.porcImpuesto,
+                        cantidad : detalle.cantidad,
+                        subtotal : subTotal,
+                        total : detalle.totalCompra,
+                        observaciones : '', //TODO: No lo tengo
+                        montoDescuento: detalle.descuento,
+                        montoImpuesto: detalle.impuesto
+                    }
+                });
+
+                dispatch( SetAddAllArticulosOrdenCompra(articulos) );
+
+            } else {
+
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
+
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
+
+            }
+
+        } catch (error) {
+
+            Swal.close();
+            console.log(error);
+            if (error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al buscar orden de compra',
+                });
+            }
+        }
+    };
+}
+
 // Normal Actions
 export const SetActiveButtonNewOrdenCompra = (value) => ({
     type: types.SetActiveButtonNewOrdenCompra,
@@ -367,6 +474,11 @@ export const SetAddOneArticulosOrdenCompra = (value) => ({
     payload: value
 })
 
+export const SetAddAllArticulosOrdenCompra = (value) => ({
+    type: types.SetAddAllArticulosOrdenCompra,
+    payload: value
+})
+
 export const SetTotalSubTotalOrdenCompra = (value) => ({
     type: types.SetTotalSubTotalOrdenCompra,
     payload: value
@@ -384,6 +496,11 @@ export const SetTotalImpuestosOrdenCompra = (value) => ({
 
 export const SetTotalFinalOrdenCompra = (value) => ({
     type: types.SetTotalFinalOrdenCompra,
+    payload: value
+})
+
+export const SetAnuladoOrdenCompra = (value) => ({
+    type: types.SetAnuladoOrdenCompra,
     payload: value
 })
 

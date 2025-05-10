@@ -32,7 +32,8 @@ const initialState = {
     totalSubTotal: 0,
     totalDescuento: 0,
     totalImpuestos: 0,
-    totalFinal: 0
+    totalFinal: 0,
+    anulado: false,
   },
   articulo: {
     idArticulo: 0,
@@ -177,6 +178,15 @@ export const OrdenCompraReducer = (state = initialState, action) => {
                 }
             }
 
+        case types.SetAddAllArticulosOrdenCompra:
+            return {
+                ...state,
+                ordenCompra: {
+                    ...state.ordenCompra,
+                    articulos: action.payload
+                }
+            }
+
         case types.SetTotalSubTotalOrdenCompra:
             return {
                 ...state,
@@ -210,6 +220,15 @@ export const OrdenCompraReducer = (state = initialState, action) => {
                 ordenCompra: {
                     ...state.ordenCompra,
                     totalFinal: action.payload
+                }
+            }
+
+        case types.SetAnuladoOrdenCompra:
+            return {
+                ...state,
+                ordenCompra: {
+                    ...state.ordenCompra,
+                    anulado: action.payload
                 }
             }
 
@@ -485,7 +504,8 @@ export const OrdenCompraReducer = (state = initialState, action) => {
                     totalSubTotal: 0,
                     totalDescuento: 0,
                     totalImpuestos: 0,
-                    totalFinal: 0
+                    totalFinal: 0,
+                    anulado: false,
                 },
                 articulo: {
                     idArticulo: 0,
