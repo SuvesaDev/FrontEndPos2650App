@@ -104,7 +104,7 @@ export const startEditOrdenCompra = ( ordenCompra ) => {
 
             //Mostrar un mensaje de confirmacion
             Swal.fire({
-                title: '¿Desea editar un nueva orden compra?',
+                title: '¿Desea editar esta orden compra?',
                 showDenyButton: true,
                 showCancelButton: false,
                 confirmButtonText: 'Editar',
@@ -137,6 +137,93 @@ export const startEditOrdenCompra = ( ordenCompra ) => {
                         Swal.fire({
                             icon: 'success',
                             title: 'Orden de compra editada correctamente',
+                            showConfirmButton: false,
+                            timer: 2500
+                        })
+                        
+                        dispatch( CleanStateArticuloOrdenCompra() );
+                        dispatch( CleanStateOrdenCompra() );
+
+                    } else {
+
+                        //Caso contrario respuesta incorrecto mostrar mensaje de error
+                        const { currentException } = data;
+                        const msj = currentException.split(',');
+
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: (currentException.includes(',')) ? msj[3] : currentException,
+                        });
+
+                    }
+
+                }
+
+            });
+
+        } catch (error) {
+
+            Swal.close();
+            console.log(error);
+            if (error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema a la guardar la orden de compra',
+                });
+            }
+        }
+    };
+}
+
+export const startDesactiveOrdenCompra = ( idOrdenCompra ) => {
+
+    return async (dispatch) => {
+
+        try {
+
+            //Mostrar un mensaje de confirmacion
+            Swal.fire({
+                title: '¿Desea anular esta orden compra?',
+                showDenyButton: true,
+                showCancelButton: false,
+                confirmButtonText: 'Anular',
+                denyButtonText: `Cancelar`,
+            }).then(async (result) => {
+
+                if (result.isConfirmed) {
+
+                    //Mostrar el loading
+                    Swal.fire({
+                        title: 'Por favor, espere',
+                        allowEscapeKey: false,
+                        allowOutsideClick: false,
+                        showConfirmButton: false,
+                        imageUrl: loadingImage,
+                        customClass: 'alert-class-login',
+                        imageHeight: 100,
+                    });
+                    
+                    //Call end-point 
+                    const { data } = await suvesaApi.delete(`/OrdenCompra/DesactivateOrdenCompra?idOrdenCompra=${idOrdenCompra}&state=${true}`);
+                    const { status } = data;
+                    
+                    //Quitar el loading
+                    Swal.close();
+                    
+                    if (status === 0) {
+
+                        //Si es correcta entonces mostrar un mensaje de afirmacion
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Orden de compra anulada correctamente',
                             showConfirmButton: false,
                             timer: 2500
                         })
@@ -458,6 +545,7 @@ export const startGetOneOrdenCompra = ( idOrdenCompra, proveedores ) => {
                 dispatch( SetAddAllArticulosOrdenCompra(articulos) );
                 dispatch( SetIsEditOrdenCompra(true) );
                 dispatch( SetActiveButtonSaveOrdenCompra(true) );
+                dispatch( SetActiveButtonDisableOrdenCompra(true) );
 
             } else {
 

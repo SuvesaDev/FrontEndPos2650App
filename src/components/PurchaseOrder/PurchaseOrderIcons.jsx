@@ -20,6 +20,7 @@ import {
     SetDisableInputsOrdenCompra,
     SetNombreEntregaOrdenCompra,
     SetVisibleClaveInternaOrdenCompra,
+    startDesactiveOrdenCompra,
     startEditOrdenCompra,
     startSaveOrdenCompra,
     startValidateClaveInternaOrdenCompra
@@ -254,57 +255,67 @@ export const PurchaseOrderIcons = () => {
     const handleEditOrdenCompra = () => {
 
         const today = new Date();
-        
-        const editOrdenCompra = {
-            orden: numeroOrdenCompra,
-            proveedor: idProveedor,
-            fecha: fechaEmision,
-            contado: formaPagoContado,
-            credito: formaPagoCredito,
-            diascredito: cantidadDias,
-            plazo: 0,
-            descuento: totalDescuento,
-            impuesto: totalImpuestos,
-            total: totalFinal,
-            observaciones: observaciones,
-            usuario: usuarioCreacion,
-            nombreUsuario: nombreUsuarioCreacion,
-            entregar: "", 
-            codMoneda: moneda,
-            subTotalGravado: 0,
-            subTotalExento: 0,
-            subTotal: totalSubTotal,
-            anulado: false,
-            idSucursal: 0, 
-            usuarioModificacion: usuario,
-            nombreUsuarioModificacion: nombreEntrega,
-            fechaModificacion: today.toISOString().split('T')[0],
-            detalleOrdenCompra: articulos.map( article => {
-                return {
-                    id: (article.id != undefined) ? article.id : 0,
-                    orden: numeroOrdenCompra,
-                    codigo: article.idArticulo,
-                    codigoArticulo: article.codigo,
-                    descripcion: article.descripcion,
-                    costoUnitario: article.precioUnitario,
-                    cantidad: article.cantidad,
-                    totalCompra: article.total,
-                    porcDescuento: article.descuento,
-                    descuento: article.montoDescuento,
-                    porcImpuesto: article.impuesto,
-                    impuesto: article.montoImpuesto,
-                    otrosCargos: 0,
-                    montoFlete: 0,
-                    costo: 0,
-                    gravado: 0,
-                    exento: 0,
-                    vendidos: 0,
-                    existActual: 0
-                }
-            })
+
+        if(isEditOrdenCompra) {
+            const editOrdenCompra = {
+                orden: numeroOrdenCompra,
+                proveedor: idProveedor,
+                fecha: fechaEmision,
+                contado: formaPagoContado,
+                credito: formaPagoCredito,
+                diascredito: cantidadDias,
+                plazo: 0,
+                descuento: totalDescuento,
+                impuesto: totalImpuestos,
+                total: totalFinal,
+                observaciones: observaciones,
+                usuario: usuarioCreacion,
+                nombreUsuario: nombreUsuarioCreacion,
+                entregar: "", 
+                codMoneda: moneda,
+                subTotalGravado: 0,
+                subTotalExento: 0,
+                subTotal: totalSubTotal,
+                anulado: false,
+                idSucursal: 0, 
+                usuarioModificacion: usuario,
+                nombreUsuarioModificacion: nombreEntrega,
+                fechaModificacion: today.toISOString().split('T')[0],
+                detalleOrdenCompra: articulos.map( article => {
+                    return {
+                        id: (article.id != undefined) ? article.id : 0,
+                        orden: numeroOrdenCompra,
+                        codigo: article.idArticulo,
+                        codigoArticulo: article.codigo,
+                        descripcion: article.descripcion,
+                        costoUnitario: article.precioUnitario,
+                        cantidad: article.cantidad,
+                        totalCompra: article.total,
+                        porcDescuento: article.descuento,
+                        descuento: article.montoDescuento,
+                        porcImpuesto: article.impuesto,
+                        impuesto: article.montoImpuesto,
+                        otrosCargos: 0,
+                        montoFlete: 0,
+                        costo: 0,
+                        gravado: 0,
+                        exento: 0,
+                        vendidos: 0,
+                        existActual: 0
+                    }
+                })
+            }
+    
+            dispatch( startEditOrdenCompra(editOrdenCompra) );
         }
 
-        dispatch( startEditOrdenCompra(editOrdenCompra) );
+    }
+
+    const handleDesactiveOrdenCompra = () => {
+
+        if(isEditOrdenCompra) {
+            dispatch( startDesactiveOrdenCompra(numeroOrdenCompra) );
+        }
 
     }
 
@@ -356,6 +367,7 @@ export const PurchaseOrderIcons = () => {
                             (ActiveButtonDisable ? "btn btn-danger espacio" : "btn btn-danger espacio disabled")
                         }
                         disabled={!ActiveButtonDisable}
+                        onClick={handleDesactiveOrdenCompra}
                     >
                         Anular <RiDeleteBin2Fill className="iconSizeBtn" />
                     </button>
