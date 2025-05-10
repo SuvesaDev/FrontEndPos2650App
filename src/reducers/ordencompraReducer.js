@@ -19,6 +19,9 @@ const initialState = {
   idProveedorSearch: 0,
   ordenComprasSearch: [],
   usuario: '',
+  isEditOrdenCompra: false,
+  usuarioCreacion: '',
+  nombreUsuarioCreacion: '',
   ordenCompra: {
     numeroOrdenCompra: 0,
     idProveedor: 0,
@@ -457,6 +460,24 @@ export const OrdenCompraReducer = (state = initialState, action) => {
                 usuario: action.payload
             }
 
+        case types.SetIsEditOrdenCompra:
+            return {
+                ...state,
+                isEditOrdenCompra: action.payload
+            }
+
+        case types.SetUsuarioCreacionOrdenCompra:
+            return {
+                ...state,
+                usuarioCreacion: action.payload
+            }
+
+        case types.SetNombreUsuarioCreacionOrdenCompra:
+            return {
+                ...state,
+                nombreUsuarioCreacion: action.payload
+            }
+
         case types.CleanStateArticuloOrdenCompra:
             return {
                 ...state,
@@ -496,6 +517,9 @@ export const OrdenCompraReducer = (state = initialState, action) => {
                 idProveedorSearch: 0,
                 ordenComprasSearch: [],
                 usuario: '',
+                isEditOrdenCompra: false,
+                usuarioCreacion: '',
+                nombreUsuarioCreacion: '',
                 ordenCompra: {
                     numeroOrdenCompra: 0,
                     idProveedor: 0,

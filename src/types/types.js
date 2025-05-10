@@ -2161,6 +2161,9 @@ export const types = {
   SetIdProveedorSearchOrdenCompra: '[OrdenCompra] SetIdProveedorSearchOrdenCompra',
   SetOrdenesComprasSearchOrdenCompra: '[OrdenCompra] SetOrdenesComprasSearchOrdenCompra',
   SetUsuarioOrdenCompra: '[OrdenCompra] SetUsuarioOrdenCompra',
+  SetIsEditOrdenCompra: '[OrdenCompra] SetIsEditOrdenCompra',
+  SetUsuarioCreacionOrdenCompra: '[OrdenCompra] SetUsuarioCreacionOrdenCompra',
+  SetNombreUsuarioCreacionOrdenCompra: '[OrdenCompra] SetNombreUsuarioCreacionOrdenCompra',
 
   CleanStateArticuloOrdenCompra: '[OrdenCompra] CleanStateArticuloOrdenCompra',
   CleanStateOrdenCompra: '[OrdenCompra] CleanStateOrdenCompra',

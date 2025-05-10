@@ -96,6 +96,93 @@ export const startSaveOrdenCompra = ( ordenCompra ) => {
     };
 }
 
+export const startEditOrdenCompra = ( ordenCompra ) => {
+
+    return async (dispatch) => {
+
+        try {
+
+            //Mostrar un mensaje de confirmacion
+            Swal.fire({
+                title: '¿Desea editar un nueva orden compra?',
+                showDenyButton: true,
+                showCancelButton: false,
+                confirmButtonText: 'Editar',
+                denyButtonText: `Cancelar`,
+            }).then(async (result) => {
+
+                if (result.isConfirmed) {
+
+                    //Mostrar el loading
+                    Swal.fire({
+                        title: 'Por favor, espere',
+                        allowEscapeKey: false,
+                        allowOutsideClick: false,
+                        showConfirmButton: false,
+                        imageUrl: loadingImage,
+                        customClass: 'alert-class-login',
+                        imageHeight: 100,
+                    });
+                    
+                    //Call end-point 
+                    const { data } = await suvesaApi.put('/OrdenCompra/UpdateOrdenCompra', ordenCompra);
+                    const { status } = data;
+                    
+                    //Quitar el loading
+                    Swal.close();
+                    
+                    if (status === 0) {
+
+                        //Si es correcta entonces mostrar un mensaje de afirmacion
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Orden de compra editada correctamente',
+                            showConfirmButton: false,
+                            timer: 2500
+                        })
+                        
+                        dispatch( CleanStateArticuloOrdenCompra() );
+                        dispatch( CleanStateOrdenCompra() );
+
+                    } else {
+
+                        //Caso contrario respuesta incorrecto mostrar mensaje de error
+                        const { currentException } = data;
+                        const msj = currentException.split(',');
+
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: (currentException.includes(',')) ? msj[3] : currentException,
+                        });
+
+                    }
+
+                }
+
+            });
+
+        } catch (error) {
+
+            Swal.close();
+            console.log(error);
+            if (error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema a la guardar la orden de compra',
+                });
+            }
+        }
+    };
+}
+
 export const startValidateClaveInternaOrdenCompra = ( password ) => {
 
     return async ( dispatch ) => {
@@ -328,9 +415,11 @@ export const startGetOneOrdenCompra = ( idOrdenCompra, proveedores ) => {
                     diascredito,
                     anulado,
                     observaciones,
+                    usuario,
+                    nombreUsuario,
                     detalleOrdenCompra
                 } = responses;
-                console.log(responses);
+                
                 const nameProveedor = proveedores.find( prov => prov.codigo == proveedor );
                 
                 dispatch( SetNumeroOrdenCompra(orden) );
@@ -343,12 +432,15 @@ export const startGetOneOrdenCompra = ( idOrdenCompra, proveedores ) => {
                 dispatch( SetCantidadDiasOrdenCompra(diascredito) );
                 dispatch( SetObservacionesOrdenCompra(observaciones) );
                 dispatch( SetAnuladoOrdenCompra(anulado) );
-
+                dispatch( SetUsuarioCreacionOrdenCompra(usuario) );
+                dispatch( SetNombreUsuarioCreacionOrdenCompra(nombreUsuario) );
+                
                 const articulos = detalleOrdenCompra.map( detalle => {
 
                     let subTotal = parseFloat(detalle.costoUnitario) * parseInt(detalle.cantidad);
 
                     return {
+                        id: detalle.id,
                         idArticulo : detalle.codigo,
                         codigo : detalle.codigoArticulo,
                         descripcion : detalle.descripcion,
@@ -364,6 +456,8 @@ export const startGetOneOrdenCompra = ( idOrdenCompra, proveedores ) => {
                 });
 
                 dispatch( SetAddAllArticulosOrdenCompra(articulos) );
+                dispatch( SetIsEditOrdenCompra(true) );
+                dispatch( SetActiveButtonSaveOrdenCompra(true) );
 
             } else {
 
@@ -642,6 +736,21 @@ export const SetOrdenesComprasSearchOrdenCompra = (value) => ({
 
 export const SetUsuarioOrdenCompra = (value) => ({
     type: types.SetUsuarioOrdenCompra,
+    payload: value
+})
+
+export const SetIsEditOrdenCompra = (value) => ({
+    type: types.SetIsEditOrdenCompra,
+    payload: value
+})
+
+export const SetUsuarioCreacionOrdenCompra = (value) => ({
+    type: types.SetUsuarioCreacionOrdenCompra,
+    payload: value
+})
+
+export const SetNombreUsuarioCreacionOrdenCompra = (value) => ({
+    type: types.SetNombreUsuarioCreacionOrdenCompra,
     payload: value
 })
 
