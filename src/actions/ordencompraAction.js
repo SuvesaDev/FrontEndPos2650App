@@ -102,13 +102,14 @@ export const startValidateClaveInternaOrdenCompra = ( password ) => {
           
         try {
             
-            const { status, userName, message }  = await dispatch( startValidateClaveInterna( password ) );
+            const { status, userName, message, usuario }  = await dispatch( startValidateClaveInterna( password ) );
             
             if( status === 1 ) {
 
                 dispatch( SetActiveButtonNewOrdenCompra(true) );
                 dispatch( SetActiveButtonSearchOrdenCompra(true) );
                 dispatch( SetNombreEntregaOrdenCompra(userName) );
+                dispatch( SetUsuarioOrdenCompra(usuario) );
                 dispatch( SetVisibleClaveInternaOrdenCompra(false) );
                 dispatch( SetDisableInputsUserOrdenCompra(true) );
 
@@ -326,6 +327,7 @@ export const startGetOneOrdenCompra = ( idOrdenCompra, proveedores ) => {
                     credito,
                     diascredito,
                     anulado,
+                    observaciones,
                     detalleOrdenCompra
                 } = responses;
                 console.log(responses);
@@ -339,6 +341,7 @@ export const startGetOneOrdenCompra = ( idOrdenCompra, proveedores ) => {
                 dispatch( SetFormaPagoContadoOrdenCompra(contado) );
                 dispatch( SetFormaPagoCreditoOrdenCompra(credito) );
                 dispatch( SetCantidadDiasOrdenCompra(diascredito) );
+                dispatch( SetObservacionesOrdenCompra(observaciones) );
                 dispatch( SetAnuladoOrdenCompra(anulado) );
 
                 const articulos = detalleOrdenCompra.map( detalle => {
@@ -347,7 +350,7 @@ export const startGetOneOrdenCompra = ( idOrdenCompra, proveedores ) => {
 
                     return {
                         idArticulo : detalle.codigo,
-                        codigo : '', //TODO: No lo tengo
+                        codigo : detalle.codigoArticulo,
                         descripcion : detalle.descripcion,
                         precioUnitario : detalle.costoUnitario,
                         descuento : detalle.porcDescuento,
@@ -355,7 +358,6 @@ export const startGetOneOrdenCompra = ( idOrdenCompra, proveedores ) => {
                         cantidad : detalle.cantidad,
                         subtotal : subTotal,
                         total : detalle.totalCompra,
-                        observaciones : '', //TODO: No lo tengo
                         montoDescuento: detalle.descuento,
                         montoImpuesto: detalle.impuesto
                     }
@@ -469,6 +471,11 @@ export const SetCantidadDiasOrdenCompra = (value) => ({
     payload: value
 })
 
+export const SetObservacionesOrdenCompra = (value) => ({
+    type: types.SetObservacionesOrdenCompra,
+    payload: value
+})
+
 export const SetAddOneArticulosOrdenCompra = (value) => ({
     type: types.SetAddOneArticulosOrdenCompra,
     payload: value
@@ -559,11 +566,6 @@ export const SetTotalArticuloOrdenCompra = (value) => ({
     payload: value
 })
 
-export const SetObservacionesArticuloOrdenCompra = (value) => ({
-    type: types.SetObservacionesArticuloOrdenCompra,
-    payload: value
-})
-
 export const CleanStateOrdenCompra = () => ({
     type: types.CleanStateOrdenCompra
 })
@@ -635,6 +637,11 @@ export const SetIdProveedorSearchOrdenCompra = (value) => ({
 
 export const SetOrdenesComprasSearchOrdenCompra = (value) => ({
     type: types.SetOrdenesComprasSearchOrdenCompra,
+    payload: value
+})
+
+export const SetUsuarioOrdenCompra = (value) => ({
+    type: types.SetUsuarioOrdenCompra,
     payload: value
 })
 

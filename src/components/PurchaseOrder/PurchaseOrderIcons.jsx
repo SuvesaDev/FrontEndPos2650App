@@ -46,12 +46,13 @@ export const PurchaseOrderIcons = () => {
         visibleClaveInterna,
         disableInputsUser,
         ordenCompra,
+        usuario
     } = useSelector((state) => state.ordenCompra);
 
     const {
         numeroOrdenCompra,
         idProveedor,
-        nombreProveedor,
+        observaciones,
         fechaEmision,
         nombreEntrega,
         moneda,
@@ -204,8 +205,8 @@ export const PurchaseOrderIcons = () => {
             descuento: totalDescuento,
             impuesto: totalImpuestos,
             total: totalFinal,
-            observaciones: "",
-            usuario: nombreEntrega,
+            observaciones: observaciones,
+            usuario: usuario,
             nombreUsuario: nombreEntrega,
             entregar: "", 
             codMoneda: moneda,
@@ -221,6 +222,7 @@ export const PurchaseOrderIcons = () => {
                 return {
                     orden: numeroOrdenCompra,
                     codigo: article.idArticulo,
+                    codigoArticulo: article.codigo,
                     descripcion: article.descripcion,
                     costoUnitario: article.precioUnitario,
                     cantidad: article.cantidad,

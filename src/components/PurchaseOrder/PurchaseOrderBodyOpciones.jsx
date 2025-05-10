@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { FaCalendarDay, FaCoins, FaUser } from "react-icons/fa";
+import { TbNotes } from "react-icons/tb";
 
 import { 
     SetCantidadDiasOrdenCompra,
@@ -10,7 +11,8 @@ import {
     SetFormaPagoContadoOrdenCompra, 
     SetFormaPagoCreditoOrdenCompra, 
     SetMonedaOrdenCompra, 
-    SetNombreEntregaOrdenCompra 
+    SetNombreEntregaOrdenCompra, 
+    SetObservacionesOrdenCompra
 } from "../../actions/ordenCompraAction";
 
 export const PurchaseOrderBodyOpciones = () => {
@@ -26,7 +28,8 @@ export const PurchaseOrderBodyOpciones = () => {
         formaPagoContado,
         formaPagoCredito,
         cantidadDias,
-        idProveedor
+        idProveedor,
+        observaciones
     } = ordenCompra;
 
     useEffect(() => {
@@ -172,8 +175,29 @@ export const PurchaseOrderBodyOpciones = () => {
 
                             </div>
 
-                            <div className={ (formaPagoCredito ? 'row justify-content-end' : 'row justify-content-end d-none') }>
-                                <div className="col-md-3 mb-3">
+                            <div className="row">
+
+                                <div className="col-md-9 mb-3">
+                                    <h5>Observaciones</h5>
+                                    <div className="input-group">
+                                        <span className="input-group-text">
+                                            <TbNotes className="iconSize" />
+                                        </span>
+                                        <input
+                                            type='text'
+                                            className='form-control'
+                                            placeholder='Observaciones Extras'
+                                            disabled={DisableInputs}
+                                            value={observaciones}
+                                            onChange={(e) =>
+                                                handleInputChangeWithDispatch(e, SetObservacionesOrdenCompra)
+                                            }
+                                        />
+                                    </div>
+                                </div>
+
+                                
+                                <div className={ (formaPagoCredito) ? 'col-md-3 mb-3' : 'col-md-3 mb-3 d-none' }>
                                     <h5>Días</h5>
                                     <div className="input-group">
                                         <span className="input-group-text">
@@ -191,7 +215,8 @@ export const PurchaseOrderBodyOpciones = () => {
                                         />
                                     </div>
                                 </div>
-                            </div>
+                                
+                            </div>                            
 
                         </div>
 

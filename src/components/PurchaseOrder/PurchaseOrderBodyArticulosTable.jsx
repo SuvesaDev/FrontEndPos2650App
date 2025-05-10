@@ -16,8 +16,7 @@ import {
   SetIdArticuloArticuloOrdenCompra, 
   SetImpuestoArticuloOrdenCompra, 
   SetIndexArticuloSeletedOrdenCompra, 
-  SetIsEditArticuloOrdenCompra, 
-  SetObservacionesArticuloOrdenCompra, 
+  SetIsEditArticuloOrdenCompra,
   SetPrecioUnitarioArticuloOrdenCompra,
   SetSubtotalArticuloOrdenCompra,
   SetTotalArticuloOrdenCompra
@@ -53,8 +52,7 @@ export const PurchaseOrderBodyArticulosTable = ({ columns, data }) => {
           impuesto,
           cantidad, 
           subtotal,
-          total,
-          observaciones 
+          total
         } = cell.row.original;
 
         const { index } = cell.row;
@@ -66,9 +64,8 @@ export const PurchaseOrderBodyArticulosTable = ({ columns, data }) => {
         dispatch( SetDescuentoArticuloOrdenCompra(descuento) );
         dispatch( SetImpuestoArticuloOrdenCompra(impuesto) );
         dispatch( SetCantidadArticuloOrdenCompra(cantidad) );
-        dispatch( SetSubtotalArticuloOrdenCompra(subtotal) );
-        dispatch( SetTotalArticuloOrdenCompra(total) );
-        dispatch( SetObservacionesArticuloOrdenCompra(observaciones) );
+        dispatch( SetSubtotalArticuloOrdenCompra(parseFloat(subtotal).toFixed(2)) );
+        dispatch( SetTotalArticuloOrdenCompra(parseFloat(total).toFixed(2)) );
 
         dispatch( SetIndexArticuloSeletedOrdenCompra(index) );
 

@@ -2124,6 +2124,7 @@ export const types = {
   SetFormaPagoContadoOrdenCompra: '[OrdenCompra] SetFormaPagoContadoOrdenCompra',
   SetFormaPagoCreditoOrdenCompra: '[OrdenCompra] SetFormaPagoCreditoOrdenCompra',
   SetCantidadDiasOrdenCompra: '[OrdenCompra] SetCantidadDiasOrdenCompra',
+  SetObservacionesOrdenCompra: '[OrdenCompra] SetObservacionesOrdenCompra',
   SetAddOneArticulosOrdenCompra: '[OrdenCompra] SetAddOneArticulosOrdenCompra',
   SetAddAllArticulosOrdenCompra: '[OrdenCompra] SetAddAllArticulosOrdenCompra',
   SetTotalSubTotalOrdenCompra: '[OrdenCompra] SetTotalSubTotalOrdenCompra',
@@ -2143,7 +2144,6 @@ export const types = {
   SetCantidadArticuloOrdenCompra: '[OrdenCompra] SetCantidadArticuloOrdenCompra',
   SetSubtotalArticuloOrdenCompra: '[OrdenCompra] SetSubtotalArticuloOrdenCompra',
   SetTotalArticuloOrdenCompra: '[OrdenCompra] SetTotalArticuloOrdenCompra',
-  SetObservacionesArticuloOrdenCompra: '[OrdenCompra] SetObservacionesArticuloOrdenCompra',
 
   SetIsOpenModalSearchInventoryOrdenCompra: '[OrdenCompra] SetIsOpenModalSearchInventoryOrdenCompra',
   SetClaveInternaOrdenCompra: '[OrdenCompra] SetClaveInternaOrdenCompra',
@@ -2160,6 +2160,7 @@ export const types = {
   SetTextSearchOrdenCompra: '[OrdenCompra] SetTextSearchOrdenCompra',
   SetIdProveedorSearchOrdenCompra: '[OrdenCompra] SetIdProveedorSearchOrdenCompra',
   SetOrdenesComprasSearchOrdenCompra: '[OrdenCompra] SetOrdenesComprasSearchOrdenCompra',
+  SetUsuarioOrdenCompra: '[OrdenCompra] SetUsuarioOrdenCompra',
 
   CleanStateArticuloOrdenCompra: '[OrdenCompra] CleanStateArticuloOrdenCompra',
   CleanStateOrdenCompra: '[OrdenCompra] CleanStateOrdenCompra',

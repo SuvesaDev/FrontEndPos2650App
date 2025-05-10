@@ -18,6 +18,7 @@ const initialState = {
   searchOrdenCompra: '',
   idProveedorSearch: 0,
   ordenComprasSearch: [],
+  usuario: '',
   ordenCompra: {
     numeroOrdenCompra: 0,
     idProveedor: 0,
@@ -28,6 +29,7 @@ const initialState = {
     formaPagoContado: false,
     formaPagoCredito: false,
     cantidadDias: 0,
+    observaciones: '',
     articulos: [],
     totalSubTotal: 0,
     totalDescuento: 0,
@@ -46,8 +48,7 @@ const initialState = {
     impuesto: 0,
     cantidad: 1,
     subtotal: 0,
-    total: 0,
-    observaciones: ''
+    total: 0
   }
 };
 
@@ -163,6 +164,15 @@ export const OrdenCompraReducer = (state = initialState, action) => {
                 ordenCompra: {
                     ...state.ordenCompra,
                     cantidadDias: action.payload
+                }
+            }
+
+        case types.SetObservacionesOrdenCompra:
+            return {
+                ...state,
+                ordenCompra: {
+                    ...state.ordenCompra,
+                    observaciones: action.payload
                 }
             }
 
@@ -331,15 +341,6 @@ export const OrdenCompraReducer = (state = initialState, action) => {
                 }
             }
 
-        case types.SetObservacionesArticuloOrdenCompra:
-            return {
-                ...state,
-                articulo: {
-                    ...state.articulo,
-                    observaciones: action.payload
-                }
-            }
-
         case types.SetIsOpenModalSearchInventoryOrdenCompra:
             return {
                 ...state,
@@ -450,6 +451,12 @@ export const OrdenCompraReducer = (state = initialState, action) => {
                 ordenComprasSearch: action.payload
             }
 
+        case types.SetUsuarioOrdenCompra:
+            return {
+                ...state,
+                usuario: action.payload
+            }
+
         case types.CleanStateArticuloOrdenCompra:
             return {
                 ...state,
@@ -488,6 +495,7 @@ export const OrdenCompraReducer = (state = initialState, action) => {
                 searchOrdenCompra: '',
                 idProveedorSearch: 0,
                 ordenComprasSearch: [],
+                usuario: '',
                 ordenCompra: {
                     numeroOrdenCompra: 0,
                     idProveedor: 0,
@@ -498,6 +506,7 @@ export const OrdenCompraReducer = (state = initialState, action) => {
                     formaPagoContado: false,
                     formaPagoCredito: false,
                     cantidadDias: 0,
+                    observaciones: '',
                     articulos: [],
                     totalSubGravado: 0,
                     totalSubExento: 0,
@@ -518,8 +527,7 @@ export const OrdenCompraReducer = (state = initialState, action) => {
                     impuesto: 0,
                     cantidad: 1,
                     subtotal: 0,
-                    total: 0,
-                    observaciones: ''
+                    total: 0
                 }
             }
 

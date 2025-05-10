@@ -313,13 +313,15 @@ export const startValidateClaveInterna = ( password ) => {
             Swal.close();
             
             if( status === 0 ) {
+                
                 return {
                     status: 1,
                     userName: responses.nombre,
                     idUsuario: responses.idUsuario,
                     administrador : responses.administrador,
                     message: '',
-                    costapets: responses.costaPets
+                    costapets: responses.costaPets,
+                    usuario: responses.usuario
                 };
             } else {
                 return {

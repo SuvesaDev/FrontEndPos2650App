@@ -21,7 +21,6 @@ import {
     SetImpuestoArticuloOrdenCompra, 
     SetIsEditArticuloOrdenCompra, 
     SetIsOpenModalSearchInventoryOrdenCompra, 
-    SetObservacionesArticuloOrdenCompra, 
     SetPrecioUnitarioArticuloOrdenCompra,
     SetSubtotalArticuloOrdenCompra,
     SetTotalArticuloOrdenCompra,
@@ -388,25 +387,6 @@ export const PurchaseOrderBodyArticulos = () => {
                             </div>
 
                             <div className="row mb-3 text-center">  
-
-                                <div className="col-md-4 mb-3">
-                                    <h5>Observaciones</h5>
-                                    <div className="input-group">
-                                        <span className="input-group-text">
-                                            <TbNotes className="iconSize" />
-                                        </span>
-                                        <input
-                                            type='text'
-                                            className='form-control'
-                                            placeholder='Observaciones Extras'
-                                            disabled={disableInputsArticulo}
-                                            value={observaciones}
-                                            onChange={(e) =>
-                                                handleInputChangeWithDispatch(e, SetObservacionesArticuloOrdenCompra)
-                                            }
-                                        />
-                                    </div>
-                                </div>                         
 
                                 <div className="col-md-2 mb-3">
                                     <h5>Cantidad</h5>
