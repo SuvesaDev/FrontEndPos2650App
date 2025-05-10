@@ -52,21 +52,6 @@ export const PurchaseOrderBodySearchModalTable = ({ columns, data }) => {
 
   return (
     <>
-      <div className="col-md-12 mb-3">
-        <div className="input-group">
-          <span className="input-group-text">
-            <FaSearch className="iconSize" />
-          </span>
-          <input
-            type="text"
-            id="BuscaV"
-            value={filtro}
-            className="form-control"
-            placeholder="Buscar...."
-            onChange={handleFilterChange}
-          />
-        </div>
-      </div>
       <div className="table-responsive-md tablaP">
         <table
           {...getTableProps()}

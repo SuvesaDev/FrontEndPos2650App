@@ -92,10 +92,10 @@ export const PurchaseOrderIcons = () => {
         if (ActiveButtonSearch) {
 
             dispatch(CleanStateOrdenCompra());
-            dispatch(SetActiveButtonNewOrdenCompra(false));
-            dispatch(SetActiveButtonSearchOrdenCompra(false));
-            dispatch(SetActiveButtonSaveOrdenCompra(true));
-            dispatch(SetActiveButtonDisableOrdenCompra(true));
+            dispatch(SetActiveButtonNewOrdenCompra(true));
+            dispatch(SetActiveButtonSearchOrdenCompra(true));
+            // dispatch(SetActiveButtonSaveOrdenCompra(true));
+            // dispatch(SetActiveButtonDisableOrdenCompra(true));
             dispatch(SetDisableInputsOrdenCompra(false));
 
             // Se cargan los catalogos
@@ -193,7 +193,6 @@ export const PurchaseOrderIcons = () => {
     const handleSaveOrdenCompra = () => {
 
         const newOrdenCompra = {
-            orden: numeroOrdenCompra,
             proveedor: idProveedor,
             fecha: fechaEmision,
             contado: formaPagoContado,
@@ -218,7 +217,6 @@ export const PurchaseOrderIcons = () => {
             fechaModificacion: null,
             detalleOrdenCompra: articulos.map( article => {
                 return {
-                    id: null,
                     orden: numeroOrdenCompra,
                     codigo: article.idArticulo,
                     descripcion: article.descripcion,

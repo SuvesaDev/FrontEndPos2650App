@@ -10,7 +10,8 @@ import {
   SetCheckSearchByOrdenCompra, 
   SetCheckSearchByProveedorOrdenCompra, 
   SetIdProveedorSearchOrdenCompra, 
-  SetTextSearchOrdenCompra
+  SetTextSearchOrdenCompra,
+  startSearchOrdenCompra
 } from "../../actions/ordenCompraAction";
 
 Modal.setAppElement("#root");
@@ -24,7 +25,8 @@ export const PurchaseOrderBodySearchModal = () => {
     checkSearchByProveedor, 
     checkSearchByOrdenCompra,
     searchOrdenCompra,
-    idProveedorSearch
+    idProveedorSearch,
+    ordenComprasSearch
   } = useSelector((state) => state.ordenCompra);
   
   const columns = [
@@ -33,12 +35,12 @@ export const PurchaseOrderBodySearchModal = () => {
       accessor: "orden",
     },
     {
-      Header: "Proveedor",
-      accessor: "proveedor",
-    },
-    {
       Header: "Fecha",
       accessor: "fecha",
+    },
+    {
+      Header: "Nombre Usuario",
+      accessor: "nombreUsuario",
     },
   ];
 
@@ -56,9 +58,52 @@ export const PurchaseOrderBodySearchModal = () => {
     dispatch( SetCheckSearchByProveedorOrdenCompra(false) );
   }
 
-  const handleEnterSearchOrdenCompra = ( {target} ) => {
-    dispatch( SetCheckSearchByOrdenCompra(target.checked) );
-    dispatch( SetCheckSearchByProveedorOrdenCompra(false) );
+  const handleEnterSearchOrdenCompra = ( e ) => {
+
+    if (e.key === 'Enter') {
+
+        e.preventDefault();
+
+        if (searchOrdenCompra == '') {
+
+            Swal.fire({
+                icon: 'warning',
+                title: 'Advertencia',
+                text: 'Escriba un numero de orden de compra.'
+            });
+
+            return;
+        }
+
+        dispatch( startSearchOrdenCompra(searchOrdenCompra, 'ordenCompra'));
+    }
+
+  }
+
+  const handleSearchOrdenCompraBtn = ( e ) => {
+
+    e.preventDefault();
+
+    if (searchOrdenCompra == '') {
+
+        Swal.fire({
+            icon: 'warning',
+            title: 'Advertencia',
+            text: 'Escriba un numero de orden de compra.'
+        });
+
+        return;
+    }
+
+    dispatch( startSearchOrdenCompra(searchOrdenCompra, 'ordenCompra'));
+    
+  }
+
+  const handleSearchOrdenCompraByProveedor = ( {target} ) => {
+
+    dispatch( SetIdProveedorSearchOrdenCompra(target.value) )
+    dispatch( startSearchOrdenCompra(target.value, 'proveedor'));
+    
   }
 
   return (
@@ -83,7 +128,7 @@ export const PurchaseOrderBodySearchModal = () => {
             <div className="modal-body">
               <div className="row">
                 
-                <div className={ (checkSearchByOrdenCompra) ? 'col-md-12 mb-3' : 'col-md-12 mb-3 d-none' }>
+                <div className={ (checkSearchByOrdenCompra) ? 'col-md-10 mb-3' : 'col-md-10 mb-3 d-none' }>
                   <div className="input-group">
 
                     <span className="input-group-text">
@@ -99,12 +144,14 @@ export const PurchaseOrderBodySearchModal = () => {
                       onChange={(e) =>
                         handleInputChangeWithDispatch(e, SetTextSearchOrdenCompra)
                       }
+                      onKeyDown={handleEnterSearchOrdenCompra}
                     />
+
 
                   </div>
                 </div>
 
-                <div className={ (checkSearchByProveedor) ? 'col-md-12 mb-3' : 'col-md-12 mb-3 d-none' }>
+                <div className={ (checkSearchByProveedor) ? 'col-md-10 mb-3' : 'col-md-10 mb-3 d-none' }>
                   <div className="input-group">
 
                     <span className="input-group-text">
@@ -116,10 +163,10 @@ export const PurchaseOrderBodySearchModal = () => {
                       value={idProveedorSearch}
                       className="form-select"
                       onChange={(e) =>
-                        handleInputChangeWithDispatch(e, SetIdProveedorSearchOrdenCompra)
+                        handleSearchOrdenCompraByProveedor(e)
                       }
                     >
-                      <option value="" selected disabled hidden>
+                      <option value={0} selected disabled hidden>
                         {" "}
                         Seleccione...{" "}
                       </option>
@@ -135,6 +182,15 @@ export const PurchaseOrderBodySearchModal = () => {
                     </select>
 
                   </div>
+                </div>
+
+                <div className='col-md-2 mb-3'>
+                  <button
+                    className="btn btn-primary"
+                    onClick={handleSearchOrdenCompraBtn}
+                  >
+                    Buscar
+                  </button>
                 </div>
 
                 <div className="row mb-2 text-center">
@@ -178,9 +234,10 @@ export const PurchaseOrderBodySearchModal = () => {
                 <div className="col-md-12">
                   <PurchaseOrderBodySearchModalTable
                     columns={columns}
-                    data={[]}
+                    data={ordenComprasSearch}
                   />
                 </div>
+                
               </div>
             </div>
 

@@ -17,6 +17,7 @@ const initialState = {
   checkSearchByOrdenCompra: false,
   searchOrdenCompra: '',
   idProveedorSearch: 0,
+  ordenComprasSearch: [],
   ordenCompra: {
     numeroOrdenCompra: 0,
     idProveedor: 0,
@@ -424,6 +425,12 @@ export const OrdenCompraReducer = (state = initialState, action) => {
                 idProveedorSearch: action.payload
             }
 
+        case types.SetOrdenesComprasSearchOrdenCompra:
+            return {
+                ...state,
+                ordenComprasSearch: action.payload
+            }
+
         case types.CleanStateArticuloOrdenCompra:
             return {
                 ...state,
@@ -461,6 +468,7 @@ export const OrdenCompraReducer = (state = initialState, action) => {
                 checkSearchByOrdenCompra: false,
                 searchOrdenCompra: '',
                 idProveedorSearch: 0,
+                ordenComprasSearch: [],
                 ordenCompra: {
                     numeroOrdenCompra: 0,
                     idProveedor: 0,
