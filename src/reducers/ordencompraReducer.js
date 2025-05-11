@@ -22,6 +22,7 @@ const initialState = {
   isEditOrdenCompra: false,
   usuarioCreacion: '',
   nombreUsuarioCreacion: '',
+  checkAnuladaSearchOrdenCompra: false,
   ordenCompra: {
     numeroOrdenCompra: 0,
     idProveedor: 0,
@@ -478,6 +479,12 @@ export const OrdenCompraReducer = (state = initialState, action) => {
                 nombreUsuarioCreacion: action.payload
             }
 
+        case types.SetCheckAnuladasSearchOrdenCompra:
+            return {
+                ...state,
+                checkAnuladaSearchOrdenCompra: action.payload
+            }
+
         case types.CleanStateArticuloOrdenCompra:
             return {
                 ...state,
@@ -520,6 +527,7 @@ export const OrdenCompraReducer = (state = initialState, action) => {
                 isEditOrdenCompra: false,
                 usuarioCreacion: '',
                 nombreUsuarioCreacion: '',
+                checkAnuladaSearchOrdenCompra: false,
                 ordenCompra: {
                     numeroOrdenCompra: 0,
                     idProveedor: 0,

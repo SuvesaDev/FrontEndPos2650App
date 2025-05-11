@@ -183,18 +183,19 @@ export const startEditOrdenCompra = ( ordenCompra ) => {
     };
 }
 
-export const startDesactiveOrdenCompra = ( idOrdenCompra ) => {
+export const startChangeStateOrdenCompra = ( idOrdenCompra, state ) => {
 
     return async (dispatch) => {
 
         try {
-
+            let message = (state) ? '¿Desea anular esta orden compra?' : '¿Desea activar esta orden compra?';
+            let messageButtton = (state) ? 'Anular' : 'Activar';
             //Mostrar un mensaje de confirmacion
             Swal.fire({
-                title: '¿Desea anular esta orden compra?',
+                title:  message,
                 showDenyButton: true,
                 showCancelButton: false,
-                confirmButtonText: 'Anular',
+                confirmButtonText: messageButtton,
                 denyButtonText: `Cancelar`,
             }).then(async (result) => {
 
@@ -212,7 +213,7 @@ export const startDesactiveOrdenCompra = ( idOrdenCompra ) => {
                     });
                     
                     //Call end-point 
-                    const { data } = await suvesaApi.delete(`/OrdenCompra/DesactivateOrdenCompra?idOrdenCompra=${idOrdenCompra}&state=${true}`);
+                    const { data } = await suvesaApi.delete(`/OrdenCompra/DesactivateOrdenCompra?idOrdenCompra=${idOrdenCompra}&state=${state}`);
                     const { status } = data;
                     
                     //Quitar el loading
@@ -393,7 +394,7 @@ export const startGetOneInventoryOrdenCompra = (codigo) => {
     }
 }
 
-export const startSearchOrdenCompra = ( value, type ) => {
+export const startSearchOrdenCompra = ( value, type, anuladas) => {
 
     return async (dispatch) => {
 
@@ -410,7 +411,7 @@ export const startSearchOrdenCompra = ( value, type ) => {
                 imageHeight: 100,
             });
 
-            let endPoint = (type == 'proveedor') ? `/OrdenCompra/GetOrdenCompraAllProvedor?idProveedor=${value}&state=${false}` : `/OrdenCompra/GetOrdenComprasDataBasic?orden=${value}&state=${false}`;
+            let endPoint = (type == 'proveedor') ? `/OrdenCompra/GetOrdenCompraAllProvedor?idProveedor=${value}&state=${anuladas}` : `/OrdenCompra/GetOrdenComprasDataBasic?orden=${value}&state=${anuladas}`;
             
             //Call end-point 
             const { data } = await suvesaApi.get(endPoint);
@@ -506,7 +507,7 @@ export const startGetOneOrdenCompra = ( idOrdenCompra, proveedores ) => {
                     nombreUsuario,
                     detalleOrdenCompra
                 } = responses;
-                
+                console.log(responses)
                 const nameProveedor = proveedores.find( prov => prov.codigo == proveedor );
                 
                 dispatch( SetNumeroOrdenCompra(orden) );
@@ -544,8 +545,26 @@ export const startGetOneOrdenCompra = ( idOrdenCompra, proveedores ) => {
 
                 dispatch( SetAddAllArticulosOrdenCompra(articulos) );
                 dispatch( SetIsEditOrdenCompra(true) );
-                dispatch( SetActiveButtonSaveOrdenCompra(true) );
-                dispatch( SetActiveButtonDisableOrdenCompra(true) );
+
+                if( anulado ) {
+
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Advertencia',
+                        text: `La Orden de compra #${orden} esta anulada`
+                    });
+
+                    dispatch( SetActiveButtonSaveOrdenCompra(false) );
+                    dispatch( SetActiveButtonNewOrdenCompra(false) );
+                    dispatch( SetActiveButtonSearchOrdenCompra(true) );
+                    dispatch( SetActiveButtonDisableOrdenCompra(true) );
+                    dispatch( SetDisableInputsOrdenCompra(true) );
+                    dispatch( SetDisableInputsArticuloOrdenCompra(true) );
+                    
+                } else {
+                    dispatch( SetActiveButtonSaveOrdenCompra(true) );
+                    dispatch( SetActiveButtonDisableOrdenCompra(true) );
+                }
 
             } else {
 
@@ -839,6 +858,11 @@ export const SetUsuarioCreacionOrdenCompra = (value) => ({
 
 export const SetNombreUsuarioCreacionOrdenCompra = (value) => ({
     type: types.SetNombreUsuarioCreacionOrdenCompra,
+    payload: value
+})
+
+export const SetCheckAnuladasSearchOrdenCompra = (value) => ({
+    type: types.SetCheckAnuladasSearchOrdenCompra,
     payload: value
 })
 

@@ -7,6 +7,7 @@ import { FaSearch, FaArrowRight} from "react-icons/fa";
 
 import { PurchaseOrderBodySearchModalTable } from "./PurchaseOrderBodySearchModalTable";
 import { 
+  SetCheckAnuladasSearchOrdenCompra,
   SetCheckSearchByOrdenCompra, 
   SetCheckSearchByProveedorOrdenCompra, 
   SetIdProveedorSearchOrdenCompra, 
@@ -26,7 +27,8 @@ export const PurchaseOrderBodySearchModal = () => {
     checkSearchByOrdenCompra,
     searchOrdenCompra,
     idProveedorSearch,
-    ordenComprasSearch
+    ordenComprasSearch,
+    checkAnuladaSearchOrdenCompra
   } = useSelector((state) => state.ordenCompra);
   
   const columns = [
@@ -47,6 +49,10 @@ export const PurchaseOrderBodySearchModal = () => {
   const handleInputChangeWithDispatch = ({ target }, action) => {
       dispatch(action(target.value));
   };
+
+  const handleInputChangeWithDispatchCheck = ({ target }, action) => {
+    dispatch(action(target.checked));
+};
 
   const handleInputChangeCheckProveedor = ( {target} ) => {
     dispatch( SetCheckSearchByProveedorOrdenCompra(target.checked) );
@@ -75,7 +81,7 @@ export const PurchaseOrderBodySearchModal = () => {
             return;
         }
 
-        dispatch( startSearchOrdenCompra(searchOrdenCompra, 'ordenCompra'));
+        dispatch( startSearchOrdenCompra(searchOrdenCompra, 'ordenCompra', checkAnuladaSearchOrdenCompra));
     }
 
   }
@@ -95,14 +101,14 @@ export const PurchaseOrderBodySearchModal = () => {
         return;
     }
 
-    dispatch( startSearchOrdenCompra(searchOrdenCompra, 'ordenCompra'));
+    dispatch( startSearchOrdenCompra(searchOrdenCompra, 'ordenCompra', checkAnuladaSearchOrdenCompra));
     
   }
 
   const handleSearchOrdenCompraByProveedor = ( {target} ) => {
 
     dispatch( SetIdProveedorSearchOrdenCompra(target.value) )
-    dispatch( startSearchOrdenCompra(target.value, 'proveedor'));
+    dispatch( startSearchOrdenCompra(target.value, 'proveedor', checkAnuladaSearchOrdenCompra));
     
   }
 
@@ -199,7 +205,7 @@ export const PurchaseOrderBodySearchModal = () => {
                         <h5>Búsqueda en <FaArrowRight className='iconSize' /></h5>
                     </div>
 
-                    <div className="col-md-4 mb-3">
+                    <div className="col-md-3 mb-3">
                         <div className="form-check">
                             <input
                                 class="form-check-input checkP"
@@ -225,6 +231,21 @@ export const PurchaseOrderBodySearchModal = () => {
                                 onChange={e => handleInputChangeCheckOrdenCompra(e)}
                             />
                             <h5 className="form-check-label" for="checkOrdenCompraSearchInventory">Orden de compra</h5>
+                        </div>
+                        <hr />
+                    </div>
+
+                    <div className="col-md-2 mb-3">
+                        <div className="form-check">
+                            <input
+                                class="form-check-input checkP"
+                                id="checkOrdenCompraSearchAnuladasInventory"
+                                type="checkbox"
+                                name="checkAnuladasOrdenCompra"
+                                checked={checkAnuladaSearchOrdenCompra}
+                                onChange={e => handleInputChangeWithDispatchCheck(e, SetCheckAnuladasSearchOrdenCompra)}
+                            />
+                            <h5 className="form-check-label" for="checkOrdenCompraSearchInventory">Anuladas</h5>
                         </div>
                         <hr />
                     </div>

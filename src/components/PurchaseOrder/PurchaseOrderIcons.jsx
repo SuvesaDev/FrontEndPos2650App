@@ -7,6 +7,7 @@ import { MdNoteAdd } from 'react-icons/md';
 import { FaMagnifyingGlass } from 'react-icons/fa6';
 import { FaRegSave, FaWindowClose, FaEyeSlash, FaEye } from 'react-icons/fa';
 import { PiKeyFill } from "react-icons/pi";
+import { VscVmActive } from "react-icons/vsc";
 
 import { startGetAllProveedores } from '../../actions/ProveedoresAction';
 import { startGetAllMonedas } from '../../actions/MonedasAction';
@@ -20,7 +21,7 @@ import {
     SetDisableInputsOrdenCompra,
     SetNombreEntregaOrdenCompra,
     SetVisibleClaveInternaOrdenCompra,
-    startDesactiveOrdenCompra,
+    startChangeStateOrdenCompra,
     startEditOrdenCompra,
     startSaveOrdenCompra,
     startValidateClaveInternaOrdenCompra
@@ -69,7 +70,8 @@ export const PurchaseOrderIcons = () => {
         totalSubTotal,
         totalDescuento,
         totalImpuestos,
-        totalFinal
+        totalFinal,
+        anulado
     } = ordenCompra;
 
     const handleInputChangeWithDispatch = ({ target }, action) => {
@@ -314,7 +316,15 @@ export const PurchaseOrderIcons = () => {
     const handleDesactiveOrdenCompra = () => {
 
         if(isEditOrdenCompra) {
-            dispatch( startDesactiveOrdenCompra(numeroOrdenCompra) );
+            dispatch( startChangeStateOrdenCompra(numeroOrdenCompra, true) );
+        }
+
+    }
+
+    const handleActiveOrdenCompra = () => {
+
+        if(anulado) {
+            dispatch( startChangeStateOrdenCompra(numeroOrdenCompra, false) );
         }
 
     }
@@ -364,12 +374,12 @@ export const PurchaseOrderIcons = () => {
                 <div className="btn-group mb-2">
                     <button
                         className={
-                            (ActiveButtonDisable ? "btn btn-danger espacio" : "btn btn-danger espacio disabled")
+                            (ActiveButtonDisable ?  (anulado) ? 'btn btn-success espacio' : "btn btn-danger espacio" : (anulado) ? 'btn btn-success espacio disabled' : "btn btn-danger espacio disabled")
                         }
                         disabled={!ActiveButtonDisable}
-                        onClick={handleDesactiveOrdenCompra}
+                        onClick={ (anulado) ? handleActiveOrdenCompra : handleDesactiveOrdenCompra}
                     >
-                        Anular <RiDeleteBin2Fill className="iconSizeBtn" />
+                        { (anulado) ? 'Activar' : 'Anular' } { (anulado) ? <VscVmActive className="iconSizeBtn" /> : <RiDeleteBin2Fill className="iconSizeBtn" /> } 
                     </button>
                 </div>
 

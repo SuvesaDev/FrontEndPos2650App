@@ -2,7 +2,7 @@ import React from "react";
 import Swal from 'sweetalert2';
 import { useTable } from "react-table";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { FaEdit } from 'react-icons/fa';
 import { MdDeleteForever } from 'react-icons/md';
@@ -25,6 +25,7 @@ import {
 export const PurchaseOrderBodyArticulosTable = ({ columns, data }) => {
 
   const dispatch = useDispatch();
+  const { DisableInputs } = useSelector((state) => state.ordenCompra);
 
   const {
     getTableProps,
@@ -39,6 +40,8 @@ export const PurchaseOrderBodyArticulosTable = ({ columns, data }) => {
   });
 
   const handleEditArticulo = async (cell) => {
+
+      if( DisableInputs ) return;
       
       if( cell.column.id == 'icon') {
         
@@ -76,6 +79,8 @@ export const PurchaseOrderBodyArticulosTable = ({ columns, data }) => {
   };
 
   const handleDeleteArticulo = async (cell) => {
+
+    if( DisableInputs ) return;
       
     if( cell.column.id == 'icon') {
 
@@ -144,7 +149,7 @@ export const PurchaseOrderBodyArticulosTable = ({ columns, data }) => {
 
                                         <div class="col-auto">
                                           <button 
-                                            className='btn btn-success'
+                                            className={ (DisableInputs) ? 'btn btn-success disabled' : 'btn btn-success' }
                                             onClick={ () => handleEditArticulo(cell)}
                                           >
                                             <FaEdit className='iconSizeBtn' />
@@ -153,7 +158,7 @@ export const PurchaseOrderBodyArticulosTable = ({ columns, data }) => {
 
                                         <div class="col-auto">
                                           <button 
-                                            className='btn btn-danger' 
+                                            className={ (DisableInputs) ? 'btn btn-danger disabled' : 'btn btn-danger' }
                                             onClick={ () => handleDeleteArticulo(cell)}
                                           >
                                             <MdDeleteForever className='iconSizeBtn' />
