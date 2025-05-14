@@ -507,7 +507,7 @@ export const startGetOneOrdenCompra = ( idOrdenCompra, proveedores ) => {
                     nombreUsuario,
                     detalleOrdenCompra
                 } = responses;
-                console.log(responses)
+                
                 const nameProveedor = proveedores.find( prov => prov.codigo == proveedor );
                 
                 dispatch( SetNumeroOrdenCompra(orden) );
@@ -557,7 +557,7 @@ export const startGetOneOrdenCompra = ( idOrdenCompra, proveedores ) => {
                     dispatch( SetActiveButtonSaveOrdenCompra(false) );
                     dispatch( SetActiveButtonNewOrdenCompra(false) );
                     dispatch( SetActiveButtonSearchOrdenCompra(true) );
-                    dispatch( SetActiveButtonDisableOrdenCompra(true) );
+                    dispatch( SetActiveButtonDisableOrdenCompra(false) );
                     dispatch( SetDisableInputsOrdenCompra(true) );
                     dispatch( SetDisableInputsArticuloOrdenCompra(true) );
                     
@@ -600,6 +600,79 @@ export const startGetOneOrdenCompra = ( idOrdenCompra, proveedores ) => {
         }
     };
 }
+
+export const startGetLast10OrdenCompra = () => {
+
+    return async (dispatch) => {
+
+        try {
+
+            //Mostrar el loading
+            Swal.fire({
+                title: 'Por favor, espere',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                imageUrl: loadingImage,
+                customClass: 'alert-class-login',
+                imageHeight: 100,
+            });
+            
+            //Call end-point 
+            const { data } = await suvesaApi.get(`/OrdenCompra/GetOrdenCompraAll`);
+            const { status, responses } = data;
+            
+            //Quitar el loading
+            Swal.close();
+            
+            if (status === 0) {
+                
+                
+                const searchOrdenesCompra = responses.map( ordenCompra => {
+                    return {
+                        orden: ordenCompra.orden,
+                        fecha: ordenCompra.fecha.split('T')[0],
+                        nombreUsuario: ordenCompra.nombreUsuario
+                    }
+                });
+
+                dispatch( SetOrdenesComprasSearchOrdenCompra(searchOrdenesCompra) );
+
+            } else {
+
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
+
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
+
+            }
+
+        } catch (error) {
+
+            Swal.close();
+            console.log(error);
+            if (error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al buscar orden de compra',
+                });
+            }
+        }
+    };
+}
+
 
 // Normal Actions
 export const SetActiveButtonNewOrdenCompra = (value) => ({

@@ -23,6 +23,7 @@ import {
     SetVisibleClaveInternaOrdenCompra,
     startChangeStateOrdenCompra,
     startEditOrdenCompra,
+    startGetLast10OrdenCompra,
     startSaveOrdenCompra,
     startValidateClaveInternaOrdenCompra
 } from '../../actions/ordenCompraAction';
@@ -111,6 +112,8 @@ export const PurchaseOrderIcons = () => {
 
             // Se cargan los catalogos
             await loadCatalogos();
+
+            dispatch( startGetLast10OrdenCompra() );
         }
     
     }
@@ -321,14 +324,6 @@ export const PurchaseOrderIcons = () => {
 
     }
 
-    const handleActiveOrdenCompra = () => {
-
-        if(anulado) {
-            dispatch( startChangeStateOrdenCompra(numeroOrdenCompra, false) );
-        }
-
-    }
-
     return (
 
         <>
@@ -374,12 +369,12 @@ export const PurchaseOrderIcons = () => {
                 <div className="btn-group mb-2">
                     <button
                         className={
-                            (ActiveButtonDisable ?  (anulado) ? 'btn btn-success espacio' : "btn btn-danger espacio" : (anulado) ? 'btn btn-success espacio disabled' : "btn btn-danger espacio disabled")
+                            (ActiveButtonDisable) ? "btn btn-danger espacio" : "btn btn-danger espacio disabled"
                         }
                         disabled={!ActiveButtonDisable}
-                        onClick={ (anulado) ? handleActiveOrdenCompra : handleDesactiveOrdenCompra}
+                        onClick={ handleDesactiveOrdenCompra }
                     >
-                        { (anulado) ? 'Activar' : 'Anular' } { (anulado) ? <VscVmActive className="iconSizeBtn" /> : <RiDeleteBin2Fill className="iconSizeBtn" /> } 
+                        Anular <RiDeleteBin2Fill className="iconSizeBtn" />
                     </button>
                 </div>
 

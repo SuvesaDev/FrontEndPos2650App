@@ -8,6 +8,7 @@ import { FaEdit } from 'react-icons/fa';
 import { MdDeleteForever } from 'react-icons/md';
 
 import { 
+  CleanStateArticuloOrdenCompra,
   SetCantidadArticuloOrdenCompra,
   SetCodigoArticuloOrdenCompra,
   SetDeleteArticuloOrdenCompra,
@@ -100,6 +101,8 @@ export const PurchaseOrderBodyArticulosTable = ({ columns, data }) => {
           if (result.isConfirmed) {                            
               // Se ingresa nuevo banco a la tabla
               dispatch( SetDeleteArticuloOrdenCompra(index) );
+              dispatch( SetIsEditArticuloOrdenCompra(false) );
+              dispatch( CleanStateArticuloOrdenCompra() );
           }
 
       });

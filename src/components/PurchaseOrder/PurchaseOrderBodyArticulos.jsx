@@ -6,7 +6,7 @@ import { BsSortNumericDown } from "react-icons/bs";
 import { FaPercentage, FaSearch, FaEdit } from "react-icons/fa";
 import { FaColonSign, FaHashtag } from "react-icons/fa6";
 import { TbNotes } from "react-icons/tb";
-import { MdNoteAdd } from 'react-icons/md';
+import { MdNoteAdd, MdCancel } from 'react-icons/md';
 
 import { PurchaseOrderBodyArticulosTable } from "./PurchaseOrderBodyArticulosTable";
 
@@ -262,6 +262,11 @@ export const PurchaseOrderBodyArticulos = () => {
 
     }
 
+    const handleCancelEditArticulo = () => {
+        dispatch( SetIsEditArticuloOrdenCompra(false) );
+        dispatch( CleanStateArticuloOrdenCompra() );
+    }
+
     return (
         <>
 
@@ -445,27 +450,48 @@ export const PurchaseOrderBodyArticulos = () => {
                                 </div>
 
                                 <div className="col-md-2 mb-3 flex-column justify-content-end">
-                                    <button 
-                                        className={ 
-                                            (isEditArticulo)
-                                                ? (disableInputsArticulo) 
-                                                    ? 'btn btn-warning ms-auto disabled' 
-                                                    : 'btn btn-warning ms-auto' 
-                                                : (disableInputsArticulo) 
-                                                    ? 'btn btn-success ms-auto disabled' 
-                                                    : 'btn btn-success ms-auto' 
-                                        }
-                                        onClick={ (isEditArticulo) ? handleEditArticulo : handleAddArticulo}
-                                    >
-                                        { (isEditArticulo)
-                                            ? <div>
-                                                <FaEdit className='iconSize' /> Editar
-                                            </div>
-                                            : <div>
-                                                <MdNoteAdd className='iconSize' /> Agregar
-                                            </div> 
-                                        }
-                                    </button>
+
+                                    <div className='row'>
+                                        
+                                        <div className='col-md-6 mb-3'>
+                                            <button 
+                                                className={ 
+                                                    (isEditArticulo)
+                                                        ? (disableInputsArticulo) 
+                                                            ? 'btn btn-warning ms-auto disabled' 
+                                                            : 'btn btn-warning ms-auto' 
+                                                        : (disableInputsArticulo) 
+                                                            ? 'btn btn-success ms-auto disabled' 
+                                                            : 'btn btn-success ms-auto' 
+                                                }
+                                                onClick={ (isEditArticulo) ? handleEditArticulo : handleAddArticulo}
+                                            >
+                                                { (isEditArticulo)
+                                                    ? <div>
+                                                        <FaEdit className='iconSize' /> Editar
+                                                    </div>
+                                                    : <div>
+                                                        <MdNoteAdd className='iconSize' /> Agregar
+                                                    </div> 
+                                                }
+                                            </button>
+                                        </div>
+
+                                        <div className='col-md-6 mb-3'>
+                                            <button 
+                                                className={ 
+                                                    (isEditArticulo)
+                                                        ? 'btn btn-danger'
+                                                        : 'btn btn-danger d-none' 
+                                                }
+                                                onClick={ handleCancelEditArticulo }
+                                            >
+                                                <MdCancel className='iconSize' /> Cancelar
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                    
                                 </div>
 
                             </div>

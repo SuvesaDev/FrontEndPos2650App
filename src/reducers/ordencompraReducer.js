@@ -506,8 +506,8 @@ export const OrdenCompraReducer = (state = initialState, action) => {
 
         case types.CleanStateOrdenCompra:
             return {
-                ActiveButtonNew: true,
-                ActiveButtonSearch: true,
+                ActiveButtonNew: false,
+                ActiveButtonSearch: false,
                 ActiveButtonSave: false,
                 ActiveButtonDisable: false,
                 DisableInputs: true,

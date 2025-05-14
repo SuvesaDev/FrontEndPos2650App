@@ -54,28 +54,7 @@ export const PurchaseOrderBodySearchModalTable = ({ columns, data }) => {
             ))}
           </thead>
           <tbody className="table-secondary" {...getTableBodyProps()}>
-            {rows.length === 0 ? (
-              <tr>
-                <td colSpan={columns.length}>
-                  <center>
-                    <div className="toast show">
-                      <div className={"card-header toast-warning"}>
-                        <strong className="me-auto">
-                          2650 Informa{" "}
-                          <AiFillExclamationCircle className="iconSize" />
-                        </strong>
-                      </div>
-                      <div className="toast-body">
-                        <p className="text-danger">
-                          No existen coincidencias con lo ingresado en los
-                          filtros.
-                        </p>
-                      </div>
-                    </div>
-                  </center>
-                </td>
-              </tr>
-            ) : (
+            {
               rows.map((row, i) => {
                 prepareRow(row);
                 return (
@@ -93,7 +72,7 @@ export const PurchaseOrderBodySearchModalTable = ({ columns, data }) => {
                   </tr>
                 );
               })
-            )}
+            }
           </tbody>
         </table>
       </div>
