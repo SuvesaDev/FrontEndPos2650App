@@ -43,7 +43,7 @@ export const FamilySubFamiliaTable = ({ columns, data }) => {
       const { codigo, subCodigo, descripcion, observaciones } = cell.row.original;
       
       dispatch( SetIdSubFamiliasSeletedFamily(codigo) );
-      dispatch( SetCodigoSubFamiliaFamiliasFamily(subCodigo) );
+      dispatch( SetCodigoSubFamiliaFamiliasFamily(codigo) );
       dispatch( SetDescripcionSubFamiliaFamiliasFamily(descripcion) );
       dispatch( SetObservacionesSubFamiliaFamiliasFamily(observaciones) );
 

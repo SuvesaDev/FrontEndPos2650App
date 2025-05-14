@@ -58,7 +58,7 @@ export const SubFamilyFamiliaModal = () => {
 
     const handleSaveSubFamily = async () => {
 
-        if(  codigo == ''|| descripcion == '' || observaciones == '' ) {
+        if( descripcion == '' || observaciones == '' ) {
             Swal.fire({
                 icon: 'warning',
                 title: 'Advertencia',
@@ -97,7 +97,7 @@ export const SubFamilyFamiliaModal = () => {
         const editSubFamily = {
             codigo: idSubFamiliaSeleted,
             codigoFamilia: codigoFamiliasSeleted,
-            subCodigo: codigo,
+            subCodigo: `${codigo}`,
             descripcion,
             observaciones,
             estado: true,
@@ -152,7 +152,8 @@ export const SubFamilyFamiliaModal = () => {
                                             className='form-control'
                                             placeholder='Codigo'
                                             value={ codigo }
-                                            onChange={ e => handleInputChangeWithDispatch(e, SetCodigoSubFamiliaFamiliasFamily) }
+                                            disabled={true}
+                                            // onChange={ e => handleInputChangeWithDispatch(e, SetCodigoSubFamiliaFamiliasFamily) }
                                         />
                                         
                                     </div>

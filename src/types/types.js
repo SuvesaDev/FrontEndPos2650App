@@ -549,6 +549,7 @@ export const types = {
   SetIdEditDatosFacturacionCustomers: '[Customers] SetIdEditDatosFacturacionCustomers',
   SetEditDatosFacturacionCustomers: '[Customers] SetEditDatosFacturacionCustomers',
   SetDeleteDatosFacturacionCustomers: '[Customers] SetDeleteDatosFacturacionCustomers',
+  SetAddAllDatosFacturacionCustomers: '[Customers] SetAddAllDatosFacturacionCustomers',
 
   // Carta Exoneracion Actions
   SetMotivoCartaExoneracion: '[CartaExoneracion] SetMotivoCartaExoneracion',
@@ -2107,5 +2108,65 @@ export const types = {
 
   CleanFamiliasFamily: "[Family] CleanFamiliasFamily",
 
+  // Orden Compra Action
+  SetActiveButtonNewOrdenCompra: '[OrdenCompra] SetActiveButtonNewOrdenCompra',
+  SetActiveButtonSearchOrdenCompra: '[OrdenCompra] SetActiveButtonSearchOrdenCompra',
+  SetActiveButtonSaveOrdenCompra: '[OrdenCompra] SetActiveButtonSaveOrdenCompra',
+  SetActiveButtonDisableOrdenCompra: '[OrdenCompra] SetActiveButtonDisableOrdenCompra',
+  SetDisableInputsOrdenCompra: '[OrdenCompra] SetDisableInputsOrdenCompra',
+
+  SetNumeroOrdenCompra: '[OrdenCompra] SetNumeroOrdenCompra',
+  SetIdProveedorOrdenCompra: '[OrdenCompra] SetIdProveedorOrdenCompra',
+  SetNombreProveedorOrdenCompra: '[OrdenCompra] SetNombreProveedorOrdenCompra',
+  SetFechaEmisionOrdenCompra: '[OrdenCompra] SetFechaEmisionOrdenCompra',
+  SetNombreEntregaOrdenCompra: '[OrdenCompra] SetNombreEntregaOrdenCompra',
+  SetMonedaOrdenCompra: '[OrdenCompra] SetMonedaOrdenCompra',
+  SetFormaPagoContadoOrdenCompra: '[OrdenCompra] SetFormaPagoContadoOrdenCompra',
+  SetFormaPagoCreditoOrdenCompra: '[OrdenCompra] SetFormaPagoCreditoOrdenCompra',
+  SetCantidadDiasOrdenCompra: '[OrdenCompra] SetCantidadDiasOrdenCompra',
+  SetObservacionesOrdenCompra: '[OrdenCompra] SetObservacionesOrdenCompra',
+  SetAddOneArticulosOrdenCompra: '[OrdenCompra] SetAddOneArticulosOrdenCompra',
+  SetAddAllArticulosOrdenCompra: '[OrdenCompra] SetAddAllArticulosOrdenCompra',
+  SetTotalSubTotalOrdenCompra: '[OrdenCompra] SetTotalSubTotalOrdenCompra',
+  SetTotalDescuentoOrdenCompra: '[OrdenCompra] SetTotalDescuentoOrdenCompra',
+  SetTotalImpuestosOrdenCompra: '[OrdenCompra] SetTotalImpuestosOrdenCompra',
+  SetTotalFinalOrdenCompra: '[OrdenCompra] SetTotalFinalOrdenCompra',
+  SetAnuladoOrdenCompra: '[OrdenCompra] SetAnuladoOrdenCompra',
+
+  SetIdArticuloArticuloOrdenCompra: '[OrdenCompra] SetIdArticuloArticuloOrdenCompra',
+  SetCodigoArticuloOrdenCompra: '[OrdenCompra] SetCodigoArticuloOrdenCompra',
+  SetDescripcionArticuloOrdenCompra: '[OrdenCompra] SetDescripcionArticuloOrdenCompra',
+  SetPrecioUnitarioArticuloOrdenCompra: '[OrdenCompra] SetPrecioUnitarioArticuloOrdenCompra',
+  SetFletesArticuloOrdenCompra: '[OrdenCompra] SetFletesArticuloOrdenCompra',
+  SetCostoArticuloOrdenCompra: '[OrdenCompra] SetCostoArticuloOrdenCompra',
+  SetDescuentoArticuloOrdenCompra: '[OrdenCompra] SetDescuentoArticuloOrdenCompra',
+  SetImpuestoArticuloOrdenCompra: '[OrdenCompra] SetImpuestoArticuloOrdenCompra',
+  SetCantidadArticuloOrdenCompra: '[OrdenCompra] SetCantidadArticuloOrdenCompra',
+  SetSubtotalArticuloOrdenCompra: '[OrdenCompra] SetSubtotalArticuloOrdenCompra',
+  SetTotalArticuloOrdenCompra: '[OrdenCompra] SetTotalArticuloOrdenCompra',
+
+  SetIsOpenModalSearchInventoryOrdenCompra: '[OrdenCompra] SetIsOpenModalSearchInventoryOrdenCompra',
+  SetClaveInternaOrdenCompra: '[OrdenCompra] SetClaveInternaOrdenCompra',
+  SetVisibleClaveInternaOrdenCompra: '[OrdenCompra] SetVisibleClaveInternaOrdenCompra',
+  SetDisableInputsUserOrdenCompra: '[OrdenCompra] SetDisableInputsUserOrdenCompra',
+  SetDisableInputsArticuloOrdenCompra: '[OrdenCompra] SetDisableInputsArticuloOrdenCompra',
+  SetIsEditArticuloOrdenCompra: '[OrdenCompra] SetIsEditArticuloOrdenCompra',
+  SetIndexArticuloSeletedOrdenCompra: '[OrdenCompra] SetIndexArticuloSeletedOrdenCompra',
+  SetEditArticuloOrdenCompra: '[OrdenCompra] SetEditArticuloOrdenCompra',
+  SetDeleteArticuloOrdenCompra: '[OrdenCompra] SetDeleteArticuloOrdenCompra',
+
+  SetCheckSearchByProveedorOrdenCompra: '[OrdenCompra] SetCheckSearchByProveedorOrdenCompra',
+  SetCheckSearchByOrdenCompra: '[OrdenCompra] SetCheckSearchByOrdenCompra',
+  SetTextSearchOrdenCompra: '[OrdenCompra] SetTextSearchOrdenCompra',
+  SetIdProveedorSearchOrdenCompra: '[OrdenCompra] SetIdProveedorSearchOrdenCompra',
+  SetOrdenesComprasSearchOrdenCompra: '[OrdenCompra] SetOrdenesComprasSearchOrdenCompra',
+  SetUsuarioOrdenCompra: '[OrdenCompra] SetUsuarioOrdenCompra',
+  SetIsEditOrdenCompra: '[OrdenCompra] SetIsEditOrdenCompra',
+  SetUsuarioCreacionOrdenCompra: '[OrdenCompra] SetUsuarioCreacionOrdenCompra',
+  SetNombreUsuarioCreacionOrdenCompra: '[OrdenCompra] SetNombreUsuarioCreacionOrdenCompra',
+  SetCheckAnuladasSearchOrdenCompra: '[OrdenCompra] SetCheckAnuladasSearchOrdenCompra',
+
+  CleanStateArticuloOrdenCompra: '[OrdenCompra] CleanStateArticuloOrdenCompra',
+  CleanStateOrdenCompra: '[OrdenCompra] CleanStateOrdenCompra',
 
 }

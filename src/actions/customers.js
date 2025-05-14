@@ -484,6 +484,22 @@ export const startGetOneCustomer = ( idCliente ) => {
 
                 // Se obtiene los distritos
                 dispatch(startGetAllDistritos(searchCustomer.canton));
+                
+                // Se inserta si existe varias surcursales
+                dispatch( SetVariasSurcursalesCustomers( responses.datosSucursal.length > 0 ) );
+                
+                // Se insertan los datos facturacion
+                const datosFacturacion = responses.datosSucursal.map( datosSurcusal => {
+                    return {
+                        sucursal : datosSurcusal.sucursal,
+                        nombreFantasia : datosSurcusal.nombreComercial,
+                        telefono : datosSurcusal.telefono,
+                        correo : datosSurcusal.email,
+                        contacto : datosSurcusal.contacto,
+                    }
+                });
+                
+                dispatch( SetAddAllDatosFacturacionCustomers( datosFacturacion ) );
 
             } else {
     
@@ -1565,5 +1581,10 @@ export const SetEditDatosFacturacionCustomers = ( value ) => ({
 
 export const SetDeleteDatosFacturacionCustomers = ( value ) => ({
     type: types.SetDeleteDatosFacturacionCustomers,
+    payload: value
+});
+
+export const SetAddAllDatosFacturacionCustomers = ( value ) => ({
+    type: types.SetAddAllDatosFacturacionCustomers,
     payload: value
 });

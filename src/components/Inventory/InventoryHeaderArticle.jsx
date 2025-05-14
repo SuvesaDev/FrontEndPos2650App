@@ -47,11 +47,11 @@ import {
   SetIdTipoArticuloSelectedIntentory,
   startGetAllProductsPadreInventory
 } from "../../actions/inventory";
-import { startGetAllSubFamilias } from "../../actions/SubFamiliasAction";
+import { startGetAllSubFamiliasWithLoading } from "../../actions/SubFamiliasAction";
 import { startGetAllSubUbicaciones } from "../../actions/SubUbicacionesAction";
-import { startGetAllProveedores } from "../../actions/ProveedoresAction";
+import { startGetAllProveedoresWithLoading } from "../../actions/ProveedoresAction";
 import { startGetAllMarcas } from "../../actions/MarcasAction";
-import { startGetAllPresentaciones } from "../../actions/PresentacionesAction";
+import { startGetAllPresentacionesWithLoading } from "../../actions/PresentacionesAction";
 import { startGetAllMonedas } from "../../actions/MonedasAction";
 import { startGetAllImpuestos } from "../../actions/ImpuestosAction";
 import { startGetAllBodegas } from "../../actions/bodegasAction";
@@ -172,14 +172,16 @@ export const InventoryHeaderArticle = () => {
   const handleOpenSearchPresentaciones = (e) => {
     if (!disableInputs) {
       e.preventDefault();
-      dispatch(SetOpenModalSearchPresentacionInventory(true));
+      dispatch( startGetAllPresentacionesWithLoading() );
+      // dispatch(SetOpenModalSearchPresentacionInventory(true));
     }
   };
 
   const handleOpenSearchFamilias = (e) => {
     if (!disableInputs) {
       e.preventDefault();
-      dispatch(SetOpenModalSearchFamiliasInventory(true));
+      dispatch( startGetAllSubFamiliasWithLoading() );
+      // dispatch(SetOpenModalSearchFamiliasInventory(true));
     }
   };
 
@@ -193,7 +195,8 @@ export const InventoryHeaderArticle = () => {
   const handleOpenSearchProveedor = (e) => {
     if (!disableInputs) {
       e.preventDefault();
-      dispatch(SetOpenModalSearchProveedorInventory(true));
+      dispatch( startGetAllProveedoresWithLoading() );
+      // dispatch(SetOpenModalSearchProveedorInventory(true));
     }
   };
 
@@ -251,7 +254,7 @@ export const InventoryHeaderArticle = () => {
         </div>
 
         <div className="col-md-3 mb-3">
-          <h5>Descipción</h5>
+          <h5>Descripción</h5>
           <div className="input-group">
             <span className="input-group-text">
               <TbNotes className="iconSize" />
@@ -308,6 +311,7 @@ export const InventoryHeaderArticle = () => {
                 disableInputs ? "btn btn-primary disabled" : "btn btn-primary"
               }
               type="button"
+              onClick={ handleOpenSearchPresentaciones }
               data-bs-toggle="modal"
               data-bs-target="#modalPresentacion"
             >
@@ -372,6 +376,7 @@ export const InventoryHeaderArticle = () => {
               className={
                 disableInputs ? "btn btn-primary disabled" : "btn btn-primary"
               }
+              onClick={handleOpenSearchFamilias}
               type="button"
               data-bs-toggle="modal"
               data-bs-target="#modalFamilia"
@@ -457,6 +462,7 @@ export const InventoryHeaderArticle = () => {
                 disableInputs ? "btn btn-primary disabled" : "btn btn-primary"
               }
               type="button"
+              onClick={handleOpenSearchProveedor}
               data-bs-toggle="modal"
               data-bs-target="#modalProveedor"
             >

@@ -1,16 +1,23 @@
 
 
+import { useSelector } from 'react-redux';
+
 import { FaHashtag } from 'react-icons/fa';
 import { PurchaseOrderBody } from './PurchaseOrderBody';
 import { PurchaseOrderIcons } from './PurchaseOrderIcons';
 
 export const PurchaseOrder = () => {
+    
+    const { ordenCompra } = useSelector((state) => state.ordenCompra);
+    const { numeroOrdenCompra } = ordenCompra;
+
     return (
         <>
             <div className="container-fluid mt-2">
                 <div className="card">
+
                     <div className="card-header cartaMods">
-                        <div className='row'>
+                        <div className='row mt-2'>
 
                             <div className="col-md-2 mb-2">
                                 <div className="input-group">
@@ -21,6 +28,8 @@ export const PurchaseOrder = () => {
                                         type="text"
                                         className="form-control"
                                         placeholder="Número de Orden"
+                                        disabled={true}
+                                        value={numeroOrdenCompra}
                                     />
                                 </div>
                             </div>
@@ -29,7 +38,7 @@ export const PurchaseOrder = () => {
                                 <h3>Orden de Compra Manual</h3>
                             </div>
 
-                            <div className="col-md-2 mb-1">
+                            {/* <div className="col-md-2 mb-1">
                                 <div className="form-check">
                                     <input
                                         type="checkbox"
@@ -39,9 +48,10 @@ export const PurchaseOrder = () => {
                                     <h5 className="form-check-label textRed" for="checkAnulada">Anulada</h5>
                                 </div>
                                 <hr />
-                            </div>
+                            </div> */}
                         </div>
                     </div>
+
                     <div className="card-body">
                         <div className="row mb-0 text-center" >
                             <div className="col-md-12 mb-0">
@@ -49,9 +59,11 @@ export const PurchaseOrder = () => {
                             </div>
                         </div>
                     </div>
+
                     <div className="card-footer cartaP">
                         <PurchaseOrderIcons />
                     </div>
+
                 </div>
             </div>
             <br />

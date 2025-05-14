@@ -729,6 +729,12 @@ export const CustomersReducer = (state = initialState, action) => {
                     (dato, i) => dato.id !== action.payload
                 )
             }
+
+        case types.SetAddAllDatosFacturacionCustomers:
+            return {
+                ...state,
+                allDatosFacturacion: action.payload
+            }
     
         default:
             return state;
