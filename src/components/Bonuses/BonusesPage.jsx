@@ -1,19 +1,22 @@
+import { BonusesBody } from "./BonusesBody"
+import { BonusesIcons } from "./BonusesIcons"
 
 export const BonusesPage = () => {
     return (
         <>
             <div className="container-fluid mt-2">
                 <div className="card">
+                    
                     <div className="card-header cartaMods">
-                        <h3>Mantenimiento de Bonificaciones</h3>
+                        <h3 className="mb-2">Mantenimiento de Bonificaciones</h3>
                     </div>
 
                     <div className="card-body">
-                        <p>body</p>
+                        <BonusesBody />
                     </div>
 
                     <div className="card-footer cartaP">
-                        <p>icons</p>
+                        <BonusesIcons />
                     </div>
                 </div>
             </div>
