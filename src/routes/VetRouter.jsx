@@ -76,6 +76,7 @@ import { InventarioPage } from "../components/ModuloInventario/InventarioPage";
 import { ReportsPageMod } from "../components/ModuloReportes/ReportsPageMod";
 import { FarmacyPage } from "../components/ModuloFarmacia/FarmaciaPage";
 import { CountsWihoutPayPage } from "../components/CountsPay/CountswihoutpayPage";
+import { BonusesPage } from "../components/Bonuses/BonusesPage";
 export const VetRouter = ({ isAuthenticated }) => {
   return (
     <div>
@@ -364,6 +365,13 @@ export const VetRouter = ({ isAuthenticated }) => {
           exact
           path="/sales/repayment"
           component={RepaymentPage}
+        />
+
+        <PrivateRoute
+          isAuthenticated={isAuthenticated}
+          exact
+          path="/sales/bonuses"
+          component={BonusesPage}
         />
 
         <PrivateRoute

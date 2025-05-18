@@ -6,7 +6,7 @@ import { CgPill } from 'react-icons/cg';
 import { SiHomeassistantcommunitystore } from 'react-icons/si';
 import { HiDocumentReport, HiPresentationChartBar, HiLocationMarker, HiDocumentDuplicate } from 'react-icons/hi';
 import { AiFillHome, AiFillSetting, AiOutlineShoppingCart, AiFillProfile, AiFillInteraction, AiFillTag, AiFillBank } from 'react-icons/ai';
-import { FaFileInvoiceDollar, FaHandshake, FaCashRegister, FaCoins, FaMoneyBillAlt, FaMoneyCheckAlt, FaReadme, FaTicketAlt, FaTools, FaSitemap, FaUserCircle } from 'react-icons/fa';
+import { FaFileInvoiceDollar, FaHandshake, FaCashRegister, FaCoins, FaMoneyBillAlt, FaMoneyCheckAlt, FaReadme, FaTicketAlt, FaTools, FaSitemap, FaUserCircle, FaGift } from 'react-icons/fa';
 import { GiReceiveMoney, GiPayMoney, GiTakeMyMoney, GiFamilyTree, GiPowderBag, GiLockedChest } from 'react-icons/gi';
 import { ImTable2 } from 'react-icons/im';
 import { IoDocuments, IoBusinessSharp } from 'react-icons/io5';
@@ -306,6 +306,12 @@ const IteamsAdmin = [
                 title: 'Devoluciones',
                 path: '/sales/repayment',
                 icon: <MdAssignmentReturned />,
+                cName: 'vet_nav-text'
+            },
+            {
+                title: 'Bonificaciones',
+                path: '/sales/bonuses',
+                icon: <FaGift />,
                 cName: 'vet_nav-text'
             },
         ]
