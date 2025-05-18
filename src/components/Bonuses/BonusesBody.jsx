@@ -1,8 +1,16 @@
+import { useDispatch, useSelector } from "react-redux";
+
 import { FaCoins, FaHashtag } from "react-icons/fa"
 import { FaCartShopping } from "react-icons/fa6"
 import { BonusesTable } from "./BonusesTable"
 
 export const BonusesBody = () => {
+
+    const dispatch = useDispatch();
+
+    const { 
+        disableInputs
+    } = useSelector((state) => state.bonificaciones);
 
     const columns = [
         {
@@ -38,7 +46,8 @@ export const BonusesBody = () => {
                             <FaHashtag className="iconSize" />
                         </span>
                         <input
-                            type="text"
+                            type="number"
+                            disabled={disableInputs}
                             className='form-control'
                             placeholder="Cantidad Requerida"
                         />
@@ -52,7 +61,8 @@ export const BonusesBody = () => {
                             <FaCoins className="iconSize" />
                         </span>
                         <input
-                            type="text"
+                            type="number"
+                            disabled={disableInputs}
                             className='form-control'
                             placeholder="Bonificacion"
                         />
@@ -67,6 +77,7 @@ export const BonusesBody = () => {
                         </span>
                         <input
                             type="text"
+                            disabled={disableInputs}
                             className='form-control'
                             placeholder="Articulo"
                         />
@@ -75,7 +86,7 @@ export const BonusesBody = () => {
 
                 <div className="col-md-1 mb-3">
                     <div style={{ height: "20px" }}></div>
-                    <button className="btn btn-success">
+                    <button className={ (disableInputs) ? 'btn btn-success disabled' : 'btn btn-success'  }>
                         Agregar
                     </button>
                 </div>

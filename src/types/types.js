@@ -2169,4 +2169,12 @@ export const types = {
   CleanStateArticuloOrdenCompra: '[OrdenCompra] CleanStateArticuloOrdenCompra',
   CleanStateOrdenCompra: '[OrdenCompra] CleanStateOrdenCompra',
 
+  // Bonificaciones Action
+  SetDisableInputsBonificaciones: '[Bonificaciones] SetDisableInputsBonificaciones',
+  CleanStateBonificaciones: '[Bonificaciones] CleanStateBonificaciones',
+  SetClaveInternaBonificaciones: '[Bonificaciones] SetClaveInternaBonificaciones',
+  SetVisibleClaveInternaBonificaciones: '[Bonificaciones] SetVisibleClaveInternaBonificaciones',
+  SetDisableInputsUserBonificaciones: '[Bonificaciones] SetDisableInputsUserBonificaciones',
+  SetNameUserBonificaciones: '[Bonificaciones] SetNameUserBonificaciones',
+
 }

@@ -6,12 +6,19 @@ import { FaWindowClose, FaEyeSlash, FaEye } from 'react-icons/fa';
 import { PiKeyFill } from "react-icons/pi";
 
 import { 
+    CleanStateBonificaciones, 
+    SetClaveInternaBonificaciones, 
+    SetVisibleClaveInternaBonificaciones,
+    startValidateClaveInternaBonificaciones
+} from '../../actions/BonificacionesAction';
+import { 
     CleanStateOrdenCompra,
     SetClaveInternaOrdenCompra, 
     SetVisibleClaveInternaOrdenCompra,
     startValidateClaveInternaOrdenCompra
 } from '../../actions/ordenCompraAction';
 import { DeleteTab } from '../../actions/tabs';
+
 
 export const BonusesIcons = () => {
 
@@ -23,7 +30,8 @@ export const BonusesIcons = () => {
         claveInterna,
         visibleClaveInterna,
         disableInputsUser,
-    } = useSelector((state) => state.ordenCompra);
+        nameUser
+    } = useSelector((state) => state.bonificaciones);
 
     const handleInputChangeWithDispatch = ({ target }, action) => {
         dispatch(action(target.value));
@@ -35,7 +43,7 @@ export const BonusesIcons = () => {
  
         //Mostrar un mensaje de confirmacion
         Swal.fire({
-            title: '¿Desea cerrar la orden de compra?',
+            title: '¿Desea cerrar la bonificacion?',
             showDenyButton: true,
             showCancelButton: false,
             confirmButtonText: 'Mantener',
@@ -46,7 +54,7 @@ export const BonusesIcons = () => {
                 // Delete this tab
                 dispatch(DeleteTab(currentTab.name, currentTab.routePage));
             
-                dispatch(CleanStateOrdenCompra());
+                dispatch(CleanStateBonificaciones());
             }
         });
 
@@ -57,7 +65,7 @@ export const BonusesIcons = () => {
 
         if (!disableInputsUser) {
             e.preventDefault();
-            dispatch(SetVisibleClaveInternaOrdenCompra(!visibleClaveInterna));
+            dispatch(SetVisibleClaveInternaBonificaciones(!visibleClaveInterna));
         }
     }
 
@@ -80,7 +88,7 @@ export const BonusesIcons = () => {
                 return;
             }
 
-            dispatch( startValidateClaveInternaOrdenCompra(claveInterna));
+            dispatch( startValidateClaveInternaBonificaciones(claveInterna));
         }
     
     }
@@ -101,7 +109,7 @@ export const BonusesIcons = () => {
 
                 <div className="col-md-2 mt-1 ms-3">
                     <div className="input-group">
-
+                        
                         <span className="input-group-text">
                             <PiKeyFill className="iconSize" />
                         </span>
@@ -114,7 +122,7 @@ export const BonusesIcons = () => {
                             disabled={disableInputsUser}
                             value={claveInterna}
                             onKeyDown={handleOnKeyDownUser}
-                            onChange={e => handleInputChangeWithDispatch(e, SetClaveInternaOrdenCompra)}
+                            onChange={e => handleInputChangeWithDispatch(e, SetClaveInternaBonificaciones)}
                         />
                         <span
                             className="input-group-text"
@@ -127,7 +135,19 @@ export const BonusesIcons = () => {
                                     : <FaEye />
                             }
                         </span>
+                        
                     </div>
+                </div>
+
+                <div className="col-md-2 mt-1 ms-3">
+                    <input
+                        type='text'
+                        name="claveInterna"
+                        className="form-control"
+                        placeholder="Nombre de Usuario"
+                        disabled={true}
+                        value={nameUser}
+                    />
                 </div>
 
             </div>
