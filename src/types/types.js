@@ -2177,4 +2177,14 @@ export const types = {
   SetDisableInputsUserBonificaciones: '[Bonificaciones] SetDisableInputsUserBonificaciones',
   SetNameUserBonificaciones: '[Bonificaciones] SetNameUserBonificaciones',
 
+  SetCantidadRequeridaBonificaciones: '[Bonificaciones] SetCantidadRequeridaBonificaciones',
+  SetBonificacionBonificaciones: '[Bonificaciones] SetBonificacionBonificaciones',
+  SetIdArticuloBonificaciones: '[Bonificaciones] SetIdArticuloBonificaciones',
+  SetNombreArticuloBonificaciones: '[Bonificaciones] SetNombreArticuloBonificaciones',
+  SetAddOneBonificacionBonificaciones: '[Bonificaciones] SetAddOneBonificacionBonificaciones',
+  SetAddAllBonificaciones: '[Bonificaciones] SetAddAllBonificaciones',
+
+  SetIsOpenModalSearchBonificaciones: '[Bonificaciones] SetIsOpenModalSearchBonificaciones',
+  SetCleanBonificaciones: '[Bonificaciones] SetCleanBonificaciones',
+
 }

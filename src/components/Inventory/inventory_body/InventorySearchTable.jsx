@@ -25,6 +25,7 @@ import { startGetOneInventoryInventoryAdjustment } from '../../../actions/Invent
 import { startGetOneInventoryBillingConsultAlbaranes } from '../../../actions/consultAlbaranesAction';
 import { startGetOneInventoryBudgets } from '../../../actions/budgetsAction';
 import { startGetOneInventoryOrdenCompra } from '../../../actions/ordenCompraAction';
+import { startGetOneInventoryBonificaciones } from '../../../actions/BonificacionesAction';
 
 export const InventorySearchTable = ({ columns, data }) => {
 
@@ -53,6 +54,7 @@ export const InventorySearchTable = ({ columns, data }) => {
 
     const { isOpenModalSearchInventoryConsultAlbaranes } = useSelector(state => state.consultAlbaranes);
     const { isOpenModalSearchInventoryOrdenCompra } = useSelector((state) => state.ordenCompra);
+    const { isOpenModalSearchArticuloBonificaciones } = useSelector((state) => state.bonificaciones);
 
     useEffect(() => {
 
@@ -137,6 +139,10 @@ export const InventorySearchTable = ({ columns, data }) => {
         } else if (isOpenModalSearchInventoryOrdenCompra) {
             //Llamar para traer el inventario desde Orden de compra
             dispatch(startGetOneInventoryOrdenCompra(codigo));
+            
+        } else if (isOpenModalSearchArticuloBonificaciones) {
+            //Llamar para traer el inventario desde Bonificaciones
+            dispatch(startGetOneInventoryBonificaciones(codigo));
             
         } else {
             //Llamar para traer el inventario

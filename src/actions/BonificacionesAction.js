@@ -117,6 +117,146 @@ export const startValidateClaveInternaBonificaciones = ( password ) => {
     }
 }
 
+export const startGetOneInventoryBonificaciones = (codigo) => {
+
+    return async (dispatch) => {
+
+        try {
+
+            //Mostrar el loading
+            Swal.fire({
+                title: 'Por favor, espere',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                imageUrl: loadingImage,
+                customClass: 'alert-class-login',
+                imageHeight: 100,
+            });
+
+            //Call end-point 
+            const resp = await suvesaApi.post('/inventario/ObtenerUnInventario', { codigo });
+            const { status, responses } = resp.data;
+
+            //Quitar el loading
+            Swal.close();
+
+            if (status === 0) {
+                
+                const { codigo, descripcion } = responses;
+                
+                // Seleccinarlo y meterlo en el estado
+                dispatch( SetIdArticuloBonificaciones(codigo) );
+                dispatch( SetNombreArticuloBonificaciones(descripcion) );
+
+            } else {
+
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
+
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
+
+            }
+
+        } catch (error) {
+
+            Swal.close();
+            console.log(error);
+            if (error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al obtener un inventario',
+                });
+            }
+        }
+    }
+}
+
+export const startAddNewBonificaciones = ( newBonificacion ) => {
+
+    return async (dispatch) => {
+
+        try {
+
+            //Mostrar el loading
+            Swal.fire({
+                title: 'Por favor, espere',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                imageUrl: loadingImage,
+                customClass: 'alert-class-login',
+                imageHeight: 100,
+            });
+
+            //Call end-point //TODO: Falta el end-point
+            // const resp = await suvesaApi.post('', { newBonificacion });
+            // const { status, responses } = resp.data;
+
+            //Quitar el loading
+            Swal.close();
+
+            // if (status === 0) {
+                
+                dispatch( SetAddOneBonificacionBonificaciones( newBonificacion ) );
+
+                //Si es correcta entonces mostrar un mensaje de afirmacion
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Bonificacion ingresada correctamente',
+                    showConfirmButton: false,
+                    timer: 2500
+                });
+
+                dispatch( SetCleanBonificaciones() );
+
+            // } else {
+
+            //     //Caso contrario respuesta incorrecto mostrar mensaje de error
+            //     const { currentException } = data;
+            //     const msj = currentException.split(',');
+
+            //     Swal.fire({
+            //         icon: 'error',
+            //         title: 'Error',
+            //         text: (currentException.includes(',')) ? msj[3] : currentException,
+            //     });
+
+            // }
+
+        } catch (error) {
+
+            Swal.close();
+            console.log(error);
+            if (error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al obtener un inventario',
+                });
+            }
+        }
+    }
+}
+
 // Normal Actions
 export const SetDisableInputsBonificaciones = (value) => ({
     type: types.SetDisableInputsBonificaciones,
@@ -145,4 +285,43 @@ export const SetDisableInputsUserBonificaciones = (value) => ({
 export const SetNameUserBonificaciones = (value) => ({
     type: types.SetNameUserBonificaciones,
     payload: value
+})
+
+export const SetCantidadRequeridaBonificaciones = (value) => ({
+    type: types.SetCantidadRequeridaBonificaciones,
+    payload: value
+})
+
+export const SetBonificacionBonificaciones = (value) => ({
+    type: types.SetBonificacionBonificaciones,
+    payload: value
+})
+
+export const SetIdArticuloBonificaciones = (value) => ({
+    type: types.SetIdArticuloBonificaciones,
+    payload: value
+})
+
+export const SetNombreArticuloBonificaciones = (value) => ({
+    type: types.SetNombreArticuloBonificaciones,
+    payload: value
+})
+
+export const SetAddOneBonificacionBonificaciones = (value) => ({
+    type: types.SetAddOneBonificacionBonificaciones,
+    payload: value
+})
+
+export const SetAddAllBonificaciones = (value) => ({
+    type: types.SetAddAllBonificaciones,
+    payload: value
+})
+
+export const SetIsOpenModalSearchBonificaciones = (value) => ({
+    type: types.SetIsOpenModalSearchBonificaciones,
+    payload: value
+})
+
+export const SetCleanBonificaciones = () => ({
+    type: types.SetCleanBonificaciones
 })

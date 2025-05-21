@@ -18,6 +18,7 @@ import {
     startValidateClaveInternaOrdenCompra
 } from '../../actions/ordenCompraAction';
 import { DeleteTab } from '../../actions/tabs';
+import { InventorySearchModal } from '../Inventory/InventorySearchModal';
 
 
 export const BonusesIcons = () => {
@@ -151,6 +152,8 @@ export const BonusesIcons = () => {
                 </div>
 
             </div>
+
+            <InventorySearchModal />
 
         </>
 
