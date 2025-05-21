@@ -2187,4 +2187,9 @@ export const types = {
   SetIsOpenModalSearchBonificaciones: '[Bonificaciones] SetIsOpenModalSearchBonificaciones',
   SetCleanBonificaciones: '[Bonificaciones] SetCleanBonificaciones',
 
+  SetIsEditBonificaciones: '[Bonificaciones] SetIsEditBonificaciones',
+  SetEditBonificaciones: '[Bonificaciones] SetEditBonificaciones',
+  SetIndexSeletedBonificaciones: '[Bonificaciones] SetIndexSeletedBonificaciones',
+  SetDeleteBonificaciones: '[Bonificaciones] SetDeleteBonificaciones',
+
 }

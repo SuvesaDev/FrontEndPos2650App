@@ -257,6 +257,160 @@ export const startAddNewBonificaciones = ( newBonificacion ) => {
     }
 }
 
+export const startEditBonificaciones = ( editBonificacion ) => {
+
+    return async (dispatch) => {
+
+        try {
+
+            //Mostrar el loading
+            Swal.fire({
+                title: 'Por favor, espere',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                imageUrl: loadingImage,
+                customClass: 'alert-class-login',
+                imageHeight: 100,
+            });
+
+            //Call end-point //TODO: Falta el end-point
+            // const resp = await suvesaApi.post('', { newBonificacion });
+            // const { status, responses } = resp.data;
+
+            //Quitar el loading
+            Swal.close();
+
+            // if (status === 0) {
+                
+                dispatch( SetEditBonificaciones( editBonificacion ) );
+
+                //Si es correcta entonces mostrar un mensaje de afirmacion
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Bonificacion editada correctamente',
+                    showConfirmButton: false,
+                    timer: 2500
+                });
+
+                dispatch( SetIsEditBonificaciones(false) );
+
+                dispatch( SetCleanBonificaciones() );
+
+            // } else {
+
+            //     //Caso contrario respuesta incorrecto mostrar mensaje de error
+            //     const { currentException } = data;
+            //     const msj = currentException.split(',');
+
+            //     Swal.fire({
+            //         icon: 'error',
+            //         title: 'Error',
+            //         text: (currentException.includes(',')) ? msj[3] : currentException,
+            //     });
+
+            // }
+
+        } catch (error) {
+
+            Swal.close();
+            console.log(error);
+            if (error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al obtener un inventario',
+                });
+            }
+        }
+    }
+}
+
+export const startDeleteBonificaciones = ( index, nombreArticulo ) => {
+
+    return async (dispatch) => {
+
+        try {
+
+            //Mostrar un mensaje de confirmacion
+            Swal.fire({
+                title: `¿Desea eliminar la bonificacion del articulo ${nombreArticulo}?`,
+                showDenyButton: true,
+                showCancelButton: false,
+                confirmButtonText: 'Eliminar',
+                denyButtonText: `Cancelar`,
+            }).then(async (result) => {
+
+                if (result.isConfirmed) {
+
+                    //Mostrar el loading
+                    Swal.fire({
+                        title: 'Por favor, espere',
+                        allowEscapeKey: false,
+                        allowOutsideClick: false,
+                        showConfirmButton: false,
+                        imageUrl: loadingImage,
+                        customClass: 'alert-class-login',
+                        imageHeight: 100,
+                    });
+                    
+                    //Call end-point 
+                    // const { data } = await suvesaApi.delete(`/subFamilias/deleteSubFamilia?idSubFamilia=${idSubFamilia}`);
+                    // const { status } = data;
+                    
+                    //Quitar el loading
+                    Swal.close();
+                    
+                    // if (status === 0) {
+                        
+                    //     // Se ingresa nuevo banco a la tabla
+                    dispatch( SetDeleteBonificaciones( index ) );
+
+                    // } else {
+
+                    //     //Caso contrario respuesta incorrecto mostrar mensaje de error
+                    //     const { currentException } = data;
+                    //     const msj = currentException.split(',');
+
+                    //     Swal.fire({
+                    //         icon: 'error',
+                    //         title: 'Error',
+                    //         text: (currentException.includes(',')) ? msj[3] : currentException,
+                    //     });
+
+                    // }
+
+                }
+
+            });
+
+        } catch (error) {
+
+            Swal.close();
+            console.log(error);
+            if (error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema a la guardar el banco',
+                });
+            }
+        }
+    };
+}
+
 // Normal Actions
 export const SetDisableInputsBonificaciones = (value) => ({
     type: types.SetDisableInputsBonificaciones,
@@ -324,4 +478,24 @@ export const SetIsOpenModalSearchBonificaciones = (value) => ({
 
 export const SetCleanBonificaciones = () => ({
     type: types.SetCleanBonificaciones
+})
+
+export const SetIsEditBonificaciones = (value) => ({
+    type: types.SetIsEditBonificaciones,
+    payload: value
+})
+
+export const SetEditBonificaciones = (value) => ({
+    type: types.SetEditBonificaciones,
+    payload: value
+})
+
+export const SetIndexSeletedBonificaciones = (value) => ({
+    type: types.SetIndexSeletedBonificaciones,
+    payload: value
+})
+
+export const SetDeleteBonificaciones = (value) => ({
+    type: types.SetDeleteBonificaciones,
+    payload: value
 })

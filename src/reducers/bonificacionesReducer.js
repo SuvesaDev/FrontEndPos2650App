@@ -7,6 +7,8 @@ const initialState = {
     disableInputsUser : false,
     nameUser: '',
     isOpenModalSearchArticuloBonificaciones: false,
+    isEditBonificacion: false,
+    indexSeleted: 0,
     bonificacion: {
         cantidadRequerida: 0,
         bonificacion: 0,
@@ -117,6 +119,42 @@ export const BonificacionesReducer = (state = initialState, action) => {
                     nombreArticulo: ''
                 }
             }
+
+        case types.SetIsEditBonificaciones:
+            return {
+                ...state,
+                isEditBonificacion : action.payload
+            }
+
+        case types.SetIndexSeletedBonificaciones:
+            return {
+                ...state,
+                indexSeleted : action.payload
+            }
+
+        case types.SetEditBonificaciones:
+            return {
+                ...state,
+                bonificaciones : state.bonificaciones.map(
+                        (boni, i) => i == action.payload.index
+                            ? {
+                                ...boni,
+                                cantidadRequerida : action.payload.cantidadRequerida,
+                                bonificacion : action.payload.bonificacion,
+                                idArticulo : action.payload.idArticulo,
+                                nombreArticulo : action.payload.nombreArticulo,
+                            } 
+                            : boni
+                    )
+            }
+
+        case types.SetDeleteBonificaciones:
+            return {
+                ...state,
+                bonificaciones : state.bonificaciones.filter(
+                    (boni, i) => i != action.payload
+                )
+            }
           
         case types.CleanStateBonificaciones:
             return {
@@ -126,6 +164,8 @@ export const BonificacionesReducer = (state = initialState, action) => {
                 disableInputsUser : false,
                 nameUser: '',
                 isOpenModalSearchArticuloBonificaciones: false,
+                isEditBonificacion: false,
+                indexSeleted: 0,
                 bonificacion: {
                     cantidadRequerida: 0,
                     bonificacion: 0,

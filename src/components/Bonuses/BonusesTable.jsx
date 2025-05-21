@@ -7,6 +7,16 @@ import { useTable } from "react-table";
 import { FaEdit } from 'react-icons/fa';
 import { MdDeleteForever } from 'react-icons/md';
 
+import { 
+  SetBonificacionBonificaciones, 
+  SetCantidadRequeridaBonificaciones, 
+  SetIdArticuloBonificaciones,
+  SetIndexSeletedBonificaciones,
+  SetIsEditBonificaciones,
+  SetNombreArticuloBonificaciones,
+  startDeleteBonificaciones
+} from "../../actions/BonificacionesAction";
+
 export const BonusesTable = ({ columns, data }) => {
 
   const dispatch = useDispatch();
@@ -23,33 +33,36 @@ export const BonusesTable = ({ columns, data }) => {
     data,
   });
 
-  const handleEditFamily = async (cell) => {
+  const handleEditBonificacion = async (cell) => {
     
-    // if( cell.column.id == 'icon') {
-
-    //   // Obtiene la familia seleccionada
-    //   const { codigo, descripcion, observaciones } = cell.row.original;
+    if( cell.column.id == 'icon') {
       
-    //   dispatch( SetCodigoFamiliaFamiliasFamily(codigo) );
-    //   dispatch( SetDescripcionFamiliaFamiliasFamily(descripcion) );
-    //   dispatch( SetObservacionesFamiliaFamiliasFamily(observaciones) );
+      // Obtiene la familia seleccionada
+      const { cantidadRequerida, bonificacion, idArticulo, nombreArticulo } = cell.row.original;
+      const { index } = cell.row;
+      
+      dispatch( SetCantidadRequeridaBonificaciones(cantidadRequerida) );
+      dispatch( SetBonificacionBonificaciones(bonificacion) );
+      dispatch( SetIdArticuloBonificaciones(idArticulo) );
+      dispatch( SetNombreArticuloBonificaciones(nombreArticulo) );
 
-    //   dispatch( SetIsCreateFamiliasFamily( false ) );
-    //   dispatch( SetClosingModalFamiliasFamily(false) );
+      dispatch( SetIsEditBonificaciones( true ) );
+      dispatch( SetIndexSeletedBonificaciones(index) );
 
-    // }
+    }
     
 
   };
 
   const handleDeleteFamily = async (cell) => {
     
-    // if( cell.column.id == 'icon') {
-    //   // Obtiene la familia seleccionada
-    //   const { codigo, descripcion } = cell.row.original;
-    
-    //   dispatch( startDeleteFamilias( codigo, descripcion ) );
-    // }
+    if( cell.column.id == 'icon') {
+      // Obtiene la bonificacion seleccionada
+      const { nombreArticulo,  } = cell.row.original;
+      const { index } = cell.row;
+
+      dispatch( startDeleteBonificaciones( index, nombreArticulo ) );
+    }
     
   };
 
@@ -95,9 +108,7 @@ export const BonusesTable = ({ columns, data }) => {
                                         <div class="col-auto">
                                           <button 
                                             className='btn btn-success' 
-                                            onClick={ () => handleEditFamily(cell)}
-                                            data-bs-toggle="modal"
-                                            data-bs-target="#modalFamilia"
+                                            onClick={ () => handleEditBonificacion(cell)}
                                           >
                                             <FaEdit className='iconSizeBtn' />
                                           </button>

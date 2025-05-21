@@ -9,8 +9,12 @@ import { BonusesTable } from "./BonusesTable";
 import { 
     SetBonificacionBonificaciones,
     SetCantidadRequeridaBonificaciones, 
+    SetIdArticuloBonificaciones, 
+    SetIsEditBonificaciones, 
     SetIsOpenModalSearchBonificaciones,
-    startAddNewBonificaciones
+    SetNombreArticuloBonificaciones,
+    startAddNewBonificaciones,
+    startEditBonificaciones
 } from "../../actions/BonificacionesAction";
 
 export const BonusesBody = () => {
@@ -24,7 +28,9 @@ export const BonusesBody = () => {
     const { 
         disableInputs,
         bonificacion,
-        bonificaciones
+        bonificaciones,
+        isEditBonificacion,
+        indexSeleted
     } = useSelector((state) => state.bonificaciones);
 
     const {
@@ -80,6 +86,39 @@ export const BonusesBody = () => {
 
         dispatch( startAddNewBonificaciones( newBonificacion ) );
 
+    }
+
+    const handleEditBonificacion = () => {
+
+        if( cantidadRequerida == 0 || bonificacion.bonificacion == 0 || idArticulo == 0 ) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Advertencia',
+                text: 'Favor completar todos los datos.'
+            });
+            return;
+        }
+
+        const editBonificacion = {
+            index: indexSeleted,
+            cantidadRequerida,
+            bonificacion : bonificacion.bonificacion,
+            idArticulo,
+            nombreArticulo
+        }
+
+        dispatch( startEditBonificaciones( editBonificacion ) );
+
+    }
+
+    const handleCancelEditBonificacion = () => {
+
+        dispatch( SetCantidadRequeridaBonificaciones(0) );
+        dispatch( SetBonificacionBonificaciones(0) );
+        dispatch( SetIdArticuloBonificaciones(0) );
+        dispatch( SetNombreArticuloBonificaciones('') );
+
+        dispatch( SetIsEditBonificaciones( false ) );
     }
 
     return (
@@ -148,10 +187,20 @@ export const BonusesBody = () => {
                 <div className="col-md-1 mb-3">
                     <div style={{ height: "20px" }}></div>
                     <button 
-                        className={ (disableInputs) ? 'btn btn-success disabled' : 'btn btn-success'  }
-                        onClick={handleAddBonificacion}
+                        className={ (disableInputs) ? (isEditBonificacion) ? 'btn btn-warning disabled' : 'btn btn-success disabled' : (isEditBonificacion) ? 'btn btn-warning' : 'btn btn-success'  }
+                        onClick={ (isEditBonificacion) ? handleEditBonificacion : handleAddBonificacion}
                     >
-                        Agregar
+                       { (isEditBonificacion) ? 'Editar' : 'Agregar' }
+                    </button>
+                </div>
+
+                <div className={ (isEditBonificacion) ? 'col-md-1 mb-3' : 'col-md-1 mb-3 d-none' }>
+                    <div style={{ height: "20px" }}></div>
+                    <button 
+                        className='btn btn-danger'
+                        onClick={handleCancelEditBonificacion}
+                    >
+                       Cancelar
                     </button>
                 </div>
 
