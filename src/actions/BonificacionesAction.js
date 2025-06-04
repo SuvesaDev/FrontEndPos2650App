@@ -8,69 +8,69 @@ import loadingImage from '../assets/loading_snipiner.gif';
 import { startValidateClaveInterna } from './login';
 
 // API Actions
-// export const startGetAllFamilias = () => {
+export const startGetAllBonificaciones = () => {
 
-//     return async (dispatch) => {
+    return async (dispatch) => {
 
-//         try {
+        try {
 
-//             //Mostrar el loading
-//             Swal.fire({
-//                 title: 'Por favor, espere',
-//                 allowEscapeKey: false,
-//                 allowOutsideClick: false,
-//                 showConfirmButton: false,
-//                 imageUrl: loadingImage,
-//                 customClass: 'alert-class-login',
-//                 imageHeight: 100,
-//             });
+            //Mostrar el loading
+            Swal.fire({
+                title: 'Por favor, espere',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                imageUrl: loadingImage,
+                customClass: 'alert-class-login',
+                imageHeight: 100,
+            });
             
-//             //Call end-point 
-//             const { data } = await suvesaApi.get('/Familias/getFamilias');
-//             const { status, responses } = data;
+            //Call end-point 
+            const { data } = await suvesaApi.get('/ArticuloBonificacion/GetArticulosBonificacion');
+            const { status, responses } = data;
             
-//             //Quitar el loading
-//             Swal.close();
+            //Quitar el loading
+            Swal.close();
 
-//             if (status === 0) {
+            if (status === 0) {
+                console.log(responses);
+                // Se ingresa nuevo banco a la tabla
+                dispatch( SetAllBonificaciones( responses ) );
 
-//                 // Se ingresa nuevo banco a la tabla
-//                 dispatch( SetAllFamiliasFamily( responses ) );
+            } else {
 
-//             } else {
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
 
-//                 //Caso contrario respuesta incorrecto mostrar mensaje de error
-//                 const { currentException } = data;
-//                 const msj = currentException.split(',');
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
 
-//                 Swal.fire({
-//                     icon: 'error',
-//                     title: 'Error',
-//                     text: (currentException.includes(',')) ? msj[3] : currentException,
-//                 });
+            }
 
-//             }
+        } catch (error) {
 
-//         } catch (error) {
-
-//             Swal.close();
-//             console.log(error);
-//             if (error.message === 'Request failed with status code 401') {
-//                 Swal.fire({
-//                     icon: 'error',
-//                     title: 'Error',
-//                     text: 'Usuario no valido',
-//                 });
-//             } else {
-//                 Swal.fire({
-//                     icon: 'error',
-//                     title: 'Error',
-//                     text: 'Ocurrio un problema a la guardar el banco',
-//                 });
-//             }
-//         }
-//     };
-// }
+            Swal.close();
+            console.log(error);
+            if (error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema a la obtener las bonificaciones',
+                });
+            }
+        }
+    };
+}
 
 export const startValidateClaveInternaBonificaciones = ( password ) => {
 
@@ -201,14 +201,14 @@ export const startAddNewBonificaciones = ( newBonificacion ) => {
                 imageHeight: 100,
             });
 
-            //Call end-point //TODO: Falta el end-point
-            // const resp = await suvesaApi.post('', { newBonificacion });
-            // const { status, responses } = resp.data;
+            //Call end-point 
+            const resp = await suvesaApi.post('/ArticuloBonificacion/CreateArticulosBonificacion', { newBonificacion });
+            const { status } = resp.data;
 
             //Quitar el loading
             Swal.close();
 
-            // if (status === 0) {
+            if (status === 0) {
                 
                 dispatch( SetAddOneBonificacionBonificaciones( newBonificacion ) );
 
@@ -222,19 +222,19 @@ export const startAddNewBonificaciones = ( newBonificacion ) => {
 
                 dispatch( SetCleanBonificaciones() );
 
-            // } else {
+            } else {
 
-            //     //Caso contrario respuesta incorrecto mostrar mensaje de error
-            //     const { currentException } = data;
-            //     const msj = currentException.split(',');
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
 
-            //     Swal.fire({
-            //         icon: 'error',
-            //         title: 'Error',
-            //         text: (currentException.includes(',')) ? msj[3] : currentException,
-            //     });
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
 
-            // }
+            }
 
         } catch (error) {
 
@@ -274,14 +274,14 @@ export const startEditBonificaciones = ( editBonificacion ) => {
                 imageHeight: 100,
             });
 
-            //Call end-point //TODO: Falta el end-point
-            // const resp = await suvesaApi.post('', { newBonificacion });
-            // const { status, responses } = resp.data;
+            //Call end-point
+            const resp = await suvesaApi.post('/ArticuloBonificacion/UpdateArticulosBonificacion', { editBonificacion });
+            const { status } = resp.data;
 
             //Quitar el loading
             Swal.close();
 
-            // if (status === 0) {
+            if (status === 0) {
                 
                 dispatch( SetEditBonificaciones( editBonificacion ) );
 
@@ -297,19 +297,19 @@ export const startEditBonificaciones = ( editBonificacion ) => {
 
                 dispatch( SetCleanBonificaciones() );
 
-            // } else {
+            } else {
 
-            //     //Caso contrario respuesta incorrecto mostrar mensaje de error
-            //     const { currentException } = data;
-            //     const msj = currentException.split(',');
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
 
-            //     Swal.fire({
-            //         icon: 'error',
-            //         title: 'Error',
-            //         text: (currentException.includes(',')) ? msj[3] : currentException,
-            //     });
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
 
-            // }
+            }
 
         } catch (error) {
 
@@ -332,7 +332,7 @@ export const startEditBonificaciones = ( editBonificacion ) => {
     }
 }
 
-export const startDeleteBonificaciones = ( index, nombreArticulo ) => {
+export const startDeleteBonificaciones = ( index, idBonificacion, nombreArticulo ) => {
 
     return async (dispatch) => {
 
@@ -361,30 +361,29 @@ export const startDeleteBonificaciones = ( index, nombreArticulo ) => {
                     });
                     
                     //Call end-point 
-                    // const { data } = await suvesaApi.delete(`/subFamilias/deleteSubFamilia?idSubFamilia=${idSubFamilia}`);
-                    // const { status } = data;
+                    const { data } = await suvesaApi.delete(`/ArticuloBonificacion/DeleteArticulosBonificacion?Request=${idBonificacion}`);
+                    const { status } = data;
                     
                     //Quitar el loading
                     Swal.close();
                     
-                    // if (status === 0) {
+                    if (status === 0) {
                         
-                    //     // Se ingresa nuevo banco a la tabla
-                    dispatch( SetDeleteBonificaciones( index ) );
+                        dispatch( SetDeleteBonificaciones( index ) );
 
-                    // } else {
+                    } else {
 
-                    //     //Caso contrario respuesta incorrecto mostrar mensaje de error
-                    //     const { currentException } = data;
-                    //     const msj = currentException.split(',');
+                        //Caso contrario respuesta incorrecto mostrar mensaje de error
+                        const { currentException } = data;
+                        const msj = currentException.split(',');
 
-                    //     Swal.fire({
-                    //         icon: 'error',
-                    //         title: 'Error',
-                    //         text: (currentException.includes(',')) ? msj[3] : currentException,
-                    //     });
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: (currentException.includes(',')) ? msj[3] : currentException,
+                        });
 
-                    // }
+                    }
 
                 }
 
@@ -497,5 +496,10 @@ export const SetIndexSeletedBonificaciones = (value) => ({
 
 export const SetDeleteBonificaciones = (value) => ({
     type: types.SetDeleteBonificaciones,
+    payload: value
+})
+
+export const SetAllBonificaciones = (value) => ({
+    type: types.SetAllBonificaciones,
     payload: value
 })

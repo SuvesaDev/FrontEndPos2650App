@@ -58,10 +58,10 @@ export const BonusesTable = ({ columns, data }) => {
     
     if( cell.column.id == 'icon') {
       // Obtiene la bonificacion seleccionada
-      const { nombreArticulo,  } = cell.row.original;
+      const { nombreArticulo, idBonificacion } = cell.row.original;
       const { index } = cell.row;
 
-      dispatch( startDeleteBonificaciones( index, nombreArticulo ) );
+      dispatch( startDeleteBonificaciones( index, idBonificacion, nombreArticulo ) );
     }
     
   };

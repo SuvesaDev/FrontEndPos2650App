@@ -155,6 +155,12 @@ export const BonificacionesReducer = (state = initialState, action) => {
                     (boni, i) => i != action.payload
                 )
             }
+
+        case types.SetAllBonificaciones:
+            return {
+                ...state,
+                bonificaciones : action.payload
+            }
           
         case types.CleanStateBonificaciones:
             return {

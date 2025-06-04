@@ -2191,5 +2191,6 @@ export const types = {
   SetEditBonificaciones: '[Bonificaciones] SetEditBonificaciones',
   SetIndexSeletedBonificaciones: '[Bonificaciones] SetIndexSeletedBonificaciones',
   SetDeleteBonificaciones: '[Bonificaciones] SetDeleteBonificaciones',
+  SetAllBonificaciones: '[Bonificaciones] SetAllBonificaciones',
 
 }

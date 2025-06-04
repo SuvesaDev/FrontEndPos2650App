@@ -1,7 +1,22 @@
-import { BonusesBody } from "./BonusesBody"
-import { BonusesIcons } from "./BonusesIcons"
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+
+import { BonusesBody } from "./BonusesBody";
+import { BonusesIcons } from "./BonusesIcons";
+
+import { startGetAllBonificaciones } from "../../actions/BonificacionesAction";
 
 export const BonusesPage = () => {
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        // Equivalente a ngOnInit: se ejecuta una sola vez al montar
+        dispatch( startGetAllBonificaciones() );
+
+        return () => {};
+    }, []);
+
     return (
         <>
             <div className="container-fluid mt-2">
