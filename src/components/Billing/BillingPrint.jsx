@@ -114,16 +114,16 @@ const BillingPrintPDF = ({ factura }) => (
           <Text></Text>
           <View style={styles.colEnd}>
             <Text style={{ fontFamily: 'Roboto', fontSize: 9 }}> 
-              <Text style={styles.bold}>Dirección:</Text> 1K ESTE Y 100M SUR DEL SERVICENTRO PACAYAS.
+              <Text style={styles.bold}>Dirección:</Text> {factura.datosGenerales.direccion}
             </Text>
             <Text style={{ fontFamily: 'Roboto', fontSize: 9}}> 
-              <Text style={styles.bold}>Teléfono:</Text> +(506) 8834-2842
+              <Text style={styles.bold}>Teléfono:</Text> {factura.datosGenerales.telefono}
             </Text>
             <Text style={{ fontFamily: 'Roboto', fontSize: 9}}> 
-              <Text style={styles.bold}>Fax:</Text> +(506) 0
+              <Text style={styles.bold}>Fax:</Text> {factura.datosGenerales.fax}
             </Text>
             <Text style={{ fontFamily: 'Roboto', fontSize: 9}}> 
-              <Text style={styles.bold}>Correo:</Text> ticofoodster@gmail.com
+              <Text style={styles.bold}>Correo:</Text> {factura.datosGenerales.correo}
             </Text>
           </View>
         </View>
@@ -137,7 +137,7 @@ const BillingPrintPDF = ({ factura }) => (
 
           <Text style={{ fontFamily: 'Roboto' }}>
             <Text style={{ fontSize: 9, marginBottom: 10 }}>
-              <Text style={styles.bold}>TICOFOODSTER CREATIONS MD SR</Text>
+              <Text style={styles.bold}>{factura.datosGenerales.nombreJuridico}</Text>
             </Text>
           </Text>
 
@@ -153,7 +153,7 @@ const BillingPrintPDF = ({ factura }) => (
 
           <Text style={{ fontFamily: 'Roboto' }}>
             <Text style={{ fontSize: 9 }}>
-              <Text style={styles.bold}>Ident. Jurídica:</Text> 3-102-886777
+              <Text style={styles.bold}>Ident. Jurídica:</Text> {factura.datosGenerales.identificacion}
             </Text>
           </Text>
 
@@ -310,7 +310,7 @@ const BillingPrintPDF = ({ factura }) => (
           
           <Text style={{ fontFamily: 'Roboto' }}>
             <Text style={{ fontSize: 9 }}>
-              BAC           
+              {factura.datosGenerales.banco}           
             </Text>
           </Text>
 
@@ -336,13 +336,13 @@ const BillingPrintPDF = ({ factura }) => (
 
             <Text style={{ fontFamily: 'Roboto' }}>
               <Text style={{ fontSize: 9 }}>
-                CUENTA: 959101981           
+                CUENTA: {factura.datosGenerales.cuenta}           
               </Text>
             </Text>
 
             <Text style={{ fontFamily: 'Roboto' }}>
               <Text style={{ fontSize: 9 }}>
-                IBAN CR13010200009591019818          
+                IBAN {factura.datosGenerales.iban}          
               </Text>
             </Text>
 
@@ -375,8 +375,8 @@ const BillingPrintPDF = ({ factura }) => (
           <Text></Text>
 
           <Text style={{ fontFamily: 'Roboto' }}>
-            <Text style={{ fontSize: 9 }}>
-              sesenta y siete mil cuatrocientos once COLONES con 58/100
+            <Text style={{ fontSize: 7 }}>
+              {factura.totalLetras}
             </Text>
           </Text>
 
@@ -396,7 +396,7 @@ const BillingPrintPDF = ({ factura }) => (
           
           <Text style={{ fontFamily: 'Roboto' }}>
             <Text style={{ fontSize: 9 }}> 
-              60876751
+              {factura.datosGenerales.sinpeMovil}
             </Text>
           </Text>
 
@@ -406,7 +406,7 @@ const BillingPrintPDF = ({ factura }) => (
           
           <Text style={{ fontFamily: 'Roboto' }}>
             <Text style={{ fontSize: 9 }}> 
-              A NOMBRE DE TICOFOODSTER CREATIONS MD SRL
+              A NOMBRE DE {factura.datosGenerales.nombreSinpeMovil}
             </Text>
           </Text>
 
@@ -426,7 +426,7 @@ const BillingPrintPDF = ({ factura }) => (
           
           <Text style={{ fontFamily: 'Roboto'}}>
             <Text style={{ fontSize: 9 }}> 
-              ticofoodster@gmail.com
+              {factura.datosGenerales.correoNotificar}
             </Text>
           </Text>
 
@@ -436,9 +436,7 @@ const BillingPrintPDF = ({ factura }) => (
           
           <Text style={{ fontFamily: 'Roboto', marginTop: '8'}}>
             <Text style={{ fontSize: 9 }}> 
-              IMPORTANTE: NO SE ACEPTAN RECLAMOS
-              DEL PRODUCTO DESPUES DE 48 HORAS DE
-              LA ENTREGA.
+              IMPORTANTE: {factura.datosGenerales.notas}
             </Text>
           </Text>
 

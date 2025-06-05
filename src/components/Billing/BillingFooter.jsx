@@ -25,6 +25,7 @@ import { BillingFacturaCreditoModal } from './BillingFacturaCreditoModal';
 
 import BillingPrintPDF from './BillingPrint';
 import { PDFDownloadLink, pdf } from "@react-pdf/renderer";
+import { numeroALetras } from '../../helpers/numbersToLetters';
 
 export const BillingFooter = () => {
 
@@ -43,6 +44,21 @@ export const BillingFooter = () => {
     } = useSelector(state => state.billing);
 
     const facturaEjemplo = {
+        datosGenerales: {
+            nombreJuridico: 'TICOFOODSTER CREATIONS MD SR',
+            identificacion: '3-102-886777',
+            direccion: '1K ESTE Y 100M SUR DEL SERVICENTRO PACAYAS',
+            telefono: '+(506) 8834-2842',
+            fax: '+(506) 0',
+            correo: 'ticofoodster@gmail.com',
+            banco: 'BAC',
+            cuenta: '959101981',
+            iban: 'CR13010200009591019818',
+            sinpeMovil: '60876751',
+            nombreSinpeMovil: 'TICOFOODSTER CREATIONS MD SRL',
+            correoNotificar: 'ticofoodster@gmail.com',
+            notas: 'NO SE ACEPTAN RECLAMOS DEL PRODUCTO DESPUES DE 48 HORAS DE LA ENTREGA.'
+        },
         numero: '00100001010000000240',
         fecha: '2025-05-15',
         cliente: 'RODOLFO JESUS RAMIREZ RODRIGUEZ',
@@ -212,7 +228,8 @@ export const BillingFooter = () => {
                 impuesto: '1,359.09',
             }
         ],
-        total: '67,411.58',
+        total: '67411.58',
+        totalLetras: numeroALetras('67411.58')
     };
 
     const handlePrint = async () => {
