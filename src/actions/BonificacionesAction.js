@@ -202,8 +202,8 @@ export const startAddNewBonificaciones = ( newBonificacion ) => {
             });
 
             //Call end-point 
-            const resp = await suvesaApi.post('/ArticuloBonificacion/CreateArticulosBonificacion', { newBonificacion });
-            const { status } = resp.data;
+            const { data } = await suvesaApi.post('/ArticuloBonificacion/CreateArticulosBonificacion', { newBonificacion });
+            const { status } = data;
 
             //Quitar el loading
             Swal.close();
