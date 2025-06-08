@@ -1,7 +1,29 @@
+import { useEffect } from 'react';
+
+import { useDispatch, useSelector } from 'react-redux';
+
 import { SettingsIcons } from './SettingsIcons';
 import { SettingsBody } from './settings_body/SettingsBody';
 
+import { SelectTabSettings } from '../../actions/settings';
+
 export const SettingsPage = () => {
+
+    const dispatch = useDispatch();
+    
+    const { auth } = useSelector(state => state.login);
+    const { costaPets } = auth;
+
+    useEffect(() => {
+      
+        if(costaPets) {
+            dispatch( SelectTabSettings('CostaPets') );
+        }
+    
+        return () => {}
+
+    }, []);
+    
     return (
         <>
             <div className="row">
