@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2';
 
 import { FaStickyNote } from "react-icons/fa";
 import { IoIosAddCircle } from "react-icons/io";
@@ -5,9 +6,16 @@ import { IoIosAddCircle } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
 import { SettingsBodyTiposBonificacionesTable } from "./SettingsBodyTiposBonificacionesTable";
 
+import { 
+    SetActivoTipoBonificacionSettings,
+    SetDescripcionTipoBonificacionSettings, 
+    SetNombreTipoBonificacionSettings, 
+    startAddNewTipoBonificacion
+} from "../../../actions/settings";
+
 export const SettingsBodyTiposBonificaciones = () => {
 
-     const columns = [
+    const columns = [
         {
             Header: "Nombre",
             accessor: "nombre",
@@ -29,12 +37,36 @@ export const SettingsBodyTiposBonificaciones = () => {
     const dispatch = useDispatch();
 
     const state = useSelector(state => state.settings);
-    const { porcentajeProntoPago } = state;
+    const { tipoBonificacion, tiposBonificaciones } = state;
+    const { nombre, descripcion, activo } = tipoBonificacion;
 
     const handleInputChangeWithDispatch = ({ target }, action) => {
         dispatch(action(target.value));
     };
 
+    const handleInputChangeWithDispatchCheck = ({ target }, action) => {
+        dispatch(action(target.checked));
+    };
+
+    const handleAddNewTipoBonificacion = () => {
+
+        if( nombre == '' || descripcion == '' ) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Advertencia',
+                text: 'Favor completar todos los datos.'
+            });
+            return;
+        }
+
+        const newTipoBonificacion = {
+            nombre,
+            descripcion,
+            activo
+        }
+
+        dispatch( startAddNewTipoBonificacion(newTipoBonificacion) );
+    }
 
     return (
         <>
@@ -50,10 +82,10 @@ export const SettingsBodyTiposBonificaciones = () => {
                             type="text"
                             className="form-control"
                             placeholder="Nombre"
-                            // value={porcentajeProntoPago}
-                            // onChange={(e) =>
-                            //     handleInputChangeWithDispatch(e, SetPorcentajeProntoPagoSettings)
-                            // }
+                            value={nombre}
+                            onChange={(e) =>
+                                handleInputChangeWithDispatch(e, SetNombreTipoBonificacionSettings)
+                            }
                         />
                     </div>
                 </div>
@@ -68,10 +100,10 @@ export const SettingsBodyTiposBonificaciones = () => {
                             type="text"
                             className="form-control"
                             placeholder="Descripcion"
-                            // value={porcentajeProntoPago}
-                            // onChange={(e) =>
-                            //     handleInputChangeWithDispatch(e, SetPorcentajeProntoPagoSettings)
-                            // }
+                            value={descripcion}
+                            onChange={(e) =>
+                                handleInputChangeWithDispatch(e, SetDescripcionTipoBonificacionSettings)
+                            }
                         />
                     </div>
                 </div>
@@ -79,16 +111,30 @@ export const SettingsBodyTiposBonificaciones = () => {
                 <div className="col-md-1 mb-1">
                     
                     <div className="form-check form-switch mt-5">
-                        <input className="form-check-input checkbox-grande" type="checkbox" id="flexSwitchCheckDefault" />
-                        <label className="form-check-label fs-5" for="flexSwitchCheckDefault">Activo</label>
+                        <input 
+                            className="form-check-input checkbox-grande" 
+                            type="checkbox" 
+                            id="activoTipoBonificacion" 
+                            checked={ activo }
+                            onChange={(e) =>
+                                handleInputChangeWithDispatchCheck(e, SetActivoTipoBonificacionSettings)
+                            }
+                        />
+                        <label 
+                            className="form-check-label fs-5" 
+                            for="activoTipoBonificacion"
+                        >
+                            Activo
+                        </label>
                     </div>
+
                 </div>
 
                 <div className="col-md-1 mb-3">
                     <div className="w-100 pt-4"></div>
                     <button
                         className="btn btn-success"
-                        // onClick={ handleActualizarPorcentaje }
+                        onClick={ handleAddNewTipoBonificacion }
                     >
                         Agregar <IoIosAddCircle className="iconSize" />
                     </button>
@@ -99,18 +145,7 @@ export const SettingsBodyTiposBonificaciones = () => {
             <div className="row mb-3 text-center">
                 
                 <div className="col-md-12 mb-3">
-                    <SettingsBodyTiposBonificacionesTable columns={columns} data={[
-                        {
-                            nombre : 'test',
-                            descripcion : 'test',
-                            activo : true,
-                        },
-                        {
-                            nombre : 'test',
-                            descripcion : 'test',
-                            activo : false,
-                        }
-                    ]}/>
+                    <SettingsBodyTiposBonificacionesTable columns={columns} data={tiposBonificaciones}/>
                 </div>
 
             </div>

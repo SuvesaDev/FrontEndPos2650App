@@ -579,6 +579,12 @@ export const types = {
   // Settings actions
   SelectTabSettings: '[Settings] SelectTabSettings',
   SetPorcentajeProntoPagoSettings: '[Settings] SetPorcentajeProntoPagoSettings',
+  SetNombreTipoBonificacionSettings: '[Settings] SetNombreTipoBonificacionSettings',
+  SetDescripcionTipoBonificacionSettings: '[Settings] SetDescripcionTipoBonificacionSettings',
+  SetActivoTipoBonificacionSettings: '[Settings] SetActivoTipoBonificacionSettings',
+  CleanTipoBonificacionSettings: '[Settings] CleanTipoBonificacionSettings',
+  SetAddAllTipoBonificacionSettings: '[Settings] SetAddAllTipoBonificacionSettings',
+  SetAddOneTipoBonificacionSettings: '[Settings] SetAddOneTipoBonificacionSettings',
 
   // Pays actions
   SelectTabPays: '[Pays] SelectTabPays',
