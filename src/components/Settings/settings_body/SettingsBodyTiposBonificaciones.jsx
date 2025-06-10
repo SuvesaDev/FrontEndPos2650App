@@ -1,20 +1,29 @@
 import Swal from 'sweetalert2';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from "react-redux";
 
 import { FaStickyNote } from "react-icons/fa";
 import { IoIosAddCircle } from "react-icons/io";
 
-import { useDispatch, useSelector } from "react-redux";
 import { SettingsBodyTiposBonificacionesTable } from "./SettingsBodyTiposBonificacionesTable";
 
 import { 
     SetActivoTipoBonificacionSettings,
     SetDescripcionTipoBonificacionSettings, 
+    SetIsEditTipoBonificacionSettings, 
     SetNombreTipoBonificacionSettings, 
-    startAddNewTipoBonificacion
+    startAddNewTipoBonificacion,
+    startEditTipoBonificaciones,
+    startGetAllTipoBonificacion
 } from "../../../actions/settings";
 
 export const SettingsBodyTiposBonificaciones = () => {
 
+    useEffect(() => {
+        dispatch( startGetAllTipoBonificacion() );
+        return () => {}
+    }, []);
+    
     const columns = [
         {
             Header: "Nombre",
@@ -36,8 +45,12 @@ export const SettingsBodyTiposBonificaciones = () => {
 
     const dispatch = useDispatch();
 
-    const state = useSelector(state => state.settings);
-    const { tipoBonificacion, tiposBonificaciones } = state;
+    const { 
+        tipoBonificacion, 
+        tiposBonificaciones, 
+        isEditTipoBonificacion,
+        indexTipoBonificacion
+    } = useSelector(state => state.settings);
     const { nombre, descripcion, activo } = tipoBonificacion;
 
     const handleInputChangeWithDispatch = ({ target }, action) => {
@@ -66,6 +79,36 @@ export const SettingsBodyTiposBonificaciones = () => {
         }
 
         dispatch( startAddNewTipoBonificacion(newTipoBonificacion) );
+    }
+
+    const handleEditTipoBonificacion = () => {
+        
+        if( nombre == '' || descripcion == '' ) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Advertencia',
+                text: 'Favor completar todos los datos.'
+            });
+            return;
+        }
+
+        const editTipoBonificacion = {
+            index : indexTipoBonificacion,
+            nombre,
+            descripcion,
+            activo
+        }
+
+        dispatch( startEditTipoBonificaciones(editTipoBonificacion) );
+    }
+
+    const handleCancelEditTipoBonificacion = () => {
+    
+        dispatch( SetNombreTipoBonificacionSettings('') );
+        dispatch( SetDescripcionTipoBonificacionSettings('') );
+        dispatch( SetActivoTipoBonificacionSettings(false) );
+
+        dispatch( SetIsEditTipoBonificacionSettings( false ) );
     }
 
     return (
@@ -133,10 +176,20 @@ export const SettingsBodyTiposBonificaciones = () => {
                 <div className="col-md-1 mb-3">
                     <div className="w-100 pt-4"></div>
                     <button
-                        className="btn btn-success"
-                        onClick={ handleAddNewTipoBonificacion }
+                        className={(isEditTipoBonificacion) ? 'btn btn-warning' : 'btn btn-success'}
+                        onClick={ (isEditTipoBonificacion) ? handleEditTipoBonificacion :  handleAddNewTipoBonificacion}
                     >
-                        Agregar <IoIosAddCircle className="iconSize" />
+                        { (isEditTipoBonificacion) ? 'Editar' : 'Agregar' } <IoIosAddCircle className="iconSize" />
+                    </button>
+                </div>
+
+                <div className={ (isEditTipoBonificacion) ? 'col-md-1 mb-3' : 'col-md-1 mb-3 d-none' }>
+                    <div style={{ height: "20px" }}></div>
+                    <button 
+                        className='btn btn-danger'
+                        onClick={handleCancelEditTipoBonificacion}
+                    >
+                       Cancelar
                     </button>
                 </div>
 

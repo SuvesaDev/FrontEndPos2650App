@@ -585,6 +585,10 @@ export const types = {
   CleanTipoBonificacionSettings: '[Settings] CleanTipoBonificacionSettings',
   SetAddAllTipoBonificacionSettings: '[Settings] SetAddAllTipoBonificacionSettings',
   SetAddOneTipoBonificacionSettings: '[Settings] SetAddOneTipoBonificacionSettings',
+  SetIsEditTipoBonificacionSettings: '[Settings] SetIsEditTipoBonificacionSettings',
+  SetIndexTipoBonificacionSettings: '[Settings] SetIndexTipoBonificacionSettings',
+  SetEditTipoBonificacionSettings: '[Settings] SetEditTipoBonificacionSettings',
+  SetDeleteTipoBonificacionSettings: '[Settings] SetDeleteTipoBonificacionSettings',
 
   // Pays actions
   SelectTabPays: '[Pays] SelectTabPays',

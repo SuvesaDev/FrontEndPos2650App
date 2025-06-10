@@ -7,6 +7,14 @@ import { useTable } from "react-table";
 import { FaEdit } from 'react-icons/fa';
 import { MdDeleteForever } from 'react-icons/md';
 
+import { 
+  SetActivoTipoBonificacionSettings,
+  SetDescripcionTipoBonificacionSettings, 
+  SetIndexTipoBonificacionSettings, 
+  SetIsEditTipoBonificacionSettings, 
+  SetNombreTipoBonificacionSettings, 
+  startDeleteTipoBonificaciones
+} from "../../../actions/settings";
 
 export const SettingsBodyTiposBonificacionesTable = ({ columns, data }) => {
 
@@ -26,33 +34,33 @@ export const SettingsBodyTiposBonificacionesTable = ({ columns, data }) => {
 
   const handleEditTipoBonificacion = async (cell) => {
     
-    // if( cell.column.id == 'icon') {
+    if( cell.column.id == 'icon') {
       
-    //   // Obtiene la familia seleccionada
-    //   const { cantidadRequerida, bonificacion, idArticulo, nombreArticulo } = cell.row.original;
-    //   const { index } = cell.row;
+      // Obtiene la familia seleccionada
+      const { nombre, descripcion, activo } = cell.row.original;
+      const { index } = cell.row;
       
-    //   dispatch( SetCantidadRequeridaBonificaciones(cantidadRequerida) );
-    //   dispatch( SetBonificacionBonificaciones(bonificacion) );
-    //   dispatch( SetIdArticuloBonificaciones(idArticulo) );
-    //   dispatch( SetNombreArticuloBonificaciones(nombreArticulo) );
+      dispatch( SetNombreTipoBonificacionSettings(nombre) );
+      dispatch( SetDescripcionTipoBonificacionSettings(descripcion) );
+      dispatch( SetActivoTipoBonificacionSettings(activo) );
 
-    //   dispatch( SetIsEditBonificaciones( true ) );
-    //   dispatch( SetIndexSeletedBonificaciones(index) );
+      dispatch( SetIsEditTipoBonificacionSettings( true ) );
+      dispatch( SetIndexTipoBonificacionSettings(index) );
 
-    // }
+    }
     
   };
 
   const handleDeleteTipoBonificacion = async (cell) => {
     
-    // if( cell.column.id == 'icon') {
-    //   // Obtiene la bonificacion seleccionada
-    //   const { nombreArticulo, idBonificacion } = cell.row.original;
-    //   const { index } = cell.row;
+    if( cell.column.id == 'icon') {
 
-    //   dispatch( startDeleteBonificaciones( index, idBonificacion, nombreArticulo ) );
-    // }
+      // Obtiene la bonificacion seleccionada
+      const { nombre } = cell.row.original;
+      const { index } = cell.row;
+
+      dispatch( startDeleteTipoBonificaciones( index, 0, nombre ) );
+    }
     
   };
 
@@ -82,7 +90,6 @@ export const SettingsBodyTiposBonificacionesTable = ({ columns, data }) => {
               return (
                 <tr {...row.getRowProps()}>
                   {row.cells.map((cell) => {
-                    console.log(cell)
                     return (
                       <td
                         {...cell.getCellProps({
