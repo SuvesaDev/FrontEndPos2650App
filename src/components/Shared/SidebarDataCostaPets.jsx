@@ -1,21 +1,20 @@
 import { SidebarItem } from './SidebarItem';
 import { useSelector } from 'react-redux';
 
-import { BsFillPeopleFill, BsFillFileEarmarkTextFill, BsFileCheckFill, BsFillPersonBadgeFill, BsCartCheckFill, BsFileEarmarkBinaryFill, BsFileEarmarkFontFill, BsFileDiffFill, BsFillUnlockFill } from 'react-icons/bs';
+import { BsFillPeopleFill, BsFillFileEarmarkTextFill, BsFileCheckFill, BsFillPersonBadgeFill, BsCartCheckFill, BsFileEarmarkBinaryFill, BsFileEarmarkFontFill, BsFileDiffFill } from 'react-icons/bs';
 import { CgPill } from 'react-icons/cg';
 import { SiHomeassistantcommunitystore } from 'react-icons/si';
-import { HiDocumentReport, HiPresentationChartBar, HiLocationMarker, HiDocumentDuplicate } from 'react-icons/hi';
-import { AiFillHome, AiFillSetting, AiOutlineShoppingCart, AiFillProfile, AiFillInteraction, AiFillTag, AiFillBank } from 'react-icons/ai';
-import { FaFileInvoiceDollar, FaHandshake, FaCashRegister, FaCoins, FaMoneyBillAlt, FaMoneyCheckAlt, FaReadme, FaTicketAlt, FaTools, FaSitemap, FaUserCircle, FaGift } from 'react-icons/fa';
-import { GiReceiveMoney, GiPayMoney, GiTakeMyMoney, GiFamilyTree, GiPowderBag, GiLockedChest } from 'react-icons/gi';
-import { ImTable2 } from 'react-icons/im';
-import { IoDocuments, IoBusinessSharp } from 'react-icons/io5';
+import { HiPresentationChartBar } from 'react-icons/hi';
+import { AiFillHome, AiFillSetting, AiOutlineShoppingCart, AiFillBank } from 'react-icons/ai';
+import { FaFileInvoiceDollar, FaHandshake, FaCashRegister, FaCoins, FaMoneyBillAlt, FaMoneyCheckAlt, FaTools, FaUserCircle, FaGift, FaRegRegistered} from 'react-icons/fa';
+import { GiPayMoney, GiTakeMyMoney, GiFamilyTree } from 'react-icons/gi';
+import { IoDocuments } from 'react-icons/io5';
 import { IoIosCash } from 'react-icons/io';
-import { RiArrowDownSFill, RiArrowUpSFill, RiUserSettingsFill, RiMoneyDollarBoxFill, RiFilePaper2Fill, RiBarcodeBoxFill, RiFileTransferFill } from 'react-icons/ri';
-import { MdPayments, MdOutlineAttachMoney, MdOutlineMoneyOffCsred, MdAssignmentReturned, MdCategory, MdSdStorage, MdAssignmentReturn, MdFormatListNumbered, MdOutlineScreenShare, MdAddBusiness } from 'react-icons/md';
+import { RiArrowDownSFill, RiArrowUpSFill, RiUserSettingsFill, RiMoneyDollarBoxFill, RiFilePaper2Fill } from 'react-icons/ri';
+import { MdOutlineAttachMoney, MdOutlineMoneyOffCsred, MdAssignmentReturned, MdCategory, MdSdStorage, MdAssignmentReturn, MdFormatListNumbered } from 'react-icons/md';
 import { TbReportSearch, TbZoomMoney  } from "react-icons/tb";
-import { FaPrescriptionBottleMedical } from 'react-icons/fa6';
-import { FcDebt } from "react-icons/fc";
+import { MdOutlineProductionQuantityLimits, MdSpatialTracking } from "react-icons/md";
+import { BiSolidReport } from "react-icons/bi";
 
 export const SidebarDataCostaPets = () => {
 
@@ -204,6 +203,36 @@ const IteamsAdmin = [
                         path: '/buys/taxclaim',
                         icon: <BsFileDiffFill />,
                     },
+                ]
+            },
+            {
+                title: 'Consignacion',
+                path: '/buys/consignment',
+                icon: <MdOutlineProductionQuantityLimits />,
+                iconClosed: <RiArrowDownSFill />,
+                iconOpened: <RiArrowUpSFill />,
+                cName: 'vet_nav-text',
+                subNavIteams: [
+                    {
+                        title: 'Registro',
+                        path: '/buys/take',
+                        icon: <FaRegRegistered />,
+                    },
+                    {
+                        title: 'Seguimiento',
+                        path: '/buys/pretake',
+                        icon: <MdSpatialTracking />,
+                    },
+                    {
+                        title: 'Facturacion',
+                        path: '/buys/taxclaim',
+                        icon: <FaMoneyBillAlt />,
+                    },
+                    {
+                        title: 'Reportes',
+                        path: '/buys/taxclaim',
+                        icon: <BiSolidReport />,
+                    }
                 ]
             },
             {

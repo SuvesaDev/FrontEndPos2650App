@@ -34,6 +34,10 @@ export const SidebarItem = ({ item, index}) => {
             case "Presupuestos":
                 showSubnavIteamsPresupuestos();
                 break;
+
+            case "Consignacion":
+                showSubnavIteamsConsignacion();
+                break;
         
             default:
                 break;
@@ -58,6 +62,9 @@ export const SidebarItem = ({ item, index}) => {
 
     const [subnavIteamsPresupuestos, setSubnavIteamsPresupuestos] = useState(false);
     const showSubnavIteamsPresupuestos = () => setSubnavIteamsPresupuestos(!subnavIteamsPresupuestos);
+
+    const [subnavIteamsConsignacion, setSubnavIteamsConsignacion] = useState(false);
+    const showSubnavIteamsConsignacion = () => setSubnavIteamsConsignacion(!subnavIteamsConsignacion);
 
     const dispatch = useDispatch();
 
@@ -161,6 +168,18 @@ export const SidebarItem = ({ item, index}) => {
                                                 }
                                             } else if(subnavIteamsPresupuestos) {
                                                 if(subItem.title == 'Proformas o Cotización' || subItem.title == 'Seguimiento Cotizaciones' ) {
+                                                    
+                                                    return (
+                                                        <div onClick={ (e) => handleAddTab(subItem) } key={index}>
+                                                            <Link to={currentTab.routePage} className='vet_nav-sub-menu-iteams' >
+                                                                    {subItem.icon}
+                                                                    <span className='vet_nav-span'>{subItem.title}</span>
+                                                            </Link>
+                                                        </div>
+                                                    )
+                                                }
+                                            } else if(subnavIteamsConsignacion) {
+                                                if(subItem.title == 'Registro' || subItem.title == 'Seguimiento' || subItem.title == 'Facturacion' || subItem.title == 'Reportes') {
                                                     
                                                     return (
                                                         <div onClick={ (e) => handleAddTab(subItem) } key={index}>
