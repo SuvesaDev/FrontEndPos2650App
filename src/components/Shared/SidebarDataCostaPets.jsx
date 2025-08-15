@@ -215,22 +215,22 @@ const IteamsAdmin = [
                 subNavIteams: [
                     {
                         title: 'Registro',
-                        path: '/buys/take',
+                        path: '/buys/consignment/register',
                         icon: <FaRegRegistered />,
                     },
                     {
                         title: 'Seguimiento',
-                        path: '/buys/pretake',
+                        path: '/buys/consignment/following',
                         icon: <MdSpatialTracking />,
                     },
                     {
                         title: 'Facturacion',
-                        path: '/buys/taxclaim',
+                        path: '/buys/consignment/billing',
                         icon: <FaMoneyBillAlt />,
                     },
                     {
                         title: 'Reportes',
-                        path: '/buys/taxclaim',
+                        path: '/buys/consignment/reports',
                         icon: <BiSolidReport />,
                     }
                 ]
