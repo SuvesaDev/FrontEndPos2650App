@@ -10,9 +10,18 @@ const initialState = {
     startOpening: false,
     visiblePassword: false,
     disableInputsUser: false,
+    openSearchCustomerConsignment: false,
     usuarioFacturacion: {
         id: 0,
         claveInterna: ''
+    },
+    clienteFacturacion: {
+        idTipoCliente: 0,
+        cedula: '',
+        nombre: '',
+        telefono: '',
+        email: '',
+        direccion: ''
     },
     factura: {
         encabezado: {
@@ -786,6 +795,12 @@ export const consignmentReducer = (state = initialState, action) => {
                     ...state.usuarioFacturacion,
                     claveInterna: action.payload
                 }
+            }
+
+        case types.SetOpenSearchCustomerConsignment:
+            return {
+                ...state,
+                openSearchCustomerConsignment: action.payload
             }
         
         case types.CleanStateBancosBank:

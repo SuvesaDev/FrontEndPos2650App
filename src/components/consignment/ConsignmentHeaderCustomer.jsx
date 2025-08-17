@@ -9,7 +9,9 @@ import {
     Setcedula_UsuarioConsignment, 
     SetidTipoClienteConsignment,
     Setnombre_ClienteConsignment,
-    SetobservacionesConsignment
+    SetobservacionesConsignment,
+    SetOpenSearchCustomerConsignment,
+    startSearchCustomerConsignment
 } from '../../actions/ConsignmentAction';
 
 import { BillingAddCustomerModal } from '../Billing/BillingAddCustomerModal';
@@ -33,10 +35,11 @@ export const ConsignmentHeaderCustomer = () => {
         cedula_Usuario,
         idTipoCliente,
         nombre_Cliente,
-        observaciones
+        observaciones,
+        Cod_Moneda
     } = factura.encabezado;
 
-    const handleInputChangeWithDispatch = ({ target }) => {
+    const handleInputChangeWithDispatch = ({ target }, action) => {
         dispatch(action(target.value));
     };
 
@@ -72,29 +75,24 @@ export const ConsignmentHeaderCustomer = () => {
 
     const handleSearchClientBilling = (e) => {
 
-        // if (billings[numberScreen] === undefined) return;
+        if (cedula_Usuario !== '') {
 
-        // if ((billings[numberScreen].factura.encabezado.cedula_Usuario !== '')) {
+            e.preventDefault();
 
-        //     e.preventDefault();
-
-        //     dispatch(SetCedulaBuscarBilling({ value: billings[numberScreen].factura.encabezado.cedula_Usuario, number: numberScreen }));
-        //     dispatch(startSearchCustomerFacturacion(billings[numberScreen].factura.encabezado.cedula_Usuario, numberScreen, (billings[numberScreen].factura.encabezado.Cod_Moneda != '') ? true : false));
-        // }else{
-        //     dispatch( OpenSearchCustomerBilling( { value: true, number : numberScreen } ));
-
-        // }
+            // dispatch(SetCedulaBuscarBilling({ value: billings[numberScreen].factura.encabezado.cedula_Usuario, number: numberScreen }));
+            dispatch(startSearchCustomerConsignment(cedula_Usuario, (Cod_Moneda != '') ? true : false) );
+        }else{
+            dispatch( SetOpenSearchCustomerConsignment( true ));
+        }
 
     }
 
     const handleClickDown = (e) => {
 
-        // if (billings[numberScreen] === undefined) return;
-
-        // if (e.key === 'Enter') {
-        //     dispatch(SetCedulaBuscarBilling({ value: e.target.value, number: numberScreen }));
-        //     dispatch(startSearchCustomerFacturacion(e.target.value, numberScreen, (billings[numberScreen].factura.encabezado.Cod_Moneda != '') ? true : false));
-        // }
+        if (e.key === 'Enter') {
+            // dispatch(SetCedulaBuscarBilling({ value: e.target.value, number: numberScreen }));
+            dispatch( startSearchCustomerConsignment(e.target.value, (Cod_Moneda != '') ? true : false));
+        }
     }
 
     return (

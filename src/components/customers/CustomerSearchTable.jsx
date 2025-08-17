@@ -59,6 +59,7 @@ import {
     SetUpdateCustomerFacturasPendientesConsultAlbaranes
 } from '../../actions/consultAlbaranesAction';
 import { startGetAllProvincias } from '../../actions/ProvinciasAction';
+import { startSearchCustomerConsignment } from '../../actions/ConsignmentAction';
 
 export const CustomerSearchTable = ({ columns, data }) => {
 
@@ -70,6 +71,7 @@ export const CustomerSearchTable = ({ columns, data }) => {
     const { openSearchCustomerModalDE } = useSelector(state => state.documentsEmited);
     const { currentTab } = useSelector(state => state.tabs);
     const { openModalSearchCustomerConsultAlbaranes, indexCustomerSeletedTable, facturasPendiente } = useSelector(state => state.consultAlbaranes);
+    const { openSearchCustomerConsignment } = useSelector(state => state.consignment);
 
     useEffect(() => {
 
@@ -175,6 +177,11 @@ export const CustomerSearchTable = ({ columns, data }) => {
             dispatch(SetOpenModalSearchCustomerConsultAlbaranes(false));
             dispatch(SetIndexCustomerSeletedTableConsultAlbaranes(null));
 
+
+        } else if (openSearchCustomerConsignment) {
+
+            //Buscar cliente desde Registro de consignacion
+            dispatch( startSearchCustomerConsignment(cedula) );
 
         } else {
 

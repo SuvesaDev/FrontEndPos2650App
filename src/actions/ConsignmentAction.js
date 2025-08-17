@@ -73,6 +73,196 @@ export const startValidateClaveInternaConsignment = ( password, catalogos ) => {
     }
 }
 
+export const startSearchCustomerConsignment = ( cedula, hasCoin = false ) => {
+
+    return async (dispatch) => {
+
+        try {
+            
+            let searchCedula = cedula;
+
+            if (cedula == "0" || cedula == "") {
+               searchCedula = "000000000"
+            }
+
+            //Mostrar el loading
+            Swal.fire({
+                title: 'Por favor, espere buscando cliente',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                imageUrl: loadingImage,
+                customClass: 'alert-class-login',
+                imageHeight: 100,
+            });
+            //Call end-point 
+            const { data } = await suvesaApi.post('/cliente/ExisteClienteFacturacion', { cedula : searchCedula });
+            const { status, responses } = data;
+
+            //Quitar el loading
+            Swal.close();
+
+            if (status === 0) {
+
+                const { nombre, mensaje } = responses;
+
+                if (mensaje === null) {
+
+                    // Se obtiene la data del Usuario
+                    const {
+                        identificacion,
+                        cedula,
+                        idTipoIdentificacion,
+                        observaciones,
+                        telefono01,
+                        direccion,
+                        correoComprobante,
+                        e_Mail,
+                        anulado,
+                        agente,
+                        fallecido,
+                        enviarRecibo,
+                        correoRecibo,
+                        tipoprecio,
+                        descuentoEspecial,
+                        mag,
+                        actualizado,
+                        abierto,
+                        cliente_Moroso,
+                        ordenCompra,
+                        sinrestriccion
+                    } = responses;
+
+                    // Se crea el objeto de Customer
+                    // const customerEditBilling = {
+                    //     identificacion: identificacion,
+                    //     idTipoCliente: idTipoIdentificacion,
+                    //     telefono: telefono01,
+                    //     direccion: direccion,
+                    //     correocuentas: e_Mail,
+                    //     correoFacturacion: correoComprobante,
+                    //     agente: agente,
+                    //     actualizado: actualizado,
+                    //     fallecido: fallecido,
+                    //     enviaRecibo: enviarRecibo,
+                    //     correoRecibo: correoRecibo,
+                    //     tipoPrecio: tipoprecio,
+                    //     descuentoEspcial: descuentoEspecial,
+                    //     inactivo: anulado,
+                    //     mag: mag,
+                    //     abierto: abierto
+                    // }
+                    
+                    // Se establece la cedula, tipoCliente y nombre del cliente
+                    dispatch( Setcedula_UsuarioConsignment( searchCedula ) );
+                    dispatch( SetidTipoClienteConsignment( idTipoIdentificacion ));
+                    dispatch( Setnombre_ClienteConsignment( nombre ));
+
+                    // Se establece el telefono, direccion, correo comprobantes
+                    dispatch( SettelefonoConsignment( telefono01 ));
+                    dispatch( SetdireccionConsignment( direccion ));
+                    dispatch( SetcorreoComprobantesConsignment( correoComprobante ));
+
+                    // Se establece el MAG, Fallecido, Actualizado
+                    dispatch( SetmagConsignment( mag ));
+                    dispatch( SetfallecidoConsignment( fallecido ));
+                    dispatch( SetactualizadoConsignment( actualizado ));
+
+                    // Se establece Cliente Moroso, ObligaOrdenCompra, SinRestriccion
+                    dispatch( Setcliente_MorosoConsignment( cliente_Moroso ));
+                    dispatch( SetordenCompraConsignment( ordenCompra ));
+                    dispatch( SetsinrestriccionConsignment( sinrestriccion ));
+
+                    // Se establece el customer Edit
+                    // dispatch( SetCustomerEditBilling( customerEditBilling ));
+
+                    // Se establece el HasCustomerBilling
+                    if (searchCedula == "000000000") {
+                        dispatch( SethasCustomerBillingConsignment(true) );
+                    } else {
+                        
+                        dispatch( SethasCustomerBillingConsignment(true) );
+
+                        if( hasCoin ) {
+                            dispatch( SetenableItemsConsignment( true ) );
+                        }
+                    }
+
+                    // Se establece el CodCliente
+                    dispatch( Setcod_ClienteConsignment( identificacion ));
+
+                    // Se establece HasHeader, OpenSearchCustomerBilling y IsEnableActiveCredito
+                    // dispatch( hasHeader( true ));
+                    // dispatch( OpenSearchCustomerBilling( false ));
+
+                } else {
+                    
+                    //Mostrar un mensaje de confirmacion
+                    Swal.fire({
+                        title: `El cliente ${nombre} no esta registrado. ¿Desea agregar el cliente?`,
+                        showDenyButton: true,
+                        showCancelButton: false,
+                        confirmButtonText: 'Agregar',
+                        denyButtonText: `Cancelar`,
+                    }).then(async (result) => {
+
+                        if (result.isConfirmed) {
+
+                            const {
+                                cedula,
+                                idTipoIdentificacion,
+                                nombre
+                            } = responses;
+
+                            // Se levanta el modal //TODO: LEVANTAR EL MODAL DE CLIENTE
+                            // dispatch( OpenModalAddCustomer( { number } ));
+
+                            // TODO: AGREGAR UN CLIENTE
+                            // Se establece datos de cliente
+                            // dispatch( SetIdTipoClienteClienteFacturacionBilling( { value: idTipoIdentificacion, number } ));
+                            // dispatch( SetCedulaClienteFacturacionBilling( { value: cedula, number } ));
+                            // dispatch( SetNombreClienteFacturacionBilling( { value: nombre, number } ));
+                        }
+
+                    });
+
+                }
+
+            } else {
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
+
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
+
+            }
+
+
+        } catch (error) {
+
+            Swal.close();
+            console.log(error);
+            if (error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al buscar un cliente',
+                });
+            }
+        }
+
+    }
+}
 
 // Private methods
 const loadCatalogos = async ( dispatch, catalogos ) => {
@@ -431,5 +621,10 @@ export const SetidClienteFacturacionConsignment = (value) => ({
 
 export const SetclaveInternaConsignment = (value) => ({
     type: types.SetclaveInternaConsignment,
+    payload: value
+})
+
+export const SetOpenSearchCustomerConsignment = (value) => ({
+    type: types.SetOpenSearchCustomerConsignment,
     payload: value
 })
