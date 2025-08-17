@@ -14,70 +14,64 @@ import { MdFactCheck } from "react-icons/md";
 import { FaMagnifyingGlass } from 'react-icons/fa6';
 import { ImSortNumbericDesc } from 'react-icons/im';
 
+import { 
+  SetSearchFichaConsignment, 
+  SettipoConsignment 
+} from '../../actions/ConsignmentAction';
+
 export const ConsignmentHeader = () => {
 
-//   const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-//   const [numberScreen, setnumberScreen] = useState(null);
+  const { 
+    disableInputsHeader, 
+    isEnableActiveCredito,
+    searchFicha,
+    factura
+  } = useSelector(state => state.consignment);
 
-//   const { currentTab } = useSelector(state => state.tabs);
+  const { tipo } = factura.encabezado;
 
-//   const {
-//     allTiposFacturas,
-//     onlyContadoTiposFacturas
-//   } = useSelector(state => state.tiposFacturas);
+  const {
+    allTiposFacturas,
+    onlyContadoTiposFacturas
+  } = useSelector(state => state.tiposFacturas);
 
-//   const { billings } = useSelector(state => state.billing);
+  const handleInputChangeWithDispatch = ({ target }, action) => {
+    dispatch(action(target.value));
+  };
 
-//   useEffect(() => {
+  const changeTipoFactura = ({ target }) => {
+    dispatch(SettipoConsignment(parseInt(target.value)));
+  };
 
-//     if (currentTab.name.includes("Venta")) {
-//       setnumberScreen(currentTab.routePage.split('/')[3] - 1);
-//     }
+  const handleSearchPreventa = (e) => {
 
-//   }, [billings]);
+    // if (billings[numberScreen] === undefined) return;
 
-//   const handleInputChangeWithDispatch = ({ target }, action) => {
+    // e.preventDefault();
 
-//     if (billings[numberScreen] === undefined) return;
+    // if (billings[numberScreen].searchFicha !== '' && /^\d+$/.test(billings[numberScreen].searchFicha) === true) {
+    //   dispatch(startSearchPreventaBilling(parseInt(billings[numberScreen].searchFicha), moment(new Date()).format("DD/MM/YYYY"), numberScreen));
+    // } else {
 
-//     dispatch(action({ value: target.value, number: numberScreen }));
-//   };
+    //   Swal.fire({
+    //     icon: 'warning',
+    //     title: 'Advertencia',
+    //     text: 'Número de ficha vacio o no valido.'
+    //   });
+    // }
+  }
 
-//   const changeTipoFactura = ({ target }) => {
+  const handleKeyDownSearchPreventa = (e) => {
 
-//     if (billings[numberScreen] === undefined) return;
+    // if (billings[numberScreen] === undefined) return;
 
-//     dispatch(SetTipoEncabezadoBilling({ value: parseInt(target.value), number: numberScreen }));
-//   };
+    // if (e.key === 'Enter') {
+    //   handleSearchPreventa(e);
+    // }
 
-//   const handleSearchPreventa = (e) => {
-
-//     if (billings[numberScreen] === undefined) return;
-
-//     e.preventDefault();
-
-//     if (billings[numberScreen].searchFicha !== '' && /^\d+$/.test(billings[numberScreen].searchFicha) === true) {
-//       dispatch(startSearchPreventaBilling(parseInt(billings[numberScreen].searchFicha), moment(new Date()).format("DD/MM/YYYY"), numberScreen));
-//     } else {
-
-//       Swal.fire({
-//         icon: 'warning',
-//         title: 'Advertencia',
-//         text: 'Número de ficha vacio o no valido.'
-//       });
-//     }
-//   }
-
-//   const handleKeyDownSearchPreventa = (e) => {
-
-//     if (billings[numberScreen] === undefined) return;
-
-//     if (e.key === 'Enter') {
-//       handleSearchPreventa(e);
-//     }
-
-//   }
+  }
 
   return (
 
@@ -94,40 +88,25 @@ export const ConsignmentHeader = () => {
             <select
               name="tipo"
               className='form-select'
-            //   disabled={
-            //     (billings[numberScreen] !== undefined)
-            //       ? billings[numberScreen].disableInputsHeader
-            //       : true
-            //   }
-            //   value={
-            //     (billings[numberScreen] !== undefined)
-            //       ? billings[numberScreen].factura.encabezado.tipo
-            //       : ''
-            //   }
-            //   onChange={e => changeTipoFactura(e)}
+              disabled={disableInputsHeader}
+              value={ tipo }
+              onChange={e => changeTipoFactura(e)}
             >
               <option value={0} selected disabled hidden> Seleccione... </option>
-              {/* {
-                (billings[numberScreen] !== undefined)
-                  ? (billings[numberScreen].isEnableActiveCredito)
-                    ?
-                    (allTiposFacturas != null)
-                      ? (allTiposFacturas.length === 0)
-                        ? <option value=''>No tipos de Factura</option>
-                        : allTiposFacturas.map(tipoF => {
-                          return <option key={tipoF.codigo} value={tipoF.codigo}> {tipoF.descripcion} </option>
-                        })
-                      : <option value=''>No tipos de Factura</option>
+              {
+                (isEnableActiveCredito)
+                  ? (allTiposFacturas != null && allTiposFacturas.length > 0)
+                    ? allTiposFacturas.map(tipoF => {
+                        return <option key={tipoF.codigo} value={tipoF.codigo}> {tipoF.descripcion} </option>
+                      })
+                    : <option value=''>No tipos de Factura</option>
 
-                    : (onlyContadoTiposFacturas != null)
-                      ? (onlyContadoTiposFacturas.length === 0)
-                        ? <option value=''>No tipos de Factura</option>
-                        : onlyContadoTiposFacturas.map(tipoF => {
-                          return <option key={tipoF.codigo} value={tipoF.codigo}> {tipoF.descripcion} </option>
-                        })
-                      : <option value=''>No tipos de Factura</option>
-                  : <option value=''>No tipos de Factura</option>
-              } */}
+                  : (onlyContadoTiposFacturas != null && onlyContadoTiposFacturas.length > 0)
+                    ? onlyContadoTiposFacturas.map(tipoF => {
+                        return <option key={tipoF.codigo} value={tipoF.codigo}> {tipoF.descripcion} </option>
+                      })
+                    : <option value=''>No tipos de Factura</option>
+              }
             </select>
           </div>
         </div>
@@ -143,19 +122,10 @@ export const ConsignmentHeader = () => {
               type='number'
               min="0"
               className="form-control"
-
-            //   disabled={
-            //     (billings[numberScreen] !== undefined)
-            //       ? billings[numberScreen].disableInputsHeader
-            //       : true
-            //   }
-            //   value={
-            //     (billings[numberScreen] !== undefined)
-            //       ? billings[numberScreen].searchFicha
-            //       : ''
-            //   }
-            //   onChange={e => handleInputChangeWithDispatch(e, SetSearchFichaBilling)}
-            //   onKeyDown={handleKeyDownSearchPreventa}
+              disabled={disableInputsHeader}
+              value={searchFicha}
+              onChange={e => handleInputChangeWithDispatch(e, SetSearchFichaConsignment)}
+              onKeyDown={handleKeyDownSearchPreventa}
             />
           </div>
         </div>
@@ -163,13 +133,12 @@ export const ConsignmentHeader = () => {
         <div className="col-md-3 mb-2">
           <hr />
           <button
-            className='btn btn-primary'
-            // className={
-            //   (billings[numberScreen] !== undefined)
-            //     ? (billings[numberScreen].disableInputsHeader) ? 'btn btn-primary disabled' : 'btn btn-primary'
-            //     : 'btn btn-primary'
-            // }
-            // onClick={handleSearchPreventa}
+            className={
+              (disableInputsHeader)
+                ? 'btn btn-primary disabled'
+                : 'btn btn-primary'
+            }
+            onClick={handleSearchPreventa}
           >
             Buscar <FaMagnifyingGlass className="iconSize" />
           </button>
