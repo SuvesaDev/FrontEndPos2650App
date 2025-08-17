@@ -293,3 +293,8 @@ export const SethasCustomerBillingConsignment = (value) => ({
     type: types.SethasCustomerBillingConsignment,
     payload: value
 })
+
+export const SetenableItemsConsignment = (value) => ({
+    type: types.SetenableItemsConsignment,
+    payload: value
+})

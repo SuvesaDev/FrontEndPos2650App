@@ -1,60 +1,42 @@
-import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import {
-  SetagenteEncabezadoBilling,
-  SetCod_AgenteEncabezadoBilling,
-  SetCod_MonedaEncabezadoBilling,
-  SetEnableItemsBilling,
-  SetOrdenEncabezadoBilling,
-  SetPDEncabezadoBilling
-} from '../../actions/billing';
+import { FaCoins, FaRightLong } from 'react-icons/fa6';
 
-import { startGetAllMonedas } from '../../actions/MonedasAction';
-import { startGetAllAgentesVenta } from '../../actions/AgenteVentaAction';
-import { Fa0, FaCoins, FaRightLong } from 'react-icons/fa6';
-import { MdMarkEmailUnread } from 'react-icons/md';
-import { BsPersonLinesFill } from 'react-icons/bs';
+import { 
+  SetCod_MonedaConsignment, 
+  SetenableItemsConsignment, 
+  SetOrdenConsignment 
+} from '../../actions/ConsignmentAction';
 
 export const ConsignmentConditions = () => {
 
   const dispatch = useDispatch();
 
-  // const [numberScreen, setnumberScreen] = useState(null);
+  const { monedasInventory } = useSelector(state => state.monedas);
 
-  // const { currentTab } = useSelector(state => state.tabs);
-  // const { agentesBilling } = useSelector(state => state.agenteVentas);
-  // const { monedasInventory } = useSelector(state => state.monedas);
-  // const { billings } = useSelector(state => state.billing);
+  const { 
+    disableInputsHeader,
+    hasCustomerBilling,
+    factura
+  } = useSelector(state => state.consignment);
 
-  // useEffect(() => {
+  const { 
+    Cod_Moneda,
+    Orden
+  } = factura.encabezado;
 
-  //   if (currentTab.name.includes("Venta")) {
-  //     setnumberScreen(currentTab.routePage.split('/')[3] - 1);
-  //   }
+  const handleInputChangeWithDispatch = ({ target }) => {
+    dispatch(action(target.value));
+  };
 
-  // }, [billings]);
+  const handleChangeMoneda = ({ target }) => {
 
-  // const handleInputChangeWithDispatch = ({ target }, action) => {
-  //   if (billings[numberScreen] === undefined) return;
-  //   dispatch(action({ value: target.value, number: numberScreen }));
-  // };
+    dispatch(SetCod_MonedaConsignment(target.value));
 
-  // const handleChangeMoneda = ({ target }) => {
-
-  //   if (billings[numberScreen] === undefined) return;
-
-  //   dispatch(SetCod_MonedaEncabezadoBilling({ value: target.value, number: numberScreen }));
-
-  //   if (billings[numberScreen].hasCustomerBilling) {
-  //     dispatch(SetEnableItemsBilling({ value: true, number: numberScreen }));
-  //   }
-  // };
-
-  // const handleInputChangeCheckBoxWithDispatch = ({ target }, action) => {
-  //   if (billings[numberScreen] === undefined) return;
-  //   dispatch(action({ value: target.checked, number: numberScreen }));
-  // };
+    if (hasCustomerBilling) {
+      dispatch(SetenableItemsConsignment(true));
+    }
+  };
 
   return (
     <>
@@ -77,28 +59,18 @@ export const ConsignmentConditions = () => {
                 <select
                   name="Cod_Moneda"
                   className="form-select"
-                  // disabled={
-                  //   (billings[numberScreen] !== undefined)
-                  //     ? billings[numberScreen].disableInputsHeader
-                  //     : true
-                  // }
-                  // value={
-                  //   (billings[numberScreen] !== undefined)
-                  //     ? billings[numberScreen].factura.encabezado.Cod_Moneda
-                  //     : ''
-                  // }
-                  // onChange={e => handleChangeMoneda(e)}
+                  disabled={disableInputsHeader}
+                  value={Cod_Moneda}
+                  onChange={e => handleChangeMoneda(e)}
                 >
                   <option value={''} selected disabled hidden> Seleccione... </option>
-                  {/* {
-                    (monedasInventory != null)
-                      ? (monedasInventory.length === 0)
-                        ? <option value=''>No Monedas</option>
-                        : monedasInventory.map(moneda => {
+                  {
+                    (monedasInventory != null && monedasInventory.length > 0)
+                      ? monedasInventory.map(moneda => {
                           return <option key={moneda.codMoneda} value={moneda.codMoneda}> {moneda.monedaNombre} </option>
                         })
                       : <option value=''>No Monedas</option>
-                  } */}
+                  }
                 </select>
               </div>
 
@@ -114,17 +86,9 @@ export const ConsignmentConditions = () => {
                   type="text"
                   name='Orden'
                   className='form-control'
-                  // disabled={
-                  //   (billings[numberScreen] !== undefined)
-                  //     ? billings[numberScreen].disableInputsHeader
-                  //     : true
-                  // }
-                  // value={
-                  //   (billings[numberScreen] !== undefined)
-                  //     ? billings[numberScreen].factura.encabezado.Orden
-                  //     : ''
-                  // }
-                  // onChange={e => handleInputChangeWithDispatch(e, SetOrdenEncabezadoBilling)}
+                  disabled={disableInputsHeader}
+                  value={Orden}
+                  onChange={e => handleInputChangeWithDispatch(e, SetOrdenConsignment)}
                 />
               </div>
               

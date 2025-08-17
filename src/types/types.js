@@ -2264,5 +2264,6 @@ export const types = {
   SetnombreLoteDetalleConsignment: '[Consignacion] SetnombreLoteDetalleConsignment',
 
   SethasCustomerBillingConsignment: '[Consignacion] SethasCustomerBillingConsignment',
+  SetenableItemsConsignment: '[Consignacion] SetenableItemsConsignment',
   
 }
