@@ -190,8 +190,6 @@ export const ConsignmentItems = (props) => {
 
     const isNumeric = (valor, minimo) => {
 
-        if (billings[numberScreen] === undefined) return;
-
         let ultimoCaracter = String(valor).charAt(String(valor).length - 1);
         let primerCaracter = String(valor).charAt(0);
 
@@ -595,33 +593,33 @@ export const ConsignmentItems = (props) => {
         // }
     }
 
-    const msgInfoBilling = (
-        <Tooltip>
-            {
-                billings[numberScreen] !== undefined ? (
-                    billings[numberScreen].isEditDetalleActual ? (
-                        <>
-                            Puedes Editar  {" "}
-                            el producto con Enter en el campo de Cantidad o el botón de  {" "}
-                            Editar <TbEditCircle className="iconSize" />
-                        </>
-                    ) : (
-                        <>
-                            Puedes Agregar  {" "}
-                            el producto con Enter en el campo de Cantidad o el botón de  {" "}
-                            Agregar <IoAddCircle className="iconSize" />
-                        </>
-                    )
-                ) : (
-                    <>
-                        Puedes Agregar  {" "}
-                        el producto con Enter en el campo de Cantidad o el botón de  {" "}
-                        Agregar <IoAddCircle className="iconSize" />
-                    </>
-                )
-            }
-        </Tooltip>
-    );
+    // const msgInfoBilling = (
+    //     <Tooltip>
+    //         {
+    //             billings[numberScreen] !== undefined ? (
+    //                 billings[numberScreen].isEditDetalleActual ? (
+    //                     <>
+    //                         Puedes Editar  {" "}
+    //                         el producto con Enter en el campo de Cantidad o el botón de  {" "}
+    //                         Editar <TbEditCircle className="iconSize" />
+    //                     </>
+    //                 ) : (
+    //                     <>
+    //                         Puedes Agregar  {" "}
+    //                         el producto con Enter en el campo de Cantidad o el botón de  {" "}
+    //                         Agregar <IoAddCircle className="iconSize" />
+    //                     </>
+    //                 )
+    //             ) : (
+    //                 <>
+    //                     Puedes Agregar  {" "}
+    //                     el producto con Enter en el campo de Cantidad o el botón de  {" "}
+    //                     Agregar <IoAddCircle className="iconSize" />
+    //                 </>
+    //             )
+    //         }
+    //     </Tooltip>
+    // );
 
     return (
 
@@ -800,7 +798,8 @@ export const ConsignmentItems = (props) => {
                         <div className="col-md-2 mb-3">
                             <hr />
                             <div className='inline-container'>
-                                <OverlayTrigger placement="top" overlay={msgInfoBilling}>
+                                <OverlayTrigger placement="top"> 
+                                    {/* overlay={msgInfoBilling} */}
                                     <button
                                         className={ (enableItems) ? 'btn btn-dark' : 'btn btn-dark disabled' }
                                     >

@@ -5,8 +5,113 @@ import { suvesaApi } from '../api';
 
 import loadingImage from '../assets/loading_snipiner.gif';
 
-// API Actions
+import { startGetAllSurcursales, startValidateClaveInterna } from './login';
+import { startGetAllTiposFacturas } from './TiposFacturasAction';
+import { startGetAllTiposIdentificacionBranch } from './TiposIdentificacionAction';
+import { startGetAllEmpresasBilling } from './billing';
+import { startGetAllMonedas } from './MonedasAction';
 
+// API Actions
+export const startValidateClaveInternaConsignment = ( password, catalogos ) => {
+
+    return async ( dispatch ) => {
+          
+        try {
+            
+            const { status, userName, message, idUsuario }  = await dispatch( startValidateClaveInterna( password ) );
+            
+            if( status === 1 ) {
+
+                // Se activan los inputs
+                dispatch( SetDisableInputsHeaderConsignment(false));
+
+                //Guardar el usuario en el state
+                dispatch( SetusuarioConsignment(userName));
+
+                // Desactivar los inputs de usuario
+                dispatch( SetdisableInputsUserConsignment(true));
+
+                // Ocultar la password
+                dispatch( SetvisiblePasswordConsignment(false));
+
+                // Se establece el manejo de icons
+                dispatch( SetactiveButtonSaveConsignment(true));
+
+                // Se inicia el StartOpening
+                dispatch( SetstartOpeningConsignment(true));
+
+                // Se cargan los catalogos
+                await loadCatalogos( dispatch, catalogos );
+
+            } else if ( status === 0 && message === 'Contraseña Incorrecta' ) {
+                
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Advertencia',
+                    text: message
+                });
+                
+            } else {
+
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: message,
+                });
+
+            }
+
+        } catch (error) {
+            console.log(error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Ocurrio un problema al validar usuario',
+            });
+        }
+        
+    }
+}
+
+
+// Private methods
+const loadCatalogos = async ( dispatch, catalogos ) => {
+    
+    //Mostrar el loading
+    Swal.fire({
+        title: 'Por favor, espere cargando catalogos',
+        allowEscapeKey: false,
+        allowOutsideClick: false,
+        showConfirmButton: false,
+        imageUrl: loadingImage,
+        customClass: 'alert-class-login',
+        imageHeight: 100,
+    });
+    
+    // Se obtiene los tipos de Facturas
+    if( catalogos.tiposFacturas === null ) {
+        await dispatch( startGetAllTiposFacturas() );
+    }
+
+    // Se obtiene los tipos de Identificacion
+    if( catalogos.tiposIdentificacion.length === 0 ) {
+        await dispatch( startGetAllTiposIdentificacionBranch() )
+    }
+
+    // Se obtiene las surcursales
+    if( catalogos.surcursales.length === 0 ) {
+        await dispatch( startGetAllSurcursales() )
+    }
+
+    // Se obtiene las monedas
+    if( catalogos.monedas === null ) {
+        await dispatch( startGetAllMonedas() );
+    }
+
+    //Quitar el loading
+    Swal.close();
+
+}
 
 // Normal Actions
 export const SetDisableInputsHeaderConsignment = (value) => ({
@@ -296,5 +401,35 @@ export const SethasCustomerBillingConsignment = (value) => ({
 
 export const SetenableItemsConsignment = (value) => ({
     type: types.SetenableItemsConsignment,
+    payload: value
+})
+
+export const SetactiveButtonSaveConsignment = (value) => ({
+    type: types.SetactiveButtonSaveConsignment,
+    payload: value
+})
+
+export const SetstartOpeningConsignment = (value) => ({
+    type: types.SetstartOpeningConsignment,
+    payload: value
+})
+
+export const SetvisiblePasswordConsignment = (value) => ({
+    type: types.SetvisiblePasswordConsignment,
+    payload: value
+})
+
+export const SetdisableInputsUserConsignment = (value) => ({
+    type: types.SetdisableInputsUserConsignment,
+    payload: value
+})
+
+export const SetidClienteFacturacionConsignment = (value) => ({
+    type: types.SetidClienteFacturacionConsignment,
+    payload: value
+})
+
+export const SetclaveInternaConsignment = (value) => ({
+    type: types.SetclaveInternaConsignment,
     payload: value
 })

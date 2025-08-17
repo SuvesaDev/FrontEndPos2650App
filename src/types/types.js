@@ -2265,5 +2265,12 @@ export const types = {
 
   SethasCustomerBillingConsignment: '[Consignacion] SethasCustomerBillingConsignment',
   SetenableItemsConsignment: '[Consignacion] SetenableItemsConsignment',
+
+  SetactiveButtonSaveConsignment: '[Consignacion] SetactiveButtonSaveConsignment',
+  SetstartOpeningConsignment: '[Consignacion] SetstartOpeningConsignment',
+  SetvisiblePasswordConsignment: '[Consignacion] SetvisiblePasswordConsignment',
+  SetdisableInputsUserConsignment: '[Consignacion] SetdisableInputsUserConsignment',
+  SetidClienteFacturacionConsignment: '[Consignacion] SetidClienteFacturacionConsignment',
+  SetclaveInternaConsignment: '[Consignacion] SetclaveInternaConsignment',
   
 }

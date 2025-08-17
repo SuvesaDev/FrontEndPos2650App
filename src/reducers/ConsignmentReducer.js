@@ -6,6 +6,14 @@ const initialState = {
     searchFicha: '',
     hasCustomerBilling: false,
     enableItems: false,
+    activeButtonSave: false,
+    startOpening: false,
+    visiblePassword: false,
+    disableInputsUser: false,
+    usuarioFacturacion: {
+        id: 0,
+        claveInterna: ''
+    },
     factura: {
         encabezado: {
             id: '',
@@ -736,6 +744,48 @@ export const consignmentReducer = (state = initialState, action) => {
             return {
                 ...state,
                 enableItems: action.payload
+            }
+
+        case types.SetactiveButtonSaveConsignment:
+            return {
+                ...state,
+                activeButtonSave: action.payload
+            }
+
+        case types.SetstartOpeningConsignment:
+            return {
+                ...state,
+                startOpening: action.payload
+            }
+
+        case types.SetvisiblePasswordConsignment:
+            return {
+                ...state,
+                visiblePassword: action.payload
+            }
+
+        case types.SetdisableInputsUserConsignment:
+            return {
+                ...state,
+                disableInputsUser: action.payload
+            }
+
+        case types.SetidClienteFacturacionConsignment:
+            return {
+                ...state,
+                usuarioFacturacion: {
+                    ...state.usuarioFacturacion,
+                    id: action.payload
+                }
+            }
+
+        case types.SetclaveInternaConsignment:
+            return {
+                ...state,
+                usuarioFacturacion: {
+                    ...state.usuarioFacturacion,
+                    claveInterna: action.payload
+                }
             }
         
         case types.CleanStateBancosBank:
