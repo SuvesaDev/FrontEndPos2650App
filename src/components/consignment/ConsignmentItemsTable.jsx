@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useTable } from "react-table";
 
@@ -26,9 +26,6 @@ export const ConsignmentItemsTable = ({ columns, data }) => {
 
     const dispatch = useDispatch();
 
-    const [numberScreen, setnumberScreen] = useState(null);
-
-    const { currentTab } = useSelector(state => state.tabs);
     const { billings } = useSelector(state => state.billing);
 
     const {
@@ -42,14 +39,6 @@ export const ConsignmentItemsTable = ({ columns, data }) => {
         columns,
         data,
     });
-
-    // useEffect(() => {
-
-    //     if (currentTab.name.includes("Venta")) {
-    //         setnumberScreen(currentTab.routePage.split('/')[3] - 1);
-    //     }
-
-    // }, [billings]);
 
     // Cuando cambia la data de ingreso se calculan los totales
     // useEffect(() => {
