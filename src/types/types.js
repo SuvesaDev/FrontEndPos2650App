@@ -2262,5 +2262,7 @@ export const types = {
   SetPrecio_UnitOriginalDetalleConsignment: '[Consignacion] SetPrecio_UnitOriginalDetalleConsignment',
   SetidLoteDetalleConsignment: '[Consignacion] SetidLoteDetalleConsignment',
   SetnombreLoteDetalleConsignment: '[Consignacion] SetnombreLoteDetalleConsignment',
+
+  SethasCustomerBillingConsignment: '[Consignacion] SethasCustomerBillingConsignment',
   
 }

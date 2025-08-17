@@ -1,66 +1,44 @@
-import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { SiHappycow } from 'react-icons/si';
-import { AiFillFileAdd, AiFillEdit } from 'react-icons/ai';
-import { RiFileEditFill, RiMailAddFill } from 'react-icons/ri';
-import { FaEnvelope, FaSearch, FaUser, FaStoreAlt } from 'react-icons/fa';
-import { FaBuilding, FaI, FaIdCard, FaLocationDot, FaMapLocationDot, FaPhone } from "react-icons/fa6";
-
-import {
-    OpenAddCorreosModalBilling,
-    OpenModalAddCustomer,
-    SetIdTipoClienteClienteFacturacionBilling,
-    OpenModalEditCustomer,
-    OpenModalEditCartaExoneracion,
-    startSearchCartaExoneracion,
-    OpenModalMAGCustomer,
-    OpenSearchCustomerBilling,
-    SetCedulaBuscarBilling,
-    SetCedulaUsuarioBilling,
-    SetCorreoComprobantesBilling,
-    SetDireccionBilling,
-    SetIdTipoClienteBilling,
-    SetNombreClienteBilling,
-    SetObservacionesBilling,
-    SetTelefonoBilling,
-    startGetCorreosComprobanteFacturacion,
-    startSearchCustomerFacturacion,
-    startSearchCustomerMAG,
-    SetEmpresaBilling,
-    SetDatoFacturacionBilling
-} from '../../actions/billing';
-
-// import { BillingAddCustomerModal } from './BillingAddCustomerModal';
-// import { BillingEditCustomerModal } from './BillingEditCustomerModal';
-// import { BillingEditCartaExoneracionModal } from './BillingEditCartaExoneracionModal';
-// import { BillingMAGCustomerModal } from './BillingMAGCustomerModal';
-// import { CustomerSearchModal } from '../customers/CustomerSearchModal';
-// import { OpenSearchModalCustomers } from '../../actions/customers';
-// import { BillingAddCorreosModal } from './BillingAddCorreosModal';
+import { FaSearch, FaUser } from 'react-icons/fa';
+import { FaIdCard } from "react-icons/fa6";
 import { TbListNumbers, TbNotes } from 'react-icons/tb';
+
+import { 
+    Setcedula_UsuarioConsignment, 
+    SetidTipoClienteConsignment,
+    Setnombre_ClienteConsignment,
+    SetobservacionesConsignment
+} from '../../actions/ConsignmentAction';
+
+import { BillingAddCustomerModal } from '../Billing/BillingAddCustomerModal';
+import { BillingEditCustomerModal } from '../Billing/BillingEditCustomerModal';
+import { BillingMAGCustomerModal } from '../Billing/BillingMAGCustomerModal';
+import { CustomerSearchModal } from '../customers/CustomerSearchModal';
 
 export const ConsignmentHeaderCustomer = () => {
 
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
-    // const [numberScreen, setnumberScreen] = useState(null);
+    const { tiposIdentificacion } = useSelector(state => state.tiposIdentificacion);
 
-    // const { currentTab } = useSelector(state => state.tabs);
-    // const { tiposIdentificacion } = useSelector(state => state.tiposIdentificacion);
+    const { 
+        disableInputsHeader,
+        hasCustomerBilling,
+        factura
+    } = useSelector(state => state.consignment);
 
-    // const {
-    //     empresas,
-    //     billings
-    // } = useSelector(state => state.billing);
+    const { 
+        cedula_Usuario,
+        idTipoCliente,
+        nombre_Cliente,
+        observaciones
+    } = factura.encabezado;
 
-    // useEffect(() => {
-
-    //     if (currentTab.name.includes("Venta")) {
-    //         setnumberScreen(currentTab.routePage.split('/')[3] - 1);
-    //     }
-
-    // }, [billings]);
+    const handleInputChangeWithDispatch = ({ target }) => {
+        dispatch(action(target.value));
+    };
 
     // const handleAddUserClick = () => {
 
@@ -71,16 +49,6 @@ export const ConsignmentHeaderCustomer = () => {
     //         dispatch(OpenModalAddCustomer({ number: numberScreen }));
     //     }
 
-    // }
-
-    // const handleEditCartaExoneracionClick = () => {
-
-    //     if (billings[numberScreen] === undefined) return;
-
-    //     if (billings[numberScreen].hasCustomerBilling) {
-    //         dispatch(startSearchCartaExoneracion(billings[numberScreen].factura.encabezado.cedula_Usuario, numberScreen));
-    //         dispatch(OpenModalEditCartaExoneracion({ number: numberScreen }));
-    //     }
     // }
 
     // const handleEditUserClick = () => {
@@ -102,52 +70,32 @@ export const ConsignmentHeaderCustomer = () => {
     //     }
     // }
 
-    // const handleSearchClientBilling = (e) => {
+    const handleSearchClientBilling = (e) => {
 
-    //     if (billings[numberScreen] === undefined) return;
+        // if (billings[numberScreen] === undefined) return;
 
-    //     if ((billings[numberScreen].factura.encabezado.cedula_Usuario !== '')) {
+        // if ((billings[numberScreen].factura.encabezado.cedula_Usuario !== '')) {
 
-    //         e.preventDefault();
+        //     e.preventDefault();
 
-    //         dispatch(SetCedulaBuscarBilling({ value: billings[numberScreen].factura.encabezado.cedula_Usuario, number: numberScreen }));
-    //         dispatch(startSearchCustomerFacturacion(billings[numberScreen].factura.encabezado.cedula_Usuario, numberScreen, (billings[numberScreen].factura.encabezado.Cod_Moneda != '') ? true : false));
-    //     }else{
-    //         dispatch( OpenSearchCustomerBilling( { value: true, number : numberScreen } ));
+        //     dispatch(SetCedulaBuscarBilling({ value: billings[numberScreen].factura.encabezado.cedula_Usuario, number: numberScreen }));
+        //     dispatch(startSearchCustomerFacturacion(billings[numberScreen].factura.encabezado.cedula_Usuario, numberScreen, (billings[numberScreen].factura.encabezado.Cod_Moneda != '') ? true : false));
+        // }else{
+        //     dispatch( OpenSearchCustomerBilling( { value: true, number : numberScreen } ));
 
-    //     }
+        // }
 
-    // }
+    }
 
-    // const handleClickDown = (e) => {
+    const handleClickDown = (e) => {
 
-    //     if (billings[numberScreen] === undefined) return;
+        // if (billings[numberScreen] === undefined) return;
 
-    //     if (e.key === 'Enter') {
-    //         dispatch(SetCedulaBuscarBilling({ value: e.target.value, number: numberScreen }));
-    //         dispatch(startSearchCustomerFacturacion(e.target.value, numberScreen, (billings[numberScreen].factura.encabezado.Cod_Moneda != '') ? true : false));
-    //     }
-    // }
-
-    // const handleAddCorreosClick = (e) => {
-
-    //     if (billings[numberScreen] === undefined) return;
-
-    //     if (billings[numberScreen].hasCustomerBilling) {
-
-    //         e.preventDefault();
-    //         dispatch(OpenAddCorreosModalBilling({ value: true, number: numberScreen }));
-    //         dispatch(startGetCorreosComprobanteFacturacion(billings[numberScreen].factura.encabezado.cod_Cliente, numberScreen));
-
-    //     }
-    // }
-
-    // const handleInputChangeWithDispatch = ({ target }, action) => {
-
-    //     if (billings[numberScreen] === undefined) return;
-
-    //     dispatch(action({ value: target.value, number: numberScreen }));
-    // };
+        // if (e.key === 'Enter') {
+        //     dispatch(SetCedulaBuscarBilling({ value: e.target.value, number: numberScreen }));
+        //     dispatch(startSearchCustomerFacturacion(e.target.value, numberScreen, (billings[numberScreen].factura.encabezado.Cod_Moneda != '') ? true : false));
+        // }
+    }
 
     return (
 
@@ -166,45 +114,26 @@ export const ConsignmentHeaderCustomer = () => {
                             min="0"
                             className='form-control'
                             placeholder='Cédula del Cliente'
-                            // disabled={
-                            //     (billings[numberScreen] !== undefined)
-                            //         ? billings[numberScreen].disableInputsHeader
-                            //         : true
-                            // }
-                            // value={
-                            //     (billings[numberScreen] !== undefined)
-                            //         ? billings[numberScreen].factura.encabezado.cedula_Usuario
-                            //         : ''
-                            // }
-                            // onKeyDown={handleClickDown}
-                            // onChange={e => handleInputChangeWithDispatch(e, SetCedulaUsuarioBilling)}
+                            disabled={disableInputsHeader}
+                            value={cedula_Usuario}
+                            onKeyDown={handleClickDown}
+                            onChange={e => handleInputChangeWithDispatch(e, Setcedula_UsuarioConsignment)}
 
                         />
                         <button
                             type="button"
-                            className='btn btn-primary'
-                            // className={
-                            //     (billings[numberScreen] !== undefined)
-                            //         ? (billings[numberScreen].disableInputsHeader)
-                            //             ? 'btn btn-primary disabled'
-                            //             : 'btn btn-primary'
-                            //         : 'btn btn-primary disabled'
-                            // }
-                            // onClick={handleSearchClientBilling}
-                            // data-bs-toggle={
-                            //     (billings[numberScreen] !== undefined)
-                            //         ? (billings[numberScreen].factura.encabezado.cedula_Usuario === '')
-                            //             ? "modal"
-                            //             : ''
-                            //         : ''
-                            // }
-                            // data-bs-target={
-                            //     (billings[numberScreen] !== undefined)
-                            //         ? (billings[numberScreen].factura.encabezado.cedula_Usuario === '')
-                            //             ? "#modalBuscarClientes"
-                            //             : ''
-                            //         : ''
-                            // }
+                            className={(disableInputsHeader) ? 'btn btn-primary disabled' : 'btn btn-primary'}
+                            onClick={handleSearchClientBilling}
+                            data-bs-toggle={
+                                (cedula_Usuario === '')
+                                    ? "modal"
+                                    : ''
+                            }
+                            data-bs-target={
+                                (cedula_Usuario === '')
+                                    ? "#modalBuscarClientes"
+                                    : ''
+                            }
                         >
                             <FaSearch className="iconSize" />
                         </button>
@@ -220,28 +149,18 @@ export const ConsignmentHeaderCustomer = () => {
                         <select
                             name="idTipoCliente"
                             className="form-select"
-                            // disabled={
-                            //     (billings[numberScreen] !== undefined)
-                            //         ? billings[numberScreen].disableInputsHeader
-                            //         : true
-                            // }
-                            // value={
-                            //     (billings[numberScreen] !== undefined)
-                            //         ? billings[numberScreen].factura.encabezado.idTipoCliente
-                            //         : ''
-                            // }
-                            // onChange={e => handleInputChangeWithDispatch(e, SetIdTipoClienteBilling)}
+                            disabled={disableInputsHeader}
+                            value={idTipoCliente}
+                            onChange={e => handleInputChangeWithDispatch(e, SetidTipoClienteConsignment)}
                         >
                             <option value={0} selected disabled hidden> Seleccione... </option>
-                            {/* {
-                                (tiposIdentificacion != null)
-                                    ? (tiposIdentificacion.length === 0)
-                                        ? <option value=''></option>
-                                        : tiposIdentificacion.map(tipoD => {
+                            {
+                                (tiposIdentificacion != null && tiposIdentificacion.length > 0)
+                                    ?   tiposIdentificacion.map(tipoD => {
                                             return <option key={tipoD.codigoFe} value={tipoD.codigoFe}> {tipoD.descripcion} </option>
                                         })
-                                    : <option value=''></option>
-                            } */}
+                                    :   <option value=''></option>
+                            }
                         </select>
                     </div>
                 </div>
@@ -258,12 +177,8 @@ export const ConsignmentHeaderCustomer = () => {
                             name="nombre_Cliente"
                             autoComplete="off"
                             disabled={true}
-                            // value={
-                            //     (billings[numberScreen] !== undefined)
-                            //         ? billings[numberScreen].factura.encabezado.nombre_Cliente
-                            //         : ''
-                            // }
-                            // onChange={e => handleInputChangeWithDispatch(e, SetNombreClienteBilling)}
+                            value={nombre_Cliente}
+                            onChange={e => handleInputChangeWithDispatch(e, Setnombre_ClienteConsignment)}
                             readOnly
                         />
                     </div>
@@ -275,12 +190,11 @@ export const ConsignmentHeaderCustomer = () => {
 
                         <div className="btn-group mb-2">
                             <button
-                                // className={
-                                //     (billings[numberScreen] !== undefined)
-                                //         ? (billings[numberScreen].hasCustomerBilling) ? 'btn btn-dark' : 'btn btn-dark disabled'
-                                //         : 'btn btn-dark disabled'
-                                // }
-                                className='btn btn-dark disabled'
+                                className={
+                                    (hasCustomerBilling) 
+                                        ? 'btn btn-dark' 
+                                        : 'btn btn-dark disabled'
+                                }
                                 data-bs-toggle="modal"
                                 data-bs-target="#modalConsultaMAG"
 
@@ -308,17 +222,9 @@ export const ConsignmentHeaderCustomer = () => {
                             placeholder="Observaciones Extra"
                             name='observaciones'
                             autoComplete='off'
-                            // disabled={
-                            //     (billings[numberScreen] !== undefined)
-                            //         ? billings[numberScreen].disableInputsHeader
-                            //         : true
-                            // }
-                            // value={
-                            //     (billings[numberScreen] !== undefined)
-                            //         ? billings[numberScreen].factura.encabezado.observaciones
-                            //         : ''
-                            // }
-                            // onChange={e => handleInputChangeWithDispatch(e, SetObservacionesBilling)}
+                            disabled={disableInputsHeader}
+                            value={observaciones}
+                            onChange={e => handleInputChangeWithDispatch(e, SetobservacionesConsignment)}
 
                         />
                     </div>
@@ -326,17 +232,14 @@ export const ConsignmentHeaderCustomer = () => {
 
             </div>
 
-            {/* <BillingAddCustomerModal />
+            <BillingAddCustomerModal />
 
             <BillingEditCustomerModal />
-
-            <BillingEditCartaExoneracionModal />
 
             <BillingMAGCustomerModal />
 
             <CustomerSearchModal />
 
-            <BillingAddCorreosModal /> */}
         </>
     )
 }

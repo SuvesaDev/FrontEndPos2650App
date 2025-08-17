@@ -288,3 +288,8 @@ export const SetnombreLoteDetalleConsignment = (value) => ({
     type: types.SetnombreLoteDetalleConsignment,
     payload: value
 })
+
+export const SethasCustomerBillingConsignment = (value) => ({
+    type: types.SethasCustomerBillingConsignment,
+    payload: value
+})

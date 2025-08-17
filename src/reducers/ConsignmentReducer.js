@@ -4,6 +4,7 @@ const initialState = {
     disableInputsHeader: true,
     isEnableActiveCredito: false,
     searchFicha: '',
+    hasCustomerBilling: false,
     factura: {
         encabezado: {
             id: '',
@@ -722,7 +723,13 @@ export const consignmentReducer = (state = initialState, action) => {
                         nombreLote: action.payload
                     }
                 }
-            }            
+            }
+            
+        case types.SethasCustomerBillingConsignment:
+            return {
+                ...state,
+                hasCustomerBilling: action.payload
+            }
         
         case types.CleanStateBancosBank:
             return {
