@@ -11,6 +11,7 @@ const initialState = {
     visiblePassword: false,
     disableInputsUser: false,
     openSearchCustomerConsignment: false,
+    openAddCustomerConsignment: false,
     usuarioFacturacion: {
         id: 0,
         claveInterna: ''
@@ -801,6 +802,79 @@ export const consignmentReducer = (state = initialState, action) => {
             return {
                 ...state,
                 openSearchCustomerConsignment: action.payload
+            }
+
+        case types.SetidTipoClienteAddConsignment:
+            return {
+                ...state,
+                clienteFacturacion: {
+                    ...state.clienteFacturacion,
+                    idTipoCliente: action.payload
+                }
+            }
+
+        case types.SetcedulaAddConsignment:
+            return {
+                ...state,
+                clienteFacturacion: {
+                    ...state.clienteFacturacion,
+                    cedula: action.payload
+                }
+            }
+
+        case types.SetnombreAddConsignment:
+            return {
+                ...state,
+                clienteFacturacion: {
+                    ...state.clienteFacturacion,
+                    nombre: action.payload
+                }
+            }
+
+        case types.SettelefonoAddConsignment:
+            return {
+                ...state,
+                clienteFacturacion: {
+                    ...state.clienteFacturacion,
+                    telefono: action.payload
+                }
+            }
+
+        case types.SetemailAddConsignment:
+            return {
+                ...state,
+                clienteFacturacion: {
+                    ...state.clienteFacturacion,
+                    email: action.payload
+                }
+            }
+
+        case types.SetdireccionAddConsignment:
+            return {
+                ...state,
+                clienteFacturacion: {
+                    ...state.clienteFacturacion,
+                    direccion: action.payload
+                }
+            }
+
+        case types.CleanAddCustomerConsignment:
+            return {
+                ...state,
+                clienteFacturacion: {
+                    idTipoCliente: 0,
+                    cedula: '',
+                    nombre: '',
+                    telefono: '',
+                    email: '',
+                    direccion: ''
+                }
+            }
+
+        case types.SetOpenAddCustomerConsignment:
+            return {
+                ...state,
+                openAddCustomerConsignment: action.payload
             }
         
         case types.CleanStateBancosBank:

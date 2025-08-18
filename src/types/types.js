@@ -2272,7 +2272,15 @@ export const types = {
   SetdisableInputsUserConsignment: '[Consignacion] SetdisableInputsUserConsignment',
   SetidClienteFacturacionConsignment: '[Consignacion] SetidClienteFacturacionConsignment',
   SetclaveInternaConsignment: '[Consignacion] SetclaveInternaConsignment',
-
   SetOpenSearchCustomerConsignment: '[Consignacion] SetOpenSearchCustomerConsignment',
+  SetOpenAddCustomerConsignment: '[Consignacion] SetOpenAddCustomerConsignment',
+
+  SetidTipoClienteAddConsignment: '[Consignacion] SetidTipoClienteAddConsignment',
+  SetcedulaAddConsignment: '[Consignacion] SetcedulaAddConsignment',
+  SetnombreAddConsignment: '[Consignacion] SetnombreAddConsignment',
+  SettelefonoAddConsignment: '[Consignacion] SettelefonoAddConsignment',
+  SetemailAddConsignment: '[Consignacion] SetemailAddConsignment',
+  SetdireccionAddConsignment: '[Consignacion] SetdireccionAddConsignment',
+  CleanAddCustomerConsignment: '[Consignacion] CleanAddCustomerConsignment',
   
 }

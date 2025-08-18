@@ -14,10 +14,10 @@ import {
     startSearchCustomerConsignment
 } from '../../actions/ConsignmentAction';
 
-import { BillingAddCustomerModal } from '../Billing/BillingAddCustomerModal';
 import { BillingEditCustomerModal } from '../Billing/BillingEditCustomerModal';
 import { BillingMAGCustomerModal } from '../Billing/BillingMAGCustomerModal';
 import { CustomerSearchModal } from '../customers/CustomerSearchModal';
+import { ConsignmentAddCustomerModal } from './ConsignmentAddCustomerModal';
 
 export const ConsignmentHeaderCustomer = () => {
 
@@ -230,7 +230,7 @@ export const ConsignmentHeaderCustomer = () => {
 
             </div>
 
-            <BillingAddCustomerModal />
+            <ConsignmentAddCustomerModal />
 
             <BillingEditCustomerModal />
 

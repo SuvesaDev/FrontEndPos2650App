@@ -214,14 +214,13 @@ export const startSearchCustomerConsignment = ( cedula, hasCoin = false ) => {
                                 nombre
                             } = responses;
 
-                            // Se levanta el modal //TODO: LEVANTAR EL MODAL DE CLIENTE
-                            // dispatch( OpenModalAddCustomer( { number } ));
+                            // Se levanta el modal
+                            dispatch( SetOpenAddCustomerConsignment( true ));
 
-                            // TODO: AGREGAR UN CLIENTE
                             // Se establece datos de cliente
-                            // dispatch( SetIdTipoClienteClienteFacturacionBilling( { value: idTipoIdentificacion, number } ));
-                            // dispatch( SetCedulaClienteFacturacionBilling( { value: cedula, number } ));
-                            // dispatch( SetNombreClienteFacturacionBilling( { value: nombre, number } ));
+                            dispatch( SetidTipoClienteAddConsignment( idTipoIdentificacion ));
+                            dispatch( SetcedulaAddConsignment( cedula ));
+                            dispatch( SetnombreAddConsignment( nombre ));
                         }
 
                     });
@@ -260,6 +259,99 @@ export const startSearchCustomerConsignment = ( cedula, hasCoin = false ) => {
                 });
             }
         }
+
+    }
+}
+
+export const startSaveCustomerConsignment = (customer) => {
+
+    return async (dispatch) => {
+
+        //Mostrar un mensaje de confirmacion
+        Swal.fire({
+            title: '¿Desea agregar un nuevo cliente?',
+            showDenyButton: true,
+            showCancelButton: false,
+            confirmButtonText: 'Guardar',
+            denyButtonText: `Cancelar`,
+        }).then(async (result) => {
+
+            try {
+
+                if (result.isConfirmed) {
+
+                    //Mostrar el loading
+                    Swal.fire({
+                        title: 'Por favor, espere',
+                        allowEscapeKey: false,
+                        allowOutsideClick: false,
+                        showConfirmButton: false,
+                        imageUrl: loadingImage,
+                        customClass: 'alert-class-login',
+                        imageHeight: 100,
+                    });
+
+                    //Call end-point 
+                    const { data } = await suvesaApi.post('/cliente/Registrar', customer);
+                    const { status } = data;
+
+                    //Quitar el loading
+                    Swal.close();
+
+                    if (status === 0) {
+
+                        //Clean State
+                        dispatch( CleanAddCustomerConsignment());
+
+                        //Close modal
+                        // dispatch( CloseModalAddCustomer( { number } ));
+
+                        // Cargar el numero cliente
+                        dispatch(startSearchCustomerConsignment( customer.cedula ));
+
+                        //Si es correcta entonces mostrar un mensaje de afirmacion
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Cliente ingresado correctamente',
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+
+                    } else {
+                        //Caso contrario respuesta incorrecto mostrar mensaje de error
+                        const { currentException } = data;
+                        const msj = currentException.split(',');
+
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: (currentException.includes(',')) ? msj[3] : currentException,
+                        });
+
+                    }
+
+                }
+
+            } catch (error) {
+
+                Swal.close();
+                console.log(error);
+                if (error.message === 'Request failed with status code 401') {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Usuario no valido',
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Ocurrio un problema al ingresar un nuevo cliente',
+                    });
+                }
+            }
+
+        });
 
     }
 }
@@ -626,5 +718,44 @@ export const SetclaveInternaConsignment = (value) => ({
 
 export const SetOpenSearchCustomerConsignment = (value) => ({
     type: types.SetOpenSearchCustomerConsignment,
+    payload: value
+})
+
+export const SetidTipoClienteAddConsignment = (value) => ({
+    type: types.SetidTipoClienteAddConsignment,
+    payload: value
+})
+
+export const SetcedulaAddConsignment = (value) => ({
+    type: types.SetcedulaAddConsignment,
+    payload: value
+})
+
+export const SetnombreAddConsignment = (value) => ({
+    type: types.SetnombreAddConsignment,
+    payload: value
+})
+
+export const SettelefonoAddConsignment = (value) => ({
+    type: types.SettelefonoAddConsignment,
+    payload: value
+})
+
+export const SetemailAddConsignment = (value) => ({
+    type: types.SetemailAddConsignment,
+    payload: value
+})
+
+export const SetdireccionAddConsignment = (value) => ({
+    type: types.SetdireccionAddConsignment,
+    payload: value
+})
+
+export const CleanAddCustomerConsignment = () => ({
+    type: types.CleanAddCustomerConsignment
+})
+
+export const SetOpenAddCustomerConsignment = (value) => ({
+    type: types.SetOpenAddCustomerConsignment,
     payload: value
 })
