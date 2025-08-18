@@ -25,7 +25,7 @@ export const ConsignmentConditions = () => {
     Orden
   } = factura.encabezado;
 
-  const handleInputChangeWithDispatch = ({ target }) => {
+  const handleInputChangeWithDispatch = ({ target }, action) => {
     dispatch(action(target.value));
   };
 

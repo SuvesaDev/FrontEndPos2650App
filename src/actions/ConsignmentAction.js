@@ -356,6 +356,93 @@ export const startSaveCustomerConsignment = (customer) => {
     }
 }
 
+export const startGetOneInventoryConsignment = ( codigo ) => {
+
+    return async (dispatch) => {
+
+        try {
+
+            //Mostrar el loading
+            Swal.fire({
+                title: 'Por favor, espere',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                imageUrl: loadingImage,
+                customClass: 'alert-class-login',
+                imageHeight: 100,
+            });
+
+            //Call end-point 
+            const resp = await suvesaApi.post('/inventario/ObtenerUnInventario', { codigo });
+            const { status, responses } = resp.data;
+
+            //Quitar el loading
+            Swal.close();
+
+            if (status === 0) {
+                console.log(responses)
+                //seleccionarlo y meterlo al estado en el metodo de action                
+                dispatch( SetCodArticuloDetalleConsignment( responses.cod_Articulo ));
+                dispatch( SetDescripcionDetalleConsignment( responses.descripcion ));
+                dispatch( SetPrecio_UnitDetalleConsignment( responses.precio_A ));
+                dispatch( SetPrecio_UnitOriginalDetalleConsignment( responses.precio_A ));
+                dispatch( SetImpuestoDetalleConsignment( responses.iVenta ));
+                // dispatch( SetImpuestoOriginalDetalleActualBilling( responses.iVenta,)); 
+                dispatch( SetExistenciasDetalleConsignment( responses.existencia ));
+                dispatch( Setprecio_ADetalleConsignment( responses.precio_A ));
+                dispatch( Setprecio_BDetalleConsignment( responses.precio_B ));
+                dispatch( Setprecio_CDetalleConsignment( responses.precio_C ));
+                dispatch( Setprecio_DDetalleConsignment( responses.precio_D ));
+                dispatch( Setprecio_PromoDetalleConsignment( responses.precio_Promo ));
+                dispatch( SetcodFxArticuloDetalleConsignment( responses.codigo ));
+
+                // Se calculan los totales de producto
+                // calculateTotalsProductCurrent( responses, parametros, number, dispatch );
+
+                // dispatch( SetautoFocusPrecioUnitBilling( { value: true, number }));
+                // dispatch( SetautoFocusDescBilling( { value: false, number }));
+                // dispatch( SetautoFocusCantidadBilling( { value: false, number }));
+                // dispatch( SetautoFocusCodigoBilling( { value: false, number }));
+
+                //TODO: Cargar los lotes del articulo
+                // dispatch(startGetLotesByArticle( codigo, number));
+
+            } else {
+
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
+
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
+
+            }
+
+        } catch (error) {
+
+            Swal.close();
+            console.log(error);
+            if (error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al obtener un inventario',
+                });
+            }
+        }
+    }
+}
+
 // Private methods
 const loadCatalogos = async ( dispatch, catalogos ) => {
     
@@ -757,5 +844,10 @@ export const CleanAddCustomerConsignment = () => ({
 
 export const SetOpenAddCustomerConsignment = (value) => ({
     type: types.SetOpenAddCustomerConsignment,
+    payload: value
+})
+
+export const SetOpenSearchInventoryConsignment = (value) => ({
+    type: types.SetOpenSearchInventoryConsignment,
     payload: value
 })

@@ -17,7 +17,8 @@ import { InventorySearchModal } from '../Inventory/InventorySearchModal';
 import { ConsignmentItemsTable } from './ConsignmentItemsTable';
 
 import { 
-    SetCodArticuloDetalleConsignment 
+    SetCodArticuloDetalleConsignment, 
+    SetOpenSearchInventoryConsignment
 } from '../../actions/ConsignmentAction';
 
 export const ConsignmentItems = (props) => {
@@ -112,9 +113,8 @@ export const ConsignmentItems = (props) => {
     }, []);
 
     const handleSearchArticleBilling = async (e) => {
-        // dispatch(SetOpenSearchInventoryBilling({ value: true, number: numberScreen }));
-        // dispatch(CleanDetalleActualBilling({ number: numberScreen }));
-        // dispatch(SetValorFiltroSearchModalInventory(""));
+        dispatch(SetOpenSearchInventoryConsignment(true));
+        dispatch(SetValorFiltroSearchModalInventory(""));
     }
 
     const handleChangePrecioUnit = ({ target }) => {

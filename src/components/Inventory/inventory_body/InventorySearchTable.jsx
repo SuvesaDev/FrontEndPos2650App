@@ -26,6 +26,7 @@ import { startGetOneInventoryBillingConsultAlbaranes } from '../../../actions/co
 import { startGetOneInventoryBudgets } from '../../../actions/budgetsAction';
 import { startGetOneInventoryOrdenCompra } from '../../../actions/ordenCompraAction';
 import { startGetOneInventoryBonificaciones } from '../../../actions/BonificacionesAction';
+import { startGetOneInventoryConsignment } from '../../../actions/ConsignmentAction';
 
 export const InventorySearchTable = ({ columns, data }) => {
 
@@ -51,6 +52,7 @@ export const InventorySearchTable = ({ columns, data }) => {
     const { isOpenSearchInventoryAdjustment } = useSelector(state => state.InventoryAdjustment);
     const { isOpenSearchInventoryCompras } = useSelector(state => state.compras);
     const { isOpenSearchInventoryBudgets } = useSelector(state => state.budgets);
+    const { isOpenModalSearchArticuloConsignment } = useSelector(state => state.consignment);
 
     const { isOpenModalSearchInventoryConsultAlbaranes } = useSelector(state => state.consultAlbaranes);
     const { isOpenModalSearchInventoryOrdenCompra } = useSelector((state) => state.ordenCompra);
@@ -144,12 +146,17 @@ export const InventorySearchTable = ({ columns, data }) => {
             //Llamar para traer el inventario desde Bonificaciones
             dispatch(startGetOneInventoryBonificaciones(codigo));
             
+        } else if (isOpenModalSearchArticuloConsignment) {
+            //Llamar para traer el inventario desde Registro de Consignacion
+            dispatch( startGetOneInventoryConsignment(codigo) );
+            
         } else {
             //Llamar para traer el inventario
             await dispatch(startGetOneInventory(codigo));
         }
 
     }
+    
     return (
         <div className="table-responsive-md tablaP">
             <table className="table table-dark table-hover table-bordered text-md-center"

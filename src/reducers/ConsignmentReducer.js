@@ -12,6 +12,7 @@ const initialState = {
     disableInputsUser: false,
     openSearchCustomerConsignment: false,
     openAddCustomerConsignment: false,
+    isOpenModalSearchArticuloConsignment: false,
     usuarioFacturacion: {
         id: 0,
         claveInterna: ''
@@ -495,252 +496,189 @@ export const consignmentReducer = (state = initialState, action) => {
         case types.SetCodArticuloDetalleConsignment:
             return {
                 ...state,
-                factura: {
-                    ...state.factura,
-                    detalleArticuloActual: {
-                        ...state.detalleArticuloActual,
-                        CodArticulo: action.payload
-                    }
+                detalleArticuloActual: {
+                    ...state.detalleArticuloActual,
+                    CodArticulo: action.payload
                 }
             }
 
         case types.SetcodFxArticuloDetalleConsignment:
             return {
                 ...state,
-                factura: {
-                    ...state.factura,
-                    detalleArticuloActual: {
-                        ...state.detalleArticuloActual,
-                        codFxArticulo: action.payload
-                    }
+                detalleArticuloActual: {
+                    ...state.detalleArticuloActual,
+                    codFxArticulo: action.payload
                 }
             }
 
         case types.SetDescripcionDetalleConsignment:
             return {
                 ...state,
-                factura: {
-                    ...state.factura,
-                    detalleArticuloActual: {
-                        ...state.detalleArticuloActual,
-                        Descripcion: action.payload
-                    }
+                detalleArticuloActual: {
+                    ...state.detalleArticuloActual,
+                    Descripcion: action.payload
                 }
             }
 
         case types.SetCantidadDetalleConsignment:
             return {
                 ...state,
-                factura: {
-                    ...state.factura,
-                    detalleArticuloActual: {
-                        ...state.detalleArticuloActual,
-                        Cantidad: action.payload
-                    }
+                detalleArticuloActual: {
+                    ...state.detalleArticuloActual,
+                    Cantidad: action.payload
                 }
             }
 
         case types.SetPrecio_UnitDetalleConsignment:
             return {
                 ...state,
-                factura: {
-                    ...state.factura,
-                    detalleArticuloActual: {
-                        ...state.detalleArticuloActual,
-                        Precio_Unit: action.payload
-                    }
+                detalleArticuloActual: {
+                    ...state.detalleArticuloActual,
+                    Precio_Unit: action.payload
                 }
             }
 
         case types.SetDescuentoDetalleConsignment:
             return {
                 ...state,
-                factura: {
-                    ...state.factura,
-                    detalleArticuloActual: {
-                        ...state.detalleArticuloActual,
-                        Descuento: action.payload
-                    }
+                detalleArticuloActual: {
+                    ...state.detalleArticuloActual,
+                    Descuento: action.payload
                 }
             }
 
         case types.SetMonto_DescuentoDetalleConsignment:
             return {
                 ...state,
-                factura: {
-                    ...state.factura,
-                    detalleArticuloActual: {
-                        ...state.detalleArticuloActual,
-                        Monto_Descuento: action.payload
-                    }
+                detalleArticuloActual: {
+                    ...state.detalleArticuloActual,
+                    Monto_Descuento: action.payload
                 }
             }
 
         case types.SetImpuestoDetalleConsignment:
             return {
                 ...state,
-                factura: {
-                    ...state.factura,
-                    detalleArticuloActual: {
-                        ...state.detalleArticuloActual,
-                        Impuesto: action.payload
-                    }
+                detalleArticuloActual: {
+                    ...state.detalleArticuloActual,
+                    Impuesto: action.payload
                 }
             }
 
         case types.SetMonto_ImpuestoDetalleConsignment:
             return {
                 ...state,
-                factura: {
-                    ...state.factura,
-                    detalleArticuloActual: {
-                        ...state.detalleArticuloActual,
-                        Monto_Impuesto: action.payload
-                    }
+                detalleArticuloActual: {
+                    ...state.detalleArticuloActual,
+                    Monto_Impuesto: action.payload
                 }
             }
 
         case types.SetExistenciasDetalleConsignment:
             return {
                 ...state,
-                factura: {
-                    ...state.factura,
-                    detalleArticuloActual: {
-                        ...state.detalleArticuloActual,
-                        Existencias: action.payload
-                    }
+                detalleArticuloActual: {
+                    ...state.detalleArticuloActual,
+                    Existencias: action.payload
                 }
             }
 
         case types.SetSubtotalGravadoDetalleConsignment:
             return {
                 ...state,
-                factura: {
-                    ...state.factura,
-                    detalleArticuloActual: {
-                        ...state.detalleArticuloActual,
-                        SubtotalGravado: action.payload
-                    }
+                detalleArticuloActual: {
+                    ...state.detalleArticuloActual,
+                    SubtotalGravado: action.payload
                 }
             }
 
         case types.SetSubTotalExcentoDetalleConsignment:
             return {
                 ...state,
-                factura: {
-                    ...state.factura,
-                    detalleArticuloActual: {
-                        ...state.detalleArticuloActual,
-                        SubTotalExcento: action.payload
-                    }
+                detalleArticuloActual: {
+                    ...state.detalleArticuloActual,
+                    SubTotalExcento: action.payload
                 }
             }
 
         case types.SetSubTotalDetalleConsignment:
             return {
                 ...state,
-                factura: {
-                    ...state.factura,
-                    detalleArticuloActual: {
-                        ...state.detalleArticuloActual,
-                        SubTotal: action.payload
-                    }
+                detalleArticuloActual: {
+                    ...state.detalleArticuloActual,
+                    SubTotal: action.payload
                 }
             }
 
         case types.Setprecio_ADetalleConsignment:
             return {
                 ...state,
-                factura: {
-                    ...state.factura,
-                    detalleArticuloActual: {
-                        ...state.detalleArticuloActual,
-                        precio_A: action.payload
-                    }
+                detalleArticuloActual: {
+                    ...state.detalleArticuloActual,
+                    precio_A: action.payload
                 }
             }
 
         case types.Setprecio_BDetalleConsignment:
             return {
                 ...state,
-                factura: {
-                    ...state.factura,
-                    detalleArticuloActual: {
-                        ...state.detalleArticuloActual,
-                        precio_B: action.payload
-                    }
+                detalleArticuloActual: {
+                    ...state.detalleArticuloActual,
+                    precio_B: action.payload
                 }
             }
 
         case types.Setprecio_CDetalleConsignment:
             return {
                 ...state,
-                factura: {
-                    ...state.factura,
-                    detalleArticuloActual: {
-                        ...state.detalleArticuloActual,
-                        precio_C: action.payload
-                    }
+                detalleArticuloActual: {
+                    ...state.detalleArticuloActual,
+                    precio_C: action.payload
                 }
             }
 
         case types.Setprecio_DDetalleConsignment:
             return {
                 ...state,
-                factura: {
-                    ...state.factura,
-                    detalleArticuloActual: {
-                        ...state.detalleArticuloActual,
-                        precio_D: action.payload
-                    }
+                detalleArticuloActual: {
+                    ...state.detalleArticuloActual,
+                    precio_D: action.payload
                 }
             }
 
         case types.Setprecio_PromoDetalleConsignment:
             return {
                 ...state,
-                factura: {
-                    ...state.factura,
-                    detalleArticuloActual: {
-                        ...state.detalleArticuloActual,
-                        precio_Promo: action.payload
-                    }
+                detalleArticuloActual: {
+                    ...state.detalleArticuloActual,
+                    precio_Promo: action.payload
                 }
             }
 
         case types.SetPrecio_UnitOriginalDetalleConsignment:
             return {
                 ...state,
-                factura: {
-                    ...state.factura,
-                    detalleArticuloActual: {
-                        ...state.detalleArticuloActual,
-                        Precio_UnitOriginal: action.payload
-                    }
+                detalleArticuloActual: {
+                    ...state.detalleArticuloActual,
+                    Precio_UnitOriginal: action.payload
                 }
             }
 
         case types.SetidLoteDetalleConsignment:
             return {
                 ...state,
-                factura: {
-                    ...state.factura,
-                    detalleArticuloActual: {
-                        ...state.detalleArticuloActual,
-                        idLote: action.payload
-                    }
+                detalleArticuloActual: {
+                    ...state.detalleArticuloActual,
+                    idLote: action.payload
                 }
             }
 
         case types.SetnombreLoteDetalleConsignment:
             return {
                 ...state,
-                factura: {
-                    ...state.factura,
-                    detalleArticuloActual: {
-                        ...state.detalleArticuloActual,
-                        nombreLote: action.payload
-                    }
+                detalleArticuloActual: {
+                    ...state.detalleArticuloActual,
+                    nombreLote: action.payload
                 }
             }
             
@@ -875,6 +813,12 @@ export const consignmentReducer = (state = initialState, action) => {
             return {
                 ...state,
                 openAddCustomerConsignment: action.payload
+            }
+
+        case types.SetOpenSearchInventoryConsignment:
+            return {
+                ...state,
+                isOpenModalSearchArticuloConsignment: action.payload
             }
         
         case types.CleanStateBancosBank:
