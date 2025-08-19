@@ -48,7 +48,7 @@ export const ConsignmentAddCustomerModal = () => {
 
         const customer = {
             cedula,
-            idTipoIdentificacion: idTipoCliente,
+            idTipoIdentificacion: parseInt(idTipoCliente),
             nombre,
             telefono01: telefono,
             direccion,
@@ -59,6 +59,7 @@ export const ConsignmentAddCustomerModal = () => {
             idProvincia: 1,
             idCanton: 1,
             idUsuarioCreacion: auth.username,
+            fechaCreacion: new Date().toISOString()
         }
 
         await dispatch(startSaveCustomerConsignment(customer));
@@ -110,7 +111,7 @@ export const ConsignmentAddCustomerModal = () => {
                                             {
                                                 (tiposIdentificacion != null && tiposIdentificacion.length > 0)
                                                     ?   tiposIdentificacion.map(tipoD => {
-                                                            return <option key={tipoD.codigoFe} value={tipoD.codigoFe}> {tipoD.descripcion} </option>
+                                                            return <option key={tipoD.id} value={tipoD.id}> {tipoD.descripcion} </option>
                                                         })
                                                     :   <option value=''></option>
                                             }

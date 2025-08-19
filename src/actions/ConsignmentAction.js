@@ -292,7 +292,7 @@ export const startSaveCustomerConsignment = (customer) => {
                     });
 
                     //Call end-point 
-                    const { data } = await suvesaApi.post('/cliente/Registrar', customer);
+                    const { data } = await suvesaApi.post('/cliente/RegistrarBasico', customer);
                     const { status } = data;
 
                     //Quitar el loading
@@ -356,7 +356,7 @@ export const startSaveCustomerConsignment = (customer) => {
     }
 }
 
-export const startGetOneInventoryConsignment = ( codigo ) => {
+export const startGetOneInventoryConsignment = ( codigo, parametros ) => {
 
     return async (dispatch) => {
 
@@ -398,7 +398,7 @@ export const startGetOneInventoryConsignment = ( codigo ) => {
                 dispatch( SetcodFxArticuloDetalleConsignment( responses.codigo ));
 
                 // Se calculan los totales de producto
-                // calculateTotalsProductCurrent( responses, parametros, number, dispatch );
+                calculateTotalsProductCurrent( responses, parametros, dispatch );
 
                 // dispatch( SetautoFocusPrecioUnitBilling( { value: true, number }));
                 // dispatch( SetautoFocusDescBilling( { value: false, number }));
@@ -480,6 +480,44 @@ const loadCatalogos = async ( dispatch, catalogos ) => {
     //Quitar el loading
     Swal.close();
 
+}
+
+const calculateTotalsProductCurrent = ( detalleArticuloActual, parametros, dispatch) => {
+    
+    //cuando se agrega un articulo o se cambia el precio, descuento o cantidad
+    //se calcualan los subtotales, desuentos e impuestos del producto
+    if ( detalleArticuloActual.codigo > 0) {
+        
+        let precio    = parseFloat( detalleArticuloActual.precio_A );
+        let cantidad  = 1;
+        let impuesto  = parseFloat( detalleArticuloActual.iVenta );
+        let descuento = 0;
+
+        dispatch( SetPrecio_UnitDetalleConsignment( precio ));
+
+        if (parseFloat( parametros.Cod_Moneda ) === 2) {
+            precio = precio / parametros.dollar;
+            dispatch( SetPrecio_UnitDetalleConsignment( precio.toFixed(2) ));
+        }
+
+        var resulDescuento = (precio * cantidad) * (descuento / 100);
+        var resulImpuesto = ((precio * cantidad) - resulDescuento) * (impuesto / 100);
+
+        dispatch( SetImpuestoDetalleConsignment( parseFloat(impuesto).toFixed(2) ));
+        dispatch( SetMonto_DescuentoDetalleConsignment( parseFloat(resulDescuento).toFixed(2) ));
+        dispatch( SetMonto_ImpuestoDetalleConsignment( parseFloat(resulImpuesto).toFixed(2) ));
+
+        //SubTotal
+        dispatch( SetSubTotalDetalleConsignment( parseFloat(precio * cantidad).toFixed(2) ));
+
+        if (impuesto > 0) {
+            dispatch( SetSubtotalGravadoDetalleConsignment( parseFloat(precio * cantidad).toFixed(2) ));
+            dispatch( SetSubTotalExcentoDetalleConsignment( 0 ));
+        } else {
+            dispatch( SetSubtotalGravadoDetalleConsignment( 0 ));
+            dispatch( SetSubTotalExcentoDetalleConsignment( parseFloat(precio * cantidad).toFixed(2) ));
+        }
+    }
 }
 
 // Normal Actions

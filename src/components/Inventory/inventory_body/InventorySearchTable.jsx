@@ -52,7 +52,7 @@ export const InventorySearchTable = ({ columns, data }) => {
     const { isOpenSearchInventoryAdjustment } = useSelector(state => state.InventoryAdjustment);
     const { isOpenSearchInventoryCompras } = useSelector(state => state.compras);
     const { isOpenSearchInventoryBudgets } = useSelector(state => state.budgets);
-    const { isOpenModalSearchArticuloConsignment } = useSelector(state => state.consignment);
+    const { isOpenModalSearchArticuloConsignment, factura } = useSelector(state => state.consignment);
 
     const { isOpenModalSearchInventoryConsultAlbaranes } = useSelector(state => state.consultAlbaranes);
     const { isOpenModalSearchInventoryOrdenCompra } = useSelector((state) => state.ordenCompra);
@@ -147,8 +147,15 @@ export const InventorySearchTable = ({ columns, data }) => {
             dispatch(startGetOneInventoryBonificaciones(codigo));
             
         } else if (isOpenModalSearchArticuloConsignment) {
+
+            // Parametros
+            const parametros = {
+                Cod_Moneda: factura.encabezado.Cod_Moneda,
+                dollar
+            };
+
             //Llamar para traer el inventario desde Registro de Consignacion
-            dispatch( startGetOneInventoryConsignment(codigo) );
+            dispatch( startGetOneInventoryConsignment(codigo, parametros) );
             
         } else {
             //Llamar para traer el inventario
@@ -156,7 +163,7 @@ export const InventorySearchTable = ({ columns, data }) => {
         }
 
     }
-    
+
     return (
         <div className="table-responsive-md tablaP">
             <table className="table table-dark table-hover table-bordered text-md-center"

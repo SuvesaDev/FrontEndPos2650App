@@ -43,7 +43,7 @@ export const ConsignmentConditions = () => {
       <div className='card'>
 
         <div className="card-header">
-          <h5>Condiciones de Factura</h5>
+          <h5>Condiciones de Consignacion</h5>
         </div>
         
         <div className="card-body">

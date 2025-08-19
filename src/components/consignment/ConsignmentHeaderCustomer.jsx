@@ -155,7 +155,7 @@ export const ConsignmentHeaderCustomer = () => {
                             {
                                 (tiposIdentificacion != null && tiposIdentificacion.length > 0)
                                     ?   tiposIdentificacion.map(tipoD => {
-                                            return <option key={tipoD.codigoFe} value={tipoD.codigoFe}> {tipoD.descripcion} </option>
+                                            return <option key={tipoD.id} value={tipoD.id}> {tipoD.descripcion} </option>
                                         })
                                     :   <option value=''></option>
                             }
