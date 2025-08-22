@@ -81,6 +81,8 @@ const initialState = {
         precio_C: 0.00,
         precio_D: 0.00,
         precio_Promo: 0.00,
+        max_Descuento: 0.00,
+        ImpuestoOriginal: 0.00,
         Precio_UnitOriginal: 0.00,
         idLote: 0,
         nombreLote: ''
@@ -655,12 +657,30 @@ export const consignmentReducer = (state = initialState, action) => {
                 }
             }
 
+        case types.Setmax_DescuentoDetalleConsignment:
+            return {
+                ...state,
+                detalleArticuloActual: {
+                    ...state.detalleArticuloActual,
+                    max_Descuento: action.payload
+                }
+            }
+
         case types.SetPrecio_UnitOriginalDetalleConsignment:
             return {
                 ...state,
                 detalleArticuloActual: {
                     ...state.detalleArticuloActual,
                     Precio_UnitOriginal: action.payload
+                }
+            }
+
+        case types.SetImpuestoOriginalDetalleConsignment:
+            return {
+                ...state,
+                detalleArticuloActual: {
+                    ...state.detalleArticuloActual,
+                    ImpuestoOriginal: action.payload
                 }
             }
 
@@ -819,6 +839,48 @@ export const consignmentReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isOpenModalSearchArticuloConsignment: action.payload
+            }
+
+        case types.SetAddDetalleConsignment:
+            return {
+                ...state,
+                factura: {
+                    ...state.factura,
+                    detalle: [
+                        ...state.factura.detalle,
+                        action.payload
+                    ]
+                }
+            }
+
+        case types.CleanDetalleActualConsignment:
+            return {
+                ...state,
+                detalleArticuloActual: {
+                    CodArticulo: '',
+                    codFxArticulo: 0,
+                    Descripcion: '',
+                    Cantidad: 1.00,
+                    Precio_Unit: 0.00,
+                    Descuento: 0.00,
+                    Monto_Descuento: 0.00,
+                    Impuesto: 0.00,
+                    Monto_Impuesto: 0.00,
+                    Existencias: 0,
+                    SubtotalGravado: 0.00,
+                    SubTotalExcento: 0.00,
+                    SubTotal: 0.00,
+                    precio_A: 0.00,
+                    precio_B: 0.00,
+                    precio_C: 0.00,
+                    precio_D: 0.00,
+                    precio_Promo: 0.00,
+                    max_Descuento: 0.00,
+                    ImpuestoOriginal: 0.00,
+                    Precio_UnitOriginal: 0.00,
+                    idLote: 0,
+                    nombreLote: ''
+                },
             }
         
         case types.CleanStateBancosBank:

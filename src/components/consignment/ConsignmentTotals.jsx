@@ -5,34 +5,16 @@ import { useSelector, useDispatch } from "react-redux";
 import { FaPercentage } from 'react-icons/fa';
 import { FaColonSign } from "react-icons/fa6";
 
-import {
-    SetExonerarBilling,
-    SetDescuentoGeneral,
-    SetAplicaDescuento,
-    SetExtranjeroBilling,
-    startEditDetalleBilling,
-} from "../../actions/billing";
 
 export const ConsignmentTotals = () => {
 
     const dispatch = useDispatch();
 
-    const [numberScreen, setnumberScreen] = useState(null);
-
-    const { currentTab } = useSelector(state => state.tabs);
-    const { billings, aumentoExtranjero } = useSelector(state => state.billing);
-
-    useEffect(() => {
-
-        if (currentTab.name.includes("Venta")) {
-            setnumberScreen(currentTab.routePage.split('/')[3] - 1);
-        }
-
-    }, [billings]);
+    const { factura } = useSelector(state => state.consignment);
 
     const handleInputChangeWithDispatch = ({ target }, action) => {
-        if (billings[numberScreen] === undefined || !billings[numberScreen].enableItems) return;
-        dispatch(action({ value: target.value, number: numberScreen }));
+        // if (billings[numberScreen] === undefined || !billings[numberScreen].enableItems) return;
+        // dispatch(action({ value: target.value, number: numberScreen }));
     };
 
     const handleInputChangeCheckBoxWithDispatch = ({ target }, action) => {
@@ -41,181 +23,74 @@ export const ConsignmentTotals = () => {
 
     const handleKeyDownDescuentoGeneral = (e) => {
 
-        if (e.key === 'Enter') {
+        // if (e.key === 'Enter') {
 
-            e.preventDefault();
+        //     e.preventDefault();
 
-            Swal.fire({
-                title: `¿Desea aplicar el descuento general de ${billings[numberScreen].descuentoGeneral}% ?`,
-                showDenyButton: true,
-                showCancelButton: false,
-                confirmButtonText: 'Aplicar',
-                denyButtonText: `Cancelar`,
-            }).then(async (result) => {
+        //     Swal.fire({
+        //         title: `¿Desea aplicar el descuento general de ${billings[numberScreen].descuentoGeneral}% ?`,
+        //         showDenyButton: true,
+        //         showCancelButton: false,
+        //         confirmButtonText: 'Aplicar',
+        //         denyButtonText: `Cancelar`,
+        //     }).then(async (result) => {
 
-                if (result.isConfirmed) {
-                    dispatch(SetAplicaDescuento({ value: true, number: numberScreen }));
+        //         if (result.isConfirmed) {
+        //             dispatch(SetAplicaDescuento({ value: true, number: numberScreen }));
 
-                    calculateDescuentoGeneral(true);
-                }
+        //             calculateDescuentoGeneral(true);
+        //         }
 
-            });
-        }
-    }
-
-    const handleCheckExtranjero = ({ target }) => {
-
-        if (billings[numberScreen] === undefined) return;
-
-        if (billings[numberScreen].hasHeader === true && billings[numberScreen].factura.detalle.length > 0) {
-            dispatch(SetExtranjeroBilling({ value: target.checked, number: numberScreen }));
-            calculateExtranjero((target.checked === true) ? 1 : 2);
-        } else {
-
-            Swal.fire({
-                icon: 'warning',
-                title: 'Advertencia',
-                text: 'Ingrese un producto para aplicar el aumento de Extranjero'
-            });
-
-            return;
-
-        }
-
-    }
-
-    // Tipo 1 = Aumentar
-    // Tipo 2 = Disminuir
-    const calculateExtranjero = (tipo) => {
-
-        if (billings[numberScreen] === undefined) return;
-
-        if (billings[numberScreen].aumentoExtranjero === 0 && billings[numberScreen].factura.detalle.length !== 0) {
-
-            Swal.fire({
-                icon: 'warning',
-                title: 'Advertencia',
-                text: 'No se cargo el porcentaje de aumento de extranjero'
-            });
-
-            return;
-        }
-
-        if (billings[numberScreen].factura.detalle.length === 0) {
-            return;
-        }
-
-        if (tipo === 1) {
-
-            // Aumentar
-            let index = 0;
-            let montoAumento = 0;
-
-            billings[numberScreen].factura.detalle.forEach(linea => {
-
-                let precioUnit = parseFloat(linea.Precio_Unit);
-                let cantidad = parseFloat(linea.Cantidad);
-                let impuesto = parseFloat(linea.Impuesto);
-
-                montoAumento = precioUnit * (aumentoExtranjero / 100);
-                linea.Precio_Unit = precioUnit + montoAumento;
-                linea.SubTotal = (linea.Precio_Unit * cantidad);
-                linea.Monto_Impuesto = linea.SubTotal * (impuesto / 100);
-
-                if (linea.Impuesto > 0) {
-                    linea.SubtotalGravado = linea.SubTotal;
-                    linea.SubTotalExcento = 0;
-                } else {
-                    linea.SubtotalGravado = 0;
-                    linea.SubTotalExcento = linea.SubTotal;
-                }
-
-                dispatch(startEditDetalleBilling(linea, index, numberScreen));
-
-                index = index + 1;
-            });
-
-        } else if (tipo === 2) {
-
-            //Disminuir
-            let index = 0;
-            let montoAumento = 0;
-
-            billings[numberScreen].factura.detalle.forEach(linea => {
-
-                let precioUnitOriginal = parseFloat(linea.Precio_UnitOriginal);
-                let precioUnit = parseFloat(linea.Precio_Unit);
-                let cantidad = parseFloat(linea.Cantidad);
-                let impuesto = parseFloat(linea.Impuesto);
-
-                montoAumento = precioUnitOriginal * (aumentoExtranjero / 100);
-                linea.Precio_Unit = precioUnit - montoAumento;
-                linea.SubTotal = (linea.Precio_Unit * cantidad);
-                linea.Monto_Impuesto = linea.SubTotal * (impuesto / 100);
-
-                if (linea.Impuesto > 0) {
-                    linea.SubtotalGravado = linea.SubTotal;
-                    linea.SubTotalExcento = 0;
-                } else {
-                    linea.SubtotalGravado = 0;
-                    linea.SubTotalExcento = linea.SubTotal;
-                }
-
-                dispatch(startEditDetalleBilling(linea, index, numberScreen));
-
-                index = index + 1;
-            });
-
-        }
-
+        //     });
+        // }
     }
 
     const calculateDescuentoGeneral = (aplicaDescuento) => {
 
-        if (billings[numberScreen] === undefined) return;
+        // if (billings[numberScreen] === undefined) return;
 
-        if (aplicaDescuento === true) {
+        // if (aplicaDescuento === true) {
 
-            if (billings[numberScreen].factura.detalle.length !== 0) {
+        //     if (billings[numberScreen].factura.detalle.length !== 0) {
 
-                let index = 0;
+        //         let index = 0;
 
-                billings[numberScreen].factura.detalle.forEach(linea => {
+        //         billings[numberScreen].factura.detalle.forEach(linea => {
 
-                    if (linea.max_Descuento >= parseFloat(billings[numberScreen].descuentoGeneral)) {
+        //             if (linea.max_Descuento >= parseFloat(billings[numberScreen].descuentoGeneral)) {
 
-                        linea.Descuento = billings[numberScreen].descuentoGeneral;
+        //                 linea.Descuento = billings[numberScreen].descuentoGeneral;
 
-                        linea.SubTotal = (linea.Precio_Unit * linea.Cantidad);
-                        linea.Monto_Descuento = linea.SubTotal * (linea.Descuento / 100);
-                        linea.Monto_Impuesto = (linea.SubTotal - linea.Monto_Descuento) * (linea.Impuesto / 100);
+        //                 linea.SubTotal = (linea.Precio_Unit * linea.Cantidad);
+        //                 linea.Monto_Descuento = linea.SubTotal * (linea.Descuento / 100);
+        //                 linea.Monto_Impuesto = (linea.SubTotal - linea.Monto_Descuento) * (linea.Impuesto / 100);
 
-                        if (linea.Impuesto > 0) {
-                            linea.SubtotalGravado = linea.SubTotal;
-                            linea.SubTotalExcento = 0;
-                        } else {
-                            linea.SubtotalGravado = 0;
-                            linea.SubTotalExcento = linea.SubTotal;
-                        }
+        //                 if (linea.Impuesto > 0) {
+        //                     linea.SubtotalGravado = linea.SubTotal;
+        //                     linea.SubTotalExcento = 0;
+        //                 } else {
+        //                     linea.SubtotalGravado = 0;
+        //                     linea.SubTotalExcento = linea.SubTotal;
+        //                 }
 
-                        dispatch(startEditDetalleBilling(linea, index, numberScreen));
-                        index = index + 1;
+        //                 dispatch(startEditDetalleBilling(linea, index, numberScreen));
+        //                 index = index + 1;
 
-                    } else {
+        //             } else {
 
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Producto tiene un maximo descuento de ' + linea.max_Descuento + ' %',
-                            text: linea.Descripcion
-                        });
+        //                 Swal.fire({
+        //                     icon: 'error',
+        //                     title: 'Producto tiene un maximo descuento de ' + linea.max_Descuento + ' %',
+        //                     text: linea.Descripcion
+        //                 });
 
-                    }
+        //             }
 
-                });
+        //         });
 
-                dispatch(SetAplicaDescuento({ value: false, number: numberScreen }));
-            }
-        }
+        //         dispatch(SetAplicaDescuento({ value: false, number: numberScreen }));
+        //     }
+        // }
 
     }
 
@@ -241,12 +116,7 @@ export const ConsignmentTotals = () => {
                                     type="text"
                                     className="form-control"
                                     name="SubTotalGravada"
-                                    // value={
-                                    //     (billings[numberScreen] !== undefined)
-                                    //         ? 
-                                    //         new Intl.NumberFormat('es-CR', { style: 'currency', currency: 'CRC' }).format(billings[numberScreen].factura.encabezado.SubTotalGravada)
-                                    //         : 0
-                                    // }
+                                    value={ new Intl.NumberFormat('es-CR', { style: 'currency', currency: 'CRC' }).format(factura.encabezado.SubTotalGravada)}
                                     disabled
                                 />
                             </div>
@@ -263,12 +133,7 @@ export const ConsignmentTotals = () => {
                                     type="text"
                                     className="form-control"
                                     name="SubTotalExento"
-                                    // value={
-                                    //     (billings[numberScreen] !== undefined)
-                                    //         ? 
-                                    //         new Intl.NumberFormat('es-CR', { style: 'currency', currency: 'CRC' }).format(billings[numberScreen].factura.encabezado.SubTotalExento)
-                                    //         : 0
-                                    // }
+                                    value={new Intl.NumberFormat('es-CR', { style: 'currency', currency: 'CRC' }).format(factura.encabezado.SubTotalExento)}
                                     disabled
                                 />
                             </div>
@@ -285,12 +150,7 @@ export const ConsignmentTotals = () => {
                                     type="text"
                                     className="form-control"
                                     name="SubTotal"
-                                    // value={
-                                    //     (billings[numberScreen] !== undefined)
-                                    //         ? 
-                                    //         new Intl.NumberFormat('es-CR', { style: 'currency', currency: 'CRC' }).format(billings[numberScreen].factura.encabezado.SubTotal)
-                                    //         : 0
-                                    // }
+                                    value={ new Intl.NumberFormat('es-CR', { style: 'currency', currency: 'CRC' }).format(factura.encabezado.SubTotal) }
                                     disabled
                                 />
                             </div>
@@ -322,12 +182,7 @@ export const ConsignmentTotals = () => {
                                 <input
                                     name="Descuento"
                                     className="form-control"
-                                    // value={
-                                    //     (billings[numberScreen] !== undefined)
-                                    //         ? 
-                                    //         new Intl.NumberFormat('es-CR', { style: 'currency', currency: 'CRC' }).format(billings[numberScreen].factura.encabezado.Descuento)
-                                    //         : 0
-                                    // }
+                                    value={ new Intl.NumberFormat('es-CR', { style: 'currency', currency: 'CRC' }).format(factura.encabezado.Descuento) }
                                     disabled
                                 />
                             </div>
@@ -343,12 +198,7 @@ export const ConsignmentTotals = () => {
                                 <input
                                     className="form-control"
                                     name="Imp_Venta"
-                                    // value={
-                                    //     (billings[numberScreen] !== undefined)
-                                    //         ? 
-                                    //         new Intl.NumberFormat('es-CR', { style: 'currency', currency: 'CRC' }).format(billings[numberScreen].factura.encabezado.Imp_Venta)
-                                    //         : 0
-                                    // }
+                                    value={ new Intl.NumberFormat('es-CR', { style: 'currency', currency: 'CRC' }).format(factura.encabezado.Imp_Venta) }
                                     disabled
                                 />
                             </div>
@@ -359,11 +209,9 @@ export const ConsignmentTotals = () => {
                         <div className="col-md-12 mb-0">
                             <h3 className='bg-primary text-white'>Total</h3>
                             <h4 className='bg-dark text-white'>
-                                {/* {
-                                    (billings[numberScreen] !== undefined)
-                                        ? new Intl.NumberFormat('es-CR', { style: 'currency', currency: 'CRC' }).format(billings[numberScreen].factura.encabezado.Total)
-                                        : 0
-                                } */}
+                                {
+                                    new Intl.NumberFormat('es-CR', { style: 'currency', currency: 'CRC' }).format(factura.encabezado.Total)
+                                }
                             </h4>
                         </div>
 

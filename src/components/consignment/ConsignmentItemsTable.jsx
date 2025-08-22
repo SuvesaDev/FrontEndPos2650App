@@ -21,6 +21,15 @@ import {
     startGetLotesByArticle
 } from '../../actions/billing';
 
+import { 
+    SetDescuentoConsignment,
+    SetImp_VentaConsignment,
+    SetSubTotalConsignment, 
+    SetSubTotalExentoConsignment, 
+    SetSubTotalGravadaConsignment,
+    SetTotalConsignment
+} from '../../actions/ConsignmentAction';
+
 
 export const ConsignmentItemsTable = ({ columns, data }) => {
 
@@ -41,42 +50,37 @@ export const ConsignmentItemsTable = ({ columns, data }) => {
     });
 
     // Cuando cambia la data de ingreso se calculan los totales
-    // useEffect(() => {
+    useEffect(() => {
 
-    //     calculateTotalsGeneral();
+        calculateTotalsGeneral();
 
-    // }, [data]);
+    }, [data]);
 
-    // const calculateTotalsGeneral = () => {
+    const calculateTotalsGeneral = () => {
+        
+        let SubTotalGeneral = 0;
+        let SubTotalExcentoGeneral = 0;
+        let SubTotalGravadoGeneral = 0;
+        let MontoDescuentoGeneral = 0;
+        let MontoImpuestoGeneral = 0;
 
-    //     if (billings[numberScreen] === undefined) return;
+        data.forEach(linea => {
+            SubTotalGeneral = Number(parseFloat(SubTotalGeneral).toFixed(2)) + Number(parseFloat(linea.SubTotal).toFixed(2));
+            SubTotalExcentoGeneral = Number(parseFloat(SubTotalExcentoGeneral).toFixed(2)) + Number(parseFloat(linea.SubTotalExcento).toFixed(2));
+            SubTotalGravadoGeneral = Number(parseFloat(SubTotalGravadoGeneral).toFixed(2)) + Number(parseFloat(linea.SubtotalGravado).toFixed(2));
+            MontoDescuentoGeneral = Number(parseFloat(MontoDescuentoGeneral).toFixed(2)) + Number(parseFloat(linea.Monto_Descuento).toFixed(2));
+            MontoImpuestoGeneral = Number(parseFloat(MontoImpuestoGeneral).toFixed(2)) + Number(parseFloat(linea.Monto_Impuesto).toFixed(2));
+        });
 
-    //     let SubTotalGeneral = 0;
-    //     let SubTotalExcentoGeneral = 0;
-    //     let SubTotalGravadoGeneral = 0;
-    //     let MontoDescuentoGeneral = 0;
-    //     let MontoImpuestoGeneral = 0;
+        dispatch(SetSubTotalConsignment( parseFloat(SubTotalGeneral).toFixed(2) ));
+        dispatch(SetSubTotalGravadaConsignment( parseFloat(SubTotalGravadoGeneral).toFixed(2) ));
+        dispatch(SetSubTotalExentoConsignment( parseFloat(SubTotalExcentoGeneral).toFixed(2) ));
+        dispatch(SetDescuentoConsignment( parseFloat(MontoDescuentoGeneral).toFixed(2) ));
+        dispatch(SetImp_VentaConsignment( parseFloat(MontoImpuestoGeneral).toFixed(2) ));
+        dispatch(SetTotalConsignment( parseFloat( SubTotalGeneral - MontoDescuentoGeneral + MontoImpuestoGeneral).toFixed(2) ));
+        // dispatch(SetAplicaDescuento( false ));
 
-    //     let index = 0;
-
-    //     data.forEach(linea => {
-    //         SubTotalGeneral = SubTotalGeneral + linea.SubTotal;
-    //         SubTotalExcentoGeneral = SubTotalExcentoGeneral + linea.SubTotalExcento;
-    //         SubTotalGravadoGeneral = SubTotalGravadoGeneral + linea.SubtotalGravado;
-    //         MontoDescuentoGeneral = MontoDescuentoGeneral + linea.Monto_Descuento;
-    //         MontoImpuestoGeneral = MontoImpuestoGeneral + linea.Monto_Impuesto;
-    //         index = index + 1;
-    //     });
-
-    //     dispatch(SetSubTotalBilling({ value: SubTotalGeneral, number: numberScreen }));
-    //     dispatch(SetSubTotalGravadaBilling({ value: SubTotalGravadoGeneral, number: numberScreen }));
-    //     dispatch(SetSubTotalExentoBilling({ value: SubTotalExcentoGeneral, number: numberScreen }));
-    //     dispatch(SetDescuentoBilling({ value: MontoDescuentoGeneral, number: numberScreen }));
-    //     dispatch(SetImp_VentaBilling({ value: MontoImpuestoGeneral, number: numberScreen }));
-    //     dispatch(SetTotalBilling({ value: SubTotalGeneral - MontoDescuentoGeneral + MontoImpuestoGeneral, number: numberScreen }));
-    //     dispatch(SetAplicaDescuento({ value: false, number: numberScreen }));
-
-    // }
+    }
 
     const handleSelectedRow = async (cell) => {
 

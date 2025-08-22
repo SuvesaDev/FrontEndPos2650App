@@ -17,18 +17,29 @@ import { InventorySearchModal } from '../Inventory/InventorySearchModal';
 import { ConsignmentItemsTable } from './ConsignmentItemsTable';
 
 import { 
+    SetCantidadDetalleConsignment,
     SetCodArticuloDetalleConsignment, 
-    SetOpenSearchInventoryConsignment
+    SetDescuentoDetalleConsignment, 
+    SetImpuestoDetalleConsignment, 
+    SetMonto_DescuentoDetalleConsignment, 
+    SetMonto_ImpuestoDetalleConsignment, 
+    SetOpenSearchInventoryConsignment,
+    SetPrecio_UnitDetalleConsignment,
+    SetPrecio_UnitOriginalDetalleConsignment,
+    SetSubTotalDetalleConsignment,
+    SetSubTotalExcentoDetalleConsignment,
+    SetSubtotalGravadoDetalleConsignment,
+    startAddDetalleActualConsignment,
+    startGetOneInventoryConsignment
 } from '../../actions/ConsignmentAction';
 
-export const ConsignmentItems = (props) => {
+export const ConsignmentItems = () => {
 
     const dispatch = useDispatch();
 
     const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 768);
 
     const { dollar } = useSelector(state => state.sidebar);
-    const { billings, showInfoMessage } = useSelector(state => state.billing);
 
     const { 
         enableItems,
@@ -44,7 +55,9 @@ export const ConsignmentItems = (props) => {
         Descuento,
         SubTotal,
         idLote,
-        Cantidad
+        Cantidad,
+        ImpuestoOriginal,
+        max_Descuento
     } = detalleArticuloActual;
 
     const columns = useMemo(
@@ -119,38 +132,38 @@ export const ConsignmentItems = (props) => {
 
     const handleChangePrecioUnit = ({ target }) => {
 
-        // if (!enableItems) return;
+        if (!enableItems) return;
 
-        // dispatch(SetPrecio_UnitDetalleActualBilling({ value: target.value, number: numberScreen }));
-        // calculateTotalsProductCurrent({
-        //     precioUnit: target.value,
-        //     cantidad: billings[numberScreen].detalleArticuloActual.Cantidad,
-        //     descuento: billings[numberScreen].detalleArticuloActual.Descuento
-        // });
+        dispatch(SetPrecio_UnitDetalleConsignment(target.value));
+        calculateTotalsProductCurrent({
+            precioUnit: target.value,
+            cantidad: Cantidad,
+            descuento: Descuento
+        });
     }
 
     const handleChangeCantidad = ({ target }) => {
 
-        // if (!enableItems) return;
+        if (!enableItems) return;
 
-        // dispatch(SetCantidadDetalleActualBilling({ value: target.value, number: numberScreen }));
-        // calculateTotalsProductCurrent({
-        //     precioUnit: billings[numberScreen].detalleArticuloActual.Precio_Unit,
-        //     cantidad: target.value,
-        //     descuento: billings[numberScreen].detalleArticuloActual.Descuento
-        // });
+        dispatch(SetCantidadDetalleConsignment(target.value));
+        calculateTotalsProductCurrent({
+            precioUnit: Precio_Unit,
+            cantidad: target.value,
+            descuento: Descuento
+        });
     }
 
     const handleChangeDescuento = ({ target }) => {
 
-        // if (!enableItems) return;
+        if (!enableItems) return;
 
-        // dispatch(SetDescuentoDetalleActualBilling({ value: target.value, number: numberScreen }));
-        // calculateTotalsProductCurrent({
-        //     precioUnit: billings[numberScreen].detalleArticuloActual.Precio_Unit,
-        //     cantidad: billings[numberScreen].detalleArticuloActual.Cantidad,
-        //     descuento: target.value
-        // });
+        dispatch(SetDescuentoDetalleConsignment(target.value));
+        calculateTotalsProductCurrent({
+            precioUnit: Precio_Unit,
+            cantidad: Cantidad,
+            descuento: target.value
+        });
     }
 
     const handleChangeLote = ({ target }) => {
@@ -214,35 +227,44 @@ export const ConsignmentItems = (props) => {
 
     const handleClickDownCodigo = async (e) => {
 
-        // if (!enableItems) return;
+        if (!enableItems) return;
 
-        // if (e.key === 'Enter') {
+        if (e.key === 'Enter') {
 
-        //     props.inputRefCodigo.current.blur();
+            // props.inputRefCodigo.current.blur();
 
-        //     const resp = await dispatch(startGetOneInventoryBillingByCodArticulo(
-        //         e.target.defaultValue,
-        //         {
-        //             tipoPrecio: billings[numberScreen].clienteFacturacionEdit.tipoPrecio,
-        //             Cod_Moneda: billings[numberScreen].factura.encabezado.Cod_Moneda,
-        //             HasCartaExoneracionBilling: billings[numberScreen].HasCartaExoneracionBilling,
-        //             cartaBilling: billings[numberScreen].cartaBilling,
-        //             mag: billings[numberScreen].factura.encabezado.mag,
-        //             dollar
-        //         },
-        //         numberScreen
-        //     ));
+            // Parametros
+            const parametros = {
+                Cod_Moneda: factura.encabezado.Cod_Moneda,
+                dollar
+            };
 
-        //     if (resp === false) {
-        //         props.inputRefCodigo.current.focus();
-        //     } else {
-        //         dispatch(SetautoFocusCodigoBilling({ value: false, number: numberScreen }));
-        //         dispatch(SetautoFocusDescBilling({ value: false, number: numberScreen }));
-        //         dispatch(SetautoFocusCantidadBilling({ value: false, number: numberScreen }));
-        //         dispatch(SetautoFocusPrecioUnitBilling({ value: true, number: numberScreen }));
-        //     }
+            //Llamar para traer el inventario desde Registro de Consignacion
+            dispatch( startGetOneInventoryConsignment(e.target.defaultValue, parametros) );
 
-        // }
+            // const resp = await dispatch(startGetOneInventoryBillingByCodArticulo(
+            //     e.target.defaultValue,
+            //     {
+            //         tipoPrecio: billings[numberScreen].clienteFacturacionEdit.tipoPrecio,
+            //         Cod_Moneda: billings[numberScreen].factura.encabezado.Cod_Moneda,
+            //         HasCartaExoneracionBilling: billings[numberScreen].HasCartaExoneracionBilling,
+            //         cartaBilling: billings[numberScreen].cartaBilling,
+            //         mag: billings[numberScreen].factura.encabezado.mag,
+            //         dollar
+            //     },
+            //     numberScreen
+            // ));
+
+            // if (resp === false) {
+            //     props.inputRefCodigo.current.focus();
+            // } else {
+            //     dispatch(SetautoFocusCodigoBilling({ value: false, number: numberScreen }));
+            //     dispatch(SetautoFocusDescBilling({ value: false, number: numberScreen }));
+            //     dispatch(SetautoFocusCantidadBilling({ value: false, number: numberScreen }));
+            //     dispatch(SetautoFocusPrecioUnitBilling({ value: true, number: numberScreen }));
+            // }
+
+        }
     }
 
     const handleClickDownCantidad = (e) => {
@@ -328,7 +350,7 @@ export const ConsignmentItems = (props) => {
 
     const handleClickAddProducto = (e) => {
         
-        // if (billings[numberScreen] === undefined || !billings[numberScreen].enableItems) return;
+        if (!enableItems) return;
         
         // if( billings[numberScreen].lotesByArticulo.length == 0 ) {
             
@@ -341,285 +363,147 @@ export const ConsignmentItems = (props) => {
         //     return;
         // }
 
-        // //   e.preventDefault();
+        //   e.preventDefault();
 
-        // //Validacion para productos sin decimales
-        // if (billings[numberScreen].detalleArticuloActual.sinDecimal == true
-        //     && billings[numberScreen].detalleArticuloActual.Cantidad.toString().indexOf(".") > 0) {
+        //Validacion de campo numerico
+        if (isNumeric(Precio_Unit, 0.10)
+            && isNumeric(Descuento, 0)
+            && isNumeric(Cantidad, 1))
+            // && billings[numberScreen].detalleArticuloActual.idLote != 0) 
+        {
 
-        //     e.preventDefault();
+            // Se desactiva el startEditing
+            // dispatch(SetStartEditingBilling({ value: false, number: numberScreen }));
 
-        //     Swal.fire({
-        //         icon: 'error',
-        //         title: 'No se puede procesar la informacion',
-        //         text: 'El producto no permite ventas con decimales'
-        //     });
+            if (parseFloat(Descuento) <= max_Descuento) {
 
-        //     return false;
-        // } else {
+                //Agregar linea detalle
+                // props.inputRefCantidad.current.blur();
+                dispatch( startAddDetalleActualConsignment( detalleArticuloActual ));
 
-        //     //Validacion de campo numerico
-        //     if (isNumeric(billings[numberScreen].detalleArticuloActual.Precio_Unit, 0.10)
-        //         && isNumeric(billings[numberScreen].detalleArticuloActual.Descuento, 0)
-        //         && isNumeric(billings[numberScreen].detalleArticuloActual.Cantidad, 1)
-        //         && billings[numberScreen].detalleArticuloActual.idLote != 0) {
+                // if (billings[numberScreen].isEditDetalleActual) {
 
-        //         // Se desactiva el startEditing
-        //         dispatch(SetStartEditingBilling({ value: false, number: numberScreen }));
+                //     const index = parseFloat(billings[numberScreen].PosicionActual);
 
-        //         if (parseFloat(billings[numberScreen].detalleArticuloActual.Descuento) <= billings[numberScreen].detalleArticuloActual.max_Descuento) {
+                //     //Editar la linea detalle
+                //     dispatch(startEditDetalleActualBilling(
+                //         billings[numberScreen].detalleArticuloActual,
+                //         index,
+                //         numberScreen
+                //     ));
 
-        //             if (billings[numberScreen].isEditDetalleActual) {
+                // } else {
+                //     //Agregar linea detalle
+                //     props.inputRefCantidad.current.blur();
+                //     dispatch(startAddDetalleActualBilling(
+                //         billings[numberScreen].detalleArticuloActual,
+                //         numberScreen
+                //     ));
 
-        //                 const index = parseFloat(billings[numberScreen].PosicionActual);
+                // }
 
-        //                 //Editar la linea detalle
-        //                 dispatch(startEditDetalleActualBilling(
-        //                     billings[numberScreen].detalleArticuloActual,
-        //                     index,
-        //                     numberScreen
-        //                 ));
+            } else {
 
-        //             } else {
-        //                 //Agregar linea detalle
-        //                 props.inputRefCantidad.current.blur();
-        //                 dispatch(startAddDetalleActualBilling(
-        //                     billings[numberScreen].detalleArticuloActual,
-        //                     numberScreen
-        //                 ));
+                e.preventDefault();
 
-        //             }
-
-        //         } else {
-
-        //             e.preventDefault();
-
-        //             Swal.fire({
-        //                 icon: 'error',
-        //                 title: 'Producto tiene un maximo descuento de ' + billings[numberScreen].detalleArticuloActual.max_Descuento + ' %',
-        //                 text: billings[numberScreen].detalleArticuloActual.Descripcion
-        //             });
-        //         }
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Producto tiene un maximo descuento de ' + max_Descuento + ' %',
+                    text: Descripcion
+                });
+            }
 
 
-        //     } else {
+        } else {
 
-        //         e.preventDefault();
+            e.preventDefault();
 
-        //         Swal.fire({
-        //             icon: 'error',
-        //             title: 'No se puede procesar la operaccion',
-        //             text: 'Por favor verifique que los datos ingresados sean correctos'
-        //         });
+            Swal.fire({
+                icon: 'error',
+                title: 'No se puede procesar la operaccion',
+                text: 'Por favor verifique que los datos ingresados sean correctos'
+            });
 
-        //     }
+        }
 
-        // }
     }
 
     const handleInputChangeWithDispatch = ({ target }, action) => {
-        if (billings[numberScreen] === undefined || !billings[numberScreen].enableItems) return;
-        dispatch(action({ value: target.value, number: numberScreen }));
+        dispatch(action(target.value));
     };
 
     const calculateTotalsProductCurrent = (parametros) => {
+        
+        let precio = parseFloat(parametros.precioUnit);
+        let cantidad = parseFloat(parametros.cantidad);
+        let descuento = parseFloat(parametros.descuento);
+        let impuesto = ImpuestoOriginal;
 
-        // let precio = parseFloat(parametros.precioUnit);
-        // let cantidad = parseFloat(parametros.cantidad);
-        // let descuento = parseFloat(parametros.descuento);
-        // let impuesto = parseFloat(billings[numberScreen].detalleArticuloActual.ImpuestoOriginal);
+        if (isNaN(precio)) return;
 
-        // if (isNaN(precio)) return;
+        if (isNaN(cantidad)) return;
 
-        // if (isNaN(cantidad)) return;
+        if (isNaN(descuento)) return;
 
-        // if (isNaN(descuento)) return;
-
-        // if (isNaN(impuesto)) return;
+        if (isNaN(impuesto)) return;
 
 
-        // if (billings[numberScreen] === undefined) return;
+        //cuando se agrega un articulo o se cambia el precio, descuento o cantidad
+        //se calcualan los subtotales, desuentos e impuestos del producto
+        if (parseFloat(factura.encabezado.Cod_Moneda) === 2) {
+            precio = precio / dollar;
+            dispatch(SetPrecio_UnitOriginalDetalleConsignment(precio));
+        }
 
-        // //cuando se agrega un articulo o se cambia el precio, descuento o cantidad
-        // //se calcualan los subtotales, desuentos e impuestos del producto
-        // if (billings[numberScreen].detalleArticuloActual.codFxArticulo > 0) {
+        var resulDescuento = (precio * cantidad) * (descuento / 100);
+        var resulImpuesto = ((precio * cantidad) - resulDescuento) * (impuesto / 100);
 
-        //     //Diferentes precios
-        //     switch (billings[numberScreen].clienteFacturacionEdit.tipoPrecio) {
+        dispatch(SetImpuestoDetalleConsignment(impuesto));
+        dispatch(SetMonto_DescuentoDetalleConsignment( parseFloat(resulDescuento).toFixed(2)));
+        dispatch(SetMonto_ImpuestoDetalleConsignment( parseFloat(resulImpuesto).toFixed(2)));
 
-        //         case 1:
+        //SubTotal
+        dispatch(SetSubTotalDetalleConsignment( parseFloat(precio * cantidad).toFixed(2)));
 
-        //             precio = billings[numberScreen].detalleArticuloActual.precio_A;
-        //             dispatch(SetPrecio_UnitDetalleActualBilling({ value: billings[numberScreen].detalleArticuloActual.precio_A, number: numberScreen }));
-
-        //             //Aplica precio promocion.
-        //             if (billings[numberScreen].detalleArticuloActual.promo_Activa === true) {
-
-        //                 var inicio = new Date(billings[numberScreen].detalleArticuloActual.promo_Inicio);
-        //                 var final = new Date(billings[numberScreen].detalleArticuloActual.promo_Finaliza);
-        //                 var hoy = new Date();
-
-        //                 var i = new Date(inicio.getTime() - (inicio.getTimezoneOffset() * 60000)).toISOString().split('T');
-        //                 var f = new Date(final.getTime() - (final.getTimezoneOffset() * 60000)).toISOString().split('T');
-        //                 var h = new Date(hoy.getTime() - (hoy.getTimezoneOffset() * 60000)).toISOString().split('T');
-
-        //                 //   hoy >= inicio    hoy <= final
-        //                 if (h[0] >= i[0] && h[0] <= f[0]) {
-        //                     precio = billings[numberScreen].detalleArticuloActual.promo_Inicio; //cambia el precio del producto al precio promocion
-        //                     dispatch(SetPrecio_UnitDetalleActualBilling({ value: precio, number: numberScreen }));
-        //                 }
-        //             }
-        //             break;
-
-        //         case 2:
-
-        //             precio = billings[numberScreen].detalleArticuloActual.precio_B;
-
-        //             if (precio === 0) {
-        //                 precio = billings[numberScreen].detalleArticuloActual.precio_A;
-        //             }
-
-        //             dispatch(SetPrecio_UnitDetalleActualBilling({ value: precio, number: numberScreen }));
-
-        //             break;
-
-        //         case 3:
-
-        //             precio = billings[numberScreen].detalleArticuloActual.precio_C;
-
-        //             if (precio === 0) {
-        //                 precio = billings[numberScreen].detalleArticuloActual.precio_A
-        //             }
-
-        //             dispatch(SetPrecio_UnitDetalleActualBilling({ value: precio, number: numberScreen }));
-
-        //             break;
-
-        //         case 4:
-
-        //             precio = billings[numberScreen].detalleArticuloActual.precio_D;
-
-        //             if (precio === 0) {
-        //                 precio = billings[numberScreen].detalleArticuloActual.precio_A
-        //             }
-
-        //             dispatch(SetPrecio_UnitDetalleActualBilling({ value: precio, number: numberScreen }));
-
-        //             break;
-
-        //         default:
-
-        //             precio = billings[numberScreen].detalleArticuloActual.precio_A;
-        //             dispatch(SetPrecio_UnitDetalleActualBilling({ value: precio, number: numberScreen }));
-        //     };
-
-        //     if (parseFloat(billings[numberScreen].factura.encabezado.Cod_Moneda) === 2) {
-        //         precio = precio / dollar;
-        //         dispatch(SetPrecio_UnitDetalleActualBilling({ value: precio, number: numberScreen }));
-        //     }
-
-        //     //Exoneraciones y Tarifas Reducidas del IVA
-        //     if (billings[numberScreen].HasCartaExoneracionBilling == true) {
-
-        //         //comprobar si la carta esta vencida      
-        //         var vence = new Date(billings[numberScreen].cartaBilling.fechaVence);
-        //         var hoy = new Date();
-
-        //         var a = new Date(vence.getTime() - (vence.getTimezoneOffset() * 60000)).toISOString().split('T');
-        //         var b = new Date(hoy.getTime() - (hoy.getTimezoneOffset() * 60000)).toISOString().split('T');
-
-        //         if (a[0] >= b[0]) { //si no esta vencida                      
-        //             if (impuesto >= billings[numberScreen].cartaBilling.porcentajeCompra) {
-        //                 impuesto = impuesto - billings[numberScreen].cartaBilling.porcentajeCompra;
-        //             } else {
-        //                 impuesto = 0;
-        //             }
-        //         }
-
-        //     } else {
-
-        //         if (billings[numberScreen].detalleArticuloActual.Mag == true
-        //             && billings[numberScreen].factura.encabezado.mag == true) {
-        //             //Si el cliente esta inscrito en el Mag y el producto es agricola 
-        //             //Se aplica una tarifa reducida del IVA del 1%.
-        //             impuesto = 1;
-        //         }
-        //     }
-
-        //     //Si el producto es de Consignacion
-        //     if (billings[numberScreen].detalleArticuloActual.Consignacion == true) {
-
-        //         if (billings[numberScreen].detalleArticuloActual.Existencias >= cantidad) {
-
-        //             //Primero usa las existencia de la veterinaria
-        //             dispatch(SetCantVetDetalleActualBilling({ value: cantidad, number: numberScreen }));
-        //             dispatch(SetCantBodDetalleActualBilling({ value: 0, number: numberScreen }));
-
-        //         } else {
-
-        //             if (billings[numberScreen].detalleArticuloActual.Existencias > 0) {
-
-        //                 // Usa las existencias de la veterinaria y lo que falta de la bodega de consignacion
-        //                 dispatch(SetCantVetDetalleActualBilling({ value: billings[numberScreen].detalleArticuloActual.Existencias, number: numberScreen }));
-        //                 dispatch(SetCantBodDetalleActualBilling({ value: cantidad - billings[numberScreen].detalleArticuloActual.Existencias, number: numberScreen }));
-
-        //             } else {
-
-        //                 //usa solo la existencia de la bodega de consignacion
-        //                 dispatch(SetCantVetDetalleActualBilling({ value: 0, number: numberScreen }));
-        //                 dispatch(SetCantBodDetalleActualBilling({ value: cantidad, number: numberScreen }));
-        //             }
-
-        //         }
-        //     }
-
-        //     var resulDescuento = (precio * cantidad) * (descuento / 100);
-        //     var resulImpuesto = ((precio * cantidad) - resulDescuento) * (impuesto / 100);
-
-        //     dispatch(SetImpuestoDetalleActualBilling({ value: parseFloat(impuesto), number: numberScreen }));
-        //     dispatch(SetMonto_DescuentoDetalleActualBilling({ value: resulDescuento, number: numberScreen }));
-        //     dispatch(SetMonto_ImpuestoDetalleActualBilling({ value: resulImpuesto, number: numberScreen }));
-
-        //     //SubTotal
-        //     dispatch(SetSubTotalDetalleActualBilling({ value: precio * cantidad, number: numberScreen }));
-
-        //     if (impuesto > 0) {
-        //         dispatch(SetSubtotalGravadoDetalleActualBilling({ value: precio * cantidad, number: numberScreen }));
-        //         dispatch(SetSubTotalExcentoDetalleActualBilling({ value: 0, number: numberScreen }));
-        //     } else {
-        //         dispatch(SetSubtotalGravadoDetalleActualBilling({ value: 0, number: numberScreen }));
-        //         dispatch(SetSubTotalExcentoDetalleActualBilling({ value: precio * cantidad, number: numberScreen }));
-        //     }
-        // }
+        if (impuesto > 0) {
+            dispatch(SetSubtotalGravadoDetalleConsignment( parseFloat(precio * cantidad ).toFixed(2)));
+            dispatch(SetSubTotalExcentoDetalleConsignment( 0 ));
+        } else {
+            dispatch(SetSubtotalGravadoDetalleConsignment(0));
+            dispatch(SetSubTotalExcentoDetalleConsignment(parseFloat(precio * cantidad ).toFixed(2)));
+        }
+        
     }
 
-    // const msgInfoBilling = (
-    //     <Tooltip>
-    //         {
-    //             billings[numberScreen] !== undefined ? (
-    //                 billings[numberScreen].isEditDetalleActual ? (
-    //                     <>
-    //                         Puedes Editar  {" "}
-    //                         el producto con Enter en el campo de Cantidad o el botón de  {" "}
-    //                         Editar <TbEditCircle className="iconSize" />
-    //                     </>
-    //                 ) : (
-    //                     <>
-    //                         Puedes Agregar  {" "}
-    //                         el producto con Enter en el campo de Cantidad o el botón de  {" "}
-    //                         Agregar <IoAddCircle className="iconSize" />
-    //                     </>
-    //                 )
-    //             ) : (
-    //                 <>
-    //                     Puedes Agregar  {" "}
-    //                     el producto con Enter en el campo de Cantidad o el botón de  {" "}
-    //                     Agregar <IoAddCircle className="iconSize" />
-    //                 </>
-    //             )
-    //         }
-    //     </Tooltip>
-    // );
+    const msgInfoBilling = (
+        <Tooltip>
+            {
+                
+                // (
+                //     isEditDetalleActual ? (
+                //         <>
+                //             Puedes Editar  {" "}
+                //             el producto con Enter en el campo de Cantidad o el botón de  {" "}
+                //             Editar <TbEditCircle className="iconSize" />
+                //         </>
+                //     ) : (
+                //         <>
+                //             Puedes Agregar  {" "}
+                //             el producto con Enter en el campo de Cantidad o el botón de  {" "}
+                //             Agregar <IoAddCircle className="iconSize" />
+                //         </>
+                //     )
+                // ) 
+                
+                <div>
+                    Puedes Agregar  {" "}
+                    el producto con Enter en el campo de Cantidad o el botón de  {" "}
+                    Agregar <IoAddCircle className="iconSize" />
+                </div>
+                
+            }
+        </Tooltip>
+    );
 
     return (
 
@@ -647,7 +531,7 @@ export const ConsignmentItems = (props) => {
                                     min="0"
                                     placeholder='0'
                                     autoComplete="off"
-                                    ref={props.inputRefCodigo}
+                                    // ref={props.inputRefCodigo}
                                     disabled={!enableItems}
                                     value={CodArticulo}
                                     onChange={e => handleInputChangeWithDispatch(e, SetCodArticuloDetalleConsignment)}
@@ -679,8 +563,7 @@ export const ConsignmentItems = (props) => {
                                     name="Precio_Unit"
                                     type='text'
                                     autoComplete="off"
-                                    ref={props.inputRefPrecioUnit}
-                                    disabled
+                                    // ref={props.inputRefPrecioUnit}
                                     value={ new Intl.NumberFormat('es-CR', { style: 'currency', currency: 'CRC' }).format(Precio_Unit) }
                                     onKeyDown={handleClickDownPrecioUnit}
                                     onChange={e => handleChangePrecioUnit(e)}
@@ -718,7 +601,7 @@ export const ConsignmentItems = (props) => {
                                     autoComplete="off"
                                     type='number'
                                     min="0"
-                                    ref={props.inputRefDescuento}
+                                    // ref={props.inputRefDescuento}
                                     disable={enableItems}
                                     value={Descuento}
                                     onKeyDown={handleClickDownDesc}
@@ -756,7 +639,7 @@ export const ConsignmentItems = (props) => {
                                 <select
                                     name="idTipoCliente"
                                     className="form-select"
-                                    disabled={enableItems}
+                                    disabled={!enableItems}
                                     value={idLote}
                                     onChange={e => handleChangeLote(e)}
                                 >
@@ -786,8 +669,8 @@ export const ConsignmentItems = (props) => {
                                     autoComplete="off"
                                     type='number'
                                     min="0"
-                                    ref={props.inputRefCantidad}
-                                    disabled={enableItems}
+                                    // ref={props.inputRefCantidad}
+                                    disabled={!enableItems}
                                     value={Cantidad}
                                     onKeyDown={handleClickDownCantidad}
                                     onChange={e => handleChangeCantidad(e)}
@@ -798,8 +681,8 @@ export const ConsignmentItems = (props) => {
                         <div className="col-md-2 mb-3">
                             <hr />
                             <div className='inline-container'>
-                                <OverlayTrigger placement="top"> 
-                                    {/* overlay={msgInfoBilling} */}
+                                <OverlayTrigger placement="top" 
+                                    overlay={msgInfoBilling}>
                                     <button
                                         className={ (enableItems) ? 'btn btn-dark' : 'btn btn-dark disabled' }
                                     >

@@ -372,7 +372,7 @@ export const startGetOneInventoryConsignment = ( codigo, parametros ) => {
                 customClass: 'alert-class-login',
                 imageHeight: 100,
             });
-
+            
             //Call end-point 
             const resp = await suvesaApi.post('/inventario/ObtenerUnInventario', { codigo });
             const { status, responses } = resp.data;
@@ -388,13 +388,14 @@ export const startGetOneInventoryConsignment = ( codigo, parametros ) => {
                 dispatch( SetPrecio_UnitDetalleConsignment( responses.precio_A ));
                 dispatch( SetPrecio_UnitOriginalDetalleConsignment( responses.precio_A ));
                 dispatch( SetImpuestoDetalleConsignment( responses.iVenta ));
-                // dispatch( SetImpuestoOriginalDetalleActualBilling( responses.iVenta,)); 
+                dispatch( SetImpuestoOriginalDetalleConsignment( responses.iVenta,)); 
                 dispatch( SetExistenciasDetalleConsignment( responses.existencia ));
                 dispatch( Setprecio_ADetalleConsignment( responses.precio_A ));
                 dispatch( Setprecio_BDetalleConsignment( responses.precio_B ));
                 dispatch( Setprecio_CDetalleConsignment( responses.precio_C ));
                 dispatch( Setprecio_DDetalleConsignment( responses.precio_D ));
                 dispatch( Setprecio_PromoDetalleConsignment( responses.precio_Promo ));
+                dispatch( Setmax_DescuentoDetalleConsignment( responses.max_Descuento ));
                 dispatch( SetcodFxArticuloDetalleConsignment( responses.codigo ));
 
                 // Se calculan los totales de producto
@@ -440,6 +441,41 @@ export const startGetOneInventoryConsignment = ( codigo, parametros ) => {
                 });
             }
         }
+    }
+}
+
+export const startAddDetalleActualConsignment = ( detalle ) => {
+
+    return async (dispatch) => {
+
+        //Mostrar un mensaje de confirmacion
+        Swal.fire({
+            title: '¿Desea agregar este artículo a la factura?',
+            showDenyButton: true,
+            showCancelButton: false,
+            confirmButtonText: 'Agregar',
+            denyButtonText: `Cancelar`,
+            allowEnterKey: false
+        }).then(async (result) => {
+
+            if (result.isConfirmed) {
+
+                // dispatch( SetautoFocusCodigoBilling( { value: true, number } ));
+
+                // dispatch( SetChangeDetalleBilling( { value: true, number } ));
+                dispatch( SetAddDetalleConsignment( detalle ));
+                dispatch( CleanDetalleActualConsignment());
+
+                // dispatch( SetLotesByArticuloBilling({ value: [], number }) );
+
+                // dispatch( SetautoFocusPrecioUnitBilling( { value: false, number } ));
+                // dispatch( SetautoFocusDescBilling( { value: false, number } ));
+                // dispatch( SetautoFocusCantidadBilling( { value: false, number } ));
+                // dispatch( SetautoFocusCodigoBilling( { value: true, number } ));
+
+            }
+
+        });
     }
 }
 
@@ -786,8 +822,18 @@ export const Setprecio_PromoDetalleConsignment = (value) => ({
     payload: value
 })
 
+export const Setmax_DescuentoDetalleConsignment = (value) => ({
+    type: types.Setmax_DescuentoDetalleConsignment,
+    payload: value
+})
+
 export const SetPrecio_UnitOriginalDetalleConsignment = (value) => ({
     type: types.SetPrecio_UnitOriginalDetalleConsignment,
+    payload: value
+})
+
+export const SetImpuestoOriginalDetalleConsignment = (value) => ({
+    type: types.SetImpuestoOriginalDetalleConsignment,
     payload: value
 })
 
@@ -888,4 +934,13 @@ export const SetOpenAddCustomerConsignment = (value) => ({
 export const SetOpenSearchInventoryConsignment = (value) => ({
     type: types.SetOpenSearchInventoryConsignment,
     payload: value
+})
+
+export const SetAddDetalleConsignment = (value) => ({
+    type: types.SetAddDetalleConsignment,
+    payload: value
+})
+
+export const CleanDetalleActualConsignment = () => ({
+    type: types.CleanDetalleActualConsignment
 })

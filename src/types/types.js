@@ -2259,9 +2259,13 @@ export const types = {
   Setprecio_CDetalleConsignment: '[Consignacion] Setprecio_CDetalleConsignment',
   Setprecio_DDetalleConsignment: '[Consignacion] Setprecio_DDetalleConsignment',
   Setprecio_PromoDetalleConsignment: '[Consignacion] Setprecio_PromoDetalleConsignment',
+  Setmax_DescuentoDetalleConsignment: '[Consignacion] Setmax_DescuentoDetalleConsignment',
   SetPrecio_UnitOriginalDetalleConsignment: '[Consignacion] SetPrecio_UnitOriginalDetalleConsignment',
+  SetImpuestoOriginalDetalleConsignment: '[Consignacion] SetImpuestoOriginalDetalleConsignment',
   SetidLoteDetalleConsignment: '[Consignacion] SetidLoteDetalleConsignment',
   SetnombreLoteDetalleConsignment: '[Consignacion] SetnombreLoteDetalleConsignment',
+  SetAddDetalleConsignment : '[Consignacion] SetAddDetalleConsignment',
+  CleanDetalleActualConsignment : '[Consignacion] CleanDetalleActualConsignment',
 
   SethasCustomerBillingConsignment: '[Consignacion] SethasCustomerBillingConsignment',
   SetenableItemsConsignment: '[Consignacion] SetenableItemsConsignment',

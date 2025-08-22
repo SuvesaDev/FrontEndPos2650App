@@ -42,10 +42,10 @@ export const ConsignmentPage = () => {
                             <div className="col-md-9 mb-3">
                                 <div className='billing_items'>
                                     <ConsignmentItems
-                                        inputRefPrecioUnit={textInputPrecioUnit}
-                                        inputRefDescuento={textInputDescuento}
-                                        inputRefCantidad={textInputCantidad}
-                                        inputRefCodigo={textInputCodigo}
+                                        // inputRefPrecioUnit={textInputPrecioUnit}
+                                        // inputRefDescuento={textInputDescuento}
+                                        // inputRefCantidad={textInputCantidad}
+                                        // inputRefCodigo={textInputCodigo}
                                     />
                                 </div>
 
