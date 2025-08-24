@@ -2287,5 +2287,7 @@ export const types = {
   SetemailAddConsignment: '[Consignacion] SetemailAddConsignment',
   SetdireccionAddConsignment: '[Consignacion] SetdireccionAddConsignment',
   CleanAddCustomerConsignment: '[Consignacion] CleanAddCustomerConsignment',
+
+  SetLotesByArticuloConsignment: '[Consignacion] SetLotesByArticuloConsignment',
   
 }

@@ -406,8 +406,7 @@ export const startGetOneInventoryConsignment = ( codigo, parametros ) => {
                 // dispatch( SetautoFocusCantidadBilling( { value: false, number }));
                 // dispatch( SetautoFocusCodigoBilling( { value: false, number }));
 
-                //TODO: Cargar los lotes del articulo
-                // dispatch(startGetLotesByArticle( codigo, number));
+                dispatch(startGetLotesByArticleConsignment( codigo ));
 
             } else {
 
@@ -442,6 +441,103 @@ export const startGetOneInventoryConsignment = ( codigo, parametros ) => {
             }
         }
     }
+}
+
+export const startGetLotesByArticleConsignment = (codigoPrincipal, activeLoading = false) => {
+
+    return async ( dispatch ) => {
+    
+        try {
+            
+            if( activeLoading ) {
+                //Mostrar el loading
+                Swal.fire({
+                    title: 'Por favor, espere',
+                    allowEscapeKey: false,
+                    allowOutsideClick: false,
+                    showConfirmButton: false,
+                    imageUrl: loadingImage,
+                    customClass: 'alert-class-login',
+                    imageHeight: 100,
+                });
+            }
+                        
+            //Call end-point 
+            const { data } = await suvesaApi.get(`/StockLote/getStockLotesArticulo?Request=${codigoPrincipal}`);
+            const { status, responses } = data;
+            
+            if( activeLoading ) {
+                //Quitar el loading
+                Swal.close();
+            }
+
+            dispatch( SetLotesByArticuloConsignment([]) );
+
+            if( status === 0) {
+                
+                const lotes = responses.map( lot => {
+                    return {
+                        id: lot.id,
+                        lote: lot.lote,
+                        vencimiento: lot.vencimiento.split('T')[0],
+                        existencia: lot.cantidad
+                    }
+                });
+                
+                const loteProximoVencer = obtenerLoteProximoVencer(lotes);
+
+                if( loteProximoVencer != null ) {
+                    dispatch( SetLotesByArticuloConsignment( lotes ) );
+                    dispatch( SetidLoteDetalleConsignment( loteProximoVencer.id ) );
+                    dispatch( SetnombreLoteDetalleConsignment( loteProximoVencer.lote ) );
+                }                
+
+            } else {
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
+
+                if( currentException === "No tiene lotes" ) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Lotes',
+                        text: 'Este producto no tiene lotes registrados.'
+                    });
+
+                    dispatch( SetLotesByArticuloConsignment([]) );
+
+                    return;
+                }
+                
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
+                
+            }
+            
+        } catch (error) {
+            
+            Swal.close();
+            console.log(error);
+            if( error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al obtener el stock del lote',
+                });
+            }
+        }
+
+    }
+
 }
 
 export const startAddDetalleActualConsignment = ( detalle ) => {
@@ -554,6 +650,33 @@ const calculateTotalsProductCurrent = ( detalleArticuloActual, parametros, dispa
             dispatch( SetSubTotalExcentoDetalleConsignment( parseFloat(precio * cantidad).toFixed(2) ));
         }
     }
+}
+
+const obtenerLoteProximoVencer = (lotes) => {
+
+    const fechas = lotes.map( lot => {
+        return lot.vencimiento.split('T')[0]
+    });
+
+    const hoy = new Date();
+    
+    const futuras = fechas
+        .map(fecha => new Date(fecha))
+        .filter(fecha => fecha >= hoy);
+
+    if( futuras.length == 0 ) {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Advertencia',
+            text: 'No existen lotes activos para este articulo'
+        });
+
+        return null;
+    }
+    
+    const fechaProximaVencer = futuras.length > 0 ? futuras.reduce((a, b) => a < b ? a : b).toISOString().split('T')[0] : null;
+
+    return lotes.find( lot => lot.vencimiento == fechaProximaVencer);
 }
 
 // Normal Actions
@@ -943,4 +1066,9 @@ export const SetAddDetalleConsignment = (value) => ({
 
 export const CleanDetalleActualConsignment = () => ({
     type: types.CleanDetalleActualConsignment
+})
+
+export const SetLotesByArticuloConsignment = (value) => ({
+    type: types.SetLotesByArticuloConsignment,
+    payload: value
 })

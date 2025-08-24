@@ -13,6 +13,7 @@ const initialState = {
     openSearchCustomerConsignment: false,
     openAddCustomerConsignment: false,
     isOpenModalSearchArticuloConsignment: false,
+    lotesByArticulo: [],
     usuarioFacturacion: {
         id: 0,
         claveInterna: ''
@@ -881,6 +882,12 @@ export const consignmentReducer = (state = initialState, action) => {
                     idLote: 0,
                     nombreLote: ''
                 },
+            }
+
+        case types.SetLotesByArticuloConsignment:
+            return {
+                ...state,
+                lotesByArticulo: action.payload
             }
         
         case types.CleanStateBancosBank:

@@ -20,9 +20,11 @@ import {
     SetCantidadDetalleConsignment,
     SetCodArticuloDetalleConsignment, 
     SetDescuentoDetalleConsignment, 
+    SetidLoteDetalleConsignment, 
     SetImpuestoDetalleConsignment, 
     SetMonto_DescuentoDetalleConsignment, 
     SetMonto_ImpuestoDetalleConsignment, 
+    SetnombreLoteDetalleConsignment, 
     SetOpenSearchInventoryConsignment,
     SetPrecio_UnitDetalleConsignment,
     SetPrecio_UnitOriginalDetalleConsignment,
@@ -44,7 +46,8 @@ export const ConsignmentItems = () => {
     const { 
         enableItems,
         detalleArticuloActual,
-        factura
+        factura,
+        lotesByArticulo
     } = useSelector(state => state.consignment);
 
     const { 
@@ -57,7 +60,7 @@ export const ConsignmentItems = () => {
         idLote,
         Cantidad,
         ImpuestoOriginal,
-        max_Descuento
+        max_Descuento,
     } = detalleArticuloActual;
 
     const columns = useMemo(
@@ -168,13 +171,13 @@ export const ConsignmentItems = () => {
 
     const handleChangeLote = ({ target }) => {
         
-        // if (!enableItems) return;
+        if (!enableItems) return;
 
-        // const idLote = target.value;
-        // const loteSeleted = billings[numberScreen].lotesByArticulo.find( lot => lot.id == idLote );
+        const idLote = target.value;
+        const loteSeleted = lotesByArticulo.find( lot => lot.id == idLote );
 
-        // dispatch( SetIdLoteDetalleActualBilling({ value: idLote, number: numberScreen }));
-        // dispatch( SetNombreLoteDetalleActualBilling({ value: loteSeleted.lote, number: numberScreen }) );
+        dispatch( SetidLoteDetalleConsignment(idLote ));
+        dispatch( SetnombreLoteDetalleConsignment(loteSeleted.lote ) );
     }
 
     const handleClickDownPrecioUnit = (e) => {
@@ -352,24 +355,24 @@ export const ConsignmentItems = () => {
         
         if (!enableItems) return;
         
-        // if( billings[numberScreen].lotesByArticulo.length == 0 ) {
+        if( lotesByArticulo.length == 0 ) {
             
-        //     Swal.fire({
-        //         icon: 'error',
-        //         title: 'No se puede procesar la informacion',
-        //         text: 'El producto no tiene lotes'
-        //     });
+            Swal.fire({
+                icon: 'error',
+                title: 'No se puede procesar la informacion',
+                text: 'El producto no tiene lotes'
+            });
 
-        //     return;
-        // }
+            return;
+        }
 
         //   e.preventDefault();
 
         //Validacion de campo numerico
         if (isNumeric(Precio_Unit, 0.10)
             && isNumeric(Descuento, 0)
-            && isNumeric(Cantidad, 1))
-            // && billings[numberScreen].detalleArticuloActual.idLote != 0) 
+            && isNumeric(Cantidad, 1)
+            && idLote != 0) 
         {
 
             // Se desactiva el startEditing
@@ -644,15 +647,13 @@ export const ConsignmentItems = () => {
                                     onChange={e => handleChangeLote(e)}
                                 >
                                     <option value={0} selected disabled hidden> Seleccione... </option>
-                                    {/* {
-                                        (billings[numberScreen] !== undefined)
-                                            ?   (billings[numberScreen].lotesByArticulo != [])
-                                                    ?   billings[numberScreen].lotesByArticulo.map(lote => {
-                                                            return <option key={lote.id} value={lote.id}> {lote.lote} - {lote.vencimiento} - {lote.existencia} </option>
-                                                        })
-                                                    :   <option value=''></option>
-                                            :   <option value=''></option>
-                                    } */}
+                                    {
+                                        (lotesByArticulo != [])
+                                        ?   lotesByArticulo.map(lote => {
+                                                return <option key={lote.id} value={lote.id}> {lote.lote} - {lote.vencimiento} - {lote.existencia} </option>
+                                            })
+                                        :   <option value=''></option>
+                                    }
                                 </select>
                             </div>
                         </div>
