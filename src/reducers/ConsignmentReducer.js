@@ -14,6 +14,7 @@ const initialState = {
     openAddCustomerConsignment: false,
     isOpenModalSearchArticuloConsignment: false,
     lotesByArticulo: [],
+    plazos: [],
     usuarioFacturacion: {
         id: 0,
         claveInterna: ''
@@ -44,6 +45,7 @@ const initialState = {
             correoComprobantes: '',
             Cod_Moneda: '',
             Orden: '0',
+            plazo: 0,
             SubTotalGravada: 0,
             SubTotalExento: 0,
             SubTotal: 0,
@@ -300,6 +302,18 @@ export const consignmentReducer = (state = initialState, action) => {
                     encabezado: {
                         ...state.factura.encabezado,
                         Orden: action.payload
+                    }
+                }
+            }
+
+        case types.SetPlazoConsignment:
+            return {
+                ...state,
+                factura: {
+                    ...state.factura,
+                    encabezado: {
+                        ...state.factura.encabezado,
+                        plazo: action.payload
                     }
                 }
             }
@@ -888,6 +902,12 @@ export const consignmentReducer = (state = initialState, action) => {
             return {
                 ...state,
                 lotesByArticulo: action.payload
+            }
+
+        case types.SetPlazosConsignment:
+            return {
+                ...state,
+                plazos: action.payload
             }
         
         case types.CleanStateBancosBank:

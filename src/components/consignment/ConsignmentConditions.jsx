@@ -5,7 +5,8 @@ import { FaCoins, FaRightLong } from 'react-icons/fa6';
 import { 
   SetCod_MonedaConsignment, 
   SetenableItemsConsignment, 
-  SetOrdenConsignment 
+  SetOrdenConsignment, 
+  SetPlazoConsignment
 } from '../../actions/ConsignmentAction';
 
 export const ConsignmentConditions = () => {
@@ -17,12 +18,13 @@ export const ConsignmentConditions = () => {
   const { 
     disableInputsHeader,
     hasCustomerBilling,
-    factura
+    factura,
+    plazos
   } = useSelector(state => state.consignment);
 
   const { 
     Cod_Moneda,
-    Orden
+    plazo
   } = factura.encabezado;
 
   const handleInputChangeWithDispatch = ({ target }, action) => {
@@ -77,19 +79,27 @@ export const ConsignmentConditions = () => {
             </div>
 
             <div className="col-md-6 mb-3">
-              <h5>Orden de Compra</h5>
+              <h5>Plazo</h5>
               <div className="input-group">
                 <span className="input-group-text">
-                  <FaRightLong className="iconSize" />
+                  <FaCoins className="iconSize" />
                 </span>
-                <input
-                  type="text"
-                  name='Orden'
-                  className='form-control'
+                <select
+                  name="plazo"
+                  className="form-select"
                   disabled={disableInputsHeader}
-                  value={Orden}
-                  onChange={e => handleInputChangeWithDispatch(e, SetOrdenConsignment)}
-                />
+                  value={plazo}
+                  onChange={e => handleInputChangeWithDispatch(e, SetPlazoConsignment)}
+                >
+                  <option value={0} selected disabled hidden> Seleccione... </option>
+                  {
+                    (plazos != null && plazos.length > 0)
+                      ? plazos.map(plazo => {
+                          return <option key={plazo.idPlazo} value={plazo.idPlazo}> {plazo.descripcion} </option>
+                        })
+                      : <option value=''>No Plazos</option>
+                  }
+                </select>
               </div>
               
             </div>

@@ -575,6 +575,58 @@ export const startAddDetalleActualConsignment = ( detalle ) => {
     }
 }
 
+export const startGetAllPlazosConsignment = () => {
+
+    return async ( dispatch ) => {
+    
+        try {
+            
+            //Call end-point 
+            const { data } = await suvesaApi.get(`/ConfiguracionPlazo/getPlazos`);
+            const { status, responses } = data;
+            
+            if( status === 0) {
+
+                console.log(responses);
+                
+                dispatch( SetPlazosConsignment(responses));
+
+            } else {
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
+
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
+                
+            }
+            
+        } catch (error) {
+            
+            Swal.close();
+            console.log(error);
+            if( error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al obtener el stock del lote',
+                });
+            }
+        }
+
+    }
+
+}
+
 // Private methods
 const loadCatalogos = async ( dispatch, catalogos ) => {
     
@@ -607,6 +659,11 @@ const loadCatalogos = async ( dispatch, catalogos ) => {
     // Se obtiene las monedas
     if( catalogos.monedas === null ) {
         await dispatch( startGetAllMonedas() );
+    }
+
+    // Se obtiene las monedas
+    if( catalogos.plazos.length === 0 ) {
+        await dispatch( startGetAllPlazosConsignment() );
     }
 
     //Quitar el loading
@@ -772,6 +829,11 @@ export const SetCod_MonedaConsignment = (value) => ({
 
 export const SetOrdenConsignment = (value) => ({
     type: types.SetOrdenConsignment,
+    payload: value
+})
+
+export const SetPlazoConsignment = (value) => ({
+    type: types.SetPlazoConsignment,
     payload: value
 })
 
@@ -1070,5 +1132,10 @@ export const CleanDetalleActualConsignment = () => ({
 
 export const SetLotesByArticuloConsignment = (value) => ({
     type: types.SetLotesByArticuloConsignment,
+    payload: value
+})
+
+export const SetPlazosConsignment = (value) => ({
+    type: types.SetPlazosConsignment,
     payload: value
 })

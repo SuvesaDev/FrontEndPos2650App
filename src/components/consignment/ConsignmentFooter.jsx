@@ -41,7 +41,8 @@ export const ConsignmentFooter = () => {
         visiblePassword,
         disableInputsUser,
         usuarioFacturacion,
-        factura
+        factura,
+        plazos
     } = useSelector(state => state.consignment);
 
     const { claveInterna } = usuarioFacturacion;
@@ -385,7 +386,8 @@ export const ConsignmentFooter = () => {
                 tiposFacturas: allTiposFacturas,
                 tiposIdentificacion,
                 surcursales,
-                monedas: monedasInventory
+                monedas: monedasInventory,
+                plazos
             }
 
             dispatch( startValidateClaveInternaConsignment(claveInterna, catalogos));

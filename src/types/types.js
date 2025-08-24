@@ -2224,6 +2224,7 @@ export const types = {
   SetcorreoComprobantesConsignment: '[Consignacion] SetcorreoComprobantesConsignment',
   SetCod_MonedaConsignment: '[Consignacion] SetCod_MonedaConsignment',
   SetOrdenConsignment: '[Consignacion] SetOrdenConsignment',
+  SetPlazoConsignment: '[Consignacion] SetPlazoConsignment',
   SetSubTotalGravadaConsignment: '[Consignacion] SetSubTotalGravadaConsignment',
   SetSubTotalExentoConsignment: '[Consignacion] SetSubTotalExentoConsignment',
   SetSubTotalConsignment: '[Consignacion] SetSubTotalConsignment',
@@ -2289,5 +2290,6 @@ export const types = {
   CleanAddCustomerConsignment: '[Consignacion] CleanAddCustomerConsignment',
 
   SetLotesByArticuloConsignment: '[Consignacion] SetLotesByArticuloConsignment',
+  SetPlazosConsignment: '[Consignacion] SetPlazosConsignment',
   
 }
