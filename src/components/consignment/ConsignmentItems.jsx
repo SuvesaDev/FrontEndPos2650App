@@ -32,6 +32,7 @@ import {
     SetSubTotalExcentoDetalleConsignment,
     SetSubtotalGravadoDetalleConsignment,
     startAddDetalleActualConsignment,
+    startEditDetalleActualConsignment,
     startGetOneInventoryConsignment
 } from '../../actions/ConsignmentAction';
 
@@ -47,7 +48,9 @@ export const ConsignmentItems = () => {
         enableItems,
         detalleArticuloActual,
         factura,
-        lotesByArticulo
+        lotesByArticulo,
+        isEditDetalle,
+        posicionActual
     } = useSelector(state => state.consignment);
 
     const { 
@@ -375,35 +378,22 @@ export const ConsignmentItems = () => {
             && idLote != 0) 
         {
 
-            // Se desactiva el startEditing
-            // dispatch(SetStartEditingBilling({ value: false, number: numberScreen }));
-
             if (parseFloat(Descuento) <= max_Descuento) {
 
-                //Agregar linea detalle
-                // props.inputRefCantidad.current.blur();
-                dispatch( startAddDetalleActualConsignment( detalleArticuloActual ));
+                if (isEditDetalle) {
 
-                // if (billings[numberScreen].isEditDetalleActual) {
+                    const index = parseFloat(posicionActual);
 
-                //     const index = parseFloat(billings[numberScreen].PosicionActual);
+                    //Editar la linea detalle
+                    dispatch(startEditDetalleActualConsignment(
+                        detalleArticuloActual,
+                        index
+                    ));
 
-                //     //Editar la linea detalle
-                //     dispatch(startEditDetalleActualBilling(
-                //         billings[numberScreen].detalleArticuloActual,
-                //         index,
-                //         numberScreen
-                //     ));
-
-                // } else {
-                //     //Agregar linea detalle
-                //     props.inputRefCantidad.current.blur();
-                //     dispatch(startAddDetalleActualBilling(
-                //         billings[numberScreen].detalleArticuloActual,
-                //         numberScreen
-                //     ));
-
-                // }
+                } else {
+                    //Agregar linea detalle
+                    dispatch( startAddDetalleActualConsignment( detalleArticuloActual ));
+                }
 
             } else {
 
@@ -692,37 +682,25 @@ export const ConsignmentItems = () => {
                                 </OverlayTrigger>
 
                                 <button
-                                    className='btn btn-success'
-                                    // className={
-                                    //     (billings[numberScreen] !== undefined)
-                                    //         ? (billings[numberScreen].isEditDetalleActual)
-                                    //             ? 'btn btn-warning'
-                                    //             : 'btn btn-success'
-                                    //         : 'btn btn-success'
-                                    // }
+                                    className={
+                                        (isEditDetalle)
+                                            ? 'btn btn-warning'
+                                            : 'btn btn-success'
+                                    }
                                     onClick={handleClickAddProducto}
                                     disabled={!enableItems}
                                 >
-                                    <>
-                                        Agregar <IoAddCircle className="iconSize" />
-                                    </>
-                                    {/* {
-                                        billings[numberScreen] !== undefined ? (
-                                            billings[numberScreen].isEditDetalleActual ? (
-                                                <>
-                                                    Editar <TbEditCircle className="iconSize" />
-                                                </>
-                                            ) : (
-                                                <>
-                                                    Agregar <IoAddCircle className="iconSize" />
-                                                </>
-                                            )
+                                    {
+                                        isEditDetalle ? (
+                                            <>
+                                                Editar <TbEditCircle className="iconSize" />
+                                            </>
                                         ) : (
                                             <>
                                                 Agregar <IoAddCircle className="iconSize" />
                                             </>
                                         )
-                                    } */}
+                                    }
                                 </button>
                             </div>
                         </div>

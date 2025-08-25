@@ -38,24 +38,21 @@ export const ConsignmentPage = () => {
 
                         <hr />
 
-                        <div className="row mb-2 text-center" >
-                            <div className="col-md-9 mb-3">
-                                <div className='billing_items'>
-                                    <ConsignmentItems
-                                        // inputRefPrecioUnit={textInputPrecioUnit}
-                                        // inputRefDescuento={textInputDescuento}
-                                        // inputRefCantidad={textInputCantidad}
-                                        // inputRefCodigo={textInputCodigo}
-                                    />
-                                </div>
-
+                        <div className="col-md-12 mb-3 text-center">
+                            <div className='billing_items'>
+                                <ConsignmentItems
+                                    // inputRefPrecioUnit={textInputPrecioUnit}
+                                    // inputRefDescuento={textInputDescuento}
+                                    // inputRefCantidad={textInputCantidad}
+                                    // inputRefCodigo={textInputCodigo}
+                                />
                             </div>
+
+                        </div>
             
-                            <div className="col-md-3 mb-1">
-                                <ConsignmentTotals />
-                            </div>
-
-                        </div>                       
+                        <div className="col-md-4 ms-auto mb-1 text-center">
+                            <ConsignmentTotals />
+                        </div>
 
                     </div>
 

@@ -15,6 +15,8 @@ const initialState = {
     isOpenModalSearchArticuloConsignment: false,
     lotesByArticulo: [],
     plazos: [],
+    isEditDetalle: false,
+    posicionActual: 0,
     usuarioFacturacion: {
         id: 0,
         claveInterna: ''
@@ -975,6 +977,37 @@ export const consignmentReducer = (state = initialState, action) => {
                     Precio_UnitOriginal: 0.00,
                     idLote: 0,
                     nombreLote: ''
+                }
+            }
+
+        case types.SetIsEditDetalleConsignment:
+            return {
+                ...state,
+                isEditDetalle: action.payload
+            }
+
+        case types.SetAddDetalleActualConsignment:
+            return {
+                ...state,
+                detalleArticuloActual: action.payload
+            }
+
+        case types.SetPosicionActualConsignment:
+            return {
+                ...state,
+                posicionActual: action.payload
+            }
+
+        case types.SetEditDetalleConsignment:
+            return {
+                ...state,
+                factura: {
+                    ...state.factura,
+                    detalle: state.factura.detalle.map(
+                        (linea, i) => i === action.payload.index
+                            ? action.payload.detalle
+                            : linea
+                    )
                 }
             }
 

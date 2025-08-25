@@ -2,32 +2,17 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useTable } from "react-table";
 
-import {
-    SetAddDetalleActualBilling,
-    SetautoFocusCantidadBilling,
-    SetautoFocusDescBilling,
-    SetautoFocusPrecioUnitBilling,
-    SetIsEditDetalleActualBilling,
-    startDeleteDetalleActualBilling,
-    SetPosicionActual,
-    startDeleteLineDetalleBilling,
-    SetSubTotalBilling,
-    SetSubTotalGravadaBilling,
-    SetSubTotalExentoBilling,
-    SetDescuentoBilling,
-    SetImp_VentaBilling,
-    SetTotalBilling,
-    SetAplicaDescuento,
-    startGetLotesByArticle
-} from '../../actions/billing';
-
 import { 
+    SetAddDetalleActualConsignment,
     SetDescuentoConsignment,
     SetImp_VentaConsignment,
+    SetIsEditDetalleConsignment,
+    SetPosicionActualConsignment,
     SetSubTotalConsignment, 
     SetSubTotalExentoConsignment, 
     SetSubTotalGravadaConsignment,
-    SetTotalConsignment
+    SetTotalConsignment,
+    startGetLotesByArticleConsignment
 } from '../../actions/ConsignmentAction';
 
 
@@ -35,7 +20,11 @@ export const ConsignmentItemsTable = ({ columns, data }) => {
 
     const dispatch = useDispatch();
 
-    const { billings } = useSelector(state => state.billing);
+    const { 
+        enableItems,
+        detalleArticuloActual,
+        factura,
+    } = useSelector(state => state.consignment);
 
     const {
         getTableProps,
@@ -83,30 +72,26 @@ export const ConsignmentItemsTable = ({ columns, data }) => {
     }
 
     const handleSelectedRow = async (cell) => {
-
-        // if (billings[numberScreen] === undefined || !billings[numberScreen].enableItems) return;
         
-        // //Obtener el CodArticulo de articulo seleccionado
-        // const { CodArticulo, codFxArticulo } = cell.row.original;
+        if (!enableItems) return;
         
-        // if (CodArticulo !== null) {
+        //Obtener el CodArticulo de articulo seleccionado
+        const { CodArticulo, codFxArticulo } = cell.row.original;
+        
+        if (CodArticulo !== null) {
 
-        //     const detalleActual = billings[numberScreen].factura.detalle[cell.row.id];
+            const detalleActual = factura.detalle[cell.row.id];
 
-        //     dispatch(SetautoFocusPrecioUnitBilling({ value: true, number: numberScreen }));
-        //     dispatch(SetautoFocusDescBilling({ value: false, number: numberScreen }));
-        //     dispatch(SetautoFocusCantidadBilling({ value: false, number: numberScreen }));
+            //Agregarlo al detalle Actual
+            dispatch(SetPosicionActualConsignment( cell.row.id ));
+            dispatch(SetAddDetalleActualConsignment( detalleActual ));
 
-        //     //Agregarlo al detalle Actual
-        //     dispatch(SetPosicionActual({ value: cell.row.id, number: numberScreen }));
-        //     dispatch(SetAddDetalleActualBilling({ value: detalleActual, number: numberScreen }));
+            dispatch( SetIsEditDetalleConsignment(true) );
 
-        //     dispatch(SetIsEditDetalleActualBilling({ value: true, number: numberScreen }));
+            // Se vuelven a traer los lotes
+            dispatch( startGetLotesByArticleConsignment( codFxArticulo, true) );
 
-        //     // Se vuelven a traer los lotes
-        //     dispatch(startGetLotesByArticle( codFxArticulo, numberScreen, true));
-
-        // }
+        }
 
     }
 

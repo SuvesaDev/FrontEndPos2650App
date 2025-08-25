@@ -744,6 +744,49 @@ export const startSaveConsignment = ( factura, datosCliente, idSucursalOF) => {
     };
 }
 
+export const startEditDetalleActualConsignment = (detalle, index ) => {
+
+    return async (dispatch) => {
+
+        try {
+
+            //Mostrar un mensaje de confirmacion
+            Swal.fire({
+                title: '¿Desea editar este artículo a la factura?',
+                showDenyButton: true,
+                showCancelButton: false,
+                confirmButtonText: 'Editar',
+                denyButtonText: `Cancelar`,
+                allowEnterKey: false
+            }).then(async (result) => {
+
+                if (result.isConfirmed) {
+
+                    // dispatch( SetautoFocusCantidadBilling( { value: false, number } ));
+                    // dispatch( SetautoFocusCodigoBilling( { value: true, number } ));
+
+                    dispatch( SetIsEditDetalleConsignment(false) );
+                    // dispatch( SetChangeDetalleBilling( { value: true, number } ));
+                    dispatch( SetEditDetalleConsignment({ detalle, index }));
+                    dispatch( CleanDetalleActualConsignment() );
+
+                }
+
+            });
+
+        } catch (error) {
+
+            console.log(error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Ocurrio un problema al buscar un cliente',
+            });
+        }
+
+    }
+}
+
 // Private methods
 const loadCatalogos = async ( dispatch, catalogos ) => {
     
@@ -1264,4 +1307,24 @@ export const SetPlazosConsignment = (value) => ({
 
 export const CleanFacturaConsignment = () => ({
     type: types.CleanFacturaConsignment
+})
+
+export const SetIsEditDetalleConsignment = (value) => ({
+    type: types.SetIsEditDetalleConsignment,
+    payload: value
+})
+
+export const SetAddDetalleActualConsignment = (value) => ({
+    type: types.SetAddDetalleActualConsignment,
+    payload: value
+})
+
+export const SetPosicionActualConsignment = (value) => ({
+    type: types.SetPosicionActualConsignment,
+    payload: value
+})
+
+export const SetEditDetalleConsignment = (value) => ({
+    type: types.SetEditDetalleConsignment,
+    payload: value
 })
