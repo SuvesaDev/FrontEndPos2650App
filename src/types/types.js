@@ -2296,5 +2296,6 @@ export const types = {
   SetAddDetalleActualConsignment: '[Consignacion] SetAddDetalleActualConsignment',
   SetPosicionActualConsignment: '[Consignacion] SetPosicionActualConsignment',
   SetEditDetalleConsignment: '[Consignacion] SetEditDetalleConsignment',
+  SetDeleteDetalleConsignment: '[Consignacion] SetDeleteDetalleConsignment',
   
 }

@@ -1011,6 +1011,15 @@ export const consignmentReducer = (state = initialState, action) => {
                 }
             }
 
+        case types.SetDeleteDetalleConsignment:
+            return {
+                ...state,
+                factura: {
+                    ...state.factura,
+                    detalle: state.factura.detalle.filter(linea => linea != action.payload)
+                }
+            }
+
         default:
             return state;
     }

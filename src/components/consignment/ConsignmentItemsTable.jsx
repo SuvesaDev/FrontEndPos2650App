@@ -12,6 +12,7 @@ import {
     SetSubTotalExentoConsignment, 
     SetSubTotalGravadaConsignment,
     SetTotalConsignment,
+    startDeleteDetalleActualConsignment,
     startGetLotesByArticleConsignment
 } from '../../actions/ConsignmentAction';
 
@@ -97,32 +98,26 @@ export const ConsignmentItemsTable = ({ columns, data }) => {
 
     const handleDeleteRow = (cell) => {
 
-        // if (billings[numberScreen] === undefined || !billings[numberScreen].enableItems) return;
+        if (!enableItems) return;
 
-        // //Obtener el CodArticulo de articulo seleccionado
-        // const { CodArticulo } = cell.row.values;
+        //Obtener el CodArticulo de articulo seleccionado
+        const { CodArticulo } = cell.row.values;
 
-        // const deleteLine = billings[numberScreen].factura.detalle[cell.row.id];
+        const deleteLine = factura.detalle[cell.row.id];
 
-        // if (CodArticulo !== null) {
+        if (CodArticulo !== null) {
 
-        //     if (deleteLine.idVentaDetalle !== undefined) {
+            if (deleteLine.idVentaDetalle !== undefined) {
 
-        //         // Se elimina la linea junto API
-        //         dispatch(startDeleteLineDetalleBilling(
-        //             deleteLine,
-        //             numberScreen
-        //         ));
+                // Se elimina la linea junto API
+                // dispatch(startDeleteLineDetalleBilling( deleteLine ));
 
-        //     } else {
+            } else {
 
-        //         // Se elimina la linea solo el estado
-        //         dispatch(startDeleteDetalleActualBilling(
-        //             deleteLine,
-        //             numberScreen
-        //         ));
-        //     }
-        // }
+                // Se elimina la linea solo el estado
+                dispatch(startDeleteDetalleActualConsignment( deleteLine ));
+            }
+        }
     }
 
     return (

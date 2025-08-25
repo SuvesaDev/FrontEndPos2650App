@@ -787,6 +787,28 @@ export const startEditDetalleActualConsignment = (detalle, index ) => {
     }
 }
 
+export const startDeleteDetalleActualConsignment = ( deleteLinea ) => {
+
+    return async (dispatch) => {
+
+        //Mostrar un mensaje de confirmacion
+        Swal.fire({
+            title: `¿Desea eliminar el artículo ${deleteLinea.Descripcion} a la factura?`,
+            showDenyButton: true,
+            showCancelButton: false,
+            confirmButtonText: 'Eliminar',
+            denyButtonText: `Cancelar`,
+            allowEnterKey: false
+        }).then(async (result) => {
+
+            if (result.isConfirmed) {
+                dispatch( SetDeleteDetalleConsignment( deleteLinea ) );
+            }
+
+        });
+    }
+}
+
 // Private methods
 const loadCatalogos = async ( dispatch, catalogos ) => {
     
@@ -1326,5 +1348,10 @@ export const SetPosicionActualConsignment = (value) => ({
 
 export const SetEditDetalleConsignment = (value) => ({
     type: types.SetEditDetalleConsignment,
+    payload: value
+})
+
+export const SetDeleteDetalleConsignment = (value) => ({
+    type: types.SetDeleteDetalleConsignment,
     payload: value
 })
