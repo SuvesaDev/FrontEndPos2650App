@@ -10,6 +10,7 @@ import { startGetAllTiposFacturas } from './TiposFacturasAction';
 import { startGetAllTiposIdentificacionBranch } from './TiposIdentificacionAction';
 import { startGetAllEmpresasBilling } from './billing';
 import { startGetAllMonedas } from './MonedasAction';
+import { startGetAllBodegas } from './bodegasAction';
 
 // API Actions
 export const startValidateClaveInternaConsignment = ( password, catalogos ) => {
@@ -627,6 +628,122 @@ export const startGetAllPlazosConsignment = () => {
 
 }
 
+export const startSaveConsignment = ( factura, datosCliente, idSucursalOF) => {
+
+    return async (dispatch) => {
+
+        //Mostrar un mensaje de confirmacion
+        Swal.fire({
+            title: '¿Desea agregar la consignacion?',
+            showDenyButton: true,
+            showCancelButton: false,
+            confirmButtonText: 'Guardar',
+            denyButtonText: `Cancelar`,
+        }).then(async (result) => {
+
+            try {
+
+                if (result.isConfirmed) {
+
+                    //Mostrar el loading
+                    Swal.fire({
+                        title: 'Por favor, espere',
+                        allowEscapeKey: false,
+                        allowOutsideClick: false,
+                        showConfirmButton: false,
+                        imageUrl: loadingImage,
+                        customClass: 'alert-class-login',
+                        imageHeight: 100,
+                    });
+                    
+                    //Call end-point 
+                    const { data } = await suvesaApi.post('/venta/CrearFactura', factura);
+                    const { status, responses} = data;
+                    const {id} = responses;
+                    //Quitar el loading
+                    Swal.close();
+
+                    if (status === 0) {
+
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Factura agrega correctamente',
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+
+                        dispatch( CleanFacturaConsignment() );
+                        
+                        // if (factura.tipo == 1 || factura.tipo == 5 || factura.tipo == 7) {
+                        //     const { data } = await suvesaApi.post(`/Centros/ObtenerSucursalId?id=${idSucursalOF}`);
+                        //     const { responses, status } = data;
+    
+                        //     const datosPDF = {
+                        //         numFactura: id,
+                        //         datosSucursal: responses,
+                        //         datosCliente: datosCliente,
+                        //         datosFactura: factura,
+                        //     }
+    
+                        //     Swal.fire({
+                        //         icon: 'success',
+                        //         title: 'Factura de crédito agrega correctamente',
+                        //         showConfirmButton: false,
+                        //         timer: 2500
+                        //     });
+    
+                        //     // dispatch(SetDatosImprimirCreditoBilling(datosPDF))
+                        //     dispatch( CleanBilling( { number } ) );
+                        // } else{
+
+                        //     Swal.fire({
+                        //         icon: 'success',
+                        //         title: 'Factura agrega correctamente',
+                        //         showConfirmButton: false,
+                        //         timer: 2500
+                        //     });
+                        //     dispatch( CleanBilling( { number } ) );
+
+                        // }
+
+             
+                    } else {
+                        //Caso contrario respuesta incorrecto mostrar mensaje de error
+                        const { currentException } = data;
+                        const msj = currentException.split(',');
+
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: (currentException.includes(',')) ? msj[3] : currentException,
+                        });
+
+                    }
+
+                }
+
+            } catch (error) {
+
+                Swal.close();
+                console.log(error);
+                if (error.message === 'Request failed with status code 401') {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Usuario no valido',
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Ocurrio un problema al agregar la factura',
+                    });
+                }
+            }
+        });
+    };
+}
+
 // Private methods
 const loadCatalogos = async ( dispatch, catalogos ) => {
     
@@ -664,6 +781,11 @@ const loadCatalogos = async ( dispatch, catalogos ) => {
     // Se obtiene las monedas
     if( catalogos.plazos.length === 0 ) {
         await dispatch( startGetAllPlazosConsignment() );
+    }
+
+    // Se obtiene las bodegas
+    if( catalogos.bodegas === null ) {
+        await dispatch(  startGetAllBodegas() );
     }
 
     //Quitar el loading
@@ -1138,4 +1260,8 @@ export const SetLotesByArticuloConsignment = (value) => ({
 export const SetPlazosConsignment = (value) => ({
     type: types.SetPlazosConsignment,
     payload: value
+})
+
+export const CleanFacturaConsignment = () => ({
+    type: types.CleanFacturaConsignment
 })

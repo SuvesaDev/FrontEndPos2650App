@@ -10,23 +10,12 @@ import { FaWindowClose } from "react-icons/fa";
 import { TbEditCircle } from "react-icons/tb";
 import { MdNoteAdd } from "react-icons/md";
 
-import {
-    startSaveBilling,
-    OpenModalEditCustomer,
-    SetClaveInternaFacturacionBilling,
-    startValidateClaveInternaBilling,
-    SetVisibleClaveInternaBilling,
-    startEditBilling,
-    SetRemoveArrayStateBilling,
-    CleanBilling
-} from '../../actions/billing';
-
 import { DeleteTab } from '../../actions/tabs';
-
 
 import { 
     SetclaveInternaConsignment, 
     SetvisiblePasswordConsignment,
+    startSaveConsignment,
     startValidateClaveInternaConsignment
 } from '../../actions/ConsignmentAction';
 
@@ -55,6 +44,7 @@ export const ConsignmentFooter = () => {
     const { allTiposFacturas } = useSelector(state => state.tiposFacturas);
     const { monedasInventory } = useSelector(state => state.monedas);
     const { tiposIdentificacion } = useSelector(state => state.tiposIdentificacion);
+    const { bodegasInventory } = useSelector(state => state.bodegas);
 
     const handleInputChangeWithDispatch = ({ target }, action) => {
         dispatch(action(target.value));
@@ -62,243 +52,161 @@ export const ConsignmentFooter = () => {
 
     const ValidacionesClientes = async () => {
 
-        // // si el cliente esta marcaddo como fallecido
-        // if (billings[numberScreen].factura.encabezado.fallecido == true) {
-        //     await Swal.fire({
-        //         icon: 'error',
-        //         title: 'No se puede procesar la operación',
-        //         text: 'El cliente esta registrado en el sistema como Fallecido.'
-        //     });
-        //     return '';
-        // }
+        // si el cliente esta marcaddo como fallecido
+        if (factura.encabezado.fallecido == true) {
+            await Swal.fire({
+                icon: 'error',
+                title: 'No se puede procesar la operación',
+                text: 'El cliente esta registrado en el sistema como Fallecido.'
+            });
+            return '';
+        }
 
-        // // Validacion de Empresa
-        // if( !billings[numberScreen].isCostaPets ) {
-        //     if (billings[numberScreen].factura.encabezado.empresa == '') {
-        //         Swal.fire({
-        //             icon: 'error',
-        //             title: 'Empresa',
-        //             text: 'Por favor seleccione una empresa para registrar la facturacion.'
-        //         });
-        //         return '';
-        //     }
-        // }
+        // Validacion de Tipo Factura
+        if (factura.encabezado.tipo == 0) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Tipo Factura',
+                text: 'Por favor seleccione un tipo de factura para registrar la facturacion.'
+            });
+            return '';
+        }
 
-        // // Validacion de Tipo Factura
-        // if (billings[numberScreen].factura.encabezado.tipo == 0) {
-        //     Swal.fire({
-        //         icon: 'error',
-        //         title: 'Tipo Factura',
-        //         text: 'Por favor seleccione un tipo de factura para registrar la facturacion.'
-        //     });
-        //     return '';
-        // }
+        // Validacion de Moneda
+        if (factura.encabezado.Cod_Moneda == '') {
+            Swal.fire({
+                icon: 'error',
+                title: 'Moneda',
+                text: 'Por favor seleccione una moneda para registrar la facturacion.'
+            });
+            return '';
+        }
 
-        // // Validacion de Moneda
-        // if (billings[numberScreen].factura.encabezado.Cod_Moneda == '') {
-        //     Swal.fire({
-        //         icon: 'error',
-        //         title: 'Moneda',
-        //         text: 'Por favor seleccione una moneda para registrar la facturacion.'
-        //     });
-        //     return '';
-        // }
+        // Validacion de Productos
+        if (factura.detalle.length === 0) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Productos',
+                text: 'Por favor seleccione un producto para registrar la facturacion.'
+            });
+            return '';
+        }
 
-        // // Validacion de Productos
-        // if (billings[numberScreen].factura.detalle.length === 0) {
-        //     Swal.fire({
-        //         icon: 'error',
-        //         title: 'Productos',
-        //         text: 'Por favor seleccione un producto para registrar la facturacion.'
-        //     });
-        //     return '';
-        // }
+        //si el cliente esta marcado como moroso
+        if (factura.encabezado.cliente_Moroso == true) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Cliente moroso',
+                text: 'Favor indicarle a la cajera o a gerencia, no le comente nada al cliente.'
+            });
+            return '';
+        }
 
-        // if( !billings[numberScreen].isCostaPets ) {
-        //     // Validacion de Agente
-        //     if (billings[numberScreen].factura.encabezado.agente === false && billings[numberScreen].factura.encabezado.cod_agente === 0) {
-        //         Swal.fire({
-        //             icon: 'error',
-        //             title: 'Agentes',
-        //             text: 'Por favor seleccione un agente o marque la casilla Sin Agente para registrar la facturacion.'
-        //         });
-        //         return '';
-        //     }
-        // }
-
-        // //si el cliente esta marcado como moroso
-        // if (billings[numberScreen].factura.encabezado.cliente_Moroso == true) {
-        //     Swal.fire({
-        //         icon: 'error',
-        //         title: 'Cliente moroso',
-        //         text: 'Favor indicarle a la cajera o a gerencia, no le comente nada al cliente.'
-        //     });
-        //     return '';
-        // }
-
-        // // Si el cliente no esta marcado como actualizado
-        // if (billings[numberScreen].factura.encabezado.actualizado == false) {
-        //     return await Swal.fire({
-        //         title: `Favor actualizar los datos del cliente antes de facturarle `,
-        //         showDenyButton: true,
-        //         showCancelButton: false,
-        //         confirmButtonText: 'Actualizar Datos',
-        //         denyButtonText: `Continuar`,
-        //     }).then(async (result) => {
-        //         return new Promise((resolve) => {
-        //             if (result.isConfirmed) {
-        //                 dispatch(OpenModalEditCustomer({ number: numberScreen }));
-        //                 resolve('');
-        //             } else {
-        //                 resolve('ok');
-        //             }
-        //         })
+        // Si el cliente no esta marcado como actualizado
+        if (factura.encabezado.actualizado == false) {
+            return await Swal.fire({
+                title: `Favor actualizar los datos del cliente antes de facturarle `,
+                showDenyButton: true,
+                showCancelButton: false,
+                confirmButtonText: 'Actualizar Datos',
+                denyButtonText: `Continuar`,
+            }).then(async (result) => {
+                return new Promise((resolve) => {
+                    if (result.isConfirmed) {
+                        // dispatch(OpenModalEditCustomer({ number: numberScreen }));
+                        resolve('');
+                    } else {
+                        resolve('ok');
+                    }
+                })
 
 
-        //     });
-        // }
+            });
+        }
 
-        // if (billings[numberScreen].factura.encabezado.tipo == '1'
-        //     || billings[numberScreen].factura.encabezado.tipo == '5'
-        //     || billings[numberScreen].factura.encabezado.tipo == '7') { // Si es de credito
+        return 'ok'
 
-        //     if (billings[numberScreen].factura.encabezado.ordenCompra == true
-        //         && (billings[numberScreen].factura.encabezado.Orden == '0'
-        //             || billings[numberScreen].factura.encabezado.Orden.length < 4)
-        //     ) { //
-        //         Swal.fire({
-        //             icon: 'error',
-        //             title: 'No se puede procesar la operaccion',
-        //             text: 'Debe ingresar el numero de Orden de Compra.'
-        //         });
-        //         return '';
-        //     }
-
-        //     if (billings[numberScreen].factura.encabezado.sinrestriccion == false) {
-        //         //agregar validacciones de saldo maximo
-        //     }
-
-        // }
-
-        // return 'ok'
-
-    }
-
-    const ValidacionesProductos = async () => {
-
-        // let respuesta = 'ok';
-
-        // await billings[numberScreen].factura.detalle.forEach(linea => {
-
-        //     if (billings[numberScreen].factura.encabezado.tipo === '1'
-        //         || billings[numberScreen].factura.encabezado.tipo === '5'
-        //         || billings[numberScreen].factura.encabezado.tipo === '7') { // Si es de credito
-        //         if (linea.soloContado == true) {
-        //             Swal.fire({
-        //                 icon: 'error',
-        //                 title: 'Solo para ventas de Contado',
-        //                 text: linea.Descripcion
-        //             });
-        //             respuesta = '';
-        //         }
-        //     }
-
-        //     if (linea.receta === true) {
-        //         if (billings[numberScreen].hasCustomerBilling === false) {
-        //             Swal.fire({
-        //                 icon: 'error',
-        //                 title: 'No se puede procesar la operación',
-        //                 text: 'Favor ingresar una cédula de un cliente'
-        //             });
-        //             respuesta = '';
-        //         }
-        //     }
-        // });
-
-        // return respuesta;
     }
 
     const handleCreateBilling = async (e) => {
 
-        // if (billings[numberScreen] === undefined) return;
+        if (!activeButtonSave || !hasCustomerBilling) return;
 
-        // if (!billings[numberScreen].activeButtonSave || !billings[numberScreen].hasCustomerBilling) return;
+        e.preventDefault();
+        let respuestaValidacionesClientes = 'ok';
 
-        // e.preventDefault();
-        // let respuestaValidacionesClientes = 'ok';
-        // let respuestaValidacionesProductos = 'ok';
+        if (hasCustomerBilling === true) {
+            //si hay cliente seleccionado validamos la info
+            respuestaValidacionesClientes = await ValidacionesClientes();
+        }
 
-        // if (billings[numberScreen].hasCustomerBilling === true) {
-        //     //si hay cliente seleccionado validamos la info
-        //     respuestaValidacionesClientes = await ValidacionesClientes();
-        // }
-
-        // respuestaValidacionesProductos = await ValidacionesProductos();
-
-        // if (respuestaValidacionesClientes === 'ok' && respuestaValidacionesProductos === 'ok') {
+        if (respuestaValidacionesClientes === 'ok') {
             
-        //     const date = new Date();
-        //     const isoDateTime = new Date(date.getTime() - (date.getTimezoneOffset() * 60000)).toISOString().split('T');
+            const date = new Date();
+            const isoDateTime = new Date(date.getTime() - (date.getTimezoneOffset() * 60000)).toISOString().split('T');
 
-        //     const idSucursal = surcursales.find(surcursal => surcursal.alias === centro).id;
+            const idSucursal = surcursales.find(surcursal => surcursal.alias === centro).id;
 
-        //     const idBodegaCostaPets = bodegasInventory.find(bodega => bodega.nombreBodega == "COSTAPETS");
+            const idBodegaCostaPets = bodegasInventory.find(bodega => bodega.nombreBodega == "COSTAPETS");
             
-        //     const newBilling = {
-        //         tipo: billings[numberScreen].factura.encabezado.tipo,
-        //         numCaja: String(numCaja), //TODO: Validar
-        //         numApertura: numApertura,
-        //         fecha: isoDateTime[0] + " " + isoDateTime[1],
-        //         codCliente: `${billings[numberScreen].factura.encabezado.cod_Cliente}`,
-        //         observaciones: billings[numberScreen].factura.encabezado.observaciones,
-        //         codMoneda: billings[numberScreen].factura.encabezado.Cod_Moneda,
-        //         orden: billings[numberScreen].factura.encabezado.Orden,
-        //         taller: false,
-        //         mascotas: false,
-        //         agente: true, //TODO: Validar
-        //         Cod_agente: parseInt(billings[numberScreen].factura.encabezado.cod_agente),
-        //         subTotalGravada: billings[numberScreen].factura.encabezado.SubTotalGravada,
-        //         subTotalExento: billings[numberScreen].factura.encabezado.SubTotalExento,
-        //         subTotal: billings[numberScreen].factura.encabezado.SubTotal,
-        //         descuento: billings[numberScreen].factura.encabezado.Descuento,
-        //         impVenta: billings[numberScreen].factura.encabezado.Imp_Venta,
-        //         exonerar: false, //TODO: Validar
-        //         total: billings[numberScreen].factura.encabezado.Total,
-        //         ficha: billings[numberScreen].factura.encabezado.ficha,
-        //         idSucursal: idSucursal,
-        //         idEmpresa: ( billings[numberScreen].isCostaPets ) ? "1" : billings[numberScreen].factura.encabezado.empresa,
-        //         preventa: billings[numberScreen].factura.encabezado.preventa,
-        //         idClienteSucursal: billings[numberScreen].factura.encabezado.idDatoFacturacion,
-        //         detalle: billings[numberScreen].factura.detalle.map(detalle => {
-        //             return {
-        //                 codArticulo: detalle.CodArticulo,
-        //                 codFxArticulo: detalle.codFxArticulo,
-        //                 descripcion: detalle.Descripcion,
-        //                 cantidad: detalle.Cantidad,
-        //                 precioUnit: detalle.Precio_Unit,
-        //                 descuento: detalle.Descuento,
-        //                 montoDescuento: detalle.Monto_Descuento,
-        //                 impuesto: detalle.Impuesto,
-        //                 montoImpuesto: detalle.Monto_Impuesto,
-        //                 subtotalGravado: detalle.SubtotalGravado,
-        //                 subTotalExcento: detalle.SubTotalExcento,
-        //                 subTotal: detalle.SubTotal,
-        //                 cantVen: detalle.CantVet,
-        //                 cantBod: detalle.CantBod,
-        //                 idBodega: ( billings[numberScreen].isCostaPets ) ? idBodegaCostaPets.idBodega : detalle.Id_Bodega,
-        //                 lote: detalle.idLote
-        //             }
-        //         })
-        //     }
-        //     const datosCliente ={
-        //         direccion: billings[numberScreen].factura.encabezado.direccion,
-        //         nombreCliente: billings[numberScreen].factura.encabezado.nombre_Cliente,
-        //         cedulaCliente: billings[numberScreen].factura.encabezado.cedula_Usuario,
-        //         vendedorEncargado: billings[numberScreen].factura.encabezado.usuario,
-        //     }
-        //     //console.log(newBilling)
-        //     dispatch(startSaveBilling(newBilling, numberScreen, datosCliente,idSucursalOF));
-        // }
+            const newBilling = {
+                tipo: factura.encabezado.tipo,
+                numCaja: String("0"), //TODO: Validar
+                numApertura: 0, //TODO: Validar
+                fecha: isoDateTime[0] + " " + isoDateTime[1],
+                codCliente: `${factura.encabezado.cod_Cliente}`,
+                observaciones: factura.encabezado.observaciones,
+                codMoneda: factura.encabezado.Cod_Moneda,
+                orden: "", //TODO: Validar
+                taller: false,
+                mascotas: false,
+                agente: false, //TODO: Validar
+                Cod_agente: 0, //TODO: Validar
+                subTotalGravada: factura.encabezado.SubTotalGravada,
+                subTotalExento: factura.encabezado.SubTotalExento,
+                subTotal: factura.encabezado.SubTotal,
+                descuento: factura.encabezado.Descuento,
+                impVenta: factura.encabezado.Imp_Venta,
+                exonerar: false, //TODO: Validar
+                total: factura.encabezado.Total,
+                ficha: 0, //TODO: Validar
+                idSucursal: idSucursal,
+                idEmpresa:  "1",
+                preventa: true,
+                idClienteSucursal: factura.encabezado.idDatoFacturacion,
+                idPlazo: factura.encabezado.plazo,
+                esConsignacion: true,
+                detalle: factura.detalle.map(detalle => {
+                    return {
+                        codArticulo: detalle.CodArticulo,
+                        codFxArticulo: detalle.codFxArticulo,
+                        descripcion: detalle.Descripcion,
+                        cantidad: detalle.Cantidad,
+                        precioUnit: detalle.Precio_Unit,
+                        descuento: detalle.Descuento,
+                        montoDescuento: detalle.Monto_Descuento,
+                        impuesto: detalle.Impuesto,
+                        montoImpuesto: detalle.Monto_Impuesto,
+                        subtotalGravado: detalle.SubtotalGravado,
+                        subTotalExcento: detalle.SubTotalExcento,
+                        subTotal: detalle.SubTotal,
+                        cantVen: detalle.CantVet,
+                        cantBod: detalle.CantBod,
+                        idBodega: idBodegaCostaPets.idBodega,
+                        lote: detalle.idLote
+                    }
+                })
+            }
+
+            const datosCliente ={
+                direccion: factura.encabezado.direccion,
+                nombreCliente: factura.encabezado.nombre_Cliente,
+                cedulaCliente: factura.encabezado.cedula_Usuario,
+                vendedorEncargado: factura.encabezado.usuario,
+            }
+
+            dispatch( startSaveConsignment(newBilling, datosCliente, idSucursalOF) );
+        }
 
     }
 
@@ -387,7 +295,8 @@ export const ConsignmentFooter = () => {
                 tiposIdentificacion,
                 surcursales,
                 monedas: monedasInventory,
-                plazos
+                plazos,
+                bodegas: bodegasInventory
             }
 
             dispatch( startValidateClaveInternaConsignment(claveInterna, catalogos));
