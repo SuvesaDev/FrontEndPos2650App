@@ -2,13 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTable } from "react-table";
 
-import { startSearchCustomerConsignment } from '../../actions/ConsignmentAction';
+import { startGetOneConsignment } from '../../actions/ConsignmentAction';
 
 export const ConsignmentSearchTable = ({ columns, data }) => {
 
     const dispatch = useDispatch();
-
-    const { openSearchCustomerConsignment } = useSelector(state => state.consignment);
 
     const {
         getTableProps,
@@ -24,9 +22,12 @@ export const ConsignmentSearchTable = ({ columns, data }) => {
 
     const handleSelectedRow = async (cell) => {
 
-        //Buscar en el listado obtener el cliente
-        const { id } = cell.row.original;
-        console.log(id);
+        //Obtener el idConsignacion
+        const { idConsignacion } = cell.row.original;
+
+        if( idConsignacion !== undefined || idConsignacion !== null ) {
+            dispatch( startGetOneConsignment(idConsignacion) );
+        }
     }
 
     return (

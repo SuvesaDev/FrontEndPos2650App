@@ -588,9 +588,7 @@ export const startGetAllPlazosConsignment = () => {
             const { status, responses } = data;
             
             if( status === 0) {
-
-                console.log(responses);
-                
+               
                 dispatch( SetPlazosConsignment(responses));
 
             } else {
@@ -867,6 +865,71 @@ export const startSearchConsignment = ( busqueda ) => {
                     icon: 'error',
                     title: 'Error',
                     text: 'Ocurrio un problema al buscar clientes',
+                });
+            }
+        }
+    }
+}
+
+export const startGetOneConsignment = ( idConsignacion ) => {
+
+    return async ( dispatch ) => {
+
+        try {
+
+            //Mostrar el loading
+            Swal.fire({
+                title: 'Por favor, espere',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                imageUrl: loadingImage,
+                customClass: 'alert-class-login',
+                imageHeight: 100,
+            });
+    
+            //Call end-point 
+            const { data } = await suvesaApi.get(`/venta/ObtenerConsignacion?idPreventa=${idConsignacion}`);
+            const { status, responses } = data;
+            Swal.close();
+            
+            if( status === 0 ) {
+                
+                console.log(responses);
+
+                dispatch(CleanSearchConsignment());
+
+            } else {
+    
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
+
+                console.log(currentException);
+                
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
+    
+            }
+
+        } catch (error) {
+            
+            Swal.close();
+            console.log(error);
+            if( error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al obtener una consignacion',
                 });
             }
         }
@@ -1443,4 +1506,8 @@ export const SetNumeroBuscarConsignment = (value) => ({
 export const SetListaConsignacionesConsignment = (value) => ({
     type: types.SetListaConsignacionesConsignment,
     payload: value
+})
+
+export const CleanSearchConsignment = () => ({
+    type: types.CleanSearchConsignment
 })

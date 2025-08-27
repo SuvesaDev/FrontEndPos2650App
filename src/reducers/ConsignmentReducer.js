@@ -1066,6 +1066,17 @@ export const consignmentReducer = (state = initialState, action) => {
                 listaConsignaciones: action.payload
             }
 
+        case types.CleanSearchConsignment:
+            return {
+                ...state,
+                buscarConsignacion: {
+                    cedula: '',
+                    nombre: '',
+                    numero: '',
+                },
+                listaConsignaciones: []
+            }
+
         default:
             return state;
     }

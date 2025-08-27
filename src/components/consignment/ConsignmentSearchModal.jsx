@@ -21,7 +21,7 @@ export const ConsignmentSearchModal = () => {
 
     const dispatch = useDispatch();
 
-    const { buscarConsignacion } = useSelector(state => state.consignment);
+    const { buscarConsignacion, listaConsignaciones } = useSelector(state => state.consignment);
     const { 
         cedula,
         nombre,
@@ -31,7 +31,7 @@ export const ConsignmentSearchModal = () => {
     const columns = [
         {
             Header: "Cédula",
-            accessor: "cedula",
+            accessor: "cedulaCliente",
         },
         {
             Header: "Nombre",
@@ -161,7 +161,7 @@ export const ConsignmentSearchModal = () => {
                                 <div className='row mb-3'>
                                     <hr />
                                     <div className="col-md-12 mb-3">
-                                        <ConsignmentSearchTable columns={columns} data={[]} />
+                                        <ConsignmentSearchTable columns={columns} data={listaConsignaciones} />
                                     </div>
 
                                 </div>
