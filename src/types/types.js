@@ -2272,6 +2272,7 @@ export const types = {
   SetenableItemsConsignment: '[Consignacion] SetenableItemsConsignment',
 
   SetactiveButtonSaveConsignment: '[Consignacion] SetactiveButtonSaveConsignment',
+  SetactiveButtonSearchConsignment: '[Consignacion] SetactiveButtonSearchConsignment',
   SetstartOpeningConsignment: '[Consignacion] SetstartOpeningConsignment',
   SetvisiblePasswordConsignment: '[Consignacion] SetvisiblePasswordConsignment',
   SetdisableInputsUserConsignment: '[Consignacion] SetdisableInputsUserConsignment',
@@ -2297,5 +2298,10 @@ export const types = {
   SetPosicionActualConsignment: '[Consignacion] SetPosicionActualConsignment',
   SetEditDetalleConsignment: '[Consignacion] SetEditDetalleConsignment',
   SetDeleteDetalleConsignment: '[Consignacion] SetDeleteDetalleConsignment',
+
+  SetCedulaBuscarConsignment: '[Consignacion] SetCedulaBuscarConsignment',
+  SetNombreBuscarConsignment: '[Consignacion] SetNombreBuscarConsignment',
+  SetNumeroBuscarConsignment: '[Consignacion] SetNumeroBuscarConsignment',
+  SetListaConsignacionesConsignment: '[Consignacion] SetListlistaConsignacionesConsignment',
   
 }

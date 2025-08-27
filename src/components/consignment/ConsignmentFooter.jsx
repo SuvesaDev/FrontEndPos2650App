@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { FaUserCheck } from 'react-icons/fa';
 //Icons
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaSearch } from "react-icons/fa";
 import { PiKeyFill } from "react-icons/pi";
 import { FaWindowClose } from "react-icons/fa";
 import { TbEditCircle } from "react-icons/tb";
@@ -18,6 +18,7 @@ import {
     startSaveConsignment,
     startValidateClaveInternaConsignment
 } from '../../actions/ConsignmentAction';
+import { ConsignmentSearchModal } from './ConsignmentSearchModal';
 
 export const ConsignmentFooter = () => {
 
@@ -31,7 +32,8 @@ export const ConsignmentFooter = () => {
         disableInputsUser,
         usuarioFacturacion,
         factura,
-        plazos
+        plazos,
+        activeButtonSearch
     } = useSelector(state => state.consignment);
 
     const { claveInterna } = usuarioFacturacion;
@@ -151,29 +153,29 @@ export const ConsignmentFooter = () => {
             
             const newBilling = {
                 tipo: factura.encabezado.tipo,
-                numCaja: String("0"), //TODO: Validar
-                numApertura: 0, //TODO: Validar
+                numCaja: "0",
+                numApertura: null, 
                 fecha: isoDateTime[0] + " " + isoDateTime[1],
                 codCliente: `${factura.encabezado.cod_Cliente}`,
                 observaciones: factura.encabezado.observaciones,
                 codMoneda: factura.encabezado.Cod_Moneda,
-                orden: "", //TODO: Validar
+                orden: "",
                 taller: false,
                 mascotas: false,
-                agente: false, //TODO: Validar
-                Cod_agente: 0, //TODO: Validar
+                agente: null,
+                Cod_agente: null,
                 subTotalGravada: factura.encabezado.SubTotalGravada,
                 subTotalExento: factura.encabezado.SubTotalExento,
                 subTotal: factura.encabezado.SubTotal,
                 descuento: factura.encabezado.Descuento,
                 impVenta: factura.encabezado.Imp_Venta,
-                exonerar: false, //TODO: Validar
+                exonerar: null,
                 total: factura.encabezado.Total,
-                ficha: 0, //TODO: Validar
+                ficha: null,
                 idSucursal: idSucursal,
                 idEmpresa:  "1",
                 preventa: true,
-                idClienteSucursal: factura.encabezado.idDatoFacturacion,
+                idClienteSucursal: null,
                 idPlazo: factura.encabezado.plazo,
                 esConsignacion: true,
                 detalle: factura.detalle.map(detalle => {
@@ -343,7 +345,7 @@ export const ConsignmentFooter = () => {
 
                 <div className="btn-group mb-2">
                     <button
-                        className={(activeButtonSave && hasCustomerBilling) ? 'btn btn-dark espacio' : 'btn btn-dark espacio disabled' }
+                        className={(activeButtonSave && hasCustomerBilling) ? 'btn btn-success espacio' : 'btn btn-success espacio disabled' }
                         onClick={handleCreateBilling}
                         // onClick={
                         //     (billings[numberScreen] !== undefined)
@@ -376,6 +378,17 @@ export const ConsignmentFooter = () => {
                                 </>
                             )
                         } */}
+                    </button>
+                </div>
+
+                <div className="btn-group mb-2">
+                    <button
+                        className={(activeButtonSearch) ? 'btn btn-primary espacio' : 'btn btn-primary espacio disabled' }
+                        // onClick={handleCreateBilling}
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalBuscarConsignacion"
+                    >
+                        Buscar <FaSearch className="iconSizeBtn" />
                     </button>
                 </div>
 
@@ -440,6 +453,8 @@ export const ConsignmentFooter = () => {
                 ) : ""}
 
             </div>
+
+            <ConsignmentSearchModal />
 
         </>
 

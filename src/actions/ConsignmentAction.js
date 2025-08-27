@@ -37,6 +37,7 @@ export const startValidateClaveInternaConsignment = ( password, catalogos ) => {
 
                 // Se establece el manejo de icons
                 dispatch( SetactiveButtonSaveConsignment(true));
+                dispatch(SetactiveButtonSearchConsignment(true));
 
                 // Se inicia el StartOpening
                 dispatch( SetstartOpeningConsignment(true));
@@ -809,6 +810,69 @@ export const startDeleteDetalleActualConsignment = ( deleteLinea ) => {
     }
 }
 
+export const startSearchConsignment = ( busqueda ) => {
+
+    return async ( dispatch ) => {
+
+        try {
+
+            //Mostrar el loading
+            Swal.fire({
+                title: 'Por favor, espere',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                imageUrl: loadingImage,
+                customClass: 'alert-class-login',
+                imageHeight: 100,
+            });
+    
+            //Call end-point 
+            const { data } = await suvesaApi.post('/venta/BuscarConsignacion', busqueda);
+            const { status, responses } = data;
+            Swal.close();
+            
+            if( status === 0 ) {
+                
+                dispatch(SetListaConsignacionesConsignment( responses ));
+
+            } else {
+    
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
+
+                console.log(currentException);
+                
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
+    
+            }
+
+        } catch (error) {
+            
+            Swal.close();
+            console.log(error);
+            if( error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al buscar clientes',
+                });
+            }
+        }
+    }
+}
+
 // Private methods
 const loadCatalogos = async ( dispatch, catalogos ) => {
     
@@ -1353,5 +1417,30 @@ export const SetEditDetalleConsignment = (value) => ({
 
 export const SetDeleteDetalleConsignment = (value) => ({
     type: types.SetDeleteDetalleConsignment,
+    payload: value
+})
+
+export const SetactiveButtonSearchConsignment = (value) => ({
+    type: types.SetactiveButtonSearchConsignment,
+    payload: value
+})
+
+export const SetCedulaBuscarConsignment = (value) => ({
+    type: types.SetCedulaBuscarConsignment,
+    payload: value
+})
+
+export const SetNombreBuscarConsignment = (value) => ({
+    type: types.SetNombreBuscarConsignment,
+    payload: value
+})
+
+export const SetNumeroBuscarConsignment = (value) => ({
+    type: types.SetNumeroBuscarConsignment,
+    payload: value
+})
+
+export const SetListaConsignacionesConsignment = (value) => ({
+    type: types.SetListaConsignacionesConsignment,
     payload: value
 })

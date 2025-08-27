@@ -96,23 +96,25 @@ export const ConsignmentHeader = () => {
               {
                 (isEnableActiveCredito)
                   ? (allTiposFacturas != null && allTiposFacturas.length > 0)
-                    ? allTiposFacturas.map(tipoF => {
-                        return <option key={tipoF.codigo} value={tipoF.codigo}> {tipoF.descripcion} </option>
-                      })
+                    ? allTiposFacturas.map(tipoF => (tipoF.consignacion) ? 
+                        <option key={tipoF.codigo} value={tipoF.codigo}> {tipoF.descripcion} </option>
+                        : null
+                      )
                     : <option value=''>No tipos de Factura</option>
 
                   : (onlyContadoTiposFacturas != null && onlyContadoTiposFacturas.length > 0)
-                    ? onlyContadoTiposFacturas.map(tipoF => {
-                        return <option key={tipoF.codigo} value={tipoF.codigo}> {tipoF.descripcion} </option>
-                      })
+                    ? onlyContadoTiposFacturas.map(tipoF => (tipoF.consignacion) ?
+                         <option key={tipoF.codigo} value={tipoF.codigo}> {tipoF.descripcion} </option>
+                         : null
+                      )
                     : <option value=''>No tipos de Factura</option>
               }
             </select>
           </div>
         </div>
 
-        <div className="col-md-3 mb-2">
-          <h5>Buscar Preventa</h5>
+        {/* <div className="col-md-3 mb-2">
+          <h5>Buscar Consignacion</h5>
           <div className="input-group">
             <span className="input-group-text">
               <ImSortNumbericDesc className="iconSize" />
@@ -142,7 +144,7 @@ export const ConsignmentHeader = () => {
           >
             Buscar <FaMagnifyingGlass className="iconSize" />
           </button>
-        </div>
+        </div> */}
 
       </div>
 

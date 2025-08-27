@@ -7,6 +7,7 @@ const initialState = {
     hasCustomerBilling: false,
     enableItems: false,
     activeButtonSave: false,
+    activeButtonSearch: false,
     startOpening: false,
     visiblePassword: false,
     disableInputsUser: false,
@@ -29,6 +30,12 @@ const initialState = {
         email: '',
         direccion: ''
     },
+    buscarConsignacion: {
+        cedula: '',
+        nombre: '',
+        numero: '',
+    },
+    listaConsignaciones: [],
     factura: {
         encabezado: {
             id: '',
@@ -1018,6 +1025,45 @@ export const consignmentReducer = (state = initialState, action) => {
                     ...state.factura,
                     detalle: state.factura.detalle.filter(linea => linea != action.payload)
                 }
+            }
+
+        case types.SetactiveButtonSearchConsignment:
+            return {
+                ...state,
+                activeButtonSearch: action.payload
+            }
+
+        case types.SetCedulaBuscarConsignment:
+            return {
+                ...state,
+                buscarConsignacion: {
+                    ...state.buscarConsignacion,
+                    cedula: action.payload
+                }
+            }
+
+        case types.SetNombreBuscarConsignment:
+            return {
+                ...state,
+                buscarConsignacion: {
+                    ...state.buscarConsignacion,
+                    nombre: action.payload
+                }
+            }
+
+        case types.SetNumeroBuscarConsignment:
+            return {
+                ...state,
+                buscarConsignacion: {
+                    ...state.buscarConsignacion,
+                    numero: action.payload
+                }
+            } 
+            
+        case types.SetListaConsignacionesConsignment:
+            return {
+                ...state,
+                listaConsignaciones: action.payload
             }
 
         default:
