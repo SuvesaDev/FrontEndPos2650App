@@ -13,8 +13,10 @@ import { MdNoteAdd } from "react-icons/md";
 import { DeleteTab } from '../../actions/tabs';
 
 import { 
+    CleanConsignment,
     SetclaveInternaConsignment, 
     SetvisiblePasswordConsignment,
+    startEditConsignment,
     startSaveConsignment,
     startValidateClaveInternaConsignment
 } from '../../actions/ConsignmentAction';
@@ -181,6 +183,7 @@ export const ConsignmentFooter = () => {
                 esConsignacion: true,
                 detalle: factura.detalle.map(detalle => {
                     return {
+                        idVentaDetalle : 0,
                         codArticulo: detalle.CodArticulo,
                         codFxArticulo: detalle.codFxArticulo,
                         descripcion: detalle.Descripcion,
@@ -215,64 +218,79 @@ export const ConsignmentFooter = () => {
 
     const handleEditBilling = async (e) => {
 
-        // if (billings[numberScreen] === undefined) return;
+        if (!activeButtonSave || !hasCustomerBilling) return;
 
-        // if (!billings[numberScreen].activeButtonSave || !billings[numberScreen].hasCustomerBilling) return;
+        e.preventDefault();
+        let respuestaValidacionesClientes = 'ok';
 
-        // e.preventDefault();
+        if (hasCustomerBilling === true) {
+            //si hay cliente seleccionado validamos la info
+            respuestaValidacionesClientes = await ValidacionesClientes();
+        }
 
-        // const idSucursal = surcursales.find(surcursal => surcursal.alias === centro).id;
+        if (respuestaValidacionesClientes === 'ok') {
+            
+            const date = new Date();
+            const isoDateTime = new Date(date.getTime() - (date.getTimezoneOffset() * 60000)).toISOString().split('T');
 
-        // const editBilling = {
-        //     id: parseInt(billings[numberScreen].factura.encabezado.id),
-        //     tipo: billings[numberScreen].factura.encabezado.tipo,
-        //     numFactura: billings[numberScreen].factura.encabezado.num_Factura,
-        //     numCaja: billings[numberScreen].factura.encabezado.NumeroCaja, //TODO: Validar
-        //     fecha: billings[numberScreen].factura.encabezado.fecha,
-        //     codCliente: `${billings[numberScreen].factura.encabezado.cod_Cliente}`,
-        //     observaciones: billings[numberScreen].factura.encabezado.observaciones,
-        //     codMoneda: billings[numberScreen].factura.encabezado.Cod_Moneda,
-        //     orden: billings[numberScreen].factura.encabezado.Orden,
-        //     taller: billings[numberScreen].factura.encabezado.Taller,
-        //     mascotas: billings[numberScreen].factura.encabezado.Mascotas,
-        //     agente: billings[numberScreen].factura.encabezado.agente,
-        //     Cod_agente: parseInt(billings[numberScreen].factura.encabezado.cod_agente),
-        //     subTotalGravada: billings[numberScreen].factura.encabezado.SubTotalGravada,
-        //     subTotalExento: billings[numberScreen].factura.encabezado.SubTotalExento,
-        //     subTotal: billings[numberScreen].factura.encabezado.SubTotal,
-        //     descuento: billings[numberScreen].factura.encabezado.Descuento,
-        //     impVenta: billings[numberScreen].factura.encabezado.Imp_Venta,
-        //     exonerar: billings[numberScreen].factura.encabezado.Exonerar, //TODO: Validar
-        //     total: billings[numberScreen].factura.encabezado.Total,
-        //     ficha: billings[numberScreen].factura.encabezado.ficha,
-        //     idSucursal: idSucursal,
-        //     idEmpresa: ( billings[numberScreen].isCostaPets ) ? "1" : billings[numberScreen].factura.encabezado.empresa,
-        //     preventa: billings[numberScreen].factura.encabezado.preventa,
-        //     idClienteSucursal: billings[numberScreen].factura.encabezado.idDatoFacturacion,
-        //     detalle: billings[numberScreen].factura.detalle.map(detalle => {
-        //         return {
-        //             idVentaDetalle: (detalle.idVentaDetalle === undefined) ? 0 : detalle.idVentaDetalle,
-        //             codArticulo: detalle.CodArticulo,
-        //             codFxArticulo: detalle.codFxArticulo,
-        //             descripcion: detalle.Descripcion,
-        //             cantidad: detalle.Cantidad,
-        //             precioUnit: detalle.Precio_Unit,
-        //             descuento: detalle.Descuento,
-        //             montoDescuento: detalle.Monto_Descuento,
-        //             impuesto: detalle.Impuesto,
-        //             montoImpuesto: detalle.Monto_Impuesto,
-        //             subtotalGravado: detalle.SubtotalGravado,
-        //             subTotalExcento: detalle.SubTotalExcento,
-        //             subTotal: detalle.SubTotal,
-        //             cantVen: detalle.CantVet,
-        //             cantBod: detalle.CantBod,
-        //             idBodega: ( billings[numberScreen].isCostaPets ) ? idBodegaCostaPets.idBodega : detalle.Id_Bodega,
-        //             lote: detalle.idLote
-        //         }
-        //     })
-        // }
+            const idSucursal = surcursales.find(surcursal => surcursal.alias === centro).id;
 
-        // dispatch(startEditBilling(editBilling, numberScreen));
+            const idBodegaCostaPets = bodegasInventory.find(bodega => bodega.nombreBodega == "COSTAPETS");
+            
+            const editBilling = {
+                id: parseInt(factura.encabezado.id),
+                numFactura: factura.encabezado.num_Factura,
+                tipo: factura.encabezado.tipo,
+                numCaja: "0",
+                numApertura: null, 
+                fecha: isoDateTime[0] + " " + isoDateTime[1],
+                codCliente: `${factura.encabezado.cod_Cliente}`,
+                observaciones: factura.encabezado.observaciones,
+                codMoneda: factura.encabezado.Cod_Moneda,
+                orden: "",
+                taller: false,
+                mascotas: false,
+                agente: null,
+                Cod_agente: null,
+                subTotalGravada: factura.encabezado.SubTotalGravada,
+                subTotalExento: factura.encabezado.SubTotalExento,
+                subTotal: factura.encabezado.SubTotal,
+                descuento: factura.encabezado.Descuento,
+                impVenta: factura.encabezado.Imp_Venta,
+                exonerar: null,
+                total: factura.encabezado.Total,
+                ficha: null,
+                idSucursal: idSucursal,
+                idEmpresa:  "1",
+                preventa: true,
+                idClienteSucursal: null,
+                idPlazo: factura.encabezado.plazo,
+                esConsignacion: true,
+                detalle: factura.detalle.map(detalle => {
+                    return {
+                        idVentaDetalle : (detalle.idVentaDetalle != null) ? detalle.idVentaDetalle : 0,
+                        codArticulo: detalle.CodArticulo,
+                        codFxArticulo: detalle.codFxArticulo,
+                        descripcion: detalle.Descripcion,
+                        cantidad: detalle.Cantidad,
+                        precioUnit: detalle.Precio_Unit,
+                        descuento: detalle.Descuento,
+                        montoDescuento: detalle.Monto_Descuento,
+                        impuesto: detalle.Impuesto,
+                        montoImpuesto: detalle.Monto_Impuesto,
+                        subtotalGravado: detalle.SubtotalGravado,
+                        subTotalExcento: detalle.SubTotalExcento,
+                        subTotal: detalle.SubTotal,
+                        cantVen: detalle.CantVet,
+                        cantBod: detalle.CantBod,
+                        idBodega: idBodegaCostaPets.idBodega,
+                        lote: detalle.idLote
+                    }
+                })
+            }
+            console.log(editBilling);
+            dispatch( startEditConsignment(editBilling) );
+        }
     }
 
     const handleOnKeyDownUser = async (e) => {
@@ -315,29 +333,27 @@ export const ConsignmentFooter = () => {
 
     const handleCloseWindow = (e) => {
 
-        // e.preventDefault();
+        e.preventDefault();
 
-        // if (billings[numberScreen].startOpening) {
+        if (startOpening) {
 
-        //     //Mostrar un mensaje de confirmacion
-        //     Swal.fire({
-        //         title: '¿Desea cancelar la factura?',
-        //         showDenyButton: true,
-        //         showCancelButton: false,
-        //         confirmButtonText: 'Mantener',
-        //         denyButtonText: `Cancelar`,
-        //     }).then(async (result) => {
+            //Mostrar un mensaje de confirmacion
+            Swal.fire({
+                title: '¿Desea cancelar la consignacion?',
+                showDenyButton: true,
+                showCancelButton: false,
+                confirmButtonText: 'Mantener',
+                denyButtonText: `Cancelar`,
+            }).then(async (result) => {
 
-        //         if (result.isDenied) {
-        //             dispatch(CleanBilling({ number: numberScreen }));
-        //             // dispatch( SetRemoveArrayStateBilling( parseInt(currentTab.name.split('#')[1].trim()) ) );
-        //         }
-        //     });
+                if (result.isDenied) {
+                    dispatch(CleanConsignment());
+                }
+            });
 
-        // } else {
-        //     dispatch(DeleteTab(currentTab.name, currentTab.routePage));
-        //     dispatch(SetRemoveArrayStateBilling(parseInt(currentTab.name.split('#')[1].trim())));
-        // }
+        } else {
+            dispatch(DeleteTab(currentTab.name, currentTab.routePage));
+        }
     }
 
     return (

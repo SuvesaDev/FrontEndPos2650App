@@ -672,6 +672,7 @@ export const startSaveConsignment = ( factura, datosCliente, idSucursalOF) => {
                         });
 
                         dispatch( CleanFacturaConsignment() );
+                        dispatch( CleanConsignment() );
                         
                         // if (factura.tipo == 1 || factura.tipo == 5 || factura.tipo == 7) {
                         //     const { data } = await suvesaApi.post(`/Centros/ObtenerSucursalId?id=${idSucursalOF}`);
@@ -1047,7 +1048,7 @@ export const startDeleteLineDetalleConsignacion = ( deleteLinea ) => {
                         if( responses === true ) {
 
                             // Se elimina la linea 
-                            dispatch( startDeleteDetalleActualConsignment( deleteLinea ) );
+                            dispatch( SetDeleteDetalleConsignment( deleteLinea ) );
                             
                             //Si es correcta entonces mostrar un mensaje de afirmacion
                             Swal.fire({
@@ -1089,6 +1090,90 @@ export const startDeleteLineDetalleConsignacion = ( deleteLinea ) => {
                         icon: 'error',
                         title: 'Error',
                         text: 'Ocurrio un problema al editar la factura',
+                    });
+                }
+            }
+        });
+    };
+}
+
+export const startEditConsignment = ( factura ) => {
+
+    return async (dispatch) => {
+
+        //Mostrar un mensaje de confirmacion
+        Swal.fire({
+            title: '¿Desea editar la consignacion?',
+            showDenyButton: true,
+            showCancelButton: false,
+            confirmButtonText: 'Editar',
+            denyButtonText: `Cancelar`,
+        }).then(async (result) => {
+
+            try {
+
+                if (result.isConfirmed) {
+
+                    //Mostrar el loading
+                    Swal.fire({
+                        title: 'Por favor, espere',
+                        allowEscapeKey: false,
+                        allowOutsideClick: false,
+                        showConfirmButton: false,
+                        imageUrl: loadingImage,
+                        customClass: 'alert-class-login',
+                        imageHeight: 100,
+                    });
+                    
+                    //Call end-point 
+                    const { data } = await suvesaApi.post('/venta/EditarFactura', factura);
+                    const { status } = data;
+
+                    //Quitar el loading
+                    Swal.close();
+
+                    if (status === 0) {
+
+                        //Si es correcta entonces mostrar un mensaje de afirmacion
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Consignacion editada correctamente',
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+                        
+                        dispatch( CleanConsignment() );
+
+                    } else {
+                        //Caso contrario respuesta incorrecto mostrar mensaje de error
+                        const { currentException } = data;
+                        const msj = currentException.split(',');
+
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: (currentException.includes(',')) ? msj[3] : currentException,
+                        });
+
+                    }
+
+                }
+
+            } catch (error) {
+
+                Swal.close();
+                console.log(error);
+                if (error.message === 'Request failed with status code 401') {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Usuario no valido',
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Ocurrio un problema al editar la consignacion',
                     });
                 }
             }
@@ -1680,4 +1765,8 @@ export const SetDetalleFacturaConsignment = (value) => ({
 export const SetIsEditConsignment = (value) => ({
     type: types.SetIsEditConsignment,
     payload: value
+})
+
+export const CleanConsignment = () => ({
+    type: types.CleanConsignment
 })

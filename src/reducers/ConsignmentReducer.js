@@ -1093,6 +1093,109 @@ export const consignmentReducer = (state = initialState, action) => {
                 listaConsignaciones: []
             }
 
+        case types.CleanConsignment:
+            return {
+                disableInputsHeader: true,
+                isEnableActiveCredito: false,
+                searchFicha: '',
+                hasCustomerBilling: false,
+                enableItems: false,
+                activeButtonSave: false,
+                activeButtonSearch: false,
+                startOpening: false,
+                visiblePassword: false,
+                disableInputsUser: false,
+                openSearchCustomerConsignment: false,
+                openAddCustomerConsignment: false,
+                isOpenModalSearchArticuloConsignment: false,
+                lotesByArticulo: [],
+                plazos: [],
+                isEditDetalle: false,
+                posicionActual: 0,
+                isEditConsignment: false,
+                usuarioFacturacion: {
+                    id: 0,
+                    claveInterna: ''
+                },
+                clienteFacturacion: {
+                    idTipoCliente: 0,
+                    cedula: '',
+                    nombre: '',
+                    telefono: '',
+                    email: '',
+                    direccion: ''
+                },
+                buscarConsignacion: {
+                    cedula: '',
+                    nombre: '',
+                    numero: '',
+                },
+                listaConsignaciones: [],
+                factura: {
+                    encabezado: {
+                        id: '',
+                        num_Factura: '',
+                        fecha: '',
+                        NumeroCaja: '',
+                        tipo: 0,
+                        cod_Cliente: '',
+                        idTipoCliente: 0,
+                        nombre_Cliente: '',
+                        cedula_Usuario: '',
+                        direccion: '',
+                        telefono: '',
+                        observaciones: '',
+                        empresa: '',
+                        correoComprobantes: '',
+                        Cod_Moneda: '',
+                        Orden: '0',
+                        plazo: 0,
+                        SubTotalGravada: 0,
+                        SubTotalExento: 0,
+                        SubTotal: 0,
+                        Descuento: 0,
+                        Imp_Venta: 0,
+                        Total: 0,
+                        mag: false,
+                        fallecido: false,
+                        actualizado: false,
+                        cliente_Moroso: false,
+                        ordenCompra: false,
+                        sinrestriccion: false,
+                        ficha: 0,
+                        preventa: true,
+                        usuario: '',
+                        idDatoFacturacion: 0
+                    },
+                    detalle: []
+                },
+                detalleArticuloActual: {
+                    CodArticulo: '',
+                    codFxArticulo: 0,
+                    Descripcion: '',
+                    Cantidad: 1.00,
+                    Precio_Unit: 0.00,
+                    Descuento: 0.00,
+                    Monto_Descuento: 0.00,
+                    Impuesto: 0.00,
+                    Monto_Impuesto: 0.00,
+                    Existencias: 0,
+                    SubtotalGravado: 0.00,
+                    SubTotalExcento: 0.00,
+                    SubTotal: 0.00,
+                    precio_A: 0.00,
+                    precio_B: 0.00,
+                    precio_C: 0.00,
+                    precio_D: 0.00,
+                    precio_Promo: 0.00,
+                    max_Descuento: 0.00,
+                    ImpuestoOriginal: 0.00,
+                    Precio_UnitOriginal: 0.00,
+                    idLote: 0,
+                    nombreLote: ''
+                }
+            }
+
         default:
             return state;
     }
