@@ -33,7 +33,8 @@ export const ConsignmentFooter = () => {
         usuarioFacturacion,
         factura,
         plazos,
-        activeButtonSearch
+        activeButtonSearch,
+        isEditConsignment
     } = useSelector(state => state.consignment);
 
     const { claveInterna } = usuarioFacturacion;
@@ -346,38 +347,19 @@ export const ConsignmentFooter = () => {
                 <div className="btn-group mb-2">
                     <button
                         className={(activeButtonSave && hasCustomerBilling) ? 'btn btn-success espacio' : 'btn btn-success espacio disabled' }
-                        onClick={handleCreateBilling}
-                        // onClick={
-                        //     (billings[numberScreen] !== undefined)
-                        //         ? (billings[numberScreen].isPreventaEdit) ? handleEditBilling : handleCreateBilling
-                        //         : () => { }
-                        // }
-                        // {...((billings[numberScreen]?.factura?.encabezado?.tipo === 1 || billings[numberScreen]?.factura?.encabezado?.tipo === 5 || billings[numberScreen]?.factura?.encabezado?.tipo === 7)
-                        //     ? { 'data-bs-toggle': 'modal', 'data-bs-target': '#modalTiqueteVentaCredito' }
-                        //     : {})}
+                        onClick={ (isEditConsignment) ? handleEditBilling : handleCreateBilling }
                     >
-                        <>
-                            Guardar <MdNoteAdd className="iconSizeBtn" />
-                        </>
-                        {/* {
-                            (billings[numberScreen] !== undefined) ? (
+                        {
+                            (isEditConsignment) ? (
                                 <>
-                                    {billings[numberScreen].isPreventaEdit ? (
-                                        <>
-                                            Editar <TbEditCircle className="iconSizeBtn" />
-                                        </>
-                                    ) : (
-                                        <>
-                                            Guardar <MdNoteAdd className="iconSizeBtn" />
-                                        </>
-                                    )}
+                                    Editar <TbEditCircle className="iconSizeBtn" />
                                 </>
                             ) : (
                                 <>
                                     Guardar <MdNoteAdd className="iconSizeBtn" />
                                 </>
                             )
-                        } */}
+                        }
                     </button>
                 </div>
 

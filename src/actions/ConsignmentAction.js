@@ -894,10 +894,80 @@ export const startGetOneConsignment = ( idConsignacion ) => {
             Swal.close();
             
             if( status === 0 ) {
+                console.log(responses)
+                const searchConsignmet = {
+                    encabezado: {                    
+                        id : responses.id,
+                        num_Factura : responses.numFactura,
+                        fecha : responses.fecha,
+                        tipo : responses.tipo,
+                        tipoDocumento: responses.tipoDocumento,
+                        cod_Cliente : responses.codCliente,
+                        nombre_Cliente : responses.nombreCliente,
+                        cedula_Usuario : responses.numeroCedula,
+                        observaciones : responses.observaciones,
+                        empresa : responses.idEmpresa,
+                        Cod_Moneda : responses.codMoneda,
+                        plazo: responses.idPlazo,
+                        SubTotalGravada : responses.subTotalGravada,
+                        SubTotalExento : responses.subTotalExento,
+                        SubTotal : responses.subTotal,
+                        Descuento : responses.descuento,
+                        Imp_Venta : responses.impVenta,
+                        Total : responses.total,
+                        usuario : responses.usuario, //TODO: DUDA
+                    },
+                    detalle: responses.detalle.map( det => {
+                        return {
+                            idVentaDetalle : det.idVentaDetalle,
+                            CodArticulo : det.codArticulo,
+                            codFxArticulo : det.codFxArticulo,
+                            Descripcion : det.descripcion,
+                            Cantidad : det.cantidad,
+                            Precio_Unit : det.precioUnit,
+                            Descuento : det.descuento,
+                            Monto_Descuento : det.montoDescuento,
+                            Impuesto : det.impuesto,
+                            Monto_Impuesto : det.montoImpuesto,
+                            ImpuestoOriginal: det.impuesto,
+                            SubtotalGravado : det.subtotalGravado,
+                            SubTotalExcento : det.subTotalExcento,
+                            max_Descuento: det.max_Descuento,
+                            SubTotal : det.subTotal,
+                            idBodega : det.idBodega,
+                            idLote: det.idLote
+                        }
+                    })
+                }
                 
-                console.log(responses);
+                dispatch(SetIDFacturaConsignment(searchConsignmet.encabezado.id));
+                dispatch(Setnum_FacturaConsignment(searchConsignmet.encabezado.num_Factura));
+                dispatch(SetfechaConsignment(searchConsignmet.encabezado.fecha));
+                dispatch(SettipoConsignment(searchConsignmet.encabezado.tipo));
+                dispatch(Setcod_ClienteConsignment(searchConsignmet.encabezado.cod_Cliente));
+                dispatch(SetidTipoClienteConsignment(searchConsignmet.encabezado.tipoDocumento));
+                dispatch(Setnombre_ClienteConsignment(searchConsignmet.encabezado.nombre_Cliente));
+                dispatch(Setcedula_UsuarioConsignment(searchConsignmet.encabezado.cedula_Usuario));
+                dispatch(SetobservacionesConsignment(searchConsignmet.encabezado.observaciones));
+                dispatch(SetempresaConsignment(searchConsignmet.encabezado.empresa));
+                dispatch(SetCod_MonedaConsignment(searchConsignmet.encabezado.Cod_Moneda));
+                dispatch(SetPlazoConsignment(searchConsignmet.encabezado.plazo));
+                dispatch(SetSubTotalGravadaConsignment(searchConsignmet.encabezado.SubTotalGravada));
+                dispatch(SetSubTotalExentoConsignment(searchConsignmet.encabezado.SubTotalExento)); 
+                dispatch(SetSubTotalConsignment(searchConsignmet.encabezado.SubTotal));
+                dispatch(SetDescuentoConsignment(searchConsignmet.encabezado.Descuento));   
+                dispatch(SetImp_VentaConsignment(searchConsignmet.encabezado.Imp_Venta));   
+                dispatch(SetTotalConsignment(searchConsignmet.encabezado.Total));   
 
-                dispatch(CleanSearchConsignment());
+                dispatch(SetDetalleFacturaConsignment(searchConsignmet.detalle) );
+
+                // Se carga el cliente.
+                // dispatch( startSearchCustomerConsignment( searchConsignmet.encabezado.cedula_Usuario, true ) );
+
+                dispatch( SetIsEditConsignment(true) );
+                dispatch( SetenableItemsConsignment(true) );
+                dispatch( SethasCustomerBillingConsignment(true) );
+                dispatch( CleanSearchConsignment() );
 
             } else {
     
@@ -934,6 +1004,96 @@ export const startGetOneConsignment = ( idConsignacion ) => {
             }
         }
     }
+}
+
+export const startDeleteLineDetalleConsignacion = ( deleteLinea ) => {
+
+    return async (dispatch) => {
+
+        //Mostrar un mensaje de confirmacion
+        Swal.fire({
+            title: `¿Desea eliminar el artículo ${deleteLinea.Descripcion} a la factura?`,
+            showDenyButton: true,
+            showCancelButton: false,
+            confirmButtonText: 'Eliminar',
+            denyButtonText: `Cancelar`,
+            allowEnterKey: false
+        }).then(async (result) => {
+
+            try {
+
+                if (result.isConfirmed) {
+
+                    //Mostrar el loading
+                    Swal.fire({
+                        title: 'Por favor, espere',
+                        allowEscapeKey: false,
+                        allowOutsideClick: false,
+                        showConfirmButton: false,
+                        imageUrl: loadingImage,
+                        customClass: 'alert-class-login',
+                        imageHeight: 100,
+                    });
+                    
+                    //Call end-point 
+                    const { data } = await suvesaApi.post(`/venta/EliminarLineaDeVenta?id=${deleteLinea.idVentaDetalle}`);
+                    const { status, responses } = data;
+
+                    //Quitar el loading
+                    Swal.close();
+
+                    if (status === 0) {
+
+                        if( responses === true ) {
+
+                            // Se elimina la linea 
+                            dispatch( startDeleteDetalleActualConsignment( deleteLinea ) );
+                            
+                            //Si es correcta entonces mostrar un mensaje de afirmacion
+                            Swal.fire({
+                                icon: 'success',
+                                title: `Producto ${deleteLinea.Descripcion} eliminado correctamente`,
+                                showConfirmButton: false,
+                                timer: 2500
+                            });
+
+                        }
+
+                    } else {
+                        //Caso contrario respuesta incorrecto mostrar mensaje de error
+                        const { currentException } = data;
+                        const msj = currentException.split(',');
+
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: (currentException.includes(',')) ? msj[3] : currentException,
+                        });
+
+                    }
+
+                }
+
+            } catch (error) {
+
+                Swal.close();
+                console.log(error);
+                if (error.message === 'Request failed with status code 401') {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Usuario no valido',
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Ocurrio un problema al editar la factura',
+                    });
+                }
+            }
+        });
+    };
 }
 
 // Private methods
@@ -1510,4 +1670,14 @@ export const SetListaConsignacionesConsignment = (value) => ({
 
 export const CleanSearchConsignment = () => ({
     type: types.CleanSearchConsignment
+})
+
+export const SetDetalleFacturaConsignment = (value) => ({
+    type: types.SetDetalleFacturaConsignment,
+    payload: value
+})
+
+export const SetIsEditConsignment = (value) => ({
+    type: types.SetIsEditConsignment,
+    payload: value
 })

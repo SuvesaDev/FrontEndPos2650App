@@ -93,7 +93,7 @@ export const ConsignmentItems = () => {
                             accessor: "Descuento",
                         },
                         {
-                            Header: "IV.%",
+                            Header: "IV",
                             accessor: "Monto_Impuesto",
                             Cell: ({ value }) => new Intl.NumberFormat('es-CR', { style: 'currency', currency: 'CRC' }).format(value),
                         },
@@ -149,7 +149,7 @@ export const ConsignmentItems = () => {
     }
 
     const handleChangeCantidad = ({ target }) => {
-
+        
         if (!enableItems) return;
 
         dispatch(SetCantidadDetalleConsignment(target.value));
@@ -370,7 +370,7 @@ export const ConsignmentItems = () => {
         }
 
         //   e.preventDefault();
-
+        
         //Validacion de campo numerico
         if (isNumeric(Precio_Unit, 0.10)
             && isNumeric(Descuento, 0)

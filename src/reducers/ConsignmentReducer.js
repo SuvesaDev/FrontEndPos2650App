@@ -18,6 +18,7 @@ const initialState = {
     plazos: [],
     isEditDetalle: false,
     posicionActual: 0,
+    isEditConsignment: false,
     usuarioFacturacion: {
         id: 0,
         claveInterna: ''
@@ -1064,6 +1065,21 @@ export const consignmentReducer = (state = initialState, action) => {
             return {
                 ...state,
                 listaConsignaciones: action.payload
+            }
+
+        case types.SetDetalleFacturaConsignment:
+            return {
+                ...state,
+                factura: {
+                    ...state.factura,
+                    detalle: action.payload
+                }
+            }
+
+        case types.SetIsEditConsignment:
+            return {
+                ...state,
+                isEditConsignment: action.payload,
             }
 
         case types.CleanSearchConsignment:
