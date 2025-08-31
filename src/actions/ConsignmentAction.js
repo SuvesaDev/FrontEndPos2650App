@@ -265,10 +265,10 @@ export const startSearchCustomerConsignment = ( cedula, hasCoin = false ) => {
     }
 }
 
-export const startSaveCustomerConsignment = (customer) => {
+export const startSaveCustomerConsignment = (customer, btnClose) => {
 
     return async (dispatch) => {
-
+        
         //Mostrar un mensaje de confirmacion
         Swal.fire({
             title: '¿Desea agregar un nuevo cliente?',
@@ -279,7 +279,7 @@ export const startSaveCustomerConsignment = (customer) => {
         }).then(async (result) => {
 
             try {
-
+                
                 if (result.isConfirmed) {
 
                     //Mostrar el loading
@@ -310,6 +310,8 @@ export const startSaveCustomerConsignment = (customer) => {
 
                         // Cargar el numero cliente
                         dispatch(startSearchCustomerConsignment( customer.cedula ));
+
+                        btnClose.current.click();
 
                         //Si es correcta entonces mostrar un mensaje de afirmacion
                         Swal.fire({

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Modal from 'react-modal';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -24,6 +24,8 @@ Modal.setAppElement('#root');
 export const ConsignmentAddCustomerModal = () => {
 
     const dispatch = useDispatch();
+
+    const btnClose = useRef(null);
 
     const { auth } = useSelector(state => state.login);
     const { clienteFacturacion, openAddCustomerConsignment } = useSelector(state => state.consignment);
@@ -62,7 +64,8 @@ export const ConsignmentAddCustomerModal = () => {
             fechaCreacion: new Date().toISOString()
         }
 
-        await dispatch(startSaveCustomerConsignment(customer));
+        await dispatch(startSaveCustomerConsignment(customer, btnClose));
+   
     }
 
     const handleCloseModal = (e) => {
@@ -221,6 +224,7 @@ export const ConsignmentAddCustomerModal = () => {
                             </button>
 
                             <button
+                                ref={btnClose}
                                 type="button"
                                 className="btn btn-danger"
                                 data-bs-dismiss="modal"
