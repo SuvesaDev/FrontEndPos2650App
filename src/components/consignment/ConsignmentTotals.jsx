@@ -161,21 +161,6 @@ export const ConsignmentTotals = () => {
                             <h5>Descuento</h5>
                             <div className="input-group">
                                 <span className="input-group-text">
-                                    <FaPercentage className="iconSize" />
-                                </span>
-                                <input
-                                    name="descuentoGeneral"
-                                    className="form-control"
-                                    // value={
-                                    //     (billings[numberScreen] !== undefined)
-                                    //         ? billings[numberScreen].descuentoGeneral
-                                    //         : 0
-                                    // }
-                                    // onKeyDown={handleKeyDownDescuentoGeneral}
-                                    // onChange={e => handleInputChangeWithDispatch(e, SetDescuentoGeneral)}
-                                />
-
-                                <span className="input-group-text">
                                     <FaColonSign
                                         className="iconSize" />
                                 </span>

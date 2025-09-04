@@ -131,6 +131,36 @@ const IteamsAdmin = [
                 path: '/initial/repayment',
                 icon: <MdAssignmentReturned />,
                 cName: 'vet_nav-text'
+            },
+            {
+                title: 'Consignacion',
+                path: '/buys/consignment',
+                icon: <MdOutlineProductionQuantityLimits />,
+                iconClosed: <RiArrowDownSFill />,
+                iconOpened: <RiArrowUpSFill />,
+                cName: 'vet_nav-text',
+                subNavIteams: [
+                    {
+                        title: 'Registro',
+                        path: '/buys/consignment/register',
+                        icon: <FaRegRegistered />,
+                    },
+                    {
+                        title: 'Seguimiento',
+                        path: '/buys/consignment/following',
+                        icon: <MdSpatialTracking />,
+                    },
+                    {
+                        title: 'Facturacion',
+                        path: '/buys/consignment/billing',
+                        icon: <FaMoneyBillAlt />,
+                    },
+                    {
+                        title: 'Reportes',
+                        path: '/buys/consignment/reports',
+                        icon: <BiSolidReport />,
+                    }
+                ]
             }
         ]
     },
@@ -203,36 +233,6 @@ const IteamsAdmin = [
                         path: '/buys/taxclaim',
                         icon: <BsFileDiffFill />,
                     },
-                ]
-            },
-            {
-                title: 'Consignacion',
-                path: '/buys/consignment',
-                icon: <MdOutlineProductionQuantityLimits />,
-                iconClosed: <RiArrowDownSFill />,
-                iconOpened: <RiArrowUpSFill />,
-                cName: 'vet_nav-text',
-                subNavIteams: [
-                    {
-                        title: 'Registro',
-                        path: '/buys/consignment/register',
-                        icon: <FaRegRegistered />,
-                    },
-                    {
-                        title: 'Seguimiento',
-                        path: '/buys/consignment/following',
-                        icon: <MdSpatialTracking />,
-                    },
-                    {
-                        title: 'Facturacion',
-                        path: '/buys/consignment/billing',
-                        icon: <FaMoneyBillAlt />,
-                    },
-                    {
-                        title: 'Reportes',
-                        path: '/buys/consignment/reports',
-                        icon: <BiSolidReport />,
-                    }
                 ]
             },
             {

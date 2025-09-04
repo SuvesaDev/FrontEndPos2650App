@@ -100,7 +100,7 @@ export const ConsignmentHeaderCustomer = () => {
         <>
             <div className="row mb-2">
 
-                <div className="col-md-3 mb-3">
+                <div className="col-md-4 mb-3">
                     <h5>Cédula</h5>
                     <div className="input-group">
                         <span className="input-group-text">
@@ -163,7 +163,7 @@ export const ConsignmentHeaderCustomer = () => {
                     </div>
                 </div>
 
-                <div className="col-md-3 mb-3">
+                <div className="col-md-5 mb-3">
                     <h5>Nombre</h5>
                     <div className="input-group">
                         <span className="input-group-text">
@@ -182,7 +182,7 @@ export const ConsignmentHeaderCustomer = () => {
                     </div>
                 </div>
 
-                <div className="col-md-3 mb-3">
+                {/* <div className="col-md-3 mb-3">
                     <hr />
                     <div className="inline-container" role="toolbar">
 
@@ -202,13 +202,13 @@ export const ConsignmentHeaderCustomer = () => {
                         </div>
 
                     </div>
-                </div>
+                </div> */}
 
             </div>
 
             <div className="row mb-2">
 
-                <div className="col-md-6 mb-3">
+                <div className="col-md-12 mb-3">
                     <h5>Observaciones</h5>
                     <div className="input-group">
                         <span className="input-group-text">

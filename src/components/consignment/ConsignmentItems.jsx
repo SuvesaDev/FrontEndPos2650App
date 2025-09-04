@@ -89,10 +89,6 @@ export const ConsignmentItems = () => {
                             Cell: ({ value }) => new Intl.NumberFormat('es-CR', { style: 'currency', currency: 'CRC' }).format(value),
                         },
                         {
-                            Header: "Desc.%",
-                            accessor: "Descuento",
-                        },
-                        {
                             Header: "IV",
                             accessor: "Monto_Impuesto",
                             Cell: ({ value }) => new Intl.NumberFormat('es-CR', { style: 'currency', currency: 'CRC' }).format(value),
@@ -373,40 +369,40 @@ export const ConsignmentItems = () => {
         
         //Validacion de campo numerico
         if (isNumeric(Precio_Unit, 0.10)
-            && isNumeric(Descuento, 0)
             && isNumeric(Cantidad, 1)
             && idLote != 0) 
         {
-
-            if (parseFloat(Descuento) <= max_Descuento) {
-
-                if (isEditDetalle) {
-
-                    const index = parseFloat(posicionActual);
-
-                    //Editar la linea detalle
-                    dispatch(startEditDetalleActualConsignment(
-                        detalleArticuloActual,
-                        index
-                    ));
-
-                } else {
-                    //Agregar linea detalle
-                    dispatch( startAddDetalleActualConsignment( detalleArticuloActual ));
-                }
-
-            } else {
+            const seletedLote = lotesByArticulo.find(lote => lote.id == idLote);
+            
+            if ( seletedLote.existencia < Cantidad ) {
 
                 e.preventDefault();
 
                 Swal.fire({
                     icon: 'error',
-                    title: 'Producto tiene un maximo descuento de ' + max_Descuento + ' %',
-                    text: Descripcion
+                    title: 'Stock del lote',
+                    text: `La cantidad ingresada es mayor a al stock del lote ${seletedLote.lote}`
                 });
+
+                return;
+
             }
 
+            if (isEditDetalle) {
 
+                const index = parseFloat(posicionActual);
+
+                //Editar la linea detalle
+                dispatch(startEditDetalleActualConsignment(
+                    detalleArticuloActual,
+                    index
+                ));
+
+            } else {
+                //Agregar linea detalle
+                dispatch( startAddDetalleActualConsignment( detalleArticuloActual ));
+            }
+            
         } else {
 
             e.preventDefault();
@@ -448,11 +444,11 @@ export const ConsignmentItems = () => {
             dispatch(SetPrecio_UnitOriginalDetalleConsignment(precio));
         }
 
-        var resulDescuento = (precio * cantidad) * (descuento / 100);
-        var resulImpuesto = ((precio * cantidad) - resulDescuento) * (impuesto / 100);
+        // var resulDescuento = (precio * cantidad) * (descuento / 100);
+        var resulImpuesto = ((precio * cantidad)) * (impuesto / 100);
 
         dispatch(SetImpuestoDetalleConsignment(impuesto));
-        dispatch(SetMonto_DescuentoDetalleConsignment( parseFloat(resulDescuento).toFixed(2)));
+        // dispatch(SetMonto_DescuentoDetalleConsignment( parseFloat(resulDescuento).toFixed(2)));
         dispatch(SetMonto_ImpuestoDetalleConsignment( parseFloat(resulImpuesto).toFixed(2)));
 
         //SubTotal
@@ -583,22 +579,22 @@ export const ConsignmentItems = () => {
                         </div>
 
                         <div className="col-md-2 mb-3">
-                            <h5>Descuento</h5>
+                            <h5>Cantidad</h5>
                             <div className="input-group">
                                 <span className="input-group-text">
-                                    <FaPercentage className="iconSize" />
+                                    <AiOutlineFieldNumber className="iconSize" />
                                 </span>
                                 <input
-                                    className={ (isNumeric(Descuento, 0)) ? 'form-control' : 'form-control textRed' }
-                                    name="Descuento"
+                                    className={ (isNumeric(Cantidad, 0)) ? 'form-control' : 'form-control textRed'}
+                                    name="Cantidad"
                                     autoComplete="off"
                                     type='number'
                                     min="0"
-                                    // ref={props.inputRefDescuento}
-                                    disable={enableItems}
-                                    value={Descuento}
-                                    onKeyDown={handleClickDownDesc}
-                                    onChange={e => handleChangeDescuento(e)}
+                                    // ref={props.inputRefCantidad}
+                                    disabled={!enableItems}
+                                    value={Cantidad}
+                                    onKeyDown={handleClickDownCantidad}
+                                    onChange={e => handleChangeCantidad(e)}
                                 />
                             </div>
                         </div>
@@ -623,7 +619,7 @@ export const ConsignmentItems = () => {
 
                     <div className='row mb-3'>
 
-                        <div className="col-md-4 mb-3">
+                        <div className="col-md-5 mb-3">
                             <h5>Lote</h5>
                             <div className="input-group">
                                 <span className="input-group-text">
@@ -645,27 +641,6 @@ export const ConsignmentItems = () => {
                                         :   <option value=''></option>
                                     }
                                 </select>
-                            </div>
-                        </div>
-
-                        <div className="col-md-2 mb-3">
-                            <h5>Cantidad</h5>
-                            <div className="input-group">
-                                <span className="input-group-text">
-                                    <AiOutlineFieldNumber className="iconSize" />
-                                </span>
-                                <input
-                                    className={ (isNumeric(Cantidad, 0)) ? 'form-control' : 'form-control textRed'}
-                                    name="Cantidad"
-                                    autoComplete="off"
-                                    type='number'
-                                    min="0"
-                                    // ref={props.inputRefCantidad}
-                                    disabled={!enableItems}
-                                    value={Cantidad}
-                                    onKeyDown={handleClickDownCantidad}
-                                    onChange={e => handleChangeCantidad(e)}
-                                />
                             </div>
                         </div>
 
