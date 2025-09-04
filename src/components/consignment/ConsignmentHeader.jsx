@@ -26,8 +26,9 @@ export const ConsignmentHeader = () => {
   const { 
     disableInputsHeader, 
     isEnableActiveCredito,
-    searchFicha,
-    factura
+    aceptaConsignacion,
+    isEditConsignment,
+    factura,
   } = useSelector(state => state.consignment);
 
   const { tipo } = factura.encabezado;
@@ -113,38 +114,29 @@ export const ConsignmentHeader = () => {
           </div>
         </div>
 
-        {/* <div className="col-md-3 mb-2">
-          <h5>Buscar Consignacion</h5>
-          <div className="input-group">
-            <span className="input-group-text">
-              <ImSortNumbericDesc className="iconSize" />
-            </span>
-            <input
-              name="searchFicha"
-              type='number'
-              min="0"
-              className="form-control"
-              disabled={disableInputsHeader}
-              value={searchFicha}
-              onChange={e => handleInputChangeWithDispatch(e, SetSearchFichaConsignment)}
-              onKeyDown={handleKeyDownSearchPreventa}
-            />
-          </div>
-        </div>
-
-        <div className="col-md-3 mb-2">
-          <hr />
-          <button
-            className={
-              (disableInputsHeader)
-                ? 'btn btn-primary disabled'
-                : 'btn btn-primary'
-            }
-            onClick={handleSearchPreventa}
-          >
-            Buscar <FaMagnifyingGlass className="iconSize" />
-          </button>
-        </div> */}
+        {
+          (aceptaConsignacion && isEditConsignment) 
+            ? <div className='col-md-2 mt-4'>
+                <div className="form-check">
+                    <input
+                        type="checkbox"
+                        id="checkAprobacion"
+                        name="variasSurcursales"
+                        class="form-check-input checkP"
+                        // checked={variasSurcursales}
+                        // onChange={(e) =>
+                        //     handleInputChangeCheckBoxWithDispatch(
+                        //         e,
+                        //         SetVariasSurcursalesCustomers
+                        //     )
+                        // }
+                    />
+                    <h5 className="form-check-label" for="checkAprobacion">Aprobacion Consignacion</h5>
+                </div>
+              </div>
+            : null
+        }
+      
 
       </div>
 

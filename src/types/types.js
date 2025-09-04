@@ -2306,6 +2306,7 @@ export const types = {
   CleanSearchConsignment: '[Consignacion] CleanSearchConsignment',
   SetDetalleFacturaConsignment: '[Consignacion] SetDetalleFacturaConsignment',
   SetIsEditConsignment: '[Consignacion] SetIsEditConsignment',
+  SetAceptaConsignacionConsignment: '[Consignacion] SetAceptaConsignacionConsignment',
 
   CleanConsignment: '[Consignacion] CleanConsignment',
   

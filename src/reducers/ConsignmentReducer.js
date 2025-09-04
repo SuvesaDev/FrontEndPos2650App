@@ -19,6 +19,7 @@ const initialState = {
     isEditDetalle: false,
     posicionActual: 0,
     isEditConsignment: false,
+    aceptaConsignacion: false,
     usuarioFacturacion: {
         id: 0,
         claveInterna: ''
@@ -1082,6 +1083,12 @@ export const consignmentReducer = (state = initialState, action) => {
                 isEditConsignment: action.payload,
             }
 
+        case types.SetAceptaConsignacionConsignment:
+            return {
+                ...state,
+                aceptaConsignacion: action.payload,
+            }
+
         case types.CleanSearchConsignment:
             return {
                 ...state,
@@ -1113,6 +1120,7 @@ export const consignmentReducer = (state = initialState, action) => {
                 isEditDetalle: false,
                 posicionActual: 0,
                 isEditConsignment: false,
+                aceptaConsignacion: false,
                 usuarioFacturacion: {
                     id: 0,
                     claveInterna: ''
