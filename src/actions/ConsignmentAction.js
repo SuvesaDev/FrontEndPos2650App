@@ -137,26 +137,6 @@ export const startSearchCustomerConsignment = ( cedula, hasCoin = false ) => {
                         ordenCompra,
                         sinrestriccion
                     } = responses;
-
-                    // Se crea el objeto de Customer
-                    // const customerEditBilling = {
-                    //     identificacion: identificacion,
-                    //     idTipoCliente: idTipoIdentificacion,
-                    //     telefono: telefono01,
-                    //     direccion: direccion,
-                    //     correocuentas: e_Mail,
-                    //     correoFacturacion: correoComprobante,
-                    //     agente: agente,
-                    //     actualizado: actualizado,
-                    //     fallecido: fallecido,
-                    //     enviaRecibo: enviarRecibo,
-                    //     correoRecibo: correoRecibo,
-                    //     tipoPrecio: tipoprecio,
-                    //     descuentoEspcial: descuentoEspecial,
-                    //     inactivo: anulado,
-                    //     mag: mag,
-                    //     abierto: abierto
-                    // }
                     
                     // Se establece la cedula, tipoCliente y nombre del cliente
                     dispatch( Setcedula_UsuarioConsignment( searchCedula ) );
@@ -178,8 +158,6 @@ export const startSearchCustomerConsignment = ( cedula, hasCoin = false ) => {
                     dispatch( SetordenCompraConsignment( ordenCompra ));
                     dispatch( SetsinrestriccionConsignment( sinrestriccion ));
 
-                    // Se establece el customer Edit
-                    // dispatch( SetCustomerEditBilling( customerEditBilling ));
 
                     // Se establece el HasCustomerBilling
                     if (searchCedula == "000000000") {
@@ -196,38 +174,13 @@ export const startSearchCustomerConsignment = ( cedula, hasCoin = false ) => {
                     // Se establece el CodCliente
                     dispatch( Setcod_ClienteConsignment( identificacion ));
 
-                    // Se establece HasHeader, OpenSearchCustomerBilling y IsEnableActiveCredito
-                    // dispatch( hasHeader( true ));
-                    // dispatch( OpenSearchCustomerBilling( false ));
 
                 } else {
                     
-                    //Mostrar un mensaje de confirmacion
                     Swal.fire({
-                        title: `El cliente ${nombre} no esta registrado. ¿Desea agregar el cliente?`,
-                        showDenyButton: true,
-                        showCancelButton: false,
-                        confirmButtonText: 'Agregar',
-                        denyButtonText: `Cancelar`,
-                    }).then(async (result) => {
-
-                        if (result.isConfirmed) {
-
-                            const {
-                                cedula,
-                                idTipoIdentificacion,
-                                nombre
-                            } = responses;
-
-                            // Se levanta el modal
-                            dispatch( SetOpenAddCustomerConsignment( true ));
-
-                            // Se establece datos de cliente
-                            dispatch( SetidTipoClienteAddConsignment( idTipoIdentificacion ));
-                            dispatch( SetcedulaAddConsignment( cedula ));
-                            dispatch( SetnombreAddConsignment( nombre ));
-                        }
-
+                        icon: 'warning',
+                        title: 'Advertencia',
+                        text: `El cliente con la identificacion ${cedula} no existe, por favor agregarlo.`,
                     });
 
                 }

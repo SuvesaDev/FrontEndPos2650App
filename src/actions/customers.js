@@ -1588,3 +1588,8 @@ export const SetAddAllDatosFacturacionCustomers = ( value ) => ({
     type: types.SetAddAllDatosFacturacionCustomers,
     payload: value
 });
+
+export const SetIsOpenFromConsignmentCustomers = ( value ) => ({
+    type: types.SetIsOpenFromConsignmentCustomers,
+    payload: value
+});

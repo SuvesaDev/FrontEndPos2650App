@@ -1,10 +1,13 @@
+import Swal from "sweetalert2";
+import loadingImage from "../../assets/loading_snipiner.gif";
 import { useDispatch, useSelector } from 'react-redux';
 
-import { SiHappycow } from 'react-icons/si';
+import { IoPeople } from "react-icons/io5";
 import { FaSearch, FaUser } from 'react-icons/fa';
 import { FaIdCard } from "react-icons/fa6";
 import { TbListNumbers, TbNotes } from 'react-icons/tb';
 
+import { addTab } from '../../actions/tabs';
 import { 
     Setcedula_UsuarioConsignment, 
     SetidTipoClienteConsignment,
@@ -14,16 +17,31 @@ import {
     startSearchCustomerConsignment
 } from '../../actions/ConsignmentAction';
 
+import { 
+    ActiveButtonNewCustomers,
+    ActiveButtonSaveCustomers,
+    ActiveButtonSearchCustomers, 
+    DisableInputsCustomers, 
+    SetCedulaCustomers, 
+    SetIsOpenFromConsignmentCustomers, 
+    SetStartOpeningCustomers
+} from '../../actions/customers';
+
 import { BillingEditCustomerModal } from '../Billing/BillingEditCustomerModal';
 import { BillingMAGCustomerModal } from '../Billing/BillingMAGCustomerModal';
 import { CustomerSearchModal } from '../customers/CustomerSearchModal';
 import { ConsignmentAddCustomerModal } from './ConsignmentAddCustomerModal';
+import { startGetAllAgentesVenta } from "../../actions/AgenteVentaAction";
+import { startGetAllProvincias } from "../../actions/ProvinciasAction";
+
 
 export const ConsignmentHeaderCustomer = () => {
 
     const dispatch = useDispatch();
 
     const { tiposIdentificacion } = useSelector(state => state.tiposIdentificacion);
+    const { agentesBilling } = useSelector((state) => state.agenteVentas);
+    const { provincias } = useSelector((state) => state.provincias);
 
     const { 
         disableInputsHeader,
@@ -43,44 +61,13 @@ export const ConsignmentHeaderCustomer = () => {
         dispatch(action(target.value));
     };
 
-    // const handleAddUserClick = () => {
-
-    //     if (billings[numberScreen] === undefined) return;
-
-    //     if (!billings[numberScreen].hasCustomerBilling) {
-    //         dispatch(SetIdTipoClienteClienteFacturacionBilling({ value: 2, number: numberScreen }))
-    //         dispatch(OpenModalAddCustomer({ number: numberScreen }));
-    //     }
-
-    // }
-
-    // const handleEditUserClick = () => {
-
-    //     if (billings[numberScreen] === undefined) return;
-
-    //     if (billings[numberScreen].hasCustomerBilling) {
-    //         dispatch(OpenModalEditCustomer({ number: numberScreen }));
-    //     }
-    // }
-
-    // const handleMAGUserClick = () => {
-
-    //     if (billings[numberScreen] === undefined) return;
-
-    //     if (billings[numberScreen].hasCustomerBilling) {
-    //         dispatch(OpenModalMAGCustomer({ number: numberScreen }));
-    //         dispatch(startSearchCustomerMAG(billings[numberScreen].factura.encabezado.cedula_Usuario, numberScreen));
-    //     }
-    // }
-
     const handleSearchClientBilling = (e) => {
 
         if (cedula_Usuario !== '') {
 
             e.preventDefault();
-
-            // dispatch(SetCedulaBuscarBilling({ value: billings[numberScreen].factura.encabezado.cedula_Usuario, number: numberScreen }));
             dispatch(startSearchCustomerConsignment(cedula_Usuario, (Cod_Moneda != '') ? true : false) );
+
         }else{
             dispatch( SetOpenSearchCustomerConsignment( true ));
         }
@@ -90,17 +77,58 @@ export const ConsignmentHeaderCustomer = () => {
     const handleClickDown = (e) => {
 
         if (e.key === 'Enter') {
-            // dispatch(SetCedulaBuscarBilling({ value: e.target.value, number: numberScreen }));
             dispatch( startSearchCustomerConsignment(e.target.value, (Cod_Moneda != '') ? true : false));
         }
     }
+
+    const handleAddCustomer = async () => {
+
+        if(cedula_Usuario != '') {
+            dispatch(SetCedulaCustomers(cedula_Usuario));
+        }
+
+        dispatch( addTab('Clientes', '/initial/customers') );
+        dispatch(ActiveButtonSearchCustomers(false));
+        dispatch(ActiveButtonSaveCustomers(true));
+        dispatch(ActiveButtonNewCustomers(false));
+        dispatch(DisableInputsCustomers(false));
+        dispatch(SetStartOpeningCustomers(true));
+        dispatch( SetIsOpenFromConsignmentCustomers(true));
+
+        await loadCatalogos();
+    }
+
+    const loadCatalogos = async (e) => {
+
+        //Mostrar el loading
+        Swal.fire({
+          title: "Por favor, espere cargando catalogos",
+          allowEscapeKey: false,
+          allowOutsideClick: false,
+          showConfirmButton: false,
+          imageUrl: loadingImage,
+          customClass: "alert-class-login",
+          imageHeight: 100,
+        });
+    
+        if (agentesBilling === null) {
+          await dispatch(startGetAllAgentesVenta());
+        }
+    
+        if (provincias.length === 0) {
+          await dispatch(startGetAllProvincias());
+        }
+    
+        //Quitar el loading
+        Swal.close();
+      };
 
     return (
 
         <>
             <div className="row mb-2">
 
-                <div className="col-md-4 mb-3">
+                <div className="col-md-3 mb-3">
                     <h5>Cédula</h5>
                     <div className="input-group">
                         <span className="input-group-text">
@@ -182,27 +210,23 @@ export const ConsignmentHeaderCustomer = () => {
                     </div>
                 </div>
 
-                {/* <div className="col-md-3 mb-3">
+                <div className="col-md-1 mb-3">
                     <hr />
                     <div className="inline-container" role="toolbar">
-
                         <div className="btn-group mb-2">
                             <button
                                 className={
-                                    (hasCustomerBilling) 
-                                        ? 'btn btn-dark' 
-                                        : 'btn btn-dark disabled'
+                                    (disableInputsHeader)
+                                        ? 'btn btn-primary disabled'
+                                        : 'btn btn-primary'
                                 }
-                                data-bs-toggle="modal"
-                                data-bs-target="#modalConsultaMAG"
-
+                                onClick={handleAddCustomer}
                             >
-                                <SiHappycow className="iconSize" />
+                                <IoPeople className="iconSize" />
                             </button>
                         </div>
-
                     </div>
-                </div> */}
+                </div>
 
             </div>
 

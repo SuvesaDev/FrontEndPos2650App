@@ -71,7 +71,8 @@ const initialState = {
     },
     allDatosFacturacion: [],
     isEditDatosFacturacion: false,
-    idDatoFacturacionEdit: 0
+    idDatoFacturacionEdit: 0,
+    isOpenFromConsignment: false,
 };
 
 export const CustomersReducer = (state = initialState, action) => {
@@ -441,7 +442,8 @@ export const CustomersReducer = (state = initialState, action) => {
                 },
                 allDatosFacturacion: [],
                 isEditDatosFacturacion: false,
-                idDatoFacturacionEdit: 0
+                idDatoFacturacionEdit: 0,
+                isOpenFromConsignment: false,
             }
 
         case types.ActiveButtonNewCustomers:
@@ -734,6 +736,12 @@ export const CustomersReducer = (state = initialState, action) => {
             return {
                 ...state,
                 allDatosFacturacion: action.payload
+            }
+
+        case types.SetIsOpenFromConsignmentCustomers:
+            return {
+                ...state,
+                isOpenFromConsignment: action.payload
             }
     
         default:
