@@ -19,7 +19,7 @@ const initialState = {
     isEditDetalle: false,
     posicionActual: 0,
     isEditConsignment: false,
-    aceptaConsignacion: false,
+    isAllowAceptaConsignacion: false,
     usuarioFacturacion: {
         id: 0,
         claveInterna: ''
@@ -72,7 +72,8 @@ const initialState = {
             ficha: 0,
             preventa: true,
             usuario: '',
-            idDatoFacturacion: 0
+            idDatoFacturacion: 0,
+            aprobacion: false
         },
         detalle: []
     },
@@ -517,6 +518,18 @@ export const consignmentReducer = (state = initialState, action) => {
                     encabezado: {
                         ...state.factura.encabezado,
                         idDatoFacturacion: action.payload
+                    }
+                }
+            }
+
+        case types.SetAprobacionConsignment:
+            return {
+                ...state,
+                factura: {
+                    ...state.factura,
+                    encabezado: {
+                        ...state.factura.encabezado,
+                        aprobacion: action.payload
                     }
                 }
             }
@@ -1083,10 +1096,10 @@ export const consignmentReducer = (state = initialState, action) => {
                 isEditConsignment: action.payload,
             }
 
-        case types.SetAceptaConsignacionConsignment:
+        case types.SetIsAllowAceptaConsignacionConsignment:
             return {
                 ...state,
-                aceptaConsignacion: action.payload,
+                isAllowAceptaConsignacion: action.payload,
             }
 
         case types.CleanSearchConsignment:
@@ -1120,7 +1133,7 @@ export const consignmentReducer = (state = initialState, action) => {
                 isEditDetalle: false,
                 posicionActual: 0,
                 isEditConsignment: false,
-                aceptaConsignacion: false,
+                isAllowAceptaConsignacion: false,
                 usuarioFacturacion: {
                     id: 0,
                     claveInterna: ''

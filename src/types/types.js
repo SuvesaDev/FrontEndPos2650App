@@ -2241,6 +2241,7 @@ export const types = {
   SetpreventaConsignment: '[Consignacion] SetpreventaConsignment',
   SetusuarioConsignment: '[Consignacion] SetusuarioConsignment',
   SetidDatoFacturacionConsignment: '[Consignacion] SetidDatoFacturacionConsignment',
+  SetAprobacionConsignment: '[Consignacion] SetAprobacionConsignment',
 
   SetCodArticuloDetalleConsignment: '[Consignacion] SetCodArticuloDetalleConsignment',
   SetcodFxArticuloDetalleConsignment: '[Consignacion] SetcodFxArticuloDetalleConsignment',
@@ -2306,7 +2307,7 @@ export const types = {
   CleanSearchConsignment: '[Consignacion] CleanSearchConsignment',
   SetDetalleFacturaConsignment: '[Consignacion] SetDetalleFacturaConsignment',
   SetIsEditConsignment: '[Consignacion] SetIsEditConsignment',
-  SetAceptaConsignacionConsignment: '[Consignacion] SetAceptaConsignacionConsignment',
+  SetIsAllowAceptaConsignacionConsignment: '[Consignacion] SetIsAllowAceptaConsignacionConsignment',
 
   CleanConsignment: '[Consignacion] CleanConsignment',
   

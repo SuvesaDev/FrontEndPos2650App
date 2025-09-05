@@ -181,6 +181,7 @@ export const ConsignmentFooter = () => {
                 idClienteSucursal: null,
                 idPlazo: factura.encabezado.plazo,
                 esConsignacion: true,
+                aprobacion: false,
                 detalle: factura.detalle.map(detalle => {
                     return {
                         idVentaDetalle : 0,
@@ -266,6 +267,7 @@ export const ConsignmentFooter = () => {
                 idClienteSucursal: null,
                 idPlazo: factura.encabezado.plazo,
                 esConsignacion: true,
+                aprobacion: factura.encabezado.aprobacion,
                 detalle: factura.detalle.map(detalle => {
                     return {
                         idVentaDetalle : (detalle.idVentaDetalle != null) ? detalle.idVentaDetalle : 0,

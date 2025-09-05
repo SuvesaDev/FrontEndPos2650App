@@ -1,21 +1,9 @@
-import { useEffect, useState } from 'react';
-import Swal from 'sweetalert2';
 import { useDispatch, useSelector } from 'react-redux';
 
-import {
-  SetSearchFichaBilling,
-  SetTipoEncabezadoBilling,
-  startSearchPreventaBilling
-} from '../../actions/billing';
-
-import moment from 'moment';
-
 import { MdFactCheck } from "react-icons/md";
-import { FaMagnifyingGlass } from 'react-icons/fa6';
-import { ImSortNumbericDesc } from 'react-icons/im';
 
 import { 
-  SetSearchFichaConsignment, 
+  SetAprobacionConsignment,
   SettipoConsignment 
 } from '../../actions/ConsignmentAction';
 
@@ -26,53 +14,25 @@ export const ConsignmentHeader = () => {
   const { 
     disableInputsHeader, 
     isEnableActiveCredito,
-    aceptaConsignacion,
+    isAllowAceptaConsignacion,
     isEditConsignment,
     factura,
   } = useSelector(state => state.consignment);
 
-  const { tipo } = factura.encabezado;
+  const { tipo, aprobacion } = factura.encabezado;
 
   const {
     allTiposFacturas,
     onlyContadoTiposFacturas
   } = useSelector(state => state.tiposFacturas);
 
-  const handleInputChangeWithDispatch = ({ target }, action) => {
-    dispatch(action(target.value));
+  const handleInputChangeCheckBoxWithDispatch = ({ target }, action) => {
+    dispatch(action(target.checked));
   };
 
   const changeTipoFactura = ({ target }) => {
     dispatch(SettipoConsignment(parseInt(target.value)));
   };
-
-  const handleSearchPreventa = (e) => {
-
-    // if (billings[numberScreen] === undefined) return;
-
-    // e.preventDefault();
-
-    // if (billings[numberScreen].searchFicha !== '' && /^\d+$/.test(billings[numberScreen].searchFicha) === true) {
-    //   dispatch(startSearchPreventaBilling(parseInt(billings[numberScreen].searchFicha), moment(new Date()).format("DD/MM/YYYY"), numberScreen));
-    // } else {
-
-    //   Swal.fire({
-    //     icon: 'warning',
-    //     title: 'Advertencia',
-    //     text: 'Número de ficha vacio o no valido.'
-    //   });
-    // }
-  }
-
-  const handleKeyDownSearchPreventa = (e) => {
-
-    // if (billings[numberScreen] === undefined) return;
-
-    // if (e.key === 'Enter') {
-    //   handleSearchPreventa(e);
-    // }
-
-  }
 
   return (
 
@@ -115,7 +75,7 @@ export const ConsignmentHeader = () => {
         </div>
 
         {
-          (aceptaConsignacion && isEditConsignment) 
+          (isAllowAceptaConsignacion && isEditConsignment) 
             ? <div className='col-md-2 mt-4'>
                 <div className="form-check">
                     <input
@@ -123,13 +83,13 @@ export const ConsignmentHeader = () => {
                         id="checkAprobacion"
                         name="variasSurcursales"
                         class="form-check-input checkP"
-                        // checked={variasSurcursales}
-                        // onChange={(e) =>
-                        //     handleInputChangeCheckBoxWithDispatch(
-                        //         e,
-                        //         SetVariasSurcursalesCustomers
-                        //     )
-                        // }
+                        checked={aprobacion}
+                        onChange={(e) =>
+                            handleInputChangeCheckBoxWithDispatch(
+                                e,
+                                SetAprobacionConsignment
+                            )
+                        }
                     />
                     <h5 className="form-check-label" for="checkAprobacion">Aprobacion Consignacion</h5>
                 </div>

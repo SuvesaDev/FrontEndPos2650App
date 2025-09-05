@@ -43,7 +43,7 @@ export const startValidateClaveInternaConsignment = ( password, catalogos ) => {
                 dispatch( SetstartOpeningConsignment(true));
 
                 // Se establece si acepta consignacion
-                dispatch( SetAceptaConsignacionConsignment(aceptaConsignacion) );
+                dispatch( SetIsAllowAceptaConsignacionConsignment(aceptaConsignacion) );
 
                 // Se cargan los catalogos
                 await loadCatalogos( dispatch, catalogos );
@@ -1481,6 +1481,11 @@ export const SetidDatoFacturacionConsignment = (value) => ({
     payload: value
 })
 
+export const SetAprobacionConsignment = (value) => ({
+    type: types.SetAprobacionConsignment,
+    payload: value
+})
+
 export const SetCodArticuloDetalleConsignment = (value) => ({
     type: types.SetCodArticuloDetalleConsignment,
     payload: value
@@ -1776,7 +1781,7 @@ export const CleanConsignment = () => ({
     type: types.CleanConsignment
 })
 
-export const SetAceptaConsignacionConsignment = (value) => ({
-    type: types.SetAceptaConsignacionConsignment,
+export const SetIsAllowAceptaConsignacionConsignment = (value) => ({
+    type: types.SetIsAllowAceptaConsignacionConsignment,
     payload: value
 })
