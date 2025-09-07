@@ -616,7 +616,7 @@ export const startSaveConsignment = ( factura, datosCliente, idSucursalOF) => {
                     //Call end-point 
                     const { data } = await suvesaApi.post('/venta/CrearFactura', factura);
                     const { status, responses} = data;
-                    const {id} = responses;
+                    
                     //Quitar el loading
                     Swal.close();
 

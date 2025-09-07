@@ -181,7 +181,7 @@ export const ConsignmentFooter = () => {
                 idClienteSucursal: null,
                 idPlazo: factura.encabezado.plazo,
                 esConsignacion: true,
-                aprobacion: false,
+                consignacionAceptada: false,
                 detalle: factura.detalle.map(detalle => {
                     return {
                         idVentaDetalle : 0,
@@ -200,7 +200,8 @@ export const ConsignmentFooter = () => {
                         cantVen: detalle.CantVet,
                         cantBod: detalle.CantBod,
                         idBodega: idBodegaCostaPets.idBodega,
-                        lote: detalle.idLote
+                        lote: detalle.idLote,
+                        numeroLote: ''
                     }
                 })
             }
@@ -267,7 +268,7 @@ export const ConsignmentFooter = () => {
                 idClienteSucursal: null,
                 idPlazo: factura.encabezado.plazo,
                 esConsignacion: true,
-                aprobacion: factura.encabezado.aprobacion,
+                consignacionAceptada: factura.encabezado.aprobacion,
                 detalle: factura.detalle.map(detalle => {
                     return {
                         idVentaDetalle : (detalle.idVentaDetalle != null) ? detalle.idVentaDetalle : 0,
@@ -286,7 +287,8 @@ export const ConsignmentFooter = () => {
                         cantVen: detalle.CantVet,
                         cantBod: detalle.CantBod,
                         idBodega: idBodegaCostaPets.idBodega,
-                        lote: detalle.idLote
+                        lote: detalle.idLote,
+                        numeroLote: ''
                     }
                 })
             }
