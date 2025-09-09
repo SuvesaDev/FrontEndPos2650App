@@ -894,7 +894,8 @@ export const startGetOneConsignment = ( idConsignacion ) => {
                             max_Descuento: det.max_Descuento,
                             SubTotal : det.subTotal,
                             idBodega : det.idBodega,
-                            idLote: det.idLote
+                            idLote: det.idLote,
+                            nombreLote: det.numeroLote
                         }
                     })
                 }
