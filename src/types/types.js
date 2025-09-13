@@ -2321,4 +2321,9 @@ export const types = {
   SetStartOpeningFollowingConsignment: '[FollowingConsignacion] SetStartOpeningFollowingConsignment',
   SetPlazosFollowingConsignment: '[FollowingConsignacion] SetPlazosFollowingConsignment',
 
+  SetVisibleTabDetalleFollowingConsignment: '[FollowingConsignacion] SetVisibleTabDetalleFollowingConsignment',
+  SetSeletedTabFollowingConsignment: '[FollowingConsignacion] SetSeletedTabFollowingConsignment',
+  SetConsignacionesAprobadasFollowingConsignment: '[FollowingConsignacion] SetConsignacionesAprobadasFollowingConsignment',
+  SetConsignacionesPendientesFollowingConsignment: '[FollowingConsignacion] SetConsignacionesPendientesFollowingConsignment',
+
 }

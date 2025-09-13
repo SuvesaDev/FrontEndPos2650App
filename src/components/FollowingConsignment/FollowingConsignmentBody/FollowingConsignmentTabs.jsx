@@ -1,19 +1,19 @@
 import { useDispatch, useSelector } from "react-redux";
 
-// import { SelectTabCustomers } from "../../../actions/customers";
+import { SetSeletedTabFollowingConsignment } from "../../../actions/FollowingConsignmentAction";
 
 export const FollowingConsignmentTabs = () => {
 
   const dispatch = useDispatch();
 
-  const state = useSelector((state) => state.customers);
-  const { currentTabCustomers, isCustomerEdit, variasSurcursales, isOpenFromConsignment } = state;
+  const { 
+        visibleTabDetalle,
+        seletedTab
+    } = useSelector(state => state.followingConsignment);
 
-  const { auth } = useSelector((state) => state.login);
-  const { costaPets } = auth;
 
-  const handleSelectTabCustomers = (nameTab) => {
-    dispatch(SelectTabCustomers(nameTab));
+  const handleSelectTab = (nameTab) => {
+    dispatch(SetSeletedTabFollowingConsignment(nameTab));
   };
 
   return (
@@ -22,33 +22,30 @@ export const FollowingConsignmentTabs = () => {
 
       <div className="col-md-2 mb-2">
         <button
-          className="btn btn-primary"
-          // className={
-          //   currentTabCustomers == "DatosGenerales"
-          //     ? "btn btn-primary"
-          //     : "btn btn-outline-primary"
-          // }
-          // onClick={() => handleSelectTabCustomers("DatosGenerales")}
+          className={
+            seletedTab == "ListadoConsignacion"
+              ? "btn btn-primary"
+              : "btn btn-outline-primary"
+          }
+          onClick={() => handleSelectTab("ListadoConsignacion")}
         >
           Listado de Consignaciones
         </button>
       </div>
 
-      <div className="col-md-2 mb-2">
+      <div className={ (visibleTabDetalle) ? 'col-md-2 mb-2' : 'col-md-2 mb-2 d-none' }>
         <button
-          className="btn btn-outline-primary"
-          // className={
-          //   currentTabCustomers == "DatosGenerales"
-          //     ? "btn btn-primary"
-          //     : "btn btn-outline-primary"
-          // }
-          // onClick={() => handleSelectTabCustomers("DatosGenerales")}
+          className={
+            seletedTab == "DetalleConsignacion"
+              ? "btn btn-primary"
+              : "btn btn-outline-primary"
+          }
+          onClick={() => handleSelectTab("DetalleConsignacion")}
         >
           Detalle Consignacion
         </button>
       </div>
 
-      
       <div className="col-md-3 mb-2"></div>
 
     </>

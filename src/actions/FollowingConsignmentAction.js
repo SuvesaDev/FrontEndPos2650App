@@ -47,6 +47,9 @@ export const startValidateClaveInternaFollowingConsignment = ( password, catalog
                 // Se cargan los catalogos
                 await loadCatalogos( dispatch, catalogos );
 
+                // Cargar las consignaciones
+                await startGetAllConsignments(dispatch);
+
             } else if ( status === 0 && message === 'Contraseña Incorrecta' ) {
                 
                 Swal.fire({
@@ -119,6 +122,152 @@ export const startGetAllPlazosFollowingConsignment = () => {
                     icon: 'error',
                     title: 'Error',
                     text: 'Ocurrio un problema al obtener el stock del lote',
+                });
+            }
+        }
+
+    }
+
+}
+
+const startGetAllConsignments = async ( dispatch ) => {
+    
+    //Mostrar el loading
+    Swal.fire({
+        title: 'Por favor, espere cargando las consginaciones',
+        allowEscapeKey: false,
+        allowOutsideClick: false,
+        showConfirmButton: false,
+        imageUrl: loadingImage,
+        customClass: 'alert-class-login',
+        imageHeight: 100,
+    });
+    
+    // Se obtiene los tipos de Facturas
+    // if( catalogos.tiposFacturas === null ) {
+        await dispatch( startGetAllConsignmentAprobadas() );
+    // }
+
+    // Se obtiene los tipos de Identificacion
+    // if( catalogos.tiposIdentificacion.length === 0 ) {
+        await dispatch( startGetAllConsignmentPendientes() )
+    // }
+
+    //Quitar el loading
+    Swal.close();
+
+}
+
+export const startGetAllConsignmentAprobadas = () => {
+
+    return async ( dispatch ) => {
+    
+        try {
+
+            //Call end-point 
+            const { data } = await suvesaApi.get(`/venta/ObtenerConsignacionEncabezadoEstado?request=true`);
+            const { status, responses } = data;
+            
+            if( status === 0) {
+            
+                const consignaciones = responses.map( consginacion => {
+                    return {
+                        ...consginacion,
+                        fecha: consginacion.fecha.split('T')[0]
+                    }
+                });
+
+                console.log(consignaciones)
+
+                dispatch( SetConsignacionesAprobadasFollowingConsignment(consignaciones));
+
+            } else {
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
+
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
+                
+            }
+            
+        } catch (error) {
+            
+            Swal.close();
+            console.log(error);
+            if( error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al obtener las consignaciones',
+                });
+            }
+        }
+
+    }
+
+}
+
+export const startGetAllConsignmentPendientes = () => {
+
+    return async ( dispatch ) => {
+    
+        try {
+
+            //Call end-point 
+            const { data } = await suvesaApi.get(`/venta/ObtenerConsignacionEncabezadoEstado?request=false`);
+            const { status, responses } = data;
+            
+            if( status === 0) {
+               
+                const consignaciones = responses.map( consginacion => {
+                    return {
+                        ...consginacion,
+                        fecha: consginacion.fecha.split('T')[0]
+                    }
+                });
+
+                console.log(consignaciones)
+
+                dispatch( SetConsignacionesPendientesFollowingConsignment(consignaciones));
+
+            } else {
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
+
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
+                
+            }
+            
+        } catch (error) {
+            
+            Swal.close();
+            console.log(error);
+            if( error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al obtener las consignaciones',
                 });
             }
         }
@@ -210,5 +359,25 @@ export const SetStartOpeningFollowingConsignment = (value) => ({
 
 export const SetPlazosFollowingConsignment = (value) => ({
     type: types.SetPlazosFollowingConsignment,
+    payload: value
+})
+
+export const SetVisibleTabDetalleFollowingConsignment = (value) => ({
+    type: types.SetVisibleTabDetalleFollowingConsignment,
+    payload: value
+})
+
+export const SetSeletedTabFollowingConsignment = (value) => ({
+    type: types.SetSeletedTabFollowingConsignment,
+    payload: value
+})
+
+export const SetConsignacionesAprobadasFollowingConsignment = (value) => ({
+    type: types.SetConsignacionesAprobadasFollowingConsignment,
+    payload: value
+})
+
+export const SetConsignacionesPendientesFollowingConsignment = (value) => ({
+    type: types.SetConsignacionesPendientesFollowingConsignment,
     payload: value
 })

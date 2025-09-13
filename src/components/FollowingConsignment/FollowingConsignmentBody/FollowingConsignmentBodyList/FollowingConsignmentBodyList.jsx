@@ -4,31 +4,22 @@ import { FaEye } from "react-icons/fa";
 
 import { FollowingConsignmentIBodyListTable } from "./FollowingConsignmentIBodyListTable";
 
-// import { SelectTabCustomers } from "../../../actions/customers";
-
 export const FollowingConsignmentBodyList = () => {
 
-  // const dispatch = useDispatch();
-
-  // const state = useSelector((state) => state.customers);
-  // const { currentTabCustomers, isCustomerEdit, variasSurcursales, isOpenFromConsignment } = state;
-
-  // const { auth } = useSelector((state) => state.login);
-  // const { costaPets } = auth;
-
-  // const handleSelectTabCustomers = (nameTab) => {
-  //   dispatch(SelectTabCustomers(nameTab));
-  // };
+    const { 
+        consignacionesPendientes,
+        consignacionesAprobadas
+    } = useSelector(state => state.followingConsignment);
 
   const columns = useMemo(
       () => [
           {
               Header: "Cedula del cliente",
-              accessor: "cedula",
+              accessor: "cedulaCliente",
           },
           {
               Header: "Nombre del cliente",
-              accessor: "nombre",
+              accessor: "nombreCliente",
           },
           {
               Header: "Moneda",
@@ -60,11 +51,11 @@ export const FollowingConsignmentBodyList = () => {
       () => [
           {
               Header: "Cedula del cliente",
-              accessor: "cedula",
+              accessor: "cedulaCliente",
           },
           {
               Header: "Nombre del cliente",
-              accessor: "nombre",
+              accessor: "nombreCliente",
           },
           {
               Header: "Moneda",
@@ -92,7 +83,7 @@ export const FollowingConsignmentBodyList = () => {
               </div>
   
               <div className="card-body">
-                  <FollowingConsignmentIBodyListTable data={[]} columns={columns} />
+                  <FollowingConsignmentIBodyListTable data={consignacionesPendientes} columns={columns} />
               </div>
 
           </div>
@@ -104,7 +95,7 @@ export const FollowingConsignmentBodyList = () => {
               </div>
   
               <div className="card-body">
-                  <FollowingConsignmentIBodyListTable data={[]} columns={columnsAprobadas} />
+                  <FollowingConsignmentIBodyListTable data={consignacionesAprobadas} columns={columnsAprobadas} />
               </div>
 
           </div>

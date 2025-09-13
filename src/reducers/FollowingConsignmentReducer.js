@@ -9,7 +9,11 @@ const initialState = {
     },
     visiblePassword: false,
     startOpening: false,
-    plazos: []
+    plazos: [],
+    visibleTabDetalle: false,
+    seletedTab: 'ListadoConsignacion',
+    consignacionesPendientes: [],
+    consignacionesAprobadas: []
 };
 
 export const followingConsignmentReducer = (state = initialState, action) => {
@@ -65,6 +69,24 @@ export const followingConsignmentReducer = (state = initialState, action) => {
             return {
                 ...state,
                 plazos: action.payload
+            }
+
+        case types.SetSeletedTabFollowingConsignment:
+            return {
+                ...state,
+                seletedTab: action.payload
+            }
+
+        case types.SetConsignacionesAprobadasFollowingConsignment:
+            return {
+                ...state,
+                consignacionesAprobadas: action.payload
+            }
+
+        case types.SetConsignacionesPendientesFollowingConsignment:
+            return {
+                ...state,
+                consignacionesPendientes: action.payload
             }
         
         default:
