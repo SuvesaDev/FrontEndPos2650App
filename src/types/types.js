@@ -2311,5 +2311,14 @@ export const types = {
   SetIsAllowAceptaConsignacionConsignment: '[Consignacion] SetIsAllowAceptaConsignacionConsignment',
 
   CleanConsignment: '[Consignacion] CleanConsignment',
-  
+
+  //FollowingConsignment
+  SetActiveButtonFooterFollowingConsignment: '[FollowingConsignacion] SetActiveButtonFooterFollowingConsignment',
+  SetIdUserFollowingConsignment: '[FollowingConsignacion] SetIdUserFollowingConsignment',
+  SetClaveInternaFollowingConsignment: '[FollowingConsignacion] SetClaveInternaFollowingConsignment',
+  SetNameUserFollowingConsignment: '[FollowingConsignacion] SetNameUserFollowingConsignment',
+  SetVisiblePasswordFollowingConsignment: '[FollowingConsignacion] SetVisiblePasswordFollowingConsignment',
+  SetStartOpeningFollowingConsignment: '[FollowingConsignacion] SetStartOpeningFollowingConsignment',
+  SetPlazosFollowingConsignment: '[FollowingConsignacion] SetPlazosFollowingConsignment',
+
 }

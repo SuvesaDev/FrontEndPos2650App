@@ -58,6 +58,7 @@ import { familiasReducer } from '../reducers/familiasReducer';
 import { OrdenCompraReducer } from '../reducers/ordencompraReducer';
 import { BonificacionesReducer } from '../reducers/bonificacionesReducer';
 import { consignmentReducer } from '../reducers/ConsignmentReducer';
+import { followingConsignmentReducer } from '../reducers/FollowingConsignmentReducer';
 
 const reducers = combineReducers({
     tabs: tabsReducer,
@@ -117,7 +118,8 @@ const reducers = combineReducers({
     familias: familiasReducer,
     ordenCompra: OrdenCompraReducer,
     bonificaciones: BonificacionesReducer,
-    consignment: consignmentReducer
+    consignment: consignmentReducer,
+    followingConsignment: followingConsignmentReducer
 });
 
 const composeEnhancers = (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
