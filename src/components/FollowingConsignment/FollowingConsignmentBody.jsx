@@ -1,11 +1,16 @@
+import { useSelector } from "react-redux";
+
 import { FollowingConsignmentTabs } from "./FollowingConsignmentBody/FollowingConsignmentTabs";
 import { FollowingConsignmentBodyList } from "./FollowingConsignmentBody/FollowingConsignmentBodyList/FollowingConsignmentBodyList";
 import { FollowingConsignmentBodyDetails } from "./FollowingConsignmentBody/FollowingConsignmentBodyDetails/FollowingConsignmentBodyDetails";
 
 export const FollowingConsignmentBody = () => {
 
+  const { seletedTab } = useSelector(state => state.followingConsignment);
+
   const redirectComponent = () => {
-    switch ("ListadoConsignacion") {
+    
+    switch (seletedTab) {
 
       case "ListadoConsignacion":
         return <FollowingConsignmentBodyList />;

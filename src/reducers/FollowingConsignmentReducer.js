@@ -88,6 +88,12 @@ export const followingConsignmentReducer = (state = initialState, action) => {
                 ...state,
                 consignacionesPendientes: action.payload
             }
+
+        case types.SetVisibleTabDetalleFollowingConsignment:
+            return {
+                ...state,
+                visibleTabDetalle: action.payload
+            }
         
         default:
             return state;

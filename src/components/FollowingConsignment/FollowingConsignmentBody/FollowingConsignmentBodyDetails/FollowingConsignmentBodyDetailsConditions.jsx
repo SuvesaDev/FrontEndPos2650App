@@ -1,44 +1,17 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-import { FaCoins, FaRightLong } from 'react-icons/fa6';
-
-// import { 
-//   SetCod_MonedaConsignment, 
-//   SetenableItemsConsignment, 
-//   SetOrdenConsignment, 
-//   SetPlazoConsignment
-// } from '../../actions/ConsignmentAction';
+import { FaCoins } from 'react-icons/fa6';
 
 export const FollowingConsignmentBodyDetailsConditions = () => {
 
-  // const dispatch = useDispatch();
+  const { monedasInventory } = useSelector(state => state.monedas);
 
-  // const { monedasInventory } = useSelector(state => state.monedas);
-
-  // const { 
-  //   disableInputsHeader,
-  //   hasCustomerBilling,
-  //   factura,
-  //   plazos
-  // } = useSelector(state => state.consignment);
+  const { plazos } = useSelector(state => state.followingConsignment);
 
   // const { 
   //   Cod_Moneda,
   //   plazo
   // } = factura.encabezado;
-
-  const handleInputChangeWithDispatch = ({ target }, action) => {
-    // dispatch(action(target.value));
-  };
-
-  const handleChangeMoneda = ({ target }) => {
-
-    // dispatch(SetCod_MonedaConsignment(target.value));
-
-    // if (hasCustomerBilling) {
-    //   dispatch(SetenableItemsConsignment(true));
-    // }
-  };
 
   return (
     <>
@@ -61,18 +34,17 @@ export const FollowingConsignmentBodyDetailsConditions = () => {
                 <select
                   name="Cod_Moneda"
                   className="form-select"
-                  // disabled={disableInputsHeader}
+                  disabled={true}
                   // value={Cod_Moneda}
-                  // onChange={e => handleChangeMoneda(e)}
                 >
                   <option value={''} selected disabled hidden> Seleccione... </option>
-                  {/* {
+                  {
                     (monedasInventory != null && monedasInventory.length > 0)
                       ? monedasInventory.map(moneda => {
                           return <option key={moneda.codMoneda} value={moneda.codMoneda}> {moneda.monedaNombre} </option>
                         })
                       : <option value=''>No Monedas</option>
-                  } */}
+                  }
                 </select>
               </div>
 
@@ -87,18 +59,17 @@ export const FollowingConsignmentBodyDetailsConditions = () => {
                 <select
                   name="plazo"
                   className="form-select"
-                  // disabled={disableInputsHeader}
+                  disabled={true}
                   // value={plazo}
-                  // onChange={e => handleInputChangeWithDispatch(e, SetPlazoConsignment)}
                 >
                   <option value={0} selected disabled hidden> Seleccione... </option>
-                  {/* {
+                  {
                     (plazos != null && plazos.length > 0)
                       ? plazos.map(plazo => {
                           return <option key={plazo.idPlazo} value={plazo.idPlazo}> {plazo.descripcion} </option>
                         })
                       : <option value=''>No Plazos</option>
-                  } */}
+                  }
                 </select>
               </div>
               

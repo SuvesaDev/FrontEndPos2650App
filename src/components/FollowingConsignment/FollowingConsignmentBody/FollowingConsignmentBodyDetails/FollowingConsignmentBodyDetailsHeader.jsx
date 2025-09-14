@@ -2,11 +2,6 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { MdFactCheck } from "react-icons/md";
 
-// import { 
-//   SetAprobacionConsignment,
-//   SettipoConsignment 
-// } from '../../actions/ConsignmentAction';
-
 export const FollowingConsignmentBodyDetailsHeader = () => {
 
   // const dispatch = useDispatch();
@@ -21,18 +16,7 @@ export const FollowingConsignmentBodyDetailsHeader = () => {
 
   // const { tipo, aprobacion } = factura.encabezado;
 
-  // const {
-  //   allTiposFacturas,
-  //   onlyContadoTiposFacturas
-  // } = useSelector(state => state.tiposFacturas);
-
-  const handleInputChangeCheckBoxWithDispatch = ({ target }, action) => {
-    // dispatch(action(target.checked));
-  };
-
-  const changeTipoFactura = ({ target }) => {
-    // dispatch(SettipoConsignment(parseInt(target.value)));
-  };
+  const { onlyContadoTiposFacturas } = useSelector(state => state.tiposFacturas);
 
   return (
 
@@ -49,27 +33,18 @@ export const FollowingConsignmentBodyDetailsHeader = () => {
             <select
               name="tipo"
               className='form-select'
-              // disabled={disableInputsHeader}
+              disabled={true}
               // value={ tipo }
-              // onChange={e => changeTipoFactura(e)}
             >
               <option value={0} selected disabled hidden> Seleccione... </option>
-              {/* {
-                (isEnableActiveCredito)
-                  ? (allTiposFacturas != null && allTiposFacturas.length > 0)
-                    ? allTiposFacturas.map(tipoF => (tipoF.consignacion) ? 
-                        <option key={tipoF.codigo} value={tipoF.codigo}> {tipoF.descripcion} </option>
-                        : null
-                      )
-                    : <option value=''>No tipos de Factura</option>
-
-                  : (onlyContadoTiposFacturas != null && onlyContadoTiposFacturas.length > 0)
+              {
+                 (onlyContadoTiposFacturas != null && onlyContadoTiposFacturas.length > 0)
                     ? onlyContadoTiposFacturas.map(tipoF => (tipoF.consignacion) ?
                          <option key={tipoF.codigo} value={tipoF.codigo}> {tipoF.descripcion} </option>
                          : null
                       )
                     : <option value=''>No tipos de Factura</option>
-              } */}
+              }
             </select>
           </div>
         </div>
