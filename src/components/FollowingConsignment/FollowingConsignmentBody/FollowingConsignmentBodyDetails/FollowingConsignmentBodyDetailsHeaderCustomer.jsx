@@ -8,20 +8,14 @@ import { TbListNumbers, TbNotes } from 'react-icons/tb';
 export const FollowingConsignmentBodyDetailsHeaderCustomer = () => {
 
     const { tiposIdentificacion } = useSelector(state => state.tiposIdentificacion);
-
-    // const { 
-    //     disableInputsHeader,
-    //     hasCustomerBilling,
-    //     factura
-    // } = useSelector(state => state.consignment);
-
-    // const { 
-    //     cedula_Usuario,
-    //     idTipoCliente,
-    //     nombre_Cliente,
-    //     observaciones,
-    //     Cod_Moneda
-    // } = factura.encabezado;
+    
+    const { factura } = useSelector(state => state.followingConsignment);
+    const { 
+        cedula_Usuario,
+        tipoDocumento,
+        nombre_Cliente,
+        observaciones
+    } = factura.encabezado;
 
     return (
 
@@ -41,7 +35,7 @@ export const FollowingConsignmentBodyDetailsHeaderCustomer = () => {
                             className='form-control'
                             placeholder='Cédula del Cliente'
                             disabled={true}
-                            // value={cedula_Usuario}
+                            value={cedula_Usuario}
                         />
                         <button
                             type="button"
@@ -62,7 +56,7 @@ export const FollowingConsignmentBodyDetailsHeaderCustomer = () => {
                             name="idTipoCliente"
                             className="form-select"
                             disabled={true}
-                            // value={idTipoCliente}
+                            value={tipoDocumento}
                         >
                             <option value={0} selected disabled hidden> Seleccione... </option>
                             {
@@ -88,7 +82,7 @@ export const FollowingConsignmentBodyDetailsHeaderCustomer = () => {
                             name="nombre_Cliente"
                             autoComplete="off"
                             disabled={true}
-                            // value={nombre_Cliente}
+                            value={nombre_Cliente}
                             readOnly
                         />
                     </div>
@@ -111,7 +105,7 @@ export const FollowingConsignmentBodyDetailsHeaderCustomer = () => {
                             name='observaciones'
                             autoComplete='off'
                             disabled={true}
-                            // value={observaciones}
+                            value={observaciones}
                         />
                     </div>
                 </div>

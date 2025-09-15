@@ -2325,5 +2325,7 @@ export const types = {
   SetSeletedTabFollowingConsignment: '[FollowingConsignacion] SetSeletedTabFollowingConsignment',
   SetConsignacionesAprobadasFollowingConsignment: '[FollowingConsignacion] SetConsignacionesAprobadasFollowingConsignment',
   SetConsignacionesPendientesFollowingConsignment: '[FollowingConsignacion] SetConsignacionesPendientesFollowingConsignment',
+  SetFacturaFollowingConsignment: '[FollowingConsignacion] SetFacturaFollowingConsignment',
+  SetAprobacionConsignacionFollowingConsignment: '[FollowingConsignacion] SetAprobacionConsignacionFollowingConsignment',
 
 }

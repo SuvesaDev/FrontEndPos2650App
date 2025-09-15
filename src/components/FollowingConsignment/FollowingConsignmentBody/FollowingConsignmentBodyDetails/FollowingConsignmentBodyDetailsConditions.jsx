@@ -6,12 +6,12 @@ export const FollowingConsignmentBodyDetailsConditions = () => {
 
   const { monedasInventory } = useSelector(state => state.monedas);
 
-  const { plazos } = useSelector(state => state.followingConsignment);
+  const { plazos, factura} = useSelector(state => state.followingConsignment);
 
-  // const { 
-  //   Cod_Moneda,
-  //   plazo
-  // } = factura.encabezado;
+  const { 
+        Cod_Moneda,
+        plazo
+    } = factura.encabezado;
 
   return (
     <>
@@ -35,7 +35,7 @@ export const FollowingConsignmentBodyDetailsConditions = () => {
                   name="Cod_Moneda"
                   className="form-select"
                   disabled={true}
-                  // value={Cod_Moneda}
+                  value={Cod_Moneda}
                 >
                   <option value={''} selected disabled hidden> Seleccione... </option>
                   {
@@ -60,7 +60,7 @@ export const FollowingConsignmentBodyDetailsConditions = () => {
                   name="plazo"
                   className="form-select"
                   disabled={true}
-                  // value={plazo}
+                  value={plazo}
                 >
                   <option value={0} selected disabled hidden> Seleccione... </option>
                   {

@@ -13,7 +13,32 @@ const initialState = {
     visibleTabDetalle: false,
     seletedTab: 'ListadoConsignacion',
     consignacionesPendientes: [],
-    consignacionesAprobadas: []
+    consignacionesAprobadas: [],
+    aprobacionConsignacion: false,
+    factura: {
+        encabezado: {
+            id : '',
+            num_Factura : '',
+            fecha : '',
+            tipo: 0,
+            tipoDocumento : 0,
+            cod_Cliente : '',
+            nombre_Cliente : '',
+            cedula_Usuario : '',
+            observaciones : '',
+            empresa : '',
+            Cod_Moneda : '',
+            plazo : '',
+            SubTotalGravada : '',
+            SubTotalExento : '',
+            SubTotal : '',
+            Descuento : '',
+            Imp_Venta : '',
+            Total : '',
+            usuario : '',
+        },
+        detalle: []
+    }
 };
 
 export const followingConsignmentReducer = (state = initialState, action) => {
@@ -93,6 +118,18 @@ export const followingConsignmentReducer = (state = initialState, action) => {
             return {
                 ...state,
                 visibleTabDetalle: action.payload
+            }
+
+        case types.SetFacturaFollowingConsignment:
+            return {
+                ...state,
+                factura: action.payload
+            }
+
+        case types.SetAprobacionConsignacionFollowingConsignment:
+            return {
+                ...state,
+                aprobacionConsignacion: action.payload
             }
         
         default:

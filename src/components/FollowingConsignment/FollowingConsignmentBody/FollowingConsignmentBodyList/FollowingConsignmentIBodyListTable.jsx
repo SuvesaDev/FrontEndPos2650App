@@ -2,31 +2,11 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useTable } from "react-table";
 
-// import { 
-//     SetAddDetalleActualConsignment,
-//     SetDescuentoConsignment,
-//     SetImp_VentaConsignment,
-//     SetIsEditDetalleConsignment,
-//     SetPosicionActualConsignment,
-//     SetSubTotalConsignment, 
-//     SetSubTotalExentoConsignment, 
-//     SetSubTotalGravadaConsignment,
-//     SetTotalConsignment,
-//     startDeleteDetalleActualConsignment,
-//     startDeleteLineDetalleConsignacion,
-//     startGetLotesByArticleConsignment
-// } from '../../actions/ConsignmentAction';
-
+import { startGetOneFollowingConsignment } from '../../../../actions/FollowingConsignmentAction';
 
 export const FollowingConsignmentIBodyListTable = ({ columns, data }) => {
 
     const dispatch = useDispatch();
-
-    const { 
-        enableItems,
-        detalleArticuloActual,
-        factura,
-    } = useSelector(state => state.consignment);
 
     const {
         getTableProps,
@@ -42,50 +22,11 @@ export const FollowingConsignmentIBodyListTable = ({ columns, data }) => {
 
     const handleSelectedRow = async (cell) => {
         
-        // if (!enableItems) return;
-        
-        // //Obtener el CodArticulo de articulo seleccionado
-        // const { CodArticulo, codFxArticulo } = cell.row.original;
-        
-        // if (CodArticulo !== null) {
+        if(cell.column.id === 'icon') {
+            const { idConsignacion } = cell.row.original;
+            dispatch(startGetOneFollowingConsignment(idConsignacion));
+        }
 
-        //     const detalleActual = factura.detalle[cell.row.id];
-            
-        //     //Agregarlo al detalle Actual
-        //     dispatch(SetPosicionActualConsignment( cell.row.id ));
-        //     dispatch(SetAddDetalleActualConsignment( detalleActual ));
-
-        //     dispatch( SetIsEditDetalleConsignment(true) );
-
-        //     // Se vuelven a traer los lotes
-        //     dispatch( startGetLotesByArticleConsignment( codFxArticulo, true) );
-
-        // }
-
-    }
-
-    const handleDeleteRow = (cell) => {
-
-        // if (!enableItems) return;
-
-        // //Obtener el CodArticulo de articulo seleccionado
-        // const { CodArticulo } = cell.row.values;
-
-        // const deleteLine = factura.detalle[cell.row.id];
-
-        // if (CodArticulo !== null) {
-
-        //     if (deleteLine.idVentaDetalle !== undefined) {
-
-        //         // Se elimina la linea junto API
-        //         dispatch(startDeleteLineDetalleConsignacion( deleteLine ));
-
-        //     } else {
-
-        //         // Se elimina la linea solo el estado
-        //         dispatch(startDeleteDetalleActualConsignment( deleteLine ));
-        //     }
-        // }
     }
 
     return (
@@ -122,8 +63,8 @@ export const FollowingConsignmentIBodyListTable = ({ columns, data }) => {
                                             <td
                                                 {...cell.getCellProps({
                                                     onClick: (cell.column.id === 'icon')
-                                                        ? () => handleDeleteRow(cell)
-                                                        : () => handleSelectedRow(cell),
+                                                        ? () => handleSelectedRow(cell)
+                                                        : () => {},
                                                 })}
 
                                             >

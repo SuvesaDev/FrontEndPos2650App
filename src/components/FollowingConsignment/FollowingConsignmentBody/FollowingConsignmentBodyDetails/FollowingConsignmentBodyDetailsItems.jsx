@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import { useSelector } from 'react-redux';
 
 import { MdDeleteForever } from 'react-icons/md';
 
@@ -6,14 +7,7 @@ import { FollowingConsignmentBodyDetailsItemsTable } from './FollowingConsignmen
 
 export const FollowingConsignmentBodyDetailsItems = () => {
 
-    // const { 
-    //     enableItems,
-    //     detalleArticuloActual,
-    //     factura,
-    //     lotesByArticulo,
-    //     isEditDetalle,
-    //     posicionActual
-    // } = useSelector(state => state.consignment);
+    const { factura } = useSelector(state => state.followingConsignment);
 
     const columns = useMemo(
         () => [
@@ -52,17 +46,7 @@ export const FollowingConsignmentBodyDetailsItems = () => {
                 Header: "SubTotal",
                 accessor: "SubTotal",
                 Cell: ({ value }) => new Intl.NumberFormat('es-CR', { style: 'currency', currency: 'CRC' }).format(value),
-            },
-            {
-                Header: "Acciones",
-                accessor: "icon",
-                Cell: () => (
-                    <button className='btn btn-danger'>
-                        <MdDeleteForever className='iconSizeBtn' />
-                    </button>
-                ),
-    
-            },
+            }
         ],
         [true]
     );
@@ -82,8 +66,7 @@ export const FollowingConsignmentBodyDetailsItems = () => {
                         <div className='col-md-12 mb-2'>
                             <FollowingConsignmentBodyDetailsItemsTable 
                                 columns={columns} 
-                                data={[]}
-                                // data={factura.detalle}
+                                data={factura.detalle}
                             />
                         </div>
                     </div>

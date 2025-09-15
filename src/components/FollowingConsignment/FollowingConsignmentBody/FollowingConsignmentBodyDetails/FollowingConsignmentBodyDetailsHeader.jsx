@@ -2,21 +2,20 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { MdFactCheck } from "react-icons/md";
 
+import { SetAprobacionConsignacionFollowingConsignment } from '../../../../actions/FollowingConsignmentAction';
+
 export const FollowingConsignmentBodyDetailsHeader = () => {
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // const { 
-  //   disableInputsHeader, 
-  //   isEnableActiveCredito,
-  //   isAllowAceptaConsignacion,
-  //   isEditConsignment,
-  //   factura,
-  // } = useSelector(state => state.consignment);
-
-  // const { tipo, aprobacion } = factura.encabezado;
+  const { factura, aprobacionConsignacion } = useSelector(state => state.followingConsignment);
+  const { tipo } = factura.encabezado;
 
   const { onlyContadoTiposFacturas } = useSelector(state => state.tiposFacturas);
+
+  const handleInputChangeCheckBoxWithDispatch = ({ target }, action) => {
+    dispatch(action(target.checked));
+  };
 
   return (
 
@@ -34,7 +33,7 @@ export const FollowingConsignmentBodyDetailsHeader = () => {
               name="tipo"
               className='form-select'
               disabled={true}
-              // value={ tipo }
+              value={ tipo }
             >
               <option value={0} selected disabled hidden> Seleccione... </option>
               {
@@ -49,30 +48,25 @@ export const FollowingConsignmentBodyDetailsHeader = () => {
           </div>
         </div>
 
-        {/* {
-          (isAllowAceptaConsignacion && isEditConsignment) 
-            ? <div className='col-md-2 mt-4'>
-                <div className="form-check">
-                    <input
-                        type="checkbox"
-                        id="checkAprobacion"
-                        name="variasSurcursales"
-                        class="form-check-input checkP"
-                        checked={aprobacion}
-                        onChange={(e) =>
-                            handleInputChangeCheckBoxWithDispatch(
-                                e,
-                                SetAprobacionConsignment
-                            )
-                        }
-                    />
-                    <h5 className="form-check-label" for="checkAprobacion">Aprobacion Consignacion</h5>
-                </div>
-              </div>
-            : null
-        } */}
+        <div className='col-md-2 mt-4'>
+            <div className="form-check">
+              <input
+                  type="checkbox"
+                  id="checkAprobacion"
+                  name="aprobacionConsignacion"
+                  class="form-check-input checkP"
+                  checked={aprobacionConsignacion}
+                  onChange={(e) =>
+                      handleInputChangeCheckBoxWithDispatch(
+                          e,
+                          SetAprobacionConsignacionFollowingConsignment
+                      )
+                  }
+              />
+              <h5 className="form-check-label" for="checkAprobacion">Aprobacion Consignacion</h5>
+            </div>
+        </div>
       
-
       </div>
 
     </>
