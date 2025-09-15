@@ -2328,4 +2328,6 @@ export const types = {
   SetFacturaFollowingConsignment: '[FollowingConsignacion] SetFacturaFollowingConsignment',
   SetAprobacionConsignacionFollowingConsignment: '[FollowingConsignacion] SetAprobacionConsignacionFollowingConsignment',
 
+  CleanFollowingConsignment: '[FollowingConsignacion] CleanFollowingConsignment',
+
 }

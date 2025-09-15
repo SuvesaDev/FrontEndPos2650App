@@ -11,6 +11,7 @@ import { FaWindowClose } from "react-icons/fa";
 import { DeleteTab } from '../../actions/tabs';
 
 import { 
+    CleanFollowingConsignment,
     SetClaveInternaFollowingConsignment, 
     SetVisiblePasswordFollowingConsignment,
     startValidateClaveInternaFollowingConsignment
@@ -175,7 +176,7 @@ export const FollowingConsignmentFooter = () => {
 
             //Mostrar un mensaje de confirmacion
             Swal.fire({
-                title: '¿Desea cancelar la consignacion?',
+                title: '¿Desea limpiar el siguimiento de las consignaciones?',
                 showDenyButton: true,
                 showCancelButton: false,
                 confirmButtonText: 'Mantener',
@@ -183,7 +184,7 @@ export const FollowingConsignmentFooter = () => {
             }).then(async (result) => {
 
                 if (result.isDenied) {
-                    dispatch(CleanConsignment());
+                    dispatch(CleanFollowingConsignment());
                 }
             });
 
@@ -219,7 +220,7 @@ export const FollowingConsignmentFooter = () => {
                 <div className="btn-group mb-2">
                     <button
                         className="btn btn-danger espacio"
-                        // onClick={handleCloseWindow}
+                        onClick={handleCloseWindow}
                     >
                         {
                             (startOpening)

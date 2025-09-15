@@ -506,3 +506,7 @@ export const SetAprobacionConsignacionFollowingConsignment = (value) => ({
     type: types.SetAprobacionConsignacionFollowingConsignment,
     payload: value
 })
+
+export const CleanFollowingConsignment = (value) => ({
+    type: types.CleanFollowingConsignment
+})

@@ -131,6 +131,48 @@ export const followingConsignmentReducer = (state = initialState, action) => {
                 ...state,
                 aprobacionConsignacion: action.payload
             }
+
+        case types.CleanFollowingConsignment:
+            return {
+                activeButtonsFooter: false,
+                usuarioFacturacion: {
+                    id: 0,
+                    claveInterna: '',
+                    nameUser: ''
+                },
+                visiblePassword: false,
+                startOpening: false,
+                plazos: [],
+                visibleTabDetalle: false,
+                seletedTab: 'ListadoConsignacion',
+                consignacionesPendientes: [],
+                consignacionesAprobadas: [],
+                aprobacionConsignacion: false,
+                factura: {
+                    encabezado: {
+                        id : '',
+                        num_Factura : '',
+                        fecha : '',
+                        tipo: 0,
+                        tipoDocumento : 0,
+                        cod_Cliente : '',
+                        nombre_Cliente : '',
+                        cedula_Usuario : '',
+                        observaciones : '',
+                        empresa : '',
+                        Cod_Moneda : '',
+                        plazo : '',
+                        SubTotalGravada : '',
+                        SubTotalExento : '',
+                        SubTotal : '',
+                        Descuento : '',
+                        Imp_Venta : '',
+                        Total : '',
+                        usuario : '',
+                    },
+                    detalle: []
+                }
+            }
         
         default:
             return state;
