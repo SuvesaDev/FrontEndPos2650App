@@ -2221,6 +2221,7 @@ export const types = {
   SetdireccionConsignment: '[Consignacion] SetdireccionConsignment',
   SettelefonoConsignment: '[Consignacion] SettelefonoConsignment',
   SetobservacionesConsignment: '[Consignacion] SetobservacionesConsignment',
+  SetsurcursalConsignment: '[Consignacion] SetsurcursalConsignment',
   SetempresaConsignment: '[Consignacion] SetempresaConsignment',
   SetcorreoComprobantesConsignment: '[Consignacion] SetcorreoComprobantesConsignment',
   SetCod_MonedaConsignment: '[Consignacion] SetCod_MonedaConsignment',
@@ -2309,6 +2310,7 @@ export const types = {
   SetDetalleFacturaConsignment: '[Consignacion] SetDetalleFacturaConsignment',
   SetIsEditConsignment: '[Consignacion] SetIsEditConsignment',
   SetIsAllowAceptaConsignacionConsignment: '[Consignacion] SetIsAllowAceptaConsignacionConsignment',
+  SetSurcursalesConsignment: '[Consignacion] SetSurcursalesConsignment',
 
   CleanConsignment: '[Consignacion] CleanConsignment',
 
@@ -2327,6 +2329,7 @@ export const types = {
   SetConsignacionesPendientesFollowingConsignment: '[FollowingConsignacion] SetConsignacionesPendientesFollowingConsignment',
   SetFacturaFollowingConsignment: '[FollowingConsignacion] SetFacturaFollowingConsignment',
   SetAprobacionConsignacionFollowingConsignment: '[FollowingConsignacion] SetAprobacionConsignacionFollowingConsignment',
+  SetSurcursalesFollowingConsignment: '[FollowingConsignacion] SetSurcursalesFollowingConsignment',
 
   CleanFollowingConsignment: '[FollowingConsignacion] CleanFollowingConsignment',
 

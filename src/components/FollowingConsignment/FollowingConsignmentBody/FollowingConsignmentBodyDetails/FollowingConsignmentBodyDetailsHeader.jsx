@@ -47,25 +47,6 @@ export const FollowingConsignmentBodyDetailsHeader = () => {
             </select>
           </div>
         </div>
-
-        <div className='col-md-2 mt-4'>
-            <div className="form-check">
-              <input
-                  type="checkbox"
-                  id="checkAprobacion"
-                  name="aprobacionConsignacion"
-                  class="form-check-input checkP"
-                  checked={aprobacionConsignacion}
-                  onChange={(e) =>
-                      handleInputChangeCheckBoxWithDispatch(
-                          e,
-                          SetAprobacionConsignacionFollowingConsignment
-                      )
-                  }
-              />
-              <h5 className="form-check-label" for="checkAprobacion">Aprobacion Consignacion</h5>
-            </div>
-        </div>
       
       </div>
 

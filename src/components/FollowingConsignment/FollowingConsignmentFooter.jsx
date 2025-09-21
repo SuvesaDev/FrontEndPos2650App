@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { FaUserCheck } from 'react-icons/fa';
 //Icons
-import { FaEye, FaMoneyCheckAlt, FaSignOutAlt, FaEyeSlash } from "react-icons/fa";
+import { FaEye, FaCheckCircle, FaEyeSlash } from "react-icons/fa";
 import { PiKeyFill } from "react-icons/pi";
 import { FaWindowClose } from "react-icons/fa";
 
@@ -200,20 +200,9 @@ export const FollowingConsignmentFooter = () => {
                 <div className="btn-group mb-2">
                     <button
                         className={(activeButtonsFooter) ? 'btn btn-success espacio' : 'btn btn-success espacio disabled' }
-                        // onClick={ (isEditConsignment) ? handleEditBilling : handleCreateBilling }
-                    >
-                        <>
-                            Generar movimiento contable <FaMoneyCheckAlt className="iconSizeBtn" />
-                        </>
-                    </button>
-                </div>
-
-                <div className="btn-group mb-2">
-                    <button
-                        className={(activeButtonsFooter) ? 'btn btn-primary espacio' : 'btn btn-primary espacio disabled' }
                         // onClick={handleCreateBilling}
                     >
-                        Despachar <FaSignOutAlt className="iconSizeBtn" />
+                        Aprobado <FaCheckCircle className="iconSizeBtn" />
                     </button>
                 </div>
 

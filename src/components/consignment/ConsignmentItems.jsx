@@ -552,7 +552,7 @@ export const ConsignmentItems = () => {
                                     name="Precio_Unit"
                                     type='text'
                                     autoComplete="off"
-                                    // ref={props.inputRefPrecioUnit}
+                                    disabled={!enableItems}
                                     value={ new Intl.NumberFormat('es-CR', { style: 'currency', currency: 'CRC' }).format(Precio_Unit) }
                                     onKeyDown={handleClickDownPrecioUnit}
                                     onChange={e => handleChangePrecioUnit(e)}

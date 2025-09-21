@@ -15,6 +15,7 @@ const initialState = {
     consignacionesPendientes: [],
     consignacionesAprobadas: [],
     aprobacionConsignacion: false,
+    surcursales: [],
     factura: {
         encabezado: {
             id : '',
@@ -26,6 +27,7 @@ const initialState = {
             nombre_Cliente : '',
             cedula_Usuario : '',
             observaciones : '',
+            surcursal: 0,
             empresa : '',
             Cod_Moneda : '',
             plazo : '',
@@ -132,6 +134,12 @@ export const followingConsignmentReducer = (state = initialState, action) => {
                 aprobacionConsignacion: action.payload
             }
 
+        case types.SetSurcursalesFollowingConsignment:
+            return {
+                ...state,
+                surcursales: action.payload
+            }
+
         case types.CleanFollowingConsignment:
             return {
                 activeButtonsFooter: false,
@@ -148,6 +156,7 @@ export const followingConsignmentReducer = (state = initialState, action) => {
                 consignacionesPendientes: [],
                 consignacionesAprobadas: [],
                 aprobacionConsignacion: false,
+                surcursales: [],
                 factura: {
                     encabezado: {
                         id : '',
@@ -159,6 +168,7 @@ export const followingConsignmentReducer = (state = initialState, action) => {
                         nombre_Cliente : '',
                         cedula_Usuario : '',
                         observaciones : '',
+                        surcursal: 0,
                         empresa : '',
                         Cod_Moneda : '',
                         plazo : '',

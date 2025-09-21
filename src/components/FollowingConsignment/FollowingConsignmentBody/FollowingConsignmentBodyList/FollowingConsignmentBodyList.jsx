@@ -22,6 +22,10 @@ export const FollowingConsignmentBodyList = () => {
               accessor: "nombreCliente",
           },
           {
+              Header: "Surcursal",
+              accessor: "surcursal",
+          },
+          {
               Header: "Moneda",
               accessor: "moneda",
           },
@@ -56,6 +60,10 @@ export const FollowingConsignmentBodyList = () => {
           {
               Header: "Nombre del cliente",
               accessor: "nombreCliente",
+          },
+          {
+              Header: "Surcursal",
+              accessor: "surcursal",
           },
           {
               Header: "Moneda",

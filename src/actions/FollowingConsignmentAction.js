@@ -303,7 +303,7 @@ export const startGetOneFollowingConsignment = ( idConsignacion ) => {
                         text: 'No se puedo cargar correctamente la consignacion',
                     });
                 }
-
+                debugger;
                 const searchConsignmet = {
                     encabezado: {                    
                         id : responses.id,
@@ -507,6 +507,11 @@ export const SetAprobacionConsignacionFollowingConsignment = (value) => ({
     payload: value
 })
 
-export const CleanFollowingConsignment = (value) => ({
+export const SetSurcursalesFollowingConsignment = (value) => ({
+    type: types.SetSurcursalesFollowingConsignment,
+    payload: value
+})
+
+export const CleanFollowingConsignment = () => ({
     type: types.CleanFollowingConsignment
 })

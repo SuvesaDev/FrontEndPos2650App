@@ -72,31 +72,7 @@ export const ConsignmentHeader = () => {
               }
             </select>
           </div>
-        </div>
-
-        {
-          (isAllowAceptaConsignacion && isEditConsignment) 
-            ? <div className='col-md-2 mt-4'>
-                <div className="form-check">
-                    <input
-                        type="checkbox"
-                        id="checkAprobacion"
-                        name="variasSurcursales"
-                        class="form-check-input checkP"
-                        checked={aprobacion}
-                        onChange={(e) =>
-                            handleInputChangeCheckBoxWithDispatch(
-                                e,
-                                SetAprobacionConsignment
-                            )
-                        }
-                    />
-                    <h5 className="form-check-label" for="checkAprobacion">Aprobacion Consignacion</h5>
-                </div>
-              </div>
-            : null
-        }
-      
+        </div>     
 
       </div>
 

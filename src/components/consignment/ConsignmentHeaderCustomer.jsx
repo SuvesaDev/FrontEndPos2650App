@@ -3,7 +3,7 @@ import loadingImage from "../../assets/loading_snipiner.gif";
 import { useDispatch, useSelector } from 'react-redux';
 
 import { IoPeople } from "react-icons/io5";
-import { FaSearch, FaUser } from 'react-icons/fa';
+import { FaSearch, FaUser, FaHome } from 'react-icons/fa';
 import { FaIdCard } from "react-icons/fa6";
 import { TbListNumbers, TbNotes } from 'react-icons/tb';
 
@@ -14,6 +14,7 @@ import {
     Setnombre_ClienteConsignment,
     SetobservacionesConsignment,
     SetOpenSearchCustomerConsignment,
+    SetsurcursalConsignment,
     startSearchCustomerConsignment
 } from '../../actions/ConsignmentAction';
 
@@ -46,7 +47,8 @@ export const ConsignmentHeaderCustomer = () => {
     const { 
         disableInputsHeader,
         hasCustomerBilling,
-        factura
+        factura,
+        surcursales
     } = useSelector(state => state.consignment);
 
     const { 
@@ -54,7 +56,8 @@ export const ConsignmentHeaderCustomer = () => {
         idTipoCliente,
         nombre_Cliente,
         observaciones,
-        Cod_Moneda
+        Cod_Moneda,
+        surcursal
     } = factura.encabezado;
 
     const handleInputChangeWithDispatch = ({ target }, action) => {
@@ -232,7 +235,32 @@ export const ConsignmentHeaderCustomer = () => {
 
             <div className="row mb-2">
 
-                <div className="col-md-12 mb-3">
+                <div className="col-md-4 mb-3">
+                    <h5>Surcursal</h5>
+                    <div className="input-group">
+                        <span className="input-group-text">
+                            <FaHome className="iconSize" />
+                        </span>
+                        <select
+                            name="idTipoCliente"
+                            className="form-select"
+                            disabled={disableInputsHeader}
+                            value={surcursal}
+                            onChange={e => handleInputChangeWithDispatch(e, SetsurcursalConsignment)}
+                        >
+                            <option value={0} selected disabled hidden> Seleccione... </option>
+                            {
+                                (surcursales != null && surcursales.length > 0)
+                                    ?   surcursales.map(surcursal => {
+                                            return <option key={surcursal.id} value={surcursal.id}> {surcursal.descripcion} </option>
+                                        })
+                                    :   <option value=''>No existen surcursales para el cliente</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <div className="col-md-8 mb-3">
                     <h5>Observaciones</h5>
                     <div className="input-group">
                         <span className="input-group-text">

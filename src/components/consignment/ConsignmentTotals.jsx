@@ -158,23 +158,6 @@ export const ConsignmentTotals = () => {
 
                         <div className="col-md-12 mb-2">
                             <hr />
-                            <h5>Descuento</h5>
-                            <div className="input-group">
-                                <span className="input-group-text">
-                                    <FaColonSign
-                                        className="iconSize" />
-                                </span>
-                                <input
-                                    name="Descuento"
-                                    className="form-control"
-                                    value={ new Intl.NumberFormat('es-CR', { style: 'currency', currency: 'CRC' }).format(factura.encabezado.Descuento) }
-                                    disabled
-                                />
-                            </div>
-                        </div>
-
-                        <div className="col-md-12 mb-2">
-                            <hr />
                             <h5>Imp. Venta</h5>
                             <div className="input-group">
                                 <span className="input-group-text">

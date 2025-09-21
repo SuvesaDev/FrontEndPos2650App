@@ -1330,6 +1330,11 @@ export const SetobservacionesConsignment = (value) => ({
     payload: value
 })
 
+export const SetsurcursalConsignment = (value) => ({
+    type: types.SetsurcursalConsignment,
+    payload: value
+})
+
 export const SetempresaConsignment = (value) => ({
     type: types.SetempresaConsignment,
     payload: value
@@ -1737,5 +1742,10 @@ export const CleanConsignment = () => ({
 
 export const SetIsAllowAceptaConsignacionConsignment = (value) => ({
     type: types.SetIsAllowAceptaConsignacionConsignment,
+    payload: value
+})
+
+export const SetSurcursalesConsignment = (value) => ({
+    type: types.SetSurcursalesConsignment,
     payload: value
 })

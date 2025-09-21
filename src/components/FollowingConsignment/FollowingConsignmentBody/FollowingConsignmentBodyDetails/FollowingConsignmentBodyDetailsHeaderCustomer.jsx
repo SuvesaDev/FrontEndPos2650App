@@ -1,7 +1,7 @@
 
 import { useSelector } from 'react-redux';
 
-import { FaSearch, FaUser } from 'react-icons/fa';
+import { FaSearch, FaUser, FaHome } from 'react-icons/fa';
 import { FaIdCard } from "react-icons/fa6";
 import { TbListNumbers, TbNotes } from 'react-icons/tb';
 
@@ -9,12 +9,13 @@ export const FollowingConsignmentBodyDetailsHeaderCustomer = () => {
 
     const { tiposIdentificacion } = useSelector(state => state.tiposIdentificacion);
     
-    const { factura } = useSelector(state => state.followingConsignment);
+    const { factura, surcursales } = useSelector(state => state.followingConsignment);
     const { 
         cedula_Usuario,
         tipoDocumento,
         nombre_Cliente,
-        observaciones
+        observaciones,
+        surcursal
     } = factura.encabezado;
 
     return (
@@ -70,7 +71,7 @@ export const FollowingConsignmentBodyDetailsHeaderCustomer = () => {
                     </div>
                 </div>
 
-                <div className="col-md-5 mb-3">
+                <div className="col-md-6 mb-3">
                     <h5>Nombre</h5>
                     <div className="input-group">
                         <span className="input-group-text">
@@ -91,8 +92,32 @@ export const FollowingConsignmentBodyDetailsHeaderCustomer = () => {
             </div>
 
             <div className="row mb-2">
+            
+                <div className="col-md-4 mb-3">
+                    <h5>Surcursal</h5>
+                    <div className="input-group">
+                        <span className="input-group-text">
+                            <FaHome className="iconSize" />
+                        </span>
+                        <select
+                            name="idTipoCliente"
+                            className="form-select"
+                            disabled={true}
+                            value={surcursal}
+                        >
+                            <option value={0} selected disabled hidden> Seleccione... </option>
+                            {
+                                (surcursales != null && surcursales.length > 0)
+                                    ?   surcursales.map(surcursal => {
+                                            return <option key={surcursal.id} value={surcursal.id}> {surcursal.descripcion} </option>
+                                        })
+                                    :   <option value=''>No existen surcursales para el cliente</option>
+                            }
+                        </select>
+                    </div>
+                </div>
 
-                <div className="col-md-12 mb-3">
+                <div className="col-md-8 mb-3">
                     <h5>Observaciones</h5>
                     <div className="input-group">
                         <span className="input-group-text">

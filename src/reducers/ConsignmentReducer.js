@@ -20,6 +20,7 @@ const initialState = {
     posicionActual: 0,
     isEditConsignment: false,
     isAllowAceptaConsignacion: false,
+    surcursales: [],
     usuarioFacturacion: {
         id: 0,
         claveInterna: ''
@@ -52,6 +53,7 @@ const initialState = {
             direccion: '',
             telefono: '',
             observaciones: '',
+            surcursal: 0,
             empresa: '',
             correoComprobantes: '',
             Cod_Moneda: '',
@@ -266,6 +268,18 @@ export const consignmentReducer = (state = initialState, action) => {
                     encabezado: {
                         ...state.factura.encabezado,
                         observaciones: action.payload
+                    }
+                }
+            }
+
+        case types.SetsurcursalConsignment:
+            return {
+                ...state,
+                factura: {
+                    ...state.factura,
+                    encabezado: {
+                        ...state.factura.encabezado,
+                        surcursal: action.payload
                     }
                 }
             }
@@ -1113,6 +1127,12 @@ export const consignmentReducer = (state = initialState, action) => {
                 listaConsignaciones: []
             }
 
+        case types.SetSurcursalesConsignment:
+            return {
+                ...state,
+                surcursales: action.payload,
+            }
+
         case types.CleanConsignment:
             return {
                 disableInputsHeader: true,
@@ -1134,6 +1154,7 @@ export const consignmentReducer = (state = initialState, action) => {
                 posicionActual: 0,
                 isEditConsignment: false,
                 isAllowAceptaConsignacion: false,
+                surcursales: [],
                 usuarioFacturacion: {
                     id: 0,
                     claveInterna: ''
@@ -1166,6 +1187,7 @@ export const consignmentReducer = (state = initialState, action) => {
                         direccion: '',
                         telefono: '',
                         observaciones: '',
+                        surcursal: 0,
                         empresa: '',
                         correoComprobantes: '',
                         Cod_Moneda: '',
