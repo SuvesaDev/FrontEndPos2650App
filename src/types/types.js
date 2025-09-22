@@ -2333,4 +2333,14 @@ export const types = {
 
   CleanFollowingConsignment: '[FollowingConsignacion] CleanFollowingConsignment',
 
+  //Deadlines Actions
+  SetPlazosDeadlines: '[Deadlines] SetPlazosDeadlines',
+  SetIdPlazoDeadlines: '[Deadlines] SetIdPlazoDeadlines',
+  SetDescripcionDeadlines: '[Deadlines] SetDescripcionDeadlines',
+  SetCantidadDiasDeadlines: '[Deadlines] SetCantidadDiasDeadlines',
+  SetAddNewDeadlineDeadlines: '[Deadlines] SetAddNewDeadlineDeadlines',
+  SetIsEditPlazoDeadlines: '[Deadlines] SetIsEditPlazoDeadlines',
+  SetEditDeadlines: '[Deadlines] SetEditDeadlines',
+  SetDeleteDeadlines: '[Deadlines] SetDeleteDeadlines',
+
 }

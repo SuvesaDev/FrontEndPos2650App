@@ -6,7 +6,7 @@ import { CgPill } from 'react-icons/cg';
 import { SiHomeassistantcommunitystore } from 'react-icons/si';
 import { HiPresentationChartBar } from 'react-icons/hi';
 import { AiFillHome, AiFillSetting, AiOutlineShoppingCart, AiFillBank } from 'react-icons/ai';
-import { FaFileInvoiceDollar, FaHandshake, FaCashRegister, FaCoins, FaMoneyBillAlt, FaMoneyCheckAlt, FaTools, FaUserCircle, FaGift, FaRegRegistered} from 'react-icons/fa';
+import { FaFileInvoiceDollar, FaHandshake, FaCashRegister, FaCoins, FaMoneyBillAlt, FaMoneyCheckAlt, FaTools, FaUserCircle, FaGift, FaRegRegistered, FaCalendarAlt} from 'react-icons/fa';
 import { GiPayMoney, GiTakeMyMoney, GiFamilyTree } from 'react-icons/gi';
 import { IoDocuments } from 'react-icons/io5';
 import { IoIosCash } from 'react-icons/io';
@@ -409,6 +409,12 @@ const IteamsAdmin = [
                 title: 'Categorias',
                 path: '/parameters/category',
                 icon: <MdCategory />,
+                cName: 'vet_nav-text'
+            },
+            {
+                title: 'Plazos',
+                path: '/parameters/deadlines',
+                icon: <FaCalendarAlt />,
                 cName: 'vet_nav-text'
             }
         ]
