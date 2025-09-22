@@ -135,7 +135,8 @@ export const startSearchCustomerConsignment = ( cedula, hasCoin = false ) => {
                         abierto,
                         cliente_Moroso,
                         ordenCompra,
-                        sinrestriccion
+                        sinrestriccion,
+                        sucursalDatos
                     } = responses;
                     
                     // Se establece la cedula, tipoCliente y nombre del cliente
@@ -173,6 +174,12 @@ export const startSearchCustomerConsignment = ( cedula, hasCoin = false ) => {
 
                     // Se establece el CodCliente
                     dispatch( Setcod_ClienteConsignment( identificacion ));
+
+                    if(sucursalDatos != null) {
+                        dispatch( SetSurcursalesConsignment(sucursalDatos) );
+                    } else {
+                        dispatch( SetSurcursalesConsignment([]) );
+                    }
 
 
                 } else {

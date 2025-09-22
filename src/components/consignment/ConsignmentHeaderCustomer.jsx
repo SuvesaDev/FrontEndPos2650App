@@ -252,7 +252,7 @@ export const ConsignmentHeaderCustomer = () => {
                             {
                                 (surcursales != null && surcursales.length > 0)
                                     ?   surcursales.map(surcursal => {
-                                            return <option key={surcursal.id} value={surcursal.id}> {surcursal.descripcion} </option>
+                                            return <option key={surcursal.sucursal} value={surcursal.sucursal}> {surcursal.sucursal} </option>
                                         })
                                     :   <option value=''>No existen surcursales para el cliente</option>
                             }
