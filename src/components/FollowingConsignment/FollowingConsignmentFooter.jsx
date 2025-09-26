@@ -26,7 +26,8 @@ export const FollowingConsignmentFooter = () => {
         visiblePassword,
         startOpening,
         usuarioFacturacion,
-        plazos
+        plazos,
+        activeButtonAprobado
     } = useSelector(state => state.followingConsignment);
 
     const { claveInterna, nameUser } = usuarioFacturacion;
@@ -45,90 +46,13 @@ export const FollowingConsignmentFooter = () => {
         dispatch(action(target.value));
     };
 
-    // const handleCreateBilling = async (e) => {
+    const handleAprobadoConsignacion = async (e) => {
 
-    //     // if (!activeButtonSave || !hasCustomerBilling) return;
-
-    //     // e.preventDefault();
-    //     // let respuestaValidacionesClientes = 'ok';
-
-    //     // if (hasCustomerBilling === true) {
-    //     //     //si hay cliente seleccionado validamos la info
-    //     //     respuestaValidacionesClientes = await ValidacionesClientes();
-    //     // }
-
-    //     // if (respuestaValidacionesClientes === 'ok') {
+        if(activeButtonAprobado) {
             
-    //     //     const date = new Date();
-    //     //     const isoDateTime = new Date(date.getTime() - (date.getTimezoneOffset() * 60000)).toISOString().split('T');
+        }
 
-    //     //     const idSucursal = surcursales.find(surcursal => surcursal.alias === centro).id;
-
-    //     //     const idBodegaCostaPets = bodegasInventory.find(bodega => bodega.nombreBodega == "COSTAPETS");
-            
-    //     //     const newBilling = {
-    //     //         tipo: factura.encabezado.tipo,
-    //     //         numCaja: "0",
-    //     //         numApertura: null, 
-    //     //         fecha: isoDateTime[0] + " " + isoDateTime[1],
-    //     //         codCliente: `${factura.encabezado.cod_Cliente}`,
-    //     //         observaciones: factura.encabezado.observaciones,
-    //     //         codMoneda: factura.encabezado.Cod_Moneda,
-    //     //         orden: "",
-    //     //         taller: false,
-    //     //         mascotas: false,
-    //     //         agente: null,
-    //     //         Cod_agente: null,
-    //     //         subTotalGravada: factura.encabezado.SubTotalGravada,
-    //     //         subTotalExento: factura.encabezado.SubTotalExento,
-    //     //         subTotal: factura.encabezado.SubTotal,
-    //     //         descuento: factura.encabezado.Descuento,
-    //     //         impVenta: factura.encabezado.Imp_Venta,
-    //     //         exonerar: null,
-    //     //         total: factura.encabezado.Total,
-    //     //         ficha: null,
-    //     //         idSucursal: idSucursal,
-    //     //         idEmpresa:  "1",
-    //     //         preventa: true,
-    //     //         idClienteSucursal: null,
-    //     //         idPlazo: factura.encabezado.plazo,
-    //     //         esConsignacion: true,
-    //     //         consignacionAceptada: false,
-    //     //         detalle: factura.detalle.map(detalle => {
-    //     //             return {
-    //     //                 idVentaDetalle : 0,
-    //     //                 codArticulo: detalle.CodArticulo,
-    //     //                 codFxArticulo: detalle.codFxArticulo,
-    //     //                 descripcion: detalle.Descripcion,
-    //     //                 cantidad: detalle.Cantidad,
-    //     //                 precioUnit: detalle.Precio_Unit,
-    //     //                 descuento: detalle.Descuento,
-    //     //                 montoDescuento: detalle.Monto_Descuento,
-    //     //                 impuesto: detalle.Impuesto,
-    //     //                 montoImpuesto: detalle.Monto_Impuesto,
-    //     //                 subtotalGravado: detalle.SubtotalGravado,
-    //     //                 subTotalExcento: detalle.SubTotalExcento,
-    //     //                 subTotal: detalle.SubTotal,
-    //     //                 cantVen: detalle.CantVet,
-    //     //                 cantBod: detalle.CantBod,
-    //     //                 idBodega: idBodegaCostaPets.idBodega,
-    //     //                 lote: detalle.idLote,
-    //     //                 numeroLote: ''
-    //     //             }
-    //     //         })
-    //     //     }
-
-    //     //     const datosCliente ={
-    //     //         direccion: factura.encabezado.direccion,
-    //     //         nombreCliente: factura.encabezado.nombre_Cliente,
-    //     //         cedulaCliente: factura.encabezado.cedula_Usuario,
-    //     //         vendedorEncargado: factura.encabezado.usuario,
-    //     //     }
-
-    //     //     dispatch( startSaveConsignment(newBilling, datosCliente, idSucursalOF) );
-    //     // }
-
-    // }
+    }
 
     const handleOnKeyDownUser = async (e) => {
 
@@ -199,8 +123,14 @@ export const FollowingConsignmentFooter = () => {
 
                 <div className="btn-group mb-2">
                     <button
-                        className={(activeButtonsFooter) ? 'btn btn-success espacio' : 'btn btn-success espacio disabled' }
-                        // onClick={handleCreateBilling}
+                        className= {
+                            (activeButtonsFooter) 
+                                ? (activeButtonAprobado) 
+                                    ? 'btn btn-success espacio' 
+                                    : 'btn btn-success espacio disabled' 
+                                : 'btn btn-success espacio disabled' 
+                            }
+                        onClick={handleAprobadoConsignacion}
                     >
                         Aprobado <FaCheckCircle className="iconSizeBtn" />
                     </button>

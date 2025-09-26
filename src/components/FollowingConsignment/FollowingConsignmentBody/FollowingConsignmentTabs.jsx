@@ -1,6 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 
-import { SetSeletedTabFollowingConsignment } from "../../../actions/FollowingConsignmentAction";
+import { 
+  SetActiveButtonAprobadoFollowingConsignment,
+  SetSeletedTabFollowingConsignment, 
+  SetVisibleTabDetalleFollowingConsignment 
+} from "../../../actions/FollowingConsignmentAction";
 
 export const FollowingConsignmentTabs = () => {
 
@@ -13,6 +17,12 @@ export const FollowingConsignmentTabs = () => {
 
 
   const handleSelectTab = (nameTab) => {
+
+    if(nameTab == "ListadoConsignacion") {
+      dispatch( SetVisibleTabDetalleFollowingConsignment(false) );
+      dispatch( SetActiveButtonAprobadoFollowingConsignment(false) );
+    }
+
     dispatch(SetSeletedTabFollowingConsignment(nameTab));
   };
 

@@ -39,7 +39,7 @@ export const FollowingConsignmentBodyList = () => {
           },
           {
               Header: "Acciones",
-              accessor: "icon",
+              accessor: "iconVer",
               Cell: () => (
                   <button className='btn btn-primary'>
                       <FaEye className='iconSizeBtn' />

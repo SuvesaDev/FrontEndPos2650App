@@ -10,6 +10,8 @@ export const FollowingConsignmentIBodyListTable = ({ columns, data }) => {
 
     const dispatch = useDispatch();
 
+    const { usuarioAceptaConsignacion } = useSelector(state => state.followingConsignment);
+
     const {
         getTableProps,
         getTableBodyProps,
@@ -35,7 +37,7 @@ export const FollowingConsignmentIBodyListTable = ({ columns, data }) => {
 
     const handleSelectedRow = async (cell) => {
         
-        if(cell.column.id === 'icon') {
+        if(cell.column.id === 'iconVer') {
             const { idConsignacion } = cell.row.original;
             dispatch(startGetOneFollowingConsignment(idConsignacion));
         }
@@ -72,16 +74,23 @@ export const FollowingConsignmentIBodyListTable = ({ columns, data }) => {
                             return (
                                 <tr {...row.getRowProps()}>
                                     {row.cells.map(cell => {
+                                        console.log(cell)
                                         return (
                                             <td
                                                 {...cell.getCellProps({
-                                                    onClick: (cell.column.id === 'icon')
+                                                    onClick: (cell.column.id === 'iconVer')
                                                         ? () => handleSelectedRow(cell)
                                                         : () => {},
                                                 })}
 
                                             >
-                                                {cell.render("Cell")}
+                                                {
+                                                    (cell.column.id === 'iconVer')
+                                                        ? (usuarioAceptaConsignacion) 
+                                                            ? cell.render("Cell")
+                                                            : null
+                                                        : cell.render("Cell")
+                                                }
                                             </td>
                                         )
                                     })}

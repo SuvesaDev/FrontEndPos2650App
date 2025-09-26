@@ -2331,6 +2331,9 @@ export const types = {
   SetAprobacionConsignacionFollowingConsignment: '[FollowingConsignacion] SetAprobacionConsignacionFollowingConsignment',
   SetSurcursalesFollowingConsignment: '[FollowingConsignacion] SetSurcursalesFollowingConsignment',
 
+  SetAceptaConsignacionFollowingConsignment: '[FollowingConsignacion] SetAceptaConsignacionFollowingConsignment',
+  SetActiveButtonAprobadoFollowingConsignment: '[FollowingConsignacion] SetActiveButtonAprobadoFollowingConsignment',
+
   CleanFollowingConsignment: '[FollowingConsignacion] CleanFollowingConsignment',
 
   //Deadlines Actions

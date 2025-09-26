@@ -22,16 +22,6 @@ export const startValidateClaveInternaFollowingConsignment = ( password, catalog
             
             if( status === 1 ) {
 
-                if(!aceptaConsignacion) {
-                    Swal.fire({
-                        icon: 'warning',
-                        title: 'Advertencia',
-                        text: 'El usuario no esta habilitado para ver el siguimiento de las consignaciones.'
-                    });
-    
-                    return;
-                }
-
                 //Guardar el usuario en el state
                 dispatch( SetNameUserFollowingConsignment(userName));
 
@@ -43,6 +33,9 @@ export const startValidateClaveInternaFollowingConsignment = ( password, catalog
 
                 // Se inicia el StartOpening
                 dispatch( SetStartOpeningFollowingConsignment(true));
+
+                // Se indica si acepta consignacion
+                dispatch( SetAceptaConsignacionFollowingConsignment(aceptaConsignacion) );
 
                 // Se cargan los catalogos
                 await loadCatalogos( dispatch, catalogos );
@@ -303,7 +296,7 @@ export const startGetOneFollowingConsignment = ( idConsignacion ) => {
                         text: 'No se puedo cargar correctamente la consignacion',
                     });
                 }
-                debugger;
+            
                 const searchConsignmet = {
                     encabezado: {                    
                         id : responses.id,
@@ -353,6 +346,7 @@ export const startGetOneFollowingConsignment = ( idConsignacion ) => {
                 dispatch(SetFacturaFollowingConsignment(searchConsignmet));
                 dispatch(SetVisibleTabDetalleFollowingConsignment(true));
                 dispatch(SetSeletedTabFollowingConsignment('DetalleConsignacion'));
+                dispatch(SetActiveButtonAprobadoFollowingConsignment(true));
 
             } else {
     
@@ -385,6 +379,90 @@ export const startGetOneFollowingConsignment = ( idConsignacion ) => {
                     icon: 'error',
                     title: 'Error',
                     text: 'Ocurrio un problema al obtener una consignacion',
+                });
+            }
+        }
+    }
+}
+
+export const startAprobadoFollowingConsignment = ( idConsignacion ) => {
+
+    return async ( dispatch ) => {
+
+        try {
+
+            //Mostrar el loading
+            Swal.fire({
+                title: 'Por favor, espere',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                imageUrl: loadingImage,
+                customClass: 'alert-class-login',
+                imageHeight: 100,
+            });
+    
+            //Call end-point 
+            const { data } = await suvesaApi.put(`/Consignacion/AceptarRechazarConsignacion?id=${idConsignacion}`);
+            const { status, responses } = data;
+            Swal.close();
+            
+            if( status === 0 ) {
+
+                if(responses) {
+                    //Si es correcta entonces mostrar un mensaje de afirmacion
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Cliente ingresado correctamente',
+                        showConfirmButton: false,
+                        timer: 2500
+                    });
+                } else {
+
+                    dispatch(SetVisibleTabDetalleFollowingConsignment(false));
+                    dispatch(SetSeletedTabFollowingConsignment('ListadoConsignacion'));
+                    dispatch(SetActiveButtonAprobadoFollowingConsignment(false));
+
+                    //Si es correcta entonces mostrar un mensaje de afirmacion
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'No se puedo aprobar la consignacion'
+                    });
+                }
+            
+                
+            } else {
+    
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
+
+                console.log(currentException);
+                
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
+    
+            }
+
+        } catch (error) {
+            
+            Swal.close();
+            console.log(error);
+            if( error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al aprobar una consignacion',
                 });
             }
         }
@@ -509,6 +587,16 @@ export const SetAprobacionConsignacionFollowingConsignment = (value) => ({
 
 export const SetSurcursalesFollowingConsignment = (value) => ({
     type: types.SetSurcursalesFollowingConsignment,
+    payload: value
+})
+
+export const SetAceptaConsignacionFollowingConsignment = (value) => ({
+    type: types.SetAceptaConsignacionFollowingConsignment,
+    payload: value
+})
+
+export const SetActiveButtonAprobadoFollowingConsignment = (value) => ({
+    type: types.SetActiveButtonAprobadoFollowingConsignment,
     payload: value
 })
 
