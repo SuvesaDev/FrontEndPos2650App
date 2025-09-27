@@ -18,6 +18,7 @@ const initialState = {
     surcursales: [],
     usuarioAceptaConsignacion: false,
     activeButtonAprobado: false,
+    activeButtonDespachar: false,
     factura: {
         encabezado: {
             id : '',
@@ -152,6 +153,12 @@ export const followingConsignmentReducer = (state = initialState, action) => {
             return {
                 ...state,
                 activeButtonAprobado: action.payload
+            }
+
+        case types.SetActiveButtonDespacharFollowingConsignment:
+            return {
+                ...state,
+                activeButtonDespachar: action.payload
             }
 
         case types.CleanFollowingConsignment:

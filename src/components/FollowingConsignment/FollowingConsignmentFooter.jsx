@@ -7,6 +7,7 @@ import { FaUserCheck } from 'react-icons/fa';
 import { FaEye, FaCheckCircle, FaEyeSlash } from "react-icons/fa";
 import { PiKeyFill } from "react-icons/pi";
 import { FaWindowClose } from "react-icons/fa";
+import { CiInboxOut } from "react-icons/ci";
 
 import { DeleteTab } from '../../actions/tabs';
 
@@ -27,7 +28,8 @@ export const FollowingConsignmentFooter = () => {
         startOpening,
         usuarioFacturacion,
         plazos,
-        activeButtonAprobado
+        activeButtonAprobado,
+        activeButtonDespachar
     } = useSelector(state => state.followingConsignment);
 
     const { claveInterna, nameUser } = usuarioFacturacion;
@@ -121,18 +123,29 @@ export const FollowingConsignmentFooter = () => {
         <>
             <div className="btn-toolbar" role="toolbar">
 
-                <div className="btn-group mb-2">
+                <div className={(activeButtonAprobado) ? 'btn-group mb-2' : 'btn-group mb-2 d-none'}>
                     <button
                         className= {
                             (activeButtonsFooter) 
-                                ? (activeButtonAprobado) 
-                                    ? 'btn btn-success espacio' 
-                                    : 'btn btn-success espacio disabled' 
+                                ? 'btn btn-success espacio' 
                                 : 'btn btn-success espacio disabled' 
                             }
                         onClick={handleAprobadoConsignacion}
                     >
                         Aprobado <FaCheckCircle className="iconSizeBtn" />
+                    </button>
+                </div>
+
+                <div className={(activeButtonDespachar) ? 'btn-group mb-2' : 'btn-group mb-2 d-none'}>
+                    <button
+                        className= {
+                            (activeButtonsFooter) 
+                                ? 'btn btn-success espacio' 
+                                : 'btn btn-success espacio disabled' 
+                            }
+                        onClick={handleAprobadoConsignacion}
+                    >
+                        Despachar <CiInboxOut className="iconSizeBtn" />
                     </button>
                 </div>
 

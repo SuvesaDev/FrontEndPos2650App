@@ -2333,6 +2333,7 @@ export const types = {
 
   SetAceptaConsignacionFollowingConsignment: '[FollowingConsignacion] SetAceptaConsignacionFollowingConsignment',
   SetActiveButtonAprobadoFollowingConsignment: '[FollowingConsignacion] SetActiveButtonAprobadoFollowingConsignment',
+  SetActiveButtonDespacharFollowingConsignment: '[FollowingConsignacion] SetActiveButtonDespacharFollowingConsignment',
 
   CleanFollowingConsignment: '[FollowingConsignacion] CleanFollowingConsignment',
 

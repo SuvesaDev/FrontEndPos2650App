@@ -265,7 +265,7 @@ export const startGetAllConsignmentPendientes = () => {
 
 }
 
-export const startGetOneFollowingConsignment = ( idConsignacion ) => {
+export const startGetOneFollowingConsignment = ( idConsignacion, tipo ) => {
 
     return async ( dispatch ) => {
 
@@ -346,7 +346,12 @@ export const startGetOneFollowingConsignment = ( idConsignacion ) => {
                 dispatch(SetFacturaFollowingConsignment(searchConsignmet));
                 dispatch(SetVisibleTabDetalleFollowingConsignment(true));
                 dispatch(SetSeletedTabFollowingConsignment('DetalleConsignacion'));
-                dispatch(SetActiveButtonAprobadoFollowingConsignment(true));
+
+                if(tipo == 'Aprobar') {
+                    dispatch(SetActiveButtonAprobadoFollowingConsignment(true));
+                } else if (tipo == 'Despachar') {
+                    dispatch(SetActiveButtonDespacharFollowingConsignment(true));
+                }
 
             } else {
     
@@ -597,6 +602,11 @@ export const SetAceptaConsignacionFollowingConsignment = (value) => ({
 
 export const SetActiveButtonAprobadoFollowingConsignment = (value) => ({
     type: types.SetActiveButtonAprobadoFollowingConsignment,
+    payload: value
+})
+
+export const SetActiveButtonDespacharFollowingConsignment = (value) => ({
+    type: types.SetActiveButtonDespacharFollowingConsignment,
     payload: value
 })
 

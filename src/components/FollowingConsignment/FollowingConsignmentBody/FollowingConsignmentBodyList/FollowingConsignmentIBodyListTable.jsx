@@ -36,12 +36,17 @@ export const FollowingConsignmentIBodyListTable = ({ columns, data }) => {
     );
 
     const handleSelectedRow = async (cell) => {
+
+        const { idConsignacion } = cell.row.original;
+        let tipo = '';
         
         if(cell.column.id === 'iconVer') {
-            const { idConsignacion } = cell.row.original;
-            dispatch(startGetOneFollowingConsignment(idConsignacion));
+            tipo = 'Aprobar';
+        } else if (cell.column.id === 'iconAprobar') {
+            tipo = 'Despachar';
         }
-
+        
+        dispatch(startGetOneFollowingConsignment(idConsignacion, tipo));
     }
 
     return (
@@ -74,11 +79,10 @@ export const FollowingConsignmentIBodyListTable = ({ columns, data }) => {
                             return (
                                 <tr {...row.getRowProps()}>
                                     {row.cells.map(cell => {
-                                        console.log(cell)
                                         return (
                                             <td
                                                 {...cell.getCellProps({
-                                                    onClick: (cell.column.id === 'iconVer')
+                                                    onClick: (cell.column.id === 'iconVer' || cell.column.id === 'iconAprobar')
                                                         ? () => handleSelectedRow(cell)
                                                         : () => {},
                                                 })}

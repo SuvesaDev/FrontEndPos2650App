@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useMemo } from "react";
-import { FaEye } from "react-icons/fa";
+import { FaEye, FaCheckCircle } from "react-icons/fa";
 
 import { FollowingConsignmentIBodyListTable } from "./FollowingConsignmentIBodyListTable";
 
@@ -76,7 +76,17 @@ export const FollowingConsignmentBodyList = () => {
           {
               Header: "Fecha",
               accessor: "fecha",
-          }
+          },
+          {
+              Header: "Acciones",
+              accessor: "iconAprobar",
+              Cell: () => (
+                  <button className='btn btn-primary'>
+                      <FaCheckCircle className='iconSizeBtn' />
+                  </button>
+              ),
+  
+          },
       ],
       [true]
   );
