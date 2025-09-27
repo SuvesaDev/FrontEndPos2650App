@@ -1,7 +1,12 @@
 import { useTable } from "react-table";
 import { useDispatch, useSelector } from "react-redux";
 
-import { SetDetalleActualFollowingConsignment } from "../../../../actions/FollowingConsignmentAction";
+import { 
+    SetCantidadMaximaFollowingConsignment,
+    SetDetalleActualFollowingConsignment, 
+    SetIsEditDetalleFollowingConsignment, 
+    SetPosicionActualFollowingConsignment
+} from "../../../../actions/FollowingConsignmentAction";
 
 export const FollowingConsignmentBodyDetailsItemsTable = ({ columns, data }) => {
 
@@ -24,15 +29,15 @@ export const FollowingConsignmentBodyDetailsItemsTable = ({ columns, data }) => 
     const handleSelectedRow = async (cell) => {
                     
         //Obtener el CodArticulo de articulo seleccionado
-        const { CodArticulo } = cell.row.original;
+        const detalleActual = factura.detalle[cell.row.id];
         
-        if (CodArticulo !== null) {
+        if (detalleActual !== null) {
 
-            const detalleActual = factura.detalle[cell.row.id];
-            
             //Agregarlo al detalle Actual
-            // dispatch(SetPosicionActualConsignment( cell.row.id ));
-            dispatch(SetDetalleActualFollowingConsignment( detalleActual ));
+            dispatch( SetPosicionActualFollowingConsignment( cell.row.id ));
+            dispatch( SetDetalleActualFollowingConsignment( detalleActual ));
+            dispatch( SetIsEditDetalleFollowingConsignment( true ));
+            dispatch( SetCantidadMaximaFollowingConsignment( detalleActual.CantidadMaxima ) );
 
         }
 

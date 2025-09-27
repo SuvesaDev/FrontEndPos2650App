@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { FaPercentage, FaSearch } from 'react-icons/fa';
 import { MdDeleteForever, MdShoppingCart } from 'react-icons/md';
@@ -11,12 +11,22 @@ import { AiOutlineFieldNumber } from 'react-icons/ai';
 
 import { FollowingConsignmentBodyDetailsItemsTable } from './FollowingConsignmentBodyDetailsItemsTable';
 
+import { 
+    SetCantidadFollowingConsignment, 
+    startEditDetalleActualFollowingConsignment 
+} from '../../../../actions/FollowingConsignmentAction';
+
 export const FollowingConsignmentBodyDetailsItems = () => {
+
+    const dispatch = useDispatch();
 
     const { 
         factura, 
         isDespachar, 
-        detalleArticuloActual 
+        detalleArticuloActual,
+        isEditDetalle,
+        cantidadMaximaPermitida,
+        posicionActual
     } = useSelector(state => state.followingConsignment);
 
     const {
@@ -27,8 +37,6 @@ export const FollowingConsignmentBodyDetailsItems = () => {
         SubTotal,
         nombreLote
     } = detalleArticuloActual;
-
-    let cantidadOriginal = Cantidad;
 
     const columns = useMemo(
         () => [
@@ -95,6 +103,36 @@ export const FollowingConsignmentBodyDetailsItems = () => {
 
         return true;
     }
+
+    const handleClickEditDetalle = (e) => {
+                            
+            //   e.preventDefault();
+            
+            //Validacion de campo numerico
+            if (isNumeric(Cantidad, 1)) 
+            {
+                const index = parseFloat(posicionActual);
+
+                //Editar la linea detalle
+                dispatch(startEditDetalleActualFollowingConsignment(
+                    detalleArticuloActual,
+                    index
+                ));
+
+
+            } else {
+    
+                e.preventDefault();
+    
+                Swal.fire({
+                    icon: 'error',
+                    title: 'No se puede procesar la operaccion',
+                    text: 'Por favor verifique que los datos ingresados sean correctos'
+                });
+    
+            }
+    
+        }
 
     return (
 
@@ -190,8 +228,11 @@ export const FollowingConsignmentBodyDetailsItems = () => {
                                     name="Cantidad"
                                     autoComplete="off"
                                     type='number'
-                                    max={cantidadOriginal}
+                                    max={cantidadMaximaPermitida}
+                                    min={1}
+                                    disabled={!isEditDetalle}
                                     value={Cantidad}
+                                    onChange={(e) => dispatch(SetCantidadFollowingConsignment(e.target.value))}
                                 />
                             </div>
                         </div>
@@ -216,9 +257,8 @@ export const FollowingConsignmentBodyDetailsItems = () => {
                             <hr />
                             <div className='inline-container'>
                                 <button
-                                    className='btn btn-warning'
-                                    // onClick={handleClickAddProducto}
-                                    // disabled={!enableItems}
+                                    className={ (isEditDetalle) ? 'btn btn-warning' : 'btn btn-warning disabled' }
+                                    onClick={handleClickEditDetalle}
                                 >
                                     Editar <TbEditCircle className="iconSize" />
                                 </button>

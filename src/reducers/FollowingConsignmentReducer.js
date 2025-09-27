@@ -20,11 +20,15 @@ const initialState = {
     activeButtonAprobado: false,
     activeButtonDespachar: false,
     isDespachar: false,
+    isEditDetalle: false,
+    posicionActual: 0,
+    cantidadMaximaPermitida: 0,
     detalleArticuloActual: {
         CodArticulo: '',
         codFxArticulo: 0,
         Descripcion: '',
-        Cantidad: 1.00,
+        Cantidad: 0.00,
+        CantidadMaxima: 0.00,
         Precio_Unit: 0.00,
         Descuento: 0.00,
         Monto_Descuento: 0.00,
@@ -197,6 +201,89 @@ export const followingConsignmentReducer = (state = initialState, action) => {
             return {
                 ...state,
                 detalleArticuloActual: action.payload
+            }
+
+        case types.SetIsEditDetalleFollowingConsignment:
+            return {
+                ...state,
+                isEditDetalle: action.payload
+            }
+
+        case types.SetPosicionActualFollowingConsignment:
+            return {
+                ...state,
+                posicionActual: action.payload
+            }
+
+        case types.SetCantidadFollowingConsignment:
+            return {
+                ...state,
+                detalleArticuloActual: {
+                    ...state.detalleArticuloActual,
+                    Cantidad: action.payload
+                }
+            }
+
+        case types.SetCantidadMaximaFollowingConsignment:
+            return {
+                ...state,
+                cantidadMaximaPermitida: action.payload
+            }
+
+        case types.SetEditDetalleFollowingConsignment:
+            return {
+                ...state,
+                factura: {
+                    ...state.factura,
+                    detalle: state.factura.detalle.map(
+                        (linea, i) => i === action.payload.index
+                            ? action.payload.detalle
+                            : linea
+                    )
+                }
+            }
+
+        case types.SetEditDetalleFollowingConsignment:
+            return {
+                ...state,
+                factura: {
+                    ...state.factura,
+                    detalle: state.factura.detalle.map(
+                        (linea, i) => i === action.payload.index
+                            ? action.payload.detalle
+                            : linea
+                    )
+                }
+            }
+
+        case types.CleanDetalleActualFollowingConsignment:
+            return {
+                ...state,
+                detalleArticuloActual: {
+                    CodArticulo: '',
+                    codFxArticulo: 0,
+                    Descripcion: '',
+                    Cantidad: 1.00,
+                    Precio_Unit: 0.00,
+                    Descuento: 0.00,
+                    Monto_Descuento: 0.00,
+                    Impuesto: 0.00,
+                    Monto_Impuesto: 0.00,
+                    Existencias: 0,
+                    SubtotalGravado: 0.00,
+                    SubTotalExcento: 0.00,
+                    SubTotal: 0.00,
+                    precio_A: 0.00,
+                    precio_B: 0.00,
+                    precio_C: 0.00,
+                    precio_D: 0.00,
+                    precio_Promo: 0.00,
+                    max_Descuento: 0.00,
+                    ImpuestoOriginal: 0.00,
+                    Precio_UnitOriginal: 0.00,
+                    idLote: 0,
+                    nombreLote: ''
+                },
             }
 
         case types.CleanFollowingConsignment:

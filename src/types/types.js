@@ -2336,6 +2336,12 @@ export const types = {
   SetActiveButtonDespacharFollowingConsignment: '[FollowingConsignacion] SetActiveButtonDespacharFollowingConsignment',
   SetIsDespacharFollowingConsignment: '[FollowingConsignacion] SetIsDespacharFollowingConsignment',
   SetDetalleActualFollowingConsignment: '[FollowingConsignacion] SetDetalleActualFollowingConsignment',
+  SetIsEditDetalleFollowingConsignment: '[FollowingConsignacion] SetIsEditDetalleFollowingConsignment',
+  SetPosicionActualFollowingConsignment: '[FollowingConsignacion] SetPosicionActualFollowingConsignment',
+  SetCantidadFollowingConsignment: '[FollowingConsignacion] SetCantidadFollowingConsignment',
+  SetCantidadMaximaFollowingConsignment: '[FollowingConsignacion] SetCantidadMaximaFollowingConsignment',
+  SetEditDetalleFollowingConsignment: '[FollowingConsignacion] SetEditDetalleFollowingConsignment',
+  CleanDetalleActualFollowingConsignment: '[FollowingConsignacion] CleanDetalleActualFollowingConsignment',
 
   CleanFollowingConsignment: '[FollowingConsignacion] CleanFollowingConsignment',
 

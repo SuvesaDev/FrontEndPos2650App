@@ -326,6 +326,7 @@ export const startGetOneFollowingConsignment = ( idConsignacion, tipo ) => {
                             codFxArticulo : det.codFxArticulo,
                             Descripcion : det.descripcion,
                             Cantidad : det.cantidad,
+                            CantidadMaxima : det.cantidad,
                             Precio_Unit : det.precioUnit,
                             Descuento : det.descuento,
                             Monto_Descuento : det.montoDescuento,
@@ -475,6 +476,46 @@ export const startAprobadoFollowingConsignment = ( idConsignacion ) => {
     }
 }
 
+export const startEditDetalleActualFollowingConsignment = (detalle, index ) => {
+
+    return async (dispatch) => {
+
+        try {
+
+            //Mostrar un mensaje de confirmacion
+            Swal.fire({
+                title: '¿Desea editar la cantidad del articulo?',
+                showDenyButton: true,
+                showCancelButton: false,
+                confirmButtonText: 'Editar',
+                denyButtonText: `Cancelar`,
+                allowEnterKey: false
+            }).then(async (result) => {
+
+                if (result.isConfirmed) {
+
+                    dispatch( SetIsEditDetalleFollowingConsignment(false) );
+                    dispatch( SetEditDetalleFollowingConsignment({ detalle, index }));
+                    dispatch( CleanDetalleActualFollowingConsignment() );
+                    dispatch( SetCantidadMaximaFollowingConsignment(0) );
+
+                }
+
+            });
+
+        } catch (error) {
+
+            console.log(error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Ocurrio un problema al buscar un cliente',
+            });
+        }
+
+    }
+}
+
 // Private methods
 const loadCatalogos = async ( dispatch, catalogos ) => {
     
@@ -619,6 +660,35 @@ export const SetIsDespacharFollowingConsignment = (value) => ({
 export const SetDetalleActualFollowingConsignment = (value) => ({
     type: types.SetDetalleActualFollowingConsignment,
     payload: value
+})
+
+export const SetIsEditDetalleFollowingConsignment = (value) => ({
+    type: types.SetIsEditDetalleFollowingConsignment,
+    payload: value
+})
+
+export const SetPosicionActualFollowingConsignment = (value) => ({
+    type: types.SetPosicionActualFollowingConsignment,
+    payload: value
+})
+
+export const SetCantidadFollowingConsignment = (value) => ({
+    type: types.SetCantidadFollowingConsignment,
+    payload: value
+})
+
+export const SetCantidadMaximaFollowingConsignment = (value) => ({
+    type: types.SetCantidadMaximaFollowingConsignment,
+    payload: value
+})
+
+export const SetEditDetalleFollowingConsignment = (value) => ({
+    type: types.SetEditDetalleFollowingConsignment,
+    payload: value
+})
+
+export const CleanDetalleActualFollowingConsignment = () => ({
+    type: types.CleanDetalleActualFollowingConsignment
 })
 
 export const CleanFollowingConsignment = () => ({
