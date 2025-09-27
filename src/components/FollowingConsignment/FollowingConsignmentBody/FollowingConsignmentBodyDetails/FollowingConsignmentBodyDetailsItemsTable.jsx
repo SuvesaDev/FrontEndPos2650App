@@ -1,6 +1,13 @@
 import { useTable } from "react-table";
+import { useDispatch, useSelector } from "react-redux";
+
+import { SetDetalleActualFollowingConsignment } from "../../../../actions/FollowingConsignmentAction";
 
 export const FollowingConsignmentBodyDetailsItemsTable = ({ columns, data }) => {
+
+    const dispatch = useDispatch();
+
+    const { factura } = useSelector(state => state.followingConsignment);
 
     const {
         getTableProps,
@@ -13,6 +20,23 @@ export const FollowingConsignmentBodyDetailsItemsTable = ({ columns, data }) => 
         columns,
         data,
     });
+
+    const handleSelectedRow = async (cell) => {
+                    
+        //Obtener el CodArticulo de articulo seleccionado
+        const { CodArticulo } = cell.row.original;
+        
+        if (CodArticulo !== null) {
+
+            const detalleActual = factura.detalle[cell.row.id];
+            
+            //Agregarlo al detalle Actual
+            // dispatch(SetPosicionActualConsignment( cell.row.id ));
+            dispatch(SetDetalleActualFollowingConsignment( detalleActual ));
+
+        }
+
+    }
 
     return (
         <>
@@ -46,7 +70,9 @@ export const FollowingConsignmentBodyDetailsItemsTable = ({ columns, data }) => 
                                     {row.cells.map(cell => {
                                         return (
                                             <td
-                                                {...cell.getCellProps({})}
+                                                {...cell.getCellProps({
+                                                    onClick: () => handleSelectedRow(cell),
+                                                })}
 
                                             >
                                                 {cell.render("Cell")}

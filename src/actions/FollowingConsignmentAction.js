@@ -351,6 +351,7 @@ export const startGetOneFollowingConsignment = ( idConsignacion, tipo ) => {
                     dispatch(SetActiveButtonAprobadoFollowingConsignment(true));
                 } else if (tipo == 'Despachar') {
                     dispatch(SetActiveButtonDespacharFollowingConsignment(true));
+                    dispatch(SetIsDespacharFollowingConsignment(true));
                 }
 
             } else {
@@ -607,6 +608,16 @@ export const SetActiveButtonAprobadoFollowingConsignment = (value) => ({
 
 export const SetActiveButtonDespacharFollowingConsignment = (value) => ({
     type: types.SetActiveButtonDespacharFollowingConsignment,
+    payload: value
+})
+
+export const SetIsDespacharFollowingConsignment = (value) => ({
+    type: types.SetIsDespacharFollowingConsignment,
+    payload: value
+})
+
+export const SetDetalleActualFollowingConsignment = (value) => ({
+    type: types.SetDetalleActualFollowingConsignment,
     payload: value
 })
 

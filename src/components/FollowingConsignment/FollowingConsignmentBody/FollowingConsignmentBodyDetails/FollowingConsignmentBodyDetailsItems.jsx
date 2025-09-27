@@ -1,13 +1,34 @@
 import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 
-import { MdDeleteForever } from 'react-icons/md';
+import { FaPercentage, FaSearch } from 'react-icons/fa';
+import { MdDeleteForever, MdShoppingCart } from 'react-icons/md';
+import { FaCircleExclamation, FaColonSign } from 'react-icons/fa6';
+import { TbEditCircle } from 'react-icons/tb';
+import { IoAddCircle } from "react-icons/io5";
+import { GoNumber } from 'react-icons/go';
+import { AiOutlineFieldNumber } from 'react-icons/ai';
 
 import { FollowingConsignmentBodyDetailsItemsTable } from './FollowingConsignmentBodyDetailsItemsTable';
 
 export const FollowingConsignmentBodyDetailsItems = () => {
 
-    const { factura } = useSelector(state => state.followingConsignment);
+    const { 
+        factura, 
+        isDespachar, 
+        detalleArticuloActual 
+    } = useSelector(state => state.followingConsignment);
+
+    const {
+        CodArticulo,
+        Precio_Unit,
+        Impuesto,
+        Cantidad,
+        SubTotal,
+        nombreLote
+    } = detalleArticuloActual;
+
+    let cantidadOriginal = Cantidad;
 
     const columns = useMemo(
         () => [
@@ -51,6 +72,30 @@ export const FollowingConsignmentBodyDetailsItems = () => {
         [true]
     );
 
+    const isNumeric = (valor, minimo) => {
+
+        let ultimoCaracter = String(valor).charAt(String(valor).length - 1);
+        let primerCaracter = String(valor).charAt(0);
+
+        if (valor === "") {
+            return false;
+        }
+        if (isNaN(primerCaracter)) {
+            return false;
+        }
+        if (isNaN(ultimoCaracter)) {
+            return false;
+        }
+        if (isNaN(valor)) {
+            return false;
+        }
+        if (parseFloat(valor) < parseFloat(minimo)) {
+            return false;
+        }
+
+        return true;
+    }
+
     return (
 
         <>
@@ -61,6 +106,126 @@ export const FollowingConsignmentBodyDetailsItems = () => {
                 </div>
 
                 <div className="card-body">
+
+                    <div className={ (isDespachar) ? 'row mb-3' : 'row mb-3 d-none' }>
+                    
+                        <div className="col-md-2 mb-3">
+                            <h5>Código</h5>
+                            <div className="input-group">
+                                <span className="input-group-text">
+                                    <GoNumber
+                                        className="iconSize" />
+                                </span>
+                                <input
+                                    className='form-control'
+                                    type='number'
+                                    min="0"
+                                    placeholder='0'
+                                    autoComplete="off"
+                                    disabled={true}
+                                    value={CodArticulo}
+                                />
+                            </div>
+                        </div>
+
+                        <div className="col-md-2 mb-3">
+                            <h5>Precio Unitario</h5>
+                            <div className="input-group">
+                                <span className="input-group-text">
+                                    <FaColonSign className="iconSize" />
+                                </span>
+                                <input
+                                    className= { isNumeric(Precio_Unit, 0) ? 'form-control' : 'txtResulPrecioInvalid' }
+                                    name="Precio_Unit"
+                                    type='text'
+                                    autoComplete="off"
+                                    disabled={true}
+                                    value={ new Intl.NumberFormat('es-CR', { style: 'currency', currency: 'CRC' }).format(Precio_Unit) }
+
+                                />
+                            </div>
+                        </div>
+
+                        <div className="col-md-1 mb-3">
+                            <h5>Impuesto</h5>
+                            <div className="input-group">
+                                <span className="input-group-text">
+                                    <FaPercentage className="iconSize" />
+                                </span>
+                                <input
+                                    className="form-control"
+                                    name="Impuesto"
+                                    autoComplete="off"
+                                    disabled={true}
+                                    value={Impuesto}
+                                />
+
+                            </div>
+                        </div>
+
+                        <div className="col-md-2 mb-3">
+                            <h5>Lote</h5>
+                            <div className="input-group">
+                                <span className="input-group-text">
+                                    <MdShoppingCart className="iconSize" />
+                                </span>
+                                <input
+                                    name="lotes"
+                                    autoComplete="off"
+                                    className="form-control"
+                                    disabled={true}
+                                    value={nombreLote}
+                                />
+                            </div>
+                        </div>
+
+                        <div className="col-md-2 mb-3">
+                            <h5>Cantidad</h5>
+                            <div className="input-group">
+                                <span className="input-group-text">
+                                    <AiOutlineFieldNumber className="iconSize" />
+                                </span>
+                                <input
+                                    className={ (isNumeric(Cantidad, 0)) ? 'form-control' : 'form-control textRed'}
+                                    name="Cantidad"
+                                    autoComplete="off"
+                                    type='number'
+                                    max={cantidadOriginal}
+                                    value={Cantidad}
+                                />
+                            </div>
+                        </div>
+
+                        <div className="col-md-2 mb-3">
+                            <h5>Sub Total</h5>
+                            <div className="input-group">
+                                <span className="input-group-text">
+                                    <FaColonSign className="iconSize" />
+                                </span>
+                                <input
+                                    name="SubTotal"
+                                    autoComplete="off"
+                                    className="form-control"
+                                    disabled={true}
+                                    value={ new Intl.NumberFormat('es-CR', { style: 'currency', currency: 'CRC' }).format(SubTotal)}
+                                />
+                            </div>
+                        </div>
+
+                        <div className="col-md-1 mb-3">
+                            <hr />
+                            <div className='inline-container'>
+                                <button
+                                    className='btn btn-warning'
+                                    // onClick={handleClickAddProducto}
+                                    // disabled={!enableItems}
+                                >
+                                    Editar <TbEditCircle className="iconSize" />
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
 
                     <div className='row mb-3'>
                         <div className='col-md-12 mb-2'>
@@ -74,8 +239,6 @@ export const FollowingConsignmentBodyDetailsItems = () => {
                 </div>
 
             </div>
-
-            {/* <InventorySearchModal /> */}
 
         </>
 

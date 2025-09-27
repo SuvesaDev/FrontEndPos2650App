@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { 
   SetActiveButtonAprobadoFollowingConsignment,
   SetActiveButtonDespacharFollowingConsignment,
+  SetIsDespacharFollowingConsignment,
   SetSeletedTabFollowingConsignment, 
   SetVisibleTabDetalleFollowingConsignment 
 } from "../../../actions/FollowingConsignmentAction";
@@ -23,6 +24,7 @@ export const FollowingConsignmentTabs = () => {
       dispatch( SetVisibleTabDetalleFollowingConsignment(false) );
       dispatch( SetActiveButtonAprobadoFollowingConsignment(false) );
       dispatch( SetActiveButtonDespacharFollowingConsignment(false) );
+      dispatch( SetIsDespacharFollowingConsignment(false));
     }
 
     dispatch(SetSeletedTabFollowingConsignment(nameTab));

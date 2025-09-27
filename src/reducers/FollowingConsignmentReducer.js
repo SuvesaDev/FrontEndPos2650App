@@ -19,6 +19,32 @@ const initialState = {
     usuarioAceptaConsignacion: false,
     activeButtonAprobado: false,
     activeButtonDespachar: false,
+    isDespachar: false,
+    detalleArticuloActual: {
+        CodArticulo: '',
+        codFxArticulo: 0,
+        Descripcion: '',
+        Cantidad: 1.00,
+        Precio_Unit: 0.00,
+        Descuento: 0.00,
+        Monto_Descuento: 0.00,
+        Impuesto: 0.00,
+        Monto_Impuesto: 0.00,
+        Existencias: 0,
+        SubtotalGravado: 0.00,
+        SubTotalExcento: 0.00,
+        SubTotal: 0.00,
+        precio_A: 0.00,
+        precio_B: 0.00,
+        precio_C: 0.00,
+        precio_D: 0.00,
+        precio_Promo: 0.00,
+        max_Descuento: 0.00,
+        ImpuestoOriginal: 0.00,
+        Precio_UnitOriginal: 0.00,
+        idLote: 0,
+        nombreLote: ''
+    },
     factura: {
         encabezado: {
             id : '',
@@ -159,6 +185,18 @@ export const followingConsignmentReducer = (state = initialState, action) => {
             return {
                 ...state,
                 activeButtonDespachar: action.payload
+            }
+
+        case types.SetIsDespacharFollowingConsignment:
+            return {
+                ...state,
+                isDespachar: action.payload
+            }
+
+        case types.SetDetalleActualFollowingConsignment:
+            return {
+                ...state,
+                detalleArticuloActual: action.payload
             }
 
         case types.CleanFollowingConsignment:
