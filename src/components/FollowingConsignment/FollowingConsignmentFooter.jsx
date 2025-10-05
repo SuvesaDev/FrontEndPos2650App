@@ -15,6 +15,7 @@ import {
     CleanFollowingConsignment,
     SetClaveInternaFollowingConsignment, 
     SetVisiblePasswordFollowingConsignment,
+    startAprobadoFollowingConsignment,
     startValidateClaveInternaFollowingConsignment
 } from '../../actions/FollowingConsignmentAction';
 
@@ -29,10 +30,12 @@ export const FollowingConsignmentFooter = () => {
         usuarioFacturacion,
         plazos,
         activeButtonAprobado,
-        activeButtonDespachar
+        activeButtonDespachar,
+        factura
     } = useSelector(state => state.followingConsignment);
 
     const { claveInterna, nameUser } = usuarioFacturacion;
+    const { id } = factura.encabezado;
 
     const { currentTab } = useSelector(state => state.tabs);
     const { surcursales, auth, idSurcursal } = useSelector(state => state.login);
@@ -49,11 +52,15 @@ export const FollowingConsignmentFooter = () => {
     };
 
     const handleAprobadoConsignacion = async (e) => {
-
         if(activeButtonAprobado) {
-            
+            dispatch(startAprobadoFollowingConsignment(id));
         }
+    }
 
+    const handleDespacharConsignacion = async (e) => {
+        if(handleDespacharConsignacion) {
+            // dispatch(startAprobadoFollowingConsignment(id));
+        }
     }
 
     const handleOnKeyDownUser = async (e) => {
@@ -143,7 +150,7 @@ export const FollowingConsignmentFooter = () => {
                                 ? 'btn btn-success espacio' 
                                 : 'btn btn-success espacio disabled' 
                             }
-                        onClick={handleAprobadoConsignacion}
+                        onClick={handleDespacharConsignacion}
                     >
                         Despachar <CiInboxOut className="iconSizeBtn" />
                     </button>
