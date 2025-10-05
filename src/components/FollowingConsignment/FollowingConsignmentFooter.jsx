@@ -16,6 +16,7 @@ import {
     SetClaveInternaFollowingConsignment, 
     SetVisiblePasswordFollowingConsignment,
     startAprobadoFollowingConsignment,
+    startDespacharFollowingConsignment,
     startValidateClaveInternaFollowingConsignment
 } from '../../actions/FollowingConsignmentAction';
 
@@ -58,8 +59,22 @@ export const FollowingConsignmentFooter = () => {
     }
 
     const handleDespacharConsignacion = async (e) => {
+
         if(handleDespacharConsignacion) {
-            // dispatch(startAprobadoFollowingConsignment(id));
+
+            const despacharConsignacion = {
+                idConsignacion : id,
+                articulos: factura.detalle.map(detalle => {
+                    return {
+                        idArticulo: detalle.CodArticulo,
+                        codFxArticulo: detalle.codFxArticulo,
+                        lote: detalle.idLote,
+                        cantidad: detalle.Cantidad,
+                    }
+                })
+            }
+
+            dispatch( startDespacharFollowingConsignment(despacharConsignacion) );
         }
     }
 

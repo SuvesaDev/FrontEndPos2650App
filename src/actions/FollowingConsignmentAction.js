@@ -533,6 +533,108 @@ export const startEditDetalleActualFollowingConsignment = (detalle, index ) => {
     }
 }
 
+export const startDespacharFollowingConsignment = ( despacharConsignacion ) => {
+
+    return async ( dispatch ) => {
+
+        try {
+
+            //Mostrar un mensaje de confirmacion
+            Swal.fire({
+                title: '¿Desea despachar la consignacion?',
+                showDenyButton: true,
+                showCancelButton: false,
+                confirmButtonText: 'Despachar',
+                denyButtonText: `Cancelar`,
+                allowEnterKey: false
+            }).then(async (result) => {
+
+                if(result.isConfirmed) {
+                    //Mostrar el loading
+                    Swal.fire({
+                        title: 'Por favor, espere',
+                        allowEscapeKey: false,
+                        allowOutsideClick: false,
+                        showConfirmButton: false,
+                        imageUrl: loadingImage,
+                        customClass: 'alert-class-login',
+                        imageHeight: 100,
+                    });
+        
+                    //Call end-point 
+                    //TODO: CAMBIAR EL END-POINT 
+                    const { data } = await suvesaApi.put(`/Consignacion/AceptarRechazarConsignacion?id=${idConsignacion}`);
+                    const { status, responses } = data;
+                    Swal.close();
+                    
+                    if( status === 0 ) {
+
+                        if(responses) {
+                            //Si es correcta entonces mostrar un mensaje de afirmacion
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Consignacion despachada correctamente',
+                                showConfirmButton: false,
+                                timer: 2500
+                            });
+
+                            dispatch(SetVisibleTabDetalleFollowingConsignment(false));
+                            dispatch(SetSeletedTabFollowingConsignment('ListadoConsignacion'));
+                            dispatch(SetActiveButtonAprobadoFollowingConsignment(false));
+                            await startGetAllConsignments(dispatch);
+
+                        } else {
+
+
+                            //Si es correcta entonces mostrar un mensaje de afirmacion
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: 'No se puedo despachar la consignacion'
+                            });
+                        }
+                    
+                        
+                    } else {
+            
+                        //Caso contrario respuesta incorrecto mostrar mensaje de error
+                        const { currentException } = data;
+                        const msj = currentException.split(',');
+
+                        console.log(currentException);
+                        
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: (currentException.includes(',')) ? msj[3] : currentException,
+                        });
+            
+                    }
+                }
+
+            });
+
+        } catch (error) {
+            
+            Swal.close();
+            console.log(error);
+            if( error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al aprobar una consignacion',
+                });
+            }
+        }
+    }
+}
+
 // Private methods
 const loadCatalogos = async ( dispatch, catalogos ) => {
     
