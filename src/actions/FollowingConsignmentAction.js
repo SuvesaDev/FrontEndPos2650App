@@ -694,6 +694,21 @@ export const SetCantidadFollowingConsignment = (value) => ({
     payload: value
 })
 
+export const SetPrecioUnitFollowingConsignment = (value) => ({
+    type: types.SetPrecioUnitFollowingConsignment,
+    payload: value
+})
+
+export const SetSubTotalFollowingConsignment = (value) => ({
+    type: types.SetSubTotalFollowingConsignment,
+    payload: value
+})
+
+export const SetMontoImpuestoFollowingConsignment = (value) => ({
+    type: types.SetMontoImpuestoFollowingConsignment,
+    payload: value
+})
+
 export const SetCantidadMaximaFollowingConsignment = (value) => ({
     type: types.SetCantidadMaximaFollowingConsignment,
     payload: value

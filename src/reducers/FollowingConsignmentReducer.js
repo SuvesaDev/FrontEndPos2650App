@@ -224,6 +224,33 @@ export const followingConsignmentReducer = (state = initialState, action) => {
                 }
             }
 
+        case types.SetPrecioUnitFollowingConsignment:
+            return {
+                ...state,
+                detalleArticuloActual: {
+                    ...state.detalleArticuloActual,
+                    Precio_Unit: action.payload
+                }
+            }
+
+        case types.SetSubTotalFollowingConsignment:
+            return {
+                ...state,
+                detalleArticuloActual: {
+                    ...state.detalleArticuloActual,
+                    SubTotal: action.payload
+                }
+            }
+
+        case types.SetMontoImpuestoFollowingConsignment:
+            return {
+                ...state,
+                detalleArticuloActual: {
+                    ...state.detalleArticuloActual,
+                    Monto_Impuesto: action.payload
+                }
+            }
+
         case types.SetCantidadMaximaFollowingConsignment:
             return {
                 ...state,

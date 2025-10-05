@@ -13,12 +13,17 @@ import { FollowingConsignmentBodyDetailsItemsTable } from './FollowingConsignmen
 
 import { 
     SetCantidadFollowingConsignment, 
+    SetMontoImpuestoFollowingConsignment, 
+    SetPrecioUnitFollowingConsignment, 
+    SetSubTotalFollowingConsignment, 
     startEditDetalleActualFollowingConsignment 
 } from '../../../../actions/FollowingConsignmentAction';
 
 export const FollowingConsignmentBodyDetailsItems = () => {
 
     const dispatch = useDispatch();
+
+    const { dollar } = useSelector(state => state.sidebar);
 
     const { 
         factura, 
@@ -34,8 +39,11 @@ export const FollowingConsignmentBodyDetailsItems = () => {
         Precio_Unit,
         Impuesto,
         Cantidad,
+        CantidadMaxima,
         SubTotal,
-        nombreLote
+        nombreLote,
+        Descuento,
+        ImpuestoOriginal
     } = detalleArticuloActual;
 
     const columns = useMemo(
@@ -49,7 +57,11 @@ export const FollowingConsignmentBodyDetailsItems = () => {
                 accessor: "Descripcion",
             },
             {
-                Header: "Cantidad",
+                Header: "Cantidad Original",
+                accessor: "CantidadMaxima",
+            },
+            {
+                Header: "Cantidad Despachar",
                 accessor: "Cantidad",
             },
             ...( false
@@ -104,6 +116,46 @@ export const FollowingConsignmentBodyDetailsItems = () => {
         return true;
     }
 
+    const handleChangeCantidad = ({ target }) => {
+            
+        dispatch(SetCantidadFollowingConsignment(target.value));
+        calculateTotalsProductCurrent({
+            precioUnit: Precio_Unit,
+            cantidad: target.value,
+            descuento: Descuento
+        });
+    }
+
+    const calculateTotalsProductCurrent = (parametros) => {
+            
+        let precio = parseFloat(parametros.precioUnit);
+        let cantidad = parseFloat(parametros.cantidad);
+        let descuento = parseFloat(parametros.descuento);
+        let impuesto = ImpuestoOriginal;
+
+        if (isNaN(precio)) return;
+
+        if (isNaN(cantidad)) return;
+
+        if (isNaN(descuento)) return;
+
+        if (isNaN(impuesto)) return;
+
+        var resulImpuesto = ((precio * cantidad)) * (impuesto / 100);
+        dispatch(SetMontoImpuestoFollowingConsignment( parseFloat(resulImpuesto).toFixed(2)));
+
+        //cuando se agrega un articulo o se cambia el precio, descuento o cantidad
+        //se calcualan los subtotales, desuentos e impuestos del producto
+        if (parseFloat(factura.encabezado.Cod_Moneda) === 2) {
+            precio = precio / dollar;
+            dispatch(SetPrecioUnitFollowingConsignment(precio));
+        }
+
+        //SubTotal
+        dispatch(SetSubTotalFollowingConsignment( parseFloat(precio * cantidad).toFixed(2)));
+        
+    }
+
     const handleClickEditDetalle = (e) => {
                             
             //   e.preventDefault();
@@ -132,7 +184,7 @@ export const FollowingConsignmentBodyDetailsItems = () => {
     
             }
     
-        }
+    }
 
     return (
 
@@ -147,7 +199,7 @@ export const FollowingConsignmentBodyDetailsItems = () => {
 
                     <div className={ (isDespachar) ? 'row mb-3' : 'row mb-3 d-none' }>
                     
-                        <div className="col-md-2 mb-3">
+                        <div className="col-md-3 mb-3">
                             <h5>Código</h5>
                             <div className="input-group">
                                 <span className="input-group-text">
@@ -166,7 +218,7 @@ export const FollowingConsignmentBodyDetailsItems = () => {
                             </div>
                         </div>
 
-                        <div className="col-md-2 mb-3">
+                        <div className="col-md-3 mb-3">
                             <h5>Precio Unitario</h5>
                             <div className="input-group">
                                 <span className="input-group-text">
@@ -184,7 +236,7 @@ export const FollowingConsignmentBodyDetailsItems = () => {
                             </div>
                         </div>
 
-                        <div className="col-md-1 mb-3">
+                        <div className="col-md-3 mb-3">
                             <h5>Impuesto</h5>
                             <div className="input-group">
                                 <span className="input-group-text">
@@ -201,7 +253,7 @@ export const FollowingConsignmentBodyDetailsItems = () => {
                             </div>
                         </div>
 
-                        <div className="col-md-2 mb-3">
+                        <div className="col-md-3 mb-3">
                             <h5>Lote</h5>
                             <div className="input-group">
                                 <span className="input-group-text">
@@ -217,8 +269,28 @@ export const FollowingConsignmentBodyDetailsItems = () => {
                             </div>
                         </div>
 
+                    </div>
+
+                    <div className={ (isDespachar) ? 'row mb-3' : 'row mb-3 d-none' }>
                         <div className="col-md-2 mb-3">
-                            <h5>Cantidad</h5>
+                            <h5>Cantidad Original</h5>
+                            <div className="input-group">
+                                <span className="input-group-text">
+                                    <AiOutlineFieldNumber className="iconSize" />
+                                </span>
+                                <input
+                                    className={ (isNumeric(Cantidad, 0)) ? 'form-control' : 'form-control textRed'}
+                                    name="Cantidad"
+                                    autoComplete="off"
+                                    type='number'
+                                    disabled={true}
+                                    value={CantidadMaxima}
+                                />
+                            </div>
+                        </div>
+
+                        <div className="col-md-2 mb-3">
+                            <h5>Cantidad Despachar</h5>
                             <div className="input-group">
                                 <span className="input-group-text">
                                     <AiOutlineFieldNumber className="iconSize" />
@@ -232,7 +304,7 @@ export const FollowingConsignmentBodyDetailsItems = () => {
                                     min={1}
                                     disabled={!isEditDetalle}
                                     value={Cantidad}
-                                    onChange={(e) => dispatch(SetCantidadFollowingConsignment(e.target.value))}
+                                    onChange={(e) => handleChangeCantidad(e)}
                                 />
                             </div>
                         </div>
@@ -264,7 +336,6 @@ export const FollowingConsignmentBodyDetailsItems = () => {
                                 </button>
                             </div>
                         </div>
-
                     </div>
 
                     <div className='row mb-3'>
