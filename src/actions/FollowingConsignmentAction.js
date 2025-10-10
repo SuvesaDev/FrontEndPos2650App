@@ -562,29 +562,32 @@ export const startDespacharFollowingConsignment = ( despacharConsignacion ) => {
                     });
         
                     //Call end-point 
-                    //TODO: CAMBIAR EL END-POINT 
-                    const { data } = await suvesaApi.put(`/Consignacion/AceptarRechazarConsignacion?id=${idConsignacion}`);
+                    const { data } = await suvesaApi.post(`/Consignacion/GenerarVentaConsignacion`, despacharConsignacion);
                     const { status, responses } = data;
                     Swal.close();
                     
                     if( status === 0 ) {
 
                         if(responses) {
-                            //Si es correcta entonces mostrar un mensaje de afirmacion
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Consignacion despachada correctamente',
-                                showConfirmButton: false,
-                                timer: 2500
-                            });
 
-                            dispatch(SetVisibleTabDetalleFollowingConsignment(false));
-                            dispatch(SetSeletedTabFollowingConsignment('ListadoConsignacion'));
-                            dispatch(SetActiveButtonAprobadoFollowingConsignment(false));
-                            await startGetAllConsignments(dispatch);
+                             Swal.fire({
+                                icon: 'success',
+                                title: `Consignacion despachada correctamente Numero de Factura ${responses.id}`,
+                                showDenyButton: false,
+                                showCancelButton: false,
+                                confirmButtonText: 'Listo',
+                                allowEnterKey: false
+                            }).then(async (result) => {
+
+                                if(result.isConfirmed) {
+                                    dispatch(SetVisibleTabDetalleFollowingConsignment(false));
+                                    dispatch(SetSeletedTabFollowingConsignment('ListadoConsignacion'));
+                                    dispatch(SetActiveButtonAprobadoFollowingConsignment(false));
+                                    await startGetAllConsignments(dispatch);
+                                }
+                            })                            
 
                         } else {
-
 
                             //Si es correcta entonces mostrar un mensaje de afirmacion
                             Swal.fire({

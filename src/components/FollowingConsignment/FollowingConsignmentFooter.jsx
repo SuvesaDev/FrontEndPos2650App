@@ -60,20 +60,28 @@ export const FollowingConsignmentFooter = () => {
 
     const handleDespacharConsignacion = async (e) => {
 
-        if(handleDespacharConsignacion) {
+        let isParcial = false;
 
+        if(activeButtonDespachar) {  
+
+            factura.detalle.forEach(detalle => {
+                if(parseFloat(detalle.Cantidad) < parseFloat(detalle.CantidadMaxima)) {
+                    isParcial = true;
+                    return;
+                }
+            });
+            
             const despacharConsignacion = {
                 idConsignacion : id,
+                esParcial: isParcial,
                 articulos: factura.detalle.map(detalle => {
                     return {
-                        idArticulo: detalle.CodArticulo,
-                        codFxArticulo: detalle.codFxArticulo,
-                        lote: detalle.idLote,
-                        cantidad: detalle.Cantidad,
+                        idArticulo: detalle.codFxArticulo,
+                        cantidad: parseFloat(detalle.Cantidad),
                     }
                 })
             }
-
+            console.log(despacharConsignacion);
             dispatch( startDespacharFollowingConsignment(despacharConsignacion) );
         }
     }
