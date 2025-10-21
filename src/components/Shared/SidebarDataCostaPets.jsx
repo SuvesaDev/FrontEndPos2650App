@@ -18,20 +18,16 @@ import { BiSolidReport } from "react-icons/bi";
 
 export const SidebarDataCostaPets = () => {
 
-    const { auth } = useSelector( state => state.login );
+    const { auth, modulos } = useSelector( state => state.login );
     const { administrador, agenteCostaPets } = auth;
+
+    const itemsByRol = IteamsAdmin.filter( item => modulos.includes(item.title) );
 
     return (
         
-        ( administrador == true && agenteCostaPets == false ) 
-            ?   IteamsAdmin.map((item, index) => (
-                    <SidebarItem key={index} index={index} item={item} class/>
-                ))
-            : ( administrador == false && agenteCostaPets == true )
-                ?   IteamsAgente.map((item, index) => (
-                        <SidebarItem key={index} index={index} item={item} class/>
-                    ))
-                : <></>
+        itemsByRol.map((item, index) => (
+            <SidebarItem key={index} index={index} item={item} class/>
+        ))
        
     )
 

@@ -90,6 +90,11 @@ export const startLogin = (auth) => {
 
                             dispatch( SetNombreRolLogin('Admin') );
 
+                            dispatch( SetModulosLogin([
+                                'Inicio',
+                                'Compras'
+                            ]) );
+
                             //Escribe el localStorage
                             localStorage.setItem('auth', JSON.stringify({
                                 centro: centros[i],
@@ -438,5 +443,10 @@ export const SetIdSurcursalLogin = (value) => ({
 
 export const SetNombreRolLogin = (value) => ({
     type: types.SetNombreRolLogin,
+    payload: value
+});
+
+export const SetModulosLogin = (value) => ({
+    type: types.SetModulosLogin,
     payload: value
 });

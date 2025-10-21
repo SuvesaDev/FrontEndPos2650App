@@ -19,7 +19,8 @@ const initialState = {
     idSurcursal: 0,
     usersActive: [],
     surcursales: [],
-    nombreRol: ''
+    nombreRol: '',
+    modulos: []
 }
 
 export const loginReducer = ( state = initialState, action ) => {
@@ -59,7 +60,8 @@ export const loginReducer = ( state = initialState, action ) => {
                     password: null
                 },
                 usersActive: [],
-                nombreRol: ''
+                nombreRol: '',
+                modulos: []
             }
 
         case types.loginSetErrorCentro:
@@ -150,6 +152,12 @@ export const loginReducer = ( state = initialState, action ) => {
             return {
                 ...state,
                 nombreRol: action.payload
+            }
+
+        case types.SetModulosLogin:
+            return {
+                ...state,
+                modulos: action.payload
             }
     
         default:
