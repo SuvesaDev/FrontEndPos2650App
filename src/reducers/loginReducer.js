@@ -20,7 +20,8 @@ const initialState = {
     usersActive: [],
     surcursales: [],
     nombreRol: '',
-    modulos: []
+    modulos: [],
+    pantallas: []
 }
 
 export const loginReducer = ( state = initialState, action ) => {
@@ -61,7 +62,8 @@ export const loginReducer = ( state = initialState, action ) => {
                 },
                 usersActive: [],
                 nombreRol: '',
-                modulos: []
+                modulos: [],
+                pantallas: []
             }
 
         case types.loginSetErrorCentro:
@@ -158,6 +160,12 @@ export const loginReducer = ( state = initialState, action ) => {
             return {
                 ...state,
                 modulos: action.payload
+            }
+
+        case types.SetPantallasLogin:
+            return {
+                ...state,
+                pantallas: action.payload
             }
     
         default:

@@ -30,6 +30,7 @@ export const types = {
   SetIdSurcursalLogin: '[Login] SetIdSurcursalLogin',
   SetNombreRolLogin: '[Login] SetNombreRolLogin',
   SetModulosLogin: '[Login] SetModulosLogin',
+  SetPantallasLogin: '[Login] SetPantallasLogin',
 
   //Cellar
   cellarAddNew: '[cellar reducer] Add new cellar',

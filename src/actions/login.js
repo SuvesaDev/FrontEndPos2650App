@@ -95,6 +95,13 @@ export const startLogin = (auth) => {
                                 'Compras'
                             ]) );
 
+                            dispatch( SetPantallasLogin([
+                                'Clientes',
+                                'Inventarios',
+                                'Compra',
+                                'Proveedores'
+                            ]) );
+
                             //Escribe el localStorage
                             localStorage.setItem('auth', JSON.stringify({
                                 centro: centros[i],
@@ -448,5 +455,10 @@ export const SetNombreRolLogin = (value) => ({
 
 export const SetModulosLogin = (value) => ({
     type: types.SetModulosLogin,
+    payload: value
+});
+
+export const SetPantallasLogin = (value) => ({
+    type: types.SetPantallasLogin,
     payload: value
 });
