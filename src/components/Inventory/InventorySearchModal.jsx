@@ -33,6 +33,7 @@ import { TbCircleX } from 'react-icons/tb';
 import { AiFillExclamationCircle } from 'react-icons/ai';
 import { SetOpenSearchInventoryBudgets } from '../../actions/budgetsAction';
 import { SetIsOpenModalSearchInventoryOrdenCompra } from '../../actions/ordenCompraAction';
+import { SetIsOpenModalSearchBonificaciones } from '../../actions/BonificacionesAction';
 
 
 export const InventorySearchModal = () => {
@@ -50,6 +51,7 @@ export const InventorySearchModal = () => {
     const { isOpenModalSearchInventoryConsultAlbaranes } = useSelector(state => state.consultAlbaranes);
     const { isOpenSearchInventoryBudgets } = useSelector(state => state.budgets);
     const { isOpenModalSearchInventoryOrdenCompra } = useSelector((state) => state.ordenCompra);
+    const { isOpenModalSearchArticuloBonificaciones } = useSelector((state) => state.bonificaciones);
     const {
         valorfiltro,
         tipofiltro,
@@ -174,6 +176,13 @@ export const InventorySearchModal = () => {
             dispatch(CleanOptionsSearchModalInventory());
             dispatch(CloseSearchModalInventory());
             dispatch(SetIsOpenModalSearchInventoryOrdenCompra(false));
+            
+        } else if (isOpenModalSearchArticuloBonificaciones) {
+
+            dispatch(CleanSearchInventory());
+            dispatch(CleanOptionsSearchModalInventory());
+            dispatch(CloseSearchModalInventory());
+            dispatch(SetIsOpenModalSearchBonificaciones(false));
             
         } else {
 

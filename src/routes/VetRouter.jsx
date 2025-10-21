@@ -76,6 +76,12 @@ import { InventarioPage } from "../components/ModuloInventario/InventarioPage";
 import { ReportsPageMod } from "../components/ModuloReportes/ReportsPageMod";
 import { FarmacyPage } from "../components/ModuloFarmacia/FarmaciaPage";
 import { CountsWihoutPayPage } from "../components/CountsPay/CountswihoutpayPage";
+import { BonusesPage } from "../components/Bonuses/BonusesPage";
+import { ConsignmentPage } from "../components/consignment/consignmentPage";
+import { BillingConsignmentPage } from "../components/BillingConsignment/BillingConsignmentPage";
+import { FollowingConsignmentPage } from "../components/FollowingConsignment/FollowingConsignmentPage";
+import { DeadlinesPage } from "../components/Deadlines/DeadlinesPage";
+
 export const VetRouter = ({ isAuthenticated }) => {
   return (
     <div>
@@ -299,6 +305,27 @@ export const VetRouter = ({ isAuthenticated }) => {
         <PrivateRoute
           isAuthenticated={isAuthenticated}
           exact
+          path="/buys/consignment/register"
+          component={ConsignmentPage}
+        />
+
+        <PrivateRoute
+          isAuthenticated={isAuthenticated}
+          exact
+          path="/buys/consignment/following"
+          component={FollowingConsignmentPage}
+        />
+
+        <PrivateRoute
+          isAuthenticated={isAuthenticated}
+          exact
+          path="/buys/consignment/billing"
+          component={BillingConsignmentPage}
+        />
+
+        <PrivateRoute
+          isAuthenticated={isAuthenticated}
+          exact
           path="/buys/pay"
           component={PaysPage}
         />
@@ -364,6 +391,13 @@ export const VetRouter = ({ isAuthenticated }) => {
           exact
           path="/sales/repayment"
           component={RepaymentPage}
+        />
+
+        <PrivateRoute
+          isAuthenticated={isAuthenticated}
+          exact
+          path="/sales/bonuses"
+          component={BonusesPage}
         />
 
         <PrivateRoute
@@ -511,6 +545,13 @@ export const VetRouter = ({ isAuthenticated }) => {
           exact
           path="/parameters/category"
           component={CategoryPage}
+        />
+
+        <PrivateRoute
+          isAuthenticated={isAuthenticated}
+          exact
+          path="/parameters/deadlines"
+          component={DeadlinesPage}
         />
 
         <PrivateRoute

@@ -7,7 +7,7 @@ export const CustomersBodyTabs = () => {
   const dispatch = useDispatch();
 
   const state = useSelector((state) => state.customers);
-  const { currentTabCustomers, isCustomerEdit, variasSurcursales } = state;
+  const { currentTabCustomers, isCustomerEdit, variasSurcursales, isOpenFromConsignment } = state;
 
   const { auth } = useSelector((state) => state.login);
   const { costaPets } = auth;
@@ -33,7 +33,7 @@ export const CustomersBodyTabs = () => {
         </button>
       </div>
 
-      <div className="col-md-2 mb-2">
+      <div className={ isOpenFromConsignment ? 'col-md-2 mb-2 d-none' : 'col-md-2 mb-2' }>
         <button
           className={
             currentTabCustomers == "CreditoDescuento"

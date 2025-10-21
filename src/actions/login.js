@@ -308,7 +308,7 @@ export const startValidateClaveInterna = ( password ) => {
             //Call end-point 
             const { data } = await suvesaApi.post(`/usuario/ValidarClaveInternaSinUsuario?contrasena=${password}` );
             const { status, responses } = data;
-
+            
             //Quitar el loading
             Swal.close();
             
@@ -321,7 +321,8 @@ export const startValidateClaveInterna = ( password ) => {
                     administrador : responses.administrador,
                     message: '',
                     costapets: responses.costaPets,
-                    usuario: responses.usuario
+                    usuario: responses.usuario,
+                    aceptaConsignacion: responses.aceptaConsignacion
                 };
             } else {
                 return {

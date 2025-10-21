@@ -23,6 +23,9 @@ import {
 import { DeleteTab } from '../../actions/tabs';
 import { BillingFacturaCreditoModal } from './BillingFacturaCreditoModal';
 
+import BillingPrintPDF from './BillingPrint';
+import { PDFDownloadLink, pdf } from "@react-pdf/renderer";
+import { numeroALetras } from '../../helpers/numbersToLetters';
 
 export const BillingFooter = () => {
 
@@ -39,6 +42,169 @@ export const BillingFooter = () => {
         numCaja,
         numApertura
     } = useSelector(state => state.billing);
+
+    const facturaEjemplo = {
+        datosGenerales: {
+            nombreJuridico: 'TICOFOODSTER CREATIONS MD SR',
+            identificacion: '3-102-886777',
+            direccion: '1K ESTE Y 100M SUR DEL SERVICENTRO PACAYAS',
+            telefono: '+(506) 8834-2842',
+            fax: '+(506) 0',
+            correo: 'ticofoodster@gmail.com',
+            banco: 'BAC',
+            cuenta: '959101981',
+            iban: 'CR13010200009591019818',
+            sinpeMovil: '60876751',
+            nombreSinpeMovil: 'TICOFOODSTER CREATIONS MD SRL',
+            correoNotificar: 'ticofoodster@gmail.com',
+            notas: 'NO SE ACEPTAN RECLAMOS DEL PRODUCTO DESPUES DE 48 HORAS DE LA ENTREGA.'
+        },
+        numero: '00100001010000000240',
+        fecha: '2025-05-15',
+        cliente: 'RODOLFO JESUS RAMIREZ RODRIGUEZ',
+        Identificacion: '1-1032-0901',
+        telefono: '8820-1410',
+        email: 'veterinariasanmartincr@gmail.com',
+        clave: '50623052500310288677700100001010000000240108647288',
+        direccion: '200 ESTE Y 200 NORTE SALON COMUNAL',
+        condiccionVenta: 'Credito',
+        diasCredito: '30',
+        medioPago: 'Efectivo',
+        subTotal: '59,656.27',
+        totalImpuesto: '7,755.31',
+        detalles: [
+            {
+                codigo: '002',
+                cantidad: '6.00',
+                presentacion: '800g',
+                descripcion: 'Alimento Barf Perro Adulto - 835980000004',
+                precioUnitario: '2,845.45',
+                descuento: '0.00',
+                lote: 'ABC123',
+                subTotal: '17.072,70',
+                impuesto: '2,219.45',
+            },
+            {
+                codigo: '005',
+                cantidad: '6.00',
+                presentacion: '800g',
+                descripcion: 'Alimento Barf Conejo - 835980000004',
+                precioUnitario: '5,354.67',
+                descuento: '0.00',
+                lote: 'ABC123',
+                subTotal: '32.128,02',
+                impuesto: '4,176.64',
+            },
+            {
+                codigo: '002',
+                cantidad: '1.00',
+                presentacion: '800g',
+                descripcion: 'Alimento Barf Perro Adulto - 835980000004',
+                precioUnitario: '1.00',
+                descuento: '0.00',
+                lote: 'ABC123',
+                subTotal: '1,00',
+                impuesto: '0,13',
+            },
+            {
+                codigo: '017',
+                cantidad: '5.00',
+                presentacion: '100g',
+                descripcion: 'Snack de Conejo para Perros y Gatos - 835980000004',
+                precioUnitario: '2,090.91 ',
+                descuento: '0.00',
+                lote: 'ABC123',
+                subTotal: '10.454,55',
+                impuesto: '1,359.09',
+            },
+            {
+                codigo: '017',
+                cantidad: '5.00',
+                presentacion: '100g',
+                descripcion: 'Snack de Conejo para Perros y Gatos - 835980000004',
+                precioUnitario: '2,090.91 ',
+                descuento: '0.00',
+                lote: 'ABC123',
+                subTotal: '10.454,55',
+                impuesto: '1,359.09',
+            },
+            {
+                codigo: '017',
+                cantidad: '5.00',
+                presentacion: '100g',
+                descripcion: 'Snack de Conejo para Perros y Gatos - 835980000004',
+                precioUnitario: '2,090.91 ',
+                descuento: '0.00',
+                lote: 'ABC123',
+                subTotal: '10.454,55',
+                impuesto: '1,359.09',
+            },
+            {
+                codigo: '017',
+                cantidad: '5.00',
+                presentacion: '100g',
+                descripcion: 'Snack de Conejo para Perros y Gatos - 835980000004',
+                precioUnitario: '2,090.91 ',
+                descuento: '0.00',
+                lote: 'ABC123',
+                subTotal: '10.454,55',
+                impuesto: '1,359.09',
+            },
+            {
+                codigo: '017',
+                cantidad: '5.00',
+                presentacion: '100g',
+                descripcion: 'Snack de Conejo para Perros y Gatos - 835980000004',
+                precioUnitario: '2,090.91 ',
+                descuento: '0.00',
+                lote: 'ABC123',
+                subTotal: '10.454,55',
+                impuesto: '1,359.09',
+            },
+            {
+                codigo: '017',
+                cantidad: '5.00',
+                presentacion: '100g',
+                descripcion: 'Snack de Conejo para Perros y Gatos - 835980000004',
+                precioUnitario: '2,090.91 ',
+                descuento: '0.00',
+                lote: 'ABC123',
+                subTotal: '10.454,55',
+                impuesto: '1,359.09',
+            },
+            {
+                codigo: '017',
+                cantidad: '5.00',
+                presentacion: '100g',
+                descripcion: 'Snack de Conejo para Perros y Gatos - 835980000004',
+                precioUnitario: '2,090.91 ',
+                descuento: '0.00',
+                lote: 'ABC123',
+                subTotal: '10.454,55',
+                impuesto: '1,359.09',
+            },
+            {
+                codigo: '017',
+                cantidad: '5.00',
+                presentacion: '100g',
+                descripcion: 'Snack de Conejo para Perros y Gatos - 835980000004',
+                precioUnitario: '2,090.91 ',
+                descuento: '0.00',
+                lote: 'ABC123',
+                subTotal: '10.454,55',
+                impuesto: '1,359.09',
+            },
+        ],
+        total: '67411.58',
+        totalLetras: numeroALetras('67411.58')
+    };
+
+    const handlePrint = async () => {
+        const blob = await pdf(<BillingPrintPDF factura={facturaEjemplo} />).toBlob();
+        const url = URL.createObjectURL(blob);
+        const win = window.open(url);
+        if (win) win.focus();
+    };
 
     const { currentTab } = useSelector(state => state.tabs);
     const { surcursales, auth, idSurcursal } = useSelector(state => state.login);
@@ -497,6 +663,23 @@ export const BillingFooter = () => {
                         <FaWindowClose className="iconSizeBtn" />
                     </button>
                 </div>
+
+                <div className="btn-group mb-2">
+                    <PDFDownloadLink
+                        document={<BillingPrintPDF factura={facturaEjemplo} />}
+                        fileName={`factura_${facturaEjemplo.numero}.pdf`} // 👈 Aquí defines el nombre
+                        className="btn btn-primary"
+                    >
+                        {({ loading }) => (loading ? "Generando PDF..." : "Descargar Factura")}
+                    </PDFDownloadLink>
+
+                </div>
+
+                 <div className="btn-group mb-2">
+                        <button className="btn btn-warning" onClick={handlePrint}>
+                            Imprimir Factura
+                        </button>
+                 </div>
 
 
                 <div className="col-md-2 mb-2">

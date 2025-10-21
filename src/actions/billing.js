@@ -160,7 +160,7 @@ export const startSearchCustomerFacturacion = ( cedula, number, hasCoin = false 
                                 nombre
                             } = responses;
 
-                            // Se levanta el modal
+                            // Se levanta el modal //TODO: LEVANTAR EL MODAL DE CLIENTE
                             dispatch( OpenModalAddCustomer( { number } ));
 
                             // Se establece datos de cliente

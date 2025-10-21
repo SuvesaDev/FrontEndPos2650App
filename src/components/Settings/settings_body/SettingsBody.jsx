@@ -8,15 +8,13 @@ import { SettingsBodyValores } from './SettingsBodyValores';
 import { SettingsBodyComunicaciones } from './SettingsBodyComunicaciones';
 import { SettingsBodyTarifas } from './SettingsBodyTarifas';
 import { SettingsBodyCostaPets } from './SettingsBodyCostaPets';
+import { SettingsBodyTiposBonificaciones } from './SettingsBodyTiposBonificaciones';
 
 
 export const SettingsBody = () => {
 
     const state = useSelector(state => state.settings);
     const { currentTabSettings } = state;
-
-    const { auth } = useSelector((state) => state.login);
-    const { costaPets } = auth;
 
     const redirectComponent = () => {
 
@@ -37,6 +35,12 @@ export const SettingsBody = () => {
             case 'Tarifas':
                 return <SettingsBodyTarifas />
 
+            case 'CostaPets':
+                return <SettingsBodyCostaPets />
+
+            case 'TipoBonificaciones':
+                return <SettingsBodyTiposBonificaciones />
+
             default:
                 break;
         }
@@ -49,7 +53,7 @@ export const SettingsBody = () => {
                     <div className="card-header bg-secondary text-white">
                         <SettingsBodyTabs />
                     </div>
-                    <div className="card-body">{ (costaPets) ? <SettingsBodyCostaPets /> : redirectComponent()}</div>
+                    <div className="card-body">{ redirectComponent() }</div>
                 </div>
             </div>
         </>

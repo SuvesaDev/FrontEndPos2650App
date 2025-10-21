@@ -71,6 +71,19 @@ export const SettingsBodyTabs = () => {
                 >
                     Costa Pets
                 </button>
+
+                <button
+                    className={ 
+                        (costaPets) 
+                            ? currentTabSettings == "TipoBonificaciones"
+                                ? "btn btn-outline-primary activeP"
+                                : "btn btn-primary" 
+                            : 'col-md-3 mb-3 d-none'
+                    }
+                    onClick={() => handleSelectTabSettings('TipoBonificaciones')}
+                >
+                    Tipos Bonificaciones
+                </button>
             </div>
         </>
     )

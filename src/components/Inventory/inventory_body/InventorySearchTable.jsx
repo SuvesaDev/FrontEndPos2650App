@@ -25,6 +25,8 @@ import { startGetOneInventoryInventoryAdjustment } from '../../../actions/Invent
 import { startGetOneInventoryBillingConsultAlbaranes } from '../../../actions/consultAlbaranesAction';
 import { startGetOneInventoryBudgets } from '../../../actions/budgetsAction';
 import { startGetOneInventoryOrdenCompra } from '../../../actions/ordenCompraAction';
+import { startGetOneInventoryBonificaciones } from '../../../actions/BonificacionesAction';
+import { startGetOneInventoryConsignment } from '../../../actions/ConsignmentAction';
 
 export const InventorySearchTable = ({ columns, data }) => {
 
@@ -50,9 +52,11 @@ export const InventorySearchTable = ({ columns, data }) => {
     const { isOpenSearchInventoryAdjustment } = useSelector(state => state.InventoryAdjustment);
     const { isOpenSearchInventoryCompras } = useSelector(state => state.compras);
     const { isOpenSearchInventoryBudgets } = useSelector(state => state.budgets);
+    const { isOpenModalSearchArticuloConsignment, factura } = useSelector(state => state.consignment);
 
     const { isOpenModalSearchInventoryConsultAlbaranes } = useSelector(state => state.consultAlbaranes);
     const { isOpenModalSearchInventoryOrdenCompra } = useSelector((state) => state.ordenCompra);
+    const { isOpenModalSearchArticuloBonificaciones } = useSelector((state) => state.bonificaciones);
 
     useEffect(() => {
 
@@ -138,12 +142,28 @@ export const InventorySearchTable = ({ columns, data }) => {
             //Llamar para traer el inventario desde Orden de compra
             dispatch(startGetOneInventoryOrdenCompra(codigo));
             
+        } else if (isOpenModalSearchArticuloBonificaciones) {
+            //Llamar para traer el inventario desde Bonificaciones
+            dispatch(startGetOneInventoryBonificaciones(codigo));
+            
+        } else if (isOpenModalSearchArticuloConsignment) {
+
+            // Parametros
+            const parametros = {
+                Cod_Moneda: factura.encabezado.Cod_Moneda,
+                dollar
+            };
+
+            //Llamar para traer el inventario desde Registro de Consignacion
+            dispatch( startGetOneInventoryConsignment(codigo, parametros) );
+            
         } else {
             //Llamar para traer el inventario
             await dispatch(startGetOneInventory(codigo));
         }
 
     }
+
     return (
         <div className="table-responsive-md tablaP">
             <table className="table table-dark table-hover table-bordered text-md-center"

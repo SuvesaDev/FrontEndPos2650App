@@ -216,5 +216,10 @@ html {
     align-content: space-around;
   }
 
+  .checkbox-grande {
+    transform: scale(1.5);
+    margin-right: 10px;
+  }
+
 
 }
