@@ -36,8 +36,13 @@ export const startLogin = (auth) => {
                     expiracion, 
                     administrador, 
                     agenteCostaPets, 
-                    costaPets 
+                    costaPets,
+                    // rol
                 } = responses;
+
+                // const {
+                //     nombreRol
+                // } = rol;
 
                 localStorage.setItem('auth', JSON.stringify({
                     token: token
@@ -82,6 +87,8 @@ export const startLogin = (auth) => {
 
                             // Establecer en el state: centro, usuario, token, isAutenticated en true
                             dispatch(login(centros[i], usuario, token, costaPets, administrador, agenteCostaPets));
+
+                            dispatch( SetNombreRolLogin('Admin') );
 
                             //Escribe el localStorage
                             localStorage.setItem('auth', JSON.stringify({
@@ -426,5 +433,10 @@ export const SetSurcursalesLogin = (value) => ({
 
 export const SetIdSurcursalLogin = (value) => ({
     type: types.SetIdSurcursalLogin,
+    payload: value
+});
+
+export const SetNombreRolLogin = (value) => ({
+    type: types.SetNombreRolLogin,
     payload: value
 });
