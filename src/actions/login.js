@@ -27,7 +27,7 @@ export const startLogin = (auth) => {
 
             const { data } = await suvesaApiAuth.post('/usuario/LoginNuevo', auth.toJson());
             const { status, responses } = data;
-            
+            console.log(responses)
             if (status === 0) {
                 
                 const { 
@@ -37,12 +37,31 @@ export const startLogin = (auth) => {
                     administrador, 
                     agenteCostaPets, 
                     costaPets,
-                    // rol
+                    rol
                 } = responses;
 
-                // const {
-                //     nombreRol
-                // } = rol;
+                const {
+                    idRol,
+                    nombreRol,
+                    permisos
+                } = rol;
+
+                const modulos = permisos.map(permiso => {
+                    return permiso.menu
+                });
+
+                const pantallas = permisos.map(permiso => {
+                    return permiso.nombrePantalla
+                });
+
+                const accionesPantalla = permisos.map(permiso => {
+                    return {
+                        pantalla: permiso.nombrePantalla,
+                        acciones: permiso.acciones
+                    }
+                });
+
+                console.log(accionesPantalla)
 
                 localStorage.setItem('auth', JSON.stringify({
                     token: token
@@ -88,19 +107,14 @@ export const startLogin = (auth) => {
                             // Establecer en el state: centro, usuario, token, isAutenticated en true
                             dispatch(login(centros[i], usuario, token, costaPets, administrador, agenteCostaPets));
 
-                            dispatch( SetNombreRolLogin('Admin') );
+                            dispatch( SetIdRolLogin(idRol) );
+                            dispatch( SetNombreRolLogin(nombreRol) );
 
-                            dispatch( SetModulosLogin([
-                                'Inicio',
-                                'Compras'
-                            ]) );
+                            dispatch( SetModulosLogin(['Inicio']) );
 
-                            dispatch( SetPantallasLogin([
-                                'Clientes',
-                                'Inventarios',
-                                'Compra',
-                                'Proveedores'
-                            ]) );
+                            dispatch( SetPantallasLogin(pantallas) );
+
+                            dispatch( SetAccionesPantallasLogin(accionesPantalla));
 
                             //Escribe el localStorage
                             localStorage.setItem('auth', JSON.stringify({
@@ -448,6 +462,11 @@ export const SetIdSurcursalLogin = (value) => ({
     payload: value
 });
 
+export const SetIdRolLogin = (value) => ({
+    type: types.SetIdRolLogin,
+    payload: value
+});
+
 export const SetNombreRolLogin = (value) => ({
     type: types.SetNombreRolLogin,
     payload: value
@@ -460,5 +479,10 @@ export const SetModulosLogin = (value) => ({
 
 export const SetPantallasLogin = (value) => ({
     type: types.SetPantallasLogin,
+    payload: value
+});
+
+export const SetAccionesPantallasLogin = (value) => ({
+    type: types.SetAccionesPantallasLogin,
     payload: value
 });

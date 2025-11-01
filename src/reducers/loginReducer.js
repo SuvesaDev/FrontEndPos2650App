@@ -1,3 +1,4 @@
+import { IoMdArrowDropleft } from 'react-icons/io';
 import { types } from '../types/types';
 
 const initialState = {
@@ -19,9 +20,11 @@ const initialState = {
     idSurcursal: 0,
     usersActive: [],
     surcursales: [],
+    idRol: 0,
     nombreRol: '',
     modulos: [],
-    pantallas: []
+    pantallas: [],
+    accionesPantalla: []
 }
 
 export const loginReducer = ( state = initialState, action ) => {
@@ -61,9 +64,11 @@ export const loginReducer = ( state = initialState, action ) => {
                     password: null
                 },
                 usersActive: [],
+                idRol: 0,
                 nombreRol: '',
                 modulos: [],
-                pantallas: []
+                pantallas: [],
+                accionesPantalla: []
             }
 
         case types.loginSetErrorCentro:
@@ -150,6 +155,12 @@ export const loginReducer = ( state = initialState, action ) => {
                 idSurcursal: action.payload
             }
 
+        case types.SetIdRolLogin:
+            return {
+                ...state,
+                idRol: action.payload
+            }
+
         case types.SetNombreRolLogin:
             return {
                 ...state,
@@ -166,6 +177,12 @@ export const loginReducer = ( state = initialState, action ) => {
             return {
                 ...state,
                 pantallas: action.payload
+            }
+
+        case types.SetAccionesPantallasLogin:
+            return {
+                ...state,
+                accionesPantalla: action.payload
             }
     
         default:
