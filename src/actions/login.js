@@ -61,8 +61,6 @@ export const startLogin = (auth) => {
                     }
                 });
 
-                console.log(accionesPantalla)
-
                 localStorage.setItem('auth', JSON.stringify({
                     token: token
                 }));
@@ -110,7 +108,7 @@ export const startLogin = (auth) => {
                             dispatch( SetIdRolLogin(idRol) );
                             dispatch( SetNombreRolLogin(nombreRol) );
 
-                            dispatch( SetModulosLogin(['Inicio']) );
+                            dispatch( SetModulosLogin(modulos) );
 
                             dispatch( SetPantallasLogin(pantallas) );
 
@@ -390,7 +388,6 @@ export const startValidateClaveInterna = ( password ) => {
         
     }
 }
-
 
 // Normal Action
 const login = (centro, username, token, costaPets, administrador, agenteCostaPets ) => ({

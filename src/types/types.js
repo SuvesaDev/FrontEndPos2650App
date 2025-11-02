@@ -556,6 +556,8 @@ export const types = {
   SetDeleteDatosFacturacionCustomers: '[Customers] SetDeleteDatosFacturacionCustomers',
   SetAddAllDatosFacturacionCustomers: '[Customers] SetAddAllDatosFacturacionCustomers',
   SetIsOpenFromConsignmentCustomers: '[Customers] SetIsOpenFromConsignmentCustomers',
+  SetPermisosCustomers: '[Customers] SetPermisosCustomers',
+  SetHasPermisosCustomers: '[Customers] SetHasPermisosCustomers',
 
   // Carta Exoneracion Actions
   SetMotivoCartaExoneracion: '[CartaExoneracion] SetMotivoCartaExoneracion',
