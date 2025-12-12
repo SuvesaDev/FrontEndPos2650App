@@ -81,6 +81,7 @@ import { ConsignmentPage } from "../components/consignment/consignmentPage";
 import { BillingConsignmentPage } from "../components/BillingConsignment/BillingConsignmentPage";
 import { FollowingConsignmentPage } from "../components/FollowingConsignment/FollowingConsignmentPage";
 import { DeadlinesPage } from "../components/Deadlines/DeadlinesPage";
+import { RolePage } from "../components/Role/Role";
 
 export const VetRouter = ({ isAuthenticated }) => {
   return (
@@ -447,6 +448,13 @@ export const VetRouter = ({ isAuthenticated }) => {
           exact
           path="/parameters/users"
           component={UsersPage}
+        />
+
+        <PrivateRoute
+          isAuthenticated={isAuthenticated}
+          exact
+          path="/parameters/role"
+          component={RolePage}
         />
 
         <PrivateRoute

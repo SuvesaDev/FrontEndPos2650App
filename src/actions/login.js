@@ -27,7 +27,7 @@ export const startLogin = (auth) => {
 
             const { data } = await suvesaApiAuth.post('/usuario/LoginNuevo', auth.toJson());
             const { status, responses } = data;
-            console.log(responses)
+            
             if (status === 0) {
                 
                 const { 

@@ -385,6 +385,12 @@ const IteamsAdmin = [
                 cName: 'vet_nav-text'
             },
             {
+                title: 'Roles',
+                path: '/parameters/role',
+                icon: <FaUserCircle />,
+                cName: 'vet_nav-text'
+            },
+            {
                 title: 'Bancos',
                 path: '/parameters/bank',
                 icon: <AiFillBank />,
