@@ -12,12 +12,8 @@ export const RoleBody = () => {
     const dispatch = useDispatch();
 
     const {
-        disableInputs,
-        bancos,
-        bancoActual,
-        isEditBanco,
-        idSeletedBanco
-    } = useSelector(state => state.bank);
+        disableInputs
+    } = useSelector(state => state.role);
 
     const handleInputChangeWithDispatch = ({ target }, action) => {
         dispatch(action(target.value));
@@ -128,6 +124,7 @@ export const RoleBody = () => {
                         </span>
                         <input
                             type="text"
+                            disabled={disableInputs}
                             className='form-control'
                             placeholder="Nombre del Rol"
                         />
@@ -142,6 +139,7 @@ export const RoleBody = () => {
                         </span>
                         <input
                             type="text"
+                            disabled={disableInputs}
                             className='form-control'
                             placeholder="Descripcion del Rol"
                         />
@@ -151,8 +149,7 @@ export const RoleBody = () => {
                 <div className="col-md-2 mb-3">
                     <hr />
                     <button
-                        className='btn btn-success'
-                        // className={(disableInputs) ? 'btn btn-success disabled' : 'btn btn-success espacio'}
+                        className={(disableInputs) ? 'btn btn-success disabled' : 'btn btn-success espacio'}
                         // onClick={handleSaveBank}
                         data-bs-toggle="modal"
                         data-bs-target="#modalCrearModulo"

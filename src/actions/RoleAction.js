@@ -1,0 +1,256 @@
+import Swal from 'sweetalert2';
+
+import { suvesaApi } from '../api';
+
+import { types } from "../types/types";
+
+import loadingImage from '../assets/loading_snipiner.gif';
+
+import { startValidateClaveInterna } from './login';
+
+// API Actions
+// export const startSaveBank = ( bank ) => {
+
+//     return async (dispatch) => {
+
+//         //Mostrar un mensaje de confirmacion
+//         Swal.fire({
+//             title: `¿Desea guardar el banco ${ bank.banco }?`,
+//             showDenyButton: true,
+//             showCancelButton: false,
+//             confirmButtonText: 'Guardar',
+//             denyButtonText: `Cancelar`,
+//         }).then(async (result) => {
+
+//             try {
+
+//                 if (result.isConfirmed) {
+
+//                     //Mostrar el loading
+//                     Swal.fire({
+//                         title: 'Por favor, espere',
+//                         allowEscapeKey: false,
+//                         allowOutsideClick: false,
+//                         showConfirmButton: false,
+//                         imageUrl: loadingImage,
+//                         customClass: 'alert-class-login',
+//                         imageHeight: 100,
+//                     });
+                    
+//                     //Call end-point 
+//                     const { data } = await suvesaApi.post('/Bancos/CrearBanco', bank);
+//                     const { status, responses } = data;
+                    
+//                     //Quitar el loading
+//                     Swal.close();
+
+//                     if (status === 0) {
+                        
+//                         //Si es correcta entonces mostrar un mensaje de afirmacion
+//                         Swal.fire({
+//                             icon: 'success',
+//                             title: `Banco ${ bank.banco } agregado correctamente`,
+//                             showConfirmButton: false,
+//                             timer: 2500
+//                         });
+
+//                         // Se ingresa nuevo banco a la tabla
+//                         dispatch( SetAddBancoBank( responses ) );
+
+//                         // Se limpia el banco actual
+//                         dispatch( SetBancoActualBank('') );
+
+//                     } else {
+
+//                         //Caso contrario respuesta incorrecto mostrar mensaje de error
+//                         const { currentException } = data;
+//                         const msj = currentException.split(',');
+
+//                         Swal.fire({
+//                             icon: 'error',
+//                             title: 'Error',
+//                             text: (currentException.includes(',')) ? msj[3] : currentException,
+//                         });
+
+//                     }
+
+//                 }
+
+//             } catch (error) {
+
+//                 Swal.close();
+//                 console.log(error);
+//                 if (error.message === 'Request failed with status code 401') {
+//                     Swal.fire({
+//                         icon: 'error',
+//                         title: 'Error',
+//                         text: 'Usuario no valido',
+//                     });
+//                 } else {
+//                     Swal.fire({
+//                         icon: 'error',
+//                         title: 'Error',
+//                         text: 'Ocurrio un problema a la guardar el banco',
+//                     });
+//                 }
+//             }
+//         });
+//     };
+// }
+
+export const startValidateClaveInternaRole = ( password ) => {
+
+    return async ( dispatch ) => {
+          
+        try {
+
+            const { status, userName, message } = await dispatch( startValidateClaveInterna( password ) );
+            
+            if( status === 1 ) {
+ 
+                // Se activan los inputs
+                dispatch( SetDisableInputsRole( false ) );
+
+                // Se establece el nameUser
+                dispatch( SetNameUserRole( userName ) );
+
+                // Se traen los roles y pantallas
+                // dispatch( await startGetAllBancosBank() );
+
+                // Se cambia los icons
+                dispatch( SetActiveButtonSaveRole( true ));
+
+                // dispatch( SetStartOpeningBank( true ) );
+
+                // Desactivar los inputs de usuario
+                dispatch( SetDisableInputsUserRole( true ) );
+
+                // Ocultar la password
+                dispatch( SetvisiblePasswordRole( false ) );
+               
+
+            } else if ( status === 0 && message === 'Contraseña Incorrecta' ) {
+                
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Advertencia',
+                    text: message
+                });
+                
+            } else {
+
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: message,
+                });
+
+            }
+
+        } catch (error) {
+            console.log(error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Ocurrio un problema al validar usuario',
+            });
+        }
+        
+    }
+}
+
+// export const startGetAllBancosBank = () => {
+
+//     return async ( dispatch ) => {
+          
+//         try {
+
+//             //Mostrar el loading
+//             Swal.fire({
+//                 title: 'Por favor, espere',
+//                 allowEscapeKey: false,
+//                 allowOutsideClick: false,
+//                 showConfirmButton: false,
+//                 imageUrl: loadingImage,
+//                 customClass: 'alert-class-login',
+//                 imageHeight: 100,
+//             });
+
+//             //Call end-point 
+//             const { data } = await suvesaApi.post(`/Bancos/ObtenerBancos`);
+//             const { status, responses } = data;
+
+//             //Quitar el loading
+//             Swal.close();
+            
+//             if( status === 0 ) {
+                
+//                 // Se guarda en el estado los bancos
+//                 dispatch( SetBancosBank( responses ) );
+
+//             } else {
+
+//                 //Caso contrario respuesta incorrecto mostrar mensaje de error
+//                 const { currentException } = data;
+//                 console.log( currentException );
+                
+//                 Swal.fire({
+//                     icon: 'error',
+//                     title: 'Error',
+//                     text: 'Ocurrio un problema al obtener los bancos',
+//                 });
+                
+//             }
+
+//         } catch (error) {
+
+//             Swal.close();
+//             console.log(error);
+//             if( error.message === 'Request failed with status code 401') {
+//                 Swal.fire({
+//                     icon: 'error',
+//                     title: 'Error',
+//                     text: 'Usuario no valido',
+//                 });
+//             } else {
+//                 Swal.fire({
+//                     icon: 'error',
+//                     title: 'Error',
+//                     text: 'Ocurrio un problema al obtener los bancos',
+//                 });
+//             }
+//         }
+        
+//     }
+// }
+
+// Normal Actions
+export const SetActiveButtonSaveRole = (value) => ({
+    type: types.SetActiveButtonSaveRole,
+    payload: value
+})
+
+export const SetDisableInputsRole = (value) => ({
+    type: types.SetDisableInputsRole,
+    payload: value
+})
+
+export const SetClaveInternaRole = (value) => ({
+    type: types.SetClaveInternaRole,
+    payload: value
+})
+
+export const SetvisiblePasswordRole = (value) => ({
+    type: types.SetvisiblePasswordRole,
+    payload: value
+})
+
+export const SetDisableInputsUserRole = (value) => ({
+    type: types.SetDisableInputsUserRole,
+    payload: value
+})
+
+export const SetNameUserRole = (value) => ({
+    type: types.SetNameUserRole,
+    payload: value
+})

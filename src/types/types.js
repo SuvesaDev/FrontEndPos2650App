@@ -2365,4 +2365,12 @@ export const types = {
   SetEditDeadlines: '[Deadlines] SetEditDeadlines',
   SetDeleteDeadlines: '[Deadlines] SetDeleteDeadlines',
 
+  // Role Actions
+  SetActiveButtonSaveRole  : '[Role] SetActiveButtonSaveRole',
+  SetDisableInputsRole     : '[Role] SetDisableInputsRole',
+  SetClaveInternaRole      : '[Role] SetClaveInternaRole',
+  SetvisiblePasswordRole   : '[Role] SetvisiblePasswordRole',
+  SetDisableInputsUserRole : '[Role] SetDisableInputsUserRole',
+  SetNameUserRole          : '[Role] SetNameUserRole',
+
 }

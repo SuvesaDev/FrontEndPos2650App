@@ -10,6 +10,12 @@ import { DeleteTab } from '../../actions/tabs';
 import { FaEye, FaEyeSlash, FaFloppyDisk, FaKey, FaUserCheck } from 'react-icons/fa6';
 import { RoleAddModuleModal } from './RoleAddModuleModal';
 
+import { 
+    SetClaveInternaRole, 
+    SetvisiblePasswordRole, 
+    startValidateClaveInternaRole
+} from '../../actions/RoleAction';
+
 export const RoleIcons = () => {
 
     const dispatch = useDispatch();
@@ -18,16 +24,11 @@ export const RoleIcons = () => {
 
     const {
         activeButtonSave,
-        claveInterna,
         visiblePassword,
         disableInputsUser,
-        nameUser,
-        bancoActual,
-        disableInputs,
-        isEditBanco,
-        idSeletedBanco,
-        startOpeningBank
-    } = useSelector(state => state.bank);
+        claveInterna,
+        nameUser
+    } = useSelector(state => state.role);
 
     const handleInputChangeWithDispatch = ({ target }, action) => {
         dispatch(action(target.value));
@@ -35,32 +36,32 @@ export const RoleIcons = () => {
 
     const handleOnKeyDownUser = async (e) => {
 
-        // if (e.key === 'Enter') {
+        if (e.key === 'Enter') {
 
-        //     e.preventDefault();
+            e.preventDefault();
 
-        //     if (claveInterna == '') {
+            if (claveInterna == '') {
 
-        //         Swal.fire({
-        //             icon: 'warning',
-        //             title: 'Advertencia',
-        //             text: 'Escriba su contraseña.'
-        //         });
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Advertencia',
+                    text: 'Escriba su contraseña.'
+                });
 
-        //         return;
-        //     }
+                return;
+            }
 
-        //     dispatch(startValidateClaveInternaBank(claveInterna));
-        // }
+            dispatch(startValidateClaveInternaRole(claveInterna));
+        }
 
     }
 
     const handleVisibleClave = (e) => {
 
-        // if (!disableInputsUser) {
-        //     e.preventDefault();
-        //     dispatch(SetVisiblePasswordBank(!visiblePassword));
-        // }
+        if (!disableInputsUser) {
+            e.preventDefault();
+            dispatch(SetvisiblePasswordRole(!visiblePassword));
+        }
     }
 
     const handleSaveBank = (e) => {
@@ -157,8 +158,7 @@ export const RoleIcons = () => {
             <div className="btn-toolbar" role="toolbar">
                 <div className="btn-group mb-2">
                     <button
-                        className='btn btn-success espacio'
-                        // className={activeButtonSave ? 'btn btn-success espacio' : 'btn btn-success espacio disabled'}
+                        className={activeButtonSave ? 'btn btn-success espacio' : 'btn btn-success espacio disabled'}
                         // onClick={(isEditBanco) ? handleEditBank : handleSaveBank}
                     >
                         Registrar <FaFloppyDisk className="iconSize" />
@@ -183,20 +183,19 @@ export const RoleIcons = () => {
                         <input
                             className="form-control"
                             placeholder="Clave Interna"
-                            // type={(visiblePassword) ? 'text' : 'password'}
+                            type={(visiblePassword) ? 'text' : 'password'}
                             name="claveInterna"
-                            // disabled={disableInputsUser}
-                            // value={claveInterna}
-                            // onKeyDown={handleOnKeyDownUser}
-                            // onChange={e => handleInputChangeWithDispatch(e, SetClaveInternaBank)}
+                            disabled={disableInputsUser}
+                            value={claveInterna}
+                            onKeyDown={handleOnKeyDownUser}
+                            onChange={e => handleInputChangeWithDispatch(e, SetClaveInternaRole)}
                         />
                         <span
                             className="input-group-text"
-                            // onClick={handleVisibleClave}
+                            onClick={handleVisibleClave}
                             style={{ cursor: "pointer" }}
                         >
-                            <FaEyeSlash />
-                            {/* {visiblePassword ? <FaEyeSlash /> : <FaEye />} */}
+                            {visiblePassword ? <FaEyeSlash /> : <FaEye />}
                         </span>
                     </div>
                 </div>
@@ -211,7 +210,7 @@ export const RoleIcons = () => {
                             className="form-control"
                             placeholder="Nombre de Usuario"
                             disabled={true}
-                            // value={nameUser}
+                            value={nameUser}
                         />
                     </div>
                 </div>
