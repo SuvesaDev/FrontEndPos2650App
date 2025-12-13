@@ -2366,11 +2366,14 @@ export const types = {
   SetDeleteDeadlines: '[Deadlines] SetDeleteDeadlines',
 
   // Role Actions
-  SetActiveButtonSaveRole  : '[Role] SetActiveButtonSaveRole',
-  SetDisableInputsRole     : '[Role] SetDisableInputsRole',
-  SetClaveInternaRole      : '[Role] SetClaveInternaRole',
-  SetvisiblePasswordRole   : '[Role] SetvisiblePasswordRole',
-  SetDisableInputsUserRole : '[Role] SetDisableInputsUserRole',
-  SetNameUserRole          : '[Role] SetNameUserRole',
+  SetActiveButtonSaveRole      : '[Role] SetActiveButtonSaveRole',
+  SetDisableInputsRole         : '[Role] SetDisableInputsRole',
+  SetClaveInternaRole          : '[Role] SetClaveInternaRole',
+  SetvisiblePasswordRole       : '[Role] SetvisiblePasswordRole',
+  SetDisableInputsUserRole     : '[Role] SetDisableInputsUserRole',
+  SetNameUserRole              : '[Role] SetNameUserRole',
+  SetNombreRoleActualRole      : '[Role] SetNombreRoleActualRole',
+  SetDescripcionRoleActualRole : '[Role] SetDescripcionRoleActualRole',
+  SetAddRolesRole              : '[Role] SetAddRolesRole',
 
 }

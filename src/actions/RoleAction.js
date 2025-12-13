@@ -9,94 +9,98 @@ import loadingImage from '../assets/loading_snipiner.gif';
 import { startValidateClaveInterna } from './login';
 
 // API Actions
-// export const startSaveBank = ( bank ) => {
+export const startSaveRole = ( role ) => {
 
-//     return async (dispatch) => {
+    return async (dispatch) => {
 
-//         //Mostrar un mensaje de confirmacion
-//         Swal.fire({
-//             title: `¿Desea guardar el banco ${ bank.banco }?`,
-//             showDenyButton: true,
-//             showCancelButton: false,
-//             confirmButtonText: 'Guardar',
-//             denyButtonText: `Cancelar`,
-//         }).then(async (result) => {
+        //Mostrar un mensaje de confirmacion
+        Swal.fire({
+            title: `¿Desea guardar el role ${ role.nombre }?`,
+            showDenyButton: true,
+            showCancelButton: false,
+            confirmButtonText: 'Guardar',
+            denyButtonText: `Cancelar`,
+        }).then(async (result) => {
 
-//             try {
+            try {
 
-//                 if (result.isConfirmed) {
+                if (result.isConfirmed) {
 
-//                     //Mostrar el loading
-//                     Swal.fire({
-//                         title: 'Por favor, espere',
-//                         allowEscapeKey: false,
-//                         allowOutsideClick: false,
-//                         showConfirmButton: false,
-//                         imageUrl: loadingImage,
-//                         customClass: 'alert-class-login',
-//                         imageHeight: 100,
-//                     });
+                    dispatch( SetAddRolesRole(role) );
+                    dispatch( SetNombreRoleActualRole('') );
+                    dispatch( SetDescripcionRoleActualRole('') );
+
+                    // //Mostrar el loading
+                    // Swal.fire({
+                    //     title: 'Por favor, espere',
+                    //     allowEscapeKey: false,
+                    //     allowOutsideClick: false,
+                    //     showConfirmButton: false,
+                    //     imageUrl: loadingImage,
+                    //     customClass: 'alert-class-login',
+                    //     imageHeight: 100,
+                    // });
                     
-//                     //Call end-point 
-//                     const { data } = await suvesaApi.post('/Bancos/CrearBanco', bank);
-//                     const { status, responses } = data;
+                    // //Call end-point 
+                    // const { data } = await suvesaApi.post('/Bancos/CrearBanco', bank);
+                    // const { status, responses } = data;
                     
-//                     //Quitar el loading
-//                     Swal.close();
+                    // //Quitar el loading
+                    // Swal.close();
 
-//                     if (status === 0) {
+                    // if (status === 0) {
                         
-//                         //Si es correcta entonces mostrar un mensaje de afirmacion
-//                         Swal.fire({
-//                             icon: 'success',
-//                             title: `Banco ${ bank.banco } agregado correctamente`,
-//                             showConfirmButton: false,
-//                             timer: 2500
-//                         });
+                    //     //Si es correcta entonces mostrar un mensaje de afirmacion
+                    //     Swal.fire({
+                    //         icon: 'success',
+                    //         title: `Banco ${ bank.banco } agregado correctamente`,
+                    //         showConfirmButton: false,
+                    //         timer: 2500
+                    //     });
 
-//                         // Se ingresa nuevo banco a la tabla
-//                         dispatch( SetAddBancoBank( responses ) );
+                    //     // Se ingresa nuevo banco a la tabla
+                    //     dispatch( SetAddBancoBank( responses ) );
 
-//                         // Se limpia el banco actual
-//                         dispatch( SetBancoActualBank('') );
+                    //     // Se limpia el banco actual
+                    //     dispatch( SetBancoActualBank('') );
 
-//                     } else {
+                    // } else {
 
-//                         //Caso contrario respuesta incorrecto mostrar mensaje de error
-//                         const { currentException } = data;
-//                         const msj = currentException.split(',');
+                    //     //Caso contrario respuesta incorrecto mostrar mensaje de error
+                    //     const { currentException } = data;
+                    //     const msj = currentException.split(',');
 
-//                         Swal.fire({
-//                             icon: 'error',
-//                             title: 'Error',
-//                             text: (currentException.includes(',')) ? msj[3] : currentException,
-//                         });
+                    //     Swal.fire({
+                    //         icon: 'error',
+                    //         title: 'Error',
+                    //         text: (currentException.includes(',')) ? msj[3] : currentException,
+                    //     });
 
-//                     }
+                    // }
 
-//                 }
+                }
 
-//             } catch (error) {
+            } catch (error) {
 
-//                 Swal.close();
-//                 console.log(error);
-//                 if (error.message === 'Request failed with status code 401') {
-//                     Swal.fire({
-//                         icon: 'error',
-//                         title: 'Error',
-//                         text: 'Usuario no valido',
-//                     });
-//                 } else {
-//                     Swal.fire({
-//                         icon: 'error',
-//                         title: 'Error',
-//                         text: 'Ocurrio un problema a la guardar el banco',
-//                     });
-//                 }
-//             }
-//         });
-//     };
-// }
+                Swal.close();
+                console.log(error);
+                if (error.message === 'Request failed with status code 401') {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Usuario no valido',
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Ocurrio un problema a la guardar el banco',
+                    });
+                }
+            }
+        });
+    };
+}
 
 export const startValidateClaveInternaRole = ( password ) => {
 
@@ -252,5 +256,20 @@ export const SetDisableInputsUserRole = (value) => ({
 
 export const SetNameUserRole = (value) => ({
     type: types.SetNameUserRole,
+    payload: value
+})
+
+export const SetNombreRoleActualRole = (value) => ({
+    type: types.SetNombreRoleActualRole,
+    payload: value
+})
+
+export const SetDescripcionRoleActualRole = (value) => ({
+    type: types.SetDescripcionRoleActualRole,
+    payload: value
+})
+
+export const SetAddRolesRole = (value) => ({
+    type: types.SetAddRolesRole,
     payload: value
 })

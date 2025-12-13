@@ -85,7 +85,7 @@ export const RoleBodyTable = ({ columns, data }) => {
                             </tr>
                         ))}
                     </thead>
-
+                        
                     <tbody
                         className='table-secondary'
                         {...getTableBodyProps()}>
@@ -103,24 +103,10 @@ export const RoleBodyTable = ({ columns, data }) => {
                                             })}
                                         >
                                             {
-                                                (cell.column.id === 'activo')
+                                                (cell.column.id === 'estado')
                                                     ? (cell.value)
-                                                        ? <div
-                                                        >
-                                                            <>
-                                                                <button className='btn btn-danger'>
-                                                                    <MdDeleteForever className='iconSize' />
-                                                                </button>
-                                                            </>
-                                                        </div>
-                                                        : <div
-                                                        >
-                                                            <>
-                                                                <button className='btn btn-success'>
-                                                                    <VscFolderActive className='iconSize' />
-                                                                </button>
-                                                            </>
-                                                        </div>
+                                                        ? 'Activo'
+                                                        : 'Desactivado'
                                                     : cell.render("Cell")
                                             }
                                         </td>

@@ -6,7 +6,12 @@ const initialState = {
     claveInterna: '',
     visiblePassword: false,
     disableInputsUser: false,
-    nameUser: ''
+    nameUser: '',
+    roleActual: {
+        nombre: '',
+        descripcion: ''
+    },
+    roles: []
 };
 
 export const roleReducer = (state = initialState, action) => {
@@ -47,6 +52,33 @@ export const roleReducer = (state = initialState, action) => {
             return {
                 ...state,
                 nameUser : action.payload
+            }
+
+        case types.SetNombreRoleActualRole:
+            return {
+                ...state,
+                roleActual: {
+                    ...state.roleActual,
+                    nombre: action.payload
+                }
+            }
+
+        case types.SetDescripcionRoleActualRole:
+            return {
+                ...state,
+                roleActual: {
+                    ...state.roleActual,
+                    descripcion: action.payload
+                }
+            }
+
+        case types.SetAddRolesRole:
+            return {
+                ...state,
+                roles: [
+                    ...state.roles,
+                    action.payload
+                ]
             }
 
         default:
