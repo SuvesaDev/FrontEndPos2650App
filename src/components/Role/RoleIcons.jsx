@@ -8,6 +8,7 @@ import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 
 import { DeleteTab } from '../../actions/tabs';
 import { FaEye, FaEyeSlash, FaFloppyDisk, FaKey, FaUserCheck } from 'react-icons/fa6';
+import { RoleAddModuleModal } from './RoleAddModuleModal';
 
 export const RoleIcons = () => {
 
@@ -215,8 +216,9 @@ export const RoleIcons = () => {
                     </div>
                 </div>
             </div>
-        </>
 
+            <RoleAddModuleModal/>
+        </>
 
     )
 }

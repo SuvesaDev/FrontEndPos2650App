@@ -153,7 +153,9 @@ export const RoleBody = () => {
                     <button
                         className='btn btn-success'
                         // className={(disableInputs) ? 'btn btn-success disabled' : 'btn btn-success espacio'}
-                        onClick={handleSaveBank}
+                        // onClick={handleSaveBank}
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalCrearModulo"
                     >
                         Agregar <MdAddCircle className='iconSize' />
                     </button>
