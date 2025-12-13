@@ -131,6 +131,21 @@ export const startValidateClaveInternaRole = ( password ) => {
 
                 // Ocultar la password
                 dispatch( SetvisiblePasswordRole( false ) );
+
+                dispatch( SetPantallasWebRole([
+                    {
+                        id: 1,
+                        nombre: 'Test #1'
+                    },
+                    {
+                        id: 2,
+                        nombre: 'Test #2'
+                    },
+                    {
+                        id: 3,
+                        nombre: 'Test #3'
+                    }
+                ]));
                
 
             } else if ( status === 0 && message === 'Contraseña Incorrecta' ) {
@@ -271,5 +286,69 @@ export const SetDescripcionRoleActualRole = (value) => ({
 
 export const SetAddRolesRole = (value) => ({
     type: types.SetAddRolesRole,
+    payload: value
+})
+
+export const SetIdPantallaModuloActualRole = (value) => ({
+    type: types.SetIdPantallaModuloActualRole,
+    payload: value
+})
+
+export const SetNombrePantallaModuloActualRole = (value) => ({
+    type: types.SetNombrePantallaModuloActualRole,
+    payload: value
+})
+
+export const SetCrearModuloActualRole = (value) => ({
+    type: types.SetCrearModuloActualRole,
+    payload: value
+})
+
+export const SetModificarModuloActualRole = (value) => ({
+    type: types.SetModificarModuloActualRole,
+    payload: value
+})
+
+export const SetBorrarModuloActualRole = (value) => ({
+    type: types.SetBorrarModuloActualRole,
+    payload: value
+})
+
+export const SetVerModuloActualRole = (value) => ({
+    type: types.SetVerModuloActualRole,
+    payload: value
+})
+
+export const SetAddModulosRole = (value) => ({
+    type: types.SetAddModulosRole,
+    payload: value
+})
+
+export const SetPantallasWebRole = (value) => ({
+    type: types.SetPantallasWebRole,
+    payload: value
+})
+
+export const CleanModuloActualRole = () => ({
+    type: types.CleanModuloActualRole
+})
+
+export const SetIsEditModuloRole = (value) => ({
+    type: types.SetIsEditModuloRole,
+    payload: value
+})
+
+export const SetEditModulosRole = (value) => ({
+    type: types.SetEditModulosRole,
+    payload: value
+})
+
+export const SetIdModuloSeletedRole = (value) => ({
+    type: types.SetIdModuloSeletedRole,
+    payload: value
+})
+
+export const SetDeleteModuloRole = (value) => ({
+    type: types.SetDeleteModuloRole,
     payload: value
 })

@@ -5,21 +5,45 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { FaTabletScreenButton, FaUser } from 'react-icons/fa6';
 import { IoIosAddCircle, IoIosCloseCircle } from 'react-icons/io';
-import { MdAddCircle } from 'react-icons/md';
+import { MdAddCircle, MdCancel } from 'react-icons/md';
+import { FaEdit } from 'react-icons/fa';
 
-import { RoleBodyTable } from './RoleBodyTable';
+import { RoleAddModuleModalTable } from './RoleAddModuleModalTable';
+
+import { 
+    CleanModuloActualRole,
+    SetAddModulosRole,
+    SetBorrarModuloActualRole,
+    SetCrearModuloActualRole, 
+    SetEditModulosRole, 
+    SetIdModuloSeletedRole, 
+    SetIdPantallaModuloActualRole, 
+    SetIsEditModuloRole, 
+    SetModificarModuloActualRole,
+    SetNombrePantallaModuloActualRole,
+    SetVerModuloActualRole
+} from '../../actions/RoleAction';
 
 export const RoleAddModuleModal = () => {
 
     const dispatch = useDispatch();
 
     const {
-        isOpenModalAddProveedor,
-        proveedorAdd,
-        existProveedor
-    } = useSelector(state => state.compras);
+        moduloActual,
+        modulos,
+        pantallasWeb,
+        isEditModulo,
+        idModuloSeleted
+    } = useSelector(state => state.role);
 
-    const { auth } = useSelector(state => state.login);
+    const { 
+        idPantalla,
+        nombrePantalla,
+        crear,
+        modificar,
+        borrar,
+        ver
+    } = moduloActual;
 
     const columns = [
         {
@@ -48,31 +72,73 @@ export const RoleAddModuleModal = () => {
         },
     ];
 
-    const handleInputChangeWithDispatch = ({ target }, action) => {
-        dispatch(action(target.value));
+    const handleInputChangeCheckBoxWithDispatch = ({ target }, action) => {
+        dispatch(action(target.checked));
     };
 
-    const handleCreateProveedor = async (e) => {
+    const changeNombrePantalla = ({ target }) => {
 
-        // e.preventDefault();
+        if(target.value != null || target.value != undefined) {
 
-        // const newProveedor = {
-        //     nombre,
-        //     cedula,
-        //     telefono1,
-        //     fax1,
-        //     email,
-        //     direccion,
-        //     observaciones,
-        //     contacto,
-        //     telefonoCont,
-        //     estado: true,
-        //     fechaCreacion: moment(new Date()).format('DD/MM/YYYY'),
-        //     idUsuarioCreacion: auth.username,
-        //     cuentasBancariasProveedors: []
-        // }
+            const nombre = pantallasWeb.find(pantalla => pantalla.id == target.value).nombre;
 
-        // dispatch(startCreateProveedoresCompra(newProveedor));
+            dispatch(SetIdPantallaModuloActualRole(target.value));
+            dispatch(SetNombrePantallaModuloActualRole(nombre));
+
+        }
+
+    };
+
+    const handleAddModulo = async (e) => {
+
+        e.preventDefault();
+
+        const newModulo = {
+            idPantalla,
+            nombrePantalla,
+            crear,
+            modificar,
+            borrar,
+            ver
+        }
+
+        dispatch(SetAddModulosRole(newModulo));
+        dispatch(CleanModuloActualRole());
+    }
+
+    const handleEditModulo = async (e) => {
+
+        e.preventDefault();
+
+        const editModulo = {
+            id: idModuloSeleted,
+            data: {
+                idPantalla,
+                nombrePantalla,
+                crear,
+                modificar,
+                borrar,
+                ver
+            }
+        }
+
+        dispatch(SetEditModulosRole(editModulo));
+        dispatch(CleanModuloActualRole());
+        dispatch(SetIsEditModuloRole(false));
+    }
+
+    const handleCancelEdit = (e) => {
+    
+        e.preventDefault();
+
+        // Se cambia el modo de edit
+        dispatch(SetIsEditModuloRole(false));
+
+        dispatch(CleanModuloActualRole());
+
+        // Se reset el idSeleccionado
+        dispatch(SetIdModuloSeletedRole(0));
+    
     }
 
     const closeModal = (e) => {
@@ -134,13 +200,30 @@ export const RoleAddModuleModal = () => {
                                             type="text"
                                             name="codPresentacion"
                                             className="form-select"
-                                            // value={nombre}
-                                            // onChange={e => handleInputChangeWithDispatch(e, SetnombreProveedorAddCompras)}
+                                            value={idPantalla}
+                                            onChange={e => changeNombrePantalla(e)}
                                         >
-                                            <option value="" selected disabled hidden>
+                                            <option value={0} selected disabled hidden>
                                                 {" "}
                                                 Seleccione...{" "}
                                             </option>
+                                            { 
+                                                pantallasWeb != null ? (
+                                                    pantallasWeb.length === 0 ? (
+                                                    <option value="">No se cargaron las pantallas</option>
+                                                    ) : (
+                                                        pantallasWeb.map((pantalla) => {
+                                                            return (
+                                                                <option key={pantalla.id} value={pantalla.id}>
+                                                                    {" "}
+                                                                    {pantalla.nombre}{" "}
+                                                                </option>
+                                                            );
+                                                        })
+                                                    )
+                                                ) : (
+                                                    <option value="">No se cargaron las pantallas</option>
+                                                )}
                                         </select>
                                     </div>
                                 </div>
@@ -153,14 +236,30 @@ export const RoleAddModuleModal = () => {
 
                                         <div className="col-md-6">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="checkCrear" />
+                                                <input 
+                                                    class="form-check-input" 
+                                                    type="checkbox" 
+                                                    checked={crear} 
+                                                    id="checkCrear" 
+                                                    onChange={(e) =>
+                                                        handleInputChangeCheckBoxWithDispatch(e, SetCrearModuloActualRole)
+                                                    }
+                                                />
                                                 <label class="form-check-label" for="checkCrear">
                                                     Crear
                                                 </label>
                                             </div>
 
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="checkModificar" />
+                                                <input 
+                                                    class="form-check-input" 
+                                                    type="checkbox" 
+                                                    checked={modificar} 
+                                                    id="checkModificar"
+                                                    onChange={(e) =>
+                                                        handleInputChangeCheckBoxWithDispatch(e, SetModificarModuloActualRole)
+                                                    }
+                                                />
                                                 <label class="form-check-label" for="checkModificar">
                                                     Modificar
                                                 </label>
@@ -169,14 +268,30 @@ export const RoleAddModuleModal = () => {
                                         
                                         <div className="col-md-6">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="checkBorrar" />
+                                                <input 
+                                                    class="form-check-input" 
+                                                    type="checkbox" 
+                                                    checked={borrar} 
+                                                    id="checkBorrar" 
+                                                    onChange={(e) =>
+                                                        handleInputChangeCheckBoxWithDispatch(e, SetBorrarModuloActualRole)
+                                                    }
+                                                />
                                                 <label class="form-check-label" for="checkBorrar">
                                                     Borrar
                                                 </label>
                                             </div>
 
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="checkVer" />
+                                                <input 
+                                                    class="form-check-input" 
+                                                    type="checkbox" 
+                                                    checked={ver} 
+                                                    id="checkVer" 
+                                                    onChange={(e) =>
+                                                        handleInputChangeCheckBoxWithDispatch(e, SetVerModuloActualRole)
+                                                    }
+                                                />
                                                 <label class="form-check-label" for="checkVer">
                                                     Ver
                                                 </label>
@@ -187,22 +302,42 @@ export const RoleAddModuleModal = () => {
                                     
                                 </div>
 
-                                <div className="col-md-2 mb-2">
+                                <div className="col-md-3 mb-2">
                                     <hr />
-                                    <button
-                                        className='btn btn-success'
-                                        // className={(disableInputs) ? 'btn btn-success disabled' : 'btn btn-success espacio'}
-                                        // onClick={handleSaveBank}
-                                    >
-                                        Agregar <MdAddCircle className='iconSize' />
-                                    </button>
+                                    {
+                                        (isEditModulo)
+                                            ?
+                                            <>
+                                                <button
+                                                    className='btn btn-warning espacio'
+                                                    onClick={handleEditModulo}
+                                                >
+                                                    Editar <FaEdit className='iconSize' />
+                                                </button>
+
+                                                <button
+                                                    className='btn btn-danger espacio'
+                                                    onClick={handleCancelEdit}
+                                                >
+                                                    Cancelar <MdCancel className='iconSize' />
+                                                </button>
+                                            </>
+                                            :
+                                            <button
+                                                className='btn btn-success'
+                                                onClick={handleAddModulo}
+                                            >
+                                                Agregar <MdAddCircle className='iconSize' />
+                                            </button>
+                                    }
+                                    
                                 </div>
                             </div>
 
                             <div className="row mb-2 text-center">
                                 <hr />
                                 <div className="col-md-12 mb-3">
-                                    <RoleBodyTable columns={columns} data={[]} />
+                                    <RoleAddModuleModalTable columns={columns} data={modulos} />
                                 </div>
                             </div>
 
