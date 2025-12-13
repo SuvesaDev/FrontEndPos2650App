@@ -1,4 +1,5 @@
-import React from 'react';
+import { RoleBody } from './RoleBody';
+import { RoleIcons } from './RoleIcons';
 
 export const RolePage = () => {
     return (
@@ -12,12 +13,12 @@ export const RolePage = () => {
                         <div className="card-body">
                             <div className="row mb-3 text-center" >
                                 <div className="col-md-12 mb-3">
-                                    <p>Body</p>
+                                    <RoleBody/>
                                 </div>
                             </div>
                         </div>
                         <div className="card-footer cartaP">
-                            <p>Icons</p>
+                            <RoleIcons />
                         </div>
                     </div>
                 </div>
