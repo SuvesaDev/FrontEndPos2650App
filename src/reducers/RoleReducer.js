@@ -205,6 +205,12 @@ export const roleReducer = (state = initialState, action) => {
                 )
             }
 
+        case types.CleanModulosModuloActualRole:
+            return {
+                ...state,
+                modulos: []
+            }
+
         default:
             return state;
     }

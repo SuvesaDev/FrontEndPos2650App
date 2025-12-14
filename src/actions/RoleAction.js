@@ -352,3 +352,7 @@ export const SetDeleteModuloRole = (value) => ({
     type: types.SetDeleteModuloRole,
     payload: value
 })
+
+export const CleanModulosModuloActualRole = () => ({
+    type: types.CleanModulosModuloActualRole
+})

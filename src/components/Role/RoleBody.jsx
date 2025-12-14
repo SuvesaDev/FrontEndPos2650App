@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import Swal from 'sweetalert2';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -16,6 +16,7 @@ import {
 export const RoleBody = () => {
 
     const dispatch = useDispatch();
+    const btnModulo = useRef(null);
 
     const {
         disableInputs,
@@ -105,6 +106,25 @@ export const RoleBody = () => {
 
     }
 
+    const handleModulo = (e) => {
+
+        if (!disableInputs) {
+
+            e.preventDefault();
+
+            if( nombre != '' && nombre != null && nombre != undefined ) {
+                btnModulo.current.click();
+            } else {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Advertencia',
+                    text: 'Escriba el nombre y la descripcion para el nuevo rol para asignar modulos'
+                });
+            }
+        }
+
+    }
+
     const columns = [
         {
             Header: "Nombre",
@@ -166,11 +186,16 @@ export const RoleBody = () => {
                         <div className="col-md-6 mb-3">
                              <button
                                 className={(disableInputs) ? 'btn btn-primary disabled' : 'btn btn-primary espacio'}
-                                data-bs-toggle="modal"
-                                data-bs-target="#modalCrearModulo"
+                                onClick={handleModulo}
                             >
                                 Modulos <MdViewModule className='iconSize' />
                             </button>
+                            <button 
+                                ref={btnModulo}
+                                className='d-none'
+                                data-bs-toggle="modal"
+                                data-bs-target="#modalCrearModulo"
+                            ></button>
                         </div>
 
                         <div className="col-md-6 mb-3">

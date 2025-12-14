@@ -2389,5 +2389,6 @@ export const types = {
   SetEditModulosRole                : '[Role] SetEditModulosRole',
   SetIdModuloSeletedRole            : '[Role] SetIdModuloSeletedRole',
   SetDeleteModuloRole               : '[Role] SetDeleteModuloRole',
+  CleanModulosModuloActualRole      : '[Role] CleanModulosModuloActualRole',
 
 }

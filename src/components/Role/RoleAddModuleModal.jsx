@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import Swal from 'sweetalert2';
 import Modal from 'react-modal';
 
@@ -12,6 +13,7 @@ import { RoleAddModuleModalTable } from './RoleAddModuleModalTable';
 
 import { 
     CleanModuloActualRole,
+    CleanModulosModuloActualRole,
     SetAddModulosRole,
     SetBorrarModuloActualRole,
     SetCrearModuloActualRole, 
@@ -27,6 +29,7 @@ import {
 export const RoleAddModuleModal = () => {
 
     const dispatch = useDispatch();
+    const btnCerrar = useRef(null);
 
     const {
         moduloActual,
@@ -93,17 +96,28 @@ export const RoleAddModuleModal = () => {
 
         e.preventDefault();
 
-        const newModulo = {
-            idPantalla,
-            nombrePantalla,
-            crear,
-            modificar,
-            borrar,
-            ver
-        }
+        const pantalla = modulos.find(mod => mod.idPantalla == idPantalla);
 
-        dispatch(SetAddModulosRole(newModulo));
-        dispatch(CleanModuloActualRole());
+        if( pantalla == null || pantalla == undefined) {
+            const newModulo = {
+                idPantalla,
+                nombrePantalla,
+                crear,
+                modificar,
+                borrar,
+                ver
+            }
+
+            dispatch(SetAddModulosRole(newModulo));
+            dispatch(CleanModuloActualRole());
+        } else {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Advertencia',
+                text: `La pantalla ${nombrePantalla} ya esta registrada.`
+            });
+        }
+        
     }
 
     const handleEditModulo = async (e) => {
@@ -143,27 +157,54 @@ export const RoleAddModuleModal = () => {
 
     const closeModal = (e) => {
 
-        // e.preventDefault();
+        e.preventDefault();
 
-        // if (!existProveedor) {
-        //     Swal.fire({
-        //         icon: 'warning',
-        //         title: 'Proveedor Compras',
-        //         text: 'Debe ingresar el proveedor para registrar la compra'
-        //     });
+        //Mostrar un mensaje de confirmacion
+        Swal.fire({
+            title: `¿Desea cancelar esta configuracion?`,
+            showDenyButton: true,
+            showCancelButton: false,
+            confirmButtonText: 'Mantener',
+            denyButtonText: `Cancelar`,
+        }).then(async (result) => {
+            if (result.isDenied) {
 
-        //     return;
-        // }
+                // Se cambia el modo de edit
+                dispatch(SetIsEditModuloRole(false));
 
-        // // Cerrar el modal
-        // dispatch(isOpenModalAddProveedorCompras(false));
+                dispatch(CleanModuloActualRole());
 
-        // //Clean el state de proveedores
-        // dispatch(CleanProveedorAddCompras());
+                // Se reset el idSeleccionado
+                dispatch(SetIdModuloSeletedRole(0));
 
-        // // Se setea el valor de existProveedor en false
-        // dispatch(SetExistProveedorCompras(true));
+                dispatch(CleanModulosModuloActualRole());
 
+                btnCerrar.current.click();
+            }
+        });
+    }
+
+    const handleSaveModulo = (e) => {
+    
+        e.preventDefault();
+
+        Swal.fire({
+            icon: 'success',
+            title: `Modulos agregados correctamente`,
+            showConfirmButton: false,
+            timer: 1500
+        });
+
+        // Se cambia el modo de edit
+        dispatch(SetIsEditModuloRole(false));
+
+        dispatch(CleanModuloActualRole());
+
+        // Se reset el idSeleccionado
+        dispatch(SetIdModuloSeletedRole(0));
+
+        btnCerrar.current.click();
+    
     }
 
     return (
@@ -346,6 +387,7 @@ export const RoleAddModuleModal = () => {
                         <div className="modal-footer">
                             <button 
                                 className='btn btn-success'
+                                onClick={handleSaveModulo}
                             >
                                 Aceptar <IoIosAddCircle className="iconSize" />
                             </button>
@@ -353,10 +395,14 @@ export const RoleAddModuleModal = () => {
                             <button
                                 type="button"
                                 className="btn btn-danger"
-                                data-bs-dismiss="modal"
+                                onClick={closeModal}
                             >
                                 Cerrar <IoIosCloseCircle className="iconSize" />
                             </button>
+                            <button 
+                                data-bs-dismiss="modal"
+                                ref={btnCerrar}
+                            ></button>
                         </div>
 
                     </div>
