@@ -8,7 +8,11 @@ import { MdAddCircle, MdCancel, MdDriveFileRenameOutline, MdViewModule } from 'r
 import { RoleBodyTable } from './RoleBodyTable';
 
 import { 
+    CleanRoleActualRole,
     SetDescripcionRoleActualRole, 
+    SetEditRole, 
+    SetIdSeletedRole, 
+    SetIsEditRoleRole, 
     SetNombreRoleActualRole, 
     startSaveRole
 } from '../../actions/RoleAction';
@@ -21,10 +25,18 @@ export const RoleBody = () => {
     const {
         disableInputs,
         roleActual,
-        roles
+        roles,
+        modulos,
+        isEditRole,
+        idRoleSeleted
     } = useSelector(state => state.role);
 
-    const { nombre, descripcion } = roleActual;
+    const { 
+        id,
+        nombre, 
+        descripcion,
+        estado
+    } = roleActual;
 
     const handleInputChangeWithDispatch = ({ target }, action) => {
         dispatch(action(target.value));
@@ -47,11 +59,22 @@ export const RoleBody = () => {
                 return;
             }
 
+            if (modulos == undefined || modulos.length == 0) {
+
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Advertencia',
+                    text: 'Favor, ingresar los modulos del numero rol.'
+                });
+
+                return;
+            }
+
             const newRole = {
                 id: 0,
                 nombre,
                 descripcion,
-                modulos: [],
+                modulos,
                 estado: true
             }
 
@@ -60,49 +83,72 @@ export const RoleBody = () => {
 
     }
 
-    const handleEditBank = (e) => {
+    const handleEditRole = (e) => {
 
-        // if (!disableInputs) {
+        if (!disableInputs) {
 
-        //     e.preventDefault();
+            e.preventDefault();
 
-        //     if (bancoActual === '') {
+            if (nombre === '' || descripcion === '') {
 
-        //         Swal.fire({
-        //             icon: 'warning',
-        //             title: 'Advertencia',
-        //             text: 'Escriba una descripción para el editar banco.'
-        //         });
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Advertencia',
+                    text: 'Escriba el nombre y la descripcion para el nuevo rol.'
+                });
 
-        //         return;
-        //     }
+                return;
+            }
 
-        //     const editBank = {
-        //         id: idSeletedBanco,
-        //         banco: bancoActual,
-        //         activo: true
-        //     }
+            if (modulos == undefined || modulos.length == 0) {
 
-        //     dispatch(startEditBank(editBank));
-        // }
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Advertencia',
+                    text: 'Favor, ingresar los modulos del numero rol.'
+                });
+
+                return;
+            }
+
+            const editRole = {
+                id: idRoleSeleted,
+                data: {
+                    id,
+                    nombre,
+                    descripcion,
+                    modulos,
+                    estado
+                }
+            }
+
+            dispatch(SetEditRole(editRole));
+            
+            // Se cambia el modo de edit
+            dispatch(SetIsEditRoleRole(false));
+
+            // Se reset el bancoActual
+            dispatch(CleanRoleActualRole());
+
+            dispatch(SetIdSeletedRole(0));
+        }
 
     }
 
     const handleCancelEdit = (e) => {
 
-        // if (!disableInputs) {
+        if (!disableInputs) {
 
-        //     e.preventDefault();
+            e.preventDefault();
 
-        //     // Se cambia el modo de edit
-        //     dispatch(SetIsEditBank(false));
+            // Se cambia el modo de edit
+            dispatch(SetIsEditRoleRole(false));
 
-        //     // Se reset el bancoActual
-        //     dispatch(SetBancoActualBank(''));
+            // Se reset el bancoActual
+            dispatch(CleanRoleActualRole());
 
-        //     // Se reset el idSeleccionado
-        //     dispatch(SetIdSeletedBancoBank(0));
-        // }
+            dispatch(SetIdSeletedRole(0));
+        }
 
     }
 
@@ -178,12 +224,12 @@ export const RoleBody = () => {
                     </div>
                 </div>
 
-                <div className="col-md-3 mb-3">
+                <div className="col-md-5 mb-3">
 
                     <div className="row mb-2 text-center">
                         <hr />
 
-                        <div className="col-md-6 mb-3">
+                        <div className="col-md-3 mb-3">
                              <button
                                 className={(disableInputs) ? 'btn btn-primary disabled' : 'btn btn-primary espacio'}
                                 onClick={handleModulo}
@@ -198,44 +244,45 @@ export const RoleBody = () => {
                             ></button>
                         </div>
 
-                        <div className="col-md-6 mb-3">
-                             <button
-                                className={(disableInputs) ? 'btn btn-success disabled' : 'btn btn-success espacio'}
-                                onClick={handleSaveRole}
-                            >
-                                Agregar <MdAddCircle className='iconSize' />
-                            </button>
-                        </div>
+                        {
+                            (isEditRole)
+                                ?
+                                <div className="col-md-6 mb-3">
+                                    <div className="row mb-2 text-center">
+
+                                        <div className="col-md-6 mb-3">
+                                            <button
+                                                className={(disableInputs) ? 'btn btn-warning disabled' : 'btn btn-warning espacio'}
+                                                onClick={handleEditRole}
+                                            >
+                                                Editar <FaEdit className='iconSize' />
+                                            </button>
+                                        </div>
+
+                                        <div className="col-md-6 mb-3">
+                                            <button
+                                                className={(disableInputs) ? 'btn btn-danger disabled' : 'btn btn-danger espacio'}
+                                                onClick={handleCancelEdit}
+                                            >
+                                                Cancelar <MdCancel className='iconSize' />
+                                            </button>
+                                        </div>
+
+                                    </div>                                    
+                                </div>
+                                :
+                                <div className="col-md-6 mb-3">
+                                    <button
+                                        className={(disableInputs) ? 'btn btn-success disabled' : 'btn btn-success espacio'}
+                                        onClick={handleSaveRole}
+                                    >
+                                        Agregar <MdAddCircle className='iconSize' />
+                                    </button>
+                                </div>
+                        }                        
 
                     </div>
                     
-                    {/* {
-                        (isEditBanco)
-                            ?
-                            <>
-                                <button
-                                    className={(disableInputs) ? 'btn btn-warning disabled' : 'btn btn-warning espacio'}
-                                    onClick={handleEditBank}
-                                >
-                                    Editar <FaEdit className='iconSize' />
-                                </button>
-
-                                <button
-                                    className={(disableInputs) ? 'btn btn-danger disabled' : 'btn btn-danger espacio'}
-                                    onClick={handleCancelEdit}
-                                >
-                                    Cancelar <MdCancel className='iconSize' />
-                                </button>
-                            </>
-
-                            :
-                            <button
-                                className={(disableInputs) ? 'btn btn-success disabled' : 'btn btn-success espacio'}
-                                onClick={handleSaveBank}
-                            >
-                                Agregar <MdAddCircle className='iconSize' />
-                            </button>
-                    } */}
                 </div>
             </div>
 
@@ -245,8 +292,6 @@ export const RoleBody = () => {
                     <RoleBodyTable columns={columns} data={roles} />
                 </div>
             </div>
-
         </>
-
     )
 }

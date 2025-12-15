@@ -29,6 +29,7 @@ export const startSaveRole = ( role ) => {
                     dispatch( SetAddRolesRole(role) );
                     dispatch( SetNombreRoleActualRole('') );
                     dispatch( SetDescripcionRoleActualRole('') );
+                    dispatch( CleanModulosModuloActualRole() );
 
                     // //Mostrar el loading
                     // Swal.fire({
@@ -244,6 +245,7 @@ export const startValidateClaveInternaRole = ( password ) => {
 // }
 
 // Normal Actions
+
 export const SetActiveButtonSaveRole = (value) => ({
     type: types.SetActiveButtonSaveRole,
     payload: value
@@ -274,6 +276,11 @@ export const SetNameUserRole = (value) => ({
     payload: value
 })
 
+export const SetIdRoleActualRole = (value) => ({
+    type: types.SetIdRoleActualRole,
+    payload: value
+})
+
 export const SetNombreRoleActualRole = (value) => ({
     type: types.SetNombreRoleActualRole,
     payload: value
@@ -281,6 +288,11 @@ export const SetNombreRoleActualRole = (value) => ({
 
 export const SetDescripcionRoleActualRole = (value) => ({
     type: types.SetDescripcionRoleActualRole,
+    payload: value
+})
+
+export const SetEstadoRoleActualRole = (value) => ({
+    type: types.SetEstadoRoleActualRole,
     payload: value
 })
 
@@ -355,4 +367,33 @@ export const SetDeleteModuloRole = (value) => ({
 
 export const CleanModulosModuloActualRole = () => ({
     type: types.CleanModulosModuloActualRole
+})
+
+export const SetModulosModuloRole = (value) => ({
+    type: types.SetModulosModuloRole,
+    payload: value
+})
+
+export const SetIsEditRoleRole = (value) => ({
+    type: types.SetIsEditRoleRole,
+    payload: value
+})
+
+export const CleanRoleActualRole = () => ({
+    type: types.CleanRoleActualRole
+})
+
+export const SetEditRole = (value) => ({
+    type: types.SetEditRole,
+    payload: value
+})
+
+export const SetIdSeletedRole = (value) => ({
+    type: types.SetIdSeletedRole,
+    payload: value
+})
+
+export const SetDeleteRole = (value) => ({
+    type: types.SetDeleteRole,
+    payload: value
 })

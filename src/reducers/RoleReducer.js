@@ -10,9 +10,13 @@ const initialState = {
     pantallasWeb: [],
     isEditModulo: false,
     idModuloSeleted: 0,
+    isEditRole: false,
+    idRoleSeleted: 0,
     roleActual: {
+        id: 0,
         nombre: '',
-        descripcion: ''
+        descripcion: '',
+        estado: false
     },
     moduloActual: {
         idPantalla: 0,
@@ -66,6 +70,15 @@ export const roleReducer = (state = initialState, action) => {
                 nameUser : action.payload
             }
 
+        case types.SetIdRoleActualRole:
+            return {
+                ...state,
+                roleActual: {
+                    ...state.roleActual,
+                    id: action.payload
+                }
+            }
+
         case types.SetNombreRoleActualRole:
             return {
                 ...state,
@@ -81,6 +94,15 @@ export const roleReducer = (state = initialState, action) => {
                 roleActual: {
                     ...state.roleActual,
                     descripcion: action.payload
+                }
+            }
+
+        case types.SetEstadoRoleActualRole:
+            return {
+                ...state,
+                roleActual: {
+                    ...state.roleActual,
+                    estado: action.payload
                 }
             }
 
@@ -209,6 +231,54 @@ export const roleReducer = (state = initialState, action) => {
             return {
                 ...state,
                 modulos: []
+            }
+
+        case types.SetModulosModuloRole:
+            return {
+                ...state,
+                modulos: action.payload
+            }
+
+        case types.SetIsEditRoleRole:
+            return {
+                ...state,
+                isEditRole: action.payload
+            }
+
+        case types.CleanRoleActualRole:
+            return {
+                ...state,
+                roleActual: {
+                    id: 0,
+                    nombre: '',
+                    descripcion: '',
+                    estado: false
+                },
+                modulos: [],
+            }
+
+        case types.SetEditRole:
+            return {
+                ...state,
+                roles: state.roles.map(
+                    (role, i) => i === action.payload.id
+                        ? action.payload.data
+                        : role
+                )
+            }
+
+        case types.SetIdSeletedRole:
+            return {
+                ...state,
+                idRoleSeleted: action.payload
+            }
+
+        case types.SetDeleteRole:
+            return {
+                ...state,
+                roles: state.roles.filter( 
+                    (role, i) => i !== action.payload
+                )
             }
 
         default:

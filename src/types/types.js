@@ -2372,8 +2372,10 @@ export const types = {
   SetvisiblePasswordRole       : '[Role] SetvisiblePasswordRole',
   SetDisableInputsUserRole     : '[Role] SetDisableInputsUserRole',
   SetNameUserRole              : '[Role] SetNameUserRole',
+  SetIdRoleActualRole          : '[Role] SetIdRoleActualRole',
   SetNombreRoleActualRole      : '[Role] SetNombreRoleActualRole',
   SetDescripcionRoleActualRole : '[Role] SetDescripcionRoleActualRole',
+  SetEstadoRoleActualRole      : '[Role] SetEstadoRoleActualRole',
   SetAddRolesRole              : '[Role] SetAddRolesRole',
   SetPantallasWebRole          : '[Role] SetPantallasWebRole',
 
@@ -2390,5 +2392,12 @@ export const types = {
   SetIdModuloSeletedRole            : '[Role] SetIdModuloSeletedRole',
   SetDeleteModuloRole               : '[Role] SetDeleteModuloRole',
   CleanModulosModuloActualRole      : '[Role] CleanModulosModuloActualRole',
+  SetModulosModuloRole              : '[Role] SetModulosModuloRole',
+  SetIsEditRoleRole                 : '[Role] SetIsEditRoleRole',
+
+  CleanRoleActualRole               : '[Role] CleanRoleActualRole',
+  SetEditRole                       : '[Role] SetEditRole',
+  SetIdSeletedRole                  : '[Role] SetIdSeletedRole',
+  SetDeleteRole                     : '[Role] SetDeleteRole',
 
 }

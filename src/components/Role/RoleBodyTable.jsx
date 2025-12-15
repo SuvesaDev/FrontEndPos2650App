@@ -7,13 +7,16 @@ import { usePagination, useTable } from 'react-table';
 import { MdDeleteForever } from 'react-icons/md';
 import { VscFolderActive } from 'react-icons/vsc';
 
-import {
-    SetBancoActualBank,
-    SetIdSeletedBancoBank,
-    SetIsEditBank,
-    startActiveBank,
-    startDisableBank
-} from '../../actions/BankAction';
+import { 
+    SetDeleteRole,
+    SetDescripcionRoleActualRole, 
+    SetEstadoRoleActualRole, 
+    SetIdRoleActualRole, 
+    SetIdSeletedRole, 
+    SetIsEditRoleRole, 
+    SetModulosModuloRole, 
+    SetNombreRoleActualRole 
+} from '../../actions/RoleAction';
 
 export const RoleBodyTable = ({ columns, data }) => {
 
@@ -36,35 +39,32 @@ export const RoleBodyTable = ({ columns, data }) => {
     );
 
     const handleSelectedRow = (cell) => {
+        
+        //Obtiene los datos seleccionado
+        const { 
+            id,
+            nombre,
+            descripcion,
+            estado,
+            modulos
+        } = cell.row.original;
 
-        // //Obtiene los datos del banco seleccionado
-        // const { id, banco } = cell.row.original;
+        // Se establece el idBanco seleccionado
+        dispatch( SetIdRoleActualRole(id) );
+        dispatch( SetNombreRoleActualRole(nombre) );
+        dispatch( SetDescripcionRoleActualRole(descripcion) );
+        dispatch( SetEstadoRoleActualRole(estado) );
+        dispatch( SetModulosModuloRole(modulos) );
 
-        // // Se establece el idBanco seleccionado
-        // dispatch(SetIdSeletedBancoBank(id));
+        // Se establece que esta en modo edit
+        dispatch(SetIsEditRoleRole(true));
 
-        // // Se establece la descripcion del banco seleccionado
-        // dispatch(SetBancoActualBank(banco));
-
-        // // Se establece que esta en modo edit
-        // dispatch(SetIsEditBank(true));
+        dispatch(SetIdSeletedRole(cell.row.index));
 
     }
 
     const handleDeleteRow = (cell) => {
-
-        // // Se obtiene el id de la cuenta seleccionado
-        // const { id, banco, activo } = cell.row.original;
-
-        // if (activo === true) {
-
-        //     // Disable
-        //     dispatch(startDisableBank(id, banco));
-
-        // } else {
-        //     // Active
-        //     dispatch(startActiveBank(id, banco));
-        // }
+        dispatch(SetDeleteRole(cell.row.index));
     }
 
     return (
