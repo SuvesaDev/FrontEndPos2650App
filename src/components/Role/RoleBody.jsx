@@ -184,6 +184,10 @@ export const RoleBody = () => {
             Header: "Estado",
             accessor: "estado",
         },
+        {
+            Header: "Acciones",
+            accessor: "accion",
+        },
     ];
 
     return (

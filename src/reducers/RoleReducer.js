@@ -281,6 +281,12 @@ export const roleReducer = (state = initialState, action) => {
                 )
             }
 
+        case types.SetRolesRole:
+            return {
+                ...state,
+                roles: action.payload
+            }
+
         default:
             return state;
     }

@@ -2399,5 +2399,6 @@ export const types = {
   SetEditRole                       : '[Role] SetEditRole',
   SetIdSeletedRole                  : '[Role] SetIdSeletedRole',
   SetDeleteRole                     : '[Role] SetDeleteRole',
+  SetRolesRole                     : '[Role] SetRolesRole',
 
 }

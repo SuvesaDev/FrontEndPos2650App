@@ -26,58 +26,52 @@ export const startSaveRole = ( role ) => {
 
                 if (result.isConfirmed) {
 
-                    dispatch( SetAddRolesRole(role) );
-                    dispatch( SetNombreRoleActualRole('') );
-                    dispatch( SetDescripcionRoleActualRole('') );
-                    dispatch( CleanModulosModuloActualRole() );
-
-                    // //Mostrar el loading
-                    // Swal.fire({
-                    //     title: 'Por favor, espere',
-                    //     allowEscapeKey: false,
-                    //     allowOutsideClick: false,
-                    //     showConfirmButton: false,
-                    //     imageUrl: loadingImage,
-                    //     customClass: 'alert-class-login',
-                    //     imageHeight: 100,
-                    // });
+                    //Mostrar el loading
+                    Swal.fire({
+                        title: 'Por favor, espere',
+                        allowEscapeKey: false,
+                        allowOutsideClick: false,
+                        showConfirmButton: false,
+                        imageUrl: loadingImage,
+                        customClass: 'alert-class-login',
+                        imageHeight: 100,
+                    });
                     
-                    // //Call end-point 
-                    // const { data } = await suvesaApi.post('/Bancos/CrearBanco', bank);
-                    // const { status, responses } = data;
+                    //Call end-point 
+                    const { data } = await suvesaApi.post('/Bancos/CrearBanco', role); //TODO: CAMBIAR END-POINT PARA CREAR LOS ROLES
+                    const { status, responses } = data;
                     
-                    // //Quitar el loading
-                    // Swal.close();
+                    //Quitar el loading
+                    Swal.close();
 
-                    // if (status === 0) {
+                    if (status === 0) {
                         
-                    //     //Si es correcta entonces mostrar un mensaje de afirmacion
-                    //     Swal.fire({
-                    //         icon: 'success',
-                    //         title: `Banco ${ bank.banco } agregado correctamente`,
-                    //         showConfirmButton: false,
-                    //         timer: 2500
-                    //     });
+                        //Si es correcta entonces mostrar un mensaje de afirmacion
+                        Swal.fire({
+                            icon: 'success',
+                            title: `Roles agregados correctamente`,
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
 
-                    //     // Se ingresa nuevo banco a la tabla
-                    //     dispatch( SetAddBancoBank( responses ) );
+                        dispatch( SetAddRolesRole(role) );
+                        dispatch( SetNombreRoleActualRole('') );
+                        dispatch( SetDescripcionRoleActualRole('') );
+                        dispatch( CleanModulosModuloActualRole() );
 
-                    //     // Se limpia el banco actual
-                    //     dispatch( SetBancoActualBank('') );
+                    } else {
 
-                    // } else {
+                        //Caso contrario respuesta incorrecto mostrar mensaje de error
+                        const { currentException } = data;
+                        const msj = currentException.split(',');
 
-                    //     //Caso contrario respuesta incorrecto mostrar mensaje de error
-                    //     const { currentException } = data;
-                    //     const msj = currentException.split(',');
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: (currentException.includes(',')) ? msj[3] : currentException,
+                        });
 
-                    //     Swal.fire({
-                    //         icon: 'error',
-                    //         title: 'Error',
-                    //         text: (currentException.includes(',')) ? msj[3] : currentException,
-                    //     });
-
-                    // }
+                    }
 
                 }
 
@@ -120,7 +114,8 @@ export const startValidateClaveInternaRole = ( password ) => {
                 dispatch( SetNameUserRole( userName ) );
 
                 // Se traen los roles y pantallas
-                // dispatch( await startGetAllBancosBank() );
+                dispatch( await startGetAllRoles() );
+                dispatch( await startGetAllPantallasWeb() );
 
                 // Se cambia los icons
                 dispatch( SetActiveButtonSaveRole( true ));
@@ -131,23 +126,7 @@ export const startValidateClaveInternaRole = ( password ) => {
                 dispatch( SetDisableInputsUserRole( true ) );
 
                 // Ocultar la password
-                dispatch( SetvisiblePasswordRole( false ) );
-
-                dispatch( SetPantallasWebRole([
-                    {
-                        id: 1,
-                        nombre: 'Test #1'
-                    },
-                    {
-                        id: 2,
-                        nombre: 'Test #2'
-                    },
-                    {
-                        id: 3,
-                        nombre: 'Test #3'
-                    }
-                ]));
-               
+                dispatch( SetvisiblePasswordRole( false ) );               
 
             } else if ( status === 0 && message === 'Contraseña Incorrecta' ) {
                 
@@ -179,70 +158,135 @@ export const startValidateClaveInternaRole = ( password ) => {
     }
 }
 
-// export const startGetAllBancosBank = () => {
+export const startGetAllRoles = () => {
 
-//     return async ( dispatch ) => {
+    return async ( dispatch ) => {
           
-//         try {
+        try {
 
-//             //Mostrar el loading
-//             Swal.fire({
-//                 title: 'Por favor, espere',
-//                 allowEscapeKey: false,
-//                 allowOutsideClick: false,
-//                 showConfirmButton: false,
-//                 imageUrl: loadingImage,
-//                 customClass: 'alert-class-login',
-//                 imageHeight: 100,
-//             });
+            //Mostrar el loading
+            Swal.fire({
+                title: 'Por favor, espere',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                imageUrl: loadingImage,
+                customClass: 'alert-class-login',
+                imageHeight: 100,
+            });
 
-//             //Call end-point 
-//             const { data } = await suvesaApi.post(`/Bancos/ObtenerBancos`);
-//             const { status, responses } = data;
+            //Call end-point 
+            const { data } = await suvesaApi.get(`/Bancos/ObtenerBancos`); //TODO: CAMBIAR END-POINT PARA OBTENER TODOS LOS ROLES
+            const { status, responses } = data;
 
-//             //Quitar el loading
-//             Swal.close();
+            //Quitar el loading
+            Swal.close();
             
-//             if( status === 0 ) {
+            if( status === 0 ) {
                 
-//                 // Se guarda en el estado los bancos
-//                 dispatch( SetBancosBank( responses ) );
+                // Se guarda en el estado los bancos
+                dispatch( SetRolesRole( responses ) );
 
-//             } else {
+            } else {
 
-//                 //Caso contrario respuesta incorrecto mostrar mensaje de error
-//                 const { currentException } = data;
-//                 console.log( currentException );
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                console.log( currentException );
                 
-//                 Swal.fire({
-//                     icon: 'error',
-//                     title: 'Error',
-//                     text: 'Ocurrio un problema al obtener los bancos',
-//                 });
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al obtener los roles',
+                });
                 
-//             }
+            }
 
-//         } catch (error) {
+        } catch (error) {
 
-//             Swal.close();
-//             console.log(error);
-//             if( error.message === 'Request failed with status code 401') {
-//                 Swal.fire({
-//                     icon: 'error',
-//                     title: 'Error',
-//                     text: 'Usuario no valido',
-//                 });
-//             } else {
-//                 Swal.fire({
-//                     icon: 'error',
-//                     title: 'Error',
-//                     text: 'Ocurrio un problema al obtener los bancos',
-//                 });
-//             }
-//         }
+            Swal.close();
+            console.log(error);
+            if( error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al obtener los roles',
+                });
+            }
+        }
         
-//     }
-// }
+    }
+}
+
+export const startGetAllPantallasWeb = () => {
+
+    return async ( dispatch ) => {
+          
+        try {
+
+            //Mostrar el loading
+            Swal.fire({
+                title: 'Por favor, espere',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                imageUrl: loadingImage,
+                customClass: 'alert-class-login',
+                imageHeight: 100,
+            });
+
+            //Call end-point 
+            const { data } = await suvesaApi.get(`/Bancos/ObtenerBancos`); //TODO: CAMBIAR END-POINT PARA OBTENER TODOS LAS PANTALLAS
+            const { status, responses } = data;
+
+            //Quitar el loading
+            Swal.close();
+            
+            if( status === 0 ) {
+                
+                // Se guarda en el estado los bancos
+                dispatch( SetPantallasWebRole( responses ) );
+
+            } else {
+
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                console.log( currentException );
+                
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al obtener los roles',
+                });
+                
+            }
+
+        } catch (error) {
+
+            Swal.close();
+            console.log(error);
+            if( error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al obtener los roles',
+                });
+            }
+        }
+        
+    }
+}
 
 // Normal Actions
 
@@ -395,5 +439,10 @@ export const SetIdSeletedRole = (value) => ({
 
 export const SetDeleteRole = (value) => ({
     type: types.SetDeleteRole,
+    payload: value
+})
+
+export const SetRolesRole = (value) => ({
+    type: types.SetRolesRole,
     payload: value
 })
