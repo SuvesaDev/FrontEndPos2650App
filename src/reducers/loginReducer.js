@@ -22,9 +22,9 @@ const initialState = {
     surcursales: [],
     idRol: 0,
     nombreRol: '',
-    modulos: [],
-    pantallas: [],
-    accionesPantalla: []
+    modulos: JSON.parse(localStorage.getItem('modulos')) || [],
+    pantallas: JSON.parse(localStorage.getItem('pantallas')) || [],
+    accionesPantalla: JSON.parse(localStorage.getItem('accionesPantalla')) || []
 }
 
 export const loginReducer = ( state = initialState, action ) => {

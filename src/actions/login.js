@@ -46,9 +46,11 @@ export const startLogin = (auth) => {
                     permisos
                 } = rol;
 
-                const modulos = permisos.map(permiso => {
+                let modulos = permisos.map(permiso => {
                     return permiso.menu
                 });
+
+                modulos = [...new Set(modulos)];
 
                 const pantallas = permisos.map(permiso => {
                     return permiso.nombrePantalla
@@ -64,6 +66,10 @@ export const startLogin = (auth) => {
                 localStorage.setItem('auth', JSON.stringify({
                     token: token
                 }));
+
+                localStorage.setItem('modulos', JSON.stringify(modulos));
+                localStorage.setItem('pantallas', JSON.stringify(pantallas));
+                localStorage.setItem('accionesPantalla', JSON.stringify(accionesPantalla))
 
                 const { data } = await suvesaApi.post(`/Centros/ObtenerSucursal`);
                 
@@ -403,7 +409,10 @@ const login = (centro, username, token, costaPets, administrador, agenteCostaPet
 });
 
 export const logout = () => {
-    localStorage.setItem('auth', null)
+    localStorage.setItem('auth', null);
+    localStorage.setItem('modulos', null);
+    localStorage.setItem('pantallas', null);
+    localStorage.setItem('accionesPantalla', null);
     return {
         type: types.logout,
     }
