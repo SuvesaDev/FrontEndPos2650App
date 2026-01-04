@@ -7,6 +7,7 @@ const initialState = {
     visiblePassword: false,
     disableInputsUser: false,
     nameUser: '',
+    modulosWeb: [],
     pantallasWeb: [],
     isEditModulo: false,
     idModuloSeleted: 0,
@@ -19,6 +20,8 @@ const initialState = {
         estado: false
     },
     moduloActual: {
+        idModulo: 0,
+        nombreModulo: '',
         idPantalla: 0,
         nombrePantalla: '',
         crear: false,
@@ -115,6 +118,24 @@ export const roleReducer = (state = initialState, action) => {
                 ]
             }
 
+        case types.SetIdModuleModuloActualRole:
+            return {
+                ...state,
+                moduloActual: {
+                    ...state.moduloActual,
+                    idModulo: action.payload,
+                }
+            }
+
+        case types.SetNombreModuleModuloActualRole:
+            return {
+                ...state,
+                moduloActual: {
+                    ...state.moduloActual,
+                    nombreModulo: action.payload,
+                }
+            }
+
         case types.SetIdPantallaModuloActualRole:
             return {
                 ...state,
@@ -178,6 +199,12 @@ export const roleReducer = (state = initialState, action) => {
                 ]
             }
 
+        case types.SetModulosWebRole:
+            return {
+                ...state,
+                modulosWeb: action.payload
+            }
+
         case types.SetPantallasWebRole:
             return {
                 ...state,
@@ -188,6 +215,8 @@ export const roleReducer = (state = initialState, action) => {
             return {
                 ...state,
                 moduloActual: {
+                    idModulo: 0,
+                    nombreModulo: '',
                     idPantalla: 0,
                     nombrePantalla: '',
                     crear: false,

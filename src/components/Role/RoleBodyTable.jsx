@@ -17,7 +17,8 @@ import {
     SetIdSeletedRole, 
     SetIsEditRoleRole, 
     SetModulosModuloRole, 
-    SetNombreRoleActualRole 
+    SetNombreRoleActualRole, 
+    startGetOneRol
 } from '../../actions/RoleAction';
 
 export const RoleBodyTable = ({ columns, data }) => {
@@ -51,24 +52,9 @@ export const RoleBodyTable = ({ columns, data }) => {
     const handleSelectedRow = (cell) => {
         
         //Obtiene los datos seleccionado
-        const { 
-            id,
-            nombre,
-            descripcion,
-            estado,
-            modulos
-        } = cell.row.original;
+        const { idRol } = cell.row.original;
 
-        // Se establece el idBanco seleccionado
-        dispatch( SetIdRoleActualRole(id) );
-        dispatch( SetNombreRoleActualRole(nombre) );
-        dispatch( SetDescripcionRoleActualRole(descripcion) );
-        dispatch( SetEstadoRoleActualRole(estado) );
-        dispatch( SetModulosModuloRole(modulos) );
-
-        // Se establece que esta en modo edit
-        dispatch(SetIsEditRoleRole(true));
-
+        dispatch(startGetOneRol(idRol));
         dispatch(SetIdSeletedRole(cell.row.index));
 
     }

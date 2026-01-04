@@ -14,6 +14,7 @@ import {
     SetIdSeletedRole, 
     SetIsEditRoleRole, 
     SetNombreRoleActualRole, 
+    startEditRole, 
     startSaveRole
 } from '../../actions/RoleAction';
 
@@ -48,7 +49,7 @@ export const RoleBody = () => {
 
             e.preventDefault();
 
-            if (nombre === '' || descripcion === '') {
+            if (nombre === '') {
 
                 Swal.fire({
                     icon: 'warning',
@@ -89,7 +90,7 @@ export const RoleBody = () => {
 
             e.preventDefault();
 
-            if (nombre === '' || descripcion === '') {
+            if (nombre === '') {
 
                 Swal.fire({
                     icon: 'warning',
@@ -122,15 +123,8 @@ export const RoleBody = () => {
                 }
             }
 
-            dispatch(SetEditRole(editRole));
-            
-            // Se cambia el modo de edit
-            dispatch(SetIsEditRoleRole(false));
+            dispatch(startEditRole(editRole))
 
-            // Se reset el bancoActual
-            dispatch(CleanRoleActualRole());
-
-            dispatch(SetIdSeletedRole(0));
         }
 
     }
@@ -173,10 +167,6 @@ export const RoleBody = () => {
 
     const columns = [
         {
-            Header: "Nombre",
-            accessor: "nombre",
-        },
-        {
             Header: "Descripción",
             accessor: "descripcion",
         },
@@ -211,7 +201,7 @@ export const RoleBody = () => {
                     </div>
                 </div>
 
-                <div className="col-md-3 mb-3">
+                {/* <div className="col-md-3 mb-3">
                     <h5>Descripcion</h5>
                     <div className="input-group">
                         <span className="input-group-text">
@@ -226,7 +216,7 @@ export const RoleBody = () => {
                             onChange={e => handleInputChangeWithDispatch(e, SetDescripcionRoleActualRole)}
                         />
                     </div>
-                </div>
+                </div> */}
 
                 <div className="col-md-5 mb-3">
 

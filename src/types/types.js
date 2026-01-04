@@ -2377,8 +2377,11 @@ export const types = {
   SetDescripcionRoleActualRole : '[Role] SetDescripcionRoleActualRole',
   SetEstadoRoleActualRole      : '[Role] SetEstadoRoleActualRole',
   SetAddRolesRole              : '[Role] SetAddRolesRole',
+  SetModulosWebRole            : '[Role] SetModulosWebRole',
   SetPantallasWebRole          : '[Role] SetPantallasWebRole',
 
+  SetIdModuleModuloActualRole       : '[Role] SetIdModuleModuloActualRole',
+  SetNombreModuleModuloActualRole   : '[Role] SetNombreModuleModuloActualRole',
   SetIdPantallaModuloActualRole     : '[Role] SetIdPantallaModuloActualRole',
   SetNombrePantallaModuloActualRole : '[Role] SetNombrePantallaModuloActualRole',
   SetCrearModuloActualRole          : '[Role] SetCrearModuloActualRole',

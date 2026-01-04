@@ -36,9 +36,31 @@ export const startSaveRole = ( role ) => {
                         customClass: 'alert-class-login',
                         imageHeight: 100,
                     });
+
+                    const newRole = {
+                        nombreRol: role.nombre,
+                        descripcion: role.descripcion,
+                        pantallas: role.modulos.map(rol => {
+                            return {
+                                idModulo: rol.idModulo,
+                                idPantalla: rol.idPantalla,
+                                nombrePantalla: rol.nombrePantalla,
+                                nombrePantallaWeb: rol.nombrePantalla,
+                                acciones: {
+                                    idPantalla: rol.idPantalla,
+                                    crear: rol.crear,
+                                    modificar: rol.modificar,
+                                    borrar: rol.borrar,
+                                    ver: rol.ver
+                                },
+                                estado: true
+                            }
+                        }),
+                        estado: true
+                    }
                     
                     //Call end-point 
-                    const { data } = await suvesaApi.post('/Bancos/CrearBanco', role); //TODO: CAMBIAR END-POINT PARA CREAR LOS ROLES
+                    const { data } = await suvesaApi.post('/usuario/RegistrarConfiguracionPorRol', newRole);
                     const { status, responses } = data;
                     
                     //Quitar el loading
@@ -58,6 +80,131 @@ export const startSaveRole = ( role ) => {
                         dispatch( SetNombreRoleActualRole('') );
                         dispatch( SetDescripcionRoleActualRole('') );
                         dispatch( CleanModulosModuloActualRole() );
+
+                        dispatch( startGetAllRoles());
+
+                    } else {
+
+                        //Caso contrario respuesta incorrecto mostrar mensaje de error
+                        const { currentException } = data;
+                        const msj = currentException.split(',');
+
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: (currentException.includes(',')) ? msj[3] : currentException,
+                        });
+
+                    }
+
+                }
+
+            } catch (error) {
+
+                Swal.close();
+                console.log(error);
+                if (error.message === 'Request failed with status code 401') {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Usuario no valido',
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Ocurrio un problema a la guardar el banco',
+                    });
+                }
+            }
+        });
+    };
+}
+
+export const startEditRole = ( editRole ) => {
+
+    return async (dispatch) => {
+
+        //Mostrar un mensaje de confirmacion
+        Swal.fire({
+            title: `¿Desea editar el role ${ editRole.data.nombre }?`,
+            showDenyButton: true,
+            showCancelButton: false,
+            confirmButtonText: 'Editar',
+            denyButtonText: `Cancelar`,
+        }).then(async (result) => {
+
+            try {
+
+                if (result.isConfirmed) {
+
+                    //Mostrar el loading
+                    Swal.fire({
+                        title: 'Por favor, espere',
+                        allowEscapeKey: false,
+                        allowOutsideClick: false,
+                        showConfirmButton: false,
+                        imageUrl: loadingImage,
+                        customClass: 'alert-class-login',
+                        imageHeight: 100,
+                    });
+
+                    const Role = {
+                        idRol: editRole.data.id,
+                        nombreRol: editRole.data.nombre,
+                        descripcion: editRole.data.descripcion,
+                        pantallas: editRole.data.modulos.map(rol => {
+                            return {
+                                idModulo: rol.idModulo,
+                                idPantalla: rol.idPantalla,
+                                nombrePantalla: rol.nombrePantalla,
+                                nombrePantallaWeb: rol.nombrePantalla,
+                                acciones: {
+                                    idPantalla: rol.idPantalla,
+                                    crear: rol.crear,
+                                    modificar: rol.modificar,
+                                    borrar: rol.borrar,
+                                    ver: rol.ver
+                                },
+                                idRol: editRole.data.id,
+                                estado: true
+                            }
+                        }),
+                        estado: true
+                    }
+                    
+                    //Call end-point 
+                    const { data } = await suvesaApi.put('/usuario/EditarConfiguracionPorRol', Role);
+                    const { status, responses } = data;
+                    
+                    //Quitar el loading
+                    Swal.close();
+
+                    if (status === 0) {
+                        
+                        //Si es correcta entonces mostrar un mensaje de afirmacion
+                        Swal.fire({
+                            icon: 'success',
+                            title: `Rol editado correctamente`,
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+
+                        dispatch(SetEditRole(editRole));
+            
+                        // Se cambia el modo de edit
+                        dispatch(SetIsEditRoleRole(false));
+
+                        // Se reset el bancoActual
+                        dispatch(CleanRoleActualRole());
+
+                        dispatch(SetIdSeletedRole(0));
+
+                        dispatch( SetNombreRoleActualRole('') );
+                        dispatch( SetDescripcionRoleActualRole('') );
+                        dispatch( CleanModulosModuloActualRole() );
+
+                        dispatch( startGetAllRoles());
 
                     } else {
 
@@ -115,7 +262,7 @@ export const startValidateClaveInternaRole = ( password ) => {
 
                 // Se traen los roles y pantallas
                 dispatch( await startGetAllRoles() );
-                dispatch( await startGetAllPantallasWeb() );
+                dispatch( await startGetAllModulos() );
 
                 // Se cambia los icons
                 dispatch( SetActiveButtonSaveRole( true ));
@@ -176,16 +323,24 @@ export const startGetAllRoles = () => {
             });
 
             //Call end-point 
-            const { data } = await suvesaApi.get(`/Bancos/ObtenerBancos`); //TODO: CAMBIAR END-POINT PARA OBTENER TODOS LOS ROLES
+            const { data } = await suvesaApi.get(`/usuario/ObtenerRoles`);
             const { status, responses } = data;
 
             //Quitar el loading
             Swal.close();
-            
+
             if( status === 0 ) {
-                
+
+                const newRoles = responses.map(resp => {
+                    return {
+                        idRol: resp.idRol,
+                        descripcion: resp.descripcion,
+                        estado: resp.activo
+                    }
+                });
+
                 // Se guarda en el estado los bancos
-                dispatch( SetRolesRole( responses ) );
+                dispatch( SetRolesRole( newRoles ) );
 
             } else {
 
@@ -223,7 +378,7 @@ export const startGetAllRoles = () => {
     }
 }
 
-export const startGetAllPantallasWeb = () => {
+export const startGetAllModulos = () => {
 
     return async ( dispatch ) => {
           
@@ -241,7 +396,7 @@ export const startGetAllPantallasWeb = () => {
             });
 
             //Call end-point 
-            const { data } = await suvesaApi.get(`/Bancos/ObtenerBancos`); //TODO: CAMBIAR END-POINT PARA OBTENER TODOS LAS PANTALLAS
+            const { data } = await suvesaApi.get(`/usuario/ObtenerModulos`);
             const { status, responses } = data;
 
             //Quitar el loading
@@ -249,8 +404,181 @@ export const startGetAllPantallasWeb = () => {
             
             if( status === 0 ) {
                 
+                const newModules = responses.map(resp => {
+                    return {
+                        idModulo: resp.idModulo,
+                        descripcion: resp.descripcionWeb
+                    }
+                });
+
                 // Se guarda en el estado los bancos
-                dispatch( SetPantallasWebRole( responses ) );
+                dispatch( SetModulosWebRole( newModules ) );
+
+            } else {
+
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                console.log( currentException );
+                
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al obtener los modulos',
+                });
+                
+            }
+
+        } catch (error) {
+
+            Swal.close();
+            console.log(error);
+            if( error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al obtener los roles',
+                });
+            }
+        }
+        
+    }
+}
+
+export const startGetAllPantallasWeb = (idModulo) => {
+
+    return async ( dispatch ) => {
+          
+        try {
+
+            //Mostrar el loading
+            Swal.fire({
+                title: 'Por favor, espere',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                imageUrl: loadingImage,
+                customClass: 'alert-class-login',
+                imageHeight: 100,
+            });
+
+            //Call end-point 
+            const { data } = await suvesaApi.get(`/usuario/ObtenerVetanas?IdModulo=${idModulo}`);
+            const { status, responses } = data;
+
+            //Quitar el loading
+            Swal.close();
+            
+            if( status === 0 ) {
+
+                const newPantalla = responses.map(resp => {
+                    return {
+                        idVentana: resp.idVentana,
+                        descripcion: resp.descripcion
+                    }
+                });
+
+                // Se guarda en el estado los bancos
+                dispatch( SetPantallasWebRole( newPantalla ) );
+
+            } else {
+
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                console.log( currentException );
+                
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al obtener los roles',
+                });
+                
+            }
+
+        } catch (error) {
+
+            Swal.close();
+            console.log(error);
+            if( error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al obtener los roles',
+                });
+            }
+        }
+        
+    }
+}
+
+export const startGetOneRol = (idRol) => {
+
+    return async ( dispatch ) => {
+          
+        try {
+
+            //Mostrar el loading
+            Swal.fire({
+                title: 'Por favor, espere',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                imageUrl: loadingImage,
+                customClass: 'alert-class-login',
+                imageHeight: 100,
+            });
+
+            //Call end-point 
+            const { data } = await suvesaApi.get(`/usuario/ObtenerConfiguracionPorRol?IdRol=${idRol}`);
+            const { status, responses } = data;
+
+            //Quitar el loading
+            Swal.close();
+
+            if( status === 0 ) {
+                
+                const {
+                    idRol,
+                    nombreRol,
+                    estado,
+                    pantallas
+                } = responses;
+
+                // Se establece el idBanco seleccionado
+                dispatch( SetIdRoleActualRole(idRol) );
+                dispatch( SetNombreRoleActualRole(nombreRol) );
+                dispatch( SetEstadoRoleActualRole(estado) );
+
+                const newModules = pantallas.map(pantalla => {
+                    return {
+                        idModulo: pantalla.idModulo,
+                        nombreModulo: pantalla.nombreModulo,
+                        idPantalla: pantalla.idPantalla,
+                        nombrePantalla: pantalla.nombrePantalla,
+                        crear: pantalla.acciones.crear,
+                        modificar: pantalla.acciones.modificar,
+                        borrar: pantalla.acciones.borrar,
+                        ver: pantalla.acciones.ver
+                    }
+                    
+                });
+
+                dispatch( SetModulosModuloRole(newModules) );
+        
+                // Se establece que esta en modo edit
+                dispatch(SetIsEditRoleRole(true));
+            
 
             } else {
 
@@ -342,6 +670,16 @@ export const SetEstadoRoleActualRole = (value) => ({
 
 export const SetAddRolesRole = (value) => ({
     type: types.SetAddRolesRole,
+    payload: value
+})
+
+export const SetIdModuleModuloActualRole = (value) => ({
+    type: types.SetIdModuleModuloActualRole,
+    payload: value
+})
+
+export const SetNombreModuleModuloActualRole = (value) => ({
+    type: types.SetNombreModuleModuloActualRole,
     payload: value
 })
 
@@ -444,5 +782,10 @@ export const SetDeleteRole = (value) => ({
 
 export const SetRolesRole = (value) => ({
     type: types.SetRolesRole,
+    payload: value
+})
+
+export const SetModulosWebRole = (value) => ({
+    type: types.SetModulosWebRole,
     payload: value
 })

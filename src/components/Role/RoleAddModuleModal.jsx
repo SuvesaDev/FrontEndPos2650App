@@ -18,12 +18,15 @@ import {
     SetBorrarModuloActualRole,
     SetCrearModuloActualRole, 
     SetEditModulosRole, 
+    SetIdModuleModuloActualRole, 
     SetIdModuloSeletedRole, 
     SetIdPantallaModuloActualRole, 
     SetIsEditModuloRole, 
     SetModificarModuloActualRole,
+    SetNombreModuleModuloActualRole,
     SetNombrePantallaModuloActualRole,
-    SetVerModuloActualRole
+    SetVerModuloActualRole,
+    startGetAllPantallasWeb
 } from '../../actions/RoleAction';
 
 export const RoleAddModuleModal = () => {
@@ -35,11 +38,14 @@ export const RoleAddModuleModal = () => {
         moduloActual,
         modulos,
         pantallasWeb,
+        modulosWeb,
         isEditModulo,
         idModuloSeleted
     } = useSelector(state => state.role);
 
     const { 
+        idModulo,
+        nombreModulo,
         idPantalla,
         nombrePantalla,
         crear,
@@ -49,6 +55,10 @@ export const RoleAddModuleModal = () => {
     } = moduloActual;
 
     const columns = [
+        {
+            Header: "Nombre Modulo",
+            accessor: "nombreModulo",
+        },
         {
             Header: "Nombre Pantalla",
             accessor: "nombrePantalla",
@@ -79,11 +89,27 @@ export const RoleAddModuleModal = () => {
         dispatch(action(target.checked));
     };
 
+    const changeNombreModulo = ({ target }) => {
+
+        if(target.value != null || target.value != undefined) {
+
+            const nombre = modulosWeb.find(modulo => modulo.idModulo == target.value).descripcion;
+
+            dispatch(SetIdModuleModuloActualRole(target.value));
+            dispatch(SetNombreModuleModuloActualRole(nombre));
+            dispatch(SetIdPantallaModuloActualRole(0));
+
+            dispatch(startGetAllPantallasWeb(target.value));
+
+        }
+
+    };
+
     const changeNombrePantalla = ({ target }) => {
 
         if(target.value != null || target.value != undefined) {
 
-            const nombre = pantallasWeb.find(pantalla => pantalla.id == target.value).nombre;
+            const nombre = pantallasWeb.find(pantalla => pantalla.idVentana == target.value).descripcion;
 
             dispatch(SetIdPantallaModuloActualRole(target.value));
             dispatch(SetNombrePantallaModuloActualRole(nombre));
@@ -99,7 +125,10 @@ export const RoleAddModuleModal = () => {
         const pantalla = modulos.find(mod => mod.idPantalla == idPantalla);
 
         if( pantalla == null || pantalla == undefined) {
+
             const newModulo = {
+                idModulo,
+                nombreModulo,
                 idPantalla,
                 nombrePantalla,
                 crear,
@@ -232,6 +261,44 @@ export const RoleAddModuleModal = () => {
                             <div className="row mb-2 text-center">
 
                                 <div className="col-md-3 mb-2">
+                                    <h5>Nombre Modulo</h5>
+                                    <div className="input-group">
+                                        <span className="input-group-text">
+                                            <FaTabletScreenButton className="iconSize" />
+                                        </span>
+                                        <select
+                                            type="text"
+                                            name="codModulo"
+                                            className="form-select"
+                                            value={idModulo}
+                                            onChange={e => changeNombreModulo(e)}
+                                        >
+                                            <option value={0} selected disabled hidden>
+                                                {" "}
+                                                Seleccione...{" "}
+                                            </option>
+                                            { 
+                                                modulosWeb != null ? (
+                                                    modulosWeb.length === 0 ? (
+                                                    <option value="">No se cargaron los modulos</option>
+                                                    ) : (
+                                                        modulosWeb.map((modulo) => {
+                                                            return (
+                                                                <option key={modulo.idModulo} value={modulo.idModulo}>
+                                                                    {" "}
+                                                                    {modulo.descripcion}{" "}
+                                                                </option>
+                                                            );
+                                                        })
+                                                    )
+                                                ) : (
+                                                    <option value="">No se cargaron las pantallas</option>
+                                                )}
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div className="col-md-3 mb-2">
                                     <h5>Nombre Pantalla</h5>
                                     <div className="input-group">
                                         <span className="input-group-text">
@@ -255,9 +322,9 @@ export const RoleAddModuleModal = () => {
                                                     ) : (
                                                         pantallasWeb.map((pantalla) => {
                                                             return (
-                                                                <option key={pantalla.id} value={pantalla.id}>
+                                                                <option key={pantalla.idVentana} value={pantalla.idVentana}>
                                                                     {" "}
-                                                                    {pantalla.nombre}{" "}
+                                                                    {pantalla.descripcion}{" "}
                                                                 </option>
                                                             );
                                                         })
