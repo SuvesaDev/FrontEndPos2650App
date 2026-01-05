@@ -599,6 +599,84 @@ export const startGetAllPerfiles = () => {
     }
 }
 
+export const startGetAllRoles = () => {
+
+    return async ( dispatch ) => {
+
+        //Mostrar el loading
+        Swal.fire({
+            title: 'Por favor, espere cargando roles',
+            allowEscapeKey: false,
+            allowOutsideClick: false,
+            showConfirmButton: false,
+            imageUrl: loadingImage,
+            customClass: 'alert-class-login',
+            imageHeight: 100,
+        });
+          
+        try {
+
+            //Call end-point 
+            const { data } = await suvesaApi.get('/usuario/ObtenerRoles');
+            const { status, responses } = data;
+            
+            if( status === 0 ) {
+
+                const newRoles = responses.map(resp => {
+                    return {
+                        idRol: resp.idRol,
+                        descripcion: resp.descripcion,
+                        estado: resp.activo
+                    }
+                });
+
+                // Establece los roles en el estado
+                dispatch( SetRolesUsers(newRoles) );
+
+                //Quitar el loading
+                Swal.close();
+                
+            } else {
+
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
+
+                //Quitar el loading
+                Swal.close();
+
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
+                
+            }
+
+        } catch (error) {
+
+            //Quitar el loading
+            Swal.close();
+
+            console.log(error);
+            if( error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Obtener los perfiles Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al obtener los roles',
+                });
+            }
+        }
+        
+    }
+}
+
 // Normal Actions
 export const SetActiveButtonNewUsers = (value) => ({
     type: types.SetActiveButtonNewUsers,
@@ -647,6 +725,11 @@ export const SetClaveInternaUsers = (value) => ({
 
 export const SetPerfilUsers = (value) => ({
     type: types.SetPerfilUsers,
+    payload: value
+})
+
+export const SetRolUsers = (value) => ({
+    type: types.SetRolUsers,
     payload: value
 })
 
@@ -800,5 +883,10 @@ export const SetIsAgenteCostaPetsUsers = (value) => ({
 
 export const SetPerfilesUsers = (value) => ({
     type: types.SetPerfilesUsers,
+    payload: value
+})
+
+export const SetRolesUsers = (value) => ({
+    type: types.SetRolesUsers,
     payload: value
 })

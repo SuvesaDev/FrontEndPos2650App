@@ -21,6 +21,7 @@ const initialState = {
         nombre: false
     },
     perfiles: [],
+    roles: [],
     user: {
         id: 0,
         idUsuario: '',
@@ -28,6 +29,7 @@ const initialState = {
         claveEntrada: '',
         claveInterna: '',
         perfil: 0,
+        rol: 0,
         foto: '',
         iniciales: '',
         cambiarPrecio: false,
@@ -125,6 +127,15 @@ export const usersReducer = (state = initialState, action) => {
                 user: {
                     ...state.user,
                     perfil: action.payload
+                }
+            }
+
+        case types.SetRolUsers:
+            return {
+                ...state,
+                user: {
+                    ...state.user,
+                    rol: action.payload
                 }
             }
 
@@ -264,6 +275,7 @@ export const usersReducer = (state = initialState, action) => {
                     claveEntrada: '',
                     claveInterna: '',
                     perfil: 0,
+                    rol: 0,
                     foto: '',
                     iniciales: '',
                     cambiarPrecio: false,
@@ -407,6 +419,12 @@ export const usersReducer = (state = initialState, action) => {
             return {
                 ...state,
                 perfiles: action.payload
+            }
+
+        case types.SetRolesUsers:
+            return {
+                ...state,
+                roles: action.payload
             }
 
         default:

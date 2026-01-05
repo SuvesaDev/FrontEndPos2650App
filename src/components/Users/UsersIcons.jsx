@@ -18,6 +18,7 @@ import {
     startActiveAndDisableUsers,
     startEditUsers,
     startGetAllPerfiles,
+    startGetAllRoles,
     startValidatePassword
 } from '../../actions/UsersAction';
 
@@ -49,6 +50,7 @@ export const UsersIcons = () => {
         claveEntrada,
         claveInterna,
         perfil,
+        rol,
         iniciales,
         cambiarPrecio,
         porcPrecio,
@@ -77,6 +79,7 @@ export const UsersIcons = () => {
 
             //Traer catalogos
             dispatch( startGetAllPerfiles() );
+            dispatch( startGetAllRoles() );            
         }
 
     }
@@ -107,6 +110,7 @@ export const UsersIcons = () => {
                     claveEntrada: claveEntrada,
                     claveInterna: claveInterna,
                     perfil: parseInt(perfil),
+                    idRol: parseInt(rol),
                     iniciales: iniciales,
                     cambiarPrecio: cambiarPrecio,
                     porcPrecio: porcPrecio,
@@ -144,6 +148,7 @@ export const UsersIcons = () => {
                     claveEntrada: claveEntrada,
                     claveInterna: claveInterna,
                     perfil: perfil,
+                    idRol: rol,
                     iniciales: iniciales,
                     cambiarPrecio: cambiarPrecio,
                     porcPrecio: porcPrecio,

@@ -1591,6 +1591,7 @@ export const types = {
   SetClaveEntradaUsers: '[Users] SetClaveEntradaUsers',
   SetClaveInternaUsers: '[Users] SetClaveInternaUsers',
   SetPerfilUsers: '[Users] SetPerfilUsers',
+  SetRolUsers: '[Users] SetRolUsers',
   SetFotoUsers: '[Users] SetFotoUsers',
   SetInicialesUsers: '[Users] SetInicialesUsers',
   SetCambiarPrecioUsers: '[Users] SetCambiarPrecioUsers',
@@ -1618,6 +1619,7 @@ export const types = {
 
   SetShowCostaPetsUsers: '[Users] SetShowCostaPetsUsers',
   SetPerfilesUsers: '[Users] SetPerfilesUsers',
+  SetRolesUsers: '[Users] SetRolesUsers',
   
   CleanUsers: '[Users] CleanUsers',
 
