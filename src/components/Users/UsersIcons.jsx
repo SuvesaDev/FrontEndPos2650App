@@ -91,6 +91,10 @@ export const UsersIcons = () => {
             e.preventDefault();
 
             dispatch(SetIsOpenModalSearchUsers(true));
+
+            //Traer catalogos
+            dispatch( startGetAllPerfiles() );
+            dispatch( startGetAllRoles() );    
         }
 
     }

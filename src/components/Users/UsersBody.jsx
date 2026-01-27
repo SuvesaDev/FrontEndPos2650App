@@ -30,6 +30,7 @@ import {
     SetVisibleClaveInternaUsers
 } from '../../actions/UsersAction';
 import { FaCashRegister, FaEnvelope, FaEye, FaEyeSlash, FaIdCard, FaKey, FaPercentage, FaUser, FaUserCircle } from 'react-icons/fa';
+import { useEffectEvent } from 'react';
 
 export const UsersBody = () => {
 

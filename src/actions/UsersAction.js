@@ -167,7 +167,7 @@ export const startSearchUsers = ( searchUser ) => {
     }
 }
 
-export const startGetOneUsers = ( idUser ) => {
+export const startGetOneUsers = ( idUser, perfiles ) => {
 
     return async (dispatch) => {
 
@@ -191,7 +191,7 @@ export const startGetOneUsers = ( idUser ) => {
             Swal.close();
             
             if (status === 0 && responses != null) {
-                    
+                console.log(responses)
                 const user = {
                     id: responses.id,
                     idUsuario: responses.idUsuario,
@@ -199,6 +199,7 @@ export const startGetOneUsers = ( idUser ) => {
                     claveEntrada: responses.claveEntrada,
                     claveInterna: responses.claveInterna,
                     perfil: responses.perfil,
+                    rol: responses.idRol,
                     foto: null,
                     iniciales: responses.iniciales,
                     cambiarPrecio: responses.cambiarPrecio,
@@ -211,6 +212,16 @@ export const startGetOneUsers = ( idUser ) => {
                     email: responses.email,
                     maximoVentas: responses.cantidadPreventas,
                     activo: responses.activo,
+                    isAdministradorCostaPets: responses.administrador,
+                    isAgenteCostaPets: responses.agenteCostaPets
+                }
+
+                const namePerfilSelected = perfiles.find( per => per.idPerfil == responses.perfil );
+                
+                if(namePerfilSelected.descripcion === "Costa Pets"){
+                    dispatch(SetShowCostaPetsUsers(true));
+                } else {
+                    dispatch(SetShowCostaPetsUsers(false));
                 }
                 
                 // Se insertan en el estado
