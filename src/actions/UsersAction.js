@@ -191,7 +191,7 @@ export const startGetOneUsers = ( idUser, perfiles ) => {
             Swal.close();
             
             if (status === 0 && responses != null) {
-                console.log(responses)
+                
                 const user = {
                     id: responses.id,
                     idUsuario: responses.idUsuario,

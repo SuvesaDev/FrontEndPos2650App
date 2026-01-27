@@ -105,6 +105,17 @@ export const UsersIcons = () => {
 
             if( isValidPassword() ) {
 
+
+                if(!isValidEmail(email)) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Advertencia',
+                        text: 'El correo electronico debe tener un formato valido.',
+                    });
+
+                    return;
+                }
+
                 e.preventDefault();
 
                 const newUser = {
@@ -142,6 +153,16 @@ export const UsersIcons = () => {
         if (activeButtonSave) {
 
             if( isValidPassword() ) {
+
+                if(!isValidEmail(email)) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Advertencia',
+                        text: 'El correo electronico debe tener un formato valido.',
+                    });
+
+                    return;
+                }
 
                 e.preventDefault();
 
@@ -294,6 +315,12 @@ export const UsersIcons = () => {
 
         return true;
 
+    }
+
+    const isValidEmail = (email) => {
+
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email);        
     }
 
     return (
