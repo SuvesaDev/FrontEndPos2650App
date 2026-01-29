@@ -384,6 +384,12 @@ export const SidebarData = [
                 cName: 'vet_nav-text'
             },
             {
+                title: 'Roles',
+                path: '/parameters/role',
+                icon: <FaUserCircle />,
+                cName: 'vet_nav-text'
+            },
+            {
                 title: 'Empresas',
                 path: '/parameters/company',
                 icon: <IoBusinessSharp />,
