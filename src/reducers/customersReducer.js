@@ -451,7 +451,7 @@ export const CustomersReducer = (state = initialState, action) => {
                 isEditDatosFacturacion: false,
                 idDatoFacturacionEdit: 0,
                 isOpenFromConsignment: false,
-                permisos: [],
+                permisos: state.permisos
             }
 
         case types.ActiveButtonNewCustomers:
