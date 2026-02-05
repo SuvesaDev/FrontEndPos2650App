@@ -77,20 +77,38 @@ export const InventorySearchCodigoCabysTable = ({ columns, data }) => {
   return (
     <>
       <div className="col-md-12 mb-3">
-        <div className="input-group">
-          <span className="input-group-text">
-            <FaSearch className="iconSize" onClick={handleSearchCodigoCabys}/>
-          </span>
-          <input
-            type="text"
-            id="BuscaV"
-            value={valorfiltroCodigoCabys}
-            className="form-control"
-            placeholder="Buscar...."
-            onKeyDown={handleKeyDownUsuario}
-            onChange={ e => handleInputChangeWithDispatch(e, SetValorFiltroCodigoCabysInventory ) }
-          />
+
+        <div className="row mb-3 text-md-center">
+          <div className="col-md-12 mb-3">
+            <div className="input-group">
+              <span className="input-group-text">
+                <FaSearch className="iconSize" />
+              </span>
+              <input
+                type="text"
+                id="BuscaV"
+                value={valorfiltroCodigoCabys}
+                className="form-control"
+                placeholder="Buscar...."
+                onKeyDown={handleKeyDownUsuario}
+                onChange={ e => handleInputChangeWithDispatch(e, SetValorFiltroCodigoCabysInventory ) }
+              />
+              <button
+                className="btn btn-primary"
+                type="button"
+                onClick={handleSearchCodigoCabys}
+              >
+                <FaSearch className="iconSize" />
+              </button>
+            </div>
+          </div>
+
+          <div className="col-md-9 mb-3">
+            
+          </div>
+
         </div>
+        
       </div>
       <div className="table-responsive-md tablaP">
         <table
