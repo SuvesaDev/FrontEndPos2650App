@@ -15,6 +15,7 @@ import { InventoryBodyFeaturesRebajaOtroArticulo } from "./InventoryBodyFeatures
 import { InventoryBodyFeaturesInformacionPost } from "./InventoryBodyFeaturesInformacionPost";
 import { InventoryBodyFeaturesFormula } from "./InventoryBodyFeaturesFormula";
 import { InventoryBodyFeaturesConvertidor } from "./InventoryBodyFeaturesConvertidor";
+import { InventoryBodyFeaturesImagen } from "./InventoryBodyFeaturesImagen";
 
 export const InventoryBodyFeatures = () => {
   const state = useSelector((state) => state.inventory);
@@ -60,6 +61,9 @@ export const InventoryBodyFeatures = () => {
 
       case "Convertidor":
         return <InventoryBodyFeaturesConvertidor />;
+
+      case "Imagen":
+        return <InventoryBodyFeaturesImagen />;
 
       default:
         break;

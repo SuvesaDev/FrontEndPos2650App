@@ -3688,3 +3688,8 @@ export const SetListaArticulosDisponiblesConvertidorLotesIntentory = (value) => 
     type: types.SetListaArticulosDisponiblesConvertidorLotesIntentory,
     payload: value
 })
+
+export const SetBase64ImagenIntentory = (value) => ({
+    type: types.SetBase64ImagenIntentory,
+    payload: value
+})

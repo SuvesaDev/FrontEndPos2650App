@@ -149,6 +149,7 @@ const initialState = {
     cantidadDisponibleConvertidorLotes: 0,
     cantidadConvertirConvertidorLotes: 0,
     listaArticulosDisponiblesConvertidor: [],
+    base64Imagen: '',
     inventory: {
         codigo: null,
         cod_Articulo: null,
@@ -2525,6 +2526,12 @@ export const InventoryReducer = (state = initialState, action) => {
             return {
                 ...state,
                 listaArticulosDisponiblesConvertidor: action.payload
+            }
+
+        case types.SetBase64ImagenIntentory:
+            return {
+                ...state,
+                base64Imagen: action.payload
             }
             
 
