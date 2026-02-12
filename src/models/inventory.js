@@ -109,7 +109,7 @@ export class Inventory {
         this.presentaCant = presentaCant || 0,
         this.codPresentacion = codPresentacion || 1,
         this.codMarca = codMarca || 1,
-        this.subFamilia = subFamilia || '',
+        this.subFamilia = subFamilia || 0,
         this.minima = minima || 0,
         this.puntoMedio = puntoMedio || 0,
         this.maxima = maxima || 0,

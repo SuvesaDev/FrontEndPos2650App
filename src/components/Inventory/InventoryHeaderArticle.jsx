@@ -358,18 +358,18 @@ export const InventoryHeaderArticle = () => {
                 handleInputChangeWithDispatch(e, SetSubFamiliaInventory)
               }
             >
-              <option value="" selected disabled hidden>
+              <option value={""} selected disabled hidden>
                 {" "}
                 Seleccione...{" "}
               </option>
-              {subFamiliasInventory != null ? (
+              {subFamiliasInventory != null && subFamiliasInventory != [] ? (
                 subFamiliasInventory.map((tipo) => {
                   return (
                     <option value={tipo.codigo}> {tipo.descripcion} </option>
                   );
                 })
               ) : (
-                <option value="">No se cargaron las familias</option>
+                <option value={""}>No se cargaron las familias</option>
               )}
             </select>
             <button

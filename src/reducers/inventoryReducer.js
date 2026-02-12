@@ -158,7 +158,7 @@ const initialState = {
         presentaCant: null,
         codPresentacion: null,
         codMarca: null,
-        subFamilia: null,
+        subFamilia: 0,
         minima: null,
         puntoMedio: null,
         maxima: null,
