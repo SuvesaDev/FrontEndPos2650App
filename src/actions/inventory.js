@@ -5,7 +5,7 @@ import { suvesaApi } from '../api';
 
 import loadingImage from '../assets/loading_snipiner.gif';
 
-export const startSaveInventory = ( inventory, relatedArticle ) => {
+export const startSaveInventory = ( inventory, relatedArticle, imagen ) => {
 
     return async ( dispatch ) => {
 
@@ -37,7 +37,7 @@ export const startSaveInventory = ( inventory, relatedArticle ) => {
                     
                     //Call end-point 
                     const { data } = await suvesaApi.post('/inventario', inventory.toJson() );
-                    const { status } = data;
+                    const { status, responses } = data;
                     
                     //Quitar el loading
                     Swal.close();
@@ -55,6 +55,33 @@ export const startSaveInventory = ( inventory, relatedArticle ) => {
 
                         //Clear state Price Sell
                         dispatch( CleanArrayStatePricesSellInventory() );
+
+                        if(imagen.base64Imagen != '') {
+
+                            const newImagen = {
+                                idImagenArticulo: 0,
+                                idInventario: responses.codigo,
+                                imagen: imagen.base64Imagen,
+                                tipo: obtenerExtension(imagen.name),
+                                extencion: imagen.name
+                            }
+                            
+                            //Call end-point 
+                            const { data } = await suvesaApi.post(`/ArticulosImagenes/InsertarArticuloImagen`, newImagen);
+                            const { status } = data;
+                            
+                            if( status != 0 ) {
+                                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                                const { currentException } = data;
+                                const msj = currentException.split(',');
+                                
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Error',
+                                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                                });
+                            }
+                        }
 
                         //Save Articulos Relacionados
                         if( relatedArticle.length > 0 ) {
@@ -99,7 +126,7 @@ export const startSaveInventory = ( inventory, relatedArticle ) => {
 
                             //Si es correcta entonces mostrar un mensaje de afirmacion pero con error en carta
                             Swal.fire({
-                                icon: 'warning',
+                                icon: 'success',
                                 title: 'Inventario ingresado sin articulos relacionados',
                                 showConfirmButton: true,
                             })
@@ -514,11 +541,14 @@ export const startGetOneInventory = ( codigo ) => {
                 // Se obtiene el stock del articulo
                 await GetStockArticulo(dispatch, responses.codigo);
 
+                // Se obtiene la imagen del articulo
+
+
                 //Call end-point de la Articulos relacionados
                 const { data } = await suvesaApi.post('/articulosRelacionados/BuscarArticulosRelacionados', { codigoPrincipal: responses.codigo } );
                 
-               // Cerrar el modal de espera
-               Swal.close();
+                // Cerrar el modal de espera
+                Swal.close();
 
                 // Si tiene rebajaOtro se activa el checkbox en el metodo de action
                 // if( responses.descargaOtro ) {
@@ -2316,6 +2346,10 @@ export const startConvertirCantidadDisponiblesConvertidorLotesInventory = ( requ
     }
 }
 
+const obtenerExtension = (nameFile) => {
+    return nameFile.slice((nameFile.lastIndexOf(".") - 1 >>> 0) + 2);
+}
+
 // Functions
 const CalculatePreciosVenta = ( base, flete, otroC, impuesto, pre ) => {
 
@@ -2430,6 +2464,37 @@ const GetCostoArticulo = async ( codArticulo, costoArt, nombreArt ) => {
                showConfirmButton: true,
            });
         }
+
+    } catch(error) {
+        throw error;
+    }
+}
+
+const GetImageArticulo = async ( dispatch, idInventario ) => {
+
+    try {
+        
+        //Call end-point
+        const resp = await suvesaApi.post(`/ArticulosImagenes/ObtenerArticuloImagen?Requets=${idInventario}`);
+        const { status, responses } = resp.data;
+
+        // Verificar la respuesta
+        if( status === 0 ) {
+
+            console.log(responses)
+            // Meter el stock
+            // dispatch( SetStockInventory( responses ) );
+
+            // dispatch( SetLastStockUpdateInventory( responses ) );
+
+       } else {
+
+            Swal.fire({
+               icon: 'warning',
+               title: 'Stock del articulo no cargado correctamente',
+               showConfirmButton: true,
+           });
+       }
 
     } catch(error) {
         throw error;
@@ -3691,5 +3756,10 @@ export const SetListaArticulosDisponiblesConvertidorLotesIntentory = (value) => 
 
 export const SetBase64ImagenIntentory = (value) => ({
     type: types.SetBase64ImagenIntentory,
+    payload: value
+})
+
+export const SetNameImagenIntentory = (value) => ({
+    type: types.SetNameImagenIntentory,
     payload: value
 })

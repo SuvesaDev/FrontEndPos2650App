@@ -480,6 +480,7 @@ export const types = {
   SetCantidadConvertirConvertidorLotesIntentory: '[Inventory] SetCantidadConvertirConvertidorLotesIntentory',
   SetListaArticulosDisponiblesConvertidorLotesIntentory: '[Inventory] SetListaArticulosDisponiblesConvertidorLotesIntentory',
   SetBase64ImagenIntentory: '[Inventory] SetBase64ImagenIntentory',
+  SetNameImagenIntentory: '[Inventory] SetNameImagenIntentory',
 
   // Customers actions
   SelectTabCustomers: '[Customers] SelectTabCustomers',

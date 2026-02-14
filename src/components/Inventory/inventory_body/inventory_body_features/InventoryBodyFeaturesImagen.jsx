@@ -1,7 +1,10 @@
 import { useRef, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-import { SetBase64ImagenIntentory } from "../../../../actions/inventory";
+import { 
+  SetBase64ImagenIntentory, 
+  SetNameImagenIntentory 
+} from "../../../../actions/inventory";
 
 export const InventoryBodyFeaturesImagen = () => {
 
@@ -9,13 +12,19 @@ export const InventoryBodyFeaturesImagen = () => {
     const inputRef = useRef();
     const [preview, setPreview] = useState(null);
 
+    const { disableInputs } = useSelector((state) => state.inventory);
+
     const openFileSelector = () => {
-      inputRef.current.click();
+      if(!disableInputs) {
+        inputRef.current.click();
+      }
     };
 
     const handleChange = (e) => {
       const file = e.target.files[0];
       if (!file) return;
+      
+      dispatch(SetNameImagenIntentory(file.name));
 
       const reader = new FileReader();
       reader.readAsDataURL(file);
