@@ -21,6 +21,7 @@ export const startSaveInventory = ( inventory, relatedArticle, imagen ) => {
             try {
                 var resultRelatedArticle = null;
                 let relatedArticles = [];
+                let saveImage = false;
 
                 if (result.isConfirmed) {
 
@@ -59,7 +60,7 @@ export const startSaveInventory = ( inventory, relatedArticle, imagen ) => {
                         if(imagen.base64Imagen != '') {
 
                             const newImagen = {
-                                idImagenArticulo: 0,
+                                idImagenArticulo: imagen.idImagen,
                                 idInventario: responses.codigo,
                                 imagen: imagen.base64Imagen,
                                 tipo: obtenerExtension(imagen.name),
@@ -70,16 +71,8 @@ export const startSaveInventory = ( inventory, relatedArticle, imagen ) => {
                             const { data } = await suvesaApi.post(`/ArticulosImagenes/InsertarArticuloImagen`, newImagen);
                             const { status } = data;
                             
-                            if( status != 0 ) {
-                                //Caso contrario respuesta incorrecto mostrar mensaje de error
-                                const { currentException } = data;
-                                const msj = currentException.split(',');
-                                
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Error',
-                                    text: (currentException.includes(',')) ? msj[3] : currentException,
-                                });
+                            if( status === 0 ) {                              
+                                saveImage = true;
                             }
                         }
 
@@ -101,7 +94,7 @@ export const startSaveInventory = ( inventory, relatedArticle, imagen ) => {
                         }
 
                         //Quitar el loading
-                        Swal.close();
+                        // Swal.close();
 
                         //Clear state Related Articles
                         dispatch( CleanInputsRelatedArticleInventory() );
@@ -113,23 +106,49 @@ export const startSaveInventory = ( inventory, relatedArticle, imagen ) => {
                         dispatch( CleanRelatedArticleInventory() );
 
                         if(resultRelatedArticle === 'ok' ) {
-                        
-                            //Si es correcta entonces mostrar un mensaje de afirmacion
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Inventario ingresado correctamente',
-                                showConfirmButton: false,
-                                timer: 2500
-                            })
+                            
+                            if(imagen.base64Imagen != '') {
+
+                                let mensaje = (saveImage) ? 'Imagen guardada.' : 'Imagen NO guardada.';
+
+                                //Si es correcta entonces mostrar un mensaje de afirmacion pero con error en carta
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: `IInventario ingresado correctamente. ${mensaje}`,
+                                    showConfirmButton: true,
+                                })
+
+                            } else {
+                                //Si es correcta entonces mostrar un mensaje de afirmacion pero con error en carta
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Inventario ingresado correctamente',
+                                    showConfirmButton: true,
+                                })
+                            }
                             
                         } else {
 
-                            //Si es correcta entonces mostrar un mensaje de afirmacion pero con error en carta
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Inventario ingresado sin articulos relacionados',
-                                showConfirmButton: true,
-                            })
+                            if(imagen.base64Imagen != '') {
+
+                                let mensaje = (saveImage) ? 'Imagen guardada.' : 'Imagen NO guardada.';
+
+                                //Si es correcta entonces mostrar un mensaje de afirmacion pero con error en carta
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: `Inventario ingresado sin articulos relacionados. ${mensaje}`,
+                                    showConfirmButton: true,
+                                })
+
+                            } else {
+                                //Si es correcta entonces mostrar un mensaje de afirmacion pero con error en carta
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Inventario ingresado sin articulos relacionados',
+                                    showConfirmButton: true,
+                                })
+                            }
+
                         }
 
                     } else {
@@ -171,7 +190,7 @@ export const startSaveInventory = ( inventory, relatedArticle, imagen ) => {
     }
 }
 
-export const startEditInventory = ( inventory, relatedArticle ) => {
+export const startEditInventory = ( inventory, relatedArticle, imagen, hasImagen ) => {
 
     return async (dispatch) => {
 
@@ -188,6 +207,7 @@ export const startEditInventory = ( inventory, relatedArticle ) => {
 
                 var resultRelatedArticle = null;
                 let relatedArticles = [];
+                
                 
                 if( result.isConfirmed ) {
 
@@ -228,6 +248,40 @@ export const startEditInventory = ( inventory, relatedArticle ) => {
 
                         //Clear state Price Sell
                         dispatch( CleanArrayStatePricesSellInventory() );
+
+                        if(imagen.base64Imagen != '') {
+
+                            let statusImagen;
+
+                            const newImagen = {
+                                idImagenArticulo: imagen.idImagen,
+                                idInventario: responses.codigo,
+                                imagen: imagen.base64Imagen,
+                                tipo: obtenerExtension(imagen.name),
+                                extencion: imagen.name
+                            }
+                            
+                            //Call end-point 
+                            if(hasImagen) {
+                                const { data } = await suvesaApi.post(`/ArticulosImagenes/InsertarArticuloImagen`, newImagen);
+                                statusImagen = data.status;
+                            } else {
+                                const { data } = await suvesaApi.put(`/ArticulosImagenes/ActualizarImagenArticulo`, newImagen);
+                                statusImagen = data.status;
+                            }
+
+                            if( statusImagen != 0 ) {
+                                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                                const { currentException } = data;
+                                const msj = currentException.split(',');
+                                
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Error',
+                                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                                });
+                            }
+                        }
 
                         //Save Articulos Relacionados
                         if( relatedArticle.length > 0 ) {
@@ -542,7 +596,7 @@ export const startGetOneInventory = ( codigo ) => {
                 await GetStockArticulo(dispatch, responses.codigo);
 
                 // Se obtiene la imagen del articulo
-
+                await GetImageArticulo(dispatch, responses.codigo);
 
                 //Call end-point de la Articulos relacionados
                 const { data } = await suvesaApi.post('/articulosRelacionados/BuscarArticulosRelacionados', { codigoPrincipal: responses.codigo } );
@@ -2475,7 +2529,7 @@ const GetImageArticulo = async ( dispatch, idInventario ) => {
     try {
         
         //Call end-point
-        const resp = await suvesaApi.post(`/ArticulosImagenes/ObtenerArticuloImagen?Requets=${idInventario}`);
+        const resp = await suvesaApi.get(`/ArticulosImagenes/ObtenerArticuloImagen?Requets=${idInventario}`);
         const { status, responses } = resp.data;
 
         // Verificar la respuesta
@@ -2483,9 +2537,9 @@ const GetImageArticulo = async ( dispatch, idInventario ) => {
 
             console.log(responses)
             // Meter el stock
-            // dispatch( SetStockInventory( responses ) );
+            dispatch(SetHasImagenIntentory(true));
 
-            // dispatch( SetLastStockUpdateInventory( responses ) );
+            // dispatch( SetStockInventory( responses ) );
 
        } else {
 
@@ -3754,6 +3808,11 @@ export const SetListaArticulosDisponiblesConvertidorLotesIntentory = (value) => 
     payload: value
 })
 
+export const SetIdImagenIntentory = (value) => ({
+    type: types.SetIdImagenIntentory,
+    payload: value
+})
+
 export const SetBase64ImagenIntentory = (value) => ({
     type: types.SetBase64ImagenIntentory,
     payload: value
@@ -3761,5 +3820,15 @@ export const SetBase64ImagenIntentory = (value) => ({
 
 export const SetNameImagenIntentory = (value) => ({
     type: types.SetNameImagenIntentory,
+    payload: value
+})
+
+export const SetHasImagenIntentory = (value) => ({
+    type: types.SetHasImagenIntentory,
+    payload: value
+})
+
+export const SetPreviewImagenIntentory = (value) => ({
+    type: types.SetPreviewImagenIntentory,
     payload: value
 })

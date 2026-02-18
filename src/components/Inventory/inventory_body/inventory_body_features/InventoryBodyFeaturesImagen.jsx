@@ -3,16 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { 
   SetBase64ImagenIntentory, 
-  SetNameImagenIntentory 
+  SetNameImagenIntentory, 
+  SetPreviewImagenIntentory
 } from "../../../../actions/inventory";
 
 export const InventoryBodyFeaturesImagen = () => {
 
     const dispatch = useDispatch();
     const inputRef = useRef();
-    const [preview, setPreview] = useState(null);
 
-    const { disableInputs } = useSelector((state) => state.inventory);
+    const { disableInputs, previewImage } = useSelector((state) => state.inventory);
 
     const openFileSelector = () => {
       if(!disableInputs) {
@@ -30,7 +30,7 @@ export const InventoryBodyFeaturesImagen = () => {
       reader.readAsDataURL(file);
 
       reader.onload = () => {
-        setPreview(reader.result);
+        dispatch(SetPreviewImagenIntentory(reader.result));
 
         dispatch(SetBase64ImagenIntentory(reader.result.split(",")[1]));
       };
@@ -54,9 +54,9 @@ export const InventoryBodyFeaturesImagen = () => {
                 onClick={openFileSelector}
               >
                   <div div className="card-body p-2">
-                    {preview ? (
+                    {previewImage ? (
                       <img
-                        src={preview}
+                        src={previewImage}
                         alt="preview"
                         className="img-fluid rounded"
                         style={{ height: "200px", objectFit: "cover" }}

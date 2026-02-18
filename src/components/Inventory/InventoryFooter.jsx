@@ -76,8 +76,10 @@ export const InventoryFooter = () => {
         isEditInventory,
         isInventoryDisable,
         isShowTabCodigoBarras,
-        imagen
+        imagen,
+        hasImage
     } = useSelector(state => state.inventory);
+    
     const { currentTab } = useSelector(state => state.tabs);
     const { auth } = useSelector(state => state.login);
 
@@ -538,7 +540,9 @@ export const InventoryFooter = () => {
                     auth.username,
                     inventory.esPadre
                 ),
-                relatedArticlesArray
+                relatedArticlesArray,
+                imagen,
+                hasImage
             ));
         } 
     }

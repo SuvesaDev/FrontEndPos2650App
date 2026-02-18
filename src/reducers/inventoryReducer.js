@@ -150,9 +150,12 @@ const initialState = {
     cantidadConvertirConvertidorLotes: 0,
     listaArticulosDisponiblesConvertidor: [],
     imagen: {
+        idImagen: 0,
         base64Imagen: '',
         name: ''
     },
+    previewImage: null,
+    hasImage: false,
     inventory: {
         codigo: null,
         cod_Articulo: null,
@@ -1336,9 +1339,12 @@ export const InventoryReducer = (state = initialState, action) => {
                     cantidad: 0,
                 },
                 imagen: {
+                    idImagen: 0,
                     base64Imagen: '',
                     name: ''
                 },
+                hasImage: false,
+                previewImage: null,
             }
 
         case types.IsNewInventory:
@@ -2535,6 +2541,15 @@ export const InventoryReducer = (state = initialState, action) => {
                 listaArticulosDisponiblesConvertidor: action.payload
             }
 
+        case types.SetIdImagenIntentory:
+            return {
+                ...state,
+                imagen: {
+                    ...state.imagen,
+                    idImagen: action.payload,
+                }
+            }
+
         case types.SetBase64ImagenIntentory:
             return {
                 ...state,
@@ -2551,6 +2566,18 @@ export const InventoryReducer = (state = initialState, action) => {
                     ...state.imagen,
                     name: action.payload,
                 }
+            }
+
+        case types.SetHasImagenIntentory:
+            return {
+                ...state,
+                hasImage: action.payload,
+            }
+
+        case types.SetPreviewImagenIntentory:
+            return {
+                ...state,
+                previewImage: action.payload,
             }
             
 

@@ -479,8 +479,11 @@ export const types = {
   SetCantidadDisponiblesConvertidorLotesIntentory : '[Inventory] SetCantidadDisponiblesConvertidorLotesIntentory',
   SetCantidadConvertirConvertidorLotesIntentory: '[Inventory] SetCantidadConvertirConvertidorLotesIntentory',
   SetListaArticulosDisponiblesConvertidorLotesIntentory: '[Inventory] SetListaArticulosDisponiblesConvertidorLotesIntentory',
+  SetIdImagenIntentory: '[Inventory] SetIdImagenIntentory',
   SetBase64ImagenIntentory: '[Inventory] SetBase64ImagenIntentory',
   SetNameImagenIntentory: '[Inventory] SetNameImagenIntentory',
+  SetHasImagenIntentory: '[Inventory] SetHasImagenIntentory',
+  SetPreviewImagenIntentory: '[Inventory] SetPreviewImagenIntentory',
 
   // Customers actions
   SelectTabCustomers: '[Customers] SelectTabCustomers',
