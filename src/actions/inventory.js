@@ -62,7 +62,7 @@ export const startSaveInventory = ( inventory, relatedArticle, imagen ) => {
                             const newImagen = {
                                 idImagenArticulo: imagen.idImagen,
                                 idInventario: responses.codigo,
-                                imagen: imagen.base64Imagen,
+                                imagen: imagen.base64Imagen.split(',')[1],
                                 tipo: obtenerExtension(imagen.name),
                                 extencion: imagen.name
                             }
@@ -114,7 +114,7 @@ export const startSaveInventory = ( inventory, relatedArticle, imagen ) => {
                                 //Si es correcta entonces mostrar un mensaje de afirmacion pero con error en carta
                                 Swal.fire({
                                     icon: 'success',
-                                    title: `IInventario ingresado correctamente. ${mensaje}`,
+                                    title: `Inventario ingresado correctamente. ${mensaje}`,
                                     showConfirmButton: true,
                                 })
 
@@ -193,7 +193,7 @@ export const startSaveInventory = ( inventory, relatedArticle, imagen ) => {
 export const startEditInventory = ( inventory, relatedArticle, imagen, hasImagen ) => {
 
     return async (dispatch) => {
-
+        
         //Mostrar un mensaje de confirmacion
         Swal.fire({
             title: `¿Desea editar el inventario con la codigo ${ inventory.cod_Articulo } ?`,
@@ -204,7 +204,7 @@ export const startEditInventory = ( inventory, relatedArticle, imagen, hasImagen
         }).then(async (result) => {
             
             try {
-
+                
                 var resultRelatedArticle = null;
                 let relatedArticles = [];
                 
@@ -224,7 +224,7 @@ export const startEditInventory = ( inventory, relatedArticle, imagen, hasImagen
                     
                     //Call end-point 
                     const { data } = await suvesaApi.post('/inventario/Actualizar', inventory.toJson() );
-                    const { status } = data;
+                    const { status, responses } = data;
 
                     //Quitar el loading
                     Swal.close();
@@ -250,19 +250,19 @@ export const startEditInventory = ( inventory, relatedArticle, imagen, hasImagen
                         dispatch( CleanArrayStatePricesSellInventory() );
 
                         if(imagen.base64Imagen != '') {
-
+                            
                             let statusImagen;
 
                             const newImagen = {
                                 idImagenArticulo: imagen.idImagen,
                                 idInventario: responses.codigo,
-                                imagen: imagen.base64Imagen,
+                                imagen: imagen.base64Imagen.split(',')[1],
                                 tipo: obtenerExtension(imagen.name),
                                 extencion: imagen.name
                             }
                             
                             //Call end-point 
-                            if(hasImagen) {
+                            if(!hasImagen) {
                                 const { data } = await suvesaApi.post(`/ArticulosImagenes/InsertarArticuloImagen`, newImagen);
                                 statusImagen = data.status;
                             } else {
@@ -2400,8 +2400,93 @@ export const startConvertirCantidadDisponiblesConvertidorLotesInventory = ( requ
     }
 }
 
-const obtenerExtension = (nameFile) => {
-    return nameFile.slice((nameFile.lastIndexOf(".") - 1 >>> 0) + 2);
+export const startDeleteImage = ( idImage ) => {
+
+    return async ( dispatch ) => {
+
+        //Mostrar un mensaje de confirmacion
+        Swal.fire({
+            title: `¿Desea eliminar la imagen del Inventario?`,
+            showDenyButton: true,
+            showCancelButton: false,
+            confirmButtonText: 'Eliminar',
+            denyButtonText: `Cancelar`,
+        }).then(async (result) => {
+            
+            try {
+
+                if (result.isConfirmed) {
+
+                     //Mostrar el loading
+                     Swal.fire({
+                        title: 'Por favor, espere',
+                        allowEscapeKey: false,
+                        allowOutsideClick: false,
+                        showConfirmButton: false,
+                        imageUrl: loadingImage,
+                        customClass: 'alert-class-login',
+                        imageHeight: 100,
+                    });
+                    
+                    //Call end-point 
+                    const { data } = await suvesaApi.delete(`/ArticulosImagenes/EliminarArticuloImagen?Requets=${idImage}`);
+                    const { status } = data;
+
+                    Swal.close();
+
+                    if( status === 0 ) {
+
+                        dispatch(SetHasImagenIntentory(false));
+                        dispatch(SetIdImagenIntentory(0));
+                        dispatch(SetNameImagenIntentory(''));
+                        dispatch(SetBase64ImagenIntentory(''));
+
+                        //Si es correcta entonces mostrar un mensaje de afirmacion
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Imagen eliminada correctamente',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        
+                    } else {
+            
+                        //Caso contrario respuesta incorrecto mostrar mensaje de error
+                        const { currentException } = data;
+                        const msj = currentException.split(',');
+                        
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: (currentException.includes(',')) ? msj[3] : currentException,
+                        });
+            
+                    }
+                
+                }
+
+            } catch (error) {
+                
+                Swal.close();
+                console.log(error);
+                if( error.message === 'Request failed with status code 401') {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Usuario no valido',
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Ocurrio un problema al eliminar una imagen',
+                    });
+                }
+            }
+                
+        });
+        
+    }
 }
 
 // Functions
@@ -2531,15 +2616,17 @@ const GetImageArticulo = async ( dispatch, idInventario ) => {
         //Call end-point
         const resp = await suvesaApi.get(`/ArticulosImagenes/ObtenerArticuloImagen?Requets=${idInventario}`);
         const { status, responses } = resp.data;
-
+        
         // Verificar la respuesta
         if( status === 0 ) {
-
-            console.log(responses)
-            // Meter el stock
+            
+            const { idImagenArticulo, imagen, extencion, tipo} = responses;
+            
+            // Meter la imagen
             dispatch(SetHasImagenIntentory(true));
-
-            // dispatch( SetStockInventory( responses ) );
+            dispatch(SetIdImagenIntentory(idImagenArticulo));
+            dispatch(SetNameImagenIntentory(extencion));
+            dispatch(SetBase64ImagenIntentory(`data:image/${tipo};base64,${imagen}`));
 
        } else {
 
@@ -2553,6 +2640,10 @@ const GetImageArticulo = async ( dispatch, idInventario ) => {
     } catch(error) {
         throw error;
     }
+}
+
+const obtenerExtension = (nameFile) => {
+    return nameFile.slice((nameFile.lastIndexOf(".") - 1 >>> 0) + 2);
 }
 
 //Normal Actions

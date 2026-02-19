@@ -358,7 +358,7 @@ export const InventoryHeaderArticle = () => {
                 handleInputChangeWithDispatch(e, SetSubFamiliaInventory)
               }
             >
-              <option value={""} selected disabled hidden>
+              <option value={0} selected disabled hidden>
                 {" "}
                 Seleccione...{" "}
               </option>
