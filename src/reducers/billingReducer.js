@@ -203,7 +203,8 @@ const initialState = {
     startEditing: false,
     datosImprimirCredito: [],
     lotesByArticulo: [],
-    datosFacturacionByCliente: []
+    datosFacturacionByCliente: [],
+    productsImagen: []
 };
 
 export const BillingReducer = (state = initialState, action) => {
@@ -2838,6 +2839,19 @@ export const BillingReducer = (state = initialState, action) => {
                 )
             }
 
+        case types.SetProductsImagenBilling:
+            return {
+                ...state,
+                billings: state.billings.map(
+                    (billing, i) => i === action.payload.number
+                        ? {
+                            ...state.billings[action.payload.number],
+                            productsImagen: action.payload.value
+                        }
+                        : billing
+                )
+            }
+
         case types.CleanBilling:
             return {
                 ...state,
@@ -3042,7 +3056,8 @@ export const BillingReducer = (state = initialState, action) => {
                             isPreventaEdit: false,
                             startEditing: false,
                             lotesByArticulo: [],
-                            datosFacturacionByCliente: []
+                            datosFacturacionByCliente: [],
+                            productsImagen: []
                         }
                         : billing
                 )

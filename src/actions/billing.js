@@ -2155,6 +2155,82 @@ export const startGetDatosFacturacionByCliente = (idCliente, number,) => {
 
 }
 
+export const startGetProductsImagen = (number) => {
+
+    return async ( dispatch ) => {
+    
+        try {
+
+            //Mostrar el loading
+            Swal.fire({
+                title: 'Por favor, espere',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                imageUrl: loadingImage,
+                customClass: 'alert-class-login',
+                imageHeight: 100,
+            });
+                    
+            //Call end-point 
+            const { data } = await suvesaApi.get(`/ArticulosImagenes/ObtenerArticulosImagenesDisponiblesCatalogo`);
+            const { status, responses } = data;
+
+            //Quitar el loading
+            Swal.close();
+
+            if( status === 0) {
+
+                const newProducts = responses.map(resp => {
+                    return { 
+                        id: resp.codigo,
+                        idInventario: resp.idInventario,
+                        name: resp.descripcion,
+                        price: resp.precio,
+                        image: `data:image/*;base64,${resp.imagen}`,
+                        selected: false,
+                        quantity: 1
+                    }  
+                });
+                
+                dispatch( SetProductsImagenBilling({ value: newProducts, number }) );
+
+            } else {
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
+                
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
+                
+            }
+            
+        } catch (error) {
+            
+            Swal.close();
+            console.log(error);
+            if( error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al obtener los producto con imagen',
+                });
+            }
+        }
+
+    }
+
+}
+
 // Private methods
 const loadCatalogos = async ( dispatch, catalogos ) => {
     
@@ -3275,5 +3351,10 @@ export const SetLotesByArticuloBilling = (value) => ({
 
 export const SetDatosFacturacionByClienteBilling = (value) => ({
     type: types.SetDatosFacturacionByClienteBilling,
+    payload: value
+})
+
+export const SetProductsImagenBilling = (value) => ({
+    type: types.SetProductsImagenBilling,
     payload: value
 })
