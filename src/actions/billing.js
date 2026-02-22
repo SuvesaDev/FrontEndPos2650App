@@ -2231,6 +2231,72 @@ export const startGetProductsImagen = (number) => {
 
 }
 
+export const startGetProductsByImagen = (products, number) => {
+
+    return async ( dispatch ) => {
+    
+        try {
+
+            //Mostrar el loading
+            Swal.fire({
+                title: 'Por favor, espere',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                imageUrl: loadingImage,
+                customClass: 'alert-class-login',
+                imageHeight: 100,
+            });
+                    
+            //Call end-point 
+            const { data } = await suvesaApi.post(`/ArticulosImagenes/ObtenerDetallesArticulos`, products );
+            const { status, responses } = data;
+
+            //Quitar el loading
+            Swal.close();
+
+            if( status === 0) {
+
+                console.log(responses);
+                
+                // dispatch( SetProductsImagenBilling({ value: newProducts, number }) );
+
+            } else {
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
+                
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
+                
+            }
+            
+        } catch (error) {
+            
+            Swal.close();
+            console.log(error);
+            if( error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al obtener los producto con imagen',
+                });
+            }
+        }
+
+    }
+
+}
+
 // Private methods
 const loadCatalogos = async ( dispatch, catalogos ) => {
     
@@ -3306,8 +3372,6 @@ export const SetAumentoEntrajeroBilling = (value) => ({
     payload: value
 })
 
-
-
 export const SetExtranjeroBilling = (value) => ({
     type: types.SetExtranjeroBilling,
     payload: value
@@ -3356,5 +3420,35 @@ export const SetDatosFacturacionByClienteBilling = (value) => ({
 
 export const SetProductsImagenBilling = (value) => ({
     type: types.SetProductsImagenBilling,
+    payload: value
+})
+
+export const SetCheckProductsImagenBilling = (value) => ({
+    type: types.SetCheckProductsImagenBilling,
+    payload: value
+})
+
+export const SetCantidadProductsImagenBilling = (value) => ({
+    type: types.SetCantidadProductsImagenBilling,
+    payload: value
+})
+
+export const SetIncrementarProductsImagenBilling = (value) => ({
+    type: types.SetIncrementarProductsImagenBilling,
+    payload: value
+})
+
+export const SetDecrementarProductsImagenBilling = (value) => ({
+    type: types.SetDecrementarProductsImagenBilling,
+    payload: value
+})
+
+export const SetSelecionarTodosProductsImagenBilling = (value) => ({
+    type: types.SetSelecionarTodosProductsImagenBilling,
+    payload: value
+})
+
+export const SetCancelarProductsImagenBilling = (value) => ({
+    type: types.SetCancelarProductsImagenBilling,
     payload: value
 })

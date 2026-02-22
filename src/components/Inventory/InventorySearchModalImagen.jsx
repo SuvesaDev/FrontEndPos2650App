@@ -1,29 +1,32 @@
-import Swal from 'sweetalert2';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Modal, Button, Form, Card, Row, Col, Badge, InputGroup, Container } from 'react-bootstrap';
+import { Button, Form, Card, Row, Col, Badge, InputGroup, Container } from 'react-bootstrap';
 
 import { FaCamera } from 'react-icons/fa';
 import { TbCircleX } from 'react-icons/tb';
 
-import {
-    ActiveButtonNewInventory,
-    ActiveButtonRemoveInventory,
-    ActiveButtonSaveInventory,
-    ActiveButtonSearchInventory,
-    CleanOptionsSearchModalInventory,
-    CleanSearchInventory,
-    CloseSearchModalInventory,
-    DisableInputsInventory
-} from '../../actions/inventory';
+import { 
+    SetCancelarProductsImagenBilling,
+    SetCantidadProductsImagenBilling, 
+    SetCheckProductsImagenBilling, 
+    SetDecrementarProductsImagenBilling, 
+    SetIncrementarProductsImagenBilling, 
+    SetSelecionarTodosProductsImagenBilling,
+    startGetProductsByImagen
+} from '../../actions/billing';
 
 export const InventorySearchModalImagen = () => {
 
     const dispatch = useDispatch();
+    const btnClose = useRef(null);
     const [numberScreen, setnumberScreen] = useState(null);
     
     const { billings } = useSelector(state => state.billing);
     const { currentTab } = useSelector(state => state.tabs);
+
+    let selectedProducts = [];
+    let totalItems = 0;
+    let totalPrice = 0;
     
     const [products, setProducts] = useState([
         {
@@ -42,78 +45,91 @@ export const InventorySearchModalImagen = () => {
             setnumberScreen(currentTab.routePage.split('/')[3] - 1);
         }
 
-    }, [billings]);
+    }, [billings]);  
     
     // Manejar cambio de checkbox individual
     const handleCheckboxChange = (id) => {
-        setProducts(products.map(product => 
-          product.id === id ? { ...product, selected: !product.selected } : product
-        ));
+        if (billings[numberScreen] !== undefined) {
+            dispatch(SetCheckProductsImagenBilling({ value: id, number: numberScreen }));
+        }
     };
     
     // Manejar cambio de cantidad
     const handleQuantityChange = (id, newQuantity) => {
-        const quantity = Math.max(1, parseInt(newQuantity) || 1);
-        setProducts(products.map(product => 
-          product.id === id ? { ...product, quantity } : product
-        ));
+        if (billings[numberScreen] !== undefined) {
+            const quantity = Math.max(1, parseInt(newQuantity) || 1);
+            dispatch(SetCantidadProductsImagenBilling({ 
+                value: {
+                    id,
+                    quantity
+                }, 
+                number: numberScreen 
+            }));
+        }
     };
     
     // Incrementar cantidad
     const incrementQuantity = (id) => {
-        setProducts(products.map(product => 
-          product.id === id ? { ...product, quantity: product.quantity + 1 } : product
-        ));
+        if (billings[numberScreen] !== undefined) {
+            dispatch(SetIncrementarProductsImagenBilling({ value: id, number: numberScreen }));
+        }
     };
     
     // Decrementar cantidad
     const decrementQuantity = (id) => {
-        setProducts(products.map(product => 
-          product.id === id && product.quantity > 1 
-            ? { ...product, quantity: product.quantity - 1 } 
-            : product
-        ));
+        if (billings[numberScreen] !== undefined) {
+            dispatch(SetDecrementarProductsImagenBilling({ value: id, number: numberScreen }));
+        }
     };
     
     // Seleccionar todos
     const handleSelectAll = () => {
-        const allSelected = products.every(p => p.selected);
-        setProducts(products.map(product => ({ ...product, selected: !allSelected })));
+        if (billings[numberScreen] !== undefined) {
+            const allSelected = billings[numberScreen].productsImagen.every(p => p.selected);
+            dispatch(SetSelecionarTodosProductsImagenBilling({ 
+                value: !allSelected, 
+                number: numberScreen 
+            }));
+        }
     };
-    
-    // Obtener productos seleccionados
-    const selectedProducts = products.filter(p => p.selected);
-    const totalItems = selectedProducts.reduce((sum, p) => sum + p.quantity, 0);
-    const totalPrice = selectedProducts.reduce((sum, p) => sum + (p.price * p.quantity), 0);
-    
+
+    selectedProducts = (billings[numberScreen] !== undefined) ? billings[numberScreen].productsImagen.filter(p => p.selected) : [];
+    totalItems = selectedProducts.reduce((sum, p) => sum + p.quantity, 0);
+    totalPrice = selectedProducts.reduce((sum, p) => sum + (p.price * p.quantity), 0);
+       
     // Confirmar selección
     const handleConfirmSelection = () => {
-        if (handleConfirm) {
-          handleConfirm(selectedProducts, totalPrice, totalItems);
+
+        if(billings[numberScreen] !== undefined) {
+
+            if(selectedProducts.length > 0) {
+
+                const products = selectedProducts.map(produc => {
+                    return {
+                        idInventario: produc.idInventario,
+                        cantidad: produc.quantity
+                    }
+                });
+
+                dispatch(startGetProductsByImagen(products, numberScreen));
+                dispatch(SetCancelarProductsImagenBilling({  
+                    number: numberScreen 
+                }));
+                btnClose.current.click();
+            }
+
         }
-        handleClose();
-        // Resetear selección al cerrar
-        setProducts(products.map(p => ({ ...p, selected: false, quantity: 1 })));
+
     };
     
     // Cancelar selección
     const handleCancelSelection = () => {
-        setProducts(products.map(p => ({ ...p, selected: false, quantity: 1 })));
-        handleClose();
+        if (billings[numberScreen] !== undefined) {
+            dispatch(SetCancelarProductsImagenBilling({  
+                number: numberScreen 
+            }));
+        }
     };
-
-    const closeModal = () => {
-
-        dispatch(CleanSearchInventory());
-        dispatch(CleanOptionsSearchModalInventory());
-        dispatch(CloseSearchModalInventory());
-        dispatch(ActiveButtonNewInventory(true));
-        dispatch(ActiveButtonSearchInventory(true));
-        dispatch(ActiveButtonSaveInventory(false));
-        dispatch(ActiveButtonRemoveInventory(false));
-        dispatch(DisableInputsInventory(true));
-
-    }
 
     return (
 
@@ -130,7 +146,7 @@ export const InventorySearchModalImagen = () => {
                                 type="button"
                                 className="btn-close"
                                 data-bs-dismiss="modal"
-                                onClick={closeModal}
+                                onClick={handleCancelSelection}
                             ></button>
                         </div>
 
@@ -140,8 +156,12 @@ export const InventorySearchModalImagen = () => {
                                 <div className="d-flex justify-content-between align-items-center mb-3 px-2">
                                     <Form.Check
                                         type="checkbox"
-                                        label={`Seleccionar todos (${products.length})`}
-                                        checked={products.length > 0 && products.every(p => p.selected)}
+                                        label={`Seleccionar todos (${(billings[numberScreen] !== undefined) ? billings[numberScreen].productsImagen.length : 0})`}
+                                        checked={
+                                            (billings[numberScreen] !== undefined) 
+                                                ? (billings[numberScreen].productsImagen.length > 0 && billings[numberScreen].productsImagen.every(p => p.selected))
+                                                : false
+                                        }
                                         onChange={handleSelectAll}
                                         className="fs-6"
                                     />
@@ -245,9 +265,10 @@ export const InventorySearchModalImagen = () => {
                         </div>
 
                         <div className='modal-footer'>
-                            {/* <button type="button" className="btn btn-danger" data-bs-dismiss="modal" onClick={closeModal}>Cerrar <TbCircleX className='iconSize' /> </button> */}
                             <Button 
-                                variant="outline-secondary" 
+                                className="btn btn-danger"
+                                data-bs-dismiss="modal"
+                                ref={btnClose}
                                 onClick={handleCancelSelection}
                             >
                                 Cancelar

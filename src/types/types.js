@@ -962,6 +962,12 @@ export const types = {
   SetLotesByArticuloBilling: '[Billing] SetLotesByArticuloBilling',
   SetDatosFacturacionByClienteBilling: '[Billing] SetDatosFacturacionByClienteBilling',
   SetProductsImagenBilling: '[Billing] SetProductsImagenBilling',
+  SetCheckProductsImagenBilling: '[Billing] SetCheckProductsImagenBilling',
+  SetCantidadProductsImagenBilling: '[Billing] SetCantidadProductsImagenBilling',
+  SetIncrementarProductsImagenBilling: '[Billing] SetIncrementarProductsImagenBilling',
+  SetDecrementarProductsImagenBilling: '[Billing] SetDecrementarProductsImagenBilling',
+  SetSelecionarTodosProductsImagenBilling: '[Billing] SetSelecionarTodosProductsImagenBilling',
+  SetCancelarProductsImagenBilling: '[Billing] SetCancelarProductsImagenBilling',
 
   // Buys actions
   buysOpenModelImportarF: '[Buys] Open Model Importar Factura',
