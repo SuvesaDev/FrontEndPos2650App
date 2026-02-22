@@ -2258,7 +2258,48 @@ export const startGetProductsByImagen = (products, number) => {
             if( status === 0) {
 
                 console.log(responses);
-                
+                responses.forEach(product => {
+
+                    const newProduct = {
+                        CodArticulo: product.codArticulo,
+                        codFxArticulo: product.codFxArticulo,
+                        Descripcion: product.descripcion,
+                        Cantidad: product.cantidad,
+                        Precio_Unit: product.precioUnit,
+                        Descuento: product.descuento,
+                        Monto_Descuento: product.montoDescuento,
+                        Impuesto: product.impuesto,
+                        Monto_Impuesto: product.montoImpuesto,
+                        Existencias: 0,
+                        SubtotalGravado: product.subtotalGravado,
+                        SubTotalExcento: product.subTotalExcento,
+                        SubTotal: product.subTotal,
+                        precio_A: 0.00,
+                        precio_B: 0.00,
+                        precio_C: 0.00,
+                        precio_D: 0.00,
+                        precio_Promo: 0.00,
+                        promo_Activa: false,
+                        promo_Inicio: null,
+                        promo_Finaliza: null,
+                        max_Descuento: 0.00,
+                        Mag: false,
+                        sinDecimal: false,
+                        soloContado: false,
+                        receta: false,
+                        ImpuestoOriginal: 0.00,
+                        Consignacion: 0.00,
+                        Id_Bodega: 0,
+                        ExistenciaBodega: 0.00,
+                        CantVet: product.cantVen,
+                        CantBod: product.cantBod,
+                        Precio_UnitOriginal: product.precioUnit,
+                        idLote: 0,
+                        nombreLote: ''
+                    }
+
+                    dispatch( SetAddDetalleBilling( { value: newProduct, number } ));
+                });
                 // dispatch( SetProductsImagenBilling({ value: newProducts, number }) );
 
             } else {

@@ -171,7 +171,7 @@ export const InventorySearchModalImagen = () => {
                                             {totalItems} artículo{totalItems !== 1 ? 's' : ''}
                                         </Badge>
                                         <span className="total-price text-primary">
-                                            <strong>${totalPrice.toFixed(2)}</strong>
+                                            <strong>₡{totalPrice.toFixed(2)}</strong>
                                         </span>
                                         </div>
                                     )}
@@ -208,7 +208,7 @@ export const InventorySearchModalImagen = () => {
                                                                 {product.name}
                                                                 </Card.Title>
                                                                 <Card.Text className="product-price mb-2">
-                                                                ${product.price.toFixed(2)}
+                                                                ₡{product.price.toFixed(2)}
                                                                 </Card.Text>
                                                                 
                                                                 {product.selected && (
@@ -278,7 +278,7 @@ export const InventorySearchModalImagen = () => {
                                 onClick={handleConfirmSelection}
                                 disabled={selectedProducts.length === 0}
                             >
-                                Confirmar Selección ({totalItems} items - ${totalPrice.toFixed(2)})
+                                Confirmar Selección ({totalItems} items - ₡{totalPrice.toFixed(2)})
                             </Button>
                         </div>
 
