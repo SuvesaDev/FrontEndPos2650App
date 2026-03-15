@@ -99,11 +99,11 @@ const initialState = {
         },
         {
             id: 2,
-            nombre: "Padre",
+            nombre: "Materia Prima",
         },
         {
             id: 3,
-            nombre: "Hijo",
+            nombre: "Producto Terminado",
         }
     ],
     idTipoArticuloSelected: 0,
@@ -1283,11 +1283,11 @@ export const InventoryReducer = (state = initialState, action) => {
                     },
                     {
                         id: 2,
-                        nombre: "Padre",
+                        nombre: "Materia Prima",
                     },
                     {
                         id: 3,
-                        nombre: "Hijo",
+                        nombre: "Producto Terminado",
                     }
                 ],
                 idTipoArticuloSelected: 1,

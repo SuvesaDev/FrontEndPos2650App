@@ -587,6 +587,8 @@ export const startGetOneInventory = ( codigo ) => {
                 // Validar si es padre
                 if( responses.esPadre === true ) {
                     dispatch( SetIdTipoArticuloSelectedIntentory( 2 ));
+                } else {
+                    dispatch( SetIdTipoArticuloSelectedIntentory( 3 ));
                 }
                 
                 // Se activa el campo de stock
@@ -2268,8 +2270,7 @@ export const startCalculateCantidadDisponiblesConvertidorLotesInventory = ( requ
             });
     
             //Call end-point 
-            // const { data } = await suvesaApi.post(`/CalculadoraProduccionLotes/CalculadoraCantidadesObtenerLote`, requestCalcular);
-            const { data } = await suvesaApi.post(`/CalculadoraProduccionLotes/NuevoCalculadoraCantidadesObtenerLote`, requestCalcular);
+            const { data } = await suvesaApi.post(`/CalculadoraProduccionLotes/CalculadoraProductiva`, requestCalcular);
             const { status, responses } = data;
             
             // Cerrar modal
@@ -2277,11 +2278,11 @@ export const startCalculateCantidadDisponiblesConvertidorLotesInventory = ( requ
 
             if( status === 0 ) {
                 
-                const { cantidad, articulosDisponibles } = responses;
+                // const { cantidad, articulosDisponibles } = responses;
 
                 // Insertar en el state
-                dispatch( SetCantidadDisponiblesConvertidorLotesIntentory( cantidad ) );
-                dispatch( SetListaArticulosDisponiblesConvertidorLotesIntentory( articulosDisponibles ) );
+                dispatch( SetCantidadDisponiblesConvertidorLotesIntentory( responses ) );
+                // dispatch( SetListaArticulosDisponiblesConvertidorLotesIntentory( articulosDisponibles ) );
 
             } else {
     
@@ -2336,7 +2337,7 @@ export const startConvertirCantidadDisponiblesConvertidorLotesInventory = ( requ
             });
     
             //Call end-point 
-            const { data } = await suvesaApi.post(`/CalculadoraProduccionLotes/CalculadoraCantidadesObtenerLote`, requestConvertir);
+            const { data } = await suvesaApi.post(`/CalculadoraProduccionLotes/CalculadoraProductiva`, requestConvertir);
             const { status } = data;
             
             // Cerrar modal

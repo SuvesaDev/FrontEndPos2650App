@@ -251,7 +251,7 @@ export const InventoryBodyFormulaLotes = () => {
           idLote: lotFor.idLote,
           idArticulo: lotFor.idArticuloFormula,
           idBodega: lotFor.idBodega,
-          cantidad: lotFor.cantidad
+          cantidadLote: lotFor.cantidad
         }
       })
     }
@@ -287,20 +287,20 @@ export const InventoryBodyFormulaLotes = () => {
     }
 
     //TODO: Validar que la cantidad de lote seleccionado no supere al permitido   
-    lotesFormula.forEach(loteFormula => {
+    // lotesFormula.forEach(loteFormula => {
 
-      if(!isValidCantidadArticulosFormula(loteFormula.idArticuloFormula)) {
+    //   if(!isValidCantidadArticulosFormula(loteFormula.idArticuloFormula)) {
 
-        Swal.fire({
-          icon: "warning",
-          title: "Error",
-          text: `La cantidad selecciona del articulo ${loteFormula.articulo} supera la permitida.`,
-        });
+    //     Swal.fire({
+    //       icon: "warning",
+    //       title: "Error",
+    //       text: `La cantidad selecciona del articulo ${loteFormula.articulo} supera la permitida.`,
+    //     });
   
-        return;
-      }
+    //     return;
+    //   }
       
-    });
+    // });
 
 
     const requestConvertir = {
@@ -312,7 +312,7 @@ export const InventoryBodyFormulaLotes = () => {
           idLote: lotFor.idLote,
           idArticulo: lotFor.idArticuloFormula,
           idBodega: lotFor.idBodega,
-          cantidad: lotFor.cantidad
+          cantidadLote: lotFor.cantidad
         }
       })
     }
