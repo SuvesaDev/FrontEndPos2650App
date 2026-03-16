@@ -2332,6 +2332,13 @@ export const types = {
   SetIsEditConsignment: '[Consignacion] SetIsEditConsignment',
   SetIsAllowAceptaConsignacionConsignment: '[Consignacion] SetIsAllowAceptaConsignacionConsignment',
   SetSurcursalesConsignment: '[Consignacion] SetSurcursalesConsignment',
+  SetProductsImagenConsignment: '[Consignacion] SetProductsImagenConsignment',
+  SetCheckProductsImagenConsignment: '[Consignacion] SetCheckProductsImagenConsignment',
+  SetCantidadProductsImagenConsignment: '[Consignacion] SetCantidadProductsImagenConsignment',
+  SetIncrementarProductsImagenConsignment: '[Consignacion] SetIncrementarProductsImagenConsignment',
+  SetDecrementarProductsImagenConsignment: '[Consignacion] SetDecrementarProductsImagenConsignment',
+  SetSelecionarTodosProductsImagenConsignment: '[Consignacion] SetSelecionarTodosProductsImagenConsignment',
+  SetCancelarProductsImagenConsignment: '[Consignacion] SetCancelarProductsImagenConsignment',
 
   CleanConsignment: '[Consignacion] CleanConsignment',
 

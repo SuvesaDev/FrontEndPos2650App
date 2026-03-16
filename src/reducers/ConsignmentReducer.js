@@ -21,6 +21,7 @@ const initialState = {
     isEditConsignment: false,
     isAllowAceptaConsignacion: false,
     surcursales: [],
+    productsImagen: [],
     usuarioFacturacion: {
         id: 0,
         claveInterna: ''
@@ -1133,6 +1134,87 @@ export const consignmentReducer = (state = initialState, action) => {
                 surcursales: action.payload,
             }
 
+        case types.SetProductsImagenConsignment:
+            return {
+                ...state,
+                productsImagen: action.payload,
+            }
+
+        case types.SetCheckProductsImagenConsignment:
+            return {
+                ...state,
+                productsImagen: state.productsImagen.map( product => 
+                    product.id === action.payload.value 
+                        ? { 
+                            ...product, 
+                            selected: !product.selected 
+                        } 
+                        : product
+                )
+            }
+
+        case types.SetCantidadProductsImagenConsignment:
+            return {
+                ...state,
+                productsImagen: state.productsImagen.map( product => 
+                    product.id === action.payload.value 
+                        ? { 
+                            ...product, 
+                            quantity: action.payload.value.quantity
+                        } 
+                        : product
+                )
+            }
+
+        case types.SetIncrementarProductsImagenConsignment:
+            return {
+                ...state,
+                productsImagen: state.productsImagen.map( product => 
+                    product.id === action.payload.value
+                        ? { 
+                            ...product, 
+                            quantity: product.quantity + 1
+                        } 
+                        : product
+                )
+            }
+
+        case types.SetDecrementarProductsImagenConsignment:
+            return {
+                ...state,
+                productsImagen: state.productsImagen.map( product => 
+                    product.id === action.payload.value && product.quantity > 1
+                        ? { 
+                            ...product, 
+                            quantity: product.quantity - 1
+                        } 
+                        : product
+                )
+            }
+
+        case types.SetSelecionarTodosProductsImagenConsignment:
+            return {
+                ...state,
+                productsImagen: state.productsImagen.map( product => 
+                    ({ 
+                        ...product, 
+                        selected: action.payload.value
+                    })
+                )
+            }
+
+        case types.SetCancelarProductsImagenConsignment:
+            return {
+                ...state,
+                productsImagen: state.productsImagen.map( product => 
+                    ({ 
+                        ...product, 
+                        selected: false, 
+                        quantity: 1
+                    })
+                )
+            }
+
         case types.CleanConsignment:
             return {
                 disableInputsHeader: true,
@@ -1155,6 +1237,7 @@ export const consignmentReducer = (state = initialState, action) => {
                 isEditConsignment: false,
                 isAllowAceptaConsignacion: false,
                 surcursales: [],
+                productsImagen: [],
                 usuarioFacturacion: {
                     id: 0,
                     claveInterna: ''
