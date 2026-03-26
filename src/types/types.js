@@ -484,6 +484,11 @@ export const types = {
   SetNameImagenIntentory: '[Inventory] SetNameImagenIntentory',
   SetHasImagenIntentory: '[Inventory] SetHasImagenIntentory',
   SetPreviewImagenIntentory: '[Inventory] SetPreviewImagenIntentory',
+  SetCodigoBonificacionArticleInventory: '[Inventory] SetCodigoBonificacionArticleInventory',
+  SetCodigoArtBonificacionArticleInventory: '[Inventory] SetCodigoArtBonificacionArticleInventory',
+  SetDescripcionArtBonificacionArticleInventory: '[Inventory] SetDescripcionArtBonificacionArticleInventory',
+  SetTipoBonificacionArticleInventory: '[Inventory] SetTipoBonificacionArticleInventory',
+
 
   // Customers actions
   SelectTabCustomers: '[Customers] SelectTabCustomers',

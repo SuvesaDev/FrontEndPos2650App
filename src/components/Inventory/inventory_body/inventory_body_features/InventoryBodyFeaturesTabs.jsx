@@ -211,6 +211,23 @@ export const InventoryBodyFeaturesTabs = () => {
             Imagen
             </button>
 
+            {
+                (inventory.bonificado)
+                    ?   <button
+                            className={
+                                (costaPets)
+                                    ? currentTabInventory == "Bonificacion"
+                                        ? "btn btn-outline-primary activeP"
+                                        : "btn btn-primary"
+                                    : 'col-md-3 mb-3 d-none'
+                            }
+                            onClick={() => handleSelectTabInventory("Bonificacion")}
+                        >
+                            Bonificacion
+                        </button>
+                    : null
+            }
+        
         </div>
     </>
   );

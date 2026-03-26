@@ -3924,3 +3924,23 @@ export const SetPreviewImagenIntentory = (value) => ({
     type: types.SetPreviewImagenIntentory,
     payload: value
 })
+
+export const SetCodigoBonificacionArticleInventory = (value) => ({
+    type: types.SetCodigoBonificacionArticleInventory,
+    payload: value
+})
+
+export const SetCodigoArtBonificacionArticleInventory = (value) => ({
+    type: types.SetCodigoArtBonificacionArticleInventory,
+    payload: value
+})
+
+export const SetDescripcionArtBonificacionArticleInventory = (value) => ({
+    type: types.SetDescripcionArtBonificacionArticleInventory,
+    payload: value
+})
+
+export const SetTipoBonificacionArticleInventory = (value) => ({
+    type: types.SetTipoBonificacionArticleInventory,
+    payload: value
+})

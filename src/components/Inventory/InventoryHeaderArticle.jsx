@@ -45,7 +45,8 @@ import {
   SetOpenModalSearchCodigoCabysInventory,
   SetEsPadreInventory,
   SetIdTipoArticuloSelectedIntentory,
-  startGetAllProductsPadreInventory
+  startGetAllProductsPadreInventory,
+  SetBonificadoInventory
 } from "../../actions/inventory";
 import { startGetAllSubFamiliasWithLoading } from "../../actions/SubFamiliasAction";
 import { startGetAllSubUbicaciones } from "../../actions/SubUbicacionesAction";
@@ -94,8 +95,7 @@ export const InventoryHeaderArticle = () => {
     actualizado,
     soloContado,
     barras,
-    barras2,
-    barras3,
+    bonificado,
     subFamilia,
     subUbicacion,
     proveedor,
@@ -106,8 +106,7 @@ export const InventoryHeaderArticle = () => {
     presentaCant,
     codPresentacion,
     codMarca,
-    servicio,
-    esPadre
+    servicio
   } = inventory;
 
   // useEffect(async () => {
@@ -671,8 +670,7 @@ export const InventoryHeaderArticle = () => {
       </div>
 
       <div className="row mb-3 text-md-center">
-        <div className="col-md-2 mb-0"></div>
-
+        
         <div className="col-md-4 mb-3">
           <div className="inline-container">
             <h5>Código Barras</h5>
@@ -714,7 +712,29 @@ export const InventoryHeaderArticle = () => {
               />
             </div>
           ) : null}
-        </div>    
+        </div>  
+
+        <div className="col-md-1 mb-0">
+          <div className="form-check">
+            <input
+              type="checkbox"
+              id="checkBonificado"
+              name="Bonificado"
+              disabled={disableInputs}
+              checked={bonificado}
+              class="form-check-input checkP"
+              onChange={(e) =>
+                handleInputChangeCheckBoxWithDispatch(
+                  e,
+                  SetBonificadoInventory
+                )
+              }
+            />
+            <h5 className="form-check-label" for="checkActualizado">
+              Bonificado
+            </h5>
+          </div>
+        </div>
         
         <div className={ !costaPets ? 'col-md-4 mb-3' : 'col-md-4 mb-3 d-none'}>
 

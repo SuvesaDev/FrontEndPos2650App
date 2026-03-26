@@ -156,6 +156,12 @@ const initialState = {
     },
     previewImage: null,
     hasImage: false,
+    bonificacionArticles: {
+        codigo: '',
+        cod_Articulo: '',
+        descripcion: '',
+        tipoBonificacion: 0,
+    },
     inventory: {
         codigo: null,
         cod_Articulo: null,
@@ -1345,6 +1351,12 @@ export const InventoryReducer = (state = initialState, action) => {
                 },
                 hasImage: false,
                 previewImage: null,
+                bonificacionArticles: {
+                    codigo: '',
+                    cod_Articulo: '',
+                    descripcion: '',
+                    tipoBonificacion: 0,
+                }
             }
 
         case types.IsNewInventory:
@@ -2578,6 +2590,42 @@ export const InventoryReducer = (state = initialState, action) => {
             return {
                 ...state,
                 previewImage: action.payload,
+            }
+
+        case types.SetCodigoBonificacionArticleInventory:
+            return {
+                ...state,
+                bonificacionArticles: {
+                    ...state.bonificacionArticles,
+                    codigo: action.payload
+                }
+            }
+
+        case types.SetCodigoArtBonificacionArticleInventory:
+            return {
+                ...state,
+                bonificacionArticles: {
+                    ...state.bonificacionArticles,
+                    cod_Articulo: action.payload
+                }
+            }
+
+        case types.SetDescripcionArtBonificacionArticleInventory:
+            return {
+                ...state,
+                bonificacionArticles: {
+                    ...state.bonificacionArticles,
+                    descripcion: action.payload
+                }
+            }
+
+        case types.SetTipoBonificacionArticleInventory:
+            return {
+                ...state,
+                bonificacionArticles: {
+                    ...state.bonificacionArticles,
+                    tipoBonificacion: action.payload
+                }
             }
             
 
