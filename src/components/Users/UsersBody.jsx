@@ -22,6 +22,7 @@ import {
     SetPerfilUsers,
     SetPorcDescUsers,
     SetPorcPrecioUsers,
+    SetRolUsers,
     SetShowCostaPetsUsers,
     SetShowInfoMessageUsers,
     SetUsuarioUsers,
@@ -29,6 +30,7 @@ import {
     SetVisibleClaveInternaUsers
 } from '../../actions/UsersAction';
 import { FaCashRegister, FaEnvelope, FaEye, FaEyeSlash, FaIdCard, FaKey, FaPercentage, FaUser, FaUserCircle } from 'react-icons/fa';
+import { useEffectEvent } from 'react';
 
 export const UsersBody = () => {
 
@@ -41,6 +43,7 @@ export const UsersBody = () => {
         showInfoMessageClave,
         showCostaPets,
         perfiles,
+        roles,
         user
     } = useSelector(state => state.users);
 
@@ -50,6 +53,7 @@ export const UsersBody = () => {
         claveEntrada,
         claveInterna,
         perfil,
+        rol,
         iniciales,
         cambiarPrecio,
         porcPrecio,
@@ -287,7 +291,7 @@ export const UsersBody = () => {
             </div>
 
             <div className="row mb-3 text-center">
-                <div className="col-md-4 mb-3">
+                <div className="col-md-2 mb-3">
                     <h5>Perfil</h5>
                     <div className="input-group">
                         <span className="input-group-text">
@@ -300,7 +304,7 @@ export const UsersBody = () => {
                             value={perfil}
                             onChange={e => handleInputChangePerfil(e, SetPerfilUsers)}
                         >
-                            <option value="" selected disabled hidden>
+                            <option value={0} selected disabled hidden>
                                 {" "}
                                 Seleccione...{" "}
                             </option>
@@ -319,6 +323,39 @@ export const UsersBody = () => {
                             {/* <option value={1}>Administrador</option>
                             <option value={2}>Cajero</option>
                             <option value={3}>Costa Pets</option> */}
+                        </select>
+                    </div>
+                </div>
+
+                <div className="col-md-2 mb-3">
+                    <h5>Roles</h5>
+                    <div className="input-group">
+                        <span className="input-group-text">
+                            <FaUser className="iconSize" />
+                        </span>
+                        <select
+                            className='form-select'
+                            name='perfil'
+                            disabled={disableInputs}
+                            value={rol}
+                            onChange={e => handleInputChangeWithDispatch(e, SetRolUsers)}
+                        >
+                            <option value={0} selected disabled hidden>
+                                {" "}
+                                Seleccione...{" "}
+                            </option>
+                            {roles.length > 0 ? (
+                                roles.map((rol) => {
+                                    return (
+                                        <option value={rol.idRol}>
+                                        {" "}
+                                        {rol.descripcion}{" "}
+                                        </option>
+                                    );
+                                })
+                            ) : (
+                                <option value="">No se cargaron los roles</option>
+                            )}
                         </select>
                     </div>
                 </div>

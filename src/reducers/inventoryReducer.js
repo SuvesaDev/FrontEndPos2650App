@@ -99,11 +99,11 @@ const initialState = {
         },
         {
             id: 2,
-            nombre: "Padre",
+            nombre: "Materia Prima",
         },
         {
             id: 3,
-            nombre: "Hijo",
+            nombre: "Producto Terminado",
         }
     ],
     idTipoArticuloSelected: 0,
@@ -149,6 +149,13 @@ const initialState = {
     cantidadDisponibleConvertidorLotes: 0,
     cantidadConvertirConvertidorLotes: 0,
     listaArticulosDisponiblesConvertidor: [],
+    imagen: {
+        idImagen: 0,
+        base64Imagen: '',
+        name: ''
+    },
+    previewImage: null,
+    hasImage: false,
     inventory: {
         codigo: null,
         cod_Articulo: null,
@@ -157,7 +164,7 @@ const initialState = {
         presentaCant: null,
         codPresentacion: null,
         codMarca: null,
-        subFamilia: null,
+        subFamilia: 0,
         minima: null,
         puntoMedio: null,
         maxima: null,
@@ -1276,11 +1283,11 @@ export const InventoryReducer = (state = initialState, action) => {
                     },
                     {
                         id: 2,
-                        nombre: "Padre",
+                        nombre: "Materia Prima",
                     },
                     {
                         id: 3,
-                        nombre: "Hijo",
+                        nombre: "Producto Terminado",
                     }
                 ],
                 idTipoArticuloSelected: 1,
@@ -1331,6 +1338,13 @@ export const InventoryReducer = (state = initialState, action) => {
                     descripcion: '',
                     cantidad: 0,
                 },
+                imagen: {
+                    idImagen: 0,
+                    base64Imagen: '',
+                    name: ''
+                },
+                hasImage: false,
+                previewImage: null,
             }
 
         case types.IsNewInventory:
@@ -2525,6 +2539,45 @@ export const InventoryReducer = (state = initialState, action) => {
             return {
                 ...state,
                 listaArticulosDisponiblesConvertidor: action.payload
+            }
+
+        case types.SetIdImagenIntentory:
+            return {
+                ...state,
+                imagen: {
+                    ...state.imagen,
+                    idImagen: action.payload,
+                }
+            }
+
+        case types.SetBase64ImagenIntentory:
+            return {
+                ...state,
+                imagen: {
+                    ...state.imagen,
+                    base64Imagen: action.payload,
+                }
+            }
+
+        case types.SetNameImagenIntentory:
+            return {
+                ...state,
+                imagen: {
+                    ...state.imagen,
+                    name: action.payload,
+                }
+            }
+
+        case types.SetHasImagenIntentory:
+            return {
+                ...state,
+                hasImage: action.payload,
+            }
+
+        case types.SetPreviewImagenIntentory:
+            return {
+                ...state,
+                previewImage: action.payload,
             }
             
 

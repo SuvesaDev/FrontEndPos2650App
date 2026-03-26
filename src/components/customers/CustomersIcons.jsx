@@ -48,7 +48,8 @@ export const CustomersIcons = () => {
     hasCartaExoneracion,
     startOpening,
     allDatosFacturacion,
-    variasSurcursales
+    variasSurcursales,
+    permisos
   } = useSelector((state) => state.customers);
 
   const { carta } = useSelector((state) => state.cartaExoneracion);
@@ -58,6 +59,13 @@ export const CustomersIcons = () => {
   const { provincias } = useSelector((state) => state.provincias);
 
   const { costaPets } = auth;
+  
+  const {
+      borrar,
+      crear,
+      modificar,
+      ver
+  } = permisos;
 
   const handleCreateCustomers = async (e) => {
 
@@ -313,7 +321,7 @@ export const CustomersIcons = () => {
         <div className="btn-group mb-2">
           <button
             className={
-              activeButtonNew
+              (activeButtonNew && crear)
                 ? "btn btn-success espacio"
                 : "btn btn-success espacio disabled"
             }
@@ -326,7 +334,7 @@ export const CustomersIcons = () => {
         <div className="btn-group mb-2">
           <button
             className={
-              activeButtonSearch
+              (activeButtonSearch && ver)
                 ? "btn btn-primary espacio"
                 : "btn btn-primary espacio disabled"
             }
@@ -340,9 +348,13 @@ export const CustomersIcons = () => {
         <div className="btn-group mb-2">
           <button
             className={
-              activeButtonSave
-                ? "btn btn-dark espacio"
-                : "btn btn-dark espacio disabled"
+              (isCustomerEdit)
+                ? (activeButtonSave && modificar)
+                    ? "btn btn-dark espacio"
+                    : "btn btn-dark espacio disabled"
+                : (activeButtonSave && crear)
+                    ? "btn btn-dark espacio"
+                    : "btn btn-dark espacio disabled"
             }
             onClick={
               isCustomerEdit ? handleEditCustomer : handleCreateCustomers
@@ -356,7 +368,7 @@ export const CustomersIcons = () => {
         <div className="btn-group mb-2">
           <button
             className={
-              activeButtonRemove
+              (activeButtonRemove && borrar)
                 ? "btn btn-danger espacio"
                 : "btn btn-danger espacio disabled"
             }

@@ -1,3 +1,4 @@
+import { IoMdArrowDropleft } from 'react-icons/io';
 import { types } from '../types/types';
 
 const initialState = {
@@ -18,7 +19,12 @@ const initialState = {
     },
     idSurcursal: 0,
     usersActive: [],
-    surcursales: []
+    surcursales: [],
+    idRol: 0,
+    nombreRol: '',
+    modulos: JSON.parse(localStorage.getItem('modulos')) || [],
+    pantallas: JSON.parse(localStorage.getItem('pantallas')) || [],
+    accionesPantalla: JSON.parse(localStorage.getItem('accionesPantalla')) || []
 }
 
 export const loginReducer = ( state = initialState, action ) => {
@@ -57,7 +63,12 @@ export const loginReducer = ( state = initialState, action ) => {
                     userName: null,
                     password: null
                 },
-                usersActive: []
+                usersActive: [],
+                idRol: 0,
+                nombreRol: '',
+                modulos: [],
+                pantallas: [],
+                accionesPantalla: []
             }
 
         case types.loginSetErrorCentro:
@@ -142,6 +153,36 @@ export const loginReducer = ( state = initialState, action ) => {
             return {
                 ...state,
                 idSurcursal: action.payload
+            }
+
+        case types.SetIdRolLogin:
+            return {
+                ...state,
+                idRol: action.payload
+            }
+
+        case types.SetNombreRolLogin:
+            return {
+                ...state,
+                nombreRol: action.payload
+            }
+
+        case types.SetModulosLogin:
+            return {
+                ...state,
+                modulos: action.payload
+            }
+
+        case types.SetPantallasLogin:
+            return {
+                ...state,
+                pantallas: action.payload
+            }
+
+        case types.SetAccionesPantallasLogin:
+            return {
+                ...state,
+                accionesPantalla: action.payload
             }
     
         default:

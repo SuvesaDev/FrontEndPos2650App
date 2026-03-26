@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
-import { FaPercentage, FaSearch } from 'react-icons/fa';
+import { FaPercentage, FaSearch, FaCamera } from 'react-icons/fa';
 import { MdDeleteForever, MdShoppingCart } from 'react-icons/md';
 import { FaCircleExclamation, FaColonSign } from 'react-icons/fa6';
 import { TbEditCircle } from 'react-icons/tb';
@@ -33,8 +33,10 @@ import {
     SetSubtotalGravadoDetalleConsignment,
     startAddDetalleActualConsignment,
     startEditDetalleActualConsignment,
-    startGetOneInventoryConsignment
+    startGetOneInventoryConsignment,
+    startGetProductsImagenConsignment
 } from '../../actions/ConsignmentAction';
+import { ConsignmentSearchImagenModal } from './ConsignmentSearchImagenModal';
 
 export const ConsignmentItems = () => {
 
@@ -129,6 +131,12 @@ export const ConsignmentItems = () => {
 
     const handleSearchArticleBilling = async (e) => {
         dispatch(SetOpenSearchInventoryConsignment(true));
+        dispatch(SetValorFiltroSearchModalInventory(""));
+    }
+
+    const handleSearchArticleImagenBilling = async (e) => {
+        dispatch(SetOpenSearchInventoryConsignment(true));
+        dispatch(startGetProductsImagenConsignment());
         dispatch(SetValorFiltroSearchModalInventory(""));
     }
 
@@ -538,6 +546,17 @@ export const ConsignmentItems = () => {
                                 >
                                     <FaSearch className="iconSize" />
                                 </button>
+                                <button
+                                    type="button"
+                                    id="btnBuscarArticuloImagen"
+                                    className={ (enableItems) ? 'btn btn-success' : 'btn btn-success disabled' }
+                                    onClick={handleSearchArticleImagenBilling}
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#modalBuscarArticuloImagenConsignment"
+
+                                >
+                                    <FaCamera className="iconSize" />
+                                </button>
                             </div>
                         </div>
 
@@ -696,6 +715,8 @@ export const ConsignmentItems = () => {
             </div>
 
             <InventorySearchModal />
+
+            <ConsignmentSearchImagenModal />
 
         </>
 

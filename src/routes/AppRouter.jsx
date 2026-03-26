@@ -21,7 +21,7 @@ export const AppRouter = () => {
     const [isLoggedIn, setIsLoggedIn] = useState( false );
 
     useEffect(async () => {
-        console.log(auth);
+        
         if( auth.isAutenticated ) {
 
             const dollarValue = await getDollarData();

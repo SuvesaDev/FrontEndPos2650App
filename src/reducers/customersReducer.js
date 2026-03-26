@@ -73,6 +73,13 @@ const initialState = {
     isEditDatosFacturacion: false,
     idDatoFacturacionEdit: 0,
     isOpenFromConsignment: false,
+    hasPermisos: false,
+    permisos: {
+        crear: false,
+        borrar: false,
+        modificar: false,
+        ver: false
+    }
 };
 
 export const CustomersReducer = (state = initialState, action) => {
@@ -444,6 +451,7 @@ export const CustomersReducer = (state = initialState, action) => {
                 isEditDatosFacturacion: false,
                 idDatoFacturacionEdit: 0,
                 isOpenFromConsignment: false,
+                permisos: state.permisos
             }
 
         case types.ActiveButtonNewCustomers:
@@ -742,6 +750,18 @@ export const CustomersReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isOpenFromConsignment: action.payload
+            }
+
+        case types.SetPermisosCustomers:
+            return {
+                ...state,
+                permisos: action.payload
+            }
+
+        case types.SetHasPermisosCustomers:
+            return {
+                ...state,
+                hasPermisos: action.payload
             }
     
         default:

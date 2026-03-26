@@ -105,11 +105,7 @@ export const InventoryBodyFeaturesTabs = () => {
             <button
             className={ 
                 (costaPets) 
-                    ? (idTipoArticuloSelected == 3) 
-                        ? 'col-md-3 mb-3 d-none'
-                        : currentTabInventory == "Relacionados"
-                            ? "btn btn-outline-primary activeP"
-                            : "btn btn-primary" 
+                    ? 'col-md-3 mb-3 d-none'
                     : currentTabInventory == "Relacionados"
                         ? "btn btn-outline-primary activeP"
                         : "btn btn-primary"
@@ -133,7 +129,7 @@ export const InventoryBodyFeaturesTabs = () => {
                 </button>
             ) : null}
             
-            {idTipoArticuloSelected == 3 ? (
+            {/* {idTipoArticuloSelected == 3 ? (
                 <button
                     className={ 
                         (costaPets && isEditInventory) 
@@ -145,7 +141,7 @@ export const InventoryBodyFeaturesTabs = () => {
                     >
                     Convertidor
                     </button>
-            ) : null }
+            ) : null } */}
             
 
             {isShowTabCodigoBarras ? (
@@ -200,6 +196,19 @@ export const InventoryBodyFeaturesTabs = () => {
             onClick={handleTabLotes}
             >
             Lotes
+            </button>
+
+            <button
+            className={
+                (costaPets)
+                    ? currentTabInventory == "Imagen"
+                        ? "btn btn-outline-primary activeP"
+                        : "btn btn-primary"
+                    : 'col-md-3 mb-3 d-none'
+            }
+            onClick={() => handleSelectTabInventory("Imagen")}
+            >
+            Imagen
             </button>
 
         </div>

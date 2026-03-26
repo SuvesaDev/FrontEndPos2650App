@@ -28,6 +28,11 @@ export const types = {
   SetUserActiveLogin: '[Login] SetUserActiveLogin',
   SetSurcursalesLogin: '[Login] SetSurcursalesLogin',
   SetIdSurcursalLogin: '[Login] SetIdSurcursalLogin',
+  SetIdRolLogin: '[Login] SetIdRolLogin',
+  SetNombreRolLogin: '[Login] SetNombreRolLogin',
+  SetModulosLogin: '[Login] SetModulosLogin',
+  SetPantallasLogin: '[Login] SetPantallasLogin',
+  SetAccionesPantallasLogin: '[Login] SetAccionesPantallasLogin',
 
   //Cellar
   cellarAddNew: '[cellar reducer] Add new cellar',
@@ -474,6 +479,11 @@ export const types = {
   SetCantidadDisponiblesConvertidorLotesIntentory : '[Inventory] SetCantidadDisponiblesConvertidorLotesIntentory',
   SetCantidadConvertirConvertidorLotesIntentory: '[Inventory] SetCantidadConvertirConvertidorLotesIntentory',
   SetListaArticulosDisponiblesConvertidorLotesIntentory: '[Inventory] SetListaArticulosDisponiblesConvertidorLotesIntentory',
+  SetIdImagenIntentory: '[Inventory] SetIdImagenIntentory',
+  SetBase64ImagenIntentory: '[Inventory] SetBase64ImagenIntentory',
+  SetNameImagenIntentory: '[Inventory] SetNameImagenIntentory',
+  SetHasImagenIntentory: '[Inventory] SetHasImagenIntentory',
+  SetPreviewImagenIntentory: '[Inventory] SetPreviewImagenIntentory',
 
   // Customers actions
   SelectTabCustomers: '[Customers] SelectTabCustomers',
@@ -551,6 +561,8 @@ export const types = {
   SetDeleteDatosFacturacionCustomers: '[Customers] SetDeleteDatosFacturacionCustomers',
   SetAddAllDatosFacturacionCustomers: '[Customers] SetAddAllDatosFacturacionCustomers',
   SetIsOpenFromConsignmentCustomers: '[Customers] SetIsOpenFromConsignmentCustomers',
+  SetPermisosCustomers: '[Customers] SetPermisosCustomers',
+  SetHasPermisosCustomers: '[Customers] SetHasPermisosCustomers',
 
   // Carta Exoneracion Actions
   SetMotivoCartaExoneracion: '[CartaExoneracion] SetMotivoCartaExoneracion',
@@ -949,6 +961,13 @@ export const types = {
   SetIsCostaPetsBilling: '[Billing] SetIsCostaPetsBilling',
   SetLotesByArticuloBilling: '[Billing] SetLotesByArticuloBilling',
   SetDatosFacturacionByClienteBilling: '[Billing] SetDatosFacturacionByClienteBilling',
+  SetProductsImagenBilling: '[Billing] SetProductsImagenBilling',
+  SetCheckProductsImagenBilling: '[Billing] SetCheckProductsImagenBilling',
+  SetCantidadProductsImagenBilling: '[Billing] SetCantidadProductsImagenBilling',
+  SetIncrementarProductsImagenBilling: '[Billing] SetIncrementarProductsImagenBilling',
+  SetDecrementarProductsImagenBilling: '[Billing] SetDecrementarProductsImagenBilling',
+  SetSelecionarTodosProductsImagenBilling: '[Billing] SetSelecionarTodosProductsImagenBilling',
+  SetCancelarProductsImagenBilling: '[Billing] SetCancelarProductsImagenBilling',
 
   // Buys actions
   buysOpenModelImportarF: '[Buys] Open Model Importar Factura',
@@ -1584,6 +1603,7 @@ export const types = {
   SetClaveEntradaUsers: '[Users] SetClaveEntradaUsers',
   SetClaveInternaUsers: '[Users] SetClaveInternaUsers',
   SetPerfilUsers: '[Users] SetPerfilUsers',
+  SetRolUsers: '[Users] SetRolUsers',
   SetFotoUsers: '[Users] SetFotoUsers',
   SetInicialesUsers: '[Users] SetInicialesUsers',
   SetCambiarPrecioUsers: '[Users] SetCambiarPrecioUsers',
@@ -1611,6 +1631,7 @@ export const types = {
 
   SetShowCostaPetsUsers: '[Users] SetShowCostaPetsUsers',
   SetPerfilesUsers: '[Users] SetPerfilesUsers',
+  SetRolesUsers: '[Users] SetRolesUsers',
   
   CleanUsers: '[Users] CleanUsers',
 
@@ -2311,6 +2332,13 @@ export const types = {
   SetIsEditConsignment: '[Consignacion] SetIsEditConsignment',
   SetIsAllowAceptaConsignacionConsignment: '[Consignacion] SetIsAllowAceptaConsignacionConsignment',
   SetSurcursalesConsignment: '[Consignacion] SetSurcursalesConsignment',
+  SetProductsImagenConsignment: '[Consignacion] SetProductsImagenConsignment',
+  SetCheckProductsImagenConsignment: '[Consignacion] SetCheckProductsImagenConsignment',
+  SetCantidadProductsImagenConsignment: '[Consignacion] SetCantidadProductsImagenConsignment',
+  SetIncrementarProductsImagenConsignment: '[Consignacion] SetIncrementarProductsImagenConsignment',
+  SetDecrementarProductsImagenConsignment: '[Consignacion] SetDecrementarProductsImagenConsignment',
+  SetSelecionarTodosProductsImagenConsignment: '[Consignacion] SetSelecionarTodosProductsImagenConsignment',
+  SetCancelarProductsImagenConsignment: '[Consignacion] SetCancelarProductsImagenConsignment',
 
   CleanConsignment: '[Consignacion] CleanConsignment',
 
@@ -2357,5 +2385,44 @@ export const types = {
   SetIsEditPlazoDeadlines: '[Deadlines] SetIsEditPlazoDeadlines',
   SetEditDeadlines: '[Deadlines] SetEditDeadlines',
   SetDeleteDeadlines: '[Deadlines] SetDeleteDeadlines',
+
+  // Role Actions
+  SetActiveButtonSaveRole      : '[Role] SetActiveButtonSaveRole',
+  SetDisableInputsRole         : '[Role] SetDisableInputsRole',
+  SetClaveInternaRole          : '[Role] SetClaveInternaRole',
+  SetvisiblePasswordRole       : '[Role] SetvisiblePasswordRole',
+  SetDisableInputsUserRole     : '[Role] SetDisableInputsUserRole',
+  SetNameUserRole              : '[Role] SetNameUserRole',
+  SetIdRoleActualRole          : '[Role] SetIdRoleActualRole',
+  SetNombreRoleActualRole      : '[Role] SetNombreRoleActualRole',
+  SetDescripcionRoleActualRole : '[Role] SetDescripcionRoleActualRole',
+  SetEstadoRoleActualRole      : '[Role] SetEstadoRoleActualRole',
+  SetAddRolesRole              : '[Role] SetAddRolesRole',
+  SetModulosWebRole            : '[Role] SetModulosWebRole',
+  SetPantallasWebRole          : '[Role] SetPantallasWebRole',
+
+  SetIdModuleModuloActualRole       : '[Role] SetIdModuleModuloActualRole',
+  SetNombreModuleModuloActualRole   : '[Role] SetNombreModuleModuloActualRole',
+  SetIdPantallaModuloActualRole     : '[Role] SetIdPantallaModuloActualRole',
+  SetNombrePantallaModuloActualRole : '[Role] SetNombrePantallaModuloActualRole',
+  SetCrearModuloActualRole          : '[Role] SetCrearModuloActualRole',
+  SetModificarModuloActualRole      : '[Role] SetModificarModuloActualRole',
+  SetBorrarModuloActualRole         : '[Role] SetBorrarModuloActualRole',
+  SetVerModuloActualRole            : '[Role] SetVerModuloActualRole',
+  SetAddModulosRole                 : '[Role] SetAddModulosRole',
+  CleanModuloActualRole             : '[Role] CleanModuloActualRole',
+  SetIsEditModuloRole               : '[Role] SetIsEditModuloRole',
+  SetEditModulosRole                : '[Role] SetEditModulosRole',
+  SetIdModuloSeletedRole            : '[Role] SetIdModuloSeletedRole',
+  SetDeleteModuloRole               : '[Role] SetDeleteModuloRole',
+  CleanModulosModuloActualRole      : '[Role] CleanModulosModuloActualRole',
+  SetModulosModuloRole              : '[Role] SetModulosModuloRole',
+  SetIsEditRoleRole                 : '[Role] SetIsEditRoleRole',
+
+  CleanRoleActualRole               : '[Role] CleanRoleActualRole',
+  SetEditRole                       : '[Role] SetEditRole',
+  SetIdSeletedRole                  : '[Role] SetIdSeletedRole',
+  SetDeleteRole                     : '[Role] SetDeleteRole',
+  SetRolesRole                     : '[Role] SetRolesRole',
 
 }

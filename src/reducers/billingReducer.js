@@ -203,7 +203,8 @@ const initialState = {
     startEditing: false,
     datosImprimirCredito: [],
     lotesByArticulo: [],
-    datosFacturacionByCliente: []
+    datosFacturacionByCliente: [],
+    productsImagen: []
 };
 
 export const BillingReducer = (state = initialState, action) => {
@@ -2838,6 +2839,136 @@ export const BillingReducer = (state = initialState, action) => {
                 )
             }
 
+        case types.SetProductsImagenBilling:
+            return {
+                ...state,
+                billings: state.billings.map(
+                    (billing, i) => i === action.payload.number
+                        ? {
+                            ...state.billings[action.payload.number],
+                            productsImagen: action.payload.value
+                        }
+                        : billing
+                )
+            }
+
+        case types.SetCheckProductsImagenBilling:
+            return {
+                ...state,
+                billings: state.billings.map(
+                    (billing, i) => i === action.payload.number
+                        ? {
+                            ...state.billings[action.payload.number],
+                            productsImagen: state.billings[action.payload.number].productsImagen.map( product => 
+                                product.id === action.payload.value 
+                                    ? { 
+                                        ...product, 
+                                        selected: !product.selected 
+                                    } 
+                                    : product
+                            )
+                        }
+                        : billing
+                )
+            }
+
+        case types.SetCantidadProductsImagenBilling:
+            return {
+                ...state,
+                billings: state.billings.map(
+                    (billing, i) => i === action.payload.number
+                        ? {
+                            ...state.billings[action.payload.number],
+                            productsImagen: state.billings[action.payload.number].productsImagen.map( product => 
+                                product.id === action.payload.value.id 
+                                    ? { 
+                                        ...product, 
+                                        quantity: action.payload.value.quantity
+                                    } 
+                                    : product
+                            )
+                        }
+                        : billing
+                )
+            }
+
+        case types.SetIncrementarProductsImagenBilling:
+            return {
+                ...state,
+                billings: state.billings.map(
+                    (billing, i) => i === action.payload.number
+                        ? {
+                            ...state.billings[action.payload.number],
+                            productsImagen: state.billings[action.payload.number].productsImagen.map( product => 
+                                product.id === action.payload.value
+                                    ? { 
+                                        ...product, 
+                                        quantity: product.quantity + 1
+                                    } 
+                                    : product
+                            )
+                        }
+                        : billing
+                )
+            }
+
+        case types.SetDecrementarProductsImagenBilling:
+            return {
+                ...state,
+                billings: state.billings.map(
+                    (billing, i) => i === action.payload.number
+                        ? {
+                            ...state.billings[action.payload.number],
+                            productsImagen: state.billings[action.payload.number].productsImagen.map( product => 
+                                product.id === action.payload.value && product.quantity > 1
+                                    ? { 
+                                        ...product, 
+                                        quantity: product.quantity - 1
+                                    } 
+                                    : product
+                            )
+                        }
+                        : billing
+                )
+            }
+
+        case types.SetSelecionarTodosProductsImagenBilling:
+            return {
+                ...state,
+                billings: state.billings.map(
+                    (billing, i) => i === action.payload.number
+                        ? {
+                            ...state.billings[action.payload.number],
+                            productsImagen: state.billings[action.payload.number].productsImagen.map( product => 
+                               ({ 
+                                    ...product, 
+                                    selected: action.payload.value
+                                })
+                            )
+                        }
+                        : billing
+                )
+            }
+
+        case types.SetCancelarProductsImagenBilling:
+            return {
+                ...state,
+                billings: state.billings.map(
+                    (billing, i) => i === action.payload.number
+                        ? {
+                            ...state.billings[action.payload.number],
+                            productsImagen: state.billings[action.payload.number].productsImagen.map( product => 
+                               ({ 
+                                    ...product, 
+                                    selected: false, 
+                                    quantity: 1
+                                })
+                            )
+                        }
+                        : billing
+                )
+            }
+
         case types.CleanBilling:
             return {
                 ...state,
@@ -3042,7 +3173,8 @@ export const BillingReducer = (state = initialState, action) => {
                             isPreventaEdit: false,
                             startEditing: false,
                             lotesByArticulo: [],
-                            datosFacturacionByCliente: []
+                            datosFacturacionByCliente: [],
+                            productsImagen: []
                         }
                         : billing
                 )

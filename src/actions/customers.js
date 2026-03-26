@@ -1593,3 +1593,13 @@ export const SetIsOpenFromConsignmentCustomers = ( value ) => ({
     type: types.SetIsOpenFromConsignmentCustomers,
     payload: value
 });
+
+export const SetPermisosCustomers = ( value ) => ({
+    type: types.SetPermisosCustomers,
+    payload: value
+});
+
+export const SetHasPermisosCustomers = ( value ) => ({
+    type: types.SetHasPermisosCustomers,
+    payload: value
+});

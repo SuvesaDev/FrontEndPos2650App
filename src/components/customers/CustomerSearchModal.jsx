@@ -30,7 +30,8 @@ export const CustomerSearchModal = () => {
 
     const defaultData = {
         cedula: null,
-        nombre: null
+        nombre: null,
+        nombreFantasia: null
     };
 
     const dispatch = useDispatch();
@@ -38,7 +39,7 @@ export const CustomerSearchModal = () => {
     const { openSearchCustomerModalDE } = useSelector(state => state.documentsEmited);
     const { openModalSearchCustomerConsultAlbaranes } = useSelector(state => state.consultAlbaranes);
 
-    const [{ cedula, nombre }, handleInputChange] = useForm(defaultData);
+    const [{ cedula, nombre, nombreFantasia }, handleInputChange] = useForm(defaultData);
 
     const columns = [
         {
@@ -59,16 +60,19 @@ export const CustomerSearchModal = () => {
 
         e.preventDefault();
 
-        if ((cedula === null && nombre === null) || (cedula === undefined && nombre === undefined) || cedula === '' && nombre === ''
-            || (cedula === '' && nombre === null) || (cedula === null && nombre === '')) {
+        if ( (cedula === null && nombre === null && nombreFantasia === null) 
+            || (cedula === undefined && nombre === undefined && nombreFantasia === undefined) 
+            || cedula === '' && nombre === '' && nombreFantasia === ''
+            || (cedula === '' && nombre === null && nombreFantasia === null) 
+            || (cedula === null && nombre === '' && nombreFantasia === '')) {
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
-                text: 'Se debe ingresar Cédula o Nombre de la persona para realizar la busqueda.',
+                text: 'Se debe ingresar Cédula o Nombre o Nombre Fantasia de la persona para realizar la busqueda.',
             });
         } else {
 
-            dispatch( startSearchCustomer( { cedula, nombre } ) );
+            dispatch( startSearchCustomer( { cedula, nombre, nombreFantasia } ) );
             // if (cedula != null && (nombre == null || nombre === '')) {
             //     dispatch(startSearchCustomer(cedula, null, 'cedula'));
             // } else if (nombre != null && (cedula == null || cedula === '')) {
@@ -97,7 +101,7 @@ export const CustomerSearchModal = () => {
                         <div className="modal-body">
                             <form onSubmit={handleSearch}>
                                 <div className="row mb-2 text-center">
-                                    <div className="col-md-4 mb-3">
+                                    <div className="col-md-3 mb-3">
                                         <h5>Cédula</h5>
                                         <div className="input-group">
                                             <span className="input-group-text">
@@ -114,7 +118,7 @@ export const CustomerSearchModal = () => {
                                         </div>
                                     </div>
 
-                                    <div className="col-md-4 mb-3">
+                                    <div className="col-md-3 mb-3">
                                         <h5>Nombre</h5>
                                         <div className="input-group">
                                             <span className="input-group-text">
@@ -131,7 +135,24 @@ export const CustomerSearchModal = () => {
                                         </div>
                                     </div>
 
-                                    <div className="col-md-4 mb-3">
+                                    <div className="col-md-3 mb-3">
+                                        <h5>Nombre Fantasia</h5>
+                                        <div className="input-group">
+                                            <span className="input-group-text">
+                                                <FaUser className="iconSize" />
+                                            </span>
+                                            <input
+                                                className="form-control"
+                                                placeholder="Nombre de Fantasia"
+                                                name="nombreFantasia"
+                                                autoFocus
+                                                value={nombreFantasia}
+                                                onChange={handleInputChange}
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <div className="col-md-3 mb-3">
                                         <hr />
                                         <button type='submit' className='btn btn-primary'
                                         >

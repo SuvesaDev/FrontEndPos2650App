@@ -18,20 +18,23 @@ import { BiSolidReport } from "react-icons/bi";
 
 export const SidebarDataCostaPets = () => {
 
-    const { auth } = useSelector( state => state.login );
+    const { auth, modulos, pantallas } = useSelector( state => state.login );
     const { administrador, agenteCostaPets } = auth;
+
+    let menu = [];
+    let itemsByRol = IteamsAdmin.filter( item => modulos.includes(item.title) );
+
+    modulos.forEach( modulo => {
+        let mod = itemsByRol.find(item => item.title == modulo);
+        mod.subNav = mod.subNav.filter( item => pantallas.includes(item.title) );
+        menu.push(mod);
+    });
 
     return (
         
-        ( administrador == true && agenteCostaPets == false ) 
-            ?   IteamsAdmin.map((item, index) => (
-                    <SidebarItem key={index} index={index} item={item} class/>
-                ))
-            : ( administrador == false && agenteCostaPets == true )
-                ?   IteamsAgente.map((item, index) => (
-                        <SidebarItem key={index} index={index} item={item} class/>
-                    ))
-                : <></>
+        menu.map((item, index) => (
+            <SidebarItem key={index} index={index} item={item} class/>
+        ))
        
     )
 
@@ -378,6 +381,12 @@ const IteamsAdmin = [
             {
                 title: 'Usuarios',
                 path: '/parameters/users',
+                icon: <FaUserCircle />,
+                cName: 'vet_nav-text'
+            },
+            {
+                title: 'Roles',
+                path: '/parameters/role',
                 icon: <FaUserCircle />,
                 cName: 'vet_nav-text'
             },

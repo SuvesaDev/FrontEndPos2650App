@@ -656,3 +656,234 @@
         cursor: not-allowed;
     }
 }
+
+/* Modal container */
+.product-selection-modal .modal-content {
+  border-radius: 12px;
+  border: none;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.product-selection-modal .modal-header {
+  background-color: #f8f9fa;
+  border-radius: 12px 12px 0 0;
+  padding: 1.25rem 1.5rem;
+}
+
+.product-selection-modal .modal-body {
+  max-height: 70vh;
+  overflow-y: auto;
+  padding: 0;
+}
+
+/* Scroll container para productos */
+.products-scroll-container {
+  max-height: 50vh;
+  overflow-y: auto;
+  padding: 0 0.5rem;
+}
+
+.products-scroll-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.products-scroll-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.products-scroll-container::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.products-scroll-container::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Product cards */
+.product-card {
+  transition: all 0.3s ease;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  height: 100%;
+}
+
+.product-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1) !important;
+}
+
+.product-card.selected {
+  border: 2px solid #0d6efd !important;
+  box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.25) !important;
+}
+
+.product-card.selected .product-image-wrapper {
+  background-color: #e7f1ff;
+}
+
+.product-image-wrapper {
+  background-color: #f8f9fa;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 180px;
+  position: relative;
+}
+
+.product-image {
+  max-height: 150px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.05);
+}
+
+/* Checkbox overlay */
+.checkbox-overlay {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+  background: white;
+  border-radius: 50%;
+  padding: 3px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.checkbox-overlay .form-check-input {
+  width: 1.3rem;
+  height: 1.3rem;
+  cursor: pointer;
+  margin: 0;
+}
+
+.product-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.product-price {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #212529;
+  margin: 0;
+}
+
+/* Quantity control */
+.quantity-control {
+  animation: fadeIn 0.3s ease;
+  padding: 0.75rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  margin-top: 0.5rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.quantity-input-group {
+  max-width: 120px;
+  margin: 0 auto;
+}
+
+.quantity-input-group .quantity-btn {
+  padding: 0.25rem 0.5rem;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.quantity-input {
+  text-align: center;
+  font-weight: 600;
+  border-left: 0;
+  border-right: 0;
+  padding: 0.25rem;
+  font-size: 0.9rem;
+}
+
+.quantity-input:focus {
+  box-shadow: none;
+  border-color: #dee2e6;
+}
+
+.subtotal {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+}
+
+/* Header info */
+.selected-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.total-price {
+  font-size: 1rem;
+}
+
+/* Modal footer */
+.product-selection-modal .modal-footer {
+  padding: 1rem 1.5rem;
+  background-color: #f8f9fa;
+  border-radius: 0 0 12px 12px;
+}
+
+.product-selection-modal .modal-footer .btn {
+  padding: 0.5rem 1.5rem;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+  .product-selection-modal .modal-dialog {
+    margin: 0.5rem;
+  }
+  
+  .product-image-wrapper {
+    min-height: 150px;
+    padding: 0.75rem;
+  }
+  
+  .product-image {
+    max-height: 120px;
+  }
+  
+  .products-scroll-container {
+    max-height: 60vh;
+  }
+  
+  .quantity-input-group {
+    max-width: 100px;
+  }
+}
+
+/* Disable pointer events */
+.product-card .product-image-wrapper,
+.product-card .card-body {
+  pointer-events: none;
+}
+
+.product-card .form-check-input,
+.product-card .quantity-control,
+.product-card .quantity-control * {
+  pointer-events: auto;
+}

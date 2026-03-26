@@ -23,7 +23,7 @@ export const Navbar = () => {
 
   const state = useSelector((state) => state);
   const { sidebar, sidebarUser, dollar } = state.sidebar;
-  const { auth } = state.login;
+  const { auth, nombreRol } = state.login;
 
   const showSidebar = () => {
     dispatch(ShowSidebar());
@@ -136,6 +136,19 @@ export const Navbar = () => {
                     </strong>
                   </div>
                   <div className="card-body">{auth.username}</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="row colRes">
+              <div className="col-md-12">
+                <div className="card cardNav">
+                  <div className="card-header">
+                    <strong>
+                      <FaUserCheck className="iconSizeXL" /> Rol
+                    </strong>
+                  </div>
+                  <div className="card-body">{nombreRol}</div>
                 </div>
               </div>
             </div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
 import { useTable } from "react-table";
 import { useSelector, useDispatch } from 'react-redux';
@@ -12,6 +12,8 @@ import {
 export const UsersSearchTable = ({ columns, data }) => {
 
     const dispatch = useDispatch();
+    const { perfiles } = useSelector(state => state.users);
+    const btnRef = useRef(null);
 
     const {
         getTableProps,
@@ -33,13 +35,15 @@ export const UsersSearchTable = ({ columns, data }) => {
         if( idUsuario !== null ) {
             
             // Se obtiene ese usuario
-            dispatch( startGetOneUsers( idUsuario ) );
+            dispatch( startGetOneUsers( idUsuario, perfiles ) );
 
             //Cerrar el modal
             dispatch( SetIsOpenModalSearchUsers( false ) );
         
             //Clean el state de busqueda de users
             dispatch( CleanSearchOptionsUsers() );
+
+            btnRef.current.click();
 
         }
 
@@ -48,6 +52,15 @@ export const UsersSearchTable = ({ columns, data }) => {
     return (
     	<div className="table-responsive-md tablaP">
             
+            <div className="btn-group mb-2 d-none">
+                <button
+                    ref={btnRef}
+                    type="button"
+                    className="d-none"
+                    data-bs-dismiss="modal"
+                ></button>
+            </div>
+
             <table className="table table-dark table-hover table-bordered text-md-center"
                 {...getTableProps()}
             >

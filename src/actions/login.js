@@ -36,12 +36,40 @@ export const startLogin = (auth) => {
                     expiracion, 
                     administrador, 
                     agenteCostaPets, 
-                    costaPets 
+                    costaPets,
+                    rol
                 } = responses;
+
+                const {
+                    idRol,
+                    nombreRol,
+                    permisos
+                } = rol;
+
+                let modulos = permisos.map(permiso => {
+                    return permiso.menu
+                });
+
+                modulos = [...new Set(modulos)];
+
+                const pantallas = permisos.map(permiso => {
+                    return permiso.nombrePantalla
+                });
+
+                const accionesPantalla = permisos.map(permiso => {
+                    return {
+                        pantalla: permiso.nombrePantalla,
+                        acciones: permiso.acciones
+                    }
+                });
 
                 localStorage.setItem('auth', JSON.stringify({
                     token: token
                 }));
+
+                localStorage.setItem('modulos', JSON.stringify(modulos));
+                localStorage.setItem('pantallas', JSON.stringify(pantallas));
+                localStorage.setItem('accionesPantalla', JSON.stringify(accionesPantalla))
 
                 const { data } = await suvesaApi.post(`/Centros/ObtenerSucursal`);
                 
@@ -82,6 +110,15 @@ export const startLogin = (auth) => {
 
                             // Establecer en el state: centro, usuario, token, isAutenticated en true
                             dispatch(login(centros[i], usuario, token, costaPets, administrador, agenteCostaPets));
+
+                            dispatch( SetIdRolLogin(idRol) );
+                            dispatch( SetNombreRolLogin(nombreRol) );
+
+                            dispatch( SetModulosLogin(modulos) );
+
+                            dispatch( SetPantallasLogin(pantallas) );
+
+                            dispatch( SetAccionesPantallasLogin(accionesPantalla));
 
                             //Escribe el localStorage
                             localStorage.setItem('auth', JSON.stringify({
@@ -358,7 +395,6 @@ export const startValidateClaveInterna = ( password ) => {
     }
 }
 
-
 // Normal Action
 const login = (centro, username, token, costaPets, administrador, agenteCostaPets ) => ({
     type: types.login,
@@ -373,7 +409,10 @@ const login = (centro, username, token, costaPets, administrador, agenteCostaPet
 });
 
 export const logout = () => {
-    localStorage.setItem('auth', null)
+    localStorage.setItem('auth', null);
+    localStorage.setItem('modulos', null);
+    localStorage.setItem('pantallas', null);
+    localStorage.setItem('accionesPantalla', null);
     return {
         type: types.logout,
     }
@@ -426,5 +465,30 @@ export const SetSurcursalesLogin = (value) => ({
 
 export const SetIdSurcursalLogin = (value) => ({
     type: types.SetIdSurcursalLogin,
+    payload: value
+});
+
+export const SetIdRolLogin = (value) => ({
+    type: types.SetIdRolLogin,
+    payload: value
+});
+
+export const SetNombreRolLogin = (value) => ({
+    type: types.SetNombreRolLogin,
+    payload: value
+});
+
+export const SetModulosLogin = (value) => ({
+    type: types.SetModulosLogin,
+    payload: value
+});
+
+export const SetPantallasLogin = (value) => ({
+    type: types.SetPantallasLogin,
+    payload: value
+});
+
+export const SetAccionesPantallasLogin = (value) => ({
+    type: types.SetAccionesPantallasLogin,
     payload: value
 });

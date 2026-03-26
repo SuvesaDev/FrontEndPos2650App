@@ -358,18 +358,18 @@ export const InventoryHeaderArticle = () => {
                 handleInputChangeWithDispatch(e, SetSubFamiliaInventory)
               }
             >
-              <option value="" selected disabled hidden>
+              <option value={0} selected disabled hidden>
                 {" "}
                 Seleccione...{" "}
               </option>
-              {subFamiliasInventory != null ? (
+              {subFamiliasInventory != null && subFamiliasInventory != [] ? (
                 subFamiliasInventory.map((tipo) => {
                   return (
                     <option value={tipo.codigo}> {tipo.descripcion} </option>
                   );
                 })
               ) : (
-                <option value="">No se cargaron las familias</option>
+                <option value={""}>No se cargaron las familias</option>
               )}
             </select>
             <button
@@ -767,7 +767,7 @@ export const InventoryHeaderArticle = () => {
 
         </div>
 
-        <div className={ costaPets && idTipoArticuloSelected == 3 ? 'col-md-3 mb-3' : 'col-md-4 mb-3 d-none'}>
+        {/* <div className={ costaPets && idTipoArticuloSelected == 3 ? 'col-md-3 mb-3' : 'col-md-4 mb-3 d-none'}>
 
           <h5>Código Padre</h5>
           <div className="input-group">
@@ -795,7 +795,7 @@ export const InventoryHeaderArticle = () => {
             </button>
           </div>
 
-        </div>
+        </div> */}
         
         <div className="col-md-2 mb-0"></div>
       </div>
