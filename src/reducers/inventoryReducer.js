@@ -156,12 +156,30 @@ const initialState = {
     },
     previewImage: null,
     hasImage: false,
-    bonificacionArticles: {
+    currentBonificacionArticles: {
         codigo: '',
         cod_Articulo: '',
-        descripcion: '',
-        tipoBonificacion: 0,
+        descripcion: ''
     },
+    bonificacionArticles: [],
+    tipoBonificacion: 0,
+    isSeletedTipoBonificacion: false,
+    idSelectedTipoBonificacion: 0,
+    bonificacionTypes: [],
+    tiposBonificacion: [
+        {
+            codigo: 1,
+            descripcion: "10x1"
+        },
+        {
+            codigo: 2,
+            descripcion: "12x2"
+        },
+        {
+            codigo: 3,
+            descripcion: "14x3"
+        }
+    ],
     inventory: {
         codigo: null,
         cod_Articulo: null,
@@ -1351,12 +1369,17 @@ export const InventoryReducer = (state = initialState, action) => {
                 },
                 hasImage: false,
                 previewImage: null,
-                bonificacionArticles: {
+                currentBonificacionArticles: {
                     codigo: '',
                     cod_Articulo: '',
-                    descripcion: '',
-                    tipoBonificacion: 0,
-                }
+                    descripcion: ''
+                },
+                bonificacionArticles: [],
+                tipoBonificacion: 0,
+                bonificacionTypes: [],
+                tiposBonificacion: [],
+                isSeletedTipoBonificacion: false,
+                idSelectedTipoBonificacion: 0,
             }
 
         case types.IsNewInventory:
@@ -2595,7 +2618,7 @@ export const InventoryReducer = (state = initialState, action) => {
         case types.SetCodigoBonificacionArticleInventory:
             return {
                 ...state,
-                bonificacionArticles: {
+                currentBonificacionArticles: {
                     ...state.bonificacionArticles,
                     codigo: action.payload
                 }
@@ -2604,7 +2627,7 @@ export const InventoryReducer = (state = initialState, action) => {
         case types.SetCodigoArtBonificacionArticleInventory:
             return {
                 ...state,
-                bonificacionArticles: {
+                currentBonificacionArticles: {
                     ...state.bonificacionArticles,
                     cod_Articulo: action.payload
                 }
@@ -2613,19 +2636,64 @@ export const InventoryReducer = (state = initialState, action) => {
         case types.SetDescripcionArtBonificacionArticleInventory:
             return {
                 ...state,
-                bonificacionArticles: {
+                currentBonificacionArticles: {
                     ...state.bonificacionArticles,
                     descripcion: action.payload
                 }
             }
 
-        case types.SetTipoBonificacionArticleInventory:
+        case types.SetTipoBonificacionInventory:
             return {
                 ...state,
-                bonificacionArticles: {
-                    ...state.bonificacionArticles,
-                    tipoBonificacion: action.payload
-                }
+                tipoBonificacion: action.payload
+            }
+
+        case types.SetTiposBonificacionInventory:
+            return {
+                ...state,
+                tiposBonificacion: action.payload
+            }
+
+        case types.SetAddTipoBonificacionInventory:
+            return {
+                ...state,
+                bonificacionTypes: [
+                    ...state.bonificacionTypes,
+                    action.payload
+                ]
+            }
+
+        case types.SetIsSelectedTipoBonificacionInventory:
+            return {
+                ...state,
+                isSeletedTipoBonificacion: action.payload
+            }
+
+        case types.SetIdSelectedTipoBonificacionInventory:
+            return {
+                ...state,
+                idSelectedTipoBonificacion: action.payload
+            }
+
+        case types.SetEditTipoBonificacionInventory:
+            return {
+                ...state,
+                bonificacionTypes: state.bonificacionTypes.map(
+                    (tipo, i) => tipo.codigo == state.idSelectedTipoBonificacion
+                        ? {
+                            ...tipo,
+                            codigo: action.payload.codigo,
+                            descripcion: action.payload.descripcion
+                        } 
+                        : tipo
+                )
+            }
+
+        case types.SetDeleteTipoBonificacionInventory:
+            return {
+                ...state,
+                bonificacionTypes: state.bonificacionTypes.filter(
+                    tipo => tipo.codigo != action.payload)
             }
             
 

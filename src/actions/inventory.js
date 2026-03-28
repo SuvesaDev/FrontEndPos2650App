@@ -2490,6 +2490,56 @@ export const startDeleteImage = ( idImage ) => {
     }
 }
 
+export const startGetAllTiposBonificables = () => {
+   
+    return async ( dispatch ) => {
+
+        try {
+    
+            //Call end-point 
+            const { data } = await suvesaApi.get(``); // TODO: Indicar el URL
+            const { status, responses } = data;
+            
+            if( status === 0 ) {
+                
+                dispatch( SetTiposBonificacionInventory( responses ) );
+
+            } else {
+    
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
+                
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
+    
+            }
+
+        } catch (error) {
+            
+            Swal.close();
+            console.log(error);
+            if( error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al obtener los tipos de bonificacion',
+                });
+            }
+        }
+    }
+}
+
+
 // Functions
 const CalculatePreciosVenta = ( base, flete, otroC, impuesto, pre ) => {
 
@@ -3940,7 +3990,37 @@ export const SetDescripcionArtBonificacionArticleInventory = (value) => ({
     payload: value
 })
 
-export const SetTipoBonificacionArticleInventory = (value) => ({
-    type: types.SetTipoBonificacionArticleInventory,
+export const SetTipoBonificacionInventory = (value) => ({
+    type: types.SetTipoBonificacionInventory,
+    payload: value
+})
+
+export const SetTiposBonificacionInventory = (value) => ({
+    type: types.SetTiposBonificacionInventory,
+    payload: value
+})
+
+export const SetAddTipoBonificacionInventory = (value) => ({
+    type: types.SetAddTipoBonificacionInventory,
+    payload: value
+})
+
+export const SetIsSelectedTipoBonificacionInventory = (value) => ({
+    type: types.SetIsSelectedTipoBonificacionInventory,
+    payload: value
+})
+
+export const SetEditTipoBonificacionInventory = (value) => ({
+    type: types.SetEditTipoBonificacionInventory,
+    payload: value
+})
+
+export const SetIdSelectedTipoBonificacionInventory = (value) => ({
+    type: types.SetIdSelectedTipoBonificacionInventory,
+    payload: value
+})
+
+export const SetDeleteTipoBonificacionInventory = (value) => ({
+    type: types.SetDeleteTipoBonificacionInventory,
     payload: value
 })

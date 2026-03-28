@@ -7,24 +7,21 @@ import { FaSearch, FaGift } from "react-icons/fa";
 import { GoNumber } from "react-icons/go";
 import { TbNotes, TbNumber } from "react-icons/tb";
 
-import { InventoryBodyFeaturesBonificacionesTable } from "./InventoryBodyFeaturesBonificacionesTable";
+import { InventoryBodyFeaturesTipoBonificacionesTable } from "./InventoryBodyFeaturesTipoBonificacionesTable";
+import { InventoryBodyFeaturesProductosBonificacionesTable } from "./InventoryBodyFeaturesProductosBonificacionesTable";
 
 import {
-  CleanInputsFormulaArticleInventory,
   IsOpenSearchModalFormulaInventory,
-  IsOpenSearchModalRelacionados,
   OpenSearchModalInventory,
+  SetAddTipoBonificacionInventory,
   SetCodigoBonificacionArticleInventory,
+  SetDeleteTipoBonificacionInventory,
   SetDescripcionArtBonificacionArticleInventory,
-  SetFormulaArticleInventory,
-  SetTipoBonificacionArticleInventory,
-  startDeleteFormulaArticle,
-  startDeleteRelatedArticle,
-  startSaveArticleFormulaInventory,
-  startUpdateArticleFormulaInventory,
+  SetEditTipoBonificacionInventory,
+  SetIdSelectedTipoBonificacionInventory,
+  SetIsSelectedTipoBonificacionInventory,
+  SetTipoBonificacionInventory,
 } from "../../../../actions/inventory";
-
-import { RelatedArticles } from "../../../../models/relatedArticles";
 
 export const InventoryBodyFeaturesBonificaciones = () => {
 
@@ -32,14 +29,29 @@ export const InventoryBodyFeaturesBonificaciones = () => {
 
   const {
     disableInputs,
-    bonificacionArticles
+    currentBonificacionArticles,
+    tiposBonificacion,
+    tipoBonificacion,
+    bonificacionTypes,
+    isSeletedTipoBonificacion
   } = useSelector((state) => state.inventory);
 
   const { auth } = useSelector(state => state.login);
 
-  const { codigo, cod_Articulo, descripcion, tipoBonificacion } = bonificacionArticles;
+  const { codigo, cod_Articulo, descripcion } = currentBonificacionArticles;
 
-  const columns = [
+  const columnsTipoBonificables = [
+    {
+      Header: "Codigo",
+      accessor: "codigo",
+    },
+    {
+      Header: "Tipo de Bonificacion",
+      accessor: "descripcion",
+    },
+  ];
+
+  const columnsProductos = [
     {
       Header: "Codigo",
       accessor: "codigo",
@@ -47,11 +59,7 @@ export const InventoryBodyFeaturesBonificaciones = () => {
     {
       Header: "Descripcion",
       accessor: "descripcion",
-    },
-    {
-      Header: "Tipo de Bonificacion",
-      accessor: "tipoBonificacion",
-    },
+    }
   ];
 
   const handleInputChangeWithDispatch = ({ target }, action) => {
@@ -65,79 +73,150 @@ export const InventoryBodyFeaturesBonificaciones = () => {
     dispatch(OpenSearchModalInventory());
   };
 
-  const handleSaveFormulaArticle = (e) => {
+  const handleAddTipoBonificacion = (e) => {
+    
+    e.preventDefault();
 
-    // e.preventDefault();
+    if (tipoBonificacion == 0) return;
 
-    // if (codigo === "" || descripcion === "" || cantidad === 0) return;
+    const existTipoBonificacion = bonificacionTypes.find(
+      (value) => value.codigo === tipoBonificacion
+    );
 
-    // const existFormulaArticle = formulaArticlesInventory.find(
-    //   (value) =>
-    //     value.codigo === codigo &&
-    //     value.descripcion === descripcion &&
-    //     value.cantidad === cantidad
-    // );
+    if (existTipoBonificacion === undefined) {
 
-    // if (existFormulaArticle === undefined) {
+      const newTipoBonificacion = tiposBonificacion.find(
+        (value) => value.codigo == tipoBonificacion
+      );
 
-    //   if (cod_Articulo !== null) {
+      const newTipo = {
+        codigo: tipoBonificacion,
+        descripcion: newTipoBonificacion.descripcion
+      }
 
-    //     let formulaArticlesArray = [];
-    //     formulaArticlesArray.push( new RelatedArticles(
-    //           0,
-    //           parseInt(inventory.codigo),
-    //           parseInt(codigo),
-    //           `${cod_Articulo}`,
-    //           descripcion,
-    //           parseFloat(cantidad),
-    //           true,
-    //           auth.username,
-    //           false,
-    //           true // Es formula
-    //       ) );
+      dispatch(SetAddTipoBonificacionInventory(newTipo));
+      dispatch(SetTipoBonificacionInventory(0));
 
-    //     dispatch( startSaveArticleFormulaInventory( formulaArticlesArray ) );
-
-    //   } else {
-
-    //     Swal.fire({
-    //       icon: "warning",
-    //       title: "Error",
-    //       text: "Primero debe ingresar un Código de Articulo",
-    //     });
-
-    //   }
-    // }
+    } else {
+      Swal.fire({
+          icon: "warning",
+          title: "Advertencia",
+          text: "El tipo de bonificacion ya esta incluido.",
+        });
+    }
   };
 
-  const handleEditRelatedArticle = (e) => {
+  const handleEditTipoBonificacion = (e) => {
   
-      // e.preventDefault();
-  
-      // if (cantidad === 0) return;
-  
-      //   if (cod_Articulo !== null) {
-  
-      //     dispatch( startUpdateArticleFormulaInventory(inventory.codigo, codigo, cantidad, true) );
-          
-      //   }
-    };
+    e.preventDefault();
 
-  const handleDeleteRelatedArticle = (e) => {
-    // e.preventDefault();
+    if (tipoBonificacion == 0) return;
 
-    // if (cantidad === 0) return;
+    const editTipoBonificacion = tiposBonificacion.find(
+      (value) => value.codigo == tipoBonificacion
+    );
 
-    //   if (cod_Articulo !== null) {
+    const editTipo = {
+      codigo: tipoBonificacion,
+      descripcion: editTipoBonificacion.descripcion
+    }
 
-    //     dispatch( startDeleteFormulaArticle(inventory.codigo, codigo, cantidad, false) );
-        
-    //   }
+    dispatch( SetEditTipoBonificacionInventory(editTipo));
+    dispatch( SetTipoBonificacionInventory(0));
+    dispatch( SetIsSelectedTipoBonificacionInventory(false) );
+    dispatch( SetIdSelectedTipoBonificacionInventory(0) );
+  };
+
+  const handleDeleteTipoBonificacion = (e) => {
+
+    e.preventDefault();
+
+    if (tipoBonificacion == 0) return;
+
+    dispatch( SetDeleteTipoBonificacionInventory(tipoBonificacion) );
+    dispatch( SetTipoBonificacionInventory(0));
+    dispatch( SetIsSelectedTipoBonificacionInventory(false) );
+    dispatch( SetIdSelectedTipoBonificacionInventory(0) );
+      
   };
 
   return (
     <>
       <div className="container-fluid mt-2">
+
+        <div className="row mb-2">
+
+          <div className="col-md-6 mb-3">
+            <h5>Tipo de Bonificacion</h5>
+            <div className="input-group">
+              <span className="input-group-text">
+                <FaGift className="iconSize" />
+              </span>
+              <select
+                name="proveedor"
+                disabled={disableInputs}
+                value={tipoBonificacion}
+                className="form-select"
+                onChange={(e) =>
+                  handleInputChangeWithDispatch(e, SetTipoBonificacionInventory)
+                }
+              >
+                <option value={0} selected disabled hidden>
+                  {" "}
+                  Seleccione...{" "}
+                </option>
+                {tiposBonificacion != null ? (
+                  tiposBonificacion.map((tipo) => {
+                    return (
+                      <option value={tipo.codigo}> {tipo.descripcion} </option>
+                    );
+                  })
+                ) : (
+                  <option value="">No se cargaron los proveedores</option>
+                )}
+              </select>
+            </div>
+          </div>
+
+          <div className="col-md-4 mb-2">
+            <h5>Opciones</h5>
+            <div className="inline-container">
+              <button
+                className={
+                  disableInputs ? "btn btn-success disabled" : "btn btn-success"
+                }
+                disabled={disableInputs}
+                onClick={  isSeletedTipoBonificacion ? handleEditTipoBonificacion : handleAddTipoBonificacion }
+              >
+                { isSeletedTipoBonificacion ? 'Editar' : 'Agregar' } <IoAddCircle className="iconSize" />
+              </button>
+
+              <button
+                className={
+                  (isSeletedTipoBonificacion)
+                    ? "btn btn-danger "
+                    : "btn btn-danger disabled"
+                }
+                onClick={handleDeleteTipoBonificacion}
+                type="button"
+              >
+                <RiDeleteBin2Fill className="iconSize" />
+              </button>
+            </div>
+            <hr />
+          </div>
+
+        </div>
+
+        <div className="row mb-3">
+          <div className="col-md-12 mb-2">
+            <InventoryBodyFeaturesTipoBonificacionesTable
+              columns={columnsTipoBonificables}
+              data={bonificacionTypes}
+            />
+          </div>
+          <hr />
+        </div>
 
         <div className="row mb-2">
 
@@ -175,43 +254,7 @@ export const InventoryBodyFeaturesBonificaciones = () => {
             </div>
           </div>
 
-          <div className="col-md-6 mb-3">
-            <h5>Tipo de Bonificacion</h5>
-            <div className="input-group">
-              <span className="input-group-text">
-                <FaGift className="iconSize" />
-              </span>
-              <select
-                name="proveedor"
-                disabled={disableInputs}
-                value={tipoBonificacion}
-                className="form-select"
-                onChange={(e) =>
-                  handleInputChangeWithDispatch(e, SetTipoBonificacionArticleInventory)
-                }
-              >
-                <option value="" selected disabled hidden>
-                  {" "}
-                  Seleccione...{" "}
-                </option>
-                {/* {proveedoresInventory != null ? (
-                  proveedoresInventory.map((tipo) => {
-                    return (
-                      <option value={tipo.codigo}> {tipo.descripcion} </option>
-                    );
-                  })
-                ) : (
-                  <option value="">No se cargaron los proveedores</option>
-                )} */}
-              </select>
-            </div>
-          </div>
-
-        </div>
-
-        <div className="row mb-2">
-
-          <div className="col-md-12 mb-2">
+          <div className="col-md-6 mb-2">
             <h5>Descipción</h5>
             <div className="input-group">
               <span className="input-group-text">
@@ -259,7 +302,7 @@ export const InventoryBodyFeaturesBonificaciones = () => {
                 //     ? "btn btn-danger "
                 //     : "btn btn-danger disabled"
                 // }
-                onClick={handleDeleteRelatedArticle}
+                // onClick={handleDeleteRelatedArticle}
                 type="button"
               >
                 <RiDeleteBin2Fill className="iconSize" />
@@ -271,11 +314,12 @@ export const InventoryBodyFeaturesBonificaciones = () => {
 
         <div className="row mb-3">
           <div className="col-md-12 mb-2">
-            <InventoryBodyFeaturesBonificacionesTable
-              columns={columns}
+            <InventoryBodyFeaturesProductosBonificacionesTable
+              columns={columnsProductos}
               data={[]}
             />
           </div>
+          <hr />
         </div>
 
       </div>

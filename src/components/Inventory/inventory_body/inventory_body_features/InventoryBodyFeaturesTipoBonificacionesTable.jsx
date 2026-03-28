@@ -1,22 +1,16 @@
-import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useTable } from "react-table";
+
 import {
-  IsSelectedRelatedArticleInventory,
-  SetCantidadFormulaArticleInventory,
-  SetCodigoArtFormulaArticleInventory,
-  SetCodigoFormulaArticleInventory,
-  SetDescripcionFormulaArticleInventory,
-  SetIsSelectedFormulaArticleInventory,
+  SetIdSelectedTipoBonificacionInventory,
+  SetIsSelectedTipoBonificacionInventory,
+  SetTipoBonificacionInventory,
 } from "../../../../actions/inventory";
 
-export const InventoryBodyFeaturesBonificacionesTable = ({ columns, data }) => {
+export const InventoryBodyFeaturesTipoBonificacionesTable = ({ columns, data }) => {
   const dispatch = useDispatch();
 
-  const {
-    formulaArticlesInventory,
-    isInventoryDisable,
-  } = useSelector((state) => state.inventory);
+  const { isInventoryDisable } = useSelector((state) => state.inventory);
 
   const {
     getTableProps,
@@ -31,27 +25,18 @@ export const InventoryBodyFeaturesBonificacionesTable = ({ columns, data }) => {
   });
 
   const handleSelectedRow = async (cell) => {
+
     if (!isInventoryDisable) {
 
       // Obtiene el price seleccionado
-      const { codigo, descripcion, cantidad } = cell.row.values;
+      const { codigo } = cell.row.values;
 
-      // Searcha articleRelated
-      const articleformula = formulaArticlesInventory.find(
-        (article) =>
-          article.codigo === codigo &&
-          article.descripcion === descripcion &&
-          article.cantidad === cantidad
-      );
+      if (codigo != undefined) {
 
-      if (articleformula != undefined) {
-
-        dispatch( SetIsSelectedFormulaArticleInventory(true) );
+        dispatch( SetIsSelectedTipoBonificacionInventory(true) );
         
-        dispatch( SetCodigoFormulaArticleInventory(articleformula.codigo) );
-        dispatch( SetCodigoArtFormulaArticleInventory(articleformula.codArticulo) );
-        dispatch( SetDescripcionFormulaArticleInventory(articleformula.descripcion) );
-        dispatch( SetCantidadFormulaArticleInventory(articleformula.cantidad) );
+        dispatch( SetTipoBonificacionInventory(codigo) );
+        dispatch( SetIdSelectedTipoBonificacionInventory(codigo) );
       }
     }
   };

@@ -46,6 +46,7 @@ import {
     SetHasRebajaOtroArt,
     startDeleteInventory,
     startEditInventory,
+    startGetAllTiposBonificables,
     startSaveInventory
 } from '../../actions/inventory';
 
@@ -77,7 +78,8 @@ export const InventoryFooter = () => {
         isInventoryDisable,
         isShowTabCodigoBarras,
         imagen,
-        hasImage
+        hasImage,
+        tiposBonificacion
     } = useSelector(state => state.inventory);
     
     const { currentTab } = useSelector(state => state.tabs);
@@ -311,7 +313,8 @@ export const InventoryFooter = () => {
         if( presentacionesInventory != null && subFamiliasInventory != null && subUbicacionesInventory != null 
             && proveedoresInventory != null && marcasInventory != null && monedasInventory != null 
             && impuestosInventory != null && bodegasInventory != null && bodegasInventory != null 
-            && categoriasInventory != null
+            && categoriasInventory != null 
+            // && tiposBonificacion != null
         ) {
             return;
         }
@@ -362,6 +365,10 @@ export const InventoryFooter = () => {
         if(categoriasInventory === null){
             await dispatch(startGetAllCategoriasInventory());
         }
+
+        // if(tiposBonificacion === null){
+        //     await dispatch(startGetAllTiposBonificables());
+        // }
 
         //Quitar el loading
         Swal.close();
