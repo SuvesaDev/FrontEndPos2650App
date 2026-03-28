@@ -8,14 +8,18 @@ import {
     CloseSearchModalInventory,
     IsOpenSearchModalFormulaInventory,
     IsOpenSearchModalRelacionados,
+    SetCodigoArtBonificacionArticleInventory,
     SetCodigoArtFormulaArticleInventory,
     SetCodigoArtRelatedArticleInventory,
+    SetCodigoBonificacionArticleInventory,
     SetCodigoDescargaInventory,
     SetCodigoFormulaArticleInventory,
     SetCodigoRelatedArticleInventory,
+    SetDescripcionArtBonificacionArticleInventory,
     SetDescripcionFormulaArticleInventory,
     SetDescripcionRebajaOtro,
     SetDescripcionRelatedArticleInventory,
+    SetIsOpenModalBonificacionInventory,
     startGetOneInventory
 } from '../../../actions/inventory';
 
@@ -32,18 +36,19 @@ export const InventorySearchTable = ({ columns, data }) => {
 
     const dispatch = useDispatch();
 
-    const [numberScreen, setnumberScreen] = useState(null);
-
     let isRed = false;
     let isGreen = false;
     let isOrange = false;
     let isOliveDrab = false;
     let isPurple = false;
 
+    const [numberScreen, setnumberScreen] = useState(null);
+
     const {
         isOpenSearchModalRebaja,
         isOpenSearchModalRelacionados,
-        isOpenSearchModalFormula
+        isOpenSearchModalFormula,
+        isOpenModalSearchByBonificacion
     } = useSelector(state => state.inventory);
 
     const { dollar } = useSelector(state => state.sidebar);
@@ -104,6 +109,13 @@ export const InventorySearchTable = ({ columns, data }) => {
             dispatch( SetDescripcionFormulaArticleInventory(descripcion));
             dispatch( SetCodigoArtFormulaArticleInventory( cod_Articulo ) );
             dispatch(IsOpenSearchModalFormulaInventory(false));
+
+        } else if (isOpenModalSearchByBonificacion) {
+
+            dispatch( SetCodigoBonificacionArticleInventory(codigo));
+            dispatch( SetDescripcionArtBonificacionArticleInventory(descripcion));
+            dispatch( SetCodigoArtBonificacionArticleInventory( cod_Articulo ) );
+            dispatch( SetIsOpenModalBonificacionInventory(false));
 
         } else if (billings[numberScreen] !== undefined) {
 

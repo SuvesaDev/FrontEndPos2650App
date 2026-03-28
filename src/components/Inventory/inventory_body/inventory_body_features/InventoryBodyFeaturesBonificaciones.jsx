@@ -11,14 +11,17 @@ import { InventoryBodyFeaturesTipoBonificacionesTable } from "./InventoryBodyFea
 import { InventoryBodyFeaturesProductosBonificacionesTable } from "./InventoryBodyFeaturesProductosBonificacionesTable";
 
 import {
-  IsOpenSearchModalFormulaInventory,
-  OpenSearchModalInventory,
+  SetAddProductoBonificacionInventory,
   SetAddTipoBonificacionInventory,
+  SetCodigoArtBonificacionArticleInventory,
   SetCodigoBonificacionArticleInventory,
+  SetDeleteProductoBonificacionInventory,
   SetDeleteTipoBonificacionInventory,
   SetDescripcionArtBonificacionArticleInventory,
   SetEditTipoBonificacionInventory,
   SetIdSelectedTipoBonificacionInventory,
+  SetIsOpenModalBonificacionInventory,
+  SetIsSelectedProductoBonificacionInventory,
   SetIsSelectedTipoBonificacionInventory,
   SetTipoBonificacionInventory,
 } from "../../../../actions/inventory";
@@ -33,7 +36,9 @@ export const InventoryBodyFeaturesBonificaciones = () => {
     tiposBonificacion,
     tipoBonificacion,
     bonificacionTypes,
-    isSeletedTipoBonificacion
+    isSeletedTipoBonificacion,
+    bonificacionArticles,
+    isSeletedProductoBonificacion
   } = useSelector((state) => state.inventory);
 
   const { auth } = useSelector(state => state.login);
@@ -54,7 +59,7 @@ export const InventoryBodyFeaturesBonificaciones = () => {
   const columnsProductos = [
     {
       Header: "Codigo",
-      accessor: "codigo",
+      accessor: "cod_Articulo",
     },
     {
       Header: "Descripcion",
@@ -69,8 +74,7 @@ export const InventoryBodyFeaturesBonificaciones = () => {
   const handleSearchArticle = (e) => {
     e.preventDefault();
 
-    dispatch(IsOpenSearchModalFormulaInventory(true));
-    dispatch(OpenSearchModalInventory());
+    dispatch(SetIsOpenModalBonificacionInventory(true));
   };
 
   const handleAddTipoBonificacion = (e) => {
@@ -137,6 +141,52 @@ export const InventoryBodyFeaturesBonificaciones = () => {
     dispatch( SetTipoBonificacionInventory(0));
     dispatch( SetIsSelectedTipoBonificacionInventory(false) );
     dispatch( SetIdSelectedTipoBonificacionInventory(0) );
+      
+  };
+
+  const handleAddProductoBonificacion = (e) => {
+    
+    e.preventDefault();
+
+    if (cod_Articulo == '') return;
+
+    const existProductoBonificacion = bonificacionArticles.find(
+      (value) => value.codigo === codigo
+    );
+
+    if (existProductoBonificacion === undefined) {
+
+      const newProducto = {
+        codigo,
+        descripcion,
+        cod_Articulo,
+      }
+
+      dispatch(SetAddProductoBonificacionInventory(newProducto));
+      dispatch(SetCodigoBonificacionArticleInventory(''));
+      dispatch(SetCodigoArtBonificacionArticleInventory(''));
+      dispatch(SetDescripcionArtBonificacionArticleInventory(''));
+
+    } else {
+      Swal.fire({
+          icon: "warning",
+          title: "Advertencia",
+          text: "El producto de bonificacion ya esta incluido.",
+        });
+    }
+  };
+
+  const handleDeleteProductoBonificacion = (e) => {
+
+    e.preventDefault();
+
+    if (cod_Articulo == '') return;
+
+    dispatch( SetDeleteProductoBonificacionInventory(codigo) );
+    dispatch( SetCodigoBonificacionArticleInventory(''));
+    dispatch( SetCodigoArtBonificacionArticleInventory(''));
+    dispatch( SetDescripcionArtBonificacionArticleInventory(''));
+    dispatch( SetIsSelectedProductoBonificacionInventory(false) );
       
   };
 
@@ -242,7 +292,7 @@ export const InventoryBodyFeaturesBonificaciones = () => {
               />
               <button
                 className={
-                  disableInputs ? "btn btn-primary disabled" : "btn btn-primary"
+                  disableInputs || isSeletedProductoBonificacion ? "btn btn-primary disabled" : "btn btn-primary"
                 }
                 type="button"
                 onClick={handleSearchArticle}
@@ -285,24 +335,23 @@ export const InventoryBodyFeaturesBonificaciones = () => {
             <div className="inline-container">
               <button
                 className={
-                  disableInputs ? "btn btn-success disabled" : "btn btn-success"
+                  disableInputs || isSeletedProductoBonificacion
+                    ? "btn btn-success disabled" 
+                    : "btn btn-success"
                 }
                 disabled={disableInputs}
-                // onClick={  isSeletedFormulaArticles ? handleEditRelatedArticle : handleSaveFormulaArticle }
+                onClick={handleAddProductoBonificacion}
               >
-                {/* { isSeletedFormulaArticles ? 'Editar' : 'Agregar' }  */}
-                'Agregar'
-                <IoAddCircle className="iconSize" />
+                Agregar <IoAddCircle className="iconSize" />
               </button>
 
               <button
-                className="btn btn-danger"
-                // className={
-                //   (isSeletedFormulaArticles)
-                //     ? "btn btn-danger "
-                //     : "btn btn-danger disabled"
-                // }
-                // onClick={handleDeleteRelatedArticle}
+                className={
+                  (isSeletedProductoBonificacion)
+                    ? "btn btn-danger "
+                    : "btn btn-danger disabled"
+                }
+                onClick={handleDeleteProductoBonificacion}
                 type="button"
               >
                 <RiDeleteBin2Fill className="iconSize" />
@@ -316,7 +365,7 @@ export const InventoryBodyFeaturesBonificaciones = () => {
           <div className="col-md-12 mb-2">
             <InventoryBodyFeaturesProductosBonificacionesTable
               columns={columnsProductos}
-              data={[]}
+              data={bonificacionArticles}
             />
           </div>
           <hr />

@@ -162,6 +162,8 @@ const initialState = {
         descripcion: ''
     },
     bonificacionArticles: [],
+    isOpenModalSearchByBonificacion: false,
+    isSeletedProductoBonificacion: false,
     tipoBonificacion: 0,
     isSeletedTipoBonificacion: false,
     idSelectedTipoBonificacion: 0,
@@ -1380,6 +1382,8 @@ export const InventoryReducer = (state = initialState, action) => {
                 tiposBonificacion: [],
                 isSeletedTipoBonificacion: false,
                 idSelectedTipoBonificacion: 0,
+                isOpenModalSearchByBonificacion: false,
+                isSeletedProductoBonificacion: false,
             }
 
         case types.IsNewInventory:
@@ -2619,7 +2623,7 @@ export const InventoryReducer = (state = initialState, action) => {
             return {
                 ...state,
                 currentBonificacionArticles: {
-                    ...state.bonificacionArticles,
+                    ...state.currentBonificacionArticles,
                     codigo: action.payload
                 }
             }
@@ -2628,7 +2632,7 @@ export const InventoryReducer = (state = initialState, action) => {
             return {
                 ...state,
                 currentBonificacionArticles: {
-                    ...state.bonificacionArticles,
+                    ...state.currentBonificacionArticles,
                     cod_Articulo: action.payload
                 }
             }
@@ -2637,7 +2641,7 @@ export const InventoryReducer = (state = initialState, action) => {
             return {
                 ...state,
                 currentBonificacionArticles: {
-                    ...state.bonificacionArticles,
+                    ...state.currentBonificacionArticles,
                     descripcion: action.payload
                 }
             }
@@ -2694,6 +2698,34 @@ export const InventoryReducer = (state = initialState, action) => {
                 ...state,
                 bonificacionTypes: state.bonificacionTypes.filter(
                     tipo => tipo.codigo != action.payload)
+            }
+
+        case types.SetIsOpenModalBonificacionInventory:
+            return {
+                ...state,
+                isOpenModalSearchByBonificacion: action.payload
+            }
+
+        case types.SetAddProductoBonificacionInventory:
+            return {
+                ...state,
+                bonificacionArticles: [
+                    ...state.bonificacionArticles,
+                    action.payload
+                ]
+            }
+
+        case types.SetIsSelectedProductoBonificacionInventory:
+            return {
+                ...state,
+                isSeletedProductoBonificacion: action.payload
+            }
+
+        case types.SetDeleteProductoBonificacionInventory:
+            return {
+                ...state,
+                bonificacionArticles: state.bonificacionArticles.filter(
+                    producto => producto.codigo != action.payload)
             }
             
 

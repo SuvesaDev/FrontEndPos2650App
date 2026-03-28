@@ -4024,3 +4024,23 @@ export const SetDeleteTipoBonificacionInventory = (value) => ({
     type: types.SetDeleteTipoBonificacionInventory,
     payload: value
 })
+
+export const SetIsOpenModalBonificacionInventory = (value) => ({
+    type: types.SetIsOpenModalBonificacionInventory,
+    payload: value
+})
+
+export const SetAddProductoBonificacionInventory = (value) => ({
+    type: types.SetAddProductoBonificacionInventory,
+    payload: value
+})
+
+export const SetIsSelectedProductoBonificacionInventory = (value) => ({
+    type: types.SetIsSelectedProductoBonificacionInventory,
+    payload: value
+})
+
+export const SetDeleteProductoBonificacionInventory = (value) => ({
+    type: types.SetDeleteProductoBonificacionInventory,
+    payload: value
+})

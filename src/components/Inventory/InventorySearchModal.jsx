@@ -19,6 +19,7 @@ import {
     SetCualquierParteSearchModalInventory,
     SetDescripcionSearchModalInventory,
     SetInicioCampoSearchModalInventory,
+    SetIsOpenModalBonificacionInventory,
     SetMostrarImpuestosSearchModalInventory,
     SetMostrarInhabilitadosSearchModalInventory,
     SetUbicacionSearchModalInventory,
@@ -44,7 +45,8 @@ export const InventorySearchModal = () => {
         optionsSearchInventory,
         searchInventory,
         isOpenSearchModalRebaja,
-        isOpenSearchModalRelacionados
+        isOpenSearchModalRelacionados,
+        isOpenModalSearchByBonificacion
     } = useSelector(state => state.inventory);
 
     const { isOpenSearchInventoryBilling } = useSelector(state => state.billing);
@@ -183,6 +185,12 @@ export const InventorySearchModal = () => {
             dispatch(CleanOptionsSearchModalInventory());
             dispatch(CloseSearchModalInventory());
             dispatch(SetIsOpenModalSearchBonificaciones(false));
+            
+        } else if (isOpenModalSearchByBonificacion) {
+
+            dispatch(CleanSearchInventory());
+            dispatch(CleanOptionsSearchModalInventory());
+            dispatch(SetIsOpenModalBonificacionInventory(false));
             
         } else {
 

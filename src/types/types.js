@@ -494,6 +494,10 @@ export const types = {
   SetEditTipoBonificacionInventory: '[Inventory] SetEditTipoBonificacionInventory',
   SetIdSelectedTipoBonificacionInventory: '[Inventory] SetIdSelectedTipoBonificacionInventory',
   SetDeleteTipoBonificacionInventory: '[Inventory] SetDeleteTipoBonificacionInventory',
+  SetIsOpenModalBonificacionInventory: '[Inventory] SetIsOpenModalBonificacionInventory',
+  SetAddProductoBonificacionInventory: '[Inventory] SetAddProductoBonificacionInventory',
+  SetIsSelectedProductoBonificacionInventory: '[Inventory] SetIsSelectedProductoBonificacionInventory',
+  SetDeleteProductoBonificacionInventory: '[Inventory] SetDeleteProductoBonificacionInventory',
 
 
   // Customers actions
