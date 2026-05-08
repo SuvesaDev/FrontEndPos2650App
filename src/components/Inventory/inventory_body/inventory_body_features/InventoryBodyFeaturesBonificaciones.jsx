@@ -12,7 +12,6 @@ import { InventoryBodyFeaturesProductosBonificacionesTable } from "./InventoryBo
 
 import {
   SetAddProductoBonificacionInventory,
-  SetAddTipoBonificacionInventory,
   SetCodigoArtBonificacionArticleInventory,
   SetCodigoBonificacionArticleInventory,
   SetDeleteProductoBonificacionInventory,
@@ -24,6 +23,7 @@ import {
   SetIsSelectedProductoBonificacionInventory,
   SetIsSelectedTipoBonificacionInventory,
   SetTipoBonificacionInventory,
+  startSaveBonificacionInventory,
 } from "../../../../actions/inventory";
 
 export const InventoryBodyFeaturesBonificaciones = () => {
@@ -38,7 +38,8 @@ export const InventoryBodyFeaturesBonificaciones = () => {
     bonificacionTypes,
     isSeletedTipoBonificacion,
     bonificacionArticles,
-    isSeletedProductoBonificacion
+    isSeletedProductoBonificacion,
+    inventory
   } = useSelector((state) => state.inventory);
 
   const { auth } = useSelector(state => state.login);
@@ -78,7 +79,7 @@ export const InventoryBodyFeaturesBonificaciones = () => {
   };
 
   const handleAddTipoBonificacion = (e) => {
-    
+  
     e.preventDefault();
 
     if (tipoBonificacion == 0) return;
@@ -98,8 +99,7 @@ export const InventoryBodyFeaturesBonificaciones = () => {
         descripcion: newTipoBonificacion.descripcion
       }
 
-      dispatch(SetAddTipoBonificacionInventory(newTipo));
-      dispatch(SetTipoBonificacionInventory(0));
+      dispatch(startSaveBonificacionInventory(newTipo, inventory.codigo));
 
     } else {
       Swal.fire({
@@ -222,7 +222,7 @@ export const InventoryBodyFeaturesBonificaciones = () => {
                     );
                   })
                 ) : (
-                  <option value="">No se cargaron los proveedores</option>
+                  <option value="">No se cargaron los tipos de bonificacion</option>
                 )}
               </select>
             </div>

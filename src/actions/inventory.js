@@ -2497,13 +2497,18 @@ export const startGetAllTiposBonificables = () => {
         try {
     
             //Call end-point 
-            const { data } = await suvesaApi.get(``); // TODO: Indicar el URL
+            const { data } = await suvesaApi.get(`/ConfiguracionBonificacion/ObtenerConfiguracionesDisponibles`);
             const { status, responses } = data;
             
             if( status === 0 ) {
-                
-                dispatch( SetTiposBonificacionInventory( responses ) );
-
+                const tipos = responses.map( tipo => {
+                    return {
+                        ...tipo,
+                        codigo: tipo.idConfiguracionBonificacion,
+                    }
+                });
+                console.log(tipos);
+                dispatch( SetTiposBonificacionInventory( tipos ) );
             } else {
     
                 //Caso contrario respuesta incorrecto mostrar mensaje de error
@@ -2533,6 +2538,98 @@ export const startGetAllTiposBonificables = () => {
                     icon: 'error',
                     title: 'Error',
                     text: 'Ocurrio un problema al obtener los tipos de bonificacion',
+                });
+            }
+        }
+    }
+}
+
+export const startSaveBonificacionInventory = ( tipoBonificacion, idInventario ) => {
+   
+    return async ( dispatch ) => {
+
+        try {
+
+            //Mostrar un mensaje de confirmacion
+            Swal.fire({
+                title: '¿Desea agregar un nuevo tipo de bonificacion?',
+                showDenyButton: true,
+                showCancelButton: false,
+                confirmButtonText: 'Guardar',
+                denyButtonText: `Cancelar`,
+            }).then(async (result) => {
+
+                if (result.isConfirmed) {
+
+                    //Mostrar el loading
+                    Swal.fire({
+                        title: 'Por favor, espere',
+                        allowEscapeKey: false,
+                        allowOutsideClick: false,
+                        showConfirmButton: false,
+                        imageUrl: loadingImage,
+                        customClass: 'alert-class-login',
+                        imageHeight: 100,
+                    });
+
+                    const newTipo = {
+                        idConfiguracion: 0,
+                        idConfiguracionBonificacion: tipoBonificacion.codigo,
+                        idInventario
+                    }
+            
+                    //Call end-point 
+                    const { data } = await suvesaApi.post(`/ArticuloBonificacion/CreateConfiguracion`, newTipo );
+                    const { status } = data;
+                    
+                    // Cerrar modal
+                    Swal.close();
+
+                    if( status === 0 ) {
+
+                        dispatch(SetAddTipoBonificacionInventory(tipoBonificacion));
+                        dispatch(SetTipoBonificacionInventory(0));
+
+                        // dispatch(CleanInputsFormulaArticleInventory());
+
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Tipo Bonificacion',
+                            text: `Se agrego correctamente el tipo bonificacion.`,
+                        });
+
+                    } else {
+            
+                        //Caso contrario respuesta incorrecto mostrar mensaje de error
+                        const { currentException } = data;
+                        const msj = currentException.split(',');
+                        
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: (currentException.includes(',')) ? msj[3] : currentException,
+                        });
+            
+                    }
+                }
+
+            });
+
+        } catch (error) {
+            
+            Swal.close();
+            console.log(error);
+            if( error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al guardar el articulo formula',
                 });
             }
         }

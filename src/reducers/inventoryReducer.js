@@ -168,20 +168,7 @@ const initialState = {
     isSeletedTipoBonificacion: false,
     idSelectedTipoBonificacion: 0,
     bonificacionTypes: [],
-    tiposBonificacion: [
-        {
-            codigo: 1,
-            descripcion: "10x1"
-        },
-        {
-            codigo: 2,
-            descripcion: "12x2"
-        },
-        {
-            codigo: 3,
-            descripcion: "14x3"
-        }
-    ],
+    tiposBonificacion: [],
     inventory: {
         codigo: null,
         cod_Articulo: null,

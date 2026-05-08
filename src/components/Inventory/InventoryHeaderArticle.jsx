@@ -720,7 +720,7 @@ export const InventoryHeaderArticle = () => {
               type="checkbox"
               id="checkBonificado"
               name="Bonificado"
-              disabled={disableInputs}
+              disabled={!isEditInventory}
               checked={bonificado}
               class="form-check-input checkP"
               onChange={(e) =>
