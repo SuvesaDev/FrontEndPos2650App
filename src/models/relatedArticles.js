@@ -11,7 +11,7 @@ export class RelatedArticles {
         this.estado          = estado;
         this.usuarioCreacion = usuarioCreacion || '';
         this.isNewEdit       = isNewEdit || false;
-        this.esFormula       = esFormula || false
+        this.esFormula       = esFormula || false;
     }
 
     toJson() {

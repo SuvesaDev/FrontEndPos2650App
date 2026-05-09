@@ -11,7 +11,6 @@ import { InventoryBodyFeaturesTipoBonificacionesTable } from "./InventoryBodyFea
 import { InventoryBodyFeaturesProductosBonificacionesTable } from "./InventoryBodyFeaturesProductosBonificacionesTable";
 
 import {
-  SetAddProductoBonificacionInventory,
   SetCodigoArtBonificacionArticleInventory,
   SetCodigoBonificacionArticleInventory,
   SetDeleteProductoBonificacionInventory,
@@ -23,6 +22,7 @@ import {
   SetIsSelectedProductoBonificacionInventory,
   SetIsSelectedTipoBonificacionInventory,
   SetTipoBonificacionInventory,
+  startSaveArticleBonificacionInventory,
   startSaveBonificacionInventory,
 } from "../../../../actions/inventory";
 
@@ -157,15 +157,21 @@ export const InventoryBodyFeaturesBonificaciones = () => {
     if (existProductoBonificacion === undefined) {
 
       const newProducto = {
+        id: 0,
         codigo,
+        codArticulo: cod_Articulo,
+        codigoPrincipal: inventory.codigo,
         descripcion,
-        cod_Articulo,
+        cantidad: 0,
+        estado: true,
+        idUsuarioCreacion: "",
+        idUsuarioModificacion: "",
+        esFormula: false,
+        activo: true,
+        esRelacionBonificacion: true
       }
 
-      dispatch(SetAddProductoBonificacionInventory(newProducto));
-      dispatch(SetCodigoBonificacionArticleInventory(''));
-      dispatch(SetCodigoArtBonificacionArticleInventory(''));
-      dispatch(SetDescripcionArtBonificacionArticleInventory(''));
+      dispatch(startSaveArticleBonificacionInventory(newProducto));
 
     } else {
       Swal.fire({

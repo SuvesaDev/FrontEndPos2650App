@@ -2636,6 +2636,99 @@ export const startSaveBonificacionInventory = ( tipoBonificacion, idInventario )
     }
 }
 
+export const startSaveArticleBonificacionInventory = ( newProduct ) => {
+   
+    return async ( dispatch ) => {
+
+        try {
+
+            //Mostrar un mensaje de confirmacion
+            Swal.fire({
+                title: '¿Desea agregar un nuevo producto de Bonificacion?',
+                showDenyButton: true,
+                showCancelButton: false,
+                confirmButtonText: 'Guardar',
+                denyButtonText: `Cancelar`,
+            }).then(async (result) => {
+
+                if (result.isConfirmed) {
+
+                    //Mostrar el loading
+                    Swal.fire({
+                        title: 'Por favor, espere',
+                        allowEscapeKey: false,
+                        allowOutsideClick: false,
+                        showConfirmButton: false,
+                        imageUrl: loadingImage,
+                        customClass: 'alert-class-login',
+                        imageHeight: 100,
+                    });
+
+                    let bonificacionArticles = [];
+
+                    bonificacionArticles.push(newProduct);
+            
+                    //Call end-point 
+                    const { data } = await suvesaApi.post(`/articulosRelacionados`, bonificacionArticles );
+                    const { status } = data;
+                    
+                    // Cerrar modal
+                    Swal.close();
+
+                    if( status === 0 ) {
+
+                        dispatch(SetAddProductoBonificacionInventory({
+                            codigo: newProduct.codigo,
+                            cod_Articulo : newProduct.codArticulo,
+                            descripcion : newProduct.descripcion,
+                        }));
+                        dispatch(SetCodigoBonificacionArticleInventory(''));
+                        dispatch(SetCodigoArtBonificacionArticleInventory(''));
+                        dispatch(SetDescripcionArtBonificacionArticleInventory(''));
+
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Articulo Bonificacion',
+                            text: `Se agrego correctamente el articulo bonificacion.`,
+                        });
+
+                    } else {
+            
+                        //Caso contrario respuesta incorrecto mostrar mensaje de error
+                        const { currentException } = data;
+                        const msj = currentException.split(',');
+                        
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: (currentException.includes(',')) ? msj[3] : currentException,
+                        });
+            
+                    }
+                }
+
+            });
+
+        } catch (error) {
+            
+            Swal.close();
+            console.log(error);
+            if( error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al guardar el articulo formula',
+                });
+            }
+        }
+    }
+}
 
 // Functions
 const CalculatePreciosVenta = ( base, flete, otroC, impuesto, pre ) => {
