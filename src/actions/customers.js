@@ -1400,6 +1400,11 @@ export const SetOrdenCompraCustomers = ( value ) => ({
     payload: value
 });
 
+export const SetBonificadoCustomers = ( value ) => ({
+    type: types.SetBonificadoCustomers,
+    payload: value
+});
+
 export const CleanStateCustomers = () => ({
     type: types.CleanStateCustomers
 });

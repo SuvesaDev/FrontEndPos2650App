@@ -5,6 +5,7 @@ import { TbSearch, TbSearchOff, TbNotes } from "react-icons/tb";
 import { FaIdCard, FaUser, FaPersonCircleQuestion, } from "react-icons/fa6";
 
 import {
+  SetBonificadoCustomers,
   SetCedulaCustomers,
   SetNombreCustomers,
   SetObservacionesCustomers,
@@ -18,13 +19,14 @@ import { CustomersBodyDatosGenerales } from "./customersBody/CustomersBodyDatosG
 import { CustomersBodyCartaExoneracion } from "./customersBody/CustomersBodyCartaExoneracion";
 import { CustomersBodyAdjuntos } from "./customersBody/CustomersBodyAdjuntos";
 import { CustomersBodyDatosFacturacion } from "./customersBody/CustomersBodyDatosFacturacion";
+import { CustomersBodyBonificacion } from "./customersBody/CustomersBodyBonificacion";
 
 export const CustomersBody = () => {
 
   const dispatch = useDispatch();
 
-  const { customer, disableInputs, currentTabCustomers } = useSelector((state) => state.customers);
-  const { nombre, cedula, observaciones, tipoCliente} = customer;
+  const { customer, disableInputs, currentTabCustomers, isCustomerEdit } = useSelector((state) => state.customers);
+  const { nombre, cedula, observaciones, tipoCliente, bonificado} = customer;
 
   const { auth } = useSelector((state) => state.login);
   const { costaPets } = auth;
@@ -45,6 +47,9 @@ export const CustomersBody = () => {
 
       case "DatosFacturacion":
         return <CustomersBodyDatosFacturacion />;
+
+      case "Bonificacion":
+        return <CustomersBodyBonificacion />;
 
       default:
         break;
@@ -87,6 +92,10 @@ export const CustomersBody = () => {
         }
       }
     }
+  };
+
+  const handleInputChangeCheckBoxWithDispatch = ({ target }, action) => {
+    dispatch(action(target.checked));
   };
 
   return (
@@ -193,6 +202,32 @@ export const CustomersBody = () => {
                 ></textarea>
               </div>
             </div>
+
+            {
+              costaPets
+                ? <div className="col-md-1">
+                    <div className="form-check">
+                      <input
+                        type="checkbox"
+                        id="checkBonificado"
+                        name="Bonificado"
+                        disabled={!isCustomerEdit}
+                        checked={bonificado}
+                        class="form-check-input checkP"
+                        onChange={(e) =>
+                          handleInputChangeCheckBoxWithDispatch(
+                            e,
+                            SetBonificadoCustomers
+                          )
+                        }
+                      />
+                      <h5 className="form-check-label" for="checkActualizado">
+                        Bonificado
+                      </h5>
+                    </div>
+                </div>
+              : null
+            }
 
           </div>
           <hr />

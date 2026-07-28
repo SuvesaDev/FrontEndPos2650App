@@ -534,6 +534,7 @@ export const types = {
   SetSinRestriccionCustomers: '[Customers] SetSinRestriccionCustomers',
   SetClienteMorosoCustomers: '[Customers] SetClienteMorosoCustomers',
   SetOrdenCompraCustomers: '[Customers] SetOrdenCompraCustomers',
+  SetBonificadoCustomers: '[Customers] SetBonificadoCustomers',
   CleanStateCustomers: '[Customers] CleanStateCustomers',
   ActiveButtonNewCustomers: '[Customers] ActiveButtonNewCustomers',
   ActiveButtonSearchCustomers: '[Customers] ActiveButtonSearchCustomers',

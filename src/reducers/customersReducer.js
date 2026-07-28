@@ -41,7 +41,8 @@ const initialState = {
         sinrestriccion    : false,
         clienteMoroso     : false,
         ordenCompra       : false,
-        estado            : false
+        estado            : false,
+        bonificado        : false,
     },
     searchCustomers : [],
     provinciasCustomers : [],
@@ -377,6 +378,15 @@ export const CustomersReducer = (state = initialState, action) => {
                 }
             }
 
+        case types.SetBonificadoCustomers:
+            return {
+                ...state,
+                customer : {
+                    ...state.customer,
+                    bonificado : action.payload
+                }
+            }
+
         case types.CleanStateCustomers:
             return {
                 currentTabCustomers: 'DatosGenerales',
@@ -419,7 +429,8 @@ export const CustomersReducer = (state = initialState, action) => {
                     sinrestriccion    : false,
                     clienteMoroso     : false,
                     ordenCompra       : false,
-                    estado            : false
+                    estado            : false,
+                    bonificado        : false
                 },
                 searchCustomers : [],
                 provinciasCustomers : [],

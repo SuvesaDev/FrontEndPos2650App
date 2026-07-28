@@ -162,7 +162,7 @@ export const InventoryBodyFeaturesBonificaciones = () => {
         codArticulo: cod_Articulo,
         codigoPrincipal: inventory.codigo,
         descripcion,
-        cantidad: 0,
+        cantidad: 1,
         estado: true,
         idUsuarioCreacion: "",
         idUsuarioModificacion: "",

@@ -7,7 +7,7 @@ export const CustomersBodyTabs = () => {
   const dispatch = useDispatch();
 
   const state = useSelector((state) => state.customers);
-  const { currentTabCustomers, isCustomerEdit, variasSurcursales, isOpenFromConsignment } = state;
+  const { currentTabCustomers, isCustomerEdit, variasSurcursales, isOpenFromConsignment, customer } = state;
 
   const { auth } = useSelector((state) => state.login);
   const { costaPets } = auth;
@@ -18,7 +18,7 @@ export const CustomersBodyTabs = () => {
 
   return (
     <>
-      <div className="col-md-3 mb-2"></div>
+      <div className="col-md-1 mb-2"></div>
 
       <div className="col-md-2 mb-2">
         <button
@@ -82,6 +82,19 @@ export const CustomersBodyTabs = () => {
           onClick={() => handleSelectTabCustomers("DatosFacturacion")}
         >
           Datos Facturacion
+        </button>
+      </div>
+
+      <div className={ (costaPets && customer.bonificado) ? 'col-md-2 mb-2' : 'col-md-2 mb-2 d-none' }>
+        <button
+          className={
+            currentTabCustomers == "Bonificacion"
+              ? "btn btn-primary"
+              : "btn btn-outline-primary"
+          }
+          onClick={() => handleSelectTabCustomers("Bonificacion")}
+        >
+          Bonificacion
         </button>
       </div>
 
