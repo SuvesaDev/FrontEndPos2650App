@@ -19,7 +19,10 @@ import {
     SetSucursalDatosFacturacionCustomers, 
     SetTelefonoDatosFacturacionCustomers
 } from '../../../actions/customers';
+import { CustomersBodyTipoBonificacionesTable } from "./CustomersBodyTipoBonificacionesTable";
+
 import { id } from "date-fns/locale";
+import { CustomersBodyProductosBonificacionesTable } from "./CustomersBodyProductosBonificacionesTable";
 
 export const CustomersBodyBonificacion = () => {
 
@@ -41,30 +44,25 @@ export const CustomersBodyBonificacion = () => {
         contacto
     } = datosFacturacion;
 
-    const columns = [
+    const columnsTipoBonificables = [
         {
-            Header: "Sucursal",
-            accessor: "sucursal",
+        Header: "Codigo",
+        accessor: "codigo",
         },
         {
-            Header: "Nombre Fantasia",
-            accessor: "nombreFantasia",
+        Header: "Tipo de Bonificacion",
+        accessor: "descripcion",
+        },
+    ];
+
+    const columnsProductos = [
+        {
+        Header: "Codigo",
+        accessor: "cod_Articulo",
         },
         {
-            Header: "Telefono",
-            accessor: "telefono",
-        },
-        {
-            Header: "Contacto",
-            accessor: "contacto",
-        },
-        {
-            Header: "Correo",
-            accessor: "correo",
-        },
-        {
-            Header: "Acciones",
-            accessor: "icon"
+        Header: "Descripcion",
+        accessor: "descripcion",
         }
     ];
         
@@ -199,11 +197,10 @@ export const CustomersBodyBonificacion = () => {
 
                         <div className="row mb-3">
                             <div className="col-md-12 mb-2">
-                                <p>Table Tipo Bonificacion</p>
-                            {/* <InventoryBodyFeaturesTipoBonificacionesTable
+                            <CustomersBodyTipoBonificacionesTable
                                 columns={columnsTipoBonificables}
-                                data={bonificacionTypes}
-                            /> */}
+                                data={[]}
+                            />
                             </div>
                             <hr />
                         </div>
@@ -306,11 +303,10 @@ export const CustomersBodyBonificacion = () => {
 
                         <div className="row mb-3">
                             <div className="col-md-12 mb-2">
-                                <p>Table Productos</p>
-                                {/* <InventoryBodyFeaturesProductosBonificacionesTable
+                                <CustomersBodyProductosBonificacionesTable
                                     columns={columnsProductos}
-                                    data={bonificacionArticles}
-                                /> */}
+                                    data={[]}
+                                />
                             </div>
                             <hr />
                         </div>
