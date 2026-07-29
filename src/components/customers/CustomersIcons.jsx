@@ -24,6 +24,7 @@ import {
   startSaveCustomer,
   startCustomerExist,
   SetStartOpeningCustomers,
+  startGetAllTiposBonificablesCustomer,
 } from "../../actions/customers";
 import { Customer } from "../../models/customer";
 import { CartaExoneracion } from "../../models/cartaExoneracion";
@@ -49,7 +50,8 @@ export const CustomersIcons = () => {
     startOpening,
     allDatosFacturacion,
     variasSurcursales,
-    permisos
+    permisos,
+    tiposBonificaciones
   } = useSelector((state) => state.customers);
 
   const { carta } = useSelector((state) => state.cartaExoneracion);
@@ -128,7 +130,8 @@ export const CustomersIcons = () => {
                   customer.distrito,
                   auth.username,
                   auth.username,
-                  (variasSurcursales) ? datosSucursal : []
+                  (variasSurcursales) ? datosSucursal : [],
+                  customer.bonificado
                 ),
                 new CartaExoneracion(
                   customer.cedula,
@@ -217,6 +220,10 @@ export const CustomersIcons = () => {
       await dispatch(startGetAllProvincias());
     }
 
+    if (tiposBonificaciones.length === 0) {
+      await dispatch(startGetAllTiposBonificablesCustomer());
+    }
+
     //Quitar el loading
     Swal.close();
   };
@@ -276,7 +283,8 @@ export const CustomersIcons = () => {
             customer.distrito,
             auth.username,
             auth.username,
-            (variasSurcursales) ? datosSucursal : []
+            (variasSurcursales) ? datosSucursal : [],
+            customer.bonificado
           ),
           hasCartaExoneracion,
           new CartaExoneracion(
@@ -340,6 +348,7 @@ export const CustomersIcons = () => {
             }
             data-bs-toggle="modal"
             data-bs-target="#modalBuscarClientes"
+            onClick={loadCatalogos}
           >
             Buscar <FaMagnifyingGlass className="iconSize" />
           </button>

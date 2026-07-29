@@ -435,7 +435,8 @@ export const startGetOneCustomer = ( idCliente ) => {
                     sinrestriccion: responses.sinrestriccion,
                     clienteMoroso: responses.clienteMoroso,
                     ordenCompra: responses.ordenCompra,
-                    estado: responses.estado
+                    estado: responses.estado,
+                    bonificado: responses.tieneBonificacion
                 };
                 
                 // Se ingresa el cliente
@@ -1231,6 +1232,149 @@ export const startDeleteOneFileCustomer = ( idfile, identificacion ) => {
     }
 }
 
+export const startGetAllTiposBonificablesCustomer = () => {
+   
+    return async ( dispatch ) => {
+
+        try {
+    
+            //Call end-point 
+            const { data } = await suvesaApi.get(`/ConfiguracionBonificacion/ObtenerConfiguracionesDisponibles`);
+            const { status, responses } = data;
+            
+            if( status === 0 ) {
+                const tipos = responses.map( tipo => {
+                    return {
+                        ...tipo,
+                        codigo: tipo.idConfiguracionBonificacion,
+                    }
+                });
+                dispatch( SetTiposBonificacionCustomers( tipos ) );
+            } else {
+    
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
+                
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
+    
+            }
+
+        } catch (error) {
+            
+            Swal.close();
+            console.log(error);
+            if( error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al obtener los tipos de bonificacion',
+                });
+            }
+        }
+    }
+}
+
+export const startSaveBonificacionCustomer = ( tipoBonificacion, idCliente ) => {
+   
+    return async ( dispatch ) => {
+
+        try {
+
+            //Mostrar un mensaje de confirmacion
+            Swal.fire({
+                title: '¿Desea agregar un nuevo tipo de bonificacion?',
+                showDenyButton: true,
+                showCancelButton: false,
+                confirmButtonText: 'Guardar',
+                denyButtonText: `Cancelar`,
+            }).then(async (result) => {
+
+                if (result.isConfirmed) {
+
+                    //Mostrar el loading
+                    Swal.fire({
+                        title: 'Por favor, espere',
+                        allowEscapeKey: false,
+                        allowOutsideClick: false,
+                        showConfirmButton: false,
+                        imageUrl: loadingImage,
+                        customClass: 'alert-class-login',
+                        imageHeight: 100,
+                    });
+
+                    const newTipo = {
+                        idConfiguracion: 0,
+                        idConfiguracionBonificacion: tipoBonificacion.codigo,
+                        idCliente
+                    }
+            
+                    //Call end-point 
+                    const { data } = await suvesaApi.post(`/ClienteBonificacion/CreateConfiguracion`, newTipo );
+                    const { status } = data;
+                    
+                    // Cerrar modal
+                    Swal.close();
+
+                    if( status === 0 ) {
+
+                        dispatch(SetAddTipoBonificacionesCustomers(tipoBonificacion));
+                        dispatch(SetSelectedTipoBonificacionCustomers(0));
+
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Tipo Bonificacion',
+                            text: `Se agrego correctamente el tipo bonificacion.`,
+                        });
+
+                    } else {
+            
+                        //Caso contrario respuesta incorrecto mostrar mensaje de error
+                        const { currentException } = data;
+                        const msj = currentException.split(',');
+                        
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: (currentException.includes(',')) ? msj[3] : currentException,
+                        });
+            
+                    }
+                }
+
+            });
+
+        } catch (error) {
+            
+            Swal.close();
+            console.log(error);
+            if( error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al guardar el articulo formula',
+                });
+            }
+        }
+    }
+}
+
 //Normal Actions
 export const SelectTabCustomers = ( nameTab ) => ({
     type: types.SelectTabCustomers,
@@ -1606,5 +1750,25 @@ export const SetPermisosCustomers = ( value ) => ({
 
 export const SetHasPermisosCustomers = ( value ) => ({
     type: types.SetHasPermisosCustomers,
+    payload: value
+});
+
+export const SetTiposBonificacionCustomers = ( value ) => ({
+    type: types.SetTiposBonificacionCustomers,
+    payload: value
+});
+
+export const SetSelectedTipoBonificacionCustomers = ( value ) => ({
+    type: types.SetSelectedTipoBonificacionCustomers,
+    payload: value
+});
+
+export const SetBonificacionesCustomers = ( value ) => ({
+    type: types.SetBonificacionesCustomers,
+    payload: value
+});
+
+export const SetAddTipoBonificacionesCustomers = ( value ) => ({
+    type: types.SetAddTipoBonificacionesCustomers,
     payload: value
 });

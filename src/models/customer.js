@@ -36,7 +36,8 @@ export class Customer {
         idDistrito,
         usuarioCreacion,
         usuarioModificacion,
-        datosSucursal
+        datosSucursal,
+        bonificado
       ) {
         this.identificacion = identificacion || 0,
         this.nombre = nombre;
@@ -73,6 +74,7 @@ export class Customer {
         this.usuarioCreacion = usuarioCreacion || '',
         this.usuarioModificacion = usuarioModificacion || '',
         this.datosSucursal = datosSucursal || []
+        this.bonificado = bonificado || false
     }
 
     toJson() {
@@ -109,6 +111,7 @@ export class Customer {
         clienteMoroso         : this.clienteMoroso,
         ordenCompra           : this.ordenCompra,
         idSurcusal            : 0,
+        tieneBonificacion     : this.bonificado,
         idProvincia           : this.idProvincia,
         idCanton              : this.idCanton,
         idDistrito            : this.idDistrito,

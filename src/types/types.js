@@ -579,6 +579,10 @@ export const types = {
   SetIsOpenFromConsignmentCustomers: '[Customers] SetIsOpenFromConsignmentCustomers',
   SetPermisosCustomers: '[Customers] SetPermisosCustomers',
   SetHasPermisosCustomers: '[Customers] SetHasPermisosCustomers',
+  SetTiposBonificacionCustomers: '[Customers] SetTiposBonificacionCustomers',
+  SetSelectedTipoBonificacionCustomers: '[Customers] SetSelectedTipoBonificacionCustomers',
+  SetBonificacionesCustomers: '[Customers] SetBonificacionesCustomers',
+  SetAddTipoBonificacionesCustomers: '[Customers] SetAddTipoBonificacionesCustomers',
 
   // Carta Exoneracion Actions
   SetMotivoCartaExoneracion: '[CartaExoneracion] SetMotivoCartaExoneracion',

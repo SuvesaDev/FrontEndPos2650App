@@ -16,8 +16,10 @@ import {
     SetIdEditDatosFacturacionCustomers,
     SetIsEditDatosFacturacionCustomers,
     SetnombreFantasiaDatosFacturacionCustomers, 
+    SetSelectedTipoBonificacionCustomers, 
     SetSucursalDatosFacturacionCustomers, 
-    SetTelefonoDatosFacturacionCustomers
+    SetTelefonoDatosFacturacionCustomers,
+    startSaveBonificacionCustomer
 } from '../../../actions/customers';
 import { CustomersBodyTipoBonificacionesTable } from "./CustomersBodyTipoBonificacionesTable";
 
@@ -33,7 +35,11 @@ export const CustomersBodyBonificacion = () => {
         datosFacturacion, 
         allDatosFacturacion,
         isEditDatosFacturacion,
-        idDatoFacturacionEdit
+        idDatoFacturacionEdit,
+        tiposBonificaciones,
+        selectedTipoBonificacion,
+        bonificaciones,
+        customer
     } = useSelector( state => state.customers );
 
     const { 
@@ -70,31 +76,37 @@ export const CustomersBodyBonificacion = () => {
         dispatch( action(target.value) );
     };
 
-    const handleAddDatosFacturacion = () => {
-
-        if( sucursal == '' || nombreFantasia == '' || telefono == '' || contacto == '' || correo == '' ) {
-            Swal.fire({
-                icon: 'warning',
-                title: 'Advertencia',
-                text: 'Favor completar todos los datos.'
+    const handleAddTipoBonificacion = (e) => {
+      
+        e.preventDefault();
+    
+        if (selectedTipoBonificacion == 0) return;
+    
+        const existTipoBonificacion = bonificaciones.find(
+          (value) => value.codigo === tipoBonificacion
+        );
+    
+        if (existTipoBonificacion === undefined) {
+    
+          const newTipoBonificacion = tiposBonificaciones.find(
+            (value) => value.codigo == selectedTipoBonificacion
+          );
+    
+          const newTipo = {
+            codigo: selectedTipoBonificacion,
+            descripcion: newTipoBonificacion.descripcion
+          }
+    
+          dispatch(startSaveBonificacionCustomer(newTipo, customer.identificacion));
+    
+        } else {
+          Swal.fire({
+              icon: "warning",
+              title: "Advertencia",
+              text: "El tipo de bonificacion ya esta iXFGncluido.",
             });
-
-            return;
         }
-
-        const newDato = {
-            id: allDatosFacturacion.length + 1,
-            sucursal,
-            nombreFantasia,
-            telefono,
-            contacto,
-            correo
-        }
-
-        dispatch( SetAddDatosFacturacionCustomers( newDato ) );
-        dispatch( CleanDatosFacturacionCustomers() );
-
-    }
+    };
 
     const handleEditDatosFacturacion = () => {
 
@@ -135,30 +147,30 @@ export const CustomersBodyBonificacion = () => {
                                 <h5>Tipo de Bonificacion</h5>
                                 <div className="input-group">
                                     <span className="input-group-text">
-                                    <FaGift className="iconSize" />
+                                        <FaGift className="iconSize" />
                                     </span>
                                     <select
-                                    name="proveedor"
-                                    // disabled={disableInputs}
-                                    // value={tipoBonificacion}
+                                    name="tipoBonificacion"
+                                    disabled={disableInputs}
+                                    value={selectedTipoBonificacion}
                                     className="form-select"
-                                    // onChange={(e) =>
-                                    //     handleInputChangeWithDispatch(e, SetTipoBonificacionInventory)
-                                    // }
+                                    onChange={(e) =>
+                                        handleInputChangeWithDispatch(e, SetSelectedTipoBonificacionCustomers)
+                                    }
                                 >
                                     <option value={0} selected disabled hidden>
                                         {" "}
                                         Seleccione...{" "}
                                     </option>
-                                    {/* {tiposBonificacion != null ? (
-                                        tiposBonificacion.map((tipo) => {
+                                    {tiposBonificaciones != null ? (
+                                        tiposBonificaciones.map((tipo) => {
                                         return (
                                             <option value={tipo.codigo}> {tipo.descripcion} </option>
                                         );
                                         })
                                     ) : (
                                         <option value="">No se cargaron los tipos de bonificacion</option>
-                                    )} */}
+                                    )}
                                     </select>
                                 </div>
                             </div>
@@ -172,6 +184,7 @@ export const CustomersBodyBonificacion = () => {
                                         }
                                         disabled={disableInputs}
                                         // onClick={  isSeletedTipoBonificacion ? handleEditTipoBonificacion : handleAddTipoBonificacion }
+                                        onClick={handleAddTipoBonificacion}
                                     >
                                         {/* { isSeletedTipoBonificacion ? 'Editar' : 'Agregar' } <IoAddCircle className="iconSize" /> */}
                                         Agregar
@@ -199,7 +212,7 @@ export const CustomersBodyBonificacion = () => {
                             <div className="col-md-12 mb-2">
                             <CustomersBodyTipoBonificacionesTable
                                 columns={columnsTipoBonificables}
-                                data={[]}
+                                data={bonificaciones}
                             />
                             </div>
                             <hr />

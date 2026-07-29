@@ -80,7 +80,10 @@ const initialState = {
         borrar: false,
         modificar: false,
         ver: false
-    }
+    },
+    tiposBonificaciones: [],
+    selectedTipoBonificacion: 0,
+    bonificaciones: []
 };
 
 export const CustomersReducer = (state = initialState, action) => {
@@ -462,7 +465,10 @@ export const CustomersReducer = (state = initialState, action) => {
                 isEditDatosFacturacion: false,
                 idDatoFacturacionEdit: 0,
                 isOpenFromConsignment: false,
-                permisos: state.permisos
+                permisos: state.permisos,
+                tiposBonificaciones: [],
+                selectedTipoBonificacion: 0,
+                bonificaciones: []
             }
 
         case types.ActiveButtonNewCustomers:
@@ -773,6 +779,33 @@ export const CustomersReducer = (state = initialState, action) => {
             return {
                 ...state,
                 hasPermisos: action.payload
+            }
+
+        case types.SetTiposBonificacionCustomers:
+            return {
+                ...state,
+                tiposBonificaciones: action.payload
+            }
+
+        case types.SetSelectedTipoBonificacionCustomers:
+            return {
+                ...state,
+                selectedTipoBonificacion: action.payload
+            }
+
+        case types.SetBonificacionesCustomers:
+            return {
+                ...state,
+                bonificaciones: action.payload
+            }
+
+        case types.SetAddTipoBonificacionesCustomers:
+            return {
+                ...state,
+                bonificaciones: [
+                    ...state.bonificaciones,
+                    action.payload
+                ]
             }
     
         default:
