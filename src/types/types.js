@@ -583,6 +583,11 @@ export const types = {
   SetSelectedTipoBonificacionCustomers: '[Customers] SetSelectedTipoBonificacionCustomers',
   SetBonificacionesCustomers: '[Customers] SetBonificacionesCustomers',
   SetAddTipoBonificacionesCustomers: '[Customers] SetAddTipoBonificacionesCustomers',
+  SetIsOpenModalSearchBonificacionesCustomers: '[Customers] SetIsOpenModalSearchBonificacionesCustomers',
+  SetCodigoBonificacionArticleCustomers: '[Customers] SetCodigoBonificacionArticleCustomers',
+  SetCodigoArtBonificacionArticleCustomers: '[Customers] SetCodigoArtBonificacionArticleCustomers',
+  SetDescripcionBonificacionArticleCustomers: '[Customers] SetDescripcionBonificacionArticleCustomers',
+  SetAddProductoBonificacionCustomers: '[Customers] SetAddProductoBonificacionCustomers',
 
   // Carta Exoneracion Actions
   SetMotivoCartaExoneracion: '[CartaExoneracion] SetMotivoCartaExoneracion',

@@ -35,6 +35,7 @@ import { AiFillExclamationCircle } from 'react-icons/ai';
 import { SetOpenSearchInventoryBudgets } from '../../actions/budgetsAction';
 import { SetIsOpenModalSearchInventoryOrdenCompra } from '../../actions/ordenCompraAction';
 import { SetIsOpenModalSearchBonificaciones } from '../../actions/BonificacionesAction';
+import { SetIsOpenModalSearchBonificacionesCustomers } from '../../actions/customers';
 
 
 export const InventorySearchModal = () => {
@@ -54,6 +55,7 @@ export const InventorySearchModal = () => {
     const { isOpenSearchInventoryBudgets } = useSelector(state => state.budgets);
     const { isOpenModalSearchInventoryOrdenCompra } = useSelector((state) => state.ordenCompra);
     const { isOpenModalSearchArticuloBonificaciones } = useSelector((state) => state.bonificaciones);
+    const { isOpenModalSearchByBonificacionCustomer } = useSelector((state) => state.customers);
     const {
         valorfiltro,
         tipofiltro,
@@ -191,6 +193,12 @@ export const InventorySearchModal = () => {
             dispatch(CleanSearchInventory());
             dispatch(CleanOptionsSearchModalInventory());
             dispatch(SetIsOpenModalBonificacionInventory(false));
+            
+        } else if (isOpenModalSearchByBonificacionCustomer) {
+
+            dispatch(CleanSearchInventory());
+            dispatch(CleanOptionsSearchModalInventory());
+            dispatch(SetIsOpenModalSearchBonificacionesCustomers(false));
             
         } else {
 

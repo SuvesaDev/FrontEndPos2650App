@@ -34,6 +34,7 @@ import { CleanStateCartaExoneracion } from "../../actions/CartaExoneracionAction
 import { startGetAllProvincias } from "../../actions/ProvinciasAction";
 import { startGetAllAgentesVenta } from "../../actions/AgenteVentaAction";
 import { CustomerBodyAdjuntosModal } from "./customersBody/CustomerBodyAdjuntosModal";
+import { InventorySearchModal } from "../Inventory/InventorySearchModal";
 
 export const CustomersIcons = () => {
   const dispatch = useDispatch();
@@ -402,6 +403,8 @@ export const CustomersIcons = () => {
       <CustomerSearchModal />
 
       <CustomerBodyAdjuntosModal />
+
+      <InventorySearchModal />
     </>
   );
 };

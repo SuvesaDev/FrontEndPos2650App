@@ -1375,6 +1375,96 @@ export const startSaveBonificacionCustomer = ( tipoBonificacion, idCliente ) => 
     }
 }
 
+export const startSaveArticleBonificacionCustomer = ( newProduct ) => {
+   
+    return async ( dispatch ) => {
+
+        try {
+
+            //Mostrar un mensaje de confirmacion
+            Swal.fire({
+                title: '¿Desea agregar un nuevo producto de Bonificacion?',
+                showDenyButton: true,
+                showCancelButton: false,
+                confirmButtonText: 'Guardar',
+                denyButtonText: `Cancelar`,
+            }).then(async (result) => {
+
+                if (result.isConfirmed) {
+
+                    //Mostrar el loading
+                    Swal.fire({
+                        title: 'Por favor, espere',
+                        allowEscapeKey: false,
+                        allowOutsideClick: false,
+                        showConfirmButton: false,
+                        imageUrl: loadingImage,
+                        customClass: 'alert-class-login',
+                        imageHeight: 100,
+                    });
+            
+                    //Call end-point 
+                    const { data } = await suvesaApi.post(`/ClienteBonificacion/CreateArticulo`, newProduct );
+                    const { status } = data;
+                    
+                    // Cerrar modal
+                    Swal.close();
+
+                    if( status === 0 ) {
+
+                        dispatch(SetAddProductoBonificacionCustomers({
+                            codigo: newProduct.idArticulo,
+                            cod_Articulo: newProduct.cod_Articulo,
+                            descripcion : newProduct.descripcion,
+                        }));
+                        dispatch(SetCodigoBonificacionArticleCustomers(''));
+                        dispatch(SetCodigoArtBonificacionArticleCustomers(''));
+                        dispatch(SetDescripcionBonificacionArticleCustomers(''));
+
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Articulo Bonificacion',
+                            text: `Se agrego correctamente el articulo bonificacion.`,
+                        });
+
+                    } else {
+            
+                        //Caso contrario respuesta incorrecto mostrar mensaje de error
+                        const { currentException } = data;
+                        const msj = currentException.split(',');
+                        
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: (currentException.includes(',')) ? msj[3] : currentException,
+                        });
+            
+                    }
+                }
+
+            });
+
+        } catch (error) {
+            
+            Swal.close();
+            console.log(error);
+            if( error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al guardar el articulo formula',
+                });
+            }
+        }
+    }
+}
+
 //Normal Actions
 export const SelectTabCustomers = ( nameTab ) => ({
     type: types.SelectTabCustomers,
@@ -1770,5 +1860,30 @@ export const SetBonificacionesCustomers = ( value ) => ({
 
 export const SetAddTipoBonificacionesCustomers = ( value ) => ({
     type: types.SetAddTipoBonificacionesCustomers,
+    payload: value
+});
+
+export const SetIsOpenModalSearchBonificacionesCustomers = ( value ) => ({
+    type: types.SetIsOpenModalSearchBonificacionesCustomers,
+    payload: value
+});
+
+export const SetCodigoBonificacionArticleCustomers = ( value ) => ({
+    type: types.SetCodigoBonificacionArticleCustomers,
+    payload: value
+});
+
+export const SetCodigoArtBonificacionArticleCustomers = ( value ) => ({
+    type: types.SetCodigoArtBonificacionArticleCustomers,
+    payload: value
+});
+
+export const SetDescripcionBonificacionArticleCustomers = ( value ) => ({
+    type: types.SetDescripcionBonificacionArticleCustomers,
+    payload: value
+});
+
+export const SetAddProductoBonificacionCustomers = ( value ) => ({
+    type: types.SetAddProductoBonificacionCustomers,
     payload: value
 });

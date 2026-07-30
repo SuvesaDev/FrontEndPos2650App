@@ -83,7 +83,14 @@ const initialState = {
     },
     tiposBonificaciones: [],
     selectedTipoBonificacion: 0,
-    bonificaciones: []
+    bonificaciones: [],
+    isOpenModalSearchByBonificacionCustomer: false,
+    currentBonificacionArticles: {
+        codigo: '',
+        cod_Articulo: '',
+        descripcion: ''
+    },
+    productosBonificacion: []
 };
 
 export const CustomersReducer = (state = initialState, action) => {
@@ -468,7 +475,14 @@ export const CustomersReducer = (state = initialState, action) => {
                 permisos: state.permisos,
                 tiposBonificaciones: [],
                 selectedTipoBonificacion: 0,
-                bonificaciones: []
+                bonificaciones: [],
+                isOpenModalSearchByBonificacionCustomer: false,
+                currentBonificacionArticles: {
+                    codigo: '',
+                    cod_Articulo: '',
+                    descripcion: ''
+                },
+                productosBonificacion: []
             }
 
         case types.ActiveButtonNewCustomers:
@@ -804,6 +818,48 @@ export const CustomersReducer = (state = initialState, action) => {
                 ...state,
                 bonificaciones: [
                     ...state.bonificaciones,
+                    action.payload
+                ]
+            }
+
+        case types.SetIsOpenModalSearchBonificacionesCustomers:
+            return {
+                ...state,
+                isOpenModalSearchByBonificacionCustomer: action.payload
+            }
+
+        case types.SetCodigoBonificacionArticleCustomers:
+            return {
+                ...state,
+                currentBonificacionArticles: {
+                    ...state.currentBonificacionArticles,
+                    codigo: action.payload
+                }
+            }
+
+        case types.SetCodigoArtBonificacionArticleCustomers:
+            return {
+                ...state,
+                currentBonificacionArticles: {
+                    ...state.currentBonificacionArticles,
+                    cod_Articulo: action.payload
+                }
+            }
+
+        case types.SetDescripcionBonificacionArticleCustomers:
+            return {
+                ...state,
+                currentBonificacionArticles: {
+                    ...state.currentBonificacionArticles,
+                    descripcion: action.payload
+                }
+            }
+
+        case types.SetAddProductoBonificacionCustomers:
+            return {
+                ...state,
+                productosBonificacion: [
+                    ...state.productosBonificacion,
                     action.payload
                 ]
             }

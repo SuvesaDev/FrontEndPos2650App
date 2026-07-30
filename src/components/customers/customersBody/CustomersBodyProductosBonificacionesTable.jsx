@@ -12,10 +12,6 @@ import { useTable } from "react-table";
 export const CustomersBodyProductosBonificacionesTable = ({ columns, data }) => {
   const dispatch = useDispatch();
 
-  const {
-    bonificacionArticles,
-    isInventoryDisable,
-  } = useSelector((state) => state.inventory);
 
   const {
     getTableProps,

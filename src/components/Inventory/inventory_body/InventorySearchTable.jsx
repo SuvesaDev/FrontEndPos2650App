@@ -31,6 +31,11 @@ import { startGetOneInventoryBudgets } from '../../../actions/budgetsAction';
 import { startGetOneInventoryOrdenCompra } from '../../../actions/ordenCompraAction';
 import { startGetOneInventoryBonificaciones } from '../../../actions/BonificacionesAction';
 import { startGetOneInventoryConsignment } from '../../../actions/ConsignmentAction';
+import { SetCodigoArtBonificacionArticleCustomers, 
+    SetCodigoBonificacionArticleCustomers, 
+    SetDescripcionBonificacionArticleCustomers, 
+    SetIsOpenModalSearchBonificacionesCustomers 
+} from '../../../actions/customers';
 
 export const InventorySearchTable = ({ columns, data }) => {
 
@@ -62,6 +67,7 @@ export const InventorySearchTable = ({ columns, data }) => {
     const { isOpenModalSearchInventoryConsultAlbaranes } = useSelector(state => state.consultAlbaranes);
     const { isOpenModalSearchInventoryOrdenCompra } = useSelector((state) => state.ordenCompra);
     const { isOpenModalSearchArticuloBonificaciones } = useSelector((state) => state.bonificaciones);
+    const { isOpenModalSearchByBonificacionCustomer } = useSelector((state) => state.customers);
 
     useEffect(() => {
 
@@ -116,6 +122,13 @@ export const InventorySearchTable = ({ columns, data }) => {
             dispatch( SetDescripcionArtBonificacionArticleInventory(descripcion));
             dispatch( SetCodigoArtBonificacionArticleInventory( cod_Articulo ) );
             dispatch( SetIsOpenModalBonificacionInventory(false));
+
+        } else if (isOpenModalSearchByBonificacionCustomer) {
+
+            dispatch( SetCodigoBonificacionArticleCustomers(codigo));
+            dispatch( SetDescripcionBonificacionArticleCustomers(descripcion));
+            dispatch( SetCodigoArtBonificacionArticleCustomers( cod_Articulo ) );
+            dispatch( SetIsOpenModalSearchBonificacionesCustomers(false));
 
         } else if (billings[numberScreen] !== undefined) {
 

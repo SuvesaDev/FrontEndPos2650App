@@ -10,15 +10,19 @@ import { TbNotes, TbNumber } from "react-icons/tb";
 import { 
     CleanDatosFacturacionCustomers,
     SetAddDatosFacturacionCustomers,
+    SetCodigoBonificacionArticleCustomers,
     SetContactoDatosFacturacionCustomers,
     SetCorreoDatosFacturacionCustomers,
+    SetDescripcionBonificacionArticleCustomers,
     SetEditDatosFacturacionCustomers,
     SetIdEditDatosFacturacionCustomers,
     SetIsEditDatosFacturacionCustomers,
+    SetIsOpenModalSearchBonificacionesCustomers,
     SetnombreFantasiaDatosFacturacionCustomers, 
     SetSelectedTipoBonificacionCustomers, 
     SetSucursalDatosFacturacionCustomers, 
     SetTelefonoDatosFacturacionCustomers,
+    startSaveArticleBonificacionCustomer,
     startSaveBonificacionCustomer
 } from '../../../actions/customers';
 import { CustomersBodyTipoBonificacionesTable } from "./CustomersBodyTipoBonificacionesTable";
@@ -39,7 +43,9 @@ export const CustomersBodyBonificacion = () => {
         tiposBonificaciones,
         selectedTipoBonificacion,
         bonificaciones,
-        customer
+        customer,
+        currentBonificacionArticles,
+        productosBonificacion
     } = useSelector( state => state.customers );
 
     const { 
@@ -49,6 +55,12 @@ export const CustomersBodyBonificacion = () => {
         correo,
         contacto
     } = datosFacturacion;
+
+    const {
+        codigo,
+        cod_Articulo,
+        descripcion,
+    } = currentBonificacionArticles;
 
     const columnsTipoBonificables = [
         {
@@ -135,6 +147,43 @@ export const CustomersBodyBonificacion = () => {
         dispatch( CleanDatosFacturacionCustomers() );
 
     }
+
+    const handleSearchArticle = (e) => {
+        e.preventDefault();
+    
+        dispatch(SetIsOpenModalSearchBonificacionesCustomers(true));
+    };
+
+    const handleAddProductoBonificacion = (e) => {
+        
+        e.preventDefault();
+    
+        if (cod_Articulo == '') return;
+    
+        const existProductoBonificacion = productosBonificacion.find(
+          (value) => value.codigo === codigo
+        );
+    
+        if (existProductoBonificacion === undefined) {
+    
+          const newProducto = {
+            id: 0,
+            idArticulo: codigo,
+            idCliente: customer.identificacion,
+            cod_Articulo,
+            descripcion
+          }
+    
+          dispatch(startSaveArticleBonificacionCustomer(newProducto));
+    
+        } else {
+          Swal.fire({
+              icon: "warning",
+              title: "Advertencia",
+              text: "El producto de bonificacion ya esta incluido.",
+            });
+        }
+    };
 
     return (
         <>
@@ -232,13 +281,13 @@ export const CustomersBodyBonificacion = () => {
                                         className="form-control"
                                         placeholder="Código Producto"
                                         disabled={disableInputs}
-                                        // value={codigo}
-                                        // onChange={(e) =>
-                                        //     handleInputChangeWithDispatch(
-                                        //     e,
-                                        //     SetCodigoBonificacionArticleInventory
-                                        //     )
-                                        // }
+                                        value={codigo}
+                                        onChange={(e) =>
+                                            handleInputChangeWithDispatch(
+                                                e,
+                                                SetCodigoBonificacionArticleCustomers
+                                            )
+                                        }
                                     />
                                     <button
                                         // className={
@@ -246,7 +295,7 @@ export const CustomersBodyBonificacion = () => {
                                         // }
                                         className="btn btn-primary"
                                         type="button"
-                                        // onClick={handleSearchArticle}
+                                        onClick={handleSearchArticle}
                                         data-bs-toggle="modal"
                                         data-bs-target="#modalBuscarArticulo"
                                     >
@@ -267,13 +316,13 @@ export const CustomersBodyBonificacion = () => {
                                         className="form-control"
                                         placeholder="Descripción del Producto"
                                         disabled={true}
-                                        // value={descripcion}
-                                        // onChange={(e) =>
-                                        //     handleInputChangeWithDispatch(
-                                        //     e,
-                                        //     SetDescripcionArtBonificacionArticleInventory
-                                        //     )
-                                        // }
+                                        value={descripcion}
+                                        onChange={(e) =>
+                                            handleInputChangeWithDispatch(
+                                            e,
+                                            SetDescripcionBonificacionArticleCustomers
+                                            )
+                                        }
                                     />
                                 </div>
                             </div>
@@ -292,7 +341,7 @@ export const CustomersBodyBonificacion = () => {
                                         // }
                                         className="btn btn-success"
                                         disabled={disableInputs}
-                                        // onClick={handleAddProductoBonificacion}
+                                        onClick={handleAddProductoBonificacion}
                                     >
                                         Agregar <IoAddCircle className="iconSize" />
                                     </button>
@@ -318,7 +367,7 @@ export const CustomersBodyBonificacion = () => {
                             <div className="col-md-12 mb-2">
                                 <CustomersBodyProductosBonificacionesTable
                                     columns={columnsProductos}
-                                    data={[]}
+                                    data={productosBonificacion}
                                 />
                             </div>
                             <hr />
