@@ -113,59 +113,56 @@ export const BillingHeaderCustomer = () => {
       selected: false,
       quantity: 1
     }
-  ]);
+    ]);
 
-      // Manejar cambio de checkbox individual
-  const handleCheckboxChange = (id) => {
-    setProducts(products.map(product => 
-      product.id === id ? { ...product, selected: !product.selected } : product
-    ));
-  };
+    // Manejar cambio de checkbox individual
+    const handleCheckboxChange = (id) => {
+        setProducts(products.map(product => 
+        product.id === id ? { ...product, selected: !product.selected } : product
+        ));
+    };
 
-  // Manejar cambio de cantidad
-  const handleQuantityChange = (id, newQuantity) => {
-    const quantity = Math.max(1, parseInt(newQuantity) || 1); // Mínimo 1
-    setProducts(products.map(product => 
-      product.id === id ? { ...product, quantity } : product
-    ));
-  };
+    // Manejar cambio de cantidad
+    const handleQuantityChange = (id, newQuantity) => {
+        const quantity = Math.max(1, parseInt(newQuantity) || 1); // Mínimo 1
+        setProducts(products.map(product => 
+        product.id === id ? { ...product, quantity } : product
+        ));
+    };
 
-  // Incrementar cantidad
-  const incrementQuantity = (id) => {
-    setProducts(products.map(product => 
-      product.id === id ? { ...product, quantity: product.quantity + 1 } : product
-    ));
-  };
+    // Incrementar cantidad
+    const incrementQuantity = (id) => {
+        setProducts(products.map(product => 
+        product.id === id ? { ...product, quantity: product.quantity + 1 } : product
+        ));
+    };
 
-  // Decrementar cantidad
-  const decrementQuantity = (id) => {
-    setProducts(products.map(product => 
-      product.id === id && product.quantity > 1 
-        ? { ...product, quantity: product.quantity - 1 } 
-        : product
-    ));
-  };
+    // Decrementar cantidad
+    const decrementQuantity = (id) => {
+        setProducts(products.map(product => 
+        product.id === id && product.quantity > 1 
+            ? { ...product, quantity: product.quantity - 1 } 
+            : product
+        ));
+    };
 
-  // Seleccionar todos
-  const handleSelectAll = () => {
-    const allSelected = products.every(p => p.selected);
-    setProducts(products.map(product => ({ ...product, selected: !allSelected })));
-  };
+    // Seleccionar todos
+    const handleSelectAll = () => {
+        const allSelected = products.every(p => p.selected);
+        setProducts(products.map(product => ({ ...product, selected: !allSelected })));
+    };
 
-  // Obtener productos seleccionados
-  const selectedProducts = products.filter(p => p.selected);
-  const totalItems = selectedProducts.reduce((sum, p) => sum + p.quantity, 0);
-  const totalPrice = selectedProducts.reduce((sum, p) => sum + (p.price * p.quantity), 0);
-
-
+    // Obtener productos seleccionados
+    const selectedProducts = products.filter(p => p.selected);
+    const totalItems = selectedProducts.reduce((sum, p) => sum + p.quantity, 0);
+    const totalPrice = selectedProducts.reduce((sum, p) => sum + (p.price * p.quantity), 0);
   
     useEffect(() => {
-
         if (currentTab.name.includes("Venta")) {
             setnumberScreen(currentTab.routePage.split('/')[3] - 1);
         }
 
-    }, [billings]);
+    }, [billings]);    
 
     const handleAddUserClick = () => {
 

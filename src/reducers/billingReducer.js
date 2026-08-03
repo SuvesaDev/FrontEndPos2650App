@@ -204,7 +204,8 @@ const initialState = {
     datosImprimirCredito: [],
     lotesByArticulo: [],
     datosFacturacionByCliente: [],
-    productsImagen: []
+    productsImagen: [],
+    isBonificacion: false
 };
 
 export const BillingReducer = (state = initialState, action) => {
@@ -2969,6 +2970,19 @@ export const BillingReducer = (state = initialState, action) => {
                 )
             }
 
+        case types.SetIsBonificadoBilling:
+            return {
+                ...state,
+                billings: state.billings.map(
+                    (billing, i) => i === action.payload.number
+                        ? {
+                            ...state.billings[action.payload.number],
+                            isBonificacion: action.payload.value
+                        }
+                        : billing
+                )
+            }
+
         case types.CleanBilling:
             return {
                 ...state,
@@ -3174,7 +3188,8 @@ export const BillingReducer = (state = initialState, action) => {
                             startEditing: false,
                             lotesByArticulo: [],
                             datosFacturacionByCliente: [],
-                            productsImagen: []
+                            productsImagen: [],
+                            isBonificacion: false
                         }
                         : billing
                 )

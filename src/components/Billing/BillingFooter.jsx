@@ -664,7 +664,7 @@ export const BillingFooter = () => {
                     </button>
                 </div>
 
-                <div className="btn-group mb-2">
+                {/* <div className="btn-group mb-2">
                     <PDFDownloadLink
                         document={<BillingPrintPDF factura={facturaEjemplo} />}
                         fileName={`factura_${facturaEjemplo.numero}.pdf`} // 👈 Aquí defines el nombre
@@ -673,13 +673,13 @@ export const BillingFooter = () => {
                         {({ loading }) => (loading ? "Generando PDF..." : "Descargar Factura")}
                     </PDFDownloadLink>
 
-                </div>
+                </div> */}
 
-                 <div className="btn-group mb-2">
+                 {/* <div className="btn-group mb-2">
                         <button className="btn btn-warning" onClick={handlePrint}>
                             Imprimir Factura
                         </button>
-                 </div>
+                 </div> */}
 
 
                 <div className="col-md-2 mb-2">

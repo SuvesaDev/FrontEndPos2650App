@@ -232,7 +232,8 @@ export const BillingPage = () => {
         isPreventaEdit: false,
         startEditing: false,
         lotesByArticulo: [],
-        productsImagen: []
+        productsImagen: [],
+        isBonificacion: false
     }
 
     useEffect(() => {
