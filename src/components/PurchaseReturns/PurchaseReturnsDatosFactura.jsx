@@ -7,7 +7,7 @@ import { FaBoxesPacking, FaBuildingUn, FaColonSign, FaListCheck, FaMagnifyingGla
 import { FaCalendar, FaCoins, FaExchangeAlt, FaHashtag, FaHornbill, FaPercentage } from 'react-icons/fa';
 import { TbNumber } from 'react-icons/tb';
 import { BsSortNumericDownAlt } from 'react-icons/bs';
-import { months } from 'moment';
+import { months } from "moment/dist/moment";
 
 export const PurchaseReturnsDatosFactura = () => {
     const dispatch = useDispatch();
