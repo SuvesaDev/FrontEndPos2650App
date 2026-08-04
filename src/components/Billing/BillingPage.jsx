@@ -234,40 +234,8 @@ export const BillingPage = () => {
         lotesByArticulo: [],
         productsImagen: [],
         isBonificacion: false,
-        configuracionBonificacion: [
-            {
-                descripcion : 'Test',
-                cantidadVenta : '10',
-                cantidadBonificable : '1',
-            },
-            {
-                descripcion : 'Test 2',
-                cantidadVenta : '9',
-                cantidadBonificable : '2',
-            },
-            {
-                descripcion : 'Test 2',
-                cantidadVenta : '9',
-                cantidadBonificable : '2',
-            }
-        ],
-        productosBonificacion: [
-            {
-                codigo : '123',
-                descripcion : 'Alimento #1',
-                cantidad : 0,
-            },
-            {
-                codigo : '456',
-                descripcion : 'Alimento #2',
-                cantidad : 0,
-            },
-            {
-                codigo : '456',
-                descripcion : 'Alimento #2',
-                cantidad : 0,
-            }
-        ]
+        configuracionBonificacion: [],
+        productosBonificacion: []
     }
 
     useEffect(() => {

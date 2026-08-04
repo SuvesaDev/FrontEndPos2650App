@@ -2357,6 +2357,146 @@ export const startGetProductsByImagen = (products, number) => {
 
 }
 
+export const startGetConfiguracionBonificacion = (cedula, number) => {
+
+    return async ( dispatch ) => {
+    
+        try {
+
+            //Mostrar el loading
+            Swal.fire({
+                title: 'Por favor, espere',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                imageUrl: loadingImage,
+                customClass: 'alert-class-login',
+                imageHeight: 100,
+            });
+
+            const request = {
+                cedula,
+                identificacion: 0
+            }
+                    
+            //Call end-point 
+            const { data } = await suvesaApi.post(`/ClienteBonificacion/GetConfiguracionCliente`, request );
+            const { status, responses } = data;
+
+            //Quitar el loading
+            Swal.close();
+
+            if( status === 0) {
+                // console.log(responses);
+                dispatch( SetConfiguracionBonificacionBilling({ value: responses, number }) );
+
+            } else {
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
+                
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
+                
+            }
+            
+        } catch (error) {
+            
+            Swal.close();
+            console.log(error);
+            if( error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al obtener los producto con imagen',
+                });
+            }
+        }
+
+    }
+
+}
+
+export const startGetProductosBonificacion = (cedula, number) => {
+
+    return async ( dispatch ) => {
+    
+        try {
+
+            //Mostrar el loading
+            Swal.fire({
+                title: 'Por favor, espere',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                imageUrl: loadingImage,
+                customClass: 'alert-class-login',
+                imageHeight: 100,
+            });
+                    
+            //Call end-point 
+            const { data } = await suvesaApi.get(`/ClienteBonificacion/GetArticulos?Request=${cedula}` );
+            const { status, responses } = data;
+
+            //Quitar el loading
+            Swal.close();
+
+            if( status === 0) {
+                
+                const products = responses.map(response => {
+                    return {
+                        ...response,
+                        cantidad: 0
+                    }
+                });
+
+                dispatch( SetProductosBonificacionBilling({ value: products, number }) );
+
+            } else {
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
+                
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
+                
+            }
+            
+        } catch (error) {
+            
+            Swal.close();
+            console.log(error);
+            if( error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al obtener los producto con imagen',
+                });
+            }
+        }
+
+    }
+
+}
+
 // Private methods
 const loadCatalogos = async ( dispatch, catalogos ) => {
     
@@ -3525,5 +3665,10 @@ export const SetConfiguracionBonificacionBilling = (value) => ({
 
 export const SetProductosBonificacionBilling = (value) => ({
     type: types.SetProductosBonificacionBilling,
+    payload: value
+})
+
+export const SetCantidadProductosBonificacionBilling = (value) => ({
+    type: types.SetCantidadProductosBonificacionBilling,
     payload: value
 })

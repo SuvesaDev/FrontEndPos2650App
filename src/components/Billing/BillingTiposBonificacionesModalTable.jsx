@@ -1,13 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useTable } from "react-table";
+import { useTable, usePagination } from "react-table";
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import {
-    IsCorreoComprobanteEditBilling,
-    SeletedCorreoComprobantesBilling,
-    SetCorreoComprobanteActualBilling
-} from '../../actions/billing';
+import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
 
 export const BillingTiposBonificacionesModalTable = ({ columns, data }) => {
 
@@ -31,29 +27,41 @@ export const BillingTiposBonificacionesModalTable = ({ columns, data }) => {
         getTableBodyProps,
         headerGroups,
         rows,
+        page, // en vez de rows usamos "page"
         prepareRow,
-        state,
+        canPreviousPage,
+        canNextPage,
+        pageOptions,
+        pageCount,
+        gotoPage,
+        nextPage,
+        previousPage,
+        state: { pageIndex },
     } = useTable({
         columns,
         data,
-    });
+        initialState: { pageIndex: 0, pageSize: 3 },
+        },
+        usePagination
+    );
 
     const handleSelectedRow = async (cell) => {
 
-        //Obtener el correo seleccionado
-        const { correoComprobante } = cell.row.values;
+        // //Obtener el correo seleccionado
+        // const { correoComprobante } = cell.row.values;
 
-        if (correoComprobante !== null) {
-            dispatch(SeletedCorreoComprobantesBilling({ value: correoComprobante, number: numberScreen }));
-            dispatch(SetCorreoComprobanteActualBilling({ value: correoComprobante, number: numberScreen }));
-            dispatch(IsCorreoComprobanteEditBilling({ value: true, number: numberScreen }));
-        }
+        // if (correoComprobante !== null) {
+        //     dispatch(SeletedCorreoComprobantesBilling({ value: correoComprobante, number: numberScreen }));
+        //     dispatch(SetCorreoComprobanteActualBilling({ value: correoComprobante, number: numberScreen }));
+        //     dispatch(IsCorreoComprobanteEditBilling({ value: true, number: numberScreen }));
+        // }
 
     }
 
     return (
         <>
             <div class="table-responsive-md tablaP">
+
                 <table
                     {...getTableProps()}
                     className="table table-bordered table-hover text-lg-center"
@@ -71,10 +79,11 @@ export const BillingTiposBonificacionesModalTable = ({ columns, data }) => {
                             </tr>
                         ))}
                     </thead>
+
                     <tbody className="table-white"
                         {...getTableBodyProps()}
                     >
-                        {rows.map((row, i) => {
+                        {page.map((row, i) => {
                             prepareRow(row)
                             return (
                                 <tr {...row.getRowProps()}>
@@ -82,10 +91,19 @@ export const BillingTiposBonificacionesModalTable = ({ columns, data }) => {
                                         return (
                                             <td
                                                 {...cell.getCellProps({
-                                                    onClick: () => handleSelectedRow(cell)
+                                                    onClick: (cell.column.id === 'iconVer' || cell.column.id === 'iconAprobar')
+                                                        ? () => handleSelectedRow(cell)
+                                                        : () => {},
                                                 })}
+
                                             >
-                                                {cell.render("Cell")}
+                                                {
+                                                    (cell.column.id === 'iconVer')
+                                                        ? (usuarioAceptaConsignacion) 
+                                                            ? cell.render("Cell")
+                                                            : null
+                                                        : cell.render("Cell")
+                                                }
                                             </td>
                                         )
                                     })}
@@ -94,6 +112,48 @@ export const BillingTiposBonificacionesModalTable = ({ columns, data }) => {
                         })}
                     </tbody>
                 </table>
+
+                <div className="d-flex justify-content-center align-items-center mt-3">
+
+                    <button 
+                        className='btn btn-primary me-3' 
+                        onClick={() => gotoPage(0)} 
+                        disabled={!canPreviousPage}
+                    >
+                        <FaArrowAltCircleLeft className="iconSizeBtn"/>
+                    </button>
+                    
+                    <button 
+                        onClick={() => previousPage()} 
+                        disabled={!canPreviousPage}
+                        className='btn btn-primary me-3' 
+                    >
+                        Anterior
+                    </button>
+
+                    <button 
+                        onClick={() => nextPage()} 
+                        disabled={!canNextPage}
+                        className='btn btn-success me-3' 
+                    >
+                        Siguiente
+                    </button>
+
+                    <button 
+                        onClick={() => gotoPage(pageCount - 1)} 
+                        disabled={!canNextPage}
+                        className='btn btn-success me-3' 
+                    >
+                        <FaArrowAltCircleRight className="iconSizeBtn"/>
+                    </button>
+
+                    <span>
+                        Página{" "}
+                    <strong>
+                        {pageIndex + 1} de {pageOptions.length}
+                    </strong>
+                    </span>
+                </div>
 
             </div>
         </>

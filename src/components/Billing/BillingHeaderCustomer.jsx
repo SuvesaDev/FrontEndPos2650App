@@ -29,7 +29,10 @@ import {
     startSearchCustomerFacturacion,
     startSearchCustomerMAG,
     SetEmpresaBilling,
-    SetDatoFacturacionBilling
+    SetDatoFacturacionBilling,
+    startGetConfiguracionBonificacion,
+    SetIsBonificadoBilling,
+    startGetProductosBonificacion
 } from '../../actions/billing';
 
 import { BillingAddCustomerModal } from './BillingAddCustomerModal';
@@ -168,6 +171,9 @@ export const BillingHeaderCustomer = () => {
 
         if (billings[numberScreen].isBonificacion) {
             botonBonificacion.current.click();
+            dispatch( SetIsBonificadoBilling({ value: false, number: numberScreen }) );
+            dispatch(startGetConfiguracionBonificacion(billings[numberScreen].factura.encabezado.cedula_Usuario, numberScreen));
+            dispatch(startGetProductosBonificacion(billings[numberScreen].factura.encabezado.cod_Cliente, numberScreen));
         }
 
     }, [billings]);    

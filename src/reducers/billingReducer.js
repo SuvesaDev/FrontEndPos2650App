@@ -3011,6 +3011,26 @@ export const BillingReducer = (state = initialState, action) => {
                 )
             }
 
+        case types.SetCantidadProductosBonificacionBilling:
+            return {
+                ...state,
+                billings: state.billings.map(
+                    (billing, i) => i === action.payload.number
+                        ? {
+                            ...state.billings[action.payload.number],
+                            productosBonificacion: state.billings[action.payload.number].productosBonificacion.map( product => 
+                                product.id === action.payload.value.id
+                                ? { 
+                                        ...product, 
+                                        cantidad: action.payload.value.cantidad
+                                } 
+                                : product
+                            )
+                        }
+                        : billing
+                )
+            }
+
         case types.CleanBilling:
             return {
                 ...state,

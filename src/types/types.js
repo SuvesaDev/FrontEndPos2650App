@@ -996,6 +996,7 @@ export const types = {
   SetIsBonificadoBilling: '[Billing] SetIsBonificadoBilling',
   SetConfiguracionBonificacionBilling: '[Billing] SetConfiguracionBonificacionBilling',
   SetProductosBonificacionBilling: '[Billing] SetProductosBonificacionBilling',
+  SetCantidadProductosBonificacionBilling: '[Billing] SetCantidadProductosBonificacionBilling',
 
   // Buys actions
   buysOpenModelImportarF: '[Buys] Open Model Importar Factura',
