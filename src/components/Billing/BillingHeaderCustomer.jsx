@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { SiHappycow } from 'react-icons/si';
@@ -40,12 +40,14 @@ import { CustomerSearchModal } from '../customers/CustomerSearchModal';
 import { OpenSearchModalCustomers } from '../../actions/customers';
 import { BillingAddCorreosModal } from './BillingAddCorreosModal';
 import { TbListNumbers, TbNotes } from 'react-icons/tb';
+import { BillingBonificacionesModal } from './BillingBonificacionesModal';
 
 export const BillingHeaderCustomer = () => {
 
     const dispatch = useDispatch();
 
     const [numberScreen, setnumberScreen] = useState(null);
+    const botonBonificacion = useRef(null);
 
     const { currentTab } = useSelector(state => state.tabs);
     const { tiposIdentificacion } = useSelector(state => state.tiposIdentificacion);
@@ -160,6 +162,12 @@ export const BillingHeaderCustomer = () => {
     useEffect(() => {
         if (currentTab.name.includes("Venta")) {
             setnumberScreen(currentTab.routePage.split('/')[3] - 1);
+        }
+
+        if (billings[numberScreen] === undefined) return;
+
+        if (billings[numberScreen].isBonificacion) {
+            botonBonificacion.current.click();
         }
 
     }, [billings]);    
@@ -374,6 +382,7 @@ export const BillingHeaderCustomer = () => {
                     <div className="inline-container" role="toolbar">
                         <div className={ (billings[numberScreen] !== undefined) ? (billings[numberScreen].isCostaPets) ? "btn-group mb-2 d-none" : "btn-group mb-2" :  "btn-group mb-2"}>
                             <button
+                                
                                 className={
                                     (billings[numberScreen] !== undefined)
                                         ? (billings[numberScreen].hasCustomerBilling) ? 'btn btn-dark' : 'btn btn-dark disabled'
@@ -617,6 +626,14 @@ export const BillingHeaderCustomer = () => {
                 </div>
             </div>
 
+            <div className="row mb-2 d-none">
+                <button 
+                    ref={botonBonificacion}
+                    data-bs-toggle="modal"
+                    data-bs-target="#modalBonificacionFacturacion"
+                ></button>
+            </div>
+
             {/* <div className="container mt-4">
                 <div className="row g-4">
                     {images.map((img) => (
@@ -810,6 +827,8 @@ export const BillingHeaderCustomer = () => {
             <CustomerSearchModal />
 
             <BillingAddCorreosModal />
+
+            <BillingBonificacionesModal />
         </>
     )
 }

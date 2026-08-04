@@ -994,6 +994,8 @@ export const types = {
   SetSelecionarTodosProductsImagenBilling: '[Billing] SetSelecionarTodosProductsImagenBilling',
   SetCancelarProductsImagenBilling: '[Billing] SetCancelarProductsImagenBilling',
   SetIsBonificadoBilling: '[Billing] SetIsBonificadoBilling',
+  SetConfiguracionBonificacionBilling: '[Billing] SetConfiguracionBonificacionBilling',
+  SetProductosBonificacionBilling: '[Billing] SetProductosBonificacionBilling',
 
   // Buys actions
   buysOpenModelImportarF: '[Buys] Open Model Importar Factura',

@@ -205,7 +205,9 @@ const initialState = {
     lotesByArticulo: [],
     datosFacturacionByCliente: [],
     productsImagen: [],
-    isBonificacion: false
+    isBonificacion: false,
+    configuracionBonificacion: [],
+    productosBonificacion: []
 };
 
 export const BillingReducer = (state = initialState, action) => {
@@ -2983,6 +2985,32 @@ export const BillingReducer = (state = initialState, action) => {
                 )
             }
 
+        case types.SetConfiguracionBonificacionBilling:
+            return {
+                ...state,
+                billings: state.billings.map(
+                    (billing, i) => i === action.payload.number
+                        ? {
+                            ...state.billings[action.payload.number],
+                            configuracionBonificacion: action.payload.value
+                        }
+                        : billing
+                )
+            }
+
+        case types.SetProductosBonificacionBilling:
+            return {
+                ...state,
+                billings: state.billings.map(
+                    (billing, i) => i === action.payload.number
+                        ? {
+                            ...state.billings[action.payload.number],
+                            productosBonificacion: action.payload.value
+                        }
+                        : billing
+                )
+            }
+
         case types.CleanBilling:
             return {
                 ...state,
@@ -3189,7 +3217,9 @@ export const BillingReducer = (state = initialState, action) => {
                             lotesByArticulo: [],
                             datosFacturacionByCliente: [],
                             productsImagen: [],
-                            isBonificacion: false
+                            isBonificacion: false,
+                            configuracionBonificacion: [],
+                            productosBonificacion: []
                         }
                         : billing
                 )

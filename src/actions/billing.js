@@ -141,11 +141,9 @@ export const startSearchCustomerFacturacion = ( cedula, number, hasCoin = false 
                     dispatch( hasHeader( { value: true, number } ));
                     dispatch( OpenSearchCustomerBilling( { value: false, number } ));
                     dispatch( SetIsEnableActiveCreditoBilling( { value: abierto, number } ));
-
-                    dispatch( SetIsBonificadoBilling({ value: bonificacion, number }) );
-
+                    
                     if(bonificacion) {
-
+                        
                         //Mostrar un mensaje de confirmacion
                         Swal.fire({
                             title: `El cliente ${nombre} tiene bonificacion. ¿Desea utilizar la bonificacion del cliente?`,
@@ -154,10 +152,10 @@ export const startSearchCustomerFacturacion = ( cedula, number, hasCoin = false 
                             confirmButtonText: 'Bonificar',
                             denyButtonText: `Cancelar`,
                         }).then(async (result) => {
-
+                            
                             if (result.isConfirmed) {
-
-                                console.log('Abrir modal de bonificacion')
+                                
+                                dispatch( SetIsBonificadoBilling({ value: bonificacion, number }) );
                             }
                         })
                     }
@@ -3517,5 +3515,15 @@ export const SetCancelarProductsImagenBilling = (value) => ({
 
 export const SetIsBonificadoBilling = (value) => ({
     type: types.SetIsBonificadoBilling,
+    payload: value
+})
+
+export const SetConfiguracionBonificacionBilling = (value) => ({
+    type: types.SetConfiguracionBonificacionBilling,
+    payload: value
+})
+
+export const SetProductosBonificacionBilling = (value) => ({
+    type: types.SetProductosBonificacionBilling,
     payload: value
 })
