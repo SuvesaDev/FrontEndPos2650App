@@ -863,6 +863,12 @@ export const CustomersReducer = (state = initialState, action) => {
                     action.payload
                 ]
             }
+
+        case types.SetProductoBonificacionCustomers:
+            return {
+                ...state,
+                productosBonificacion: action.payload
+            }
     
         default:
             return state;

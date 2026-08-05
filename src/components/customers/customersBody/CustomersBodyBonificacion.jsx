@@ -170,7 +170,7 @@ export const CustomersBodyBonificacion = () => {
             id: 0,
             idArticulo: codigo,
             idCliente: customer.identificacion,
-            cod_Articulo,
+            codigo: cod_Articulo,
             descripcion
           }
     

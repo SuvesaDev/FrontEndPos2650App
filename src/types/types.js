@@ -588,6 +588,7 @@ export const types = {
   SetCodigoArtBonificacionArticleCustomers: '[Customers] SetCodigoArtBonificacionArticleCustomers',
   SetDescripcionBonificacionArticleCustomers: '[Customers] SetDescripcionBonificacionArticleCustomers',
   SetAddProductoBonificacionCustomers: '[Customers] SetAddProductoBonificacionCustomers',
+  SetProductoBonificacionCustomers: '[Customers] SetProductoBonificacionCustomers',
 
   // Carta Exoneracion Actions
   SetMotivoCartaExoneracion: '[CartaExoneracion] SetMotivoCartaExoneracion',

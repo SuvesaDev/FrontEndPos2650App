@@ -502,6 +502,11 @@ export const startGetOneCustomer = ( idCliente ) => {
                 
                 dispatch( SetAddAllDatosFacturacionCustomers( datosFacturacion ) );
 
+                if(searchCustomer.bonificado) {
+                    dispatch(startGetAllBonificacionesCustomer(searchCustomer.cedula));
+                    dispatch(startGetAllProductosBonificacionCustomer(searchCustomer.identificacion));
+                }
+
             } else {
     
                 //Caso contrario respuesta incorrecto mostrar mensaje de error
@@ -1414,7 +1419,7 @@ export const startSaveArticleBonificacionCustomer = ( newProduct ) => {
 
                         dispatch(SetAddProductoBonificacionCustomers({
                             codigo: newProduct.idArticulo,
-                            cod_Articulo: newProduct.cod_Articulo,
+                            cod_Articulo: newProduct.codigo,
                             descripcion : newProduct.descripcion,
                         }));
                         dispatch(SetCodigoBonificacionArticleCustomers(''));
@@ -1463,6 +1468,154 @@ export const startSaveArticleBonificacionCustomer = ( newProduct ) => {
             }
         }
     }
+}
+
+export const startGetAllBonificacionesCustomer = (cedula) => {
+
+    return async ( dispatch ) => {
+    
+        try {
+
+            //Mostrar el loading
+            Swal.fire({
+                title: 'Por favor, espere',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                imageUrl: loadingImage,
+                customClass: 'alert-class-login',
+                imageHeight: 100,
+            });
+
+            const request = {
+                cedula,
+                identificacion: 0
+            }
+                    
+            //Call end-point 
+            const { data } = await suvesaApi.post(`/ClienteBonificacion/GetConfiguracionCliente`, request );
+            const { status, responses } = data;
+
+            //Quitar el loading
+            Swal.close();
+
+            if( status === 0) {
+
+                const bonificacion = responses.map(response => {
+                    return {
+                        ...response,
+                        codigo: response.idConfiguracionBonificacion,
+                        descripcion: response.descripcion
+                    }
+                });
+
+                dispatch( SetBonificacionesCustomers(bonificacion) );
+
+            } else {
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
+                
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
+                
+            }
+            
+        } catch (error) {
+            
+            Swal.close();
+            console.log(error);
+            if( error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al obtener los producto con imagen',
+                });
+            }
+        }
+
+    }
+
+}
+
+export const startGetAllProductosBonificacionCustomer = (cedula) => {
+
+    return async ( dispatch ) => {
+    
+        try {
+
+            //Mostrar el loading
+            Swal.fire({
+                title: 'Por favor, espere',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                imageUrl: loadingImage,
+                customClass: 'alert-class-login',
+                imageHeight: 100,
+            });
+                    
+            //Call end-point 
+            const { data } = await suvesaApi.get(`/ClienteBonificacion/GetArticulos?Request=${cedula}` );
+            const { status, responses } = data;
+
+            //Quitar el loading
+            Swal.close();
+
+            if( status === 0) {
+                
+                const products = responses.map(response => {
+                    return {
+                        ...response,
+                        cod_Articulo: response.codigo
+                    }
+                });
+
+                dispatch( SetProductoBonificacionCustomers(products) );
+
+            } else {
+                //Caso contrario respuesta incorrecto mostrar mensaje de error
+                const { currentException } = data;
+                const msj = currentException.split(',');
+                
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: (currentException.includes(',')) ? msj[3] : currentException,
+                });
+                
+            }
+            
+        } catch (error) {
+            
+            Swal.close();
+            console.log(error);
+            if( error.message === 'Request failed with status code 401') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario no valido',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrio un problema al obtener los producto con imagen',
+                });
+            }
+        }
+
+    }
+
 }
 
 //Normal Actions
@@ -1885,5 +2038,10 @@ export const SetDescripcionBonificacionArticleCustomers = ( value ) => ({
 
 export const SetAddProductoBonificacionCustomers = ( value ) => ({
     type: types.SetAddProductoBonificacionCustomers,
+    payload: value
+});
+
+export const SetProductoBonificacionCustomers = ( value ) => ({
+    type: types.SetProductoBonificacionCustomers,
     payload: value
 });
