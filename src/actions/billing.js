@@ -3672,3 +3672,13 @@ export const SetCantidadProductosBonificacionBilling = (value) => ({
     type: types.SetCantidadProductosBonificacionBilling,
     payload: value
 })
+
+export const SetCurrentConfiguracionBonificacionBilling = (value) => ({
+    type: types.SetCurrentConfiguracionBonificacionBilling,
+    payload: value
+})
+
+export const SetDisabledTableBonificacionBilling = (value) => ({
+    type: types.SetDisabledTableBonificacionBilling,
+    payload: value
+})

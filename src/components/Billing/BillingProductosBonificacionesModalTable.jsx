@@ -125,6 +125,11 @@ export const BillingProductosBonificacionesModalTable = ({ columns, data }) => {
                                                         ? <input 
                                                             type="number" 
                                                             min="0" 
+                                                            disabled={
+                                                                (billings[numberScreen] !== undefined)
+                                                                    ? billings[numberScreen].disabledTableProductos
+                                                                    : true
+                                                            }
                                                             value={cell.value} 
                                                             onChange={(e) => handleChangeCantidad(e, cell)}
                                                         />

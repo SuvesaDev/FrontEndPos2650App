@@ -235,7 +235,14 @@ export const BillingPage = () => {
         productsImagen: [],
         isBonificacion: false,
         configuracionBonificacion: [],
-        productosBonificacion: []
+        productosBonificacion: [],
+        currentConfiguracion: {
+            idConfiguracionBonificacion: 0,
+            descripcion: '',
+            cantidadVenta: 0,
+            cantidadBonificable: 0
+        },
+        disabledTableProductos: true
     }
 
     useEffect(() => {

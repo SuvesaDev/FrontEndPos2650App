@@ -4,6 +4,7 @@ import { useTable, usePagination } from "react-table";
 import { useSelector, useDispatch } from 'react-redux';
 
 import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
+import { SetCurrentConfiguracionBonificacionBilling, SetDisabledTableBonificacionBilling } from '../../actions/billing';
 
 export const BillingTiposBonificacionesModalTable = ({ columns, data }) => {
 
@@ -46,15 +47,14 @@ export const BillingTiposBonificacionesModalTable = ({ columns, data }) => {
     );
 
     const handleSelectedRow = async (cell) => {
+        
+        //Obtener el correo seleccionado
+        const { idConfiguracionBonificacion } = cell.row.original;
 
-        // //Obtener el correo seleccionado
-        // const { correoComprobante } = cell.row.values;
-
-        // if (correoComprobante !== null) {
-        //     dispatch(SeletedCorreoComprobantesBilling({ value: correoComprobante, number: numberScreen }));
-        //     dispatch(SetCorreoComprobanteActualBilling({ value: correoComprobante, number: numberScreen }));
-        //     dispatch(IsCorreoComprobanteEditBilling({ value: true, number: numberScreen }));
-        // }
+        if (idConfiguracionBonificacion !== null) {
+            dispatch(SetCurrentConfiguracionBonificacionBilling({ value: cell.row.original, number: numberScreen }));
+            dispatch(SetDisabledTableBonificacionBilling({ value: false, number: numberScreen }));
+        }
 
     }
 
@@ -91,9 +91,7 @@ export const BillingTiposBonificacionesModalTable = ({ columns, data }) => {
                                         return (
                                             <td
                                                 {...cell.getCellProps({
-                                                    onClick: (cell.column.id === 'iconVer' || cell.column.id === 'iconAprobar')
-                                                        ? () => handleSelectedRow(cell)
-                                                        : () => {},
+                                                    onClick: () => handleSelectedRow(cell)
                                                 })}
 
                                             >

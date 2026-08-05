@@ -207,7 +207,14 @@ const initialState = {
     productsImagen: [],
     isBonificacion: false,
     configuracionBonificacion: [],
-    productosBonificacion: []
+    productosBonificacion: [],
+    currentConfiguracion: {
+        idConfiguracionBonificacion: 0,
+        descripcion: '',
+        cantidadVenta: 0,
+        cantidadBonificable: 0
+    },
+    disabledTableProductos: true
 };
 
 export const BillingReducer = (state = initialState, action) => {
@@ -3031,6 +3038,32 @@ export const BillingReducer = (state = initialState, action) => {
                 )
             }
 
+        case types.SetCurrentConfiguracionBonificacionBilling:
+            return {
+                ...state,
+                billings: state.billings.map(
+                    (billing, i) => i === action.payload.number
+                        ? {
+                            ...state.billings[action.payload.number],
+                            currentConfiguracion: action.payload.value
+                        }
+                        : billing
+                )
+            }
+
+        case types.SetDisabledTableBonificacionBilling:
+            return {
+                ...state,
+                billings: state.billings.map(
+                    (billing, i) => i === action.payload.number
+                        ? {
+                            ...state.billings[action.payload.number],
+                            disabledTableProductos: action.payload.value
+                        }
+                        : billing
+                )
+            }
+
         case types.CleanBilling:
             return {
                 ...state,
@@ -3239,7 +3272,14 @@ export const BillingReducer = (state = initialState, action) => {
                             productsImagen: [],
                             isBonificacion: false,
                             configuracionBonificacion: [],
-                            productosBonificacion: []
+                            productosBonificacion: [],
+                            currentConfiguracion: {
+                                idConfiguracionBonificacion: 0,
+                                descripcion: '',
+                                cantidadVenta: 0,
+                                cantidadBonificable: 0
+                            },
+                            disabledTableProductos: true
                         }
                         : billing
                 )

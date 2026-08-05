@@ -180,7 +180,30 @@ export const BillingBonificacionesModal = () => {
                         <div className="modal-body">
 
                             <div className="row mb-2">
-                                <h5>Lista de configuracion</h5>
+                                <div className="col-md-6">
+                                    <h5>Lista de configuracion</h5>
+                                </div>
+
+                                <div className="col-md-4">
+                                    <div className="row">
+                                        <div className="col-md-6">
+                                            <p>Configuracion Seleccionada</p>
+                                        </div>
+                                        <div className="col-md-6">
+                                            <input
+                                                type="text"
+                                                name='Orden'
+                                                className='form-control'
+                                                disabled={true}
+                                                value={
+                                                    (billings[numberScreen] !== undefined)
+                                                    ? billings[numberScreen].currentConfiguracion.descripcion
+                                                    : ''
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
                             <div className="row mb-2">
