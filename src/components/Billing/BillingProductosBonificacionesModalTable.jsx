@@ -125,6 +125,11 @@ export const BillingProductosBonificacionesModalTable = ({ columns, data }) => {
                                                         ? <input 
                                                             type="number" 
                                                             min="0" 
+                                                            max={
+                                                                (billings[numberScreen] !== undefined)
+                                                                    ? (billings[numberScreen].currentConfiguracion.cantidadVenta + billings[numberScreen].currentConfiguracion.cantidadBonificable)
+                                                                    : 0
+                                                            }
                                                             disabled={
                                                                 (billings[numberScreen] !== undefined)
                                                                     ? billings[numberScreen].disabledTableProductos

@@ -181,6 +181,8 @@ export const startSearchCustomerConsignment = ( cedula, hasCoin = false ) => {
                         dispatch( SetSurcursalesConsignment([]) );
                     }
 
+                    dispatch(SetOpenSearchCustomerConsignment(false));
+
 
                 } else {
                     
